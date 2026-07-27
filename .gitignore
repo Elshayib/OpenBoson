@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# SQLite local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# PyInstaller
+*.spec.bak
+build/
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Tauri / Node leftover patterns (kept for forward compatibility)
+node_modules/
+
+# OS
+.DS_Store

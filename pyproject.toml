@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openboson"
+version = "0.1.0"
+description = "Open-source local ExSim + NetSim practice platform for CCNA."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "OpenBoson contributors" }]
+dependencies = [
+    "pyside6>=6.6",
+    "pydantic>=2",
+    "pyyaml",
+    "click",
+    "sqlalchemy>=2",
+    "pyqtgraph",
+]
+
+[project.optional-dependencies]
+server = ["fastapi", "uvicorn", "httpx"]
+dev = [
+    "pytest",
+    "pytest-qt",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
+all = ["openboson[server,dev]"]
+
+[project.scripts]
+openboson = "openboson.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+openboson = ["gui/*.qss", "gui/resources/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+explicit_package_bases = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_optional = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["openboson"]
+branch = true
