@@ -1,0 +1,204 @@
+title: OpenBoson Demo CCNA Bank
+code: "200-301"
+version: v1.1
+provider: openboson
+description: >
+  Small original demo bank covering one question per CCNA 200-301 v1.1
+  domain. Open content; not affiliated with Cisco or Boson.
+pass_score: 0.825
+time_limit_minutes: 120
+topics:
+  - code: "1.0"
+    name: Network Fundamentals
+    weight: 0.20
+  - code: "1.1"
+    name: Network components
+    weight: 0.05
+  - code: "2.0"
+    name: Network Access
+    weight: 0.20
+  - code: "2.1"
+    name: VLANs and trunks
+    weight: 0.05
+  - code: "3.0"
+    name: IP Connectivity
+    weight: 0.25
+  - code: "3.1"
+    name: OSPF
+    weight: 0.05
+  - code: "4.0"
+    name: IP Services
+    weight: 0.10
+  - code: "4.1"
+    name: DHCP
+    weight: 0.05
+  - code: "5.0"
+    name: Security Fundamentals
+    weight: 0.15
+  - code: "5.1"
+    name: ACLs
+    weight: 0.05
+  - code: "6.0"
+    name: Automation and Programmability
+    weight: 0.10
+  - code: "6.1"
+    name: NETCONF / YANG
+    weight: 0.05
+questions:
+  - id: q1
+    type: single_choice
+    topic_code: "1.1"
+    difficulty: 2
+    stem: >
+      You have the network 192.168.10.0/26. How many usable host addresses
+      does this subnet provide?
+    choices:
+      - id: a
+        text: "62"
+      - id: b
+        text: "64"
+      - id: c
+        text: "30"
+      - id: d
+        text: "126"
+    correct:
+      answer: a
+    explanation: >
+      A /26 prefix gives 2^(32-26) - 2 = 64 - 2 = 62 usable hosts. The two
+      reserved addresses are the network and broadcast addresses.
+    references:
+      - "CCNA v1.1 blueprint 1.1.a — IPv4 subnetting"
+
+  - id: q2
+    type: multiple_choice
+    topic_code: "2.1"
+    difficulty: 3
+    stem: >
+      Which two statements about VLAN trunks are correct? (Choose two.)
+    choices:
+      - id: a
+        text: "A trunk carries traffic for multiple VLANs using 802.1Q tagging."
+      - id: b
+        text: "VLAN 1 cannot be used as a native VLAN."
+      - id: c
+        text: "The native VLAN is sent untagged on an 802.1Q trunk."
+      - id: d
+        text: "Trunks require ISL encapsulation on modern Cisco switches."
+    correct:
+      answers: [a, c]
+      partial_credit: false
+    explanation: >
+      802.1Q trunks carry multiple VLANs with a 4-byte tag; the native VLAN
+      is sent untagged. ISL is legacy and unsupported on modern Catalyst
+      switches. VLAN 1 can be the native VLAN although it is discouraged.
+    references:
+      - "CCNA v1.1 blueprint 2.1.a — VLANs and trunking"
+
+  - id: q3
+    type: ordered_list
+    topic_code: "3.1"
+    difficulty: 3
+    stem: >
+      Place the OSPF adjacency states in the correct order from initiation
+      to full adjacency.
+    ordered_items: ["ExStart", "Init", "Down", "Full", "2-Way", "Loading", "Exchange"]
+    correct:
+      order: ["Down", "Init", "2-Way", "ExStart", "Exchange", "Loading", "Full"]
+    explanation: >
+      OSPF adjacency states in order: Down, Init, 2-Way, ExStart, Exchange,
+      Loading, Full.
+    references:
+      - "CCNA v1.1 blueprint 3.1.c — OSPF adjacency states"
+
+  - id: q4
+    type: drag_match
+    topic_code: "4.1"
+    difficulty: 2
+    stem: >
+      Match each DHCP message with the direction in which it is sent.
+    drag_pairs:
+      - left: "DISCOVER"
+        right: "Client -> Server (broadcast)"
+      - left: "OFFER"
+        right: "Server -> Client (unicast or broadcast)"
+      - left: "REQUEST"
+        right: "Client -> Server (broadcast)"
+      - left: "ACK"
+        right: "Server -> Client (unicast)"
+    correct:
+      pairs:
+        - left: "DISCOVER"
+          right: "Client -> Server (broadcast)"
+        - left: "OFFER"
+          right: "Server -> Client (unicast or broadcast)"
+        - left: "REQUEST"
+          right: "Client -> Server (broadcast)"
+        - left: "ACK"
+          right: "Server -> Client (unicast)"
+    explanation: >
+      DHCP uses DORA: Discover, Offer, Request, Ack. Discover and Request
+      are client-to-server broadcasts; Offer and Ack are server-to-client
+      (Offer may be broadcast if the client does not yet have an IP).
+    references:
+      - "CCNA v1.1 blueprint 4.1.a — DHCP operation"
+
+  - id: q5
+    type: sim
+    topic_code: "5.1"
+    difficulty: 4
+    stem: >
+      You are given a router R1 with interface GigabitEthernet0/0/0 facing
+      the LAN 10.10.10.0/24 and interface GigabitEthernet0/0/1 facing the
+      internet. Configure an ACL that permits outbound ICMP echo requests
+      from the LAN to the internet but denies all other ICMP traffic.
+    sim:
+      instructions: >
+        Configure an extended ACL 100 on R1 to permit outbound ICMP echo
+        (type 8) from 10.10.10.0/24 to any and deny all other ICMP. Apply
+        the ACL outbound on G0/0/1.
+      topology_ref: "r1_lan_to_internet"
+      expected_output: |
+        access-list 100 permit icmp 10.10.10.0 0.0.0.255 any echo
+        access-list 100 deny icmp any any
+        interface GigabitEthernet0/0/1
+         ip access-group 100 out
+    correct:
+      expected_config: |
+        access-list 100 permit icmp 10.10.10.0 0.0.0.255 any echo
+        access-list 100 deny icmp any any
+        interface GigabitEthernet0/0/1
+         ip access-group 100 out
+      expected_commands:
+        - "access-list 100 permit icmp 10.10.10.0 0.0.0.255 any echo"
+        - "access-list 100 deny icmp any any"
+        - "ip access-group 100 out"
+    explanation: >
+      Step 1: permit ICMP echo (type 8) from the LAN subnet using the
+      wildcard mask 0.0.0.255. Step 2: deny all other ICMP. Step 3: apply
+      the ACL outbound on the internet-facing interface.
+    references:
+      - "CCNA v1.1 blueprint 5.1.b — ACLs"
+
+  - id: q6
+    type: single_choice
+    topic_code: "6.1"
+    difficulty: 3
+    stem: >
+      Which transport protocol and default port does NETCONF use for its
+      secure transport in modern Cisco IOS-XE?
+    choices:
+      - id: a
+        text: "TCP/830 (SSH-based NETCONF)"
+      - id: b
+        text: "TCP/80 (HTTP)"
+      - id: c
+        text: "UDP/161 (SNMP)"
+      - id: d
+        text: "TCP/443 (HTTPS REST)"
+    correct:
+      answer: a
+    explanation: >
+      NETCONF over SSH runs on TCP port 830 by default and is the most
+      common secure transport on modern IOS-XE. RESTCONF uses HTTPS (443).
+    references:
+      - "CCNA v1.1 blueprint 6.1.b — NETCONF/YANG"
