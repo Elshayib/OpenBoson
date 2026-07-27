@@ -101,6 +101,7 @@ class SimAnswer(BaseModel):
 
     expected_config: str | None = None
     expected_commands: list[str] | None = None
+    instructions: str | None = None  # optional human instructions surfaced to grader
 
 
 class Topic(BaseModel):
