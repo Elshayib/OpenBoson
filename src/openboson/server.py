@@ -18,6 +18,12 @@ def create_app() -> FastAPI:
         description="Local ExSim + NetSim engine for OpenBoson.",
     )
 
+    # Mount ExSim routes. Importing here avoids a cycle with the engine
+    # modules that may need server-side helpers in the future.
+    from openboson.exsim.router import _ROUTER as exsim_router
+
+    app.include_router(exsim_router)
+
     @app.get("/health")
     def health() -> dict[str, object]:
         return {"status": "ok", "version": __version__}
