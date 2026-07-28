@@ -1,0 +1,75 @@
+title: Configure Basic Router & Switch (Demo Lab)
+lab_id: ccna_basic_rtr_sw
+topic_code: "2.1"
+difficulty: 2
+description: >
+  Practice configuring hostnames, interface IP addresses, a trunk, and a
+  VLAN on a small two-device topology. Original demo content.
+objectives:
+  - Set hostnames on R1 and SW1.
+  - Assign IP addresses to R1's LAN interface and enable it.
+  - Create VLAN 10 on SW1 and configure the R1-facing port as a trunk.
+topology:
+  devices:
+    - name: R1
+      type: router
+      interfaces:
+        - name: GigabitEthernet0/0
+          ip: 10.10.10.1/24
+          connected_to: SW1/GigabitEthernet0/1
+        - name: GigabitEthernet0/1
+    - name: SW1
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: R1/GigabitEthernet0/0
+        - name: GigabitEthernet0/2
+  links:
+    - a: R1/GigabitEthernet0/0
+      b: SW1/GigabitEthernet0/1
+tasks:
+  - id: t1
+    instructions: >
+      On R1, set the hostname to R1 and assign IP address 10.10.10.1/24 to
+      GigabitEthernet0/0, then enable the interface with 'no shutdown'.
+    expected_config: |
+      hostname R1
+      interface GigabitEthernet0/0
+       ip address 10.10.10.1 255.255.255.0
+       no shutdown
+    grading_rules:
+      require:
+        - "hostname R1"
+        - "interface GigabitEthernet0/0"
+        - "ip address 10.10.10.1 255.255.255.0"
+        - "no shutdown"
+  - id: t2
+    instructions: >
+      On SW1, set the hostname to SW1, create VLAN 10 (name USERS), and
+      configure GigabitEthernet0/1 as a dot1q trunk.
+    expected_config: |
+      hostname SW1
+      vlan 10
+       name USERS
+      interface GigabitEthernet0/1
+       switchport mode trunk
+    grading_rules:
+      require:
+        - "hostname SW1"
+        - "vlan 10"
+        - "interface GigabitEthernet0/1"
+        - "switchport mode trunk"
+      forbid:
+        - "switchport mode access"
+solution_config: |
+  ! --- R1 ---
+  hostname R1
+  interface GigabitEthernet0/0
+   ip address 10.10.10.1 255.255.255.0
+   no shutdown
+  ! --- SW1 ---
+  hostname SW1
+  vlan 10
+   name USERS
+  interface GigabitEthernet0/1
+   switchport mode trunk
