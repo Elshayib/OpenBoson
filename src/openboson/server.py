@@ -24,6 +24,10 @@ def create_app() -> FastAPI:
 
     app.include_router(exsim_router)
 
+    from openboson.netsim.router import _ROUTER as netsim_router
+
+    app.include_router(netsim_router)
+
     @app.get("/health")
     def health() -> dict[str, object]:
         return {"status": "ok", "version": __version__}

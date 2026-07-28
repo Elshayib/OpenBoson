@@ -1,0 +1,89 @@
+"""NetSim in-process lab session state machine + scoring."""
+
+from __future__ import annotations
+
+import uuid
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+
+from openboson.netsim.grader import TaskGrade, grade_task
+from openboson.netsim.lab_schema import LabBank
+
+
+@dataclass
+class LabSession:
+    """A single run of a guided lab by a user."""
+
+    session_id: str
+    lab: LabBank
+    current_task_index: int = 0
+    grades: dict[str, TaskGrade] = field(default_factory=dict)
+    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    finished_at: datetime | None = None
+
+    @classmethod
+    def create(cls, lab: LabBank) -> "LabSession":
+        return cls(session_id=uuid.uuid4().hex, lab=lab)
+
+    @property
+    def current_task(self):
+        return self.lab.tasks[self.current_task_index]
+
+    def submit_task(self, config: str) -> TaskGrade:
+        """Grade the current task against ``config`` and store the result."""
+        task = self.current_task
+        grade = grade_task(task, config)
+        self.grades[task.id] = grade
+        return grade
+
+    def next_task(self):
+        if self.current_task_index < len(self.lab.tasks) - 1:
+            self.current_task_index += 1
+            return self.current_task
+        return None
+
+    def previous_task(self):
+        if self.current_task_index > 0:
+            self.current_task_index -= 1
+            return self.current_task
+        return None
+
+    def goto(self, index: int):
+        if 0 <= index < len(self.lab.tasks):
+            self.current_task_index = index
+            return self.current_task
+        raise IndexError(index)
+
+    def is_finished(self) -> bool:
+        return self.finished_at is not None
+
+    def finish(self) -> datetime:
+        self.finished_at = datetime.now(timezone.utc)
+        return self.finished_at
+
+
+@dataclass
+class LabResult:
+    session_id: str
+    lab_id: str
+    lab_title: str
+    total_tasks: int
+    passed_tasks: int
+    score: float  # 0.0 - 1.0
+    task_grades: dict[str, TaskGrade] = field(default_factory=dict)
+
+
+def score_lab(session: LabSession) -> LabResult:
+    """Compute a lab result from graded tasks."""
+    total = len(session.lab.tasks)
+    passed = sum(1 for g in session.grades.values() if g.is_correct)
+    score = passed / total if total else 0.0
+    return LabResult(
+        session_id=session.session_id,
+        lab_id=session.lab.lab_id,
+        lab_title=session.lab.title,
+        total_tasks=total,
+        passed_tasks=passed,
+        score=score,
+        task_grades=dict(session.grades),
+    )
