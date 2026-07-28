@@ -14,7 +14,7 @@ def main_window(qtbot):
 
 def test_main_window_has_expected_pages(main_window):
     expected = {"Dashboard", "Exams", "Labs", "Stats", "Settings"}
-    assert set(main_window._pages.keys()) == expected
+    assert set(main_window._static_pages.keys()) == expected
 
 
 def test_main_window_defaults_to_dashboard(main_window):

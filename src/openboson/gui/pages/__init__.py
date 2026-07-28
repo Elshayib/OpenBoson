@@ -46,23 +46,6 @@ class DashboardPage(_Page):
         self._layout.addStretch()
 
 
-class ExamsPage(_Page):
-    title = "Exams"
-
-    def __init__(self) -> None:
-        super().__init__()
-        header = QLabel("Practice Exams")
-        header.setProperty("role", "h1")
-        body = QLabel(
-            "Exam list and exam sessions appear here in Task 8."
-        )
-        body.setProperty("role", "muted")
-        body.setWordWrap(True)
-        self._layout.addWidget(header)
-        self._layout.addWidget(body)
-        self._layout.addStretch()
-
-
 class LabsPage(_Page):
     title = "Labs"
 
