@@ -72,6 +72,10 @@ class LabResult:
     score: float  # 0.0 - 1.0
     task_grades: dict[str, TaskGrade] = field(default_factory=dict)
 
+    @property
+    def score_percent(self) -> float:
+        return self.score * 100.0
+
 
 def score_lab(session: LabSession) -> LabResult:
     """Compute a lab result from graded tasks."""

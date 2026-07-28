@@ -26,6 +26,7 @@ class TaskGrade:
 
     task_id: str
     is_correct: bool
+    submitted_config: str = ""
     missing: list[str] = field(default_factory=list)
     forbidden_found: list[str] = field(default_factory=list)
     order_violations: list[str] = field(default_factory=list)
@@ -113,6 +114,7 @@ def grade_task(task: LabTask, submitted_config: str) -> TaskGrade:
     return TaskGrade(
         task_id=task.id,
         is_correct=passed,
+        submitted_config=submitted_config,
         missing=missing,
         forbidden_found=forbidden_found,
         order_violations=order_violations,

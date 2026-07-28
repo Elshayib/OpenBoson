@@ -24,7 +24,6 @@ from openboson.exsim.scoring import ExamResult
 from openboson.exsim.session import ExamSession
 from openboson.gui.pages import (
     DashboardPage,
-    LabsPage,
     SettingsPage,
     StatsPage,
 )
@@ -32,6 +31,10 @@ from openboson.gui.pages.exam_list_page import ExamListPage
 from openboson.gui.pages.exam_result_page import ExamResultPage
 from openboson.gui.pages.exam_review_page import ExamReviewPage
 from openboson.gui.pages.exam_session_page import ExamSessionPage
+from openboson.gui.pages.lab_list_page import LabListPage
+from openboson.gui.pages.lab_result_page import LabResultPage
+from openboson.gui.pages.lab_session_page import LabSessionPage
+from openboson.netsim.session import LabResult, LabSession
 
 
 class MainWindow(QMainWindow):
@@ -41,7 +44,7 @@ class MainWindow(QMainWindow):
     STATIC_PAGES: list[tuple[str, type]] = [
         ("Dashboard", DashboardPage),
         ("Exams", ExamListPage),
-        ("Labs", LabsPage),
+        ("Labs", LabListPage),
         ("Stats", StatsPage),
         ("Settings", SettingsPage),
     ]
@@ -101,6 +104,18 @@ class MainWindow(QMainWindow):
         self._session_page.set_on_exit(self._go_to_exams)
         self._result_page.set_on_review(self._on_review)
         self._result_page.set_on_retake(self._on_retake)
+
+        # Labs page (static) raises lab_selected -> lab session.
+        self._labs_page = self._static_pages["Labs"]
+        self._labs_page.set_on_lab_selected(self._on_lab_selected)
+
+        # Transient lab pages (created on demand).
+        self._lab_session_page = LabSessionPage()
+        self._lab_result_page = LabResultPage()
+        self._stack.addWidget(self._lab_session_page)
+        self._stack.addWidget(self._lab_result_page)
+        self._lab_session_page.set_on_result(self._on_lab_result)
+        self._lab_result_page.set_on_retake(self._on_lab_retake)
 
         self._nav_group.buttonClicked.connect(self._on_nav_clicked)
 
@@ -166,6 +181,19 @@ class MainWindow(QMainWindow):
         self._session_page.start_exam(session.exam, mode=session.mode)
         self._stack.setCurrentWidget(self._session_page)
 
+    # -----/ Lab handlers /-----
+    def _on_lab_selected(self, lab) -> None:
+        self._lab_session_page.start_lab(lab)
+        self._stack.setCurrentWidget(self._lab_session_page)
+
+    def _on_lab_result(self, session: LabSession, result: LabResult) -> None:
+        self._lab_result_page.show_result(session, result)
+        self._stack.setCurrentWidget(self._lab_result_page)
+
+    def _on_lab_retake(self, session: LabSession) -> None:
+        self._lab_session_page.start_lab(session.lab)
+        self._stack.setCurrentWidget(self._lab_session_page)
+
     # -----/ Test hooks /-----
     def visible_page_label(self) -> str:
         widget = self._stack.currentWidget()
@@ -181,3 +209,6 @@ class MainWindow(QMainWindow):
 
     def start_exam_from_list(self, bank, mode) -> None:
         self._on_exam_selected(bank, mode)
+
+    def start_lab_from_list(self, lab) -> None:
+        self._on_lab_selected(lab)

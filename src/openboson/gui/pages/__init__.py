@@ -1,9 +1,7 @@
-"""Placeholder content pages for OpenBoson's main window.
+"""Base placeholder pages for OpenBoson's main window.
 
-Each page is a ``QWidget`` exposing ``title`` (used by the sidebar) and
-``refresh`` (called when the user re-enters the page). Pages are empty for
-the GUI shell milestone (Task 7); feature pages arrive in Task 8+.
-"""
+Dashboard / Stats / Settings are static pages. Exams and Labs lists live in
+their own modules (``exam_list_page`` / ``lab_list_page``)."""
 
 from __future__ import annotations
 
@@ -43,23 +41,6 @@ class DashboardPage(_Page):
 
         self._layout.addWidget(header)
         self._layout.addWidget(sub)
-        self._layout.addStretch()
-
-
-class LabsPage(_Page):
-    title = "Labs"
-
-    def __init__(self) -> None:
-        super().__init__()
-        header = QLabel("Network Labs")
-        header.setProperty("role", "h1")
-        body = QLabel(
-            "NetSim lab browser and topology designer appear here in Phase 3."
-        )
-        body.setProperty("role", "muted")
-        body.setWordWrap(True)
-        self._layout.addWidget(header)
-        self._layout.addWidget(body)
         self._layout.addStretch()
 
 
