@@ -25,7 +25,6 @@ from openboson.exsim.session import ExamSession
 from openboson.gui.pages import (
     DashboardPage,
     SettingsPage,
-    StatsPage,
 )
 from openboson.gui.pages.exam_list_page import ExamListPage
 from openboson.gui.pages.exam_result_page import ExamResultPage
@@ -34,6 +33,7 @@ from openboson.gui.pages.exam_session_page import ExamSessionPage
 from openboson.gui.pages.lab_list_page import LabListPage
 from openboson.gui.pages.lab_result_page import LabResultPage
 from openboson.gui.pages.lab_session_page import LabSessionPage
+from openboson.gui.pages.stats_page import StatsPage
 from openboson.netsim.session import LabResult, LabSession
 
 

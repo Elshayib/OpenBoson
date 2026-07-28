@@ -44,21 +44,6 @@ class DashboardPage(_Page):
         self._layout.addStretch()
 
 
-class StatsPage(_Page):
-    title = "Stats"
-
-    def __init__(self) -> None:
-        super().__init__()
-        header = QLabel("Statistics")
-        header.setProperty("role", "h1")
-        body = QLabel("Per-domain performance and weak areas appear here in Phase 4.")
-        body.setProperty("role", "muted")
-        body.setWordWrap(True)
-        self._layout.addWidget(header)
-        self._layout.addWidget(body)
-        self._layout.addStretch()
-
-
 class SettingsPage(_Page):
     title = "Settings"
 

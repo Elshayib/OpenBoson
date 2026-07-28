@@ -50,10 +50,17 @@ def start_session(bank: ExamBank, mode: ExamMode = ExamMode.TIMED) -> ExamSessio
 
 
 def finish_and_score(session: ExamSession) -> ExamResult:
-    """Finish a session and compute its result."""
+    """Finish a session, compute its result, and persist to SQLite."""
     if not session.is_finished():
         session.finish()
-    return score_exam(session)
+    result = score_exam(session)
+    # Persist (best-effort — don't crash the GUI if the DB is unavailable).
+    try:
+        from openboson import stats_service
+        stats_service.save_exam_result(session, result)
+    except Exception:
+        pass
+    return result
 
 
 # -----/ NetSim facade /-----
@@ -83,7 +90,13 @@ def start_lab_session(lab: LabBank) -> LabSession:
 
 
 def finish_and_score_lab(session: LabSession) -> LabResult:
-    """Finish a lab session and compute its result."""
+    """Finish a lab session, compute its result, and persist to SQLite."""
     if not session.is_finished():
         session.finish()
-    return score_lab(session)
+    result = score_lab(session)
+    try:
+        from openboson import stats_service
+        stats_service.save_lab_result(session, result)
+    except Exception:
+        pass
+    return result
