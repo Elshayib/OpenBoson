@@ -1,8 +1,8 @@
 """Base placeholder pages for OpenBoson's main window.
 
-Dashboard / Stats / Settings are static pages. Exams and Labs lists live in
-their own modules (``exam_list_page`` / ``lab_list_page``)."""
-
+Only Dashboard remains as a simple placeholder. Exams, Labs, Stats, and
+Settings each live in their own module.
+"""
 from __future__ import annotations
 
 from PySide6.QtCore import Qt
@@ -41,21 +41,4 @@ class DashboardPage(_Page):
 
         self._layout.addWidget(header)
         self._layout.addWidget(sub)
-        self._layout.addStretch()
-
-
-class SettingsPage(_Page):
-    title = "Settings"
-
-    def __init__(self) -> None:
-        super().__init__()
-        header = QLabel("Settings")
-        header.setProperty("role", "h1")
-        body = QLabel(
-            "Theme, default exam mode, and storage location settings appear here."
-        )
-        body.setProperty("role", "muted")
-        body.setWordWrap(True)
-        self._layout.addWidget(header)
-        self._layout.addWidget(body)
         self._layout.addStretch()

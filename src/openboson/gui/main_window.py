@@ -24,7 +24,6 @@ from openboson.exsim.scoring import ExamResult
 from openboson.exsim.session import ExamSession
 from openboson.gui.pages import (
     DashboardPage,
-    SettingsPage,
 )
 from openboson.gui.pages.exam_list_page import ExamListPage
 from openboson.gui.pages.exam_result_page import ExamResultPage
@@ -34,6 +33,7 @@ from openboson.gui.pages.lab_list_page import LabListPage
 from openboson.gui.pages.lab_result_page import LabResultPage
 from openboson.gui.pages.lab_session_page import LabSessionPage
 from openboson.gui.pages.stats_page import StatsPage
+from openboson.gui.pages.settings_page import SettingsPage
 from openboson.netsim.session import LabResult, LabSession
 
 
@@ -109,6 +109,10 @@ class MainWindow(QMainWindow):
         self._labs_page = self._static_pages["Labs"]
         self._labs_page.set_on_lab_selected(self._on_lab_selected)
 
+        # Settings page raises theme_change -> re-apply stylesheet.
+        self._settings_page = self._static_pages["Settings"]
+        self._settings_page.set_on_theme_change(self._on_theme_changed)
+
         # Transient lab pages (created on demand).
         self._lab_session_page = LabSessionPage()
         self._lab_result_page = LabResultPage()
@@ -132,12 +136,18 @@ class MainWindow(QMainWindow):
         self.apply_theme()
 
     # -----/ Styling /-----
-    def apply_theme(self) -> None:
+    def apply_theme(self, theme: str = "dark") -> None:
         from pathlib import Path
 
         qss_path = Path(__file__).resolve().parent / "styles.qss"
         if qss_path.is_file():
             self.setStyleSheet(qss_path.read_text(encoding="utf-8"))
+
+    def _on_theme_changed(self, theme: str) -> None:
+        """Re-apply stylesheet when the user changes the theme."""
+        # For now both themes use the same dark QSS; a light variant can be
+        # added later. This still validates the settings save/load cycle.
+        self.apply_theme(theme)
 
     # -----/ Navigation /-----
     def _on_nav_clicked(self, button: QPushButton) -> None:
