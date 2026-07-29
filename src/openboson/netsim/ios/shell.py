@@ -77,10 +77,10 @@ class OpenIOSShell:
         return f"{h}>"
 
     def banner(self) -> str:
+        role = self.device.role.value.upper()
         return (
-            f"\nOpenBoson OpenIOS Simulator — {self.device.role.value.upper()} '{self.device.name}'\n"
-            f"This is a simulated CLI for training. Not affiliated with Cisco Systems.\n"
-            f"Type '?' for help. Type 'enable' to enter privileged EXEC.\n"
+            f"\nOpenBoson OpenIOS — {role} {self.device.name}\n"
+            f"Simulated platform. Not affiliated with Cisco Systems.\n"
             f"\n"
             f"{self.prompt()}"
         )
@@ -171,6 +171,7 @@ class OpenIOSShell:
                 "interface": self._cmd_interface,
                 "vlan": self._cmd_vlan,
                 "ip": self._cmd_ip_global,
+                "access-list": self._cmd_access_list,
                 "no": self._cmd_no_global,
                 "banner": self._cmd_banner,
                 "line": self._cmd_line,
@@ -492,23 +493,43 @@ class OpenIOSShell:
             if len(args) < 4:
                 raise _CmdError("% Incomplete command.")
             net, mask, nh = args[1], args[2], args[3]
-            parsed = parse_ip_mask(net, mask)
-            if not parsed:
-                # net is network address; mask separate
-                try:
-                    from ipaddress import IPv4Address, IPv4Network
+            try:
+                from ipaddress import IPv4Address, IPv4Network
 
-                    IPv4Address(net)
-                    IPv4Network(f"0.0.0.0/{mask}")
-                except ValueError:
-                    raise _CmdError("% Invalid IP/mask.")
+                IPv4Address(net)
+                IPv4Network(f"0.0.0.0/{mask}")
+                IPv4Address(nh)
+            except ValueError:
+                raise _CmdError("% Invalid IP/mask.")
             self.device.static_routes.append(StaticRoute(network=net, mask=mask, next_hop=nh))
             return ""
         if _abbrev_match("domain-lookup", args[0]) or (
-            len(args) >= 2 and args[0] == "domain" and "lookup" in args[1]
+            len(args) >= 2 and args[0] == "domain" and "lookup" in "".join(args[1:])
         ):
             return ""
+        # ip access-list standard/extended NAME  (simplified one-shot)
+        if _abbrev_match("access-list", args[0]) or (
+            len(args) >= 1 and args[0].lower() == "access-list"
+        ):
+            self.device.extra_global.append("ip " + " ".join(args))
+            return ""
+        if args[0].lower() == "nat":
+            self.device.extra_global.append("ip " + " ".join(args))
+            return ""
+        if args[0].lower() == "dhcp":
+            self.device.extra_global.append("ip " + " ".join(args))
+            return ""
+        if _abbrev_match("default-gateway", args[0]):
+            if len(args) < 2:
+                raise _CmdError("% Incomplete command.")
+            self.device.extra_global.append(f"ip default-gateway {args[1]}")
+            return ""
         raise _CmdError("% Incomplete command.")
+
+    def _cmd_access_list(self, args: list[str], line: str) -> str:
+        # access-list 100 permit ip any any
+        self.device.extra_global.append("access-list " + " ".join(args))
+        return ""
 
     def _cmd_no_global(self, args: list[str], line: str) -> str:
         if not args:
@@ -594,6 +615,8 @@ class OpenIOSShell:
         if _abbrev_match("shutdown", args[0]):
             iface = self._require_if()
             iface.admin_up = True
+            if self.world is not None and hasattr(self.world, "notify_link_change"):
+                return self.world.notify_link_change(self.device.name, iface.name)  # type: ignore[no-any-return]
             iface.protocol_up = bool(iface.connected_to)
             return ""
         if _abbrev_match("ip", args[0]):
@@ -607,6 +630,8 @@ class OpenIOSShell:
         iface = self._require_if()
         iface.admin_up = False
         iface.protocol_up = False
+        if self.world is not None and hasattr(self.world, "notify_link_change"):
+            return self.world.notify_link_change(self.device.name, iface.name)  # type: ignore[no-any-return]
         return ""
 
     def _cmd_description(self, args: list[str], line: str) -> str:

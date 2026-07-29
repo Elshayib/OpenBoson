@@ -37,7 +37,6 @@ class LabSessionPage(QWidget):
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
 
-        # Top bar
         top = QHBoxLayout()
         top.setContentsMargins(16, 12, 16, 8)
         self._title = QLabel("Lab")
@@ -51,13 +50,13 @@ class LabSessionPage(QWidget):
 
         split = QSplitter(Qt.Orientation.Horizontal)
 
-        # LEFT: tasks + feedback
+        # LEFT: objectives
         left = QWidget()
         left_l = QVBoxLayout(left)
         left_l.setContentsMargins(16, 8, 8, 16)
         left_l.setSpacing(10)
 
-        tasks_hdr = QLabel("Tasks")
+        tasks_hdr = QLabel("Objectives")
         tasks_hdr.setProperty("role", "h2")
         left_l.addWidget(tasks_hdr)
 
@@ -65,13 +64,13 @@ class LabSessionPage(QWidget):
         self._task_list.setSpacing(6)
         left_l.addLayout(self._task_list)
 
-        inst_hdr = QLabel("Current Objective")
+        inst_hdr = QLabel("Current objective")
         inst_hdr.setProperty("role", "muted")
         left_l.addWidget(inst_hdr)
         self._instructions = QTextBrowser()
         self._instructions.setOpenExternalLinks(False)
         self._instructions.setFrameShape(QFrame.Shape.NoFrame)
-        self._instructions.setMinimumHeight(100)
+        self._instructions.setMinimumHeight(120)
         left_l.addWidget(self._instructions, 1)
 
         self._feedback = QLabel("")
@@ -101,24 +100,17 @@ class LabSessionPage(QWidget):
         left_l.addLayout(actions)
         split.addWidget(left)
 
-        # CENTER: device console tabs
+        # CENTER: consoles
         center = QWidget()
         cl = QVBoxLayout(center)
         cl.setContentsMargins(8, 8, 8, 16)
         cl.setSpacing(6)
-        cons_hdr = QLabel("Device Console")
+        cons_hdr = QLabel("Console")
         cons_hdr.setProperty("role", "h2")
         cl.addWidget(cons_hdr)
         self._tabs = QTabWidget()
         self._tabs.setDocumentMode(True)
         cl.addWidget(self._tabs, 1)
-        hint = QLabel(
-            "Tip: enable → conf t → interface g0/0 → ip address … → no shutdown · "
-            "show ip int br · ping · ? for help"
-        )
-        hint.setProperty("role", "muted")
-        hint.setWordWrap(True)
-        cl.addWidget(hint)
         split.addWidget(center)
 
         # RIGHT: topology
@@ -139,7 +131,6 @@ class LabSessionPage(QWidget):
         split.setStretchFactor(2, 3)
         root.addWidget(split, 1)
 
-    # -----/ Lifecycle /-----
     def start_lab(self, lab: LabBank) -> None:
         self._session = start_lab_session(lab)
         self._title.setText(lab.title)
@@ -147,7 +138,6 @@ class LabSessionPage(QWidget):
         self._build_terminals()
         self._render_tasks()
         self._render_current()
-        # Select first device
         names = self._session.world.device_names()
         if names:
             self._select_device(names[0])
@@ -166,9 +156,10 @@ class LabSessionPage(QWidget):
         world = self._session.world
         for name in world.device_names():
             term = CiscoTerminal(world.shell(name))
+            # Subtle role tint on tab via stylesheet is limited; label carries role.
             self._terminals[name] = term
             role = world.devices[name].role.value
-            self._tabs.addTab(term, f"  {name}  ({role})  ")
+            self._tabs.addTab(term, f"  {name}  ·  {role}  ")
         self._tabs.currentChanged.connect(self._on_tab_changed)
 
     def _on_tab_changed(self, idx: int) -> None:
@@ -176,9 +167,7 @@ class LabSessionPage(QWidget):
             return
         name = self._tabs.tabText(idx).strip().split()[0]
         self._canvas.set_selected(name)
-        dev = self._session.world.devices.get(name)
-        if dev:
-            self._canvas.set_device_status(name, f"host {dev.hostname}")
+        self._sync_topology_status()
 
     def _on_device_clicked(self, name: str) -> None:
         self._select_device(name)
@@ -190,8 +179,21 @@ class LabSessionPage(QWidget):
                 break
         self._canvas.set_selected(name)
 
+    def _sync_topology_status(self) -> None:
+        if self._session is None:
+            return
+        world = self._session.world
+        self._canvas.set_link_states(world.link_states())
+        for name, dev in world.devices.items():
+            up = sum(1 for i in dev.interfaces.values() if i.admin_up and i.protocol_up)
+            ip = next((i.ip for i in dev.interfaces.values() if i.ip), None)
+            label = dev.hostname
+            if ip:
+                label = f"{dev.hostname} · {ip}"
+            self._canvas.set_device_status(name, label)
+            self._canvas.set_device_tooltip(name, world.device_tooltip(name))
+
     def _render_tasks(self) -> None:
-        # Clear task list buttons
         while self._task_list.count():
             item = self._task_list.takeAt(0)
             w = item.widget()
@@ -202,15 +204,12 @@ class LabSessionPage(QWidget):
         for i, task in enumerate(self._session.lab.tasks):
             grade = self._session.grades.get(task.id)
             if grade is None:
-                mark = "○"
-                color = "#8b9cb3"
+                mark, color = "○", "#8b9cb3"
             elif grade.is_correct:
-                mark = "✓"
-                color = "#3fb950"
+                mark, color = "✓", "#3fb950"
             else:
-                mark = "✗"
-                color = "#f85149"
-            btn = QPushButton(f"{mark}  Task {i + 1}: {task.id}")
+                mark, color = "✗", "#f85149"
+            btn = QPushButton(f"{mark}  Objective {i + 1}")
             btn.setStyleSheet(f"text-align: left; color: {color};")
             btn.setObjectName("Secondary")
             btn.clicked.connect(lambda _=False, idx=i: self._goto_task(idx))
@@ -222,22 +221,21 @@ class LabSessionPage(QWidget):
         sess = self._session
         task = sess.current_task
         n = len(sess.lab.tasks)
-        self._task_badge.setText(f"Task {sess.current_task_index + 1} / {n}")
+        self._task_badge.setText(f"Objective {sess.current_task_index + 1} / {n}")
         self._instructions.setMarkdown(task.instructions.strip())
         grade = sess.grades.get(task.id)
-        self._feedback.setText(grade.feedback if grade else "Configure devices via the console, then click Check Task.")
-        self._feedback.setStyleSheet(
-            "color: #3fb950;" if grade and grade.is_correct
-            else "color: #f85149;" if grade and not grade.is_correct
-            else ""
-        )
+        if grade is None:
+            self._feedback.setText("")
+            self._feedback.setStyleSheet("")
+        else:
+            self._feedback.setText(grade.feedback)
+            self._feedback.setStyleSheet(
+                "color: #3fb950;" if grade.is_correct else "color: #f85149;"
+            )
         self._prev.setEnabled(sess.current_task_index > 0)
         self._next.setEnabled(sess.current_task_index < n - 1)
         self._render_tasks()
-        # Update topology status from hostnames
-        for name, dev in sess.world.devices.items():
-            up = sum(1 for i in dev.interfaces.values() if i.admin_up)
-            self._canvas.set_device_status(name, f"{dev.hostname} · {up} if up")
+        self._sync_topology_status()
 
     def _goto_task(self, idx: int) -> None:
         if self._session is None:
@@ -262,36 +260,28 @@ class LabSessionPage(QWidget):
             "color: #3fb950;" if grade.is_correct else "color: #f85149;"
         )
         self._render_tasks()
-        self._render_current()
+        self._sync_topology_status()
 
     def _finish_lab(self) -> None:
         if self._session is None:
             return
-        # Auto-check remaining tasks from live config
         self._session.check_all_tasks()
         result = finish_and_score_lab(self._session)
         if self._on_result:
             self._on_result(self._session, result)
 
-    # -----/ Test hooks /-----
     def current_task_id(self) -> str | None:
         if self._session is None:
             return None
         return self._session.current_task.id
 
     def type_on_device(self, device: str, *lines: str) -> None:
-        """Test helper: feed CLI lines to a device terminal/shell."""
         if self._session is None:
             return
         sh = self._session.world.shell(device)
         for line in lines:
             sh.feed(line)
-        # Reflect in terminal widget if present
-        term = self._terminals.get(device)
-        if term is not None:
-            # Rebind to refresh view from shell state is hard; just feed via shell.
-            pass
+        self._sync_topology_status()
 
     def submit_config(self, config: str) -> None:
-        """Back-compat test helper: treat as check after optional paste — unused."""
         self._check_task()

@@ -35,7 +35,7 @@ def exam_bank():
 @pytest.fixture
 def lab():
     from pathlib import Path
-    lab_path = Path(__file__).resolve().parents[1] / "data" / "demo_labs" / "ccna_basic_rtr_sw.yaml"
+    lab_path = Path(__file__).resolve().parents[1] / "data" / "demo_labs" / "ccna_branch_office_access.yaml"
     return load_lab(lab_path)
 
 

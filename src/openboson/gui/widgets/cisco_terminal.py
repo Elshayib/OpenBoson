@@ -40,12 +40,13 @@ class CiscoTerminal(QPlainTextEdit):
         self.setStyleSheet(
             """
             QPlainTextEdit {
-                background-color: #0c0f14;
-                color: #c8facc;
-                border: 1px solid #1e2a3a;
-                border-radius: 6px;
-                padding: 8px;
+                background-color: #0d1117;
+                color: #e6edf3;
+                border: 1px solid #30363d;
+                border-radius: 8px;
+                padding: 10px;
                 selection-background-color: #1f6feb;
+                selection-color: #ffffff;
             }
             """
         )

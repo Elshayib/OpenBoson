@@ -1,19 +1,8 @@
-"""Lab grading engine — Phase 1: configuration comparison.
-
-The grader compares a user's submitted device configuration text against a
-task's ``GradingRule``. It is intentionally simple and deterministic: it
-normalizes IOS-like config lines and checks ``require`` / ``forbid`` /
-``require_order`` rules.
-
-Normalization:
-    - Lowercase for matching, but keep original for feedback.
-    - Strip surrounding whitespace and collapse internal whitespace.
-    - Drop blank lines and ``!``/``#`` comment lines.
-    - Ignore the ``configure terminal`` / ``end`` envelope lines.
-"""
+"""Lab grading engine — config comparison + coachy high-level feedback."""
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Iterable
 
@@ -30,7 +19,7 @@ class TaskGrade:
     missing: list[str] = field(default_factory=list)
     forbidden_found: list[str] = field(default_factory=list)
     order_violations: list[str] = field(default_factory=list)
-    score: float = 0.0  # 0.0 - 1.0 (fraction of require rules satisfied)
+    score: float = 0.0  # 0.0 - 1.0
     feedback: str = ""
 
     @property
@@ -39,77 +28,154 @@ class TaskGrade:
 
 
 def _normalize_line(line: str) -> str:
-    s = " ".join(line.strip().split())
-    return s.lower()
+    return " ".join(line.strip().split()).lower()
 
 
 def _normalize_config(config: str) -> list[str]:
-    """Return normalized, non-empty config lines (lowercased)."""
     out: list[str] = []
     for raw in config.splitlines():
         s = raw.strip()
-        if not s:
+        if not s or s.startswith("!") or s.startswith("#"):
             continue
-        if s.startswith("!"):
-            continue
-        if s.startswith("#"):
-            continue
-        # Drop the config envelope.
-        if s in ("configure terminal", "conf t", "end", "exit"):
+        if s.lower() in {"configure terminal", "conf t", "end", "exit"}:
             continue
         out.append(_normalize_line(raw))
     return out
 
 
+def _coach_for_missing(missing: list[str]) -> str:
+    """Map missing config lines → coachy high-level feedback (no IOS commands)."""
+    if not missing:
+        return ""
+
+    cats: list[str] = []
+    joined = " | ".join(missing).lower()
+
+    def has(*needles: str) -> bool:
+        return any(n in joined for n in needles)
+
+    # Hostname
+    host_m = [m for m in missing if m.lower().startswith("hostname ")]
+    for m in host_m:
+        name = m.split(None, 1)[-1] if " " in m else "device"
+        cats.append(f"Hostname on {name} is not set as required.")
+
+    # Addressing
+    if has("ip address"):
+        # Try extract device context from surrounding missing interface lines
+        cats.append("Interface addressing is missing or incorrect.")
+
+    if has("no shutdown"):
+        cats.append("A required interface is still administratively down.")
+
+    if has("vlan "):
+        cats.append("Required VLAN definition is missing or incomplete.")
+
+    if has("name ") and has("vlan"):
+        pass  # covered
+    elif any(m.lower().startswith("name ") for m in missing):
+        cats.append("VLAN naming is incomplete.")
+
+    if has("switchport mode trunk"):
+        cats.append("Uplink trunking is not configured correctly.")
+
+    if has("switchport mode access") or has("switchport access vlan"):
+        cats.append("Access-port VLAN assignment is incomplete.")
+
+    if has("ip route") or has("ip default-gateway"):
+        cats.append("Required routing or default gateway is missing.")
+
+    if has("access-list") or has("ip access-group"):
+        cats.append("Access control configuration is incomplete.")
+
+    if has("ip nat") or has("nat "):
+        cats.append("NAT configuration is incomplete.")
+
+    if has("ip dhcp") or has("dhcp "):
+        cats.append("DHCP service configuration is incomplete.")
+
+    if has("router ospf") or has("network ") and has("area"):
+        cats.append("Dynamic routing configuration is incomplete.")
+
+    if has("interface "):
+        # only if not already covered by ip/no shut
+        if not has("ip address") and not has("no shutdown") and not has("switchport"):
+            cats.append("A required interface section is missing from the configuration.")
+
+    # Deduplicate while preserving order
+    seen: set[str] = set()
+    unique: list[str] = []
+    for c in cats:
+        if c not in seen:
+            seen.add(c)
+            unique.append(c)
+
+    if not unique:
+        # Generic — still no command dump
+        n = len(missing)
+        unique.append(
+            f"{n} required configuration item{'s' if n != 1 else ''} "
+            f"{'are' if n != 1 else 'is'} still missing or incorrect."
+        )
+    return " ".join(unique)
+
+
+def _coach_for_forbidden(forbidden: list[str]) -> str:
+    if not forbidden:
+        return ""
+    joined = " ".join(forbidden).lower()
+    if "switchport mode access" in joined:
+        return "An interface that should be a trunk still looks like an access port."
+    if "shutdown" in joined:
+        return "A required interface appears to be shut down."
+    return "Configuration contains settings that conflict with the objective."
+
+
+def _coach_for_order(_violations: list[str]) -> str:
+    return "Some configuration appears out of the expected logical order."
+
+
 def grade_task(task: LabTask, submitted_config: str) -> TaskGrade:
     """Grade a single lab task's submitted config against its grading rules."""
     if task.grading_rules is None:
-        # No rules -> nothing to grade; treat as a manual/visual step (pass).
         return TaskGrade(
             task_id=task.id,
             is_correct=True,
             score=1.0,
-            feedback="No automated grading rules for this task.",
+            feedback="Objective met.",
         )
 
     rules = task.grading_rules
     lines = _normalize_config(submitted_config)
     line_set = set(lines)
 
-    # require
     missing = [r for r in rules.require if _normalize_line(r) not in line_set]
-    # forbid
     forbidden_found = [f for f in rules.forbid if _normalize_line(f) in line_set]
-    # require_order
     order_violations: list[str] = []
     if rules.require_order:
-        # Find positions of each ordered command; check monotonic increasing.
         positions: list[int] = []
         for cmd in rules.require_order:
             norm = _normalize_line(cmd)
             idx = next((i for i, l in enumerate(lines) if l == norm), None)
             positions.append(idx if idx is not None else -1)
-        # Report any adjacent pair that appears out of order.
         for i in range(len(positions) - 1):
             if positions[i] != -1 and positions[i + 1] != -1 and positions[i + 1] < positions[i]:
-                order_violations.append(
-                    f"{rules.require_order[i]} must precede {rules.require_order[i + 1]}"
-                )
+                order_violations.append("order")
 
     total_required = len(rules.require)
     satisfied = total_required - len(missing)
     score = (satisfied / total_required) if total_required else 1.0
-
     passed = not missing and not forbidden_found and not order_violations
-    feedback_parts: list[str] = []
-    if missing:
-        feedback_parts.append("Missing required commands: " + "; ".join(missing))
-    if forbidden_found:
-        feedback_parts.append("Found forbidden commands: " + "; ".join(forbidden_found))
-    if order_violations:
-        feedback_parts.append("Ordering issue: " + "; ".join(order_violations))
-    if not feedback_parts:
-        feedback_parts.append("All requirements met.")
+
+    if passed:
+        feedback = "Objective met."
+    else:
+        parts = [
+            _coach_for_missing(missing),
+            _coach_for_forbidden(forbidden_found),
+            _coach_for_order(order_violations) if order_violations else "",
+        ]
+        feedback = " ".join(p for p in parts if p).strip() or "Objective not met yet."
 
     return TaskGrade(
         task_id=task.id,
@@ -119,15 +185,9 @@ def grade_task(task: LabTask, submitted_config: str) -> TaskGrade:
         forbidden_found=forbidden_found,
         order_violations=order_violations,
         score=score,
-        feedback=" ".join(feedback_parts),
+        feedback=feedback,
     )
 
 
 def grade_lab(tasks: Iterable[LabTask], submitted_config: str) -> list[TaskGrade]:
-    """Grade all tasks against one submitted config blob.
-
-    NOTE: For MVP the user submits a single concatenated config (the grader
-    treats all tasks as one document). Per-task grading that splits config by
-    device arrives in a later iteration.
-    """
     return [grade_task(t, submitted_config) for t in tasks]

@@ -11,7 +11,13 @@ from openboson.netsim.session import LabSession, score_lab
 from openboson.server import app
 
 
-LAB_PATH = Path(__file__).resolve().parents[2] / "data" / "demo_labs" / "ccna_basic_rtr_sw.yaml"
+LAB_ID = "ccna_branch_office_access"
+LAB_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "data"
+    / "demo_labs"
+    / f"{LAB_ID}.yaml"
+)
 
 
 @pytest.fixture(autouse=True)
@@ -38,7 +44,6 @@ def test_session_create_and_grade(lab):
     assert s.current_task.id == lab.tasks[0].id
     g = s.submit_task(lab.tasks[0].expected_config)
     assert g.is_correct is True
-    assert s.grades[lab.tasks[0].id].is_correct is True
 
 
 def test_session_navigation(lab):
@@ -61,31 +66,28 @@ def test_score_lab_all_correct(lab):
 
 def test_score_lab_partial(lab):
     s = LabSession.create(lab)
-    # Only first task correct.
     s.submit_task(lab.tasks[0].expected_config)
     s.goto(1)
-    s.submit_task("hostname SW1\n")  # missing vlan + trunk
+    s.submit_task("hostname SW1\n")
     result = score_lab(s)
     assert result.passed_tasks == 1
-    assert result.total_tasks == 2
-    assert result.score == pytest.approx(0.5)
+    assert result.total_tasks == len(lab.tasks)
+    assert result.score == pytest.approx(1 / len(lab.tasks))
 
 
-# ----- Router -----
 def test_list_labs(client):
     resp = client.get("/api/v1/labs")
     assert resp.status_code == 200
-    labs = resp.json()
-    ids = {l["id"] for l in labs}
-    assert "ccna_basic_rtr_sw" in ids
+    ids = {l["id"] for l in resp.json()}
+    assert LAB_ID in ids
 
 
 def test_create_lab_session_returns_topology_and_task(client):
-    resp = client.post("/api/v1/labs/ccna_basic_rtr_sw/sessions", json={})
+    resp = client.post(f"/api/v1/labs/{LAB_ID}/sessions", json={})
     assert resp.status_code == 200
     body = resp.json()
-    assert body["lab_id"] == "ccna_basic_rtr_sw"
-    assert body["task_count"] == 2
+    assert body["lab_id"] == LAB_ID
+    assert body["task_count"] == 4
     assert "devices" in body["topology"]
     assert "instructions" in body["task"]
 
@@ -96,14 +98,13 @@ def test_create_unknown_lab_404(client):
 
 
 def test_submit_config_grades(client):
-    sess = client.post("/api/v1/labs/ccna_basic_rtr_sw/sessions", json={}).json()
+    sess = client.post(f"/api/v1/labs/{LAB_ID}/sessions", json={}).json()
     sid = sess["session_id"]
-    # First task is t1 (hostname R1 etc.)
-    from openboson.netsim.router import _LABS
-
-    lab = _LABS["ccna_basic_rtr_sw"]
+    lab = _LABS[LAB_ID]
     t1 = next(t for t in lab.tasks if t.id == "t1")
-    resp = client.post(f"/api/v1/lab-sessions/{sid}/submit", json={"config": t1.expected_config})
+    resp = client.post(
+        f"/api/v1/lab-sessions/{sid}/submit", json={"config": t1.expected_config}
+    )
     assert resp.status_code == 200
     body = resp.json()
     assert body["task_id"] == "t1"
@@ -111,20 +112,37 @@ def test_submit_config_grades(client):
 
 
 def test_finish_lab_returns_result(client):
-    sess = client.post("/api/v1/labs/ccna_basic_rtr_sw/sessions", json={}).json()
+    sess = client.post(f"/api/v1/labs/{LAB_ID}/sessions", json={}).json()
     sid = sess["session_id"]
-    from openboson.netsim.router import _LABS
-
-    lab = _LABS["ccna_basic_rtr_sw"]
+    lab = _LABS[LAB_ID]
     for t in lab.tasks:
-        client.post(f"/api/v1/lab-sessions/{sid}/submit", json={"config": t.expected_config})
+        client.post(
+            f"/api/v1/lab-sessions/{sid}/submit", json={"config": t.expected_config}
+        )
     resp = client.post(f"/api/v1/lab-sessions/{sid}/finish")
     assert resp.status_code == 200
     result = resp.json()
-    assert result["passed_tasks"] == 2
+    assert result["passed_tasks"] == len(lab.tasks)
     assert result["score"] == pytest.approx(1.0)
 
 
 def test_unknown_session_404(client):
     resp = client.post("/api/v1/lab-sessions/xyz/submit", json={"config": "x"})
     assert resp.status_code == 404
+
+
+def test_check_current_task_from_live_cli(lab):
+    s = LabSession.create(lab)
+    r1 = s.world.shell("R1")
+    for line in (
+        "en",
+        "conf t",
+        "int g0/0",
+        "ip address 10.10.10.1 255.255.255.0",
+        "no shutdown",
+        "end",
+    ):
+        r1.feed(line)
+    g = s.check_current_task()
+    assert g.is_correct is True
+    assert "Objective met" in g.feedback

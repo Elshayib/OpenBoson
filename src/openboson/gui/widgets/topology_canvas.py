@@ -38,6 +38,8 @@ class TopologyCanvas(QWidget):
         self._positions: dict[str, QPointF] = {}
         self._selected: str | None = None
         self._status: dict[str, str] = {}  # device -> short status
+        self._tooltips: dict[str, str] = {}
+        self._link_up: dict[tuple[str, str], bool] = {}  # (a,b) endpoints
         self._scale = 1.0
         self._offset = QPointF(0, 0)
         self._drag_origin: QPointF | None = None
@@ -54,6 +56,7 @@ class TopologyCanvas(QWidget):
         self._selected = None
         self._scale = 1.0
         self._offset = QPointF(0, 0)
+        self._link_up.clear()
         self.update()
 
     def set_selected(self, name: str | None) -> None:
@@ -64,21 +67,41 @@ class TopologyCanvas(QWidget):
         self._status[name] = status
         self.update()
 
+    def set_device_tooltip(self, name: str, text: str) -> None:
+        self._tooltips[name] = text
+
+    def set_link_states(self, states: list[dict]) -> None:
+        self._link_up.clear()
+        for st in states:
+            a, b = st.get("a", ""), st.get("b", "")
+            self._link_up[(a, b)] = bool(st.get("up"))
+            self._link_up[(b, a)] = bool(st.get("up"))
+        self.update()
+
     def _layout_devices(self) -> None:
         self._positions.clear()
         if not self._topology or not self._topology.devices:
             return
-        n = len(self._topology.devices)
-        # Ellipse layout centered in logical 0..400 x 0..300 space.
+        devices = self._topology.devices
+        n = len(devices)
+        # Prefer role-aware layout for branch office: PCs left, SW center, R right
+        by_name = {d.name: d for d in devices}
+        names = [d.name for d in devices]
+        if n == 4 and {"R1", "SW1", "PC1", "PC2"} <= set(names):
+            self._positions["PC1"] = QPointF(70, 80)
+            self._positions["PC2"] = QPointF(70, 220)
+            self._positions["SW1"] = QPointF(200, 150)
+            self._positions["R1"] = QPointF(340, 150)
+            return
         cx, cy, rx, ry = 200.0, 150.0, 140.0, 100.0
         if n == 1:
-            self._positions[self._topology.devices[0].name] = QPointF(cx, cy)
+            self._positions[devices[0].name] = QPointF(cx, cy)
             return
         if n == 2:
-            self._positions[self._topology.devices[0].name] = QPointF(cx - 90, cy)
-            self._positions[self._topology.devices[1].name] = QPointF(cx + 90, cy)
+            self._positions[devices[0].name] = QPointF(cx - 90, cy)
+            self._positions[devices[1].name] = QPointF(cx + 90, cy)
             return
-        for i, d in enumerate(self._topology.devices):
+        for i, d in enumerate(devices):
             ang = (2 * math.pi * i / n) - math.pi / 2
             self._positions[d.name] = QPointF(cx + rx * math.cos(ang), cy + ry * math.sin(ang))
 
@@ -139,7 +162,12 @@ class TopologyCanvas(QWidget):
             self.setCursor(
                 Qt.CursorShape.PointingHandCursor if hover else Qt.CursorShape.ArrowCursor
             )
+            if hover and hover in self._tooltips:
+                self.setToolTip(self._tooltips[hover])
+            else:
+                self.setToolTip("")
             self.update()
+        return
 
     def mouseReleaseEvent(self, e) -> None:  # noqa: N802
         self._drag_origin = None
@@ -173,11 +201,24 @@ class TopologyCanvas(QWidget):
                 continue
             a = self._map(self._positions[a_dev])
             b = self._map(self._positions[b_dev])
-            # Cable
-            pen = QPen(QColor("#3d5a80"), max(2, int(2 * self._scale)))
+            up = self._link_up.get((link.a, link.b), False)
+            color = QColor("#3fb950") if up else QColor("#3d5a80")
+            pen = QPen(color, max(2, int((3 if up else 2) * self._scale)))
             p.setPen(pen)
             p.drawLine(a, b)
-            # Midpoint label (interfaces short)
+            # Port LED near each end
+            led = QColor("#3fb950") if up else QColor("#6e7681")
+            p.setBrush(led)
+            p.setPen(Qt.PenStyle.NoPen)
+            # Points 18px from device centers along the cable
+            def _near(src: QPointF, dst: QPointF) -> QPointF:
+                dx, dy = dst.x() - src.x(), dst.y() - src.y()
+                length = max((dx * dx + dy * dy) ** 0.5, 1.0)
+                t = 28 * self._scale / length
+                return QPointF(src.x() + dx * t, src.y() + dy * t)
+
+            p.drawEllipse(_near(a, b), 4 * self._scale, 4 * self._scale)
+            p.drawEllipse(_near(b, a), 4 * self._scale, 4 * self._scale)
             mid = QPointF((a.x() + b.x()) / 2, (a.y() + b.y()) / 2)
             a_if = link.a.split("/", 1)[-1].replace("GigabitEthernet", "Gi")
             b_if = link.b.split("/", 1)[-1].replace("GigabitEthernet", "Gi")

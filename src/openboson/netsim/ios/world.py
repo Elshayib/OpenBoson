@@ -4,10 +4,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from ipaddress import IPv4Address, IPv4Interface, IPv4Network
+from typing import Any
 
 from openboson.netsim.ios.device import DeviceRole, DeviceRuntime, InterfaceState
+from openboson.netsim.ios.host import HostShell
 from openboson.netsim.ios.shell import OpenIOSShell
-from openboson.netsim.lab_schema import LabBank, Topology
+from openboson.netsim.lab_schema import LabBank
 
 
 @dataclass
@@ -16,7 +18,7 @@ class LabWorld:
 
     lab_id: str
     devices: dict[str, DeviceRuntime] = field(default_factory=dict)
-    shells: dict[str, OpenIOSShell] = field(default_factory=dict)
+    shells: dict[str, Any] = field(default_factory=dict)
     links: list[tuple[str, str, str, str]] = field(default_factory=list)
     # (dev_a, if_a, dev_b, if_b)
 
@@ -38,27 +40,28 @@ class LabWorld:
                         mask = None
                 elif iface.ip:
                     ip = iface.ip
+                # Routers: interfaces down until no shut.
+                # Switches/PCs: ports start up (more realistic desk).
+                admin = role != DeviceRole.ROUTER
                 st = InterfaceState(
                     name=iface.name,
                     ip=ip,
                     mask=mask,
-                    # Lab starting state: interfaces down until student no-shut
-                    # unless it's a PC (hosts usually up).
-                    admin_up=(role == DeviceRole.PC),
+                    admin_up=admin,
                     protocol_up=False,
                     connected_to=iface.connected_to,
                 )
-                # For switches, leave switchport unconfigured until the student
-                # sets it (keeps running-config clean for grading).
                 runtime.interfaces[iface.name] = st
             world.devices[d.name] = runtime
-            world.shells[d.name] = OpenIOSShell(runtime, world=world)
+            if role == DeviceRole.PC:
+                world.shells[d.name] = HostShell(runtime, world=world)
+            else:
+                world.shells[d.name] = OpenIOSShell(runtime, world=world)
 
         for link in topo.links:
             a_dev, a_if = _split_endpoint(link.a)
             b_dev, b_if = _split_endpoint(link.b)
             world.links.append((a_dev, a_if, b_dev, b_if))
-            # Ensure connected_to is set both ways
             if a_dev in world.devices and a_if in world.devices[a_dev].interfaces:
                 world.devices[a_dev].interfaces[a_if].connected_to = f"{b_dev}/{b_if}"
             if b_dev in world.devices and b_if in world.devices[b_dev].interfaces:
@@ -67,7 +70,7 @@ class LabWorld:
         world._refresh_link_state()
         return world
 
-    def shell(self, device_name: str) -> OpenIOSShell:
+    def shell(self, device_name: str) -> Any:
         if device_name not in self.shells:
             raise KeyError(device_name)
         return self.shells[device_name]
@@ -84,8 +87,60 @@ class LabWorld:
             parts.append(f"! --- {n} ---\n{cfg}")
         return "\n".join(parts)
 
+    def link_states(self) -> list[dict[str, Any]]:
+        """Return link LED state for the topology canvas."""
+        self._refresh_link_state()
+        out = []
+        for a_dev, a_if, b_dev, b_if in self.links:
+            ia = self.devices[a_dev].interfaces.get(a_if)
+            ib = self.devices[b_dev].interfaces.get(b_if)
+            up = bool(ia and ib and ia.admin_up and ib.admin_up and ia.protocol_up)
+            out.append(
+                {
+                    "a": f"{a_dev}/{a_if}",
+                    "b": f"{b_dev}/{b_if}",
+                    "up": up,
+                    "a_dev": a_dev,
+                    "b_dev": b_dev,
+                }
+            )
+        return out
+
+    def device_tooltip(self, name: str) -> str:
+        dev = self.devices.get(name)
+        if not dev:
+            return name
+        lines = [f"{name}  ({dev.role.value})", f"hostname: {dev.hostname}"]
+        for iname, iface in sorted(dev.interfaces.items()):
+            st = "up" if iface.admin_up else "down"
+            ip = f"{iface.ip}/{iface.mask}" if iface.ip and iface.mask else "unassigned"
+            lines.append(f"  {iname}: {ip} [{st}]")
+        return "\n".join(lines)
+
+    def notify_link_change(self, device: str, ifname: str) -> str:
+        """Called after admin state changes; returns syslog-style lines."""
+        self._refresh_link_state()
+        iface = self.devices[device].interfaces.get(ifname)
+        if not iface:
+            return ""
+        st, proto = iface.status_pair()
+        # IOS-like line protocol message
+        if iface.admin_up and iface.protocol_up:
+            return (
+                f"%LINK-3-UPDOWN: Interface {ifname}, changed state to up\n"
+                f"%LINEPROTO-5-UPDOWN: Line protocol on Interface {ifname}, changed state to up"
+            )
+        if iface.admin_up and not iface.protocol_up:
+            return (
+                f"%LINK-3-UPDOWN: Interface {ifname}, changed state to up\n"
+                f"%LINEPROTO-5-UPDOWN: Line protocol on Interface {ifname}, changed state to down"
+            )
+        return (
+            f"%LINK-5-CHANGED: Interface {ifname}, changed state to administratively down\n"
+            f"%LINEPROTO-5-UPDOWN: Line protocol on Interface {ifname}, changed state to down"
+        )
+
     def _refresh_link_state(self) -> None:
-        """Protocol up when both sides admin_up (simplified Ethernet)."""
         for a_dev, a_if, b_dev, b_if in self.links:
             a = self.devices.get(a_dev)
             b = self.devices.get(b_dev)
@@ -104,16 +159,13 @@ class LabWorld:
         try:
             dst = IPv4Address(target_ip)
         except ValueError:
-            return f"% Unrecognized host or address."
+            return "% Unrecognized host or address."
 
         src = self.devices.get(from_device)
         if src is None:
             return "% Source device not found."
 
-        # Is destination one of our interface IPs?
-        owner = self._owner_of_ip(dst)
         path_ok = self._can_reach(from_device, dst)
-
         header = (
             f"Type escape sequence to abort.\n"
             f"Sending 5, 100-byte ICMP Echos to {target_ip}, timeout is 2 seconds:\n"
@@ -124,30 +176,22 @@ class LabWorld:
                 + "!!!!!\n"
                 + "Success rate is 100 percent (5/5), round-trip min/avg/max = 1/2/4 ms"
             )
-        # Destination host unreachable vs timeout
-        if owner and owner != from_device:
-            return (
-                header
-                + ".....\n"
-                + "Success rate is 0 percent (0/5)"
-            )
-        return (
-            header
-            + ".....\n"
-            + "Success rate is 0 percent (0/5)"
-        )
+        return header + ".....\n" + "Success rate is 0 percent (0/5)"
 
     def traceroute(self, from_device: str, target_ip: str) -> str:
         self._refresh_link_state()
-        ok = self._can_reach(from_device, IPv4Address(target_ip))
+        try:
+            dst = IPv4Address(target_ip)
+        except ValueError:
+            return f"Tracing the route to {target_ip}\n  1  * * *"
+        ok = self._can_reach(from_device, dst)
         lines = [
             f"Type escape sequence to abort.",
             f"Tracing the route to {target_ip}",
             "",
         ]
         if ok:
-            # Single-hop or two-hop fake path
-            hops = self._hop_ips(from_device, IPv4Address(target_ip))
+            hops = self._hop_ips(from_device, dst)
             for i, hop in enumerate(hops, 1):
                 lines.append(f"  {i} {hop} 1 msec 1 msec 1 msec")
             if not hops:
@@ -169,12 +213,9 @@ class LabWorld:
         return None
 
     def _can_reach(self, from_device: str, dst: IPv4Address) -> bool:
-        """Simplified L3: own IPs, connected subnets, or static routes."""
         src = self.devices.get(from_device)
         if src is None:
             return False
-
-        # Always reachable: any of our own admin-up interface addresses.
         for iface in src.interfaces.values():
             if iface.admin_up and iface.ip:
                 try:
@@ -182,14 +223,10 @@ class LabWorld:
                         return True
                 except ValueError:
                     pass
-
-        # Directly connected subnets (interface admin up; protocol preferred).
         for net, _ in self._connected_subnets(from_device):
             if dst in net:
                 owner = self._owner_of_ip(dst)
-                if owner is None:
-                    return True
-                if owner == from_device:
+                if owner is None or owner == from_device:
                     return True
                 return self._l2_adjacent_or_same(from_device, owner) or self._routed(
                     from_device, dst
@@ -200,9 +237,6 @@ class LabWorld:
         dev = self.devices[device]
         out: list[tuple[IPv4Network, str]] = []
         for iname, iface in dev.interfaces.items():
-            # Admin up + IP is enough for connected route (IOS installs C route
-            # when interface is up/up; we loosen to admin_up for lab friendliness
-            # when peer not yet configured).
             if iface.admin_up and iface.ip and iface.mask:
                 try:
                     net = IPv4Interface(f"{iface.ip}/{iface.mask}").network
@@ -214,12 +248,27 @@ class LabWorld:
     def _l2_adjacent_or_same(self, a: str, b: str) -> bool:
         if a == b:
             return True
+        # BFS one hop via up links; also allow switch as transparent bridge
+        # if both endpoints connect to same switch with up links.
+        direct = self._direct_link_up(a, b)
+        if direct:
+            return True
+        # Via one intermediate switch
+        for mid in self.devices:
+            if mid in {a, b}:
+                continue
+            if self.devices[mid].role == DeviceRole.SWITCH:
+                if self._direct_link_up(a, mid) and self._direct_link_up(mid, b):
+                    return True
+        return False
+
+    def _direct_link_up(self, a: str, b: str) -> bool:
         for a_dev, a_if, b_dev, b_if in self.links:
-            pair = {(a_dev, b_dev), (b_dev, a_dev)}
-            if (a, b) in {(a_dev, b_dev), (b_dev, a_dev)}:
-                ia = self.devices[a_dev].interfaces[a_if]
-                ib = self.devices[b_dev].interfaces[b_if]
-                return bool(ia.admin_up and ib.admin_up and ia.protocol_up and ib.protocol_up)
+            if {a_dev, b_dev} != {a, b}:
+                continue
+            ia = self.devices[a_dev].interfaces[a_if]
+            ib = self.devices[b_dev].interfaces[b_if]
+            return bool(ia.admin_up and ib.admin_up and ia.protocol_up and ib.protocol_up)
         return False
 
     def _routed(self, from_device: str, dst: IPv4Address) -> bool:
@@ -227,23 +276,15 @@ class LabWorld:
         for r in dev.static_routes:
             try:
                 net = IPv4Network(f"{r.network}/{r.mask}", strict=False)
+                nh = IPv4Address(r.next_hop)
             except ValueError:
                 continue
             if dst not in net:
                 continue
-            # next-hop must be reachable on a connected subnet
-            try:
-                nh = IPv4Address(r.next_hop)
-            except ValueError:
-                continue
             for cnet, _ in self._connected_subnets(from_device):
                 if nh in cnet:
-                    # Assume if next hop is a neighbor device IP and link up, ok
                     owner = self._owner_of_ip(nh)
                     if owner and self._l2_adjacent_or_same(from_device, owner):
-                        # One more hop: can owner reach dst?
-                        if owner == from_device:
-                            return True
                         return self._can_reach_simple(owner, dst, depth=1)
                     return True
         return False
@@ -260,7 +301,6 @@ class LabWorld:
         owner = self._owner_of_ip(dst)
         hops: list[str] = []
         if owner and owner != from_device:
-            # first hop = remote interface IP on the link
             for a_dev, a_if, b_dev, b_if in self.links:
                 if from_device == a_dev and owner == b_dev:
                     ip = self.devices[b_dev].interfaces[b_if].ip
@@ -275,7 +315,6 @@ class LabWorld:
 
 
 def _split_endpoint(ep: str) -> tuple[str, str]:
-    # "R1/GigabitEthernet0/0"
     if "/" not in ep:
         return ep, ""
     dev, _, rest = ep.partition("/")

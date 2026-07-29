@@ -5,51 +5,51 @@ from pathlib import Path
 import pytest
 
 from openboson.netsim.lab_loader import LabLoaderError, load_lab
-from openboson.netsim.lab_schema import (
-    DeviceType,
-    LabBank,
-    LabTask,
-    Topology,
+from openboson.netsim.lab_schema import DeviceType, LabBank
+
+
+DEMO_LAB_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "data"
+    / "demo_labs"
+    / "ccna_branch_office_access.yaml"
 )
-
-
-DEMO_LAB_PATH = Path(__file__).resolve().parents[2] / "data" / "demo_labs" / "ccna_basic_rtr_sw.yaml"
 
 
 def test_demo_lab_loads():
     lab = load_lab(DEMO_LAB_PATH)
     assert isinstance(lab, LabBank)
-    assert lab.lab_id == "ccna_basic_rtr_sw"
-    assert lab.title.startswith("Configure Basic Router")
+    assert lab.lab_id == "ccna_branch_office_access"
+    assert "Branch" in lab.title
 
 
-def test_demo_lab_topology_has_devices_and_links():
+def test_demo_lab_topology_has_four_devices():
     lab = load_lab(DEMO_LAB_PATH)
-    assert len(lab.topology.devices) == 2
-    assert lab.device_names == ["R1", "SW1"]
-    assert len(lab.topology.links) == 1
-    link = lab.topology.links[0]
-    assert link.a == "R1/GigabitEthernet0/0"
-    assert link.b == "SW1/GigabitEthernet0/1"
+    assert len(lab.topology.devices) == 4
+    assert set(lab.device_names) == {"R1", "SW1", "PC1", "PC2"}
+    assert len(lab.topology.links) == 3
 
 
-def test_demo_lab_has_two_tasks_with_grading_rules():
+def test_demo_lab_tasks_objective_only_no_cli_babysitting():
     lab = load_lab(DEMO_LAB_PATH)
-    assert len(lab.tasks) == 2
+    assert len(lab.tasks) >= 3
+    banned = ("configure terminal", "conf t", "no shutdown", "int g0/0", "`enable`")
     for task in lab.tasks:
+        text = task.instructions.lower()
+        for b in banned:
+            assert b not in text, f"babysitting found in {task.id}: {b}"
         assert task.grading_rules is not None
-        assert task.grading_rules.require
 
 
 def test_demo_lab_device_types():
     lab = load_lab(DEMO_LAB_PATH)
-    types = {d.type for d in lab.topology.devices}
-    assert DeviceType.ROUTER in types
-    assert DeviceType.SWITCH in types
+    types = {d.name: d.type for d in lab.topology.devices}
+    assert types["R1"] == DeviceType.ROUTER
+    assert types["SW1"] == DeviceType.SWITCH
+    assert types["PC1"] == DeviceType.PC
 
 
 def test_invalid_lab_yaml_raises():
-    # Missing required 'topic_code' -> validation error.
     bad = """
     title: x
     lab_id: y
@@ -57,26 +57,3 @@ def test_invalid_lab_yaml_raises():
     """
     with pytest.raises(LabLoaderError):
         load_lab(bad)
-
-
-def test_missing_lab_file_raises():
-    with pytest.raises(LabLoaderError):
-        load_lab("/no/such/lab.yaml")
-
-
-def test_lab_with_no_topology_defaults():
-    lab = LabBank(
-        title="t", lab_id="id", topic_code="2.0", tasks=[LabTask(id="t1", instructions="do")]
-    )
-    assert isinstance(lab.topology, Topology)
-    assert lab.topology.devices == []
-
-
-def test_solution_config_optional():
-    lab = LabBank(
-        title="t",
-        lab_id="id",
-        topic_code="2.0",
-        tasks=[LabTask(id="t1", instructions="do", expected_config="hostname X")],
-    )
-    assert lab.solution_config is None

@@ -161,11 +161,11 @@ def test_world_from_demo_lab_and_ping():
         Path(__file__).resolve().parents[2]
         / "data"
         / "demo_labs"
-        / "ccna_basic_rtr_sw.yaml"
+        / "ccna_branch_office_access.yaml"
     )
     world = LabWorld.from_lab(lab)
     assert "R1" in world.devices
-    assert "SW1" in world.devices
+    assert "PC1" in world.devices
     r1 = world.shell("R1")
     _run(
         r1,
@@ -177,9 +177,23 @@ def test_world_from_demo_lab_and_ping():
         "no shutdown",
         "end",
     )
-    # Ping self IP
     out = r1.feed("ping 10.10.10.1").output
     assert "100 percent" in out or "!!!!!" in out
+
+
+def test_pc_host_shell_ipconfig():
+    lab = load_lab(
+        Path(__file__).resolve().parents[2]
+        / "data"
+        / "demo_labs"
+        / "ccna_branch_office_access.yaml"
+    )
+    world = LabWorld.from_lab(lab)
+    pc = world.shell("PC1")
+    pc.feed("ip address 10.10.10.10 255.255.255.0")
+    out = pc.feed("ipconfig").output
+    assert "10.10.10.10" in out
+    assert "255.255.255.0" in out
 
 
 def test_write_memory(shell):
