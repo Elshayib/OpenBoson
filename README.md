@@ -4,7 +4,7 @@ An open-source, fully-local study platform that combines Boson ExSim-style pract
 
 ## Status
 
-Early development. See `.hermes/plans/2026-07-27_OpenBoson_ExSim_NetSim_v1.md` for the full implementation plan.
+Early development. See `.cursor/plans/2026-07-27_OpenBoson_ExSim_NetSim_v1.md` for the full implementation plan and `AGENTS.md` for agent/developer context.
 
 ## Architecture
 
