@@ -26,6 +26,7 @@ from pydantic import BaseModel, ConfigDict
 from openboson.bank_loader import load_exam_bank
 from openboson.bank_schema import ExamBank, Question, QuestionType
 from openboson.exsim.scoring import ExamResult, score_exam
+from openboson.bank_loader import load_banks_from_dir, merge_banks
 from openboson.exsim.session import ExamMode, ExamSession
 
 # Module-level state for MVP. A future task will replace this with a
@@ -50,14 +51,25 @@ def _load_default_banks() -> None:
         return
     if not _DEFAULT_BANKS_DIR.is_dir():
         return
-    for path in _DEFAULT_BANKS_DIR.glob("*.yaml"):
-        try:
-            bank = load_exam_bank(path)
-            _BANKS[bank.code] = bank
-        except Exception:
-            # Don't crash startup on a bad bank; log via HTTPException later if
-            # the user requests it.
-            continue
+    for bank in load_banks_from_dir(_DEFAULT_BANKS_DIR):
+        # Prefer unique codes; if duplicates, later files overwrite.
+        _BANKS[bank.code] = bank
+    # Also expose a merged pool under a stable key for clients that want all Qs.
+    if _BANKS:
+        pool = merge_banks(list(_BANKS.values()))
+        # Synthetic bank wrapper for listing; only used if no single bank matches.
+        _BANKS.setdefault(
+            "pool",
+            ExamBank(
+                title="OpenBoson Question Pool",
+                code="pool",
+                version="v1",
+                provider="openboson",
+                description="Merged question pool",
+                topics=pool.topics or list(next(iter(_BANKS.values())).topics),
+                questions=pool.questions,
+            ),
+        )
 
 
 def _serialize_question_for_display(q: Question) -> dict[str, Any]:
@@ -89,7 +101,7 @@ def _serialize_question_for_display(q: Question) -> dict[str, Any]:
 class CreateSessionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    mode: ExamMode = ExamMode.TIMED
+    mode: ExamMode = ExamMode.EXAM
 
 
 class SubmitAnswerRequest(BaseModel):

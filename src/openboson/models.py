@@ -76,8 +76,10 @@ class ExamSession(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
-    exam_id: Mapped[int] = mapped_column(ForeignKey("exams.id", ondelete="CASCADE"))
-    mode: Mapped[str] = mapped_column(String(20), default="timed")
+    exam_id: Mapped[int | None] = mapped_column(
+        ForeignKey("exams.id", ondelete="CASCADE"), nullable=True
+    )
+    mode: Mapped[str] = mapped_column(String(20), default="exam")
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     score: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -95,7 +97,9 @@ class UserAnswer(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     session_id: Mapped[int] = mapped_column(ForeignKey("exam_sessions.id", ondelete="CASCADE"))
-    question_id: Mapped[int] = mapped_column(ForeignKey("questions.id", ondelete="CASCADE"))
+    question_id: Mapped[int | None] = mapped_column(
+        ForeignKey("questions.id", ondelete="CASCADE"), nullable=True
+    )
     answer_json: Mapped[str] = mapped_column(Text, default="[]")
     is_correct: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     time_spent_seconds: Mapped[int] = mapped_column(Integer, default=0)
@@ -132,3 +136,15 @@ class LabStep(Base):
     feedback: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     session: Mapped["LabSession"] = relationship(back_populates="steps")
+
+
+class PracticeAttempt(Base):
+    """A single Check from the Practice library (not a full exam)."""
+
+    __tablename__ = "practice_attempts"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
+    question_bank_id: Mapped[str] = mapped_column(String(80), index=True)
+    is_correct: Mapped[bool] = mapped_column(Boolean, default=False)
+    answered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)

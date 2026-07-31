@@ -1,13 +1,11 @@
-"""Settings page — data dir, default exam mode, theme toggle."""
+"""Settings page — data dir and theme toggle."""
 
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 from PySide6.QtWidgets import (
     QButtonGroup,
-    QComboBox,
     QFrame,
     QHBoxLayout,
     QLabel,
@@ -23,7 +21,6 @@ from openboson.config import settings
 _SETTINGS_FILE = settings.data_dir / "settings.json"
 
 _DEFAULTS = {
-    "default_exam_mode": "timed",
     "theme": "dark",
 }
 
@@ -74,7 +71,6 @@ class SettingsPage(QWidget):
 
         cfg = load_settings()
 
-        # --- Data directory ---
         dir_card = QFrame()
         dir_card.setObjectName("Card")
         dl = QVBoxLayout(dir_card)
@@ -90,21 +86,6 @@ class SettingsPage(QWidget):
         dl.addWidget(open_btn)
         self._layout.addWidget(dir_card)
 
-        # --- Default exam mode ---
-        mode_card = QFrame()
-        mode_card.setObjectName("Card")
-        ml = QVBoxLayout(mode_card)
-        ml.setContentsMargins(18, 16, 18, 16)
-        ml.addWidget(self._label("Default Exam Mode", "h2"))
-        self._mode_combo = QComboBox()
-        self._mode_combo.addItem("Timed (exam simulation)", "timed")
-        self._mode_combo.addItem("Study (instant feedback)", "study")
-        idx = 0 if cfg.get("default_exam_mode", "timed") == "timed" else 1
-        self._mode_combo.setCurrentIndex(idx)
-        ml.addWidget(self._mode_combo)
-        self._layout.addWidget(mode_card)
-
-        # --- Theme ---
         theme_card = QFrame()
         theme_card.setObjectName("Card")
         tl = QVBoxLayout(theme_card)
@@ -126,7 +107,6 @@ class SettingsPage(QWidget):
         tl.addLayout(row)
         self._layout.addWidget(theme_card)
 
-        # --- Save ---
         save_btn = QPushButton("Save Settings")
         save_btn.setObjectName("Primary")
         save_btn.clicked.connect(self._save)
@@ -142,6 +122,7 @@ class SettingsPage(QWidget):
     def _open_data_dir(self) -> None:
         import subprocess
         import sys
+
         path = str(settings.data_dir)
         if sys.platform == "win32":
             subprocess.Popen(["explorer", path])
@@ -152,7 +133,6 @@ class SettingsPage(QWidget):
 
     def _save(self) -> None:
         cfg = load_settings()
-        cfg["default_exam_mode"] = self._mode_combo.currentData()
         cfg["theme"] = "light" if self._light_btn.isChecked() else "dark"
         save_settings(cfg)
         if self._on_theme_change:

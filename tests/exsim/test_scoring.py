@@ -15,7 +15,7 @@ from openboson.exsim.scoring import (
 from openboson.exsim.session import ExamMode, ExamSession
 
 
-BANK_PATH = Path(__file__).resolve().parents[2] / "data" / "demo_banks" / "ccna_200_301_v1.1_demo.yaml"
+BANK_PATH = Path(__file__).resolve().parents[1] / "fixtures" / "sample_bank.yaml"
 
 
 @pytest.fixture
@@ -112,7 +112,7 @@ def test_grade_sim_missing_command(bank):
 
 
 def test_score_exam_all_correct_passes(bank):
-    s = ExamSession.create(bank, mode=ExamMode.TIMED)
+    s = ExamSession.create(bank, mode=ExamMode.EXAM)
     # Replace shuffled order with exam order to grade deterministically.
     s.questions = list(bank.questions)
     for q in s.questions:
@@ -140,7 +140,7 @@ def test_score_exam_all_correct_passes(bank):
 
 
 def test_score_exam_all_wrong_fails(bank):
-    s = ExamSession.create(bank, mode=ExamMode.TIMED)
+    s = ExamSession.create(bank, mode=ExamMode.EXAM)
     s.questions = list(bank.questions)
     for q in s.questions:
         s.submit_answer(q.id, {"answer": "__definitely_wrong__"} if q.type.value == "single_choice" else {"answers": ["__bad__"]})
@@ -152,7 +152,7 @@ def test_score_exam_all_wrong_fails(bank):
 
 
 def test_score_exam_unanswered_does_not_score(bank):
-    s = ExamSession.create(bank, mode=ExamMode.TIMED)
+    s = ExamSession.create(bank, mode=ExamMode.EXAM)
     s.questions = list(bank.questions)
     # Answer only first two questions.
     q1 = s.questions[0]
@@ -164,7 +164,7 @@ def test_score_exam_unanswered_does_not_score(bank):
 
 
 def test_score_exam_domain_breakdown_populated(bank):
-    s = ExamSession.create(bank, mode=ExamMode.TIMED)
+    s = ExamSession.create(bank, mode=ExamMode.EXAM)
     s.questions = list(bank.questions)
     # Answer all correctly.
     for q in s.questions:
@@ -191,7 +191,7 @@ def test_score_exam_domain_breakdown_populated(bank):
 
 
 def test_exam_result_score_percent_is_score_times_100(bank):
-    s = ExamSession.create(bank, mode=ExamMode.TIMED)
+    s = ExamSession.create(bank, mode=ExamMode.EXAM)
     s.questions = list(bank.questions)
     s.submit_answer(s.questions[0].id, {"answer": "__bad__"})
     s.finish()
@@ -208,6 +208,7 @@ def test_grade_sim_no_expected_commands_returns_false(bank):
         id="x",
         type=QuestionType.SIM,
         topic_code="5.0",
+        cert_tags=["ccna"],
         stem="placeholder",
         sim=None,
         correct={"instructions": "do something"},

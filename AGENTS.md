@@ -9,7 +9,7 @@ OpenBoson is an open-source, fully-local study platform for network engineers pr
 | Language | Python 3.11+ |
 | GUI | PySide6 (Qt for Python), dark-first theme |
 | Persistence | SQLite via SQLAlchemy 2.0 |
-| Content | YAML question banks and lab definitions |
+| Content | YAML question pools + CCNA/ENCOR exam blueprints |
 | CLI | `openboson gui`, `openboson serve --port 0` |
 | Tests | `pytest` (unit + pytest-qt for GUI) |
 | Lint | `ruff check .`, `ruff format .`, `mypy src/openboson` |
@@ -21,12 +21,13 @@ src/openboson/
 ├── cli.py              # Click CLI entrypoint
 ├── config.py           # Settings, data_dir (~/.openboson/)
 ├── db.py / models.py   # SQLAlchemy ORM + persistence
-├── bank_schema.py      # Pydantic models for exam banks
-├── bank_loader.py      # YAML exam bank loader
-├── stats_service.py    # User stats and weak-area analytics
+├── bank_schema.py      # Pydantic models for exam banks / pools
+├── bank_loader.py      # YAML bank loader + pool merge
+├── stats_service.py    # User stats, practice attempts, analytics
 ├── server.py           # FastAPI app (optional headless layer)
 ├── exsim/              # Practice exam engine
-│   ├── session.py      # Exam session state machine
+│   ├── blueprint.py    # CCNA/ENCOR presets + weighted sampling
+│   ├── session.py      # Exam session (practice / exam modes)
 │   ├── scoring.py      # Answer grading and domain breakdown
 │   └── router.py       # FastAPI endpoints
 ├── netsim/             # Lab simulator engine
@@ -50,11 +51,11 @@ The GUI talks to the engine in-process via `gui/engine.py` (not over HTTP in nor
 
 ```
 data/
-├── demo_banks/         # Shipped demo exam YAML files
+├── demo_banks/         # Shipped question pool YAML (CCNA + ENCOR)
 └── demo_labs/          # Shipped demo lab YAML files
 ```
 
-All questions and labs must be tagged with CCNA 200-301 v1.1 topic codes (e.g. `1.1`, `3.2.a`). Never add copyrighted exam dumps or proprietary Boson content — only original demo/community material.
+All questions and labs must be tagged with topic codes (e.g. `1.1`). Questions carry `cert_tags: [ccna]` and/or `[ccnp]`. Never add copyrighted exam dumps or proprietary Boson content — only original demo/community material.
 
 ## Development workflow
 
@@ -70,8 +71,9 @@ When implementing features, follow the task plan in `.cursor/plans/2026-07-27_Op
 **Done:**
 - Tasks 1–12: Full scaffold, ExSim engine + GUI, NetSim engine + GUI
 - Task 13 (partial): Stats page and `stats_service.py` (no separate analytics module)
-- Task 16 (partial): Settings page with data dir, exam mode, theme toggle
+- Task 16 (partial): Settings page with data dir, theme toggle
 - OpenIOS: Real CLI lab simulator (`netsim/ios/`) beyond original plan scope
+- Practice rework: question library, Check + rationales, blueprint CCNA/ENCOR exams
 
 **Not yet done:**
 - Task 14: Hot-loadable bank/lab registry
@@ -79,6 +81,7 @@ When implementing features, follow the task plan in `.cursor/plans/2026-07-27_Op
 - Task 16 (packaging): PyInstaller installer scripts
 - Network Designer (drag-drop topology builder)
 - Real packet simulation (intentionally deferred)
+- ENARSI blueprint content (UI placeholder only)
 
 ## Conventions
 

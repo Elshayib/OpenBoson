@@ -1,10 +1,7 @@
 """GUI test: Settings page loads, saves, and triggers theme change."""
 
-import json
-from pathlib import Path
-
 import pytest
-from PySide6.QtWidgets import QComboBox, QLabel, QRadioButton
+from PySide6.QtWidgets import QLabel
 
 from openboson.gui.main_window import MainWindow
 
@@ -14,6 +11,7 @@ def fresh_settings(tmp_path, monkeypatch):
     """Redirect settings to a temp dir so tests don't touch real data."""
     monkeypatch.setenv("OPENBOSON_HOME", str(tmp_path))
     from openboson.gui.pages import settings_page
+
     monkeypatch.setattr(settings_page, "_SETTINGS_FILE", tmp_path / "settings.json")
     yield tmp_path
 
@@ -26,8 +24,8 @@ def test_settings_page_renders(fresh_settings, qtbot):
     page.refresh()
     labels = [l.text() for l in page.findChildren(QLabel)]
     assert any("Data Directory" in t for t in labels)
-    assert any("Default Exam Mode" in t for t in labels)
     assert any("Theme" in t for t in labels)
+    assert not any("Default Exam Mode" in t for t in labels)
 
 
 def test_settings_save_persists(fresh_settings, qtbot):
@@ -37,14 +35,12 @@ def test_settings_save_persists(fresh_settings, qtbot):
     page = mw._static_pages["Settings"]
     page.refresh()
 
-    # Switch to study mode + light theme.
-    page._mode_combo.setCurrentIndex(1)
     page._light_btn.click()
     page._save()
 
     from openboson.gui.pages.settings_page import load_settings
+
     cfg = load_settings()
-    assert cfg["default_exam_mode"] == "study"
     assert cfg["theme"] == "light"
 
 

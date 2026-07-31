@@ -1,27 +1,27 @@
-"""Exam session page — interactive question-by-question exam taking UI."""
+"""Exam session page — silent blueprint exam taking UI."""
 
 from __future__ import annotations
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QFrame,
+    QGridLayout,
     QHBoxLayout,
     QLabel,
     QPushButton,
+    QScrollArea,
     QVBoxLayout,
     QWidget,
 )
 
-from openboson.bank_schema import Question
-from openboson.exsim.scoring import ExamResult
 from openboson.exsim.session import ExamMode, ExamSession
-from openboson.gui.engine import finish_and_score, start_session
+from openboson.gui.engine import finish_and_score
 from openboson.gui.widgets.question_card import QuestionCard
 from openboson.gui.widgets.timer_bar import TimerBar
 
 
 class ExamSessionPage(QWidget):
-    """Drives an in-progress exam: question nav, bookmark, submit, finish."""
+    """Drives an in-progress exam: question nav, grid, bookmark, finish."""
 
     title = "Exam"
 
@@ -30,34 +30,64 @@ class ExamSessionPage(QWidget):
         self._session: ExamSession | None = None
         self._on_result: callable | None = None
         self._on_exit: callable | None = None
+        self._current_card: QuestionCard | None = None
 
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
 
-        # Top bar: timer + question number + bookmark
+        # Top bar
         self._top = QHBoxLayout()
         self._top.setContentsMargins(24, 16, 24, 16)
         self._qnum = QLabel("")
         self._qnum.setProperty("role", "h2")
         self._top.addWidget(self._qnum)
         self._top.addStretch()
+        self._timer_host = QHBoxLayout()
         self._timer = TimerBar(1)
         self._timer.set_on_timeout(self._on_timeout)
-        self._top.addWidget(self._timer, 1)
+        self._timer_host.addWidget(self._timer, 1)
+        self._top.addLayout(self._timer_host, 1)
         self._bookmark_btn = QPushButton("☆ Bookmark")
         self._bookmark_btn.setObjectName("Secondary")
         self._bookmark_btn.clicked.connect(self._toggle_bookmark)
         self._top.addWidget(self._bookmark_btn)
+        self._mark_btn = QPushButton("Mark for review")
+        self._mark_btn.setObjectName("Secondary")
+        self._mark_btn.clicked.connect(self._toggle_mark)
+        self._top.addWidget(self._mark_btn)
         root.addLayout(self._top)
 
-        # Question area (scrollable)
+        mid = QHBoxLayout()
+        mid.setContentsMargins(0, 0, 0, 0)
+        mid.setSpacing(0)
+
+        # Question grid sidebar
+        grid_wrap = QFrame()
+        grid_wrap.setObjectName("Sidebar")
+        grid_wrap.setFixedWidth(200)
+        gw = QVBoxLayout(grid_wrap)
+        gw.setContentsMargins(8, 8, 8, 8)
+        gw.addWidget(QLabel("Questions"))
+        self._grid_host = QWidget()
+        self._grid_layout = QGridLayout(self._grid_host)
+        self._grid_layout.setSpacing(4)
+        self._grid_layout.setContentsMargins(0, 0, 0, 0)
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setWidget(self._grid_host)
+        gw.addWidget(scroll, 1)
+        mid.addWidget(grid_wrap)
+
+        # Question area
         self._card_holder = QFrame()
         self._card_holder.setObjectName("CardHolder")
         card_layout = QVBoxLayout(self._card_holder)
         card_layout.setContentsMargins(24, 16, 24, 16)
         self._card_layout = card_layout
-        root.addWidget(self._card_holder, 1)
+        mid.addWidget(self._card_holder, 1)
+        root.addLayout(mid, 1)
 
         # Bottom nav
         self._bottom = QHBoxLayout()
@@ -77,11 +107,29 @@ class ExamSessionPage(QWidget):
         self._bottom.addWidget(self._finish)
         root.addLayout(self._bottom)
 
+        self._grid_buttons: list[QPushButton] = []
+
     # -----/ Lifecycle /-----
-    def start_exam(self, bank, mode: ExamMode = ExamMode.TIMED) -> None:
-        self._session = start_session(bank, mode=mode)
-        self._timer = TimerBar(len(self._session.questions), limit_minutes=bank.time_limit_minutes)
+    def start_exam(self, bank, mode: ExamMode = ExamMode.EXAM) -> None:
+        """Start from a full bank (legacy / retake helper)."""
+        from openboson.gui.engine import start_session
+
+        session = start_session(bank, mode=mode)
+        self.start_session(session)
+
+    def start_session(self, session: ExamSession) -> None:
+        """Start from an existing session (blueprint exam)."""
+        self._session = session
+        # Replace timer widget in place.
+        old = self._timer
+        old.stop()
+        self._timer_host.removeWidget(old)
+        old.deleteLater()
+        limit = session.exam.time_limit_minutes
+        self._timer = TimerBar(len(session.questions), limit_minutes=limit)
         self._timer.set_on_timeout(self._on_timeout)
+        self._timer_host.addWidget(self._timer, 1)
+        self._build_grid()
         self._render_current()
         self._timer.start()
 
@@ -94,13 +142,36 @@ class ExamSessionPage(QWidget):
     def cleanup(self) -> None:
         self._timer.stop()
 
+    def _build_grid(self) -> None:
+        while self._grid_layout.count():
+            item = self._grid_layout.takeAt(0)
+            w = item.widget()
+            if w is not None:
+                w.deleteLater()
+        self._grid_buttons = []
+        if self._session is None:
+            return
+        cols = 5
+        for i in range(len(self._session.questions)):
+            btn = QPushButton(str(i + 1))
+            btn.setFixedSize(32, 28)
+            btn.setObjectName("Secondary")
+            btn.clicked.connect(lambda _=False, idx=i: self._jump(idx))
+            self._grid_layout.addWidget(btn, i // cols, i % cols)
+            self._grid_buttons.append(btn)
+
+    def _jump(self, index: int) -> None:
+        if self._session is None:
+            return
+        self._session.goto(index)
+        self._render_current()
+
     # -----/ Rendering /-----
     def _render_current(self) -> None:
         if self._session is None:
             return
         sess = self._session
         q = sess.current_question
-        # Clear old card.
         while self._card_layout.count():
             item = self._card_layout.takeAt(0)
             widget = item.widget()
@@ -108,7 +179,6 @@ class ExamSessionPage(QWidget):
                 widget.deleteLater()
 
         card = QuestionCard(q)
-        # Restore a previously stored answer for this question.
         existing = sess.answers.get(q.id)
         if existing is not None:
             card.set_answer(existing.answer)
@@ -119,17 +189,38 @@ class ExamSessionPage(QWidget):
         self._qnum.setText(f"Question {sess.current_index + 1} / {len(sess.questions)}")
         self._timer.set_progress(sess.answered_count())
         self._update_bookmark_button()
+        self._update_mark_button()
         self._prev.setEnabled(sess.current_index > 0)
         self._next.setEnabled(sess.current_index < len(sess.questions) - 1)
+        self._refresh_grid_styles()
+
+    def _refresh_grid_styles(self) -> None:
+        if self._session is None:
+            return
+        for i, btn in enumerate(self._grid_buttons):
+            q = self._session.questions[i]
+            answered = q.id in self._session.answers and self._session.answers[q.id].answer is not None
+            bookmarked = q.id in self._session.bookmarked
+            marked = q.id in self._session.marked_for_review
+            current = i == self._session.current_index
+            if current:
+                btn.setStyleSheet("background: #1f6feb; color: white;")
+            elif marked:
+                btn.setStyleSheet("background: #9e6a03; color: white;")
+            elif bookmarked:
+                btn.setStyleSheet("background: #388bfd33;")
+            elif answered:
+                btn.setStyleSheet("background: #238636;")
+            else:
+                btn.setStyleSheet("")
 
     def _store_answer(self, qid: str, answer) -> None:
         if self._session is None:
             return
-        # In timed mode we don't grade yet; in study mode grade immediately.
-        self._session.submit_answer(
-            qid, answer, study_mode_grade=(self._session.mode == ExamMode.STUDY)
-        )
+        # Exam mode: never grade until finish.
+        self._session.submit_answer(qid, answer, grade_now=False)
         self._timer.set_progress(self._session.answered_count())
+        self._refresh_grid_styles()
 
     def _toggle_bookmark(self) -> None:
         if self._session is None:
@@ -137,6 +228,15 @@ class ExamSessionPage(QWidget):
         q = self._session.current_question
         self._session.toggle_bookmark(q.id)
         self._update_bookmark_button()
+        self._refresh_grid_styles()
+
+    def _toggle_mark(self) -> None:
+        if self._session is None:
+            return
+        q = self._session.current_question
+        self._session.toggle_mark_for_review(q.id)
+        self._update_mark_button()
+        self._refresh_grid_styles()
 
     def _update_bookmark_button(self) -> None:
         if self._session is None:
@@ -146,6 +246,15 @@ class ExamSessionPage(QWidget):
             self._bookmark_btn.setText("★ Bookmarked")
         else:
             self._bookmark_btn.setText("☆ Bookmark")
+
+    def _update_mark_button(self) -> None:
+        if self._session is None:
+            return
+        q = self._session.current_question
+        if q.id in self._session.marked_for_review:
+            self._mark_btn.setText("Marked for review")
+        else:
+            self._mark_btn.setText("Mark for review")
 
     def _go_prev(self) -> None:
         if self._session is None:
@@ -160,7 +269,6 @@ class ExamSessionPage(QWidget):
             self._render_current()
 
     def _on_timeout(self) -> None:
-        # Time is up — auto-finish.
         self._finish_exam()
 
     def _finish_exam(self) -> None:
@@ -178,7 +286,6 @@ class ExamSessionPage(QWidget):
         return self._session.current_question.id
 
     def answer_current(self, answer) -> None:
-        """Test helper: submit an answer for the current question."""
         if self._session is None:
             return
         qid = self._session.current_question.id

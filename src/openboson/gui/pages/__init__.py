@@ -33,8 +33,8 @@ class DashboardPage(_Page):
         header = QLabel("OpenBoson")
         header.setProperty("role", "h1")
         sub = QLabel(
-            "Local ExSim practice exams and NetSim guided labs for CCNA 200-301.\n"
-            "Pick an exam on the left, or open the lab browser."
+            "Local practice questions and blueprint exams for CCNA / CCNP,\n"
+            "plus NetSim guided labs. Open Practice to browse the library or start an exam."
         )
         sub.setProperty("role", "muted")
         sub.setWordWrap(True)

@@ -11,7 +11,7 @@ from openboson.exsim.session import ExamMode, ExamSession
 def bank() -> ExamBank:
     from pathlib import Path
 
-    path = Path(__file__).resolve().parents[2] / "data" / "demo_banks" / "ccna_200_301_v1.1_demo.yaml"
+    path = Path(__file__).resolve().parents[1] / "fixtures" / "sample_bank.yaml"
     return load_exam_bank(path)
 
 
@@ -19,7 +19,6 @@ def test_create_session_shuffles_questions(bank):
     s = ExamSession.create(bank)
     assert s.exam is bank
     assert len(s.questions) == len(bank.questions)
-    # IDs present (sets equal) but order likely shuffled.
     assert {q.id for q in s.questions} == {q.id for q in bank.questions}
 
 
@@ -47,7 +46,6 @@ def test_next_previous_navigation(bank):
 
 def test_next_at_end_returns_none(bank):
     s = ExamSession.create(bank)
-    # Jump to last
     s.goto(len(s.questions) - 1)
     assert s.next() is None
 
@@ -60,18 +58,16 @@ def test_goto_invalid_raises(bank):
         s.goto(-1)
 
 
-def test_submit_answer_timed_mode_not_graded(bank):
-    s = ExamSession.create(bank, mode=ExamMode.TIMED)
+def test_submit_answer_exam_mode_not_graded(bank):
+    s = ExamSession.create(bank, mode=ExamMode.EXAM)
     q = s.current_question
     s.submit_answer(q.id, {"answer": "a"} if q.type.value == "single_choice" else {"answers": []})
-    # In timed mode, grading is deferred.
     assert s.answers[q.id].is_correct is None
     assert s.answered_count() == 1
 
 
-def test_submit_answer_study_mode_graded_immediately(bank):
-    s = ExamSession.create(bank, mode=ExamMode.STUDY)
-    # Find a single_choice question so we know the right answer shape.
+def test_submit_answer_practice_mode_graded_immediately(bank):
+    s = ExamSession.create(bank, mode=ExamMode.PRACTICE)
     q = next(qq for qq in s.questions if qq.type.value == "single_choice")
     s.submit_answer(q.id, {"answer": q.correct_answer_model.answer})
     assert s.answers[q.id].is_correct is True

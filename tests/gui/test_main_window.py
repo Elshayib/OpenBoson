@@ -13,7 +13,7 @@ def main_window(qtbot):
 
 
 def test_main_window_has_expected_pages(main_window):
-    expected = {"Dashboard", "Exams", "Labs", "Stats", "Settings"}
+    expected = {"Dashboard", "Practice", "Labs", "Stats", "Settings"}
     assert set(main_window._static_pages.keys()) == expected
 
 
@@ -21,9 +21,9 @@ def test_main_window_defaults_to_dashboard(main_window):
     assert main_window.visible_page_label() == "Dashboard"
 
 
-def test_select_navigates_to_exams(main_window):
-    main_window.select_page("Exams")
-    assert main_window.visible_page_label() == "Exams"
+def test_select_navigates_to_practice(main_window):
+    main_window.select_page("Practice")
+    assert main_window.visible_page_label() == "Practice"
 
 
 def test_select_navigates_to_labs(main_window):
@@ -32,7 +32,7 @@ def test_select_navigates_to_labs(main_window):
 
 
 def test_select_all_pages_round_trip(main_window):
-    for label in ["Exams", "Labs", "Stats", "Settings", "Dashboard"]:
+    for label in ["Practice", "Labs", "Stats", "Settings", "Dashboard"]:
         main_window.select_page(label)
         assert main_window.visible_page_label() == label
 
@@ -43,9 +43,7 @@ def test_unknown_page_raises(main_window):
 
 
 def test_style_sheet_is_applied(main_window):
-    # The main window should have loaded styles.qss into its stylesheet.
     style = main_window.styleSheet()
-    # styles.qss must define our signature background and the sidebar styling.
     assert "#0f1420" in style
     assert "#Sidebar" in style
     assert "QPushButton#Primary" in style

@@ -112,6 +112,22 @@ class ExamReviewPage(QWidget):
             expl.setMinimumHeight(40)
             expl.setFrameShape(QFrame.Shape.NoFrame)
             v.addWidget(expl)
+
+        if q.choices:
+            for choice in q.choices:
+                if not choice.rationale:
+                    continue
+                rat = QLabel(f"{choice.id}: {choice.rationale}")
+                rat.setWordWrap(True)
+                rat.setProperty("role", "muted")
+                v.addWidget(rat)
+
+        if q.references:
+            for ref in q.references:
+                r = QLabel(f"• {ref}")
+                r.setWordWrap(True)
+                r.setProperty("role", "muted")
+                v.addWidget(r)
         return card
 
     @staticmethod

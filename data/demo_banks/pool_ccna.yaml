@@ -1,0 +1,2730 @@
+title: OpenBoson CCNA Question Pool
+code: pool-ccna
+version: v1.1
+provider: openboson
+description: Original OpenBoson CCNA-tagged practice questions. Not affiliated with Cisco or Boson.
+pass_score: 0.825
+time_limit_minutes: 120
+topics:
+- code: '1.0'
+  name: Network Fundamentals
+  weight: 0.2
+- code: '2.0'
+  name: Network Access
+  weight: 0.2
+- code: '3.0'
+  name: IP Connectivity
+  weight: 0.25
+- code: '4.0'
+  name: IP Services
+  weight: 0.1
+- code: '5.0'
+  name: Security Fundamentals
+  weight: 0.15
+- code: '6.0'
+  name: Automation and Programmability
+  weight: 0.1
+questions:
+- id: ccna-1-001
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: &id001
+  - ccna
+  stem: How many usable host addresses does 192.168.10.0/26 provide?
+  choices:
+  - id: a
+    text: '62'
+    rationale: /26 = 64 addresses − 2 = 62 usable.
+  - id: b
+    text: '64'
+    rationale: 64 is the total size including network/broadcast.
+  - id: c
+    text: '30'
+    rationale: That is /27.
+  - id: d
+    text: '126'
+    rationale: That is /25.
+  correct:
+    answer: a
+  explanation: A /26 prefix has 2^(32−26)=64 addresses; subtract network and broadcast.
+  references:
+  - CCNA 1.1 — IPv4 addressing
+- id: ccna-1-002
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which device operates primarily at OSI Layer 2 and forwards based on MAC addresses?
+  choices:
+  - id: a
+    text: Router
+    rationale: Routers make Layer 3 forwarding decisions.
+  - id: b
+    text: Switch
+    rationale: LAN switches forward frames using MAC tables.
+  - id: c
+    text: Firewall
+    rationale: Firewalls typically inspect Layer 3/4+.
+  - id: d
+    text: Wireless controller
+    rationale: Manages APs; not the classic L2 forwarder.
+  correct:
+    answer: b
+  explanation: Ethernet switches learn MAC addresses and forward frames within a VLAN/broadcast domain.
+  references:
+  - CCNA 1.1 — network components
+- id: ccna-1-003
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What is the binary equivalent of dotted decimal 10.1.1.0 with a /30 mask's host portion size?
+  choices:
+  - id: a
+    text: 2 usable hosts
+    rationale: /30 leaves 2 host bits → 4 addresses − 2 = 2 hosts.
+  - id: b
+    text: 6 usable hosts
+    rationale: That is /29.
+  - id: c
+    text: 14 usable hosts
+    rationale: That is /28.
+  - id: d
+    text: 30 usable hosts
+    rationale: That is /27.
+  correct:
+    answer: a
+  explanation: /30 point-to-point links commonly use 2 usable hosts.
+  references:
+  - CCNA 1.2 — IPv4 subnetting
+- id: ccna-1-004
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which cable type is typically used between a switch access port and a PC NIC?
+  choices:
+  - id: a
+    text: Straight-through UTP
+    rationale: Like devices historically needed crossover; PC↔switch uses straight-through.
+  - id: b
+    text: Crossover UTP
+    rationale: Used between like devices (switch↔switch) without Auto-MDIX.
+  - id: c
+    text: Rollover console
+    rationale: Used for console access to a router/switch.
+  - id: d
+    text: Coaxial RG-59
+    rationale: Not used for modern Ethernet access.
+  correct:
+    answer: a
+  explanation: Modern Auto-MDIX often corrects cabling, but the classic answer is straight-through.
+  references:
+  - CCNA 1.3 — cabling
+- id: ccna-1-005
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: In TCP, which field helps ensure ordered delivery of segments?
+  choices:
+  - id: a
+    text: Sequence number
+    rationale: Sequence numbers order byte streams.
+  - id: b
+    text: Window size alone
+    rationale: Controls flow, not ordering by itself.
+  - id: c
+    text: TTL
+    rationale: IP hop limit, not TCP ordering.
+  - id: d
+    text: TOS/DSCP
+    rationale: Marks QoS, not segment order.
+  correct:
+    answer: a
+  explanation: TCP sequence and acknowledgment numbers provide reliable ordered delivery.
+  references:
+  - CCNA 1.4 — TCP/UDP
+- id: ccna-1-006
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which IPv6 address type is typically used for one-to-nearest routing within a group?
+  choices:
+  - id: a
+    text: Anycast
+    rationale: Anycast is one-to-nearest of a group.
+  - id: b
+    text: Multicast
+    rationale: One-to-many.
+  - id: c
+    text: Broadcast
+    rationale: IPv6 has no broadcast.
+  - id: d
+    text: Link-local only
+    rationale: Link-local is a scope, not anycast semantics.
+  correct:
+    answer: a
+  explanation: IPv6 anycast shares an address among nodes; routers deliver to the nearest.
+  references:
+  - CCNA 1.5 — IPv6 addressing
+- id: ccna-1-007
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What does ARP resolve?
+  choices:
+  - id: a
+    text: IPv4 address to MAC address
+    rationale: ARP maps L3→L2 on Ethernet.
+  - id: b
+    text: MAC to IPv6
+    rationale: That is not ARP (NDP does neighbor discovery).
+  - id: c
+    text: URL to IP
+    rationale: DNS.
+  - id: d
+    text: Port to process
+    rationale: Sockets/OS, not ARP.
+  correct:
+    answer: a
+  explanation: ARP requests broadcast who-has; replies provide the MAC for an IPv4 address.
+  references:
+  - CCNA 1.6 — ARP
+- id: ccna-1-008
+  type: multiple_choice
+  topic_code: '1.7'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which two characteristics apply to UDP? (Choose two.)
+  choices:
+  - id: a
+    text: Connectionless
+    rationale: No handshake.
+  - id: b
+    text: Guaranteed delivery
+    rationale: TCP provides reliability, not UDP.
+  - id: c
+    text: Lower overhead than TCP
+    rationale: No sequencing/acks by default.
+  - id: d
+    text: Always encrypts payloads
+    rationale: Encryption is application/TLS, not UDP itself.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: UDP is connectionless and lightweight; reliability is left to the application.
+  references:
+  - CCNA 1.7 — UDP
+- id: ccna-1-009
+  type: drag_match
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Match each OSI layer with a primary PDU name.
+  drag_pairs: &id002
+  - left: Layer 2
+    right: Frame
+  - left: Layer 3
+    right: Packet
+  - left: Layer 4
+    right: Segment (TCP) / Datagram (UDP)
+  - left: Layer 1
+    right: Bits
+  correct:
+    pairs: *id002
+  explanation: 'Common teaching shorthand: bits, frames, packets, segments.'
+  references:
+  - CCNA 1.1 — OSI
+- id: ccna-1-010
+  type: ordered_list
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Order the steps to design a VLSM plan for a site.
+  ordered_items:
+  - Assign largest subnets first
+  - List required host counts
+  - Document remaining address space
+  - Sort requirements descending
+  correct:
+    order:
+    - List required host counts
+    - Sort requirements descending
+    - Assign largest subnets first
+    - Document remaining address space
+  explanation: VLSM works best allocating big blocks first to avoid fragmentation of free space.
+  references:
+  - CCNA 1.2 — VLSM
+- id: ccna-1-011
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which cloud deployment model keeps infrastructure exclusively for one organization?
+  choices:
+  - id: a
+    text: Private cloud
+    rationale: Dedicated to one org.
+  - id: b
+    text: Public cloud
+    rationale: Shared multi-tenant.
+  - id: c
+    text: Community only
+    rationale: Shared by a community of orgs.
+  - id: d
+    text: Hybrid CDN
+    rationale: Not a deployment model.
+  correct:
+    answer: a
+  explanation: Private cloud is single-tenant for one organization.
+  references:
+  - CCNA 1.1
+- id: ccna-1-012
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: What is the network address of 172.16.5.33/28?
+  choices:
+  - id: a
+    text: 172.16.5.32
+    rationale: Block size 16; 32–47.
+  - id: b
+    text: 172.16.5.33
+    rationale: That is a host.
+  - id: c
+    text: 172.16.5.0
+    rationale: Wrong boundary for /28.
+  - id: d
+    text: 172.16.5.48
+    rationale: Next network.
+  correct:
+    answer: a
+  explanation: /28 block size is 16; 33 falls in 32–47.
+  references:
+  - CCNA 1.2
+- id: ccna-1-013
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which wireless standard introduced OFDMA in Wi-Fi 6?
+  choices:
+  - id: a
+    text: 802.11ax
+    rationale: Wi-Fi 6.
+  - id: b
+    text: 802.11ac
+    rationale: Wi-Fi 5.
+  - id: c
+    text: 802.11n
+    rationale: Wi-Fi 4.
+  - id: d
+    text: 802.11g
+    rationale: Legacy 2.4 GHz.
+  correct:
+    answer: a
+  explanation: 802.11ax (Wi-Fi 6) added OFDMA and other efficiency features.
+  references:
+  - CCNA 1.3
+- id: ccna-1-014
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which port does HTTPS typically use?
+  choices:
+  - id: a
+    text: '443'
+    rationale: TLS HTTP.
+  - id: b
+    text: '80'
+    rationale: Plain HTTP.
+  - id: c
+    text: '22'
+    rationale: SSH.
+  - id: d
+    text: '53'
+    rationale: DNS.
+  correct:
+    answer: a
+  explanation: HTTPS uses TCP 443 by default.
+  references:
+  - CCNA 1.4
+- id: ccna-1-015
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: An IPv6 link-local address begins with which prefix?
+  choices:
+  - id: a
+    text: fe80::/10
+    rationale: Link-local.
+  - id: b
+    text: 2000::/3
+    rationale: Global unicast range teaching shorthand.
+  - id: c
+    text: ff00::/8
+    rationale: Multicast.
+  - id: d
+    text: fc00::/7
+    rationale: ULA.
+  correct:
+    answer: a
+  explanation: Link-local addresses use fe80::/10.
+  references:
+  - CCNA 1.5
+- id: ccna-1-016
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What happens when a switch has no MAC entry for a frame's destination?
+  choices:
+  - id: a
+    text: Floods the frame out other ports in the VLAN
+    rationale: Unknown unicast flood.
+  - id: b
+    text: Drops silently always
+    rationale: Not for unknown unicasts.
+  - id: c
+    text: Sends ICMP redirect
+    rationale: Router behavior.
+  - id: d
+    text: ARPs for the MAC
+    rationale: Hosts/routers use ARP; switches flood.
+  correct:
+    answer: a
+  explanation: Unknown unicast frames are flooded within the VLAN.
+  references:
+  - CCNA 1.6
+- id: ccna-1-017
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 4
+  cert_tags: *id001
+  stem: DNS primarily maps which of the following?
+  choices:
+  - id: a
+    text: Names to IP addresses
+    rationale: Forward lookup.
+  - id: b
+    text: MAC to VLAN
+    rationale: Switching.
+  - id: c
+    text: AS numbers to communities
+    rationale: BGP.
+  - id: d
+    text: SPIDs to DLCI
+    rationale: Legacy WAN.
+  correct:
+    answer: a
+  explanation: DNS resolves names to addresses (and reverse lookups).
+  references:
+  - CCNA 1.7
+- id: ccna-1-018
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which statement about a spine-leaf fabric is true?
+  choices:
+  - id: a
+    text: Every leaf connects to every spine
+    rationale: Classic non-blocking design goal.
+  - id: b
+    text: Leaves connect only to other leaves
+    rationale: Opposite of spine-leaf.
+  - id: c
+    text: Spines connect servers directly
+    rationale: Servers attach to leaves.
+  - id: d
+    text: It requires Token Ring
+    rationale: Ethernet/IP fabrics.
+  correct:
+    answer: a
+  explanation: Leaf switches attach to all spines; east-west via spine.
+  references:
+  - CCNA 1.1
+- id: ccna-1-019
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: How many /30s fit inside a /24?
+  choices:
+  - id: a
+    text: '64'
+    rationale: 2^(30-24)=64.
+  - id: b
+    text: '32'
+    rationale: That would be /29s.
+  - id: c
+    text: '16'
+    rationale: That would be /28s.
+  - id: d
+    text: '4'
+    rationale: Too few.
+  correct:
+    answer: a
+  explanation: Each /30 is 4 addresses; 256/4 = 64.
+  references:
+  - CCNA 1.2
+- id: ccna-1-020
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: PoE delivers power over which pairs historically for 802.3af Mode A?
+  choices:
+  - id: a
+    text: Data pairs (1-2 and 3-6)
+    rationale: Alternative A uses data pairs.
+  - id: b
+    text: Only fiber strands
+    rationale: Fiber needs separate power.
+  - id: c
+    text: USB only
+    rationale: Not Ethernet PoE.
+  - id: d
+    text: Coax center conductor
+    rationale: Not UTP PoE.
+  correct:
+    answer: a
+  explanation: 802.3af Alternative A injects power on the data pairs.
+  references:
+  - CCNA 1.3
+- id: ccna-1-021
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which protocol is connection-oriented at Layer 4?
+  choices:
+  - id: a
+    text: TCP
+    rationale: 3-way handshake.
+  - id: b
+    text: UDP
+    rationale: Connectionless.
+  - id: c
+    text: ICMP
+    rationale: Network diagnostics.
+  - id: d
+    text: ARP
+    rationale: L2/L3 mapping.
+  correct:
+    answer: a
+  explanation: TCP establishes a connection before data transfer.
+  references:
+  - CCNA 1.4
+- id: ccna-1-022
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What is the IPv6 unspecified address?
+  choices:
+  - id: a
+    text: '::'
+    rationale: All zeros.
+  - id: b
+    text: ::1
+    rationale: Loopback.
+  - id: c
+    text: fe80::1
+    rationale: Link-local example.
+  - id: d
+    text: ff02::1
+    rationale: All-nodes multicast.
+  correct:
+    answer: a
+  explanation: ':: means no address assigned yet.'
+  references:
+  - CCNA 1.5
+- id: ccna-2-001
+  type: multiple_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which two statements about 802.1Q trunks are correct? (Choose two.)
+  choices:
+  - id: a
+    text: A trunk can carry multiple VLANs with tags
+    rationale: Core trunk purpose.
+  - id: b
+    text: VLAN 1 can never be native
+    rationale: It can, though discouraged.
+  - id: c
+    text: Native VLAN frames are untagged
+    rationale: 802.1Q native VLAN.
+  - id: d
+    text: ISL is required on modern Catalyst
+    rationale: ISL is legacy.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 802.1Q tags non-native VLANs; native VLAN is untagged.
+  references:
+  - CCNA 2.1 — VLANs/trunks
+- id: ccna-2-002
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which Rapid PVST+ port role forwards traffic toward the root?
+  choices:
+  - id: a
+    text: Root port
+    rationale: Best path to root.
+  - id: b
+    text: Designated port on a blocked segment
+    rationale: Designated forwards onto a segment.
+  - id: c
+    text: Alternate port
+    rationale: Backup to root; discarding.
+  - id: d
+    text: Disabled
+    rationale: Administratively down.
+  correct:
+    answer: a
+  explanation: Each non-root bridge selects one root port closest to the root bridge.
+  references:
+  - CCNA 2.2 — STP
+- id: ccna-2-003
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: EtherChannel bundles multiple physical links into what logical interface type on Cisco IOS?
+  choices:
+  - id: a
+    text: Port-channel
+    rationale: Logical Po interface.
+  - id: b
+    text: Loopback
+    rationale: Virtual IP interface.
+  - id: c
+    text: Tunnel
+    rationale: Overlay.
+  - id: d
+    text: Null0
+    rationale: Bit bucket.
+  correct:
+    answer: a
+  explanation: Port-channel (Po) is the logical EtherChannel interface.
+  references:
+  - CCNA 2.3 — EtherChannel
+- id: ccna-2-004
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: In CAPWAP, which tunnel carries client data between AP and WLC in a centralized design?
+  choices:
+  - id: a
+    text: CAPWAP data tunnel
+    rationale: Encrypted/optional DTLS data path.
+  - id: b
+    text: Only GRE without CAPWAP
+    rationale: CAPWAP is the Cisco LWAPP successor.
+  - id: c
+    text: IPsec VTI only
+    rationale: Not the standard AP-WLC control plane.
+  - id: d
+    text: PPPoE
+    rationale: WAN access method.
+  correct:
+    answer: a
+  explanation: Lightweight APs use CAPWAP control and data tunnels to the WLC.
+  references:
+  - CCNA 2.4 — wireless
+- id: ccna-2-005
+  type: drag_match
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Match VLAN concepts.
+  drag_pairs: &id003
+  - left: Access port
+    right: Carries a single untagged VLAN for end hosts
+  - left: Trunk port
+    right: Carries multiple VLANs with 802.1Q tags
+  - left: Native VLAN
+    right: Untagged on an 802.1Q trunk
+  - left: Voice VLAN
+    right: Auxiliary VLAN for IP phones
+  correct:
+    pairs: *id003
+  explanation: Access vs trunk and native/voice VLAN roles are core switching topics.
+  references:
+  - CCNA 2.1
+- id: ccna-2-006
+  type: ordered_list
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Order classic STP port states from blocking toward forwarding (802.1D teaching order).
+  ordered_items:
+  - Learning
+  - Listening
+  - Forwarding
+  - Blocking
+  correct:
+    order:
+    - Blocking
+    - Listening
+    - Learning
+    - Forwarding
+  explanation: 802.1D progresses Blocking → Listening → Learning → Forwarding.
+  references:
+  - CCNA 2.2 — STP states
+- id: ccna-2-007
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What command creates VLAN 20 on a Cisco switch?
+  choices:
+  - id: a
+    text: vlan 20
+    rationale: Global VLAN config.
+  - id: b
+    text: interface vlan 20 only
+    rationale: Creates SVI, not necessarily VLAN DB entry in all modes.
+  - id: c
+    text: switchport access vlan 20 alone
+    rationale: Assigns port; VLAN should exist.
+  - id: d
+    text: encapsulation dot1q 20
+    rationale: Subinterface.
+  correct:
+    answer: a
+  explanation: Global VLAN config.
+  references:
+  - CCNA 2.1
+- id: ccna-2-008
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: DTP dynamic desirable will actively try to form what?
+  choices:
+  - id: a
+    text: A trunk
+    rationale: Desirable initiates trunking.
+  - id: b
+    text: An EtherChannel
+    rationale: LACP/PAgP.
+  - id: c
+    text: An OSPF adjacency
+    rationale: Routing.
+  - id: d
+    text: A VPN
+    rationale: IPsec/SSL.
+  correct:
+    answer: a
+  explanation: Desirable initiates trunking.
+  references:
+  - CCNA 2.1
+- id: ccna-2-009
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which bridge ID component is preferred lower to win root election?
+  choices:
+  - id: a
+    text: Priority then MAC
+    rationale: Lowest BID wins.
+  - id: b
+    text: Highest MAC always
+    rationale: Opposite.
+  - id: c
+    text: Highest priority
+    rationale: Lower priority wins.
+  - id: d
+    text: Serial number only
+    rationale: Not used.
+  correct:
+    answer: a
+  explanation: Lowest BID wins.
+  references:
+  - CCNA 2.2
+- id: ccna-2-010
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: PortFast is intended for which ports?
+  choices:
+  - id: a
+    text: Edge ports to end hosts
+    rationale: Skip listening/learning delays.
+  - id: b
+    text: All trunks always
+    rationale: Risky; loops.
+  - id: c
+    text: Routed ports only
+    rationale: Not STP edge concept.
+  - id: d
+    text: Blocked alternate only
+    rationale: Not PortFast.
+  correct:
+    answer: a
+  explanation: Skip listening/learning delays.
+  references:
+  - CCNA 2.2
+- id: ccna-2-011
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: LACP uses which IEEE standard?
+  choices:
+  - id: a
+    text: 802.3ad / 802.1AX
+    rationale: Link aggregation.
+  - id: b
+    text: 802.1Q
+    rationale: VLAN tagging.
+  - id: c
+    text: 802.1X
+    rationale: Port auth.
+  - id: d
+    text: 802.11i
+    rationale: Wireless security.
+  correct:
+    answer: a
+  explanation: Link aggregation.
+  references:
+  - CCNA 2.3
+- id: ccna-2-012
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: PAgP is associated with which vendor historically?
+  choices:
+  - id: a
+    text: Cisco proprietary
+    rationale: PAgP.
+  - id: b
+    text: IETF standard only
+    rationale: LACP is standard.
+  - id: c
+    text: ITU SS7
+    rationale: Telephony.
+  - id: d
+    text: Bluetooth SIG
+    rationale: PAN.
+  correct:
+    answer: a
+  explanation: PAgP.
+  references:
+  - CCNA 2.3
+- id: ccna-2-013
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which frequency band do most enterprise 5 GHz Wi-Fi networks use?
+  choices:
+  - id: a
+    text: UNII 5 GHz bands
+    rationale: 802.11a/n/ac/ax.
+  - id: b
+    text: Only 900 MHz ISM
+    rationale: IoT niches.
+  - id: c
+    text: 60 GHz only
+    rationale: 802.11ad niche.
+  - id: d
+    text: HF shortwave
+    rationale: Not Wi-Fi.
+  correct:
+    answer: a
+  explanation: 802.11a/n/ac/ax.
+  references:
+  - CCNA 2.4
+- id: ccna-2-014
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: A WLC typically terminates which AP mode tunnels?
+  choices:
+  - id: a
+    text: Local mode CAPWAP
+    rationale: Centralized forwarding option.
+  - id: b
+    text: Only autonomous IOS AP
+    rationale: No WLC.
+  - id: c
+    text: Only mesh satellite RF
+    rationale: Specialized.
+  - id: d
+    text: Only Bluetooth beacons
+    rationale: Not CAPWAP.
+  correct:
+    answer: a
+  explanation: Centralized forwarding option.
+  references:
+  - CCNA 2.4
+- id: ccna-2-015
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which feature prevents a switchport from learning more than N MACs?
+  choices:
+  - id: a
+    text: Port security
+    rationale: Sticky/max MAC.
+  - id: b
+    text: UplinkFast
+    rationale: STP.
+  - id: c
+    text: VTP pruning
+    rationale: VLAN advertise.
+  - id: d
+    text: CDP
+    rationale: Discovery.
+  correct:
+    answer: a
+  explanation: Sticky/max MAC.
+  references:
+  - CCNA 2.5
+- id: ccna-2-016
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: BPDU Guard shuts a PortFast port when it receives what?
+  choices:
+  - id: a
+    text: A BPDU
+    rationale: Indicates switch attached.
+  - id: b
+    text: An ARP reply
+    rationale: Not STP.
+  - id: c
+    text: A DHCP offer
+    rationale: Not STP.
+  - id: d
+    text: A DNS query
+    rationale: Not STP.
+  correct:
+    answer: a
+  explanation: Indicates switch attached.
+  references:
+  - CCNA 2.5
+- id: ccna-2-017
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: VTP transparent switches do what with VTP advertisements?
+  choices:
+  - id: a
+    text: Forward them but do not sync VLAN DB from them
+    rationale: Transparent mode.
+  - id: b
+    text: Always overwrite clients
+    rationale: Server behavior.
+  - id: c
+    text: Drop all BPDUs
+    rationale: Unrelated.
+  - id: d
+    text: Disable all trunks
+    rationale: Unrelated.
+  correct:
+    answer: a
+  explanation: Transparent mode.
+  references:
+  - CCNA 2.1
+- id: ccna-2-018
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: RSTP discarding state roughly replaces which 802.1D states?
+  choices:
+  - id: a
+    text: Blocking and listening
+    rationale: RSTP simplifies states.
+  - id: b
+    text: Only forwarding
+    rationale: Opposite.
+  - id: c
+    text: Only disabled
+    rationale: Incomplete.
+  - id: d
+    text: Learning only
+    rationale: Incomplete.
+  correct:
+    answer: a
+  explanation: RSTP simplifies states.
+  references:
+  - CCNA 2.2
+- id: ccna-2-019
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: On EtherChannel, member ports must match which attribute?
+  choices:
+  - id: a
+    text: Speed/duplex and compatible configs
+    rationale: Misconfig suspends.
+  - id: b
+    text: Unique VLANs only
+    rationale: Members should be consistent.
+  - id: c
+    text: Different native VLANs
+    rationale: Causes issues.
+  - id: d
+    text: Random MTUs
+    rationale: Should match.
+  correct:
+    answer: a
+  explanation: Misconfig suspends.
+  references:
+  - CCNA 2.3
+- id: ccna-2-020
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SSID is best described as?
+  choices:
+  - id: a
+    text: Wireless network name
+    rationale: Broadcast/hidden.
+  - id: b
+    text: AP serial number
+    rationale: Inventory.
+  - id: c
+    text: WLC HA VIP only
+    rationale: Infrastructure.
+  - id: d
+    text: RADIUS shared secret
+    rationale: AAA.
+  correct:
+    answer: a
+  explanation: Broadcast/hidden.
+  references:
+  - CCNA 2.4
+- id: ccna-2-021
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A native VLAN mismatch on a trunk typically causes what?
+  choices:
+  - id: a
+    text: CDP warnings and possible connectivity issues
+    rationale: Untagged frames disagree.
+  - id: b
+    text: Automatic OSPF adjacency
+    rationale: Unrelated.
+  - id: c
+    text: Mandatory encryption
+    rationale: Unrelated.
+  - id: d
+    text: DHCP snooping disable
+    rationale: Unrelated.
+  correct:
+    answer: a
+  explanation: Untagged frames disagree.
+  references:
+  - CCNA 2.1
+- id: ccna-2-022
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which timer expiration causes STP topology change processing historically?
+  choices:
+  - id: a
+    text: Max age / forward delay interactions
+    rationale: Classic STP timers.
+  - id: b
+    text: Only ARP timeout
+    rationale: L3.
+  - id: c
+    text: Only TCP TIME_WAIT
+    rationale: Host stack.
+  - id: d
+    text: Only DNS TTL
+    rationale: App.
+  correct:
+    answer: a
+  explanation: Classic STP timers.
+  references:
+  - CCNA 2.2
+- id: ccna-3-001
+  type: ordered_list
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Place OSPF adjacency states in order from Down to Full.
+  ordered_items:
+  - ExStart
+  - Init
+  - Down
+  - Full
+  - 2-Way
+  - Loading
+  - Exchange
+  correct:
+    order:
+    - Down
+    - Init
+    - 2-Way
+    - ExStart
+    - Exchange
+    - Loading
+    - Full
+  explanation: OSPF progresses Down → Init → 2-Way → ExStart → Exchange → Loading → Full.
+  references:
+  - CCNA 3.1 — OSPF
+- id: ccna-3-002
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which administrative distance does Cisco IOS assign to OSPF by default?
+  choices:
+  - id: a
+    text: '110'
+    rationale: OSPF AD.
+  - id: b
+    text: '90'
+    rationale: EIGRP internal.
+  - id: c
+    text: '120'
+    rationale: RIP.
+  - id: d
+    text: '1'
+    rationale: Static.
+  correct:
+    answer: a
+  explanation: 'Default AD: connected 0, static 1, eBGP 20, EIGRP 90, OSPF 110, RIP 120, iBGP 200.'
+  references:
+  - CCNA 3.2 — routing
+- id: ccna-3-003
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A default route is commonly written as which prefix?
+  choices:
+  - id: a
+    text: 0.0.0.0/0
+    rationale: Default.
+  - id: b
+    text: 255.255.255.255/32
+    rationale: Host broadcast-ish.
+  - id: c
+    text: 127.0.0.0/8
+    rationale: Loopback net.
+  - id: d
+    text: 224.0.0.0/4
+    rationale: Multicast.
+  correct:
+    answer: a
+  explanation: 0.0.0.0/0 matches all destinations as last resort.
+  references:
+  - CCNA 3.3 — static routing
+- id: ccna-3-004
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: In OSPF, what identifies a router uniquely in the domain?
+  choices:
+  - id: a
+    text: Router ID
+    rationale: 32-bit RID.
+  - id: b
+    text: Process ID alone
+    rationale: Local significance.
+  - id: c
+    text: ASN
+    rationale: BGP.
+  - id: d
+    text: VLAN ID
+    rationale: L2.
+  correct:
+    answer: a
+  explanation: OSPF Router ID uniquely identifies the router in LSAs.
+  references:
+  - CCNA 3.4 — OSPF
+- id: ccna-3-005
+  type: drag_match
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Match protocol to default Cisco AD.
+  drag_pairs: &id004
+  - left: EIGRP (internal)
+    right: '90'
+  - left: OSPF
+    right: '110'
+  - left: RIP
+    right: '120'
+  - left: eBGP
+    right: '20'
+  correct:
+    pairs: *id004
+  explanation: Lower AD is preferred when prefixes are equal length.
+  references:
+  - CCNA 3.2
+- id: ccna-3-006
+  type: sim
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Configure a static default route on R1 via next hop 203.0.113.1.
+  sim:
+    instructions: Enter the IOS command(s) for a default static route.
+  correct:
+    expected_commands:
+    - ip route 0.0.0.0 0.0.0.0 203.0.113.1
+  explanation: ip route 0.0.0.0 0.0.0.0 <next-hop> installs a default static.
+  references:
+  - CCNA 3.3
+- id: ccna-3-007
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: OSPF Hello packets on Ethernet use which multicast?
+  choices:
+  - id: a
+    text: 224.0.0.5
+    rationale: AllSPFRouters.
+  - id: b
+    text: 224.0.0.9
+    rationale: RIPv2.
+  - id: c
+    text: 224.0.0.10
+    rationale: EIGRP.
+  - id: d
+    text: 255.255.255.255
+    rationale: Limited broadcast.
+  correct:
+    answer: a
+  explanation: AllSPFRouters.
+  references:
+  - CCNA 3.1
+- id: ccna-3-008
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which OSPF network type elects DR/BDR on multiaccess?
+  choices:
+  - id: a
+    text: Broadcast
+    rationale: DR/BDR.
+  - id: b
+    text: Point-to-point
+    rationale: No DR.
+  - id: c
+    text: Loopback
+    rationale: Host route.
+  - id: d
+    text: Nonbroadcast always without DR
+    rationale: NBMA can elect.
+  correct:
+    answer: a
+  explanation: DR/BDR.
+  references:
+  - CCNA 3.1
+- id: ccna-3-009
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Longest prefix match prefers which route to 10.1.1.5?
+  choices:
+  - id: a
+    text: 10.1.1.0/28 over 10.1.0.0/16
+    rationale: More specific wins.
+  - id: b
+    text: Always AD only
+    rationale: Length first.
+  - id: c
+    text: Always metric only
+    rationale: After prefix length.
+  - id: d
+    text: Random ECMP only
+    rationale: Not sole rule.
+  correct:
+    answer: a
+  explanation: More specific wins.
+  references:
+  - CCNA 3.2
+- id: ccna-3-010
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What does a routing table 'S*' typically indicate on Cisco?
+  choices:
+  - id: a
+    text: Candidate default static
+    rationale: Star marks candidate default.
+  - id: b
+    text: OSPF summary
+    rationale: O IA etc.
+  - id: c
+    text: BGP aggregate
+    rationale: B.
+  - id: d
+    text: Connected
+    rationale: C.
+  correct:
+    answer: a
+  explanation: Star marks candidate default.
+  references:
+  - CCNA 3.2
+- id: ccna-3-011
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Floating static routes use what technique?
+  choices:
+  - id: a
+    text: Higher AD than primary
+    rationale: Backup until primary fails.
+  - id: b
+    text: Lower AD than connected
+    rationale: Impossible/wrong.
+  - id: c
+    text: Only PBR
+    rationale: Different.
+  - id: d
+    text: Only NAT
+    rationale: Different.
+  correct:
+    answer: a
+  explanation: Backup until primary fails.
+  references:
+  - CCNA 3.3
+- id: ccna-3-012
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: OSPF areas exist primarily to?
+  choices:
+  - id: a
+    text: Limit LSA flooding scope
+    rationale: Hierarchy.
+  - id: b
+    text: Replace IP addresses
+    rationale: No.
+  - id: c
+    text: Encrypt all payloads
+    rationale: No.
+  - id: d
+    text: Terminate VLANs
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Hierarchy.
+  references:
+  - CCNA 3.4
+- id: ccna-3-013
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: 'First Hop Redundancy: HSRP uses which virtual concept?'
+  choices:
+  - id: a
+    text: Virtual IP and virtual MAC
+    rationale: Active/standby.
+  - id: b
+    text: Only anycast DNS
+    rationale: Different.
+  - id: c
+    text: Only VRRP exclusive
+    rationale: HSRP is Cisco.
+  - id: d
+    text: Only GLBP without VIP
+    rationale: GLBP also uses VIP.
+  correct:
+    answer: a
+  explanation: Active/standby.
+  references:
+  - CCNA 3.5
+- id: ccna-3-014
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: VRRP is best described as?
+  choices:
+  - id: a
+    text: Standards-based FHRP
+    rationale: RFC.
+  - id: b
+    text: Cisco-only proprietary
+    rationale: HSRP.
+  - id: c
+    text: A link-state IGP
+    rationale: No.
+  - id: d
+    text: A wireless roaming protocol
+    rationale: No.
+  correct:
+    answer: a
+  explanation: RFC.
+  references:
+  - CCNA 3.5
+- id: ccna-3-015
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which LSA type describes a router’s own links in an area?
+  choices:
+  - id: a
+    text: Type 1 Router LSA
+    rationale: Per router.
+  - id: b
+    text: Type 5 External
+    rationale: ASBR redistributed.
+  - id: c
+    text: Type 4 ASBR summary
+    rationale: ABR.
+  - id: d
+    text: Type 3 Network summary only
+    rationale: ABR prefixes.
+  correct:
+    answer: a
+  explanation: Per router.
+  references:
+  - CCNA 3.1
+- id: ccna-3-016
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Equal-cost multipath requires routes with equal what?
+  choices:
+  - id: a
+    text: Metric (and eligible for install)
+    rationale: ECMP.
+  - id: b
+    text: Only interface bandwidth randomly
+    rationale: Part of metric calc.
+  - id: c
+    text: Only AD different
+    rationale: AD must allow both.
+  - id: d
+    text: Only AS path length for OSPF
+    rationale: BGP concept.
+  correct:
+    answer: a
+  explanation: ECMP.
+  references:
+  - CCNA 3.2
+- id: ccna-3-017
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which command displays the IPv4 routing table?
+  choices:
+  - id: a
+    text: show ip route
+    rationale: Classic.
+  - id: b
+    text: show vlan brief
+    rationale: L2.
+  - id: c
+    text: show cdp neighbors
+    rationale: Discovery.
+  - id: d
+    text: show spanning-tree
+    rationale: STP.
+  correct:
+    answer: a
+  explanation: Classic.
+  references:
+  - CCNA 3.3
+- id: ccna-3-018
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: An ABR sits on the border of?
+  choices:
+  - id: a
+    text: Area 0 and non-backbone areas (typically)
+    rationale: ABR role.
+  - id: b
+    text: Only two autonomous systems
+    rationale: ASBR/BGP.
+  - id: c
+    text: Only VLANs
+    rationale: L2.
+  - id: d
+    text: Only wireless controllers
+    rationale: No.
+  correct:
+    answer: a
+  explanation: ABR role.
+  references:
+  - CCNA 3.4
+- id: ccna-3-019
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: OSPF cost on Cisco is often derived from?
+  choices:
+  - id: a
+    text: Reference bandwidth / interface bandwidth
+    rationale: Cost formula.
+  - id: b
+    text: Hop count only
+    rationale: RIP.
+  - id: c
+    text: Delay by default like IGRP classic
+    rationale: EIGRP composite.
+  - id: d
+    text: Administrative distance
+    rationale: Not cost.
+  correct:
+    answer: a
+  explanation: Cost formula.
+  references:
+  - CCNA 3.1
+- id: ccna-3-020
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Connected routes appear with which code?
+  choices:
+  - id: a
+    text: C
+    rationale: Connected.
+  - id: b
+    text: S
+    rationale: Static.
+  - id: c
+    text: O
+    rationale: OSPF.
+  - id: d
+    text: R
+    rationale: RIP.
+  correct:
+    answer: a
+  explanation: Connected.
+  references:
+  - CCNA 3.2
+- id: ccna-3-021
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: GLBP provides what additional capability vs classic HSRP?
+  choices:
+  - id: a
+    text: Per-host load balancing across gateways
+    rationale: AVG/AVF.
+  - id: b
+    text: Only active/standby with no LB
+    rationale: HSRP.
+  - id: c
+    text: Only IPv6 RA suppression
+    rationale: Different.
+  - id: d
+    text: Only MPLS TE
+    rationale: Different.
+  correct:
+    answer: a
+  explanation: AVG/AVF.
+  references:
+  - CCNA 3.5
+- id: ccna-3-022
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A recursive static route resolves the next hop via?
+  choices:
+  - id: a
+    text: Another route in the table
+    rationale: Recursive lookup.
+  - id: b
+    text: Only ARP forever without route
+    rationale: Needs route to NH.
+  - id: c
+    text: Only DNS
+    rationale: Not for CEF typically.
+  - id: d
+    text: Only NetFlow
+    rationale: Telemetry.
+  correct:
+    answer: a
+  explanation: Recursive lookup.
+  references:
+  - CCNA 3.3
+- id: ccna-3-023
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Passive interface in OSPF means?
+  choices:
+  - id: a
+    text: Advertise the network but do not send Hellos
+    rationale: Suppress adjacency.
+  - id: b
+    text: Delete the prefix
+    rationale: No.
+  - id: c
+    text: Encrypt Hellos only
+    rationale: No.
+  - id: d
+    text: Force DR forever
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Suppress adjacency.
+  references:
+  - CCNA 3.4
+- id: ccna-3-024
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which packet starts OSPF neighbor formation?
+  choices:
+  - id: a
+    text: Hello
+    rationale: Discovery.
+  - id: b
+    text: LSA Type 5 only
+    rationale: Later.
+  - id: c
+    text: DBD only first always
+    rationale: After 2-way.
+  - id: d
+    text: LSAck only
+    rationale: Acknowledgement.
+  correct:
+    answer: a
+  explanation: Discovery.
+  references:
+  - CCNA 3.1
+- id: ccna-3-025
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Policy-based routing primarily uses what to override normal RIB choice?
+  choices:
+  - id: a
+    text: Route maps matching traffic
+    rationale: PBR.
+  - id: b
+    text: Only AD change
+    rationale: Incomplete.
+  - id: c
+    text: Only STP
+    rationale: L2.
+  - id: d
+    text: Only WRED
+    rationale: QoS.
+  correct:
+    answer: a
+  explanation: PBR.
+  references:
+  - CCNA 3.2
+- id: ccna-3-026
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: HSRP version 2 expands which capability notably?
+  choices:
+  - id: a
+    text: IPv6 support and group range
+    rationale: v2 features.
+  - id: b
+    text: Only Token Ring
+    rationale: Legacy.
+  - id: c
+    text: Only Frame Relay
+    rationale: WAN.
+  - id: d
+    text: Only dialer maps
+    rationale: Legacy.
+  correct:
+    answer: a
+  explanation: v2 features.
+  references:
+  - CCNA 3.5
+- id: ccna-3-027
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Null0 is often used with static routes for?
+  choices:
+  - id: a
+    text: Discard blackhole / loop prevention with summarization
+    rationale: Bit bucket.
+  - id: b
+    text: NAT overload only
+    rationale: Different.
+  - id: c
+    text: STP root guard
+    rationale: L2.
+  - id: d
+    text: Wireless roaming
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Bit bucket.
+  references:
+  - CCNA 3.3
+- id: ccna-3-028
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Inter-area OSPF routes are shown with which code?
+  choices:
+  - id: a
+    text: O IA
+    rationale: Inter-area.
+  - id: b
+    text: O E1/E2 only
+    rationale: External.
+  - id: c
+    text: D EX
+    rationale: EIGRP external.
+  - id: d
+    text: B
+    rationale: BGP.
+  correct:
+    answer: a
+  explanation: Inter-area.
+  references:
+  - CCNA 3.4
+- id: ccna-4-001
+  type: drag_match
+  topic_code: '4.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Match DHCP DORA messages to direction.
+  drag_pairs: &id005
+  - left: DISCOVER
+    right: Client → Server (broadcast)
+  - left: OFFER
+    right: Server → Client
+  - left: REQUEST
+    right: Client → Server
+  - left: ACK
+    right: Server → Client
+  correct:
+    pairs: *id005
+  explanation: 'DORA: Discover, Offer, Request, Ack.'
+  references:
+  - CCNA 4.1 — DHCP
+- id: ccna-4-002
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which protocol synchronizes clocks across devices?
+  choices:
+  - id: a
+    text: NTP
+    rationale: Network Time Protocol.
+  - id: b
+    text: SNMP
+    rationale: Management.
+  - id: c
+    text: Syslog
+    rationale: Logging.
+  - id: d
+    text: TFTP
+    rationale: File transfer.
+  correct:
+    answer: a
+  explanation: NTP provides time sync; critical for logs and certs.
+  references:
+  - CCNA 4.2 — NTP
+- id: ccna-4-003
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: SNMP uses which UDP ports commonly for requests/traps?
+  choices:
+  - id: a
+    text: 161 (requests) and 162 (traps)
+    rationale: Classic SNMP.
+  - id: b
+    text: 67 and 68
+    rationale: DHCP.
+  - id: c
+    text: 20 and 21
+    rationale: FTP.
+  - id: d
+    text: 5060 and 5061
+    rationale: SIP.
+  correct:
+    answer: a
+  explanation: Managers query agents on 161; traps/informs often use 162.
+  references:
+  - CCNA 4.3 — SNMP
+- id: ccna-4-004
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Inside source NAT overload is also known as?
+  choices:
+  - id: a
+    text: PAT
+    rationale: Port Address Translation.
+  - id: b
+    text: Static one-to-one only
+    rationale: Static NAT.
+  - id: c
+    text: Destination NAT only
+    rationale: Different.
+  - id: d
+    text: NPTv6 only
+    rationale: IPv6 prefix translation.
+  correct:
+    answer: a
+  explanation: Overload NAT maps many insides to one public IP via ports (PAT).
+  references:
+  - CCNA 4.4 — NAT
+- id: ccna-4-005
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: QoS classification happens typically at which point?
+  choices:
+  - id: a
+    text: Ingress edge / trust boundary
+    rationale: Classify early.
+  - id: b
+    text: Only after encryption always
+    rationale: Often before.
+  - id: c
+    text: Only on STP root
+    rationale: Unrelated.
+  - id: d
+    text: Only on DNS servers
+    rationale: Unrelated.
+  correct:
+    answer: a
+  explanation: Classify and mark near the trust boundary for consistent treatment.
+  references:
+  - CCNA 4.5 — QoS
+- id: ccna-4-006
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A DHCP relay agent sets which field to help the server?
+  choices:
+  - id: a
+    text: GIADDR
+    rationale: Gateway IP of relay.
+  - id: b
+    text: Only CHADDR empty
+    rationale: Client hardware.
+  - id: c
+    text: Only file field
+    rationale: Boot file.
+  - id: d
+    text: Only sname
+    rationale: Server name.
+  correct:
+    answer: a
+  explanation: Gateway IP of relay.
+  references:
+  - CCNA 4.1
+- id: ccna-4-007
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Stratum 0 in NTP refers to?
+  choices:
+  - id: a
+    text: Reference clocks
+    rationale: Not network servers typically.
+  - id: b
+    text: End hosts only
+    rationale: Higher stratum.
+  - id: c
+    text: DNS root
+    rationale: Different.
+  - id: d
+    text: BGP route reflectors
+    rationale: Different.
+  correct:
+    answer: a
+  explanation: Not network servers typically.
+  references:
+  - CCNA 4.2
+- id: ccna-4-008
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Syslog severity 0 is?
+  choices:
+  - id: a
+    text: Emergency
+    rationale: Most severe.
+  - id: b
+    text: Debug
+    rationale: Severity 7.
+  - id: c
+    text: Informational
+    rationale: '6.'
+  - id: d
+    text: Notice
+    rationale: '5.'
+  correct:
+    answer: a
+  explanation: Most severe.
+  references:
+  - CCNA 4.3
+- id: ccna-4-009
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: What does 'ip nat inside' mark?
+  choices:
+  - id: a
+    text: Inside interface for NAT
+    rationale: Inside local domain.
+  - id: b
+    text: Outside global only
+    rationale: Opposite.
+  - id: c
+    text: Only VRF
+    rationale: Different.
+  - id: d
+    text: Only QoS
+    rationale: Different.
+  correct:
+    answer: a
+  explanation: Inside local domain.
+  references:
+  - CCNA 4.4
+- id: ccna-4-010
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: DSCP EF is commonly associated with?
+  choices:
+  - id: a
+    text: Expedited Forwarding for voice
+    rationale: EF.
+  - id: b
+    text: Scavenger only
+    rationale: CS1 often.
+  - id: c
+    text: Best effort only
+    rationale: DF/CS0.
+  - id: d
+    text: Network control only
+    rationale: CS6/CS7.
+  correct:
+    answer: a
+  explanation: EF.
+  references:
+  - CCNA 4.5
+- id: ccna-4-011
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: DHCP snooping trusted ports typically face?
+  choices:
+  - id: a
+    text: Legitimate DHCP servers / uplinks
+    rationale: Trust.
+  - id: b
+    text: All access ports by default
+    rationale: Untrusted.
+  - id: c
+    text: Only SPAN destinations
+    rationale: Unrelated.
+  - id: d
+    text: Only console
+    rationale: Unrelated.
+  correct:
+    answer: a
+  explanation: Trust.
+  references:
+  - CCNA 4.1
+- id: ccna-4-012
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which command shows NTP associations on IOS?
+  choices:
+  - id: a
+    text: show ntp associations
+    rationale: Classic.
+  - id: b
+    text: show ip nat translations
+    rationale: NAT.
+  - id: c
+    text: show snmp community
+    rationale: SNMP.
+  - id: d
+    text: show logging
+    rationale: Syslog buffer.
+  correct:
+    answer: a
+  explanation: Classic.
+  references:
+  - CCNA 4.2
+- id: ccna-5-001
+  type: sim
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Configure ACL 100 to permit ICMP echo from 10.10.10.0/24 and deny other ICMP, apply outbound on
+    G0/0/1.
+  sim:
+    instructions: Enter the key ACL and apply lines.
+  correct:
+    expected_commands:
+    - access-list 100 permit icmp 10.10.10.0 0.0.0.255 any echo
+    - access-list 100 deny icmp any any
+    - ip access-group 100 out
+  explanation: Extended ACL permits echo from LAN then denies other ICMP; apply outbound toward internet.
+  references:
+  - CCNA 5.1 — ACLs
+- id: ccna-5-002
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which protocol provides port-based network access control?
+  choices:
+  - id: a
+    text: 802.1X
+    rationale: EAPoL / RADIUS.
+  - id: b
+    text: STP
+    rationale: Loop prevention.
+  - id: c
+    text: VTP
+    rationale: VLAN sync.
+  - id: d
+    text: CDP
+    rationale: Discovery.
+  correct:
+    answer: a
+  explanation: 802.1X authenticates endpoints before network access.
+  references:
+  - CCNA 5.2 — 802.1X
+- id: ccna-5-003
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which VPN type commonly creates encrypted tunnels for remote users to HQ?
+  choices:
+  - id: a
+    text: Remote-access VPN
+    rationale: Client to gateway.
+  - id: b
+    text: Only site-to-site GRE without crypto
+    rationale: Not encrypted alone.
+  - id: c
+    text: Only L2TP without IPsec always
+    rationale: Often paired.
+  - id: d
+    text: Only DMVPN without encryption
+    rationale: Usually IPsec.
+  correct:
+    answer: a
+  explanation: Remote-access VPNs authenticate users and encrypt traffic to the corporate network.
+  references:
+  - CCNA 5.3 — VPN
+- id: ccna-5-004
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: DHCP snooping binding table maps which of the following?
+  choices:
+  - id: a
+    text: MAC, IP, VLAN, port
+    rationale: Binding entry.
+  - id: b
+    text: Only OSPF RID
+    rationale: Routing.
+  - id: c
+    text: Only SSID
+    rationale: Wireless.
+  - id: d
+    text: Only BGP AS
+    rationale: Routing.
+  correct:
+    answer: a
+  explanation: Bindings track legitimate DHCP clients for DAI/IPSG use.
+  references:
+  - CCNA 5.4 — DHCP snooping
+- id: ccna-5-005
+  type: multiple_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which two statements about standard ACLs are true? (Choose two.)
+  choices:
+  - id: a
+    text: They filter on source IP only
+    rationale: Standard numbered 1–99/1300–1999.
+  - id: b
+    text: They always match Layer 4 ports
+    rationale: Extended do.
+  - id: c
+    text: They should be placed close to the destination (classic guidance)
+    rationale: Because they lack dest granularity.
+  - id: d
+    text: They encrypt packets
+    rationale: No.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Standard ACLs match source IPv4; place carefully to avoid over-blocking.
+  references:
+  - CCNA 5.1
+- id: ccna-5-006
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Named ACLs on IOS are configured under which mode?
+  choices:
+  - id: a
+    text: ip access-list standard|extended NAME
+    rationale: Named ACL.
+  - id: b
+    text: Only line vty
+    rationale: Applies ACLs.
+  - id: c
+    text: Only vlan database
+    rationale: Legacy.
+  - id: d
+    text: Only crypto map
+    rationale: IPsec.
+  correct:
+    answer: a
+  explanation: Named ACL.
+  references:
+  - CCNA 5.1
+- id: ccna-5-007
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: RADIUS typically uses which ports?
+  choices:
+  - id: a
+    text: UDP 1812/1813 (or legacy 1645/1646)
+    rationale: Auth/accounting.
+  - id: b
+    text: TCP 22
+    rationale: SSH.
+  - id: c
+    text: UDP 53
+    rationale: DNS.
+  - id: d
+    text: TCP 443 only
+    rationale: HTTPS.
+  correct:
+    answer: a
+  explanation: Auth/accounting.
+  references:
+  - CCNA 5.2
+- id: ccna-5-008
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: IPsec ESP provides?
+  choices:
+  - id: a
+    text: Confidentiality and optionally integrity/auth
+    rationale: ESP.
+  - id: b
+    text: Only routing updates
+    rationale: IGP.
+  - id: c
+    text: Only STP
+    rationale: L2.
+  - id: d
+    text: Only DNSSEC
+    rationale: DNS.
+  correct:
+    answer: a
+  explanation: ESP.
+  references:
+  - CCNA 5.3
+- id: ccna-5-009
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Dynamic ARP Inspection validates ARP using?
+  choices:
+  - id: a
+    text: DHCP snooping bindings (typically)
+    rationale: DAI.
+  - id: b
+    text: Only OSPF LSDB
+    rationale: No.
+  - id: c
+    text: Only CDP
+    rationale: No.
+  - id: d
+    text: Only NetFlow
+    rationale: No.
+  correct:
+    answer: a
+  explanation: DAI.
+  references:
+  - CCNA 5.4
+- id: ccna-5-010
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A security password on VTY lines protects?
+  choices:
+  - id: a
+    text: Remote terminal access
+    rationale: Telnet/SSH.
+  - id: b
+    text: Only console physical
+    rationale: Line con 0.
+  - id: c
+    text: Only SNMP
+    rationale: Communities/users.
+  - id: d
+    text: Only wireless SSIDs
+    rationale: WLAN.
+  correct:
+    answer: a
+  explanation: Telnet/SSH.
+  references:
+  - CCNA 5.5
+- id: ccna-5-011
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which is preferred for remote management encryption?
+  choices:
+  - id: a
+    text: SSH
+    rationale: Encrypted.
+  - id: b
+    text: Telnet
+    rationale: Cleartext.
+  - id: c
+    text: HTTP without TLS
+    rationale: Cleartext.
+  - id: d
+    text: SNMPv1
+    rationale: Weak.
+  correct:
+    answer: a
+  explanation: Encrypted.
+  references:
+  - CCNA 5.5
+- id: ccna-5-012
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: ACL implicit final rule is?
+  choices:
+  - id: a
+    text: deny any
+    rationale: Implicit deny.
+  - id: b
+    text: permit any
+    rationale: Must be explicit.
+  - id: c
+    text: permit icmp
+    rationale: No.
+  - id: d
+    text: deny tcp only
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Implicit deny.
+  references:
+  - CCNA 5.1
+- id: ccna-5-013
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: TACACS+ commonly uses which transport?
+  choices:
+  - id: a
+    text: TCP 49
+    rationale: Cisco AAA.
+  - id: b
+    text: UDP 161
+    rationale: SNMP.
+  - id: c
+    text: UDP 69
+    rationale: TFTP.
+  - id: d
+    text: TCP 179
+    rationale: BGP.
+  correct:
+    answer: a
+  explanation: Cisco AAA.
+  references:
+  - CCNA 5.2
+- id: ccna-5-014
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Site-to-site VPN typically protects traffic between?
+  choices:
+  - id: a
+    text: Gateways/networks
+    rationale: Lan-to-lan.
+  - id: b
+    text: Only a single laptop user
+    rationale: Remote access.
+  - id: c
+    text: Only Layer 2 loops
+    rationale: STP.
+  - id: d
+    text: Only DNS queries
+    rationale: App.
+  correct:
+    answer: a
+  explanation: Lan-to-lan.
+  references:
+  - CCNA 5.3
+- id: ccna-5-015
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: IP Source Guard uses bindings to prevent?
+  choices:
+  - id: a
+    text: IP spoofing on a port
+    rationale: IPSG.
+  - id: b
+    text: STP loops
+    rationale: BPDU guard.
+  - id: c
+    text: WLAN roaming
+    rationale: Wireless.
+  - id: d
+    text: BGP hijacks alone
+    rationale: RPKI etc.
+  correct:
+    answer: a
+  explanation: IPSG.
+  references:
+  - CCNA 5.4
+- id: ccna-5-016
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Wildcard mask 0.0.0.255 matches?
+  choices:
+  - id: a
+    text: A /24 worth of host variance
+    rationale: Inverse of 255.255.255.0.
+  - id: b
+    text: A single host only
+    rationale: 0.0.0.0.
+  - id: c
+    text: All addresses like any
+    rationale: 255.255.255.255.
+  - id: d
+    text: Only multicast
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Inverse of 255.255.255.0.
+  references:
+  - CCNA 5.1
+- id: ccna-5-017
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: enable secret stores passwords using what by default historically?
+  choices:
+  - id: a
+    text: Hashed (MD5/type 5 or stronger modern types)
+    rationale: Not cleartext.
+  - id: b
+    text: Cleartext always
+    rationale: enable password.
+  - id: c
+    text: Only ROT13
+    rationale: No.
+  - id: d
+    text: Only Base64
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Not cleartext.
+  references:
+  - CCNA 5.5
+- id: ccna-5-018
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: In 802.1X, the authenticator is typically?
+  choices:
+  - id: a
+    text: The switch/AP
+    rationale: Enforces access.
+  - id: b
+    text: The end-user laptop alone
+    rationale: Supplicant.
+  - id: c
+    text: Only the root DNS
+    rationale: No.
+  - id: d
+    text: Only the STP root
+    rationale: No.
+  correct:
+    answer: a
+  explanation: Enforces access.
+  references:
+  - CCNA 5.2
+- id: ccna-6-001
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which transport and port does NETCONF commonly use on IOS-XE?
+  choices:
+  - id: a
+    text: TCP/830 over SSH
+    rationale: NETCONF.
+  - id: b
+    text: UDP/161
+    rationale: SNMP.
+  - id: c
+    text: TCP/80
+    rationale: HTTP.
+  - id: d
+    text: TCP/179
+    rationale: BGP.
+  correct:
+    answer: a
+  explanation: NETCONF over SSH defaults to TCP 830.
+  references:
+  - CCNA 6.1 — NETCONF
+- id: ccna-6-002
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: RESTCONF typically uses which HTTP methods over TLS?
+  choices:
+  - id: a
+    text: GET/POST/PUT/PATCH/DELETE
+    rationale: CRUD via HTTP.
+  - id: b
+    text: Only HELLO/DBD
+    rationale: OSPF.
+  - id: c
+    text: Only INVITE/BYE
+    rationale: SIP.
+  - id: d
+    text: Only SYN/ACK
+    rationale: TCP.
+  correct:
+    answer: a
+  explanation: RESTCONF maps YANG data to REST-like HTTP operations.
+  references:
+  - CCNA 6.2 — RESTCONF
+- id: ccna-6-003
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: JSON data structures primarily use which pair of container types?
+  choices:
+  - id: a
+    text: Objects and arrays
+    rationale: '{} and [].'
+  - id: b
+    text: Only XML tags
+    rationale: XML.
+  - id: c
+    text: Only YANG identities
+    rationale: Modeling.
+  - id: d
+    text: Only TLV binary
+    rationale: Other encodings.
+  correct:
+    answer: a
+  explanation: JSON objects and arrays are the core structures for API payloads.
+  references:
+  - CCNA 6.3 — JSON
+- id: ccna-6-004
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Ansible is best described as?
+  choices:
+  - id: a
+    text: Agentless automation using SSH/APIs and YAML playbooks
+    rationale: Ansible.
+  - id: b
+    text: A link-state routing protocol
+    rationale: OSPF/IS-IS.
+  - id: c
+    text: A Layer 2 loop prevention protocol
+    rationale: STP.
+  - id: d
+    text: A wireless encryption cipher
+    rationale: CCMP etc.
+  correct:
+    answer: a
+  explanation: Ansible automates configuration with playbooks, often without agents.
+  references:
+  - CCNA 6.4 — automation
+- id: ccna-6-005
+  type: drag_match
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Match automation terms.
+  drag_pairs: &id006
+  - left: YANG
+    right: Data modeling language
+  - left: NETCONF
+    right: XML-based configuration protocol
+  - left: RESTCONF
+    right: HTTP-based YANG access
+  - left: gNMI
+    right: gRPC network management interface
+  correct:
+    pairs: *id006
+  explanation: Modern device programmability centers on YANG models and management protocols.
+  references:
+  - CCNA 6.1
+- id: ccna-6-006
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which encoding is traditional for NETCONF messages?
+  choices:
+  - id: a
+    text: XML
+    rationale: NETCONF XML.
+  - id: b
+    text: Only protobuf exclusive
+    rationale: gNMI often.
+  - id: c
+    text: Only CSV
+    rationale: No.
+  - id: d
+    text: Only YAML required
+    rationale: Ansible style.
+  correct:
+    answer: a
+  explanation: NETCONF XML.
+  references:
+  - CCNA 6.1
+- id: ccna-6-007
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: HTTP status 401 typically means?
+  choices:
+  - id: a
+    text: Unauthorized
+    rationale: Auth required/failed.
+  - id: b
+    text: OK
+    rationale: '200.'
+  - id: c
+    text: Not Found
+    rationale: '404.'
+  - id: d
+    text: Server Error
+    rationale: 5xx.
+  correct:
+    answer: a
+  explanation: Auth required/failed.
+  references:
+  - CCNA 6.2
+- id: ccna-6-008
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: In JSON, a boolean true is written how?
+  choices:
+  - id: a
+    text: true (lowercase)
+    rationale: JSON literals.
+  - id: b
+    text: True (Python style only)
+    rationale: Not JSON.
+  - id: c
+    text: 'TRUE'
+    rationale: Not JSON.
+  - id: d
+    text: 1 as only legal form
+    rationale: Numbers differ.
+  correct:
+    answer: a
+  explanation: JSON literals.
+  references:
+  - CCNA 6.3
+- id: ccna-6-009
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: CI/CD in network automation often validates configs before?
+  choices:
+  - id: a
+    text: Deployment to production
+    rationale: Pipeline gates.
+  - id: b
+    text: Only cable testing
+    rationale: Physical.
+  - id: c
+    text: Only STP elections
+    rationale: L2.
+  - id: d
+    text: Only DHCP Discover
+    rationale: Services.
+  correct:
+    answer: a
+  explanation: Pipeline gates.
+  references:
+  - CCNA 6.4
+- id: ccna-6-010
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: CRUD stands for?
+  choices:
+  - id: a
+    text: Create, Read, Update, Delete
+    rationale: API ops.
+  - id: b
+    text: CPU, RAM, Uplink, Disk
+    rationale: No.
+  - id: c
+    text: Cisco Routing Update Daemon
+    rationale: No.
+  - id: d
+    text: Classful Routing Under Demand
+    rationale: No.
+  correct:
+    answer: a
+  explanation: API ops.
+  references:
+  - CCNA 6.1
+- id: ccna-6-011
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which header often carries a REST API token?
+  choices:
+  - id: a
+    text: Authorization
+    rationale: Bearer tokens common.
+  - id: b
+    text: Only X-STP-Root
+    rationale: No.
+  - id: c
+    text: Only Via OSPF
+    rationale: No.
+  - id: d
+    text: 'Only Server: nginx required'
+    rationale: Response.
+  correct:
+    answer: a
+  explanation: Bearer tokens common.
+  references:
+  - CCNA 6.2
+- id: ccna-6-012
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: XML requires which characteristic that JSON does not?
+  choices:
+  - id: a
+    text: Matching open/close tags (well-formed tree)
+    rationale: XML structure.
+  - id: b
+    text: Only trailing commas required
+    rationale: JSON forbids trailing commas.
+  - id: c
+    text: Only binary length prefixes
+    rationale: Other.
+  - id: d
+    text: Only MAC addresses
+    rationale: No.
+  correct:
+    answer: a
+  explanation: XML structure.
+  references:
+  - CCNA 6.3

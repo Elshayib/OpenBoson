@@ -1,9 +1,8 @@
 """OpenBoson main window — sidebar navigation + stacked content pages.
 
-The window hosts the static pages (Dashboard, Exams, Labs, Stats, Settings)
-and transient exam pages (session, result, review) that are pushed onto the
-stack when the user starts an exam. The Exams page raises ``exam_selected``
-to kick off an exam session.
+The window hosts the static pages (Dashboard, Practice, Labs, Stats, Settings)
+and transient exam/practice pages that are pushed onto the stack when the user
+starts studying or taking an exam.
 """
 
 from __future__ import annotations
@@ -20,12 +19,14 @@ from PySide6.QtWidgets import (
 )
 
 from openboson import __version__
+from openboson.bank_schema import Question
 from openboson.exsim.scoring import ExamResult
 from openboson.exsim.session import ExamSession
 from openboson.gui.pages import (
     DashboardPage,
 )
-from openboson.gui.pages.exam_list_page import ExamListPage
+from openboson.gui.pages.practice_page import PracticePage
+from openboson.gui.pages.practice_question_page import PracticeQuestionPage
 from openboson.gui.pages.exam_result_page import ExamResultPage
 from openboson.gui.pages.exam_review_page import ExamReviewPage
 from openboson.gui.pages.exam_session_page import ExamSessionPage
@@ -40,10 +41,9 @@ from openboson.netsim.session import LabResult, LabSession
 class MainWindow(QMainWindow):
     """Primary application window with a sidebar and stacked content area."""
 
-    # Static nav pages (always present).
     STATIC_PAGES: list[tuple[str, type]] = [
         ("Dashboard", DashboardPage),
-        ("Exams", ExamListPage),
+        ("Practice", PracticePage),
         ("Labs", LabListPage),
         ("Stats", StatsPage),
         ("Settings", SettingsPage),
@@ -90,30 +90,31 @@ class MainWindow(QMainWindow):
             page = cls()
             self._static_pages[label] = page
             self._stack.addWidget(page)
-        self._exams_page = self._static_pages["Exams"]
-        self._exams_page.set_on_exam_selected(self._on_exam_selected)
+        self._practice_page = self._static_pages["Practice"]
+        self._practice_page.set_on_practice_question(self._on_practice_question)
+        self._practice_page.set_on_start_exam(self._on_blueprint_exam)
 
-        # Transient exam pages (created on demand).
+        # Transient pages
+        self._practice_q_page = PracticeQuestionPage()
         self._session_page = ExamSessionPage()
         self._result_page = ExamResultPage()
         self._review_page = ExamReviewPage()
+        self._stack.addWidget(self._practice_q_page)
         self._stack.addWidget(self._session_page)
         self._stack.addWidget(self._result_page)
         self._stack.addWidget(self._review_page)
+        self._practice_q_page.set_on_back(self._go_to_practice)
         self._session_page.set_on_result(self._on_exam_result)
-        self._session_page.set_on_exit(self._go_to_exams)
+        self._session_page.set_on_exit(self._go_to_practice)
         self._result_page.set_on_review(self._on_review)
         self._result_page.set_on_retake(self._on_retake)
 
-        # Labs page (static) raises lab_selected -> lab session.
         self._labs_page = self._static_pages["Labs"]
         self._labs_page.set_on_lab_selected(self._on_lab_selected)
 
-        # Settings page raises theme_change -> re-apply stylesheet.
         self._settings_page = self._static_pages["Settings"]
         self._settings_page.set_on_theme_change(self._on_theme_changed)
 
-        # Transient lab pages (created on demand).
         self._lab_session_page = LabSessionPage()
         self._lab_result_page = LabResultPage()
         self._stack.addWidget(self._lab_session_page)
@@ -132,10 +133,9 @@ class MainWindow(QMainWindow):
         root.addWidget(self._stack, 1)
         self.setCentralWidget(central)
 
-        self.statusBar().showMessage(f"openboson {__version__}  •  CCNA 200-301 v1.1")
+        self.statusBar().showMessage(f"openboson {__version__}  •  CCNA / CCNP practice")
         self.apply_theme()
 
-    # -----/ Styling /-----
     def apply_theme(self, theme: str = "dark") -> None:
         from pathlib import Path
 
@@ -144,12 +144,8 @@ class MainWindow(QMainWindow):
             self.setStyleSheet(qss_path.read_text(encoding="utf-8"))
 
     def _on_theme_changed(self, theme: str) -> None:
-        """Re-apply stylesheet when the user changes the theme."""
-        # For now both themes use the same dark QSS; a light variant can be
-        # added later. This still validates the settings save/load cycle.
         self.apply_theme(theme)
 
-    # -----/ Navigation /-----
     def _on_nav_clicked(self, button: QPushButton) -> None:
         label = button.text()
         idx = next(
@@ -162,20 +158,20 @@ class MainWindow(QMainWindow):
             if page is not None and hasattr(page, "refresh"):
                 page.refresh()
 
-    def _go_to_exams(self) -> None:
-        # Switch to the Exams page and refresh its list.
-        idx = next(
-            i for i, (lbl, _c) in enumerate(self.STATIC_PAGES) if lbl == "Exams"
-        )
+    def _go_to_practice(self) -> None:
+        idx = next(i for i, (lbl, _c) in enumerate(self.STATIC_PAGES) if lbl == "Practice")
         self._stack.setCurrentIndex(idx)
-        self._exams_page.refresh()
-        # Reflect selection in the sidebar.
+        self._practice_page.refresh()
         for btn in self._nav_group.buttons():
-            if btn.text() == "Exams":
+            if btn.text() == "Practice":
                 btn.setChecked(True)
 
-    def _on_exam_selected(self, bank, mode) -> None:
-        self._session_page.start_exam(bank, mode=mode)
+    def _on_practice_question(self, question: Question) -> None:
+        self._practice_q_page.show_question(question)
+        self._stack.setCurrentWidget(self._practice_q_page)
+
+    def _on_blueprint_exam(self, session: ExamSession) -> None:
+        self._session_page.start_session(session)
         self._stack.setCurrentWidget(self._session_page)
 
     def _on_exam_result(self, session: ExamSession, result: ExamResult) -> None:
@@ -187,11 +183,20 @@ class MainWindow(QMainWindow):
         self._stack.setCurrentWidget(self._review_page)
 
     def _on_retake(self, session: ExamSession) -> None:
-        # Re-run the same bank in the same mode.
+        if session.blueprint_id:
+            from openboson.gui import engine
+
+            try:
+                new_session = engine.start_blueprint_exam(session.blueprint_id)
+            except Exception:
+                self._session_page.start_exam(session.exam, mode=session.mode)
+            else:
+                self._session_page.start_session(new_session)
+                self._stack.setCurrentWidget(self._session_page)
+                return
         self._session_page.start_exam(session.exam, mode=session.mode)
         self._stack.setCurrentWidget(self._session_page)
 
-    # -----/ Lab handlers /-----
     def _on_lab_selected(self, lab) -> None:
         self._lab_session_page.start_lab(lab)
         self._stack.setCurrentWidget(self._lab_session_page)
@@ -204,7 +209,6 @@ class MainWindow(QMainWindow):
         self._lab_session_page.start_lab(session.lab)
         self._stack.setCurrentWidget(self._lab_session_page)
 
-    # -----/ Test hooks /-----
     def visible_page_label(self) -> str:
         widget = self._stack.currentWidget()
         return getattr(widget, "title", widget.__class__.__name__)
@@ -218,7 +222,9 @@ class MainWindow(QMainWindow):
         raise KeyError(f"No page named {label!r}")
 
     def start_exam_from_list(self, bank, mode) -> None:
-        self._on_exam_selected(bank, mode)
+        """Test helper: start a bank exam session."""
+        self._session_page.start_exam(bank, mode=mode)
+        self._stack.setCurrentWidget(self._session_page)
 
     def start_lab_from_list(self, lab) -> None:
         self._on_lab_selected(lab)

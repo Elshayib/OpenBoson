@@ -20,6 +20,7 @@ from openboson.models import (
     ExamSession as ExamSessionORM,
     LabSession as LabSessionORM,
     LabStep,
+    PracticeAttempt,
     User,
     UserAnswer,
 )
@@ -82,7 +83,7 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
             s.add(
                 UserAnswer(
                     session_id=orm.id,
-                    question_id=0,  # questions aren't persisted as rows yet
+                    question_id=None,  # questions aren't persisted as rows yet
                     answer_json=ans_json,
                     is_correct=is_correct,
                     time_spent_seconds=int(ua.time_spent_seconds) if ua else 0,
@@ -92,9 +93,9 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
         return orm.id
 
 
-def _exam_id_or_zero(s: Session, exam_code: str) -> int:
-    """We don't persist Exam rows for bundled banks yet; use 0 as sentinel."""
-    return 0
+def _exam_id_or_zero(s: Session, exam_code: str) -> int | None:
+    """Bundled banks are not persisted as Exam rows yet."""
+    return None
 
 
 # -----/ Lab persistence /-----
@@ -230,3 +231,51 @@ def lab_summary() -> dict[str, Any]:
             "total_labs": total,
             "avg_score": avg_score,
         }
+
+
+# -----/ Practice attempts /-----
+@dataclass
+class QuestionStat:
+    """Aggregated practice history for one bank question id."""
+
+    question_id: str
+    seen: int = 0
+    misses: int = 0
+    last_correct: bool | None = None
+
+    @property
+    def unseen(self) -> bool:
+        return self.seen == 0
+
+    @property
+    def missed(self) -> bool:
+        return self.misses > 0
+
+
+def save_practice_attempt(question_id: str, is_correct: bool) -> int:
+    """Persist one Practice library Check. Returns the row id."""
+    user = get_or_create_default_user()
+    with _session() as s:
+        row = PracticeAttempt(
+            user_id=user.id,
+            question_bank_id=question_id,
+            is_correct=is_correct,
+            answered_at=datetime.now(timezone.utc),
+        )
+        s.add(row)
+        s.commit()
+        return row.id
+
+
+def question_stats_map() -> dict[str, QuestionStat]:
+    """Return per-question practice stats keyed by bank question id."""
+    with _session() as s:
+        rows = s.query(PracticeAttempt).order_by(PracticeAttempt.answered_at.asc()).all()
+        stats: dict[str, QuestionStat] = {}
+        for row in rows:
+            st = stats.setdefault(row.question_bank_id, QuestionStat(question_id=row.question_bank_id))
+            st.seen += 1
+            if not row.is_correct:
+                st.misses += 1
+            st.last_correct = row.is_correct
+        return stats

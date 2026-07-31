@@ -7,29 +7,30 @@ from PySide6.QtWidgets import QHBoxLayout, QLabel, QProgressBar, QWidget
 
 
 class TimerBar(QWidget):
-    """Shows elapsed or remaining time plus a question-progress bar.
+    """Shows remaining (or elapsed) time plus a question-progress bar.
 
-    The timer ticks every second. ``on_timeout`` is emitted when the limit
-    (if any) is reached.
+    When ``limit_minutes`` > 0 the label counts **down**. ``on_timeout`` is
+    called when the limit is reached.
     """
 
     def __init__(
         self, total_questions: int, limit_minutes: int = 0, parent: QWidget | None = None
     ) -> None:
         super().__init__(parent)
-        self._total = total_questions
+        self._total = max(total_questions, 1)
         self._limit_seconds = limit_minutes * 60
         self._elapsed = 0
+        self._countdown = self._limit_seconds > 0
 
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
 
-        self._time_label = QLabel("00:00")
-        self._time_label.setFixedWidth(70)
+        self._time_label = QLabel(self._format(self._limit_seconds if self._countdown else 0))
+        self._time_label.setFixedWidth(80)
         layout.addWidget(self._time_label)
 
         self._bar = QProgressBar()
-        self._bar.setRange(0, total_questions)
+        self._bar.setRange(0, self._total)
         self._bar.setValue(0)
         layout.addWidget(self._bar, 1)
 
@@ -53,15 +54,19 @@ class TimerBar(QWidget):
 
     def _tick(self) -> None:
         self._elapsed += 1
-        self._time_label.setText(self._format(self._elapsed))
-        if self._limit_seconds and self._elapsed >= self._limit_seconds:
-            self._timer.stop()
-            if self._on_timeout:
-                self._on_timeout()
+        if self._countdown:
+            remaining = max(0, self._limit_seconds - self._elapsed)
+            self._time_label.setText(self._format(remaining))
+            if remaining <= 0:
+                self._timer.stop()
+                if self._on_timeout:
+                    self._on_timeout()
+        else:
+            self._time_label.setText(self._format(self._elapsed))
 
     @staticmethod
     def _format(seconds: int) -> str:
-        m, s = divmod(seconds, 60)
+        m, s = divmod(max(0, seconds), 60)
         h, m = divmod(m, 60)
         if h:
             return f"{h:02d}:{m:02d}:{s:02d}"
@@ -69,3 +74,8 @@ class TimerBar(QWidget):
 
     def elapsed_seconds(self) -> int:
         return self._elapsed
+
+    def remaining_seconds(self) -> int | None:
+        if not self._countdown:
+            return None
+        return max(0, self._limit_seconds - self._elapsed)

@@ -1,0 +1,2831 @@
+title: OpenBoson ENCOR Question Pool
+code: pool-encor
+version: v1.1
+provider: openboson
+description: Original OpenBoson CCNP ENCOR-tagged practice questions. Not affiliated with Cisco or Boson.
+pass_score: 0.825
+time_limit_minutes: 120
+topics:
+- code: '1.0'
+  name: Architecture
+  weight: 0.15
+- code: '2.0'
+  name: Virtualization
+  weight: 0.2
+- code: '3.0'
+  name: Infrastructure
+  weight: 0.2
+- code: '4.0'
+  name: Network Assurance
+  weight: 0.15
+- code: '5.0'
+  name: Security
+  weight: 0.2
+- code: '6.0'
+  name: Automation
+  weight: 0.1
+questions:
+- id: encor-1-001
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: &id001
+  - ccnp
+  stem: In a 3-tier campus, which layer typically aggregates access switches?
+  choices:
+  - id: a
+    text: Distribution
+    rationale: Distribution aggregates access and applies policy toward core.
+  - id: b
+    text: Core
+    rationale: Distractor.
+  - id: c
+    text: Access
+    rationale: Distractor.
+  - id: d
+    text: WAN edge
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Distribution aggregates access and applies policy toward core.
+  references:
+  - ENCOR 1.1
+- id: encor-1-002
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Cisco SD-Access fabric uses which overlay identifier commonly?
+  choices:
+  - id: a
+    text: LISP / VXLAN (VNI) concepts
+    rationale: SD-Access uses LISP control and VXLAN data plane overlays.
+  - id: b
+    text: Only Frame Relay DLCI
+    rationale: Distractor.
+  - id: c
+    text: Only ATM VPI
+    rationale: Distractor.
+  - id: d
+    text: Only HDLC
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: SD-Access uses LISP control and VXLAN data plane overlays.
+  references:
+  - ENCOR 1.2
+- id: encor-1-003
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A spine-leaf Clos fabric primarily optimizes which traffic pattern?
+  choices:
+  - id: a
+    text: East-west
+    rationale: Leaf-spine equalizes east-west paths.
+  - id: b
+    text: Only north-south dialup
+    rationale: Distractor.
+  - id: c
+    text: Only Token Ring
+    rationale: Distractor.
+  - id: d
+    text: Only serial TDM
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Leaf-spine equalizes east-west paths.
+  references:
+  - ENCOR 1.3
+- id: encor-1-004
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Cisco DNA Center (Catalyst Center) is primarily a?
+  choices:
+  - id: a
+    text: Controller / assurance platform
+    rationale: It orchestrates and assures enterprise fabrics.
+  - id: b
+    text: Only a packet broker
+    rationale: Distractor.
+  - id: c
+    text: Only an IGP
+    rationale: Distractor.
+  - id: d
+    text: Only a WLC chipset
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: It orchestrates and assures enterprise fabrics.
+  references:
+  - ENCOR 1.4
+- id: encor-1-005
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which design separates underlay reachability from overlay services?
+  choices:
+  - id: a
+    text: Fabric overlay/underlay
+    rationale: Underlay provides IP reachability; overlay carries endpoints/services.
+  - id: b
+    text: Only flat L2 everywhere
+    rationale: Distractor.
+  - id: c
+    text: Only hub-spoke Frame Relay
+    rationale: Distractor.
+  - id: d
+    text: Only static default only
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Underlay provides IP reachability; overlay carries endpoints/services.
+  references:
+  - ENCOR 1.5
+- id: encor-1-006
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: SSO/NSF on dual supervisors primarily aims to?
+  choices:
+  - id: a
+    text: Minimize disruption on switchover
+    rationale: Stateful switchover with NSF keeps forwarding during RP failover.
+  - id: b
+    text: Increase STP diameter only
+    rationale: Distractor.
+  - id: c
+    text: Disable CEF
+    rationale: Distractor.
+  - id: d
+    text: Force process switching
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Stateful switchover with NSF keeps forwarding during RP failover.
+  references:
+  - ENCOR 1.1
+- id: encor-1-007
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: VRF-lite on a PE-less enterprise edge provides?
+  choices:
+  - id: a
+    text: Device-local routing separation
+    rationale: VRF-lite separates RIB/FIB without requiring MPLS.
+  - id: b
+    text: Only MPLS labels mandatory
+    rationale: Distractor.
+  - id: c
+    text: Only NAT
+    rationale: Distractor.
+  - id: d
+    text: Only QoS marking
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: VRF-lite separates RIB/FIB without requiring MPLS.
+  references:
+  - ENCOR 1.2
+- id: encor-1-008
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: An anycast gateway in fabric means?
+  choices:
+  - id: a
+    text: Same gateway IP on multiple leaves
+    rationale: Anycast SVI provides local gateway on each leaf.
+  - id: b
+    text: Unique gateway per VLAN only globally
+    rationale: Distractor.
+  - id: c
+    text: Only HSRP v1 required
+    rationale: Distractor.
+  - id: d
+    text: Only GLBP
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Anycast SVI provides local gateway on each leaf.
+  references:
+  - ENCOR 1.3
+- id: encor-1-009
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Cisco SD-WAN vManage is responsible for?
+  choices:
+  - id: a
+    text: Centralized management/orchestration
+    rationale: vManage manages SD-WAN fabric policies and devices.
+  - id: b
+    text: Only BFD sessions
+    rationale: Distractor.
+  - id: c
+    text: Only OSPF DR election
+    rationale: Distractor.
+  - id: d
+    text: Only PoE budgeting
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: vManage manages SD-WAN fabric policies and devices.
+  references:
+  - ENCOR 1.4
+- id: encor-1-010
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A collapsed core design merges which layers?
+  choices:
+  - id: a
+    text: Core and distribution
+    rationale: Collapsed core combines core+distribution functions.
+  - id: b
+    text: Only access and WAN
+    rationale: Distractor.
+  - id: c
+    text: Only wireless and firewall
+    rationale: Distractor.
+  - id: d
+    text: Only DNS and DHCP
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Collapsed core combines core+distribution functions.
+  references:
+  - ENCOR 1.5
+- id: encor-1-011
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: ECMP in underlay typically requires?
+  choices:
+  - id: a
+    text: Equal-cost paths installed
+    rationale: Equal-cost multipath load-shares across equal metrics.
+  - id: b
+    text: Only single best path always
+    rationale: Distractor.
+  - id: c
+    text: Only policy routing
+    rationale: Distractor.
+  - id: d
+    text: Only spanning tree
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Equal-cost multipath load-shares across equal metrics.
+  references:
+  - ENCOR 1.1
+- id: encor-1-012
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: LISP EID vs RLOC roles?
+  choices:
+  - id: a
+    text: Endpoint IDs vs routing locators
+    rationale: LISP separates identity (EID) from location (RLOC).
+  - id: b
+    text: Only VLAN vs VXLAN
+    rationale: Distractor.
+  - id: c
+    text: Only AS vs community
+    rationale: Distractor.
+  - id: d
+    text: Only DSCP vs CoS
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: LISP separates identity (EID) from location (RLOC).
+  references:
+  - ENCOR 1.2
+- id: encor-1-013
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: ToR switch in leaf-spine is typically a?
+  choices:
+  - id: a
+    text: Leaf
+    rationale: Top-of-rack leaves connect servers to spines.
+  - id: b
+    text: Spine only
+    rationale: Distractor.
+  - id: c
+    text: Route reflector only
+    rationale: Distractor.
+  - id: d
+    text: WAN edge only
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Top-of-rack leaves connect servers to spines.
+  references:
+  - ENCOR 1.3
+- id: encor-1-014
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Assurance in Cisco platforms often relies on?
+  choices:
+  - id: a
+    text: Telemetry / streaming data
+    rationale: Streaming telemetry feeds assurance analytics.
+  - id: b
+    text: Only daily clear counters
+    rationale: Distractor.
+  - id: c
+    text: Only disabling CDP
+    rationale: Distractor.
+  - id: d
+    text: Only static ARP
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Streaming telemetry feeds assurance analytics.
+  references:
+  - ENCOR 1.4
+- id: encor-1-015
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A dual-homed server to two leaves is an example of?
+  choices:
+  - id: a
+    text: Redundant leaf attachment
+    rationale: Servers dual-attach for redundancy.
+  - id: b
+    text: Single point of failure required
+    rationale: Distractor.
+  - id: c
+    text: Only port security sticky
+    rationale: Distractor.
+  - id: d
+    text: Only VTP client
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Servers dual-attach for redundancy.
+  references:
+  - ENCOR 1.5
+- id: encor-1-016
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Campus QoS trust boundary is often at?
+  choices:
+  - id: a
+    text: Access edge / IP phone
+    rationale: Trust and classify near the edge.
+  - id: b
+    text: Only ISP core
+    rationale: Distractor.
+  - id: c
+    text: Only DNS root
+    rationale: Distractor.
+  - id: d
+    text: Only BGP RR
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Trust and classify near the edge.
+  references:
+  - ENCOR 1.1
+- id: encor-1-017
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Cisco StackWise / StackWise Virtual primarily provides?
+  choices:
+  - id: a
+    text: Control-plane and forwarding abstraction across members
+    rationale: Stacking presents multiple chassis as one logical switch.
+  - id: b
+    text: Only wireless mesh
+    rationale: Distractor.
+  - id: c
+    text: Only MPLS TE
+    rationale: Distractor.
+  - id: d
+    text: Only NetFlow export
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Stacking presents multiple chassis as one logical switch.
+  references:
+  - ENCOR 1.2
+- id: encor-1-018
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: BFD is used with routing to?
+  choices:
+  - id: a
+    text: Fast failure detection
+    rationale: Bidirectional Forwarding Detection accelerates convergence.
+  - id: b
+    text: Encrypt payloads
+    rationale: Distractor.
+  - id: c
+    text: Assign VLANs
+    rationale: Distractor.
+  - id: d
+    text: Terminate VXLAN only
+    rationale: Distractor.
+  correct:
+    answer: a
+  explanation: Bidirectional Forwarding Detection accelerates convergence.
+  references:
+  - ENCOR 1.3
+- id: encor-2-001
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Type 1 hypervisor runs where?
+  choices:
+  - id: a
+    text: On bare metal
+    rationale: Bare-metal hypervisors sit on hardware.
+  - id: b
+    text: Only inside a guest OS as Type 2 exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only on printers
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only in STP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Bare-metal hypervisors sit on hardware.
+  references:
+  - ENCOR 2.1
+- id: encor-2-002
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: VXLAN uses which outer transport commonly?
+  choices:
+  - id: a
+    text: UDP
+    rationale: VXLAN encapsulates Ethernet in UDP.
+  - id: b
+    text: Only ICMP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP BPDUs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only ARP exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VXLAN encapsulates Ethernet in UDP.
+  references:
+  - ENCOR 2.2
+- id: encor-2-003
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: VNI in VXLAN identifies?
+  choices:
+  - id: a
+    text: Overlay segment
+    rationale: VNI separates overlay networks.
+  - id: b
+    text: Only physical port
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BGP ASN
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CoS bit
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VNI separates overlay networks.
+  references:
+  - ENCOR 2.3
+- id: encor-2-004
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: OTV is primarily used to?
+  choices:
+  - id: a
+    text: Extend L2 over L3 DCI
+    rationale: Overlay Transport Virtualization for L2 DCI.
+  - id: b
+    text: Replace OSPF entirely
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Encrypt wireless only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Terminate PPPoE
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Overlay Transport Virtualization for L2 DCI.
+  references:
+  - ENCOR 2.4
+- id: encor-2-005
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Containers share which with the host?
+  choices:
+  - id: a
+    text: Kernel
+    rationale: Containers share the host kernel.
+  - id: b
+    text: Only entire guest kernel always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BIOS
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only ASIC TCAM exclusively
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Containers share the host kernel.
+  references:
+  - ENCOR 2.1
+- id: encor-2-006
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: EVPN often provides control plane for?
+  choices:
+  - id: a
+    text: VXLAN overlays
+    rationale: BGP EVPN advertises overlay reachability.
+  - id: b
+    text: Only dialer maps
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only ISDN
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only HDLC keepalives
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: BGP EVPN advertises overlay reachability.
+  references:
+  - ENCOR 2.2
+- id: encor-2-007
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A VTEP is?
+  choices:
+  - id: a
+    text: VXLAN tunnel endpoint
+    rationale: VTEPs encapsulate/decapsulate VXLAN.
+  - id: b
+    text: Only STP root
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only DHCP server
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only syslog host
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VTEPs encapsulate/decapsulate VXLAN.
+  references:
+  - ENCOR 2.3
+- id: encor-2-008
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SR-IOV improves VM I/O by?
+  choices:
+  - id: a
+    text: Exposing PCI VFs to guests
+    rationale: Single Root I/O Virtualization.
+  - id: b
+    text: Disabling all NICs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Forcing process switching
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Removing VLAN tags always
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Single Root I/O Virtualization.
+  references:
+  - ENCOR 2.4
+- id: encor-2-009
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: vSwitch resides typically?
+  choices:
+  - id: a
+    text: In the hypervisor host
+    rationale: Virtual switches connect VM NICs.
+  - id: b
+    text: Only on the ISP PE
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only in DNS
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only in NTP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Virtual switches connect VM NICs.
+  references:
+  - ENCOR 2.1
+- id: encor-2-010
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Geneve is?
+  choices:
+  - id: a
+    text: An overlay encapsulation protocol
+    rationale: Geneve is a flexible overlay header.
+  - id: b
+    text: A Cisco FHRP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: An STP variant
+    rationale: Not correct for this scenario.
+  - id: d
+    text: A AAA protocol
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Geneve is a flexible overlay header.
+  references:
+  - ENCOR 2.2
+- id: encor-2-011
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Flood-and-learn VXLAN relies on?
+  choices:
+  - id: a
+    text: Data-plane learning / multicast or head-end replication
+    rationale: Without EVPN, flooding discovers endpoints.
+  - id: b
+    text: Only static ARP forever without flooding
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only RIP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Telnet
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Without EVPN, flooding discovers endpoints.
+  references:
+  - ENCOR 2.3
+- id: encor-2-012
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: NFV relocates functions from appliances to?
+  choices:
+  - id: a
+    text: Virtualized software workloads
+    rationale: Network Functions Virtualization.
+  - id: b
+    text: Only analog modems
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only L1 repeaters
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only punch-down blocks
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Network Functions Virtualization.
+  references:
+  - ENCOR 2.4
+- id: encor-2-013
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Live migration of VMs requires?
+  choices:
+  - id: a
+    text: Shared storage / network reachability design
+    rationale: vMotion-style moves need connectivity design.
+  - id: b
+    text: Only changing STP priority
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling IP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only removing default route
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: vMotion-style moves need connectivity design.
+  references:
+  - ENCOR 2.1
+- id: encor-2-014
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Underlay MTU for VXLAN must account for?
+  choices:
+  - id: a
+    text: Encapsulation overhead
+    rationale: Outer headers need headroom.
+  - id: b
+    text: Only reducing MTU below 576 always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only IPv4 options mandatory
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only disabling jumbo
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Outer headers need headroom.
+  references:
+  - ENCOR 2.2
+- id: encor-2-015
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Anycast VTEP IP can help?
+  choices:
+  - id: a
+    text: Active-active leaf load distribution
+    rationale: Anycast VTEPs distribute encap load.
+  - id: b
+    text: Break all overlays intentionally
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Replace DNS
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Disable BGP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Anycast VTEPs distribute encap load.
+  references:
+  - ENCOR 2.3
+- id: encor-2-016
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Docker images package?
+  choices:
+  - id: a
+    text: Application + dependencies
+    rationale: Container images bundle app deps.
+  - id: b
+    text: Only switch IOS images
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BGP tables
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only TCAM dumps
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Container images bundle app deps.
+  references:
+  - ENCOR 2.4
+- id: encor-2-017
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Hypervisor escape is a?
+  choices:
+  - id: a
+    text: Security risk class
+    rationale: Guest breakout to host is critical risk.
+  - id: b
+    text: Routing metric
+    rationale: Not correct for this scenario.
+  - id: c
+    text: STP state
+    rationale: Not correct for this scenario.
+  - id: d
+    text: QoS PHB
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Guest breakout to host is critical risk.
+  references:
+  - ENCOR 2.1
+- id: encor-2-018
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: MPLS L3VPN uses which labels conceptually?
+  choices:
+  - id: a
+    text: VPN + transport labels
+    rationale: Two-label stack classic model.
+  - id: b
+    text: Only VLAN IDs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only SSIDs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only UDP ports as labels
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Two-label stack classic model.
+  references:
+  - ENCOR 2.2
+- id: encor-2-019
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Bridge domain in ACI-like fabrics groups?
+  choices:
+  - id: a
+    text: Endpoints in an L2 domain
+    rationale: L2 flooding domain abstraction.
+  - id: b
+    text: Only OSPF areas
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NTP strata
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SNMP communities
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: L2 flooding domain abstraction.
+  references:
+  - ENCOR 2.3
+- id: encor-2-020
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Service chaining inserts?
+  choices:
+  - id: a
+    text: Ordered virtual network functions
+    rationale: Traffic steered through VNFs.
+  - id: b
+    text: Only random ACLs without order
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP blockers
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only cable colors
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Traffic steered through VNFs.
+  references:
+  - ENCOR 2.4
+- id: encor-2-021
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Paravirtualization drivers improve?
+  choices:
+  - id: a
+    text: I/O performance awareness
+    rationale: Virtio-style drivers cooperate with hypervisor.
+  - id: b
+    text: Only cable length
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE watts
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DNS TTL
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Virtio-style drivers cooperate with hypervisor.
+  references:
+  - ENCOR 2.1
+- id: encor-2-022
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: L2VPN VPLS emulates?
+  choices:
+  - id: a
+    text: A LAN across sites
+    rationale: VPLS multipoint L2 VPN.
+  - id: b
+    text: Only a serial leased line exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only dialer
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only console server
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VPLS multipoint L2 VPN.
+  references:
+  - ENCOR 2.2
+- id: encor-3-001
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: EIGRP composite metric traditionally uses?
+  choices:
+  - id: a
+    text: Bandwidth and delay (by default K values)
+    rationale: Classic EIGRP metric.
+  - id: b
+    text: Only hop count
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AS path
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP cost
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Classic EIGRP metric.
+  references:
+  - ENCOR 3.1
+- id: encor-3-002
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: OSPFv3 primarily routes?
+  choices:
+  - id: a
+    text: IPv6 (address-family designs)
+    rationale: OSPFv3 for IPv6.
+  - id: b
+    text: Only IPv4 classful
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only IPX
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only AppleTalk
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: OSPFv3 for IPv6.
+  references:
+  - ENCOR 3.2
+- id: encor-3-003
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: BGP path selection prefers higher?
+  choices:
+  - id: a
+    text: Local Preference (among early steps)
+    rationale: LOC_PREF is key enterprise knob.
+  - id: b
+    text: Always lowest MED first exclusively
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Always random
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Always IGP metric only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: LOC_PREF is key enterprise knob.
+  references:
+  - ENCOR 3.3
+- id: encor-3-004
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: IS-IS Level-1-2 router connects?
+  choices:
+  - id: a
+    text: L1 areas to L2 backbone
+    rationale: L1-L2 borders.
+  - id: b
+    text: Only VLANs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only wireless
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only AAA
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: L1-L2 borders.
+  references:
+  - ENCOR 3.4
+- id: encor-3-005
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: PIM Sparse Mode uses?
+  choices:
+  - id: a
+    text: RP for shared trees
+    rationale: ASM with Rendezvous Point.
+  - id: b
+    text: Only dense flood always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only HSRP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ASM with Rendezvous Point.
+  references:
+  - ENCOR 3.5
+- id: encor-3-006
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: EIGRP Feasible Distance is?
+  choices:
+  - id: a
+    text: Best metric to destination
+    rationale: FD is best known metric.
+  - id: b
+    text: Only AD
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only hop count
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only MTU
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: FD is best known metric.
+  references:
+  - ENCOR 3.1
+- id: encor-3-007
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: OSPFv2 network type point-to-point skips?
+  choices:
+  - id: a
+    text: DR/BDR election
+    rationale: No DR on p2p.
+  - id: b
+    text: All Hellos
+    rationale: Not correct for this scenario.
+  - id: c
+    text: All LSAs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Authentication always
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: No DR on p2p.
+  references:
+  - ENCOR 3.2
+- id: encor-3-008
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: BGP confederations reduce?
+  choices:
+  - id: a
+    text: iBGP full-mesh needs inside AS
+    rationale: Sub-AS confederations.
+  - id: b
+    text: IPv6 need
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Optical power
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Cable categories
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Sub-AS confederations.
+  references:
+  - ENCOR 3.3
+- id: encor-3-009
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: BFD with BGP helps?
+  choices:
+  - id: a
+    text: Sub-second failure detection
+    rationale: Fast session down.
+  - id: b
+    text: Encrypt NLRI
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Assign RD
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Create VRFs alone
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Fast session down.
+  references:
+  - ENCOR 3.4
+- id: encor-3-010
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: IGMP snooping constrains?
+  choices:
+  - id: a
+    text: Multicast flooding on L2
+    rationale: Switch learns multicast receivers.
+  - id: b
+    text: Unicast ARP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: NTP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Switch learns multicast receivers.
+  references:
+  - ENCOR 3.5
+- id: encor-3-011
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: EIGRP stub routers limit?
+  choices:
+  - id: a
+    text: Query scope
+    rationale: Stubs reduce SIA risk.
+  - id: b
+    text: Only hello timers to zero
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only bandwidth to 0
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only delay infinite always
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Stubs reduce SIA risk.
+  references:
+  - ENCOR 3.1
+- id: encor-3-012
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: NSSA in OSPF allows?
+  choices:
+  - id: a
+    text: Limited external injection into stub-like area
+    rationale: NSSA Type 7.
+  - id: b
+    text: Only Type 5 flood everywhere
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling ABR
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only RIP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: NSSA Type 7.
+  references:
+  - ENCOR 3.2
+- id: encor-3-013
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Route reflector clients peer with?
+  choices:
+  - id: a
+    text: RR (not full mesh among clients)
+    rationale: RR hierarchy.
+  - id: b
+    text: Every client mandatory mesh
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only eBGP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only OSPF
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: RR hierarchy.
+  references:
+  - ENCOR 3.3
+- id: encor-3-014
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: LDP distributes?
+  choices:
+  - id: a
+    text: MPLS labels
+    rationale: Label Distribution Protocol.
+  - id: b
+    text: Only BGP communities
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP BPDUs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DHCP options
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Label Distribution Protocol.
+  references:
+  - ENCOR 3.4
+- id: encor-3-015
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: MSDP interconnects?
+  choices:
+  - id: a
+    text: PIM domains’ RPs
+    rationale: Multicast Source Discovery.
+  - id: b
+    text: Only VLANs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AAA servers
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only syslog
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Multicast Source Discovery.
+  references:
+  - ENCOR 3.5
+- id: encor-3-016
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Named EIGRP mode configures?
+  choices:
+  - id: a
+    text: Address-families under eigrp NAME
+    rationale: Named mode AF.
+  - id: b
+    text: Only process numbers forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only RIP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only static
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Named mode AF.
+  references:
+  - ENCOR 3.1
+- id: encor-3-017
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: OSPFv3 instance ID distinguishes?
+  choices:
+  - id: a
+    text: Multiple instances on a link
+    rationale: Instance ID.
+  - id: b
+    text: Only VLAN IDs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only DSCP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only ASN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Instance ID.
+  references:
+  - ENCOR 3.2
+- id: encor-3-018
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: MED is typically compared when?
+  choices:
+  - id: a
+    text: From same neighboring AS (default)
+    rationale: MED multi-exit discriminator.
+  - id: b
+    text: Always across all AS freely without knob
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only for OSPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only for EIGRP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: MED multi-exit discriminator.
+  references:
+  - ENCOR 3.3
+- id: encor-3-019
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Segment Routing uses?
+  choices:
+  - id: a
+    text: SID labels/indices
+    rationale: SR-MPLS/SRv6.
+  - id: b
+    text: Only ATM cells
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only Frame Relay
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only X.25
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SR-MPLS/SRv6.
+  references:
+  - ENCOR 3.4
+- id: encor-3-020
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Anycast RP (MSDP) provides?
+  choices:
+  - id: a
+    text: RP redundancy
+    rationale: Anycast RP.
+  - id: b
+    text: Only unique RP mandatory single
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disables multicast
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only L2 flooding
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Anycast RP.
+  references:
+  - ENCOR 3.5
+- id: encor-3-021
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: EIGRP wide metrics support?
+  choices:
+  - id: a
+    text: Higher interface speeds accurately
+    rationale: Wide metrics.
+  - id: b
+    text: Only 10 Mbps max
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only Token Ring
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only ISDN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Wide metrics.
+  references:
+  - ENCOR 3.1
+- id: encor-3-022
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Graceful Restart for OSPF aims to?
+  choices:
+  - id: a
+    text: Preserve forwarding during restart
+    rationale: NSF/GR.
+  - id: b
+    text: Flush all routes immediately always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Disable BFD
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Clear ARP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: NSF/GR.
+  references:
+  - ENCOR 3.2
+- id: encor-4-001
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: NetFlow/IPFIX primarily exports?
+  choices:
+  - id: a
+    text: Traffic flow records
+    rationale: Flow telemetry.
+  - id: b
+    text: Only STP topology
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Flow telemetry.
+  references:
+  - ENCOR 4.1
+- id: encor-4-002
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SPAN mirrors traffic to?
+  choices:
+  - id: a
+    text: A destination analyzer port
+    rationale: Switched Port Analyzer.
+  - id: b
+    text: Only Null0
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only DHCP pool
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NTP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Switched Port Analyzer.
+  references:
+  - ENCOR 4.2
+- id: encor-4-003
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Cisco DNA Assurance uses?
+  choices:
+  - id: a
+    text: Telemetry and AI/ML insights
+    rationale: Assurance analytics.
+  - id: b
+    text: Only daily ping
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only cable testers
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only fluke only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Assurance analytics.
+  references:
+  - ENCOR 4.3
+- id: encor-4-004
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: ERSPAN carries mirrored traffic over?
+  choices:
+  - id: a
+    text: IP/GRE-like encapsulation
+    rationale: Encapsulated RSPAN.
+  - id: b
+    text: Only L1 copper always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only console
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only USB
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Encapsulated RSPAN.
+  references:
+  - ENCOR 4.4
+- id: encor-4-005
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: IP SLA can measure?
+  choices:
+  - id: a
+    text: Latency/jitter/loss probes
+    rationale: Synthetic probes.
+  - id: b
+    text: Only CPU temperature exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE draw exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only fan RPM exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Synthetic probes.
+  references:
+  - ENCOR 4.5
+- id: encor-4-006
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Flexible NetFlow adds?
+  choices:
+  - id: a
+    text: User-defined flow keys/fields
+    rationale: FNF customization.
+  - id: b
+    text: Only fixed v5 forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disables export
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: FNF customization.
+  references:
+  - ENCOR 4.1
+- id: encor-4-007
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: RSPAN uses?
+  choices:
+  - id: a
+    text: A special VLAN to carry mirrored frames
+    rationale: Remote SPAN VLAN.
+  - id: b
+    text: Only ERSPAN mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NetFlow
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only gRPC
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Remote SPAN VLAN.
+  references:
+  - ENCOR 4.2
+- id: encor-4-008
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Streaming telemetry prefers?
+  choices:
+  - id: a
+    text: Push model (e.g., gNMI/dial-out)
+    rationale: Push telemetry.
+  - id: b
+    text: Only 15-min SNMP poll exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only SYSLOG every packet
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Push telemetry.
+  references:
+  - ENCOR 4.3
+- id: encor-4-009
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Wireshark capture on SPAN should avoid?
+  choices:
+  - id: a
+    text: Oversubscribing analyzer links
+    rationale: Capacity planning.
+  - id: b
+    text: All filters forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: All timestamps
+    rationale: Not correct for this scenario.
+  - id: d
+    text: All PCAPs
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Capacity planning.
+  references:
+  - ENCOR 4.4
+- id: encor-4-010
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Twamp/IP SLA jitter tests help?
+  choices:
+  - id: a
+    text: Voice/video path quality
+    rationale: Jitter/latency.
+  - id: b
+    text: Only VLAN creation
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only ACL lines
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only VTP password
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Jitter/latency.
+  references:
+  - ENCOR 4.5
+- id: encor-4-011
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: NSEL on ASA-like platforms exports?
+  choices:
+  - id: a
+    text: Flow events related to firewall
+    rationale: NetFlow Security Event Logging.
+  - id: b
+    text: Only OSPF LSAs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only MAC tables
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SSID lists
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: NetFlow Security Event Logging.
+  references:
+  - ENCOR 4.1
+- id: encor-4-012
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Local SPAN limitation includes?
+  choices:
+  - id: a
+    text: Same switch typically
+    rationale: Classic SPAN locality.
+  - id: b
+    text: Only cross-continent mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only wireless exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only MPLS exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Classic SPAN locality.
+  references:
+  - ENCOR 4.2
+- id: encor-4-013
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: syslog-ng / enterprise logging often needs?
+  choices:
+  - id: a
+    text: Reliable transport and time sync
+    rationale: Logging architecture.
+  - id: b
+    text: Only cleartext UDP forever without design
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling NTP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only random clocks
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Logging architecture.
+  references:
+  - ENCOR 4.3
+- id: encor-4-014
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Packet capture on IOS-XE may use?
+  choices:
+  - id: a
+    text: Embedded packet capture (EPC)
+    rationale: EPC.
+  - id: b
+    text: Only SPAN exclusive always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NetFlow as PCAP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP dumps
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: EPC.
+  references:
+  - ENCOR 4.4
+- id: encor-4-015
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Model-driven telemetry sensors are defined via?
+  choices:
+  - id: a
+    text: YANG
+    rationale: YANG models.
+  - id: b
+    text: Only SNMP v1 exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only flat files exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CSV exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: YANG models.
+  references:
+  - ENCOR 4.5
+- id: encor-4-016
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: sFlow samples?
+  choices:
+  - id: a
+    text: Packets/flows on switches
+    rationale: sFlow sampling.
+  - id: b
+    text: Only full payloads always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only routing tables
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only AAA
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: sFlow sampling.
+  references:
+  - ENCOR 4.1
+- id: encor-4-017
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Monitor session destination should be?
+  choices:
+  - id: a
+    text: No learning / analyzer ready
+    rationale: Analyzer port design.
+  - id: b
+    text: A user access VLAN normal
+    rationale: Not correct for this scenario.
+  - id: c
+    text: A trunk to end PC without care
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Null0
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Analyzer port design.
+  references:
+  - ENCOR 4.2
+- id: encor-4-018
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Cisco ThousandEyes is used for?
+  choices:
+  - id: a
+    text: Digital experience / path visibility
+    rationale: Internet/WAN visibility.
+  - id: b
+    text: Only L2 loop free
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only stacking cables
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Internet/WAN visibility.
+  references:
+  - ENCOR 4.3
+- id: encor-5-001
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Cisco TrustSec uses SGTs for?
+  choices:
+  - id: a
+    text: Group-based policy
+    rationale: Security Group Tags.
+  - id: b
+    text: Only STP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP version
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Security Group Tags.
+  references:
+  - ENCOR 5.1
+- id: encor-5-002
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: MACsec provides?
+  choices:
+  - id: a
+    text: Hop-by-hop L2 encryption
+    rationale: 802.1AE.
+  - id: b
+    text: Only L3 IPsec exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only TLS to websites
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only WEP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: 802.1AE.
+  references:
+  - ENCOR 5.2
+- id: encor-5-003
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: CoPP protects?
+  choices:
+  - id: a
+    text: The control plane CPU
+    rationale: Control Plane Policing.
+  - id: b
+    text: Only data plane TCAM exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only fans
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Control Plane Policing.
+  references:
+  - ENCOR 5.3
+- id: encor-5-004
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: uRPF helps mitigate?
+  choices:
+  - id: a
+    text: Spoofed source IPs
+    rationale: Unicast RPF.
+  - id: b
+    text: Only STP loops
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only Wi-Fi roaming
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DNS NXDOMAIN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Unicast RPF.
+  references:
+  - ENCOR 5.4
+- id: encor-5-005
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: ISE primarily provides?
+  choices:
+  - id: a
+    text: AAA / policy / profiling
+    rationale: Identity Services Engine.
+  - id: b
+    text: Only routing
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only switching ASICs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only optics
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Identity Services Engine.
+  references:
+  - ENCOR 5.5
+- id: encor-5-006
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: CTS environment data includes?
+  choices:
+  - id: a
+    text: SGT mappings / policy
+    rationale: TrustSec env data.
+  - id: b
+    text: Only OSPF costs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only EIGRP K
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only BGP MED
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: TrustSec env data.
+  references:
+  - ENCOR 5.1
+- id: encor-5-007
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: 802.1X open authentication mode allows?
+  choices:
+  - id: a
+    text: Traffic before success (with care)
+    rationale: Open mode.
+  - id: b
+    text: Only full block always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only MAB disable forever
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only no RADIUS
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Open mode.
+  references:
+  - ENCOR 5.2
+- id: encor-5-008
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: iACL on a router is?
+  choices:
+  - id: a
+    text: Infrastructure ACL protecting the device
+    rationale: Infra ACL.
+  - id: b
+    text: Only user web ACL
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NAT pool
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PBR set
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Infra ACL.
+  references:
+  - ENCOR 5.3
+- id: encor-5-009
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: DHCP snooping + DAI together stop?
+  choices:
+  - id: a
+    text: ARP spoofing more effectively
+    rationale: Binding-based ARP check.
+  - id: b
+    text: Only BGP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only OSPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only EIGRP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Binding-based ARP check.
+  references:
+  - ENCOR 5.4
+- id: encor-5-010
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: EAP-TLS uses?
+  choices:
+  - id: a
+    text: Client and server certificates
+    rationale: Strong EAP method.
+  - id: b
+    text: Only PAP passwords exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only clear WEP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Telnet
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Strong EAP method.
+  references:
+  - ENCOR 5.5
+- id: encor-5-011
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SXP protocol shares?
+  choices:
+  - id: a
+    text: IP-SGT bindings
+    rationale: SGT Exchange Protocol.
+  - id: b
+    text: Only MAC tables
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only LLDP alone
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NTP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SGT Exchange Protocol.
+  references:
+  - ENCOR 5.1
+- id: encor-5-012
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: MAB authenticates?
+  choices:
+  - id: a
+    text: Devices by MAC when 802.1X fails/unsupported
+    rationale: MAC Authentication Bypass.
+  - id: b
+    text: Only users with certs exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only OSPF neighbors
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only BGP peers
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: MAC Authentication Bypass.
+  references:
+  - ENCOR 5.2
+- id: encor-5-013
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: CPU punt path abuse is mitigated by?
+  choices:
+  - id: a
+    text: CoPP / hardware rate limiters
+    rationale: Protect punt.
+  - id: b
+    text: Only increasing STP diameter
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling CEF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only clear arp
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Protect punt.
+  references:
+  - ENCOR 5.3
+- id: encor-5-014
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: IPsec IKEv2 improves on IKEv1 with?
+  choices:
+  - id: a
+    text: Fewer exchanges / EAP integration etc.
+    rationale: IKEv2 benefits.
+  - id: b
+    text: Only more aggressive mode mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AH exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DES forced
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: IKEv2 benefits.
+  references:
+  - ENCOR 5.4
+- id: encor-5-015
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: TACACS+ command authorization can?
+  choices:
+  - id: a
+    text: Permit/deny per command
+    rationale: Command authz.
+  - id: b
+    text: Only authenticate without authz
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only encrypt STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only mark DSCP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Command authz.
+  references:
+  - ENCOR 5.5
+- id: encor-5-016
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: SGACL enforces?
+  choices:
+  - id: a
+    text: Downloadable group policy on data plane
+    rationale: Security group ACLs.
+  - id: b
+    text: Only VTY passwords
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only enable secret
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only banner motd
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Security group ACLs.
+  references:
+  - ENCOR 5.1
+- id: encor-5-017
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: WebAuth often used for?
+  choices:
+  - id: a
+    text: Guest / BYOD captive portal
+    rationale: Central Web Authentication.
+  - id: b
+    text: Only underlay BFD
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only LDP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only MSDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Central Web Authentication.
+  references:
+  - ENCOR 5.2
+- id: encor-5-018
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Reconnaissance filtering at edge often uses?
+  choices:
+  - id: a
+    text: ACLs / firewalls / IPS
+    rationale: Edge filtering.
+  - id: b
+    text: Only increasing hello timers
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling NTP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only removing loopbacks
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Edge filtering.
+  references:
+  - ENCOR 5.3
+- id: encor-5-019
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: GETVPN uses?
+  choices:
+  - id: a
+    text: Group keys for any-to-any WAN encryption
+    rationale: Group Encrypted Transport.
+  - id: b
+    text: Only DMVPN Phase 1 exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only SSL portal exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only L2TP exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Group Encrypted Transport.
+  references:
+  - ENCOR 5.4
+- id: encor-5-020
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: pxGrid shares?
+  choices:
+  - id: a
+    text: Context between security platforms
+    rationale: Platform Exchange Grid.
+  - id: b
+    text: Only VLANs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Platform Exchange Grid.
+  references:
+  - ENCOR 5.5
+- id: encor-5-021
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Dynamic SGT assignment can come from?
+  choices:
+  - id: a
+    text: ISE authorization results
+    rationale: AAA-driven SGT.
+  - id: b
+    text: Only static route
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only OSPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only EIGRP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: AAA-driven SGT.
+  references:
+  - ENCOR 5.1
+- id: encor-5-022
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Fail-open vs fail-closed 802.1X is a?
+  choices:
+  - id: a
+    text: Availability vs security tradeoff
+    rationale: Design decision.
+  - id: b
+    text: Only spanning-tree choice
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only EtherChannel hash
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only MTU
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Design decision.
+  references:
+  - ENCOR 5.2
+- id: encor-6-001
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Model-driven programmability centers on?
+  choices:
+  - id: a
+    text: YANG data models
+    rationale: YANG.
+  - id: b
+    text: Only TCL exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only expect scripts exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only macros exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: YANG.
+  references:
+  - ENCOR 6.1
+- id: encor-6-002
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: gRPC often transports?
+  choices:
+  - id: a
+    text: gNMI telemetry/config
+    rationale: gRPC Network Management Interface.
+  - id: b
+    text: Only Telnet
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: gRPC Network Management Interface.
+  references:
+  - ENCOR 6.2
+- id: encor-6-003
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Ansible inventory defines?
+  choices:
+  - id: a
+    text: Hosts/groups variables
+    rationale: Inventory.
+  - id: b
+    text: Only TCAM
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only FIB
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only RIB
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Inventory.
+  references:
+  - ENCOR 6.3
+- id: encor-6-004
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Python requests library is commonly used for?
+  choices:
+  - id: a
+    text: REST API calls
+    rationale: HTTP APIs.
+  - id: b
+    text: Only SNMP polling exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only spanning tree
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only cable test
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: HTTP APIs.
+  references:
+  - ENCOR 6.4
+- id: encor-6-005
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: CI pipelines for network change should include?
+  choices:
+  - id: a
+    text: Validation/tests before merge/deploy
+    rationale: CI/CD.
+  - id: b
+    text: Only push untested
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disable logging
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only clear counters
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: CI/CD.
+  references:
+  - ENCOR 6.5
+- id: encor-6-006
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: OpenConfig models aim to?
+  choices:
+  - id: a
+    text: Vendor-neutral YANG
+    rationale: OpenConfig.
+  - id: b
+    text: Only Cisco private MIBs exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only proprietary TLVs exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only binary IOS exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: OpenConfig.
+  references:
+  - ENCOR 6.1
+- id: encor-6-007
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Dial-out telemetry means?
+  choices:
+  - id: a
+    text: Device initiates stream to collectors
+    rationale: Dial-out.
+  - id: b
+    text: Only NMS polls SNMP forever exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only SYSLOG pull
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Dial-out.
+  references:
+  - ENCOR 6.2
+- id: encor-6-008
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Jinja2 in Ansible provides?
+  choices:
+  - id: a
+    text: Templating
+    rationale: Templates.
+  - id: b
+    text: Only encryption
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only routing
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only switching ASICs
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Templates.
+  references:
+  - ENCOR 6.3
+- id: encor-6-009
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: NETCONF <edit-config> typically targets?
+  choices:
+  - id: a
+    text: Candidate/running datastores
+    rationale: Datastores.
+  - id: b
+    text: 'Only flash: only'
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NVRAM exclusive always
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only USB
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Datastores.
+  references:
+  - ENCOR 6.4
+- id: encor-6-010
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Idempotency in automation means?
+  choices:
+  - id: a
+    text: Repeatable desired state without drift chaos
+    rationale: Idempotent.
+  - id: b
+    text: Only run-once scripts that break on rerun
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only random configs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only manual CLI
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Idempotent.
+  references:
+  - ENCOR 6.5
+- id: encor-6-011
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: RESTCONF URI often includes?
+  choices:
+  - id: a
+    text: yang-module:container paths
+    rationale: REST paths.
+  - id: b
+    text: Only MAC addresses
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only serial numbers exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only optical dBm
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: REST paths.
+  references:
+  - ENCOR 6.1
+- id: encor-6-012
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Protocol Buffers are used by?
+  choices:
+  - id: a
+    text: gNMI/gRPC encodings
+    rationale: protobuf.
+  - id: b
+    text: Only XML NETCONF exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only YAML exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CSV exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: protobuf.
+  references:
+  - ENCOR 6.2
+- id: encor-3-090
+  type: ordered_list
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Order early BGP best-path decision steps (simplified teaching order).
+  ordered_items:
+  - Lowest MED (same AS)
+  - Highest Local Preference
+  - Prefer eBGP over iBGP
+  - Weight (Cisco highest)
+  correct:
+    order:
+    - Weight (Cisco highest)
+    - Highest Local Preference
+    - Prefer eBGP over iBGP
+    - Lowest MED (same AS)
+  explanation: Cisco weight, then local pref, then eBGP vs iBGP, then MED (simplified).
+  references:
+  - ENCOR 3.3 — BGP
+- id: encor-5-090
+  type: drag_match
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Match TrustSec building blocks.
+  drag_pairs: &id002
+  - left: SGT
+    right: Group tag on packets/context
+  - left: SGACL
+    right: Policy enforced by group
+  - left: SXP
+    right: Shares IP-to-SGT bindings
+  - left: ISE
+    right: Policy and AAA engine
+  correct:
+    pairs: *id002
+  explanation: TrustSec tags endpoints and enforces group policy.
+  references:
+  - ENCOR 5.1
+- id: encor-2-090
+  type: multiple_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which two are true about VXLAN? (Choose two.)
+  choices:
+  - id: a
+    text: Uses a 24-bit VNI
+    rationale: Large segment space.
+  - id: b
+    text: Requires Token Ring core
+    rationale: No.
+  - id: c
+    text: Typically rides on UDP/IP underlay
+    rationale: Encapsulation.
+  - id: d
+    text: Replaces the need for any underlay routing
+    rationale: Still needs underlay.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: VXLAN VNIs identify overlays carried over an IP underlay, usually UDP.
+  references:
+  - ENCOR 2.2

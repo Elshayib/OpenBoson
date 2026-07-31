@@ -4,7 +4,6 @@ import pytest
 
 from openboson import stats_service
 from openboson.bank_loader import load_exam_bank
-from openboson.db import init_db
 from openboson.exsim.scoring import score_exam
 from openboson.exsim.session import ExamMode, ExamSession
 from openboson.netsim.lab_loader import load_lab
@@ -19,7 +18,6 @@ def fake_engine(tmp_path):
     db = tmp_path / "test.db"
     engine = create_engine(f"sqlite:///{db}", future=True)
     Base.metadata.create_all(engine)
-    # Monkeypatch the module-level engine so all helpers use it.
     stats_service._engine = engine
     yield engine
     stats_service._engine = None
@@ -28,13 +26,15 @@ def fake_engine(tmp_path):
 @pytest.fixture
 def exam_bank():
     from pathlib import Path
-    bank_path = Path(__file__).resolve().parents[1] / "data" / "demo_banks" / "ccna_200_301_v1.1_demo.yaml"
+
+    bank_path = Path(__file__).resolve().parent / "fixtures" / "sample_bank.yaml"
     return load_exam_bank(bank_path)
 
 
 @pytest.fixture
 def lab():
     from pathlib import Path
+
     lab_path = Path(__file__).resolve().parents[1] / "data" / "demo_labs" / "ccna_branch_office_access.yaml"
     return load_lab(lab_path)
 
@@ -46,10 +46,9 @@ def test_default_user_created_once(fake_engine):
 
 
 def test_save_exam_result(fake_engine, exam_bank):
-    sess = ExamSession.create(exam_bank, mode=ExamMode.STUDY)
-    # Answer all questions correctly.
+    sess = ExamSession.create(exam_bank, mode=ExamMode.PRACTICE)
     for q in sess.questions:
-        sess.submit_answer(q.id, _correct_answer(q), study_mode_grade=True)
+        sess.submit_answer(q.id, _correct_answer(q), grade_now=True)
     result = score_exam(sess)
     row_id = stats_service.save_exam_result(sess, result)
     assert row_id > 0
@@ -58,14 +57,26 @@ def test_save_exam_result(fake_engine, exam_bank):
 
 
 def test_exam_history(fake_engine, exam_bank):
-    sess = ExamSession.create(exam_bank, mode=ExamMode.STUDY)
+    sess = ExamSession.create(exam_bank, mode=ExamMode.PRACTICE)
     for q in sess.questions:
-        sess.submit_answer(q.id, _correct_answer(q), study_mode_grade=True)
+        sess.submit_answer(q.id, _correct_answer(q), grade_now=True)
     result = score_exam(sess)
     stats_service.save_exam_result(sess, result)
     history = stats_service.exam_history()
     assert len(history) == 1
     assert history[0].score > 0
+
+
+def test_practice_attempt_stats(fake_engine):
+    stats_service.save_practice_attempt("q1", False)
+    stats_service.save_practice_attempt("q1", True)
+    stats_service.save_practice_attempt("q2", False)
+    m = stats_service.question_stats_map()
+    assert m["q1"].seen == 2
+    assert m["q1"].misses == 1
+    assert m["q1"].last_correct is True
+    assert m["q2"].missed
+    assert "q3" not in m
 
 
 def test_save_lab_result(fake_engine, lab):
@@ -94,6 +105,7 @@ def test_lab_history(fake_engine, lab):
 def _correct_answer(question):
     """Extract the correct answer payload from a Question for submission."""
     from openboson.bank_schema import QuestionType
+
     ca = question.correct_answer_model
     if question.type == QuestionType.SINGLE_CHOICE:
         return {"answer": ca.answer}

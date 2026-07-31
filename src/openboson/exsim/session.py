@@ -1,8 +1,7 @@
 """Exam session state machine.
 
-A session is a single in-progress attempt at an exam bank. The session
-keeps a shuffled copy of the questions, tracks the current index, the
-user's submitted answers, and bookmarks. Grading is delegated to
+A session is a single in-progress attempt. Questions may come from a full
+bank or a blueprint-sampled subset. Grading is delegated to
 ``openboson.exsim.scoring``.
 """
 
@@ -15,13 +14,12 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any
 
-from openboson.bank_schema import ExamBank, Question, QuestionType
+from openboson.bank_schema import ExamBank, Question
 
 
 class ExamMode(str, Enum):
-    STUDY = "study"  # immediate feedback per question
-    TIMED = "timed"  # scored at end; timer in GUI
-    CUSTOM = "custom"  # user-selected topic filters
+    PRACTICE = "practice"  # immediate feedback (single-question Check)
+    EXAM = "exam"  # scored at end; no feedback while answering
 
 
 @dataclass
@@ -41,7 +39,7 @@ class ExamSession:
 
     session_id: str
     exam: ExamBank
-    mode: ExamMode = ExamMode.TIMED
+    mode: ExamMode = ExamMode.EXAM
     questions: list[Question] = field(default_factory=list)
     current_index: int = 0
     answers: dict[str, UserAnswer] = field(default_factory=dict)
@@ -49,18 +47,32 @@ class ExamSession:
     marked_for_review: set[str] = field(default_factory=set)
     started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     finished_at: datetime | None = None
+    blueprint_id: str | None = None
+    _shuffle_on_init: bool = True
 
     def __post_init__(self) -> None:
-        # Copy questions from the exam and shuffle for a fresh attempt.
-        self.questions = list(self.exam.questions)
-        random.shuffle(self.questions)
+        if not self.questions:
+            self.questions = list(self.exam.questions)
+            if self._shuffle_on_init:
+                random.shuffle(self.questions)
 
     @classmethod
-    def create(cls, exam: ExamBank, mode: ExamMode = ExamMode.TIMED) -> "ExamSession":
+    def create(
+        cls,
+        exam: ExamBank,
+        mode: ExamMode = ExamMode.EXAM,
+        *,
+        shuffle: bool = True,
+        blueprint_id: str | None = None,
+        questions: list[Question] | None = None,
+    ) -> "ExamSession":
         return cls(
             session_id=uuid.uuid4().hex,
             exam=exam,
             mode=mode,
+            questions=list(questions) if questions is not None else [],
+            blueprint_id=blueprint_id,
+            _shuffle_on_init=shuffle if questions is None else False,
         )
 
     @property
@@ -77,12 +89,12 @@ class ExamSession:
         answer: dict[str, Any] | list[Any] | str | None,
         time_spent_seconds: float = 0.0,
         *,
-        study_mode_grade: bool = False,
+        grade_now: bool = False,
     ) -> bool | None:
         """Record a user's answer.
 
-        In ``study`` mode, immediately grade and return correctness.
-        In ``timed`` mode, just record and return ``None``.
+        In ``practice`` mode (or when ``grade_now`` is True), immediately grade
+        and return correctness. In ``exam`` mode, just record and return ``None``.
         """
         user_ans = UserAnswer(
             question_id=question_id,
@@ -90,7 +102,7 @@ class ExamSession:
             time_spent_seconds=time_spent_seconds,
         )
         self.answers[question_id] = user_ans
-        if study_mode_grade or self.mode == ExamMode.STUDY:
+        if grade_now or self.mode == ExamMode.PRACTICE:
             from openboson.exsim.scoring import grade_answer
 
             question = next(q for q in self.questions if q.id == question_id)
@@ -140,6 +152,4 @@ class ExamSession:
         return self.finished_at
 
     def answered_count(self) -> int:
-        return sum(
-            1 for a in self.answers.values() if a.answer is not None
-        )
+        return sum(1 for a in self.answers.values() if a.answer is not None)

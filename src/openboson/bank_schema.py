@@ -14,10 +14,12 @@ Question ``type`` values:
 from __future__ import annotations
 
 from enum import Enum
-from pathlib import Path
 from typing import Any, Literal, Union
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+
+CertTag = Literal["ccna", "ccnp"]
 
 
 class QuestionType(str, Enum):
@@ -36,6 +38,7 @@ class Choice(BaseModel):
     id: str
     text: str
     media_url: str | None = None
+    rationale: str | None = None  # why this choice is right or wrong
 
 
 class DragPair(BaseModel):
@@ -115,7 +118,7 @@ class Topic(BaseModel):
 
 
 class Question(BaseModel):
-    """A single question in an exam bank."""
+    """A single question in an exam bank / question pool."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -123,6 +126,7 @@ class Question(BaseModel):
     type: QuestionType
     topic_code: str  # e.g. "1.1"
     difficulty: int = Field(default=3, ge=1, le=5)
+    cert_tags: list[CertTag] = Field(min_length=1)
     stem: str  # question text (Markdown supported by GUI)
     media_url: str | None = None
     choices: list[Choice] | None = None  # for single/multiple choice
@@ -133,11 +137,25 @@ class Question(BaseModel):
     explanation: str | None = None
     references: list[str] | None = None
 
+    @field_validator("cert_tags")
+    @classmethod
+    def _unique_cert_tags(cls, value: list[CertTag]) -> list[CertTag]:
+        if not value:
+            raise ValueError("cert_tags must not be empty")
+        # Preserve order while deduping.
+        seen: set[str] = set()
+        out: list[CertTag] = []
+        for tag in value:
+            if tag not in seen:
+                seen.add(tag)
+                out.append(tag)
+        return out
+
     @field_validator("correct")
     @classmethod
     def _validate_correct(cls, value: dict[str, Any]) -> dict[str, Any]:
-    # The actual model validation happens lazily via ``correct_answer_model``
-    # so we keep the raw dict but sanity-check keys exist.
+        # The actual model validation happens lazily via ``correct_answer_model``
+        # so we keep the raw dict but sanity-check keys exist.
         if not value:
             raise ValueError("correct payload must not be empty")
         return value
@@ -161,14 +179,17 @@ class Question(BaseModel):
         model_cls = mapping[self.type]
         return model_cls.model_validate(self.correct)  # type: ignore[return-value]
 
+    def matches_cert(self, cert: CertTag) -> bool:
+        return cert in self.cert_tags
+
 
 class ExamBank(BaseModel):
-    """A complete exam question bank file."""
+    """A complete exam question bank / pool file."""
 
     model_config = ConfigDict(extra="forbid")
 
     title: str
-    code: str  # e.g. "200-301"
+    code: str  # e.g. "200-301" or pool id
     version: str = "v1.1"
     provider: str = "openboson"
     description: str | None = None
@@ -198,3 +219,16 @@ class ExamBank(BaseModel):
             if t.code.startswith(topic_code_prefix.rstrip(".")):
                 total += t.weight
         return total
+
+
+class QuestionPool(BaseModel):
+    """Merged question pool across one or more bank YAML files."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    questions: list[Question] = Field(default_factory=list)
+    topics: list[Topic] = Field(default_factory=list)
+    source_codes: list[str] = Field(default_factory=list)
+
+    def by_id(self) -> dict[str, Question]:
+        return {q.id: q for q in self.questions}
