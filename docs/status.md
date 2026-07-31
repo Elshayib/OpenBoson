@@ -25,8 +25,8 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 
 Start here — details in [`deferred-releases.md`](deferred-releases.md):
 
-1. Session persistence + pause/resume — **in progress** (engine snapshot, SQLite active sessions, GUI Pause & Exit / Dashboard resume, API pause/resume/list)
-2. Custom exam builder (presets)
+1. Session persistence + pause/resume — **done** (engine snapshot, SQLite, GUI Pause & Exit / Dashboard resume, API pause/resume/list, periodic + quit flush for remaining time)
+2. Custom exam builder (presets) — **in progress** (engine filter/sample/seed, JSON presets under `~/.openboson/custom_exams/`, Practice → Custom exam UI)
 3. Exports (HTML / JSON / CSV / PDF)
 4. Scale content toward ≥1000 CCNA / ≥800 ENCOR
 5. Meaningful PBQ / sim coverage

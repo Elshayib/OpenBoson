@@ -32,6 +32,7 @@ class PracticePage(QWidget):
         super().__init__()
         self._on_practice_question = None
         self._on_start_exam = None
+        self._on_custom_exam = None
         self._stats: dict[str, QuestionStat] = {}
         self._all_questions: list[Question] = []
         self._topic_names: dict[str, str] = {}
@@ -65,6 +66,11 @@ class PracticePage(QWidget):
                 btn.setObjectName("Secondary")
                 btn.setEnabled(False)
             exam_row.addWidget(btn)
+        custom_btn = QPushButton("Custom exam…")
+        custom_btn.setObjectName("Secondary")
+        custom_btn.setToolTip("Build an exam by cert, topic, difficulty, and history")
+        custom_btn.clicked.connect(self._open_custom_exam)
+        exam_row.addWidget(custom_btn)
         exam_row.addStretch()
         root.addLayout(exam_row)
 
@@ -209,6 +215,13 @@ class PracticePage(QWidget):
 
     def set_on_start_exam(self, callback) -> None:
         self._on_start_exam = callback
+
+    def set_on_custom_exam(self, callback) -> None:
+        self._on_custom_exam = callback
+
+    def _open_custom_exam(self) -> None:
+        if self._on_custom_exam:
+            self._on_custom_exam()
 
     def apply_deep_link(
         self,

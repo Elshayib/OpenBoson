@@ -8,6 +8,7 @@ starts studying or taking an exam.
 from __future__ import annotations
 
 from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QCloseEvent
 from PySide6.QtWidgets import (
     QButtonGroup,
     QHBoxLayout,
@@ -26,6 +27,7 @@ from openboson.exsim.session import ExamSession
 from openboson.gui.pages import (
     DashboardPage,
 )
+from openboson.gui.pages.custom_exam_page import CustomExamPage
 from openboson.gui.pages.exam_result_page import ExamResultPage
 from openboson.gui.pages.exam_review_page import ExamReviewPage
 from openboson.gui.pages.exam_session_page import ExamSessionPage
@@ -97,6 +99,7 @@ class MainWindow(QMainWindow):
         self._practice_page = self._static_pages["Practice"]
         self._practice_page.set_on_practice_question(self._on_practice_question)
         self._practice_page.set_on_start_exam(self._on_blueprint_exam)
+        self._practice_page.set_on_custom_exam(self._open_custom_exam)
 
         self._dashboard_page = self._static_pages["Dashboard"]
         self._dashboard_page.set_on_practice_weakest(self.navigate_practice_weakest_domain)
@@ -106,14 +109,18 @@ class MainWindow(QMainWindow):
 
         # Transient pages
         self._practice_q_page = PracticeQuestionPage()
+        self._custom_exam_page = CustomExamPage()
         self._session_page = ExamSessionPage()
         self._result_page = ExamResultPage()
         self._review_page = ExamReviewPage()
         self._stack.addWidget(self._practice_q_page)
+        self._stack.addWidget(self._custom_exam_page)
         self._stack.addWidget(self._session_page)
         self._stack.addWidget(self._result_page)
         self._stack.addWidget(self._review_page)
         self._practice_q_page.set_on_back(self._go_to_practice)
+        self._custom_exam_page.set_on_back(self._go_to_practice)
+        self._custom_exam_page.set_on_start(self._on_blueprint_exam)
         self._session_page.set_on_result(self._on_exam_result)
         self._session_page.set_on_exit(self._go_to_practice)
         self._session_page.set_on_paused(self._on_exam_paused)
@@ -338,13 +345,22 @@ class MainWindow(QMainWindow):
             extra = {q.id: q for q in local.questions}
         session = gui_engine.load_resumable_exam(info.engine_session_id, extra_questions=extra)
         if session is None:
-            self.statusBar().showMessage("Could not restore the paused exam.", 6000)
+            self.statusBar().showMessage(
+                "Could not restore the saved exam — questions may be missing from the pool.",
+                8000,
+            )
             return False
         if session.is_paused():
             gui_engine.resume_session(session)
         self._session_page.start_session(session, start_timer=True)
         self._enter_exam()
         return True
+
+    def closeEvent(self, event: QCloseEvent) -> None:  # noqa: N802 — Qt override
+        """Flush in-progress exam progress so remaining time survives quit."""
+        if self._session_page.is_exam_active():
+            self._session_page.flush_progress()
+        super().closeEvent(event)
 
     def _confirm_replace_active_exam(self) -> bool:
         """Ask before abandoning a paused/in-progress exam to start a new one."""
@@ -376,6 +392,10 @@ class MainWindow(QMainWindow):
         self._practice_q_page.show_question(question)
         self._stack.setCurrentWidget(self._practice_q_page)
 
+    def _open_custom_exam(self) -> None:
+        self._custom_exam_page.refresh()
+        self._stack.setCurrentWidget(self._custom_exam_page)
+
     def _on_blueprint_exam(self, session: ExamSession) -> None:
         if not self._confirm_replace_active_exam():
             return
@@ -396,10 +416,21 @@ class MainWindow(QMainWindow):
         self._stack.setCurrentWidget(self._review_page)
 
     def _on_retake(self, session: ExamSession) -> None:
-        """Start a fresh attempt; blueprint fallback runs start_exam exactly once."""
-        if session.blueprint_id:
-            from openboson.gui import engine
+        """Start a fresh attempt; blueprint/custom fallback runs start exactly once."""
+        from openboson.gui import engine
 
+        if session.custom_preset_id:
+            try:
+                new_session = engine.start_custom_exam(session.custom_preset_id)
+            except Exception:
+                self._session_page.start_exam(session.exam, mode=session.mode)
+            else:
+                self._session_page.start_session(new_session)
+                self._enter_exam()
+                return
+            self._enter_exam()
+            return
+        if session.blueprint_id:
             try:
                 new_session = engine.start_blueprint_exam(session.blueprint_id)
             except Exception:
@@ -408,8 +439,9 @@ class MainWindow(QMainWindow):
                 self._session_page.start_session(new_session)
                 self._enter_exam()
                 return
-        else:
-            self._session_page.start_exam(session.exam, mode=session.mode)
+            self._enter_exam()
+            return
+        self._session_page.start_exam(session.exam, mode=session.mode)
         self._enter_exam()
 
     def _on_lab_selected(self, lab) -> None:

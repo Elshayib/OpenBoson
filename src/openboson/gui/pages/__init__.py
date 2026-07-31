@@ -111,7 +111,7 @@ class DashboardPage(_Page):
                 rem_txt = f" · {mins:02d}:{secs:02d} left"
             self._cta_layout.addWidget(
                 self._cta_card(
-                    "Resume paused exam",
+                    "Resume saved exam",
                     (
                         f"{resumable.exam_title} — question {resumable.current_index + 1}/"
                         f"{max(resumable.question_count, 1)} · "

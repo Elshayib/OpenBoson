@@ -21,6 +21,7 @@ from openboson.exsim.blueprint import (
     get_blueprint,
     list_blueprints,
 )
+from openboson.exsim.custom_exam import CustomExamSpec
 from openboson.exsim.scoring import ExamResult, score_exam
 from openboson.exsim.session import ExamMode, ExamSession
 from openboson.netsim.lab_loader import LabLoaderError, load_lab
@@ -99,6 +100,88 @@ def start_blueprint_exam(blueprint_id: str) -> ExamSession:
         blueprint_id=blueprint.id,
         questions=questions,
     )
+
+
+def start_custom_exam(
+    spec: CustomExamSpec | dict[str, Any] | str,
+    *,
+    history: dict[str, Any] | None = None,
+) -> ExamSession:
+    """Sample a custom exam and start an EXAM session.
+
+    ``spec`` may be a :class:`CustomExamSpec`, a dict, or a saved preset id.
+    """
+    from openboson import stats_service
+    from openboson.exsim import custom_exam_store
+    from openboson.exsim.custom_exam import (
+        bank_from_custom,
+        build_exam_from_custom,
+    )
+
+    preset_id: str | None = None
+    if isinstance(spec, str):
+        preset = custom_exam_store.get_preset(spec)
+        if preset is None:
+            raise KeyError(f"Unknown custom exam preset: {spec}")
+        preset_id = preset.id
+        exam_spec = CustomExamSpec.model_validate(
+            preset.model_dump(exclude={"id", "created_at", "updated_at"})
+        )
+    elif isinstance(spec, dict):
+        exam_spec = CustomExamSpec.model_validate(spec)
+        preset_id = spec.get("id")
+    else:
+        exam_spec = spec
+
+    hist = history
+    if hist is None and exam_spec.history != "any":
+        hist = stats_service.question_history_map()
+
+    pool = load_pool()
+    questions = build_exam_from_custom(pool.questions, exam_spec, history=hist)
+    bank = bank_from_custom(exam_spec, questions)
+    return ExamSession.create(
+        bank,
+        mode=ExamMode.EXAM,
+        shuffle=False,
+        questions=questions,
+        seed=exam_spec.seed,
+        custom_preset_id=preset_id,
+    )
+
+
+def preview_custom_exam(
+    spec: CustomExamSpec | dict[str, Any],
+    *,
+    history: dict[str, Any] | None = None,
+) -> dict[str, int]:
+    """Return eligible/requested counts for the custom exam builder."""
+    from openboson import stats_service
+    from openboson.exsim.custom_exam import coverage_for_custom
+
+    exam_spec = CustomExamSpec.model_validate(spec) if isinstance(spec, dict) else spec
+    hist = history
+    if hist is None and exam_spec.history != "any":
+        hist = stats_service.question_history_map()
+    return coverage_for_custom(load_pool().questions, exam_spec, history=hist)
+
+
+def list_custom_presets():
+    from openboson.exsim import custom_exam_store
+
+    return custom_exam_store.list_presets()
+
+
+def save_custom_preset(spec: CustomExamSpec | dict[str, Any] | Any):
+    from openboson.exsim import custom_exam_store
+
+    return custom_exam_store.save_preset(spec)
+
+
+def delete_custom_preset(preset_id: str) -> bool:
+    from openboson.exsim import custom_exam_store
+
+    return custom_exam_store.delete_preset(preset_id)
 
 
 def blueprint_coverage(blueprint_id: str) -> Any:
@@ -205,23 +288,29 @@ __all__ = [
     "abandon_resumable_exams",
     "banks_dir",
     "blueprint_coverage",
+    "delete_custom_preset",
     "finish_and_score",
     "get_blueprint",
     "get_exam_by_code",
     "get_question",
     "get_resumable_exam_info",
     "list_blueprints",
+    "list_custom_presets",
     "load_resumable_exam",
     "content_diagnostics",
     "load_available_banks",
     "load_exam_bank",
     "load_pool",
     "pause_session",
+    "preview_custom_exam",
     "refresh_content",
     "resume_session",
     "save_active_session",
+    "save_custom_preset",
     "start_blueprint_exam",
+    "start_custom_exam",
     "start_session",
+    "CustomExamSpec",
     # labs
     "ContentDiagnostics",
     "LabBank",

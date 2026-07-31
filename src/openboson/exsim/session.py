@@ -136,6 +136,7 @@ class ExamSession:
     started_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     finished_at: datetime | None = None
     blueprint_id: str | None = None
+    custom_preset_id: str | None = None
     presentation: dict[str, QuestionPresentation] = field(default_factory=dict)
     status: SessionStatus = SessionStatus.IN_PROGRESS
     remaining_seconds: int | None = None
@@ -150,6 +151,7 @@ class ExamSession:
         *,
         shuffle: bool = True,
         blueprint_id: str | None = None,
+        custom_preset_id: str | None = None,
         questions: list[Question] | None = None,
         rng: random.Random | None = None,
         seed: int | None = None,
@@ -183,6 +185,7 @@ class ExamSession:
             mode=mode,
             questions=qs,
             blueprint_id=blueprint_id,
+            custom_preset_id=custom_preset_id,
             remaining_seconds=remaining,
             _shuffle_on_init=False,
         )
@@ -332,6 +335,7 @@ class ExamSession:
             "mode": str(self.mode),
             "status": str(self.status),
             "blueprint_id": self.blueprint_id,
+            "custom_preset_id": self.custom_preset_id,
             "exam_code": self.exam.code,
             "exam_version": self.exam.version,
             "exam_title": self.exam.title,
@@ -406,6 +410,7 @@ class ExamSession:
             started_at=started,
             finished_at=finished,
             blueprint_id=data.get("blueprint_id"),
+            custom_preset_id=data.get("custom_preset_id"),
             status=status,
             remaining_seconds=(
                 int(data["remaining_seconds"])

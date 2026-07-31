@@ -39,5 +39,11 @@ class Settings:
     def packs_dir(self) -> Path:
         return self.data_dir / "packs"
 
+    @property
+    def custom_exams_dir(self) -> Path:
+        path = self.data_dir / "custom_exams"
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+
 
 settings = Settings()

@@ -51,11 +51,33 @@ def test_practice_page_lists_questions(window):
     buttons = [b.text() for b in page.findChildren(QPushButton)]
     assert any("200-301" in t for t in buttons)
     assert any("350-401" in t for t in buttons)
+    assert any("Custom exam" in t for t in buttons)
     # Pagination controls exist for large pools
     assert page._page_size == 50
     assert "Page" in page._page_lbl.text()
     if len(page._filtered) > page._page_size:
         assert page._next_page.isEnabled()
+
+
+def test_custom_exam_builder_starts_session(window, qtbot):
+    window.select_page("Practice")
+    window._open_custom_exam()
+    qtbot.wait(50)
+    assert window.visible_page_label() == "Custom Exam"
+    page = window._custom_exam_page
+    page._length.setValue(2)
+    page._time.setValue(10)
+    page._seed.setValue(42)
+    page._update_eligible()
+    assert page._start_btn.isEnabled()
+    page._start()
+    qtbot.wait(50)
+    assert window.visible_page_label() == "Exam"
+    assert window._exam_active
+    sess = window._session_page._session
+    assert sess is not None
+    assert len(sess.questions) == 2
+    assert sess.exam.code == "custom"
 
 
 def test_start_exam_shows_session(window, qtbot):
@@ -281,6 +303,48 @@ def test_pause_and_exit_allows_sidebar_and_resume(window, qtbot):
     assert qid in restored.answers
     assert window._session_page._timer.remaining_seconds() == remaining_before
     assert window._session_page._timer.is_paused() is False
+
+
+def test_close_flushes_remaining_time(window, qtbot):
+    """App quit should persist the live countdown without Pause & Exit."""
+    from openboson.gui import engine as gui_engine
+
+    bank = load_exam_bank(FIXTURE)
+    window.start_exam_from_list(bank, ExamMode.EXAM)
+    qtbot.wait(50)
+    sess = window._session_page._session
+    assert sess is not None
+    session_id = sess.session_id
+
+    # Simulate elapsed time without waiting on the wall clock.
+    window._session_page._timer.set_remaining(540)
+    window.close()
+    qtbot.wait(50)
+
+    info = gui_engine.get_resumable_exam_info()
+    assert info is not None
+    assert info.engine_session_id == session_id
+    assert info.remaining_seconds == 540
+
+
+def test_periodic_autosave_persists_remaining(window, qtbot):
+    """Periodic autosave should write remaining_seconds while the exam runs."""
+    from openboson.gui import engine as gui_engine
+    from openboson.gui.pages.exam_session_page import _AUTOSAVE_INTERVAL_MS
+
+    bank = load_exam_bank(FIXTURE)
+    window.start_exam_from_list(bank, ExamMode.EXAM)
+    qtbot.wait(50)
+    assert window._session_page._autosave_timer.isActive()
+
+    window._session_page._timer.set_remaining(500)
+    window._session_page._autosave_timer.timeout.emit()
+    qtbot.wait(30)
+
+    info = gui_engine.get_resumable_exam_info()
+    assert info is not None
+    assert info.remaining_seconds == 500
+    assert window._session_page._autosave_timer.interval() == _AUTOSAVE_INTERVAL_MS
 
 
 def test_hidden_timeout_does_not_switch_pages(window, qtbot):

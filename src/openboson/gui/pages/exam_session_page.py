@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from typing import Any
 
+from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import (
     QFrame,
     QGridLayout,
@@ -21,6 +22,9 @@ from openboson.exsim.session import ExamMode, ExamSession
 from openboson.gui.engine import finish_and_score, pause_session, save_active_session
 from openboson.gui.widgets.question_card import QuestionCard
 from openboson.gui.widgets.timer_bar import TimerBar
+
+# Persist remaining time periodically so a crash/kill does not restore a stale countdown.
+_AUTOSAVE_INTERVAL_MS = 15_000
 
 
 def _presentation_for(session: ExamSession, question_id: str) -> dict[str, Any] | None:
@@ -43,6 +47,9 @@ class ExamSessionPage(QWidget):
         self._on_exit: Callable[..., Any] | None = None
         self._current_card: QuestionCard | None = None
         self._active = False
+        self._autosave_timer = QTimer(self)
+        self._autosave_timer.setInterval(_AUTOSAVE_INTERVAL_MS)
+        self._autosave_timer.timeout.connect(self._autosave)
 
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
@@ -172,11 +179,14 @@ class ExamSessionPage(QWidget):
         if start_timer and not session.is_paused():
             self._timer.start()
             save_active_session(session, remaining_seconds=self._timer.remaining_seconds())
+            self._autosave_timer.start()
         elif session.is_paused():
             self._timer.pause()
+            self._autosave_timer.stop()
             save_active_session(session, remaining_seconds=self._timer.remaining_seconds())
         else:
             self._timer.pause()
+            self._autosave_timer.stop()
             save_active_session(session, remaining_seconds=self._timer.remaining_seconds())
 
     def set_on_result(self, callback) -> None:
@@ -196,9 +206,14 @@ class ExamSessionPage(QWidget):
             and not self._session.is_paused()
         )
 
+    def flush_progress(self) -> None:
+        """Write current answers and remaining time (e.g. on app quit)."""
+        self._autosave()
+
     def cleanup(self) -> None:
         """Stop the timer and clear callbacks so hidden timeouts cannot fire."""
         self._active = False
+        self._autosave_timer.stop()
         self._timer.stop()
         self._timer.set_on_timeout(None)
 
@@ -212,6 +227,7 @@ class ExamSessionPage(QWidget):
             return
         remaining = self._timer.remaining_seconds()
         self._timer.pause()
+        self._autosave_timer.stop()
         pause_session(self._session, remaining)
         self._active = False
         self._timer.set_on_timeout(None)

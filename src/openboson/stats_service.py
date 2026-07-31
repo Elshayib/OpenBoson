@@ -417,3 +417,29 @@ def question_stats_map() -> dict[str, QuestionStat]:
                 st.misses += 1
             st.last_correct = row.is_correct
         return stats
+
+
+def question_history_map() -> dict[str, QuestionStat]:
+    """Union of practice attempts and finished-exam answers for custom filters.
+
+    - **seen**: any practice attempt or exam answer for the question
+    - **misses**: practice miss or incorrect exam answer
+    - **last_correct**: most recent outcome when known (practice preferred if both)
+    """
+    stats = question_stats_map()
+    with _session() as s:
+        rows = (
+            s.query(UserAnswer.bank_question_id, UserAnswer.is_correct)
+            .filter(UserAnswer.bank_question_id.isnot(None))
+            .order_by(UserAnswer.id.asc())
+            .all()
+        )
+    for qid, is_correct in rows:
+        if not qid:
+            continue
+        st = stats.setdefault(qid, QuestionStat(question_id=qid))
+        st.seen += 1
+        if not is_correct:
+            st.misses += 1
+        st.last_correct = bool(is_correct)
+    return stats
