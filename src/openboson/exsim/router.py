@@ -1,16 +1,19 @@
 """FastAPI router exposing ExSim endpoints.
 
-The router keeps a module-level registry of active sessions (in-memory; a
-future task will persist via openboson.db). The HTTP surface is convenient
-for tests and the eventual web UI; the PySide6 GUI calls engine modules
-directly.
+Active sessions are kept in memory for low-latency access and mirrored to
+SQLite via ``session_store`` so pause/resume survives process restart.
 
 Endpoints (all under ``/api/v1``):
     GET    /exams
     POST   /exams/{exam_id}/sessions
+    GET    /sessions
+    GET    /sessions/{session_id}
     GET    /sessions/{session_id}/questions/{index}
     POST   /sessions/{session_id}/answers
     POST   /sessions/{session_id}/bookmark
+    POST   /sessions/{session_id}/mark
+    POST   /sessions/{session_id}/pause
+    POST   /sessions/{session_id}/resume
     POST   /sessions/{session_id}/finish
     GET    /sessions/{session_id}/review
 """
@@ -24,6 +27,7 @@ from pydantic import BaseModel, ConfigDict
 
 from openboson.bank_loader import merge_banks
 from openboson.bank_schema import ExamBank, Question, QuestionPool, QuestionType
+from openboson.exsim import session_store
 from openboson.exsim.blueprint import (
     BLUEPRINTS,
     ExamBlueprint,
@@ -190,6 +194,49 @@ class BookmarkRequest(BaseModel):
     question_id: str
 
 
+class MarkRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    question_id: str
+
+
+class PauseRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    remaining_seconds: int | None = None
+
+
+def _pool_by_id() -> dict[str, Question]:
+    _load_default_banks()
+    if _POOL is None:
+        return {}
+    return _POOL.by_id()
+
+
+def _persist(session: ExamSession) -> None:
+    if session.is_finished():
+        return
+    import contextlib
+
+    with contextlib.suppress(Exception):
+        # Persistence must not break the HTTP surface in tests / headless use.
+        session_store.upsert_active_session(session)
+
+
+def _get_session(session_id: str) -> ExamSession:
+    session = _SESSIONS.get(session_id)
+    if session is not None:
+        return session
+    by_id = _pool_by_id()
+    restored = session_store.load_active_session(by_id, engine_session_id=session_id)
+    if restored is None:
+        restored = session_store.load_session_by_id(by_id, session_id)
+    if restored is None:
+        raise HTTPException(status_code=404, detail="Session not found")
+    _SESSIONS[restored.session_id] = restored
+    return restored
+
+
 @_ROUTER.get("/exams")
 def list_exams() -> list[dict[str, Any]]:
     """List startable blueprint exams (not raw question pools)."""
@@ -250,39 +297,82 @@ def create_session(exam_id: str, body: CreateSessionRequest) -> dict[str, Any]:
         questions=questions,
     )
     _SESSIONS[session.session_id] = session
+    _persist(session)
     q = session.current_question
     return {
         "session_id": session.session_id,
         "exam_code": bank.code,
         "blueprint_id": blueprint.id,
         "mode": session.mode.value,
+        "status": str(session.status),
+        "remaining_seconds": session.remaining_seconds,
         "total_questions": len(session.questions),
         "question": _serialize_question_for_display(q, session.presentation_for(q.id)),
     }
 
 
+@_ROUTER.get("/sessions")
+def list_sessions() -> list[dict[str, Any]]:
+    """List resumable (in-progress / paused) sessions."""
+    items = []
+    for info in session_store.list_resumable_sessions():
+        items.append(
+            {
+                "session_id": info.engine_session_id,
+                "exam_code": info.exam_code,
+                "exam_version": info.exam_version,
+                "exam_title": info.exam_title,
+                "status": info.status,
+                "current_index": info.current_index,
+                "question_count": info.question_count,
+                "answered_count": info.answered_count,
+                "remaining_seconds": info.remaining_seconds,
+                "blueprint_id": info.blueprint_id,
+            }
+        )
+    return items
+
+
+@_ROUTER.get("/sessions/{session_id}")
+def get_session(session_id: str) -> dict[str, Any]:
+    session = _get_session(session_id)
+    return {
+        "session_id": session.session_id,
+        "exam_code": session.exam.code,
+        "exam_version": session.exam.version,
+        "blueprint_id": session.blueprint_id,
+        "mode": session.mode.value,
+        "status": str(session.status),
+        "current_index": session.current_index,
+        "total_questions": len(session.questions),
+        "answered_count": session.answered_count(),
+        "remaining_seconds": session.remaining_seconds,
+        "bookmarked": sorted(session.bookmarked),
+        "marked_for_review": sorted(session.marked_for_review),
+    }
+
+
 @_ROUTER.get("/sessions/{session_id}/questions/{index}")
 def get_question(session_id: str, index: int) -> dict[str, Any]:
-    session = _SESSIONS.get(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session not found")
+    session = _get_session(session_id)
     if not (0 <= index < len(session.questions)):
         raise HTTPException(status_code=400, detail="Index out of range")
+    session.goto(index)
+    _persist(session)
     q = session.questions[index]
     return _serialize_question_for_display(q, session.presentation_for(q.id))
 
 
 @_ROUTER.post("/sessions/{session_id}/answers")
 def submit_answer(session_id: str, body: SubmitAnswerRequest) -> dict[str, Any]:
-    session = _SESSIONS.get(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session not found")
+    session = _get_session(session_id)
     q = next((qq for qq in session.questions if qq.id == body.question_id), None)
     if q is None:
         raise HTTPException(status_code=400, detail="Question not part of this session")
     graded = session.submit_answer(
         body.question_id, body.answer, time_spent_seconds=body.time_spent_seconds
     )
+    _persist(session)
     response: dict[str, Any] = {
         "session_id": session_id,
         "question_id": body.question_id,
@@ -295,28 +385,74 @@ def submit_answer(session_id: str, body: SubmitAnswerRequest) -> dict[str, Any]:
 
 @_ROUTER.post("/sessions/{session_id}/bookmark")
 def toggle_bookmark(session_id: str, body: BookmarkRequest) -> dict[str, Any]:
-    session = _SESSIONS.get(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session not found")
+    session = _get_session(session_id)
     new_state = session.toggle_bookmark(body.question_id)
+    _persist(session)
     return {"session_id": session_id, "question_id": body.question_id, "bookmarked": new_state}
+
+
+@_ROUTER.post("/sessions/{session_id}/mark")
+def toggle_mark(session_id: str, body: MarkRequest) -> dict[str, Any]:
+    session = _get_session(session_id)
+    new_state = session.toggle_mark_for_review(body.question_id)
+    _persist(session)
+    return {
+        "session_id": session_id,
+        "question_id": body.question_id,
+        "marked_for_review": new_state,
+    }
+
+
+@_ROUTER.post("/sessions/{session_id}/pause")
+def pause_session(session_id: str, body: PauseRequest | None = None) -> dict[str, Any]:
+    session = _get_session(session_id)
+    remaining = body.remaining_seconds if body is not None else session.remaining_seconds
+    try:
+        session.pause(remaining)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    _persist(session)
+    return {
+        "session_id": session_id,
+        "status": str(session.status),
+        "remaining_seconds": session.remaining_seconds,
+    }
+
+
+@_ROUTER.post("/sessions/{session_id}/resume")
+def resume_session(session_id: str) -> dict[str, Any]:
+    session = _get_session(session_id)
+    try:
+        session.resume()
+    except RuntimeError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    _persist(session)
+    return {
+        "session_id": session_id,
+        "status": str(session.status),
+        "remaining_seconds": session.remaining_seconds,
+        "current_index": session.current_index,
+    }
 
 
 @_ROUTER.post("/sessions/{session_id}/finish")
 def finish_session(session_id: str) -> dict[str, Any]:
-    session = _SESSIONS.get(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session not found")
+    session = _get_session(session_id)
     session.finish()
     result = score_exam(session)
+    try:
+        from openboson import stats_service
+
+        stats_service.save_exam_result(session, result)
+    except Exception:
+        pass
+    _SESSIONS.pop(session_id, None)
     return _serialize_exam_result(result)
 
 
 @_ROUTER.get("/sessions/{session_id}/review")
 def review_session(session_id: str) -> dict[str, Any]:
-    session = _SESSIONS.get(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session not found")
+    session = _get_session(session_id)
     if not session.is_finished():
         raise HTTPException(status_code=400, detail="Session not finished")
     result = score_exam(session)

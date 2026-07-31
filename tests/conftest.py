@@ -28,8 +28,20 @@ def isolated_home(tmp_path, monkeypatch):
     db_path = home / "openboson.db"
     engine = init_db(create_engine(f"sqlite:///{db_path}", future=True))
     monkeypatch.setattr(stats_service, "_engine", engine)
+    try:
+        from openboson.exsim import session_store
+
+        monkeypatch.setattr(session_store, "_engine", engine)
+    except Exception:
+        pass
     yield home
     monkeypatch.setattr(stats_service, "_engine", None)
+    try:
+        from openboson.exsim import session_store
+
+        monkeypatch.setattr(session_store, "_engine", None)
+    except Exception:
+        pass
 
 
 @pytest.fixture

@@ -18,7 +18,7 @@ from PySide6.QtWidgets import (
 
 from openboson.bank_schema import QuestionType
 from openboson.exsim.session import ExamMode, ExamSession
-from openboson.gui.engine import finish_and_score
+from openboson.gui.engine import finish_and_score, pause_session, save_active_session
 from openboson.gui.widgets.question_card import QuestionCard
 from openboson.gui.widgets.timer_bar import TimerBar
 
@@ -120,6 +120,9 @@ class ExamSessionPage(QWidget):
         self._mark_btn = QPushButton("Mark for review")
         self._mark_btn.setObjectName("Secondary")
         self._mark_btn.clicked.connect(self._toggle_mark)
+        self._pause = QPushButton("Pause & Exit")
+        self._pause.setObjectName("Secondary")
+        self._pause.clicked.connect(self._pause_and_exit)
         self._finish = QPushButton("Finish Exam")
         self._finish.setObjectName("Primary")
         self._finish.clicked.connect(self._finish_exam)
@@ -128,10 +131,12 @@ class ExamSessionPage(QWidget):
         self._bottom.addStretch()
         self._bottom.addWidget(self._bookmark_btn)
         self._bottom.addWidget(self._mark_btn)
+        self._bottom.addWidget(self._pause)
         self._bottom.addWidget(self._finish)
         root.addLayout(self._bottom)
 
         self._grid_buttons: list[QPushButton] = []
+        self._on_paused: Callable[..., Any] | None = None
 
     # -----/ Lifecycle /-----
     def start_exam(self, bank, mode: ExamMode = ExamMode.EXAM) -> None:
@@ -141,8 +146,13 @@ class ExamSessionPage(QWidget):
         session = start_session(bank, mode=mode)
         self.start_session(session)
 
-    def start_session(self, session: ExamSession) -> None:
-        """Start from an existing session (blueprint exam)."""
+    def start_session(
+        self,
+        session: ExamSession,
+        *,
+        start_timer: bool = True,
+    ) -> None:
+        """Start or resume from an existing session (blueprint exam)."""
         self._session = session
         self._active = True
         # Replace timer widget in place.
@@ -154,10 +164,20 @@ class ExamSessionPage(QWidget):
         limit = session.exam.time_limit_minutes
         self._timer = TimerBar(len(session.questions), limit_minutes=limit)
         self._timer.set_on_timeout(self._on_timeout)
+        if session.remaining_seconds is not None:
+            self._timer.set_remaining(session.remaining_seconds)
         self._timer_host.addWidget(self._timer, 1)
         self._build_grid()
         self._render_current()
-        self._timer.start()
+        if start_timer and not session.is_paused():
+            self._timer.start()
+            save_active_session(session, remaining_seconds=self._timer.remaining_seconds())
+        elif session.is_paused():
+            self._timer.pause()
+            save_active_session(session, remaining_seconds=self._timer.remaining_seconds())
+        else:
+            self._timer.pause()
+            save_active_session(session, remaining_seconds=self._timer.remaining_seconds())
 
     def set_on_result(self, callback) -> None:
         self._on_result = callback
@@ -165,14 +185,40 @@ class ExamSessionPage(QWidget):
     def set_on_exit(self, callback) -> None:
         self._on_exit = callback
 
+    def set_on_paused(self, callback) -> None:
+        self._on_paused = callback
+
     def is_exam_active(self) -> bool:
-        return self._active and self._session is not None and not self._session.is_finished()
+        return (
+            self._active
+            and self._session is not None
+            and not self._session.is_finished()
+            and not self._session.is_paused()
+        )
 
     def cleanup(self) -> None:
         """Stop the timer and clear callbacks so hidden timeouts cannot fire."""
         self._active = False
         self._timer.stop()
         self._timer.set_on_timeout(None)
+
+    def _autosave(self) -> None:
+        if self._session is None or self._session.is_finished():
+            return
+        save_active_session(self._session, remaining_seconds=self._timer.remaining_seconds())
+
+    def _pause_and_exit(self) -> None:
+        if self._session is None or self._session.is_finished():
+            return
+        remaining = self._timer.remaining_seconds()
+        self._timer.pause()
+        pause_session(self._session, remaining)
+        self._active = False
+        self._timer.set_on_timeout(None)
+        if self._on_paused:
+            self._on_paused(self._session)
+        elif self._on_exit:
+            self._on_exit()
 
     def _build_grid(self) -> None:
         while self._grid_layout.count():
@@ -197,6 +243,7 @@ class ExamSessionPage(QWidget):
             return
         self._session.goto(index)
         self._render_current()
+        self._autosave()
 
     # -----/ Rendering /-----
     def _render_current(self) -> None:
@@ -264,6 +311,7 @@ class ExamSessionPage(QWidget):
         self._session.submit_answer(qid, answer, grade_now=False)
         self._timer.set_progress(self._session.answered_count())
         self._refresh_grid_styles()
+        self._autosave()
 
     def _toggle_bookmark(self) -> None:
         if self._session is None:
@@ -272,6 +320,7 @@ class ExamSessionPage(QWidget):
         self._session.toggle_bookmark(q.id)
         self._update_bookmark_button()
         self._refresh_grid_styles()
+        self._autosave()
 
     def _toggle_mark(self) -> None:
         if self._session is None:
@@ -280,6 +329,7 @@ class ExamSessionPage(QWidget):
         self._session.toggle_mark_for_review(q.id)
         self._update_mark_button()
         self._refresh_grid_styles()
+        self._autosave()
 
     def _update_bookmark_button(self) -> None:
         if self._session is None:
@@ -304,12 +354,14 @@ class ExamSessionPage(QWidget):
             return
         if self._session.previous() is not None:
             self._render_current()
+            self._autosave()
 
     def _go_next(self) -> None:
         if self._session is None:
             return
         if self._session.next() is not None:
             self._render_current()
+            self._autosave()
 
     def _on_timeout(self) -> None:
         # Ignore timeouts from a timer that outlived the visible exam page.

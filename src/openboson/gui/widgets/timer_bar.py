@@ -10,7 +10,8 @@ class TimerBar(QWidget):
     """Shows remaining (or elapsed) time plus a question-progress bar.
 
     When ``limit_minutes`` > 0 the label counts **down**. ``on_timeout`` is
-    called when the limit is reached.
+    called when the limit is reached. Pause freezes ticks without resetting
+    remaining time.
     """
 
     def __init__(
@@ -21,6 +22,7 @@ class TimerBar(QWidget):
         self._limit_seconds = limit_minutes * 60
         self._elapsed = 0
         self._countdown = self._limit_seconds > 0
+        self._paused = False
 
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -41,10 +43,25 @@ class TimerBar(QWidget):
         self._on_timeout = None
 
     def start(self) -> None:
+        self._paused = False
         self._timer.start()
 
     def stop(self) -> None:
         self._timer.stop()
+
+    def pause(self) -> None:
+        """Freeze the countdown without clearing remaining time."""
+        self._paused = True
+        self._timer.stop()
+
+    def resume(self) -> None:
+        """Continue ticking from the frozen remaining / elapsed value."""
+        if self._paused or not self._timer.isActive():
+            self._paused = False
+            self._timer.start()
+
+    def is_paused(self) -> bool:
+        return self._paused
 
     def set_on_timeout(self, callback) -> None:
         self._on_timeout = callback
@@ -52,7 +69,17 @@ class TimerBar(QWidget):
     def set_progress(self, answered: int) -> None:
         self._bar.setValue(min(answered, self._total))
 
+    def set_remaining(self, seconds: int | None) -> None:
+        """Restore countdown from a persisted remaining value."""
+        if seconds is None or not self._countdown:
+            return
+        seconds = max(0, int(seconds))
+        self._elapsed = max(0, self._limit_seconds - seconds)
+        self._time_label.setText(self._format(seconds))
+
     def _tick(self) -> None:
+        if self._paused:
+            return
         self._elapsed += 1
         if self._countdown:
             remaining = max(0, self._limit_seconds - self._elapsed)

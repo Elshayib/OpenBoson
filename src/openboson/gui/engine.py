@@ -124,6 +124,74 @@ def finish_and_score(session: ExamSession) -> ExamResult:
     return result
 
 
+def save_active_session(session: ExamSession, *, remaining_seconds: int | None = None) -> None:
+    """Persist an in-progress / paused session snapshot (best-effort)."""
+    global last_persistence_warning
+    try:
+        from openboson.exsim import session_store
+
+        if remaining_seconds is not None:
+            session.remaining_seconds = max(0, int(remaining_seconds))
+        session_store.upsert_active_session(session)
+    except Exception as exc:
+        last_persistence_warning = f"Could not save exam progress: {exc}"
+        logger.warning("Failed to persist active exam session: %s", exc, exc_info=True)
+
+
+def pause_session(session: ExamSession, remaining_seconds: int | None) -> None:
+    """Mark session paused and persist."""
+    session.pause(remaining_seconds)
+    save_active_session(session)
+
+
+def resume_session(session: ExamSession) -> None:
+    """Mark session in-progress and persist."""
+    session.resume()
+    save_active_session(session)
+
+
+def get_resumable_exam_info():
+    """Return metadata for a resumable exam, or ``None``."""
+    try:
+        from openboson.exsim import session_store
+
+        return session_store.get_resumable_info()
+    except Exception as exc:
+        logger.warning("Failed to query resumable exam: %s", exc, exc_info=True)
+        return None
+
+
+def load_resumable_exam(
+    engine_session_id: str | None = None,
+    *,
+    extra_questions: dict[str, Question] | None = None,
+) -> ExamSession | None:
+    """Rebuild a paused/in-progress exam from SQLite using the question pool."""
+    try:
+        from openboson.exsim import session_store
+
+        by_id = dict(load_pool().by_id())
+        if extra_questions:
+            by_id.update(extra_questions)
+        return session_store.load_active_session(
+            by_id,
+            engine_session_id=engine_session_id,
+        )
+    except Exception as exc:
+        logger.warning("Failed to load resumable exam: %s", exc, exc_info=True)
+        return None
+
+
+def abandon_resumable_exams() -> int:
+    try:
+        from openboson.exsim import session_store
+
+        return session_store.abandon_active_sessions()
+    except Exception as exc:
+        logger.warning("Failed to abandon active exams: %s", exc, exc_info=True)
+        return 0
+
+
 # Re-exports for GUI convenience
 __all__ = [
     "BankLoaderError",
@@ -134,18 +202,24 @@ __all__ = [
     "InsufficientPoolError",
     "Question",
     "QuestionPool",
+    "abandon_resumable_exams",
     "banks_dir",
     "blueprint_coverage",
     "finish_and_score",
     "get_blueprint",
     "get_exam_by_code",
     "get_question",
+    "get_resumable_exam_info",
     "list_blueprints",
+    "load_resumable_exam",
     "content_diagnostics",
     "load_available_banks",
     "load_exam_bank",
     "load_pool",
+    "pause_session",
     "refresh_content",
+    "resume_session",
+    "save_active_session",
     "start_blueprint_exam",
     "start_session",
     # labs

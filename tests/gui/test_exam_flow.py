@@ -251,6 +251,38 @@ def test_active_exam_blocks_sidebar_nav(window, qtbot):
     assert window._exam_active
 
 
+def test_pause_and_exit_allows_sidebar_and_resume(window, qtbot):
+    bank = load_exam_bank(FIXTURE)
+    window.start_exam_from_list(bank, ExamMode.EXAM)
+    qtbot.wait(50)
+    sess = window._session_page._session
+    assert sess is not None
+    qid = sess.current_question.id
+    window._session_page._store_answer(qid, _correct_answer_for(sess.current_question))
+    remaining_before = window._session_page._timer.remaining_seconds()
+
+    window._session_page._pause_and_exit()
+    qtbot.wait(50)
+    assert window._exam_active is False
+    assert window.visible_page_label() == "Dashboard"
+    assert window._session_page._timer.is_paused()
+
+    # Sidebar works after pause.
+    window.select_page("Practice")
+    qtbot.wait(30)
+    assert window.visible_page_label() == "Practice"
+
+    assert window.resume_paused_exam() is True
+    qtbot.wait(50)
+    assert window.visible_page_label() == "Exam"
+    assert window._exam_active
+    restored = window._session_page._session
+    assert restored is not None
+    assert qid in restored.answers
+    assert window._session_page._timer.remaining_seconds() == remaining_before
+    assert window._session_page._timer.is_paused() is False
+
+
 def test_hidden_timeout_does_not_switch_pages(window, qtbot):
     bank = load_exam_bank(FIXTURE)
     window.start_exam_from_list(bank, ExamMode.EXAM)

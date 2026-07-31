@@ -87,6 +87,17 @@ class ExamSession(Base):
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     score: Mapped[float | None] = mapped_column(Float, nullable=True)
     passed: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    # v0.3 in-progress persistence
+    engine_session_id: Mapped[str | None] = mapped_column(
+        String(64), nullable=True, unique=True, index=True
+    )
+    status: Mapped[str] = mapped_column(String(20), default="finished", index=True)
+    blueprint_id: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    current_index: Mapped[int] = mapped_column(Integer, default=0)
+    remaining_seconds: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    paused_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_active_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    state_json: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     user: Mapped[User] = relationship(back_populates="exam_sessions")
     exam: Mapped[Exam] = relationship(back_populates="exam_sessions")

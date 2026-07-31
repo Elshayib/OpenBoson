@@ -16,7 +16,7 @@ from sqlalchemy.engine import Connection, Engine
 logger = logging.getLogger(__name__)
 
 # Bump when adding a new migration function below.
-CURRENT_SCHEMA_VERSION = 2
+CURRENT_SCHEMA_VERSION = 3
 
 _SCHEMA_VERSION_TABLE = "schema_version"
 
@@ -263,7 +263,49 @@ def _migrate_v2_answer_objective_identity(conn: Connection) -> None:
     )
 
 
+def _migrate_v3_active_exam_sessions(conn: Connection) -> None:
+    """Add in-progress / pause-resume columns on exam_sessions."""
+    if not _table_exists(conn, "exam_sessions"):
+        return
+
+    cols = _columns(conn, "exam_sessions")
+    additions = (
+        ("engine_session_id", "VARCHAR(64)"),
+        ("status", "VARCHAR(20) DEFAULT 'finished'"),
+        ("blueprint_id", "VARCHAR(80)"),
+        ("current_index", "INTEGER DEFAULT 0"),
+        ("remaining_seconds", "INTEGER"),
+        ("paused_at", "DATETIME"),
+        ("last_active_at", "DATETIME"),
+        ("state_json", "TEXT"),
+    )
+    for name, sql_type in additions:
+        if name not in cols:
+            conn.execute(text(f"ALTER TABLE exam_sessions ADD COLUMN {name} {sql_type}"))
+
+    # Existing finished rows should remain queryable as finished.
+    conn.execute(
+        text(
+            """
+            UPDATE exam_sessions
+            SET status = 'finished'
+            WHERE status IS NULL OR status = ''
+            """
+        )
+    )
+    conn.execute(
+        text(
+            "CREATE UNIQUE INDEX IF NOT EXISTS ix_exam_sessions_engine_session_id "
+            "ON exam_sessions (engine_session_id)"
+        )
+    )
+    conn.execute(
+        text("CREATE INDEX IF NOT EXISTS ix_exam_sessions_status ON exam_sessions (status)")
+    )
+
+
 _MIGRATIONS: list[tuple[int, Callable[[Connection], None]]] = [
     (1, _migrate_v1_exam_identity),
     (2, _migrate_v2_answer_objective_identity),
+    (3, _migrate_v3_active_exam_sessions),
 ]

@@ -28,7 +28,7 @@ def _reset_router_state():
 
 
 @pytest.fixture
-def client() -> TestClient:
+def client(isolated_home) -> TestClient:
     return TestClient(app)
 
 
@@ -264,3 +264,38 @@ def test_encor_session_cert_isolation(client):
     expected = allocate_counts(bp.question_count, bp.domain_weights)
     actual = Counter(q.topic_code.split(".", 1)[0] for q in session.questions)
     assert dict(actual) == expected
+
+
+def test_pause_resume_list_and_mark(client):
+    body = _create_session(client)
+    sid = body["session_id"]
+    qid = body["question"]["id"]
+
+    mark = client.post(f"/api/v1/sessions/{sid}/mark", json={"question_id": qid})
+    assert mark.status_code == 200
+    assert mark.json()["marked_for_review"] is True
+
+    paused = client.post(
+        f"/api/v1/sessions/{sid}/pause",
+        json={"remaining_seconds": 3210},
+    )
+    assert paused.status_code == 200
+    assert paused.json()["status"] == "paused"
+    assert paused.json()["remaining_seconds"] == 3210
+
+    listed = client.get("/api/v1/sessions")
+    assert listed.status_code == 200
+    assert any(item["session_id"] == sid for item in listed.json())
+
+    # Drop memory — load must come from SQLite.
+    from openboson.exsim import router
+
+    router._SESSIONS.clear()
+    resumed = client.post(f"/api/v1/sessions/{sid}/resume")
+    assert resumed.status_code == 200
+    assert resumed.json()["status"] == "in_progress"
+    assert resumed.json()["remaining_seconds"] == 3210
+
+    meta = client.get(f"/api/v1/sessions/{sid}")
+    assert meta.status_code == 200
+    assert qid in meta.json()["marked_for_review"]

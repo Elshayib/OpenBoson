@@ -102,6 +102,7 @@ class MainWindow(QMainWindow):
         self._dashboard_page.set_on_practice_weakest(self.navigate_practice_weakest_domain)
         self._dashboard_page.set_on_practice_missed(self.navigate_practice_missed)
         self._dashboard_page.set_on_continue(self.navigate_continue_activity)
+        self._dashboard_page.set_on_resume_exam(self.resume_paused_exam)
 
         # Transient pages
         self._practice_q_page = PracticeQuestionPage()
@@ -115,6 +116,7 @@ class MainWindow(QMainWindow):
         self._practice_q_page.set_on_back(self._go_to_practice)
         self._session_page.set_on_result(self._on_exam_result)
         self._session_page.set_on_exit(self._go_to_practice)
+        self._session_page.set_on_paused(self._on_exam_paused)
         self._result_page.set_on_review(self._on_review)
         self._result_page.set_on_retake(self._on_retake)
 
@@ -224,7 +226,9 @@ class MainWindow(QMainWindow):
                 self._nav_before_exam.setChecked(True)
             else:
                 button.setChecked(False)
-            self.statusBar().showMessage("Finish or time out the exam before leaving.", 4000)
+            self.statusBar().showMessage(
+                "Finish, pause, or wait for the timer before leaving.", 4000
+            )
             return
         label = button.text()
         idx = next(
@@ -296,8 +300,23 @@ class MainWindow(QMainWindow):
         ids = svc.recent_missed_question_ids(limit=limit)
         self.navigate_practice(question_ids=ids)
 
+    def _on_exam_paused(self, session: ExamSession) -> None:
+        """Leave the exam UI after Pause & Exit; attempt is saved as paused."""
+        self._exam_active = False
+        self._session_page.cleanup()
+        self._nav_before_exam = None
+        self.select_page("Dashboard")
+        remaining = session.remaining_seconds
+        msg = "Exam paused — resume from the Dashboard."
+        if remaining is not None:
+            mins, secs = divmod(max(0, remaining), 60)
+            msg = f"Exam paused with {mins:02d}:{secs:02d} remaining — resume from the Dashboard."
+        self.statusBar().showMessage(msg, 8000)
+
     def navigate_continue_activity(self) -> None:
-        """Open Practice or Labs based on latest finished activity (no resume)."""
+        """Prefer resumable exam; else open Practice or Labs from last finished activity."""
+        if self.resume_paused_exam():
+            return
         from openboson import stats_service as svc
 
         activity = svc.latest_activity()
@@ -306,11 +325,60 @@ class MainWindow(QMainWindow):
             return
         self.navigate_practice()
 
+    def resume_paused_exam(self) -> bool:
+        """Load and show a resumable exam. Returns True if one was resumed."""
+        from openboson.gui import engine as gui_engine
+
+        info = gui_engine.get_resumable_exam_info()
+        if info is None:
+            return False
+        extra = None
+        local = getattr(self._session_page, "_session", None)
+        if local is not None and local.session_id == info.engine_session_id:
+            extra = {q.id: q for q in local.questions}
+        session = gui_engine.load_resumable_exam(info.engine_session_id, extra_questions=extra)
+        if session is None:
+            self.statusBar().showMessage("Could not restore the paused exam.", 6000)
+            return False
+        if session.is_paused():
+            gui_engine.resume_session(session)
+        self._session_page.start_session(session, start_timer=True)
+        self._enter_exam()
+        return True
+
+    def _confirm_replace_active_exam(self) -> bool:
+        """Ask before abandoning a paused/in-progress exam to start a new one."""
+        from openboson.gui import engine as gui_engine
+
+        info = gui_engine.get_resumable_exam_info()
+        if info is None:
+            return True
+        box = QMessageBox(self)
+        box.setIcon(QMessageBox.Icon.Warning)
+        box.setWindowTitle("Exam in progress")
+        box.setText(f"You have a saved exam: {info.exam_title}.")
+        box.setInformativeText("Resume the saved exam, or abandon it and start a new one?")
+        resume_btn = box.addButton("Resume saved", QMessageBox.ButtonRole.AcceptRole)
+        abandon_btn = box.addButton("Abandon & start new", QMessageBox.ButtonRole.DestructiveRole)
+        box.addButton("Cancel", QMessageBox.ButtonRole.RejectRole)
+        box.setDefaultButton(resume_btn)
+        box.exec()
+        clicked = box.clickedButton()
+        if clicked is resume_btn:
+            self.resume_paused_exam()
+            return False
+        if clicked is abandon_btn:
+            gui_engine.abandon_resumable_exams()
+            return True
+        return False
+
     def _on_practice_question(self, question: Question) -> None:
         self._practice_q_page.show_question(question)
         self._stack.setCurrentWidget(self._practice_q_page)
 
     def _on_blueprint_exam(self, session: ExamSession) -> None:
+        if not self._confirm_replace_active_exam():
+            return
         self._session_page.start_session(session)
         self._enter_exam()
 
@@ -371,6 +439,8 @@ class MainWindow(QMainWindow):
 
     def start_exam_from_list(self, bank, mode) -> None:
         """Test helper: start a bank exam session."""
+        if not self._confirm_replace_active_exam():
+            return
         self._session_page.start_exam(bank, mode=mode)
         self._enter_exam()
 

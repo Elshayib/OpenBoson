@@ -40,6 +40,7 @@ class DashboardPage(_Page):
         self._on_practice_weakest: Callable[[], None] | None = None
         self._on_practice_missed: Callable[[], None] | None = None
         self._on_continue: Callable[[], None] | None = None
+        self._on_resume_exam: Callable[[], None] | None = None
         self._cta_host: QWidget | None = None
         self._rebuild_static()
 
@@ -51,6 +52,9 @@ class DashboardPage(_Page):
 
     def set_on_continue(self, callback: Callable[[], None]) -> None:
         self._on_continue = callback
+
+    def set_on_resume_exam(self, callback: Callable[[], None]) -> None:
+        self._on_resume_exam = callback
 
     def _rebuild_static(self) -> None:
         self._scroll.clear_content()
@@ -86,16 +90,37 @@ class DashboardPage(_Page):
 
         try:
             from openboson import stats_service as svc
+            from openboson.gui import engine as gui_engine
 
             weak = svc.weak_domains(limit=1)
             missed = svc.recent_missed_question_ids(limit=1)
             activity = svc.latest_activity()
             summary = svc.exam_summary()
+            resumable = gui_engine.get_resumable_exam_info()
         except Exception as exc:
             err = QLabel(f"Could not load dashboard: {exc}")
             err.setProperty("role", "muted")
             self._cta_layout.addWidget(err)
             return
+
+        if resumable is not None:
+            rem = resumable.remaining_seconds
+            rem_txt = ""
+            if rem is not None:
+                mins, secs = divmod(max(0, rem), 60)
+                rem_txt = f" · {mins:02d}:{secs:02d} left"
+            self._cta_layout.addWidget(
+                self._cta_card(
+                    "Resume paused exam",
+                    (
+                        f"{resumable.exam_title} — question {resumable.current_index + 1}/"
+                        f"{max(resumable.question_count, 1)} · "
+                        f"{resumable.answered_count} answered{rem_txt}"
+                    ),
+                    enabled=True,
+                    on_click=self._on_resume_exam,
+                )
+            )
 
         self._cta_layout.addWidget(self._section("Study next"))
 

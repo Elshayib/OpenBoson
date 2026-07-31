@@ -6,7 +6,6 @@ read-side queries for the Stats page (history, per-domain aggregates).
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any
@@ -65,45 +64,12 @@ def get_or_create_default_user(display_name: str = "Default") -> User:
 def save_exam_result(session: ExamSession, result: ExamResult) -> int:
     """Persist a finished exam session + per-question answers.
 
-    Returns the DB row id of the ExamSession.
+    Returns the DB row id of the ExamSession. Prefer updating the active
+    pause/resume row when ``engine_session_id`` matches.
     """
-    user = get_or_create_default_user()
-    exam_code = (result.exam_code or "").strip()
-    exam_version = (result.exam_version or "").strip()
-    with _session() as s:
-        orm = ExamSessionORM(
-            user_id=user.id,
-            exam_id=_lookup_exam_id(s, exam_code),
-            exam_code=exam_code,
-            exam_version=exam_version,
-            mode=result.mode,
-            started_at=session.started_at,
-            finished_at=session.finished_at or datetime.now(UTC),
-            score=result.score,
-            passed=result.passed,
-        )
-        s.add(orm)
-        s.flush()  # get orm.id
-        for q in session.questions:
-            ua = session.answers.get(q.id)
-            ans_json = json.dumps(ua.answer) if ua and ua.answer is not None else "[]"
-            is_correct = ua.is_correct if ua else None
-            cert_tag = q.cert_tags[0] if q.cert_tags else ""
-            s.add(
-                UserAnswer(
-                    session_id=orm.id,
-                    question_id=None,  # questions aren't persisted as rows yet
-                    bank_question_id=q.id,
-                    topic_code=q.topic_code or "",
-                    cert_tag=cert_tag,
-                    exam_version=exam_version,
-                    answer_json=ans_json,
-                    is_correct=is_correct,
-                    time_spent_seconds=int(ua.time_spent_seconds) if ua else 0,
-                )
-            )
-        s.commit()
-        return orm.id
+    from openboson.exsim.session_store import finalize_session
+
+    return finalize_session(session, result)
 
 
 def _lookup_exam_id(s: Session, exam_code: str) -> int | None:

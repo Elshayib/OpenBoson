@@ -25,7 +25,7 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 
 Start here — details in [`deferred-releases.md`](deferred-releases.md):
 
-1. Session persistence + pause/resume
+1. Session persistence + pause/resume — **in progress** (engine snapshot, SQLite active sessions, GUI Pause & Exit / Dashboard resume, API pause/resume/list)
 2. Custom exam builder (presets)
 3. Exports (HTML / JSON / CSV / PDF)
 4. Scale content toward ≥1000 CCNA / ≥800 ENCOR
