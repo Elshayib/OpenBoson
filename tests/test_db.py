@@ -1,9 +1,7 @@
 """Tests for SQLite persistence layer."""
 
-from datetime import datetime, timezone
-
 from openboson.db import init_db
-from openboson.models import Exam, ExamSession, User, Question
+from openboson.models import Exam, ExamSession, Question, User
 
 
 def _engine():

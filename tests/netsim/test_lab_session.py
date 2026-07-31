@@ -10,14 +10,8 @@ from openboson.netsim.router import _LABS, _SESSIONS
 from openboson.netsim.session import LabSession, score_lab
 from openboson.server import app
 
-
 LAB_ID = "ccna_branch_office_access"
-LAB_PATH = (
-    Path(__file__).resolve().parents[2]
-    / "data"
-    / "demo_labs"
-    / f"{LAB_ID}.yaml"
-)
+LAB_PATH = Path(__file__).resolve().parents[2] / "data" / "demo_labs" / f"{LAB_ID}.yaml"
 
 
 @pytest.fixture(autouse=True)
@@ -78,7 +72,7 @@ def test_score_lab_partial(lab):
 def test_list_labs(client):
     resp = client.get("/api/v1/labs")
     assert resp.status_code == 200
-    ids = {l["id"] for l in resp.json()}
+    ids = {item["id"] for item in resp.json()}
     assert LAB_ID in ids
 
 
@@ -102,9 +96,7 @@ def test_submit_config_grades(client):
     sid = sess["session_id"]
     lab = _LABS[LAB_ID]
     t1 = next(t for t in lab.tasks if t.id == "t1")
-    resp = client.post(
-        f"/api/v1/lab-sessions/{sid}/submit", json={"config": t1.expected_config}
-    )
+    resp = client.post(f"/api/v1/lab-sessions/{sid}/submit", json={"config": t1.expected_config})
     assert resp.status_code == 200
     body = resp.json()
     assert body["task_id"] == "t1"
@@ -116,9 +108,7 @@ def test_finish_lab_returns_result(client):
     sid = sess["session_id"]
     lab = _LABS[LAB_ID]
     for t in lab.tasks:
-        client.post(
-            f"/api/v1/lab-sessions/{sid}/submit", json={"config": t.expected_config}
-        )
+        client.post(f"/api/v1/lab-sessions/{sid}/submit", json={"config": t.expected_config})
     resp = client.post(f"/api/v1/lab-sessions/{sid}/finish")
     assert resp.status_code == 200
     result = resp.json()

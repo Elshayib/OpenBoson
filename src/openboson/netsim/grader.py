@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Any, Iterable
+from typing import TYPE_CHECKING
 
 from openboson.netsim.lab_schema import GradingRule, LabTask, VerifyBlock
 
@@ -80,8 +81,11 @@ def _coach_for_missing(missing: list[str]) -> str:
         cats.append("DHCP service configuration is incomplete.")
     if has("router ospf") or (has("network ") and has("area")):
         cats.append("Dynamic routing configuration is incomplete.")
-    if has("interface ") and not has("ip address") and not has("no shutdown") and not has(
-        "switchport"
+    if (
+        has("interface ")
+        and not has("ip address")
+        and not has("no shutdown")
+        and not has("switchport")
     ):
         cats.append("A required interface section is missing from the configuration.")
 
@@ -115,7 +119,9 @@ def _coach_for_order(_violations: list[str]) -> str:
     return "Some configuration appears out of the expected logical order."
 
 
-def _grade_rules(rules: GradingRule, submitted_config: str) -> tuple[list[str], list[str], list[str], float]:
+def _grade_rules(
+    rules: GradingRule, submitted_config: str
+) -> tuple[list[str], list[str], list[str], float]:
     lines = _normalize_config(submitted_config)
     line_set = set(lines)
     missing = [r for r in rules.require if _normalize_line(r) not in line_set]
@@ -128,11 +134,7 @@ def _grade_rules(rules: GradingRule, submitted_config: str) -> tuple[list[str], 
             idx = next((i for i, line in enumerate(lines) if line == norm), None)
             positions.append(idx if idx is not None else -1)
         for i in range(len(positions) - 1):
-            if (
-                positions[i] != -1
-                and positions[i + 1] != -1
-                and positions[i + 1] < positions[i]
-            ):
+            if positions[i] != -1 and positions[i + 1] != -1 and positions[i + 1] < positions[i]:
                 order_violations.append("order")
     total_required = len(rules.require)
     satisfied = total_required - len(missing)

@@ -144,9 +144,9 @@ class StatsPage(QWidget):
         v = QVBoxLayout(card)
         v.setContentsMargins(18, 16, 18, 16)
         v.setSpacing(4)
-        l = QLabel(label)
-        l.setProperty("role", "muted")
-        v.addWidget(l)
+        title = QLabel(label)
+        title.setProperty("role", "muted")
+        v.addWidget(title)
         big = QLabel(value)
         big.setStyleSheet("font-size: 28px; font-weight: 700; color: #58a6ff;")
         v.addWidget(big)
@@ -156,15 +156,15 @@ class StatsPage(QWidget):
         return card
 
     def _section_label(self, text: str) -> QLabel:
-        l = QLabel(text)
-        l.setProperty("role", "h2")
-        return l
+        label = QLabel(text)
+        label.setProperty("role", "h2")
+        return label
 
     def _muted(self, text: str) -> QLabel:
-        l = QLabel(text)
-        l.setProperty("role", "muted")
-        l.setWordWrap(True)
-        return l
+        label = QLabel(text)
+        label.setProperty("role", "muted")
+        label.setWordWrap(True)
+        return label
 
     def _domain_row(self, prefix: str, percent: float, total: int) -> QFrame:
         row = QFrame()

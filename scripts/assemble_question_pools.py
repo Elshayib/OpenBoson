@@ -44,7 +44,8 @@ def _collect(cert_folder: str) -> list[dict]:
 def _topics_for(questions: list[dict], exam_code: str, version: str) -> list[dict]:
     allowed = set(get_allowed_objectives(exam_code, version) or [])
     used = sorted({q["topic_code"] for q in questions})
-    return [{"code": code, "name": code} for code in used if code in allowed or True]
+    # Keep declared topics even if the objective map is temporarily incomplete.
+    return [{"code": code, "name": code} for code in used if (not allowed) or code in allowed]
 
 
 def main() -> int:

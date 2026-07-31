@@ -7,13 +7,11 @@ import pytest
 from openboson.bank_loader import load_exam_bank
 from openboson.bank_schema import ExamBank, Question
 from openboson.exsim.scoring import (
-    DomainBreakdown,
     ExamResult,
     grade_answer,
     score_exam,
 )
 from openboson.exsim.session import ExamMode, ExamSession
-
 
 BANK_PATH = Path(__file__).resolve().parents[1] / "fixtures" / "sample_bank.yaml"
 
@@ -143,7 +141,12 @@ def test_score_exam_all_wrong_fails(bank):
     s = ExamSession.create(bank, mode=ExamMode.EXAM)
     s.questions = list(bank.questions)
     for q in s.questions:
-        s.submit_answer(q.id, {"answer": "__definitely_wrong__"} if q.type.value == "single_choice" else {"answers": ["__bad__"]})
+        s.submit_answer(
+            q.id,
+            {"answer": "__definitely_wrong__"}
+            if q.type.value == "single_choice"
+            else {"answers": ["__bad__"]},
+        )
     s.finish()
     result = score_exam(s)
     assert result.score == pytest.approx(0.0)
@@ -201,7 +204,7 @@ def test_exam_result_score_percent_is_score_times_100(bank):
 
 def test_grade_sim_no_expected_commands_returns_false(bank):
     """Sims without expected_commands cannot be auto-graded; return False."""
-    from openboson.bank_schema import Question, QuestionType, SimAnswer
+    from openboson.bank_schema import Question, QuestionType
 
     # Build a minimal sim question without expected_commands.
     q = Question(

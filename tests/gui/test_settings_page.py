@@ -19,7 +19,7 @@ def test_settings_page_renders(fresh_settings, qtbot):
     mw.select_page("Settings")
     page = mw._static_pages["Settings"]
     page.refresh()
-    labels = [l.text() for l in page.findChildren(QLabel)]
+    labels = [lbl.text() for lbl in page.findChildren(QLabel)]
     assert any("Data Directory" in t for t in labels)
     assert any("Theme" in t for t in labels)
     assert any("Content" in t for t in labels)

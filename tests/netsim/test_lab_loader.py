@@ -7,12 +7,8 @@ import pytest
 from openboson.netsim.lab_loader import LabLoaderError, load_lab
 from openboson.netsim.lab_schema import DeviceType, LabBank
 
-
 DEMO_LAB_PATH = (
-    Path(__file__).resolve().parents[2]
-    / "data"
-    / "demo_labs"
-    / "ccna_branch_office_access.yaml"
+    Path(__file__).resolve().parents[2] / "data" / "demo_labs" / "ccna_branch_office_access.yaml"
 )
 
 

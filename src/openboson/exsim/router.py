@@ -149,9 +149,7 @@ def _serialize_question_for_display(
         # Independently shuffled left/right with opaque IDs — never canonical pairs.
         if presentation and presentation.drag_left is not None:
             base["left_items"] = [d.to_dict() for d in presentation.drag_left]
-            base["right_items"] = [
-                d.to_dict() for d in (presentation.drag_right or [])
-            ]
+            base["right_items"] = [d.to_dict() for d in (presentation.drag_right or [])]
         else:
             # Fallback without session presentation: shuffle but do not pair.
             from openboson.exsim.session import build_question_presentation
@@ -259,9 +257,7 @@ def create_session(exam_id: str, body: CreateSessionRequest) -> dict[str, Any]:
         "blueprint_id": blueprint.id,
         "mode": session.mode.value,
         "total_questions": len(session.questions),
-        "question": _serialize_question_for_display(
-            q, session.presentation_for(q.id)
-        ),
+        "question": _serialize_question_for_display(q, session.presentation_for(q.id)),
     }
 
 

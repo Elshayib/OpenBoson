@@ -42,7 +42,7 @@ def _serialize_topology(lab: LabBank) -> dict[str, Any]:
             }
             for d in lab.topology.devices
         ],
-        "links": [{"a": l.a, "b": l.b} for l in lab.topology.links],
+        "links": [{"a": link.a, "b": link.b} for link in lab.topology.links],
     }
 
 

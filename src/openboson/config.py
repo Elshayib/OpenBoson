@@ -19,10 +19,7 @@ class Settings:
     @property
     def data_dir(self) -> Path:
         env = os.environ.get("OPENBOSON_HOME")
-        if env:
-            path = Path(env)
-        else:
-            path = Path.home() / f".{self.app_name}"
+        path = Path(env) if env else Path.home() / f".{self.app_name}"
         path.mkdir(parents=True, exist_ok=True)
         return path
 

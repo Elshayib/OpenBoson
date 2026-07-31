@@ -5,7 +5,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import Enum
 from ipaddress import IPv4Address, IPv4Interface, IPv4Network
-from typing import Any
 
 
 class DeviceRole(str, Enum):
@@ -142,17 +141,14 @@ class DeviceRuntime:
 
     def show_ip_int_brief(self) -> str:
         header = (
-            f"{'Interface':<28}{'IP-Address':<16}{'OK?':<4}"
-            f"{'Method':<8}{'Status':<22}{'Protocol'}"
+            f"{'Interface':<28}{'IP-Address':<16}{'OK?':<4}{'Method':<8}{'Status':<22}{'Protocol'}"
         )
         rows = [header]
         for name in sorted(self.interfaces):
             iface = self.interfaces[name]
             st, proto = iface.status_pair()
             ip = iface.ip or "unassigned"
-            rows.append(
-                f"{name:<28}{ip:<16}{'YES':<4}{'manual':<8}{st:<22}{proto}"
-            )
+            rows.append(f"{name:<28}{ip:<16}{'YES':<4}{'manual':<8}{st:<22}{proto}")
         return "\n".join(rows)
 
     def show_vlan_brief(self) -> str:
@@ -178,9 +174,9 @@ class DeviceRuntime:
 
     def show_ip_route(self) -> str:
         lines = [
-            f"Codes: C - connected, S - static",
+            "Codes: C - connected, S - static",
             "",
-            f"Gateway of last resort is not set",
+            "Gateway of last resort is not set",
             "",
         ]
         # Connected routes from up interfaces with IP.
@@ -193,9 +189,7 @@ class DeviceRuntime:
         for r in self.static_routes:
             try:
                 net = IPv4Network(f"{r.network}/{r.mask}", strict=False)
-                lines.append(
-                    f"S    {net.network_address} /{net.prefixlen} [1/0] via {r.next_hop}"
-                )
+                lines.append(f"S    {net.network_address} /{net.prefixlen} [1/0] via {r.next_hop}")
             except ValueError:
                 lines.append(f"S    {r.network} {r.mask} via {r.next_hop}")
         if len(lines) == 4:
@@ -204,8 +198,12 @@ class DeviceRuntime:
 
     def show_version(self) -> str:
         plat = {
-            DeviceRole.ROUTER: "OpenBoson OpenIOS Software (C1900-UNIVERSALK9), Version 15.7(3)M, SIMULATED",
-            DeviceRole.SWITCH: "OpenBoson OpenIOS Software (C2960-LANBASEK9), Version 15.2(7)E, SIMULATED",
+            DeviceRole.ROUTER: (
+                "OpenBoson OpenIOS Software (C1900-UNIVERSALK9), Version 15.7(3)M, SIMULATED"
+            ),
+            DeviceRole.SWITCH: (
+                "OpenBoson OpenIOS Software (C2960-LANBASEK9), Version 15.2(7)E, SIMULATED"
+            ),
             DeviceRole.PC: "OpenBoson Host Stack, Version 1.0, SIMULATED",
             DeviceRole.AP: "OpenBoson OpenIOS-AP Software, Version 15.3, SIMULATED",
             DeviceRole.FIREWALL: "OpenBoson OpenIOS-FW Software, Version 9.x, SIMULATED",
@@ -219,7 +217,7 @@ class DeviceRuntime:
             f"\n"
             f"{self.hostname} uptime is 0 days, 0 hours, 5 minutes\n"
             f"System returned to ROM by power-on\n"
-            f"System image file is \"flash:openios-sim.bin\"\n"
+            f'System image file is "flash:openios-sim.bin"\n'
             f"\n"
             f"This product contains cryptographic features — simulated only.\n"
         )

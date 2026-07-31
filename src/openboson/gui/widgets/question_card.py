@@ -357,12 +357,13 @@ class _MatchWidget(QWidget):
         token_id = sender.currentData()
         slot = self._slots[idx]
         previous = slot.right_id()
-        if previous and previous != token_id:
-            # Return previous to pool if not selected elsewhere.
-            if previous not in {
-                s.right_id() for j, s in enumerate(self._slots) if j != idx and s.right_id()
-            }:
-                self._add_pool_item(previous)
+        if (
+            previous
+            and previous != token_id
+            and previous
+            not in {s.right_id() for j, s in enumerate(self._slots) if j != idx and s.right_id()}
+        ):
+            self._add_pool_item(previous)
         if token_id is None:
             slot.set_right(None)
         else:

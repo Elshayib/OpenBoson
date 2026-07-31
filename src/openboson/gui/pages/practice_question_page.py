@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import contextlib
+
 from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
@@ -13,6 +15,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from openboson import stats_service
 from openboson.bank_schema import (
     DragMatchAnswer,
     MultipleChoiceAnswer,
@@ -23,7 +26,6 @@ from openboson.bank_schema import (
 )
 from openboson.exsim.scoring import grade_answer
 from openboson.gui.widgets.question_card import QuestionCard
-from openboson import stats_service
 
 
 class PracticeQuestionPage(QWidget):
@@ -106,10 +108,8 @@ class PracticeQuestionPage(QWidget):
         if answer is None:
             return
         is_correct = grade_answer(self._question, answer)
-        try:
+        with contextlib.suppress(Exception):
             stats_service.save_practice_attempt(self._question.id, is_correct)
-        except Exception:
-            pass
         self._card.set_locked(True)
         self._check.setEnabled(False)
         self._render_feedback(is_correct, answer)
@@ -165,9 +165,7 @@ class PracticeQuestionPage(QWidget):
                 bits = []
                 if choice.id in correct_ids:
                     bits.append("correct")
-                if choice.id in user_ids and choice.id not in correct_ids:
-                    bits.append("your pick")
-                elif choice.id in user_ids:
+                if choice.id in user_ids and choice.id not in correct_ids or choice.id in user_ids:
                     bits.append("your pick")
                 title = f"{choice.id}. {choice.text}"
                 if bits:

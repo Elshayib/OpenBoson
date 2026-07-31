@@ -12,14 +12,14 @@ Schema overview:
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
-from sqlalchemy import ForeignKey, String, Text, Integer, Boolean, DateTime, Float
+from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
 def _now() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 class Base(DeclarativeBase):
@@ -33,8 +33,8 @@ class User(Base):
     display_name: Mapped[str] = mapped_column(String(120), default="Default")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
-    exam_sessions: Mapped[list["ExamSession"]] = relationship(back_populates="user")
-    lab_sessions: Mapped[list["LabSession"]] = relationship(back_populates="user")
+    exam_sessions: Mapped[list[ExamSession]] = relationship(back_populates="user")
+    lab_sessions: Mapped[list[LabSession]] = relationship(back_populates="user")
 
 
 class Exam(Base):
@@ -48,10 +48,10 @@ class Exam(Base):
     meta_json: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
-    questions: Mapped[list["Question"]] = relationship(
+    questions: Mapped[list[Question]] = relationship(
         back_populates="exam", cascade="all, delete-orphan"
     )
-    exam_sessions: Mapped[list["ExamSession"]] = relationship(back_populates="exam")
+    exam_sessions: Mapped[list[ExamSession]] = relationship(back_populates="exam")
 
 
 class Question(Base):
@@ -68,7 +68,7 @@ class Question(Base):
     difficulty: Mapped[int] = mapped_column(Integer, default=3)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
-    exam: Mapped["Exam"] = relationship(back_populates="questions")
+    exam: Mapped[Exam] = relationship(back_populates="questions")
 
 
 class ExamSession(Base):
@@ -88,9 +88,9 @@ class ExamSession(Base):
     score: Mapped[float | None] = mapped_column(Float, nullable=True)
     passed: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
 
-    user: Mapped["User"] = relationship(back_populates="exam_sessions")
-    exam: Mapped["Exam"] = relationship(back_populates="exam_sessions")
-    answers: Mapped[list["UserAnswer"]] = relationship(
+    user: Mapped[User] = relationship(back_populates="exam_sessions")
+    exam: Mapped[Exam] = relationship(back_populates="exam_sessions")
+    answers: Mapped[list[UserAnswer]] = relationship(
         back_populates="session", cascade="all, delete-orphan"
     )
 
@@ -113,7 +113,7 @@ class UserAnswer(Base):
     is_correct: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     time_spent_seconds: Mapped[int] = mapped_column(Integer, default=0)
 
-    session: Mapped["ExamSession"] = relationship(back_populates="answers")
+    session: Mapped[ExamSession] = relationship(back_populates="answers")
 
 
 class LabSession(Base):
@@ -127,8 +127,8 @@ class LabSession(Base):
     status: Mapped[str] = mapped_column(String(20), default="in_progress")
     score: Mapped[float | None] = mapped_column(Float, nullable=True)
 
-    user: Mapped["User"] = relationship(back_populates="lab_sessions")
-    steps: Mapped[list["LabStep"]] = relationship(
+    user: Mapped[User] = relationship(back_populates="lab_sessions")
+    steps: Mapped[list[LabStep]] = relationship(
         back_populates="session", cascade="all, delete-orphan"
     )
 
@@ -144,7 +144,7 @@ class LabStep(Base):
     is_correct: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     feedback: Mapped[str | None] = mapped_column(Text, nullable=True)
 
-    session: Mapped["LabSession"] = relationship(back_populates="steps")
+    session: Mapped[LabSession] = relationship(back_populates="steps")
 
 
 class PracticeAttempt(Base):

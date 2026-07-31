@@ -4,7 +4,6 @@ import pytest
 
 from openboson.gui.main_window import MainWindow
 
-
 pytestmark = pytest.mark.usefixtures("isolated_home")
 
 

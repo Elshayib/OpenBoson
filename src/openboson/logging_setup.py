@@ -56,9 +56,11 @@ def setup_logging(*, level: int = logging.INFO, force: bool = False) -> Path:
     file_handler._openboson_handler = True  # type: ignore[attr-defined]
     root.addHandler(file_handler)
 
-    if not any(isinstance(h, logging.StreamHandler) and not isinstance(
-        h, logging.handlers.RotatingFileHandler
-    ) for h in root.handlers):
+    if not any(
+        isinstance(h, logging.StreamHandler)
+        and not isinstance(h, logging.handlers.RotatingFileHandler)
+        for h in root.handlers
+    ):
         stream = logging.StreamHandler(sys.stderr)
         stream.setFormatter(formatter)
         stream.setLevel(level)

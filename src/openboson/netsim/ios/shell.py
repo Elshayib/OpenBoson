@@ -3,14 +3,13 @@
 from __future__ import annotations
 
 import re
-import shlex
-from dataclasses import dataclass, field
+from collections.abc import Callable
+from dataclasses import dataclass
 from enum import Enum
-from typing import Callable
 
 from openboson.netsim.ios.device import (
-    DeviceRuntime,
     DeviceRole,
+    DeviceRuntime,
     StaticRoute,
     expand_interface_name,
     parse_ip_mask,
@@ -126,9 +125,7 @@ class OpenIOSShell:
             return ShellResult(output=_invalid_input(line, 0))
         if match == "__ambiguous__":
             cands = [c for c in table if _abbrev_match(c, cmd)]
-            return ShellResult(
-                output=f"% Ambiguous command:  \"{cmd}\"\n  " + ", ".join(cands)
-            )
+            return ShellResult(output=f'% Ambiguous command:  "{cmd}"\n  ' + ", ".join(cands))
 
         handler = table[match]
         try:
@@ -243,7 +240,9 @@ class OpenIOSShell:
                 "  vlan                   VTP VLAN status\n"
                 f"\n{self.prompt()}{prefix}"
             )
-        filtered = [c for c in cmds if c.startswith(parts[-1].lower()) or _abbrev_match(c, parts[-1])]
+        filtered = [
+            c for c in cmds if c.startswith(parts[-1].lower()) or _abbrev_match(c, parts[-1])
+        ]
         if not filtered:
             return _invalid_input(prefix + "?", len(prefix))
         return "\n".join(f"  {c}" for c in filtered) + f"\n\n{self.prompt()}{prefix}"
@@ -362,11 +361,16 @@ class OpenIOSShell:
         for n in sorted(names):
             iface = self.device.interfaces[n]
             st, proto = iface.status_pair()
+            addr = (
+                iface.ip + "/" + str(_mask_prefix(iface.mask))
+                if iface.ip and iface.mask
+                else "unassigned"
+            )
             blocks.append(
                 f"{n} is {st}, line protocol is {proto}\n"
                 f"  Hardware is OpenIOS Simulated, address is aabb.cc00.0100\n"
                 f"  Description: {iface.description or ''}\n"
-                f"  Internet address is {iface.ip + '/' + str(_mask_prefix(iface.mask)) if iface.ip and iface.mask else 'unassigned'}\n"
+                f"  Internet address is {addr}\n"
                 f"  MTU 1500 bytes, BW 1000000 Kbit/sec\n"
                 f"  Encapsulation ARPA, loopback not set\n"
                 f"  Last input never, output never, output hang never"
@@ -381,7 +385,7 @@ class OpenIOSShell:
         if not re.match(r"^\d{1,3}(\.\d{1,3}){3}$", target):
             # hostname not in DNS
             return (
-                f"Translating \"{target}\"...domain server (255.255.255.255)\n"
+                f'Translating "{target}"...domain server (255.255.255.255)\n'
                 f"% Unrecognized host or address, or protocol not running."
             )
         if self.world is not None and hasattr(self.world, "ping"):
@@ -395,7 +399,7 @@ class OpenIOSShell:
         try:
             dst = IPv4Address(target)
         except ValueError:
-            return f"% Unrecognized host or address."
+            return "% Unrecognized host or address."
         for iface in self.device.interfaces.values():
             if not (iface.admin_up and iface.ip and iface.mask):
                 continue
@@ -469,15 +473,13 @@ class OpenIOSShell:
 
     def _cmd_vlan(self, args: list[str], line: str) -> str:
         if self.device.role not in (DeviceRole.SWITCH, DeviceRole.AP):
-            # Routers may accept vlan only for SVI in some platforms — keep strict
-            if self.device.role == DeviceRole.ROUTER:
-                raise _CmdError("% Incomplete command / VLAN config requires switch platform.")
+            raise _CmdError("% Incomplete command / VLAN config requires switch platform.")
         if not args:
             raise _CmdError("% Incomplete command.")
         try:
             vid = int(args[0])
-        except ValueError:
-            raise _CmdError("% Invalid VLAN id.")
+        except ValueError as exc:
+            raise _CmdError("% Invalid VLAN id.") from exc
         if vid < 1 or vid > 4094:
             raise _CmdError("% VLAN id out of range (1-4094).")
         if vid not in self.device.vlans:
@@ -499,8 +501,8 @@ class OpenIOSShell:
                 IPv4Address(net)
                 IPv4Network(f"0.0.0.0/{mask}")
                 IPv4Address(nh)
-            except ValueError:
-                raise _CmdError("% Invalid IP/mask.")
+            except ValueError as exc:
+                raise _CmdError("% Invalid IP/mask.") from exc
             self.device.static_routes.append(StaticRoute(network=net, mask=mask, next_hop=nh))
             return ""
         if _abbrev_match("domain-lookup", args[0]) or (
@@ -534,7 +536,11 @@ class OpenIOSShell:
     def _cmd_no_global(self, args: list[str], line: str) -> str:
         if not args:
             raise _CmdError("% Incomplete command.")
-        if _abbrev_match("ip", args[0]) and len(args) >= 2 and _abbrev_match("domain-lookup", args[1]):
+        if (
+            _abbrev_match("ip", args[0])
+            and len(args) >= 2
+            and _abbrev_match("domain-lookup", args[1])
+        ):
             return ""
         if _abbrev_match("ip", args[0]) and len(args) >= 2 and _abbrev_match("route", args[1]):
             # no ip route ...
@@ -663,8 +669,8 @@ class OpenIOSShell:
                 raise _CmdError("% Incomplete command.")
             try:
                 vid = int(args[2])
-            except ValueError:
-                raise _CmdError("% Invalid VLAN id.")
+            except ValueError as exc:
+                raise _CmdError("% Invalid VLAN id.") from exc
             iface.switchport_mode = "access"
             iface.access_vlan = vid
             if vid not in self.device.vlans:
@@ -752,11 +758,7 @@ def _resolve_command(token: str, commands: list[str]) -> str | None:
 def _invalid_input(line: str, caret_at: int) -> str:
     if caret_at < 0:
         caret_at = 0
-    return (
-        f"% Invalid input detected at '^' marker.\n"
-        f"{line}\n"
-        f"{' ' * caret_at}^\n"
-    )
+    return f"% Invalid input detected at '^' marker.\n{line}\n{' ' * caret_at}^\n"
 
 
 def _mask_prefix(mask: str | None) -> int:

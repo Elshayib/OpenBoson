@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import contextlib
 import json
 import logging
 import os
 import tempfile
 from dataclasses import asdict, dataclass, fields
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 from openboson.config import settings
 
@@ -49,9 +50,9 @@ def _coerce(raw: dict[str, Any]) -> AppSettings:
     if channel not in ("stable", "beta"):
         channel = "stable"
     return AppSettings(
-        theme=theme,  # type: ignore[arg-type]
+        theme=cast(ThemeName, theme),
         check_updates_on_startup=bool(base.get("check_updates_on_startup", True)),
-        update_channel=channel,  # type: ignore[arg-type]
+        update_channel=cast(UpdateChannel, channel),
         last_update_check=base.get("last_update_check"),
         skipped_version=base.get("skipped_version"),
         schema_version=int(base.get("schema_version") or SETTINGS_SCHEMA_VERSION),
@@ -93,10 +94,8 @@ def save_settings(data: AppSettings | dict[str, Any]) -> AppSettings:
             os.fsync(handle.fileno())
         os.replace(tmp_name, path)
     except Exception:
-        try:
+        with contextlib.suppress(OSError):
             os.unlink(tmp_name)
-        except OSError:
-            pass
         raise
     return app
 

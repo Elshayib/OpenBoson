@@ -3,14 +3,11 @@
 from __future__ import annotations
 
 import math
-from typing import Callable
 
 from PySide6.QtCore import QPointF, QRectF, Qt, Signal
 from PySide6.QtGui import (
-    QBrush,
     QColor,
     QFont,
-    QLinearGradient,
     QPainter,
     QPainterPath,
     QPen,
@@ -85,7 +82,7 @@ class TopologyCanvas(QWidget):
         devices = self._topology.devices
         n = len(devices)
         # Prefer role-aware layout for branch office: PCs left, SW center, R right
-        by_name = {d.name: d for d in devices}
+        {d.name: d for d in devices}
         names = [d.name for d in devices]
         if n == 4 and {"R1", "SW1", "PC1", "PC2"} <= set(names):
             self._positions["PC1"] = QPointF(70, 80)
@@ -210,6 +207,7 @@ class TopologyCanvas(QWidget):
             led = QColor("#3fb950") if up else QColor("#6e7681")
             p.setBrush(led)
             p.setPen(Qt.PenStyle.NoPen)
+
             # Points 18px from device centers along the cable
             def _near(src: QPointF, dst: QPointF) -> QPointF:
                 dx, dy = dst.x() - src.x(), dst.y() - src.y()

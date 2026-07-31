@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from sqlalchemy.orm import Session
@@ -18,7 +18,11 @@ from openboson.exsim.scoring import ExamResult
 from openboson.exsim.session import ExamSession
 from openboson.models import (
     ExamSession as ExamSessionORM,
+)
+from openboson.models import (
     LabSession as LabSessionORM,
+)
+from openboson.models import (
     LabStep,
     PracticeAttempt,
     User,
@@ -74,7 +78,7 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
             exam_version=exam_version,
             mode=result.mode,
             started_at=session.started_at,
-            finished_at=session.finished_at or datetime.now(timezone.utc),
+            finished_at=session.finished_at or datetime.now(UTC),
             score=result.score,
             passed=result.passed,
         )
@@ -134,13 +138,13 @@ def save_lab_result(session: LabSession, result: LabResult) -> int:
             user_id=user.id,
             lab_id=session.lab.lab_id,
             started_at=session.started_at,
-            finished_at=session.finished_at or datetime.now(timezone.utc),
+            finished_at=session.finished_at or datetime.now(UTC),
             status="completed",
             score=result.score,
         )
         s.add(orm)
         s.flush()
-        for idx, (tid, grade) in enumerate(result.task_grades.items()):
+        for idx, (_tid, grade) in enumerate(result.task_grades.items()):
             s.add(
                 LabStep(
                     lab_session_id=orm.id,
@@ -224,10 +228,7 @@ def exam_history(limit: int = 50) -> list[ExamHistoryItem]:
     """Recent exam attempts, newest first."""
     with _session() as s:
         rows = (
-            s.query(ExamSessionORM)
-            .order_by(ExamSessionORM.finished_at.desc())
-            .limit(limit)
-            .all()
+            s.query(ExamSessionORM).order_by(ExamSessionORM.finished_at.desc()).limit(limit).all()
         )
         return [
             ExamHistoryItem(
@@ -244,12 +245,7 @@ def exam_history(limit: int = 50) -> list[ExamHistoryItem]:
 
 def lab_history(limit: int = 50) -> list[LabHistoryItem]:
     with _session() as s:
-        rows = (
-            s.query(LabSessionORM)
-            .order_by(LabSessionORM.finished_at.desc())
-            .limit(limit)
-            .all()
-        )
+        rows = s.query(LabSessionORM).order_by(LabSessionORM.finished_at.desc()).limit(limit).all()
         return [
             LabHistoryItem(
                 id=r.id,
@@ -371,7 +367,7 @@ def latest_activity() -> dict[str, Any] | None:
         if when is None:
             return 0.0
         if when.tzinfo is None:
-            return when.replace(tzinfo=timezone.utc).timestamp()
+            return when.replace(tzinfo=UTC).timestamp()
         return when.timestamp()
 
     if exams:
@@ -434,7 +430,7 @@ def save_practice_attempt(question_id: str, is_correct: bool) -> int:
             user_id=user.id,
             question_bank_id=question_id,
             is_correct=is_correct,
-            answered_at=datetime.now(timezone.utc),
+            answered_at=datetime.now(UTC),
         )
         s.add(row)
         s.commit()

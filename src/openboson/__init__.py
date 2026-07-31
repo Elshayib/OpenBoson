@@ -23,7 +23,7 @@ def _version_from_pyproject() -> str:
 
 def _resolve_version() -> str:
     try:
-        from importlib.metadata import PackageNotFoundError, version
+        from importlib.metadata import version
 
         return version("openboson")
     except Exception:

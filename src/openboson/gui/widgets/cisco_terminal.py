@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QColor, QFont, QKeyEvent, QTextCharFormat, QTextCursor
+from PySide6.QtGui import QFont, QKeyEvent, QTextCursor
 from PySide6.QtWidgets import QPlainTextEdit
 
 from openboson.netsim.ios.shell import OpenIOSShell

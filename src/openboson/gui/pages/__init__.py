@@ -132,9 +132,7 @@ class DashboardPage(_Page):
                     f"({int((activity.get('score') or 0) * 100)}%) — open Practice"
                 )
             else:
-                continue_sub = (
-                    f"Last lab: {activity.get('lab_id', 'unknown')} — open Labs"
-                )
+                continue_sub = f"Last lab: {activity.get('lab_id', 'unknown')} — open Labs"
         elif summary.get("total_exams", 0) == 0:
             continue_sub = "No history yet — open Practice to begin"
         row.addWidget(

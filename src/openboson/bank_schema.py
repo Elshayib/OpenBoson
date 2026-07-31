@@ -14,7 +14,7 @@ Question ``type`` values:
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -175,11 +175,7 @@ class Question(BaseModel):
     def correct_answer_model(
         self,
     ) -> (
-        SingleChoiceAnswer
-        | MultipleChoiceAnswer
-        | DragMatchAnswer
-        | OrderedListAnswer
-        | SimAnswer
+        SingleChoiceAnswer | MultipleChoiceAnswer | DragMatchAnswer | OrderedListAnswer | SimAnswer
     ):
         """Return the strongly-typed correct answer for this question type."""
         mapping: dict[QuestionType, type[BaseModel]] = {
@@ -276,7 +272,7 @@ def _coerce_bank_level_cert_tags(data: dict[str, Any]) -> list[CertTag] | None:
         if tag not in ("ccna", "ccnp"):
             raise ValueError(f"Unknown certification tag {tag!r}; expected 'ccna' or 'ccnp'")
         if tag not in out:
-            out.append(tag)  # type: ignore[arg-type]
+            out.append(cast(CertTag, tag))
     return out
 
 

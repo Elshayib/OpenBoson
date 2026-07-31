@@ -224,9 +224,7 @@ def test_drag_match_does_not_leak_canonical_pairs(client):
     from openboson.exsim import router
 
     session = router._SESSIONS[sid]
-    drag_idxs = [
-        i for i, q in enumerate(session.questions) if q.type.value == "drag_match"
-    ]
+    drag_idxs = [i for i, q in enumerate(session.questions) if q.type.value == "drag_match"]
     if not drag_idxs:
         pytest.skip("no drag_match questions in sampled exam")
     resp = client.get(f"/api/v1/sessions/{sid}/questions/{drag_idxs[0]}")
@@ -249,9 +247,7 @@ def test_choice_presentation_stable_across_fetches(client):
     from openboson.exsim import router
 
     session = router._SESSIONS[sid]
-    sc_idx = next(
-        i for i, q in enumerate(session.questions) if q.type.value == "single_choice"
-    )
+    sc_idx = next(i for i, q in enumerate(session.questions) if q.type.value == "single_choice")
     r1 = client.get(f"/api/v1/sessions/{sid}/questions/{sc_idx}").json()
     r2 = client.get(f"/api/v1/sessions/{sid}/questions/{sc_idx}").json()
     assert [c["id"] for c in r1["choices"]] == [c["id"] for c in r2["choices"]]

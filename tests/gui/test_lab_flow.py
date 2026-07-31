@@ -6,7 +6,6 @@ from PySide6.QtWidgets import QFrame, QLabel
 from openboson.gui.engine import get_lab_by_id, load_available_labs
 from openboson.gui.main_window import MainWindow
 
-
 pytestmark = pytest.mark.usefixtures("isolated_home")
 
 GOLD_LAB_ID = "ccna_branch_office_access"
@@ -99,7 +98,7 @@ def test_gold_lab_full_cli_path(window, qtbot, gold_lab):
     qtbot.wait(50)
     assert window.visible_page_label() == "Lab Result"
     labels = window._lab_result_page.findChildren(QLabel)
-    assert any("ALL TASKS PASSED" in (l.text() or "") for l in labels)
+    assert any("ALL TASKS PASSED" in (lbl.text() or "") for lbl in labels)
 
 
 def test_fail_feedback_has_no_ios_commands(window, qtbot, gold_lab):

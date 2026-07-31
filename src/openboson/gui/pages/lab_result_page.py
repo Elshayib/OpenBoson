@@ -39,13 +39,13 @@ class LabResultPage(QWidget):
         banner.setObjectName("Card")
         bl = QVBoxLayout(banner)
         verdict = QLabel(
-            "ALL TASKS PASSED" if result.passed_tasks == result.total_tasks
+            "ALL TASKS PASSED"
+            if result.passed_tasks == result.total_tasks
             else f"{result.passed_tasks} / {result.total_tasks} TASKS PASSED"
         )
         verdict.setProperty("role", "h1")
         verdict.setStyleSheet(
-            "color: #3fb950;" if result.passed_tasks == result.total_tasks
-            else "color: #f85149;"
+            "color: #3fb950;" if result.passed_tasks == result.total_tasks else "color: #f85149;"
         )
         bl.addWidget(verdict)
         score = QLabel(f"Score: {result.score_percent:.0f}%")

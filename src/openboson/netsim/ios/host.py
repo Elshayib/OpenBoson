@@ -103,19 +103,19 @@ class HostShell:
         mask = iface.mask or "0.0.0.0"
         gw = self._guess_gateway()
         lines = [
-            f"Windows IP Configuration" if wide else "IP Configuration",
+            "Windows IP Configuration" if wide else "IP Configuration",
             "",
             f"Ethernet adapter {iface.name}:",
             "",
-            f"   Connection-specific DNS Suffix  . :",
+            "   Connection-specific DNS Suffix  . :",
             f"   IPv4 Address. . . . . . . . . . . : {ip}",
             f"   Subnet Mask . . . . . . . . . . . : {mask}",
             f"   Default Gateway . . . . . . . . . : {gw or ''}",
         ]
         if wide:
-            lines.insert(5, f"   Description . . . . . . . . . . . : OpenBoson Virtual NIC")
-            lines.insert(6, f"   Physical Address. . . . . . . . . : AA-BB-CC-00-01-10")
-            lines.append(f"   DHCP Enabled. . . . . . . . . . . : No")
+            lines.insert(5, "   Description . . . . . . . . . . . : OpenBoson Virtual NIC")
+            lines.insert(6, "   Physical Address. . . . . . . . . : AA-BB-CC-00-01-10")
+            lines.append("   DHCP Enabled. . . . . . . . . . . : No")
         return "\n".join(lines)
 
     def _guess_gateway(self) -> str | None:
@@ -157,7 +157,9 @@ class HostShell:
             return "Usage: ping <host>"
         target = args[0]
         if not re.match(r"^\d{1,3}(\.\d{1,3}){3}$", target):
-            return f"Ping request could not find host {target}. Please check the name and try again."
+            return (
+                f"Ping request could not find host {target}. Please check the name and try again."
+            )
         if self.world is not None and hasattr(self.world, "ping"):
             # Reuse world ping but format slightly more host-like if success/fail
             raw = self.world.ping(self.device.name, target)  # type: ignore[attr-defined]
@@ -199,6 +201,6 @@ class HostShell:
                 if m:
                     lines.append(f"  {m.group(1)}    1 ms    1 ms    1 ms  {m.group(2)}")
             lines.append("")
-            lines.append(f"Trace complete.")
+            lines.append("Trace complete.")
             return "\n".join(lines)
         return f"Tracing route to {target}\n  1     *        *        *     Request timed out."

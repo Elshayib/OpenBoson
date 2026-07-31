@@ -23,7 +23,7 @@ class LabWorld:
     # (dev_a, if_a, dev_b, if_b)
 
     @classmethod
-    def from_lab(cls, lab: LabBank) -> "LabWorld":
+    def from_lab(cls, lab: LabBank) -> LabWorld:
         world = cls(lab_id=lab.lab_id)
         topo = lab.topology
         for d in topo.devices:
@@ -186,7 +186,7 @@ class LabWorld:
             return f"Tracing the route to {target_ip}\n  1  * * *"
         ok = self._can_reach(from_device, dst)
         lines = [
-            f"Type escape sequence to abort.",
+            "Type escape sequence to abort.",
             f"Tracing the route to {target_ip}",
             "",
         ]
@@ -319,10 +319,7 @@ class LabWorld:
     def _can_reach_simple(self, from_device: str, dst: IPv4Address, depth: int) -> bool:
         if depth > 4:
             return False
-        for net, _ in self._connected_subnets(from_device):
-            if dst in net:
-                return True
-        return False
+        return any(dst in net for net, _ in self._connected_subnets(from_device))
 
     def _hop_ips(self, from_device: str, dst: IPv4Address) -> list[str]:
         owner = self._owner_of_ip(dst)

@@ -8,7 +8,6 @@ from openboson.bank_loader import load_exam_bank
 from openboson.exsim.session import ExamMode
 from openboson.gui.main_window import MainWindow
 
-
 FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "sample_bank.yaml"
 
 
@@ -26,7 +25,7 @@ def test_stats_page_empty(fresh_db, qtbot):
     page.refresh()
     from PySide6.QtWidgets import QLabel
 
-    labels = [l.text() for l in page.findChildren(QLabel)]
+    labels = [lbl.text() for lbl in page.findChildren(QLabel)]
     assert any("No exams" in t for t in labels)
     assert any("No labs" in t for t in labels)
 
@@ -63,6 +62,6 @@ def test_stats_page_after_exam(fresh_db, qtbot):
     page.refresh()
     from PySide6.QtWidgets import QLabel
 
-    labels = [l.text() for l in page.findChildren(QLabel)]
+    labels = [lbl.text() for lbl in page.findChildren(QLabel)]
     assert any("Exams Taken" in t for t in labels)
-    assert any("1" == t.strip() for t in labels)
+    assert any(t.strip() == "1" for t in labels)

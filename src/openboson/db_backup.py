@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import shutil
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from openboson import __version__
@@ -29,7 +29,7 @@ def backup_database(db_path: Path | None = None, *, reason: str = "migration") -
     path = Path(db_path) if db_path is not None else settings.db_path
     if not path.is_file():
         return None
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     safe_version = __version__.replace("/", "-")
     dest = backups_dir() / f"openboson-{safe_version}-{stamp}.db"
     shutil.copy2(path, dest)

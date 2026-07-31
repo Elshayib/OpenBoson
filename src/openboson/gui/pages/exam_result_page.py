@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
@@ -47,11 +46,11 @@ class ExamResultPage(QWidget):
         bl = QVBoxLayout(banner)
         verdict = QLabel("PASSED" if result.passed else "FAILED")
         verdict.setProperty("role", "h1")
-        verdict.setStyleSheet(
-            "color: #3fb950;" if result.passed else "color: #f85149;"
-        )
+        verdict.setStyleSheet("color: #3fb950;" if result.passed else "color: #f85149;")
         bl.addWidget(verdict)
-        score = QLabel(f"Score: {result.score_percent:.1f}%  (pass mark {int(result.passing_score * 100)}%)")
+        score = QLabel(
+            f"Score: {result.score_percent:.1f}%  (pass mark {int(result.passing_score * 100)}%)"
+        )
         score.setProperty("role", "muted")
         bl.addWidget(score)
         self._layout.addWidget(banner)

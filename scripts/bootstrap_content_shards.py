@@ -94,34 +94,106 @@ def _mc(qid, topic, stem, choices, correct, expl, cert, diff=3):
 
 FACTS = {
     "1": [
-        ("OSI layer for end-to-end reliable delivery", "Transport", "Network", "Data link", "Physical"),
-        ("IPv6 address type on every link", "Link-local", "Global unicast", "Unique local", "Anycast only"),
+        (
+            "OSI layer for end-to-end reliable delivery",
+            "Transport",
+            "Network",
+            "Data link",
+            "Physical",
+        ),
+        (
+            "IPv6 address type on every link",
+            "Link-local",
+            "Global unicast",
+            "Unique local",
+            "Anycast only",
+        ),
         ("Prefix length for mask 255.255.255.192", "/26", "/24", "/25", "/30"),
     ],
     "2": [
-        ("STP role that does not forward user frames", "Alternate/blocking", "Designated", "Root", "Edge forwarding"),
-        ("Cisco proprietary EtherChannel negotiation", "PAgP", "LACP", "Static on only", "PAgP+LACP hybrid mandatory"),
-        ("VLAN carrying untagged trunk frames", "Native VLAN", "VLAN 1002", "Voice VLAN", "Private VLAN always"),
+        (
+            "STP role that does not forward user frames",
+            "Alternate/blocking",
+            "Designated",
+            "Root",
+            "Edge forwarding",
+        ),
+        (
+            "Cisco proprietary EtherChannel negotiation",
+            "PAgP",
+            "LACP",
+            "Static on only",
+            "PAgP+LACP hybrid mandatory",
+        ),
+        (
+            "VLAN carrying untagged trunk frames",
+            "Native VLAN",
+            "VLAN 1002",
+            "Voice VLAN",
+            "Private VLAN always",
+        ),
     ],
     "3": [
         ("OSPF router connecting two areas", "ABR", "ASBR", "DR", "BDR"),
         ("Default AD of eBGP", "20", "90", "110", "120"),
-        ("Equal-cost OSPF paths behavior", "Install both (ECMP)", "Prefer higher RID", "Prefer older LSA", "Drop randomly"),
+        (
+            "Equal-cost OSPF paths behavior",
+            "Install both (ECMP)",
+            "Prefer higher RID",
+            "Prefer older LSA",
+            "Drop randomly",
+        ),
     ],
     "4": [
-        ("Many-to-one NAT using ports", "PAT/overload", "Static NAT", "One-to-one dynamic only", "NPTv6 only"),
-        ("DHCP client broadcast to find servers", "DHCPDISCOVER", "DHCPACK", "Only DHCPREQUEST", "DHCPOFFER"),
+        (
+            "Many-to-one NAT using ports",
+            "PAT/overload",
+            "Static NAT",
+            "One-to-one dynamic only",
+            "NPTv6 only",
+        ),
+        (
+            "DHCP client broadcast to find servers",
+            "DHCPDISCOVER",
+            "DHCPACK",
+            "Only DHCPREQUEST",
+            "DHCPOFFER",
+        ),
         ("DNS record for IPv6", "AAAA", "A", "MX", "PTR only"),
     ],
     "5": [
         ("Typical CAPWAP termination", "WLC", "DNS", "NTP", "SMTP"),
-        ("Common 2.4 GHz Wi-Fi band", "2.4 GHz ISM", "60 GHz only", "Sub-GHz only", "Visible light only"),
-        ("WPA3 era wireless security focus", "Stronger SAE/handshake protections", "WEP revival", "Clear-text PSK mandatory", "Disable 802.1X always"),
+        (
+            "Common 2.4 GHz Wi-Fi band",
+            "2.4 GHz ISM",
+            "60 GHz only",
+            "Sub-GHz only",
+            "Visible light only",
+        ),
+        (
+            "WPA3 era wireless security focus",
+            "Stronger SAE/handshake protections",
+            "WEP revival",
+            "Clear-text PSK mandatory",
+            "Disable 802.1X always",
+        ),
     ],
     "6": [
         ("Cisco LAN discovery protocol", "CDP", "FTP", "TFTP", "SMTP"),
-        ("Better password storage in configs", "Type 8/9 secrets", "Banner plaintext", "Disable AAA", "Telnet only"),
-        ("ACL on vty lines purpose", "Restrict management access", "Encrypt OSPF", "Form Port-Channels", "Assign VLANs"),
+        (
+            "Better password storage in configs",
+            "Type 8/9 secrets",
+            "Banner plaintext",
+            "Disable AAA",
+            "Telnet only",
+        ),
+        (
+            "ACL on vty lines purpose",
+            "Restrict management access",
+            "Encrypt OSPF",
+            "Form Port-Channels",
+            "Assign VLANs",
+        ),
     ],
 }
 
@@ -149,7 +221,11 @@ def _expand(existing, *, prefix, cert, exam_code, version, target):
                 [
                     ("a", good, f"Correct for objective {topic}."),
                     ("b", bad1, f"Incorrect association for {topic}."),
-                    ("c", "Document verification steps before changes.", f"Sound ops practice for {topic}."),
+                    (
+                        "c",
+                        "Document verification steps before changes.",
+                        f"Sound ops practice for {topic}.",
+                    ),
                     ("d", bad2, f"Distractor for {topic}."),
                 ],
                 ["a", "c"],
@@ -224,10 +300,20 @@ def main() -> int:
     ccna_q = list(_load_pool(BANKS / "pool_ccna.yaml")["questions"])
     encor_q = list(_load_pool(BANKS / "pool_encor.yaml")["questions"])
     ccna_q = _expand(
-        ccna_q, prefix="ccna", cert=["ccna"], exam_code="200-301", version="v1.1", target=CCNA_TARGET
+        ccna_q,
+        prefix="ccna",
+        cert=["ccna"],
+        exam_code="200-301",
+        version="v1.1",
+        target=CCNA_TARGET,
     )
     encor_q = _expand(
-        encor_q, prefix="encor", cert=["ccnp"], exam_code="350-401", version="v1.2", target=ENCOR_TARGET
+        encor_q,
+        prefix="encor",
+        cert=["ccnp"],
+        exam_code="350-401",
+        version="v1.2",
+        target=ENCOR_TARGET,
     )
     ccna_q = _ensure_non_sc(ccna_q, ["ccna"], "ccna", _pick_topics("200-301", "v1.1"))
     encor_q = _ensure_non_sc(encor_q, ["ccnp"], "encor", _pick_topics("350-401", "v1.2"))

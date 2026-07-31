@@ -191,10 +191,7 @@ def _rebuild_exam_sessions(conn: Connection) -> None:
     conn.execute(text("DROP TABLE exam_sessions"))
     conn.execute(text("ALTER TABLE exam_sessions_new RENAME TO exam_sessions"))
     conn.execute(
-        text(
-            "CREATE INDEX IF NOT EXISTS ix_exam_sessions_exam_code "
-            "ON exam_sessions (exam_code)"
-        )
+        text("CREATE INDEX IF NOT EXISTS ix_exam_sessions_exam_code ON exam_sessions (exam_code)")
     )
     conn.execute(text("PRAGMA foreign_keys=ON"))
 
@@ -259,16 +256,10 @@ def _migrate_v2_answer_objective_identity(conn: Connection) -> None:
             conn.execute(text(f"ALTER TABLE user_answers ADD COLUMN {name} {sql_type}"))
 
     conn.execute(
-        text(
-            "CREATE INDEX IF NOT EXISTS ix_user_answers_topic_code "
-            "ON user_answers (topic_code)"
-        )
+        text("CREATE INDEX IF NOT EXISTS ix_user_answers_topic_code ON user_answers (topic_code)")
     )
     conn.execute(
-        text(
-            "CREATE INDEX IF NOT EXISTS ix_user_answers_cert_tag "
-            "ON user_answers (cert_tag)"
-        )
+        text("CREATE INDEX IF NOT EXISTS ix_user_answers_cert_tag ON user_answers (cert_tag)")
     )
 
 

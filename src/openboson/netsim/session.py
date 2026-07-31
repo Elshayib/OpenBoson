@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from openboson.netsim.grader import TaskGrade, grade_task, weighted_score
 from openboson.netsim.ios.world import LabWorld
@@ -20,7 +20,7 @@ class LabSession:
     world: LabWorld
     current_task_index: int = 0
     grades: dict[str, TaskGrade] = field(default_factory=dict)
-    started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    started_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     finished_at: datetime | None = None
 
     @classmethod
@@ -64,7 +64,7 @@ class LabSession:
         return grade
 
     def check_all_tasks(self) -> dict[str, TaskGrade]:
-        for i, task in enumerate(self.lab.tasks):
+        for i, _task in enumerate(self.lab.tasks):
             self.current_task_index = i
             self.check_current_task()
         return self.grades
@@ -108,7 +108,7 @@ class LabSession:
         return self.finished_at is not None
 
     def finish(self) -> datetime:
-        self.finished_at = datetime.now(timezone.utc)
+        self.finished_at = datetime.now(UTC)
         return self.finished_at
 
 

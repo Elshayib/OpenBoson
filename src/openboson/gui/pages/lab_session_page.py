@@ -193,7 +193,7 @@ class LabSessionPage(QWidget):
         world = self._session.world
         self._canvas.set_link_states(world.link_states())
         for name, dev in world.devices.items():
-            up = sum(1 for i in dev.interfaces.values() if i.admin_up and i.protocol_up)
+            sum(1 for i in dev.interfaces.values() if i.admin_up and i.protocol_up)
             ip = next((i.ip for i in dev.interfaces.values() if i.ip), None)
             label = dev.hostname
             if ip:
@@ -264,9 +264,7 @@ class LabSessionPage(QWidget):
             return
         grade = self._session.check_current_task()
         self._feedback.setText(grade.feedback)
-        self._feedback.setStyleSheet(
-            "color: #3fb950;" if grade.is_correct else "color: #f85149;"
-        )
+        self._feedback.setStyleSheet("color: #3fb950;" if grade.is_correct else "color: #f85149;")
         self._render_tasks()
         self._sync_topology_status()
 

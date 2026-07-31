@@ -70,11 +70,7 @@ class ExamReviewPage(QWidget):
     def review_cards(self) -> list[QFrame]:
         if self._items_host is None:
             return []
-        return [
-            w
-            for w in self._items_host.findChildren(QFrame)
-            if w.objectName() == "Card"
-        ]
+        return [w for w in self._items_host.findChildren(QFrame) if w.objectName() == "Card"]
 
     def _rebuild(self) -> None:
         if self._session is None or self._items_holder is None:
@@ -188,9 +184,7 @@ class ExamReviewPage(QWidget):
             if "order" in answer:
                 return "order " + " → ".join(answer["order"])
             if "pairs" in answer:
-                return "pairs " + "; ".join(
-                    f"{p['left']}={p['right']}" for p in answer["pairs"]
-                )
+                return "pairs " + "; ".join(f"{p['left']}={p['right']}" for p in answer["pairs"])
             if "config" in answer:
                 return answer["config"][:80]
         return str(answer)

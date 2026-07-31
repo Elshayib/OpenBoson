@@ -25,8 +25,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-      - name: Install dependencies
-        run: python -m pip install -e ".[all]"
       - name: Install Linux Qt deps
         if: runner.os == 'Linux'
         run: |
@@ -34,6 +32,8 @@ jobs:
           sudo apt-get install -y libegl1 libxkbcommon0 libxcb-cursor0 libxcb-icccm4 \
             libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 \
             libxcb-xinerama0 libxcb-xfixes0 libgl1
+      - name: Install dependencies
+        run: python -m pip install -e ".[all]"
       - name: Run tests
         env:
           QT_QPA_PLATFORM: offscreen
@@ -89,9 +89,17 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
+      - name: Install Linux Qt deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libxkbcommon0 libxcb-cursor0 libxcb-icccm4 \
+            libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 \
+            libxcb-xinerama0 libxcb-xfixes0 libgl1
       - name: Install dependencies
         run: python -m pip install -e ".[all]"
       - name: Validate question pools
+        env:
+          QT_QPA_PLATFORM: offscreen
         run: pytest -v tests/exsim/test_content_pools.py tests/exsim/test_objectives.py tests/exsim/test_blueprint.py
 
   labs:
@@ -103,7 +111,15 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
+      - name: Install Linux Qt deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libxkbcommon0 libxcb-cursor0 libxcb-icccm4 \
+            libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 \
+            libxcb-xinerama0 libxcb-xfixes0 libgl1
       - name: Install dependencies
         run: python -m pip install -e ".[all]"
       - name: Validate labs
+        env:
+          QT_QPA_PLATFORM: offscreen
         run: pytest -v tests/netsim/test_lab_loader.py tests/netsim/test_grader.py tests/netsim/test_lab_session.py
