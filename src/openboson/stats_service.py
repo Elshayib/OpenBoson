@@ -13,7 +13,7 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
-from openboson.db import get_engine, get_sessionmaker, init_db
+from openboson.db import get_sessionmaker, init_db
 from openboson.exsim.scoring import ExamResult
 from openboson.exsim.session import ExamSession
 from openboson.models import (
@@ -64,10 +64,14 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
     Returns the DB row id of the ExamSession.
     """
     user = get_or_create_default_user()
+    exam_code = (result.exam_code or "").strip()
+    exam_version = (result.exam_version or "").strip()
     with _session() as s:
         orm = ExamSessionORM(
             user_id=user.id,
-            exam_id=_exam_id_or_zero(s, result.exam_code),
+            exam_id=_lookup_exam_id(s, exam_code),
+            exam_code=exam_code,
+            exam_version=exam_version,
             mode=result.mode,
             started_at=session.started_at,
             finished_at=session.finished_at or datetime.now(timezone.utc),
@@ -84,6 +88,7 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
                 UserAnswer(
                     session_id=orm.id,
                     question_id=None,  # questions aren't persisted as rows yet
+                    bank_question_id=q.id,
                     answer_json=ans_json,
                     is_correct=is_correct,
                     time_spent_seconds=int(ua.time_spent_seconds) if ua else 0,
@@ -93,9 +98,24 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
         return orm.id
 
 
-def _exam_id_or_zero(s: Session, exam_code: str) -> int | None:
-    """Bundled banks are not persisted as Exam rows yet."""
-    return None
+def _lookup_exam_id(s: Session, exam_code: str) -> int | None:
+    """Return a matching Exam row id when one exists; bundled banks usually do not."""
+    if not exam_code:
+        return None
+    from openboson.models import Exam
+
+    row = s.query(Exam).filter(Exam.exam_code == exam_code).first()
+    return row.id if row else None
+
+
+def _display_exam_code(row: ExamSessionORM) -> str:
+    """Stable label for history — never ``exam-None``."""
+    code = (row.exam_code or "").strip()
+    if code:
+        return code
+    if row.exam_id is not None:
+        return f"exam-{row.exam_id}"
+    return "unknown"
 
 
 # -----/ Lab persistence /-----
@@ -175,7 +195,7 @@ def exam_history(limit: int = 50) -> list[ExamHistoryItem]:
         return [
             ExamHistoryItem(
                 id=r.id,
-                exam_code=f"exam-{r.exam_id}",
+                exam_code=_display_exam_code(r),
                 mode=r.mode,
                 score=r.score or 0.0,
                 passed=r.passed or False,
@@ -273,7 +293,9 @@ def question_stats_map() -> dict[str, QuestionStat]:
         rows = s.query(PracticeAttempt).order_by(PracticeAttempt.answered_at.asc()).all()
         stats: dict[str, QuestionStat] = {}
         for row in rows:
-            st = stats.setdefault(row.question_bank_id, QuestionStat(question_id=row.question_bank_id))
+            st = stats.setdefault(
+                row.question_bank_id, QuestionStat(question_id=row.question_bank_id)
+            )
             st.seen += 1
             if not row.is_correct:
                 st.misses += 1

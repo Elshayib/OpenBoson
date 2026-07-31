@@ -15,7 +15,7 @@ from __future__ import annotations
 import random
 from typing import Any
 
-from PySide6.QtCore import Qt, QMimeData, Signal
+from PySide6.QtCore import QMimeData, Qt, Signal
 from PySide6.QtGui import QDrag
 from PySide6.QtWidgets import (
     QAbstractItemView,
@@ -36,12 +36,39 @@ from PySide6.QtWidgets import (
 )
 
 from openboson.bank_schema import Question, QuestionType
+from openboson.exsim.session import QuestionPresentation, build_question_presentation
 
 _MIME_MATCH = "application/x-openboson-match"
 
 
+def _normalize_drag_item(item: Any, fallback_id: str) -> dict[str, str]:
+    """Normalize DragPair / DragItem / dict into ``{id, text}``."""
+    if isinstance(item, dict):
+        text = str(item.get("text") or item.get("right") or item.get("left") or "")
+        return {"id": str(item.get("id") or fallback_id), "text": text}
+    if hasattr(item, "id") and hasattr(item, "text"):
+        return {"id": str(item.id), "text": str(item.text)}
+    if hasattr(item, "right"):
+        return {"id": fallback_id, "text": str(item.right)}
+    if hasattr(item, "left"):
+        return {"id": fallback_id, "text": str(item.left)}
+    return {"id": fallback_id, "text": str(item)}
+
+
+def _coerce_presentation(
+    presentation: QuestionPresentation | dict[str, Any] | None,
+    question: Question,
+) -> dict[str, Any]:
+    """Normalize session presentation to a dict; practice may reshuffle."""
+    if isinstance(presentation, QuestionPresentation):
+        return presentation.to_dict()
+    if isinstance(presentation, dict) and presentation:
+        return presentation
+    return build_question_presentation(question).to_dict()
+
+
 class _MatchPoolList(QListWidget):
-    """Source list of unmatched right-hand items."""
+    """Source list of unmatched right-hand items (opaque IDs in UserRole)."""
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -55,8 +82,11 @@ class _MatchPoolList(QListWidget):
         item = self.currentItem()
         if item is None:
             return
+        token_id = item.data(Qt.ItemDataRole.UserRole)
+        if not token_id:
+            return
         mime = QMimeData()
-        mime.setData(_MIME_MATCH, item.text().encode("utf-8"))
+        mime.setData(_MIME_MATCH, str(token_id).encode("utf-8"))
         mime.setText(item.text())
         drag = QDrag(self)
         drag.setMimeData(mime)
@@ -74,7 +104,8 @@ class _MatchSlot(QFrame):
     def __init__(self, left_label: str, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.left_label = left_label
-        self._right: str | None = None
+        self._right_id: str | None = None
+        self._right_text: str | None = None
         self.setAcceptDrops(True)
         self.setObjectName("MatchSlot")
         self.setMinimumHeight(40)
@@ -97,12 +128,16 @@ class _MatchSlot(QFrame):
         self._set_idle_style()
 
     def right_value(self) -> str | None:
-        return self._right
+        return self._right_text
 
-    def set_right(self, value: str | None) -> None:
-        self._right = value
-        if value:
-            self._right_lbl.setText(value)
+    def right_id(self) -> str | None:
+        return self._right_id
+
+    def set_right(self, token_id: str | None, text: str | None = None) -> None:
+        self._right_id = token_id
+        self._right_text = text if token_id else None
+        if token_id and text:
+            self._right_lbl.setText(text)
             self._right_lbl.setProperty("role", "")
             self._clear_btn.setVisible(True)
             self._set_filled_style()
@@ -116,15 +151,17 @@ class _MatchSlot(QFrame):
         self.changed.emit()
 
     def clear(self) -> None:
-        prev = self._right
+        prev_id = self._right_id
+        prev_text = self._right_text
         self.set_right(None)
-        if prev is not None:
-            # Parent card re-homes the item into the pool.
+        if prev_id is not None and prev_text is not None:
             parent = self.parent()
             while parent is not None and not hasattr(parent, "return_to_pool"):
                 parent = parent.parent()
-            if parent is not None and hasattr(parent, "return_to_pool"):
-                parent.return_to_pool(prev)  # type: ignore[attr-defined]
+            if parent is not None:
+                return_to_pool = getattr(parent, "return_to_pool", None)
+                if return_to_pool is not None:
+                    return_to_pool(prev_id, prev_text)
 
     def dragEnterEvent(self, event) -> None:  # noqa: N802
         if event.mimeData().hasFormat(_MIME_MATCH) or event.mimeData().hasText():
@@ -134,30 +171,43 @@ class _MatchSlot(QFrame):
             event.ignore()
 
     def dragLeaveEvent(self, event) -> None:  # noqa: N802
-        if self._right:
+        if self._right_id:
             self._set_filled_style()
         else:
             self._set_idle_style()
 
     def dropEvent(self, event) -> None:  # noqa: N802
         mime = event.mimeData()
+        token_id = None
         text = None
         if mime.hasFormat(_MIME_MATCH):
-            text = bytes(mime.data(_MIME_MATCH)).decode("utf-8")
+            token_id = bytes(mime.data(_MIME_MATCH)).decode("utf-8")
+            text = mime.text() if mime.hasText() else None
+            parent = self.parent()
+            while parent is not None and not hasattr(parent, "token_text"):
+                parent = parent.parent()
+            if parent is not None:
+                token_text = getattr(parent, "token_text", None)
+                if token_text is not None:
+                    resolved = token_text(token_id)
+                    if resolved is not None:
+                        text = resolved
         elif mime.hasText():
             text = mime.text()
-        if not text:
+            token_id = text  # legacy fallback
+        if not token_id or not text:
             event.ignore()
             return
-        # If slot already filled, return previous to pool.
-        if self._right:
-            prev = self._right
+        if self._right_id and self._right_text:
+            prev_id, prev_text = self._right_id, self._right_text
             parent = self.parent()
             while parent is not None and not hasattr(parent, "return_to_pool"):
                 parent = parent.parent()
-            if parent is not None and hasattr(parent, "return_to_pool"):
-                parent.return_to_pool(prev)  # type: ignore[attr-defined]
-        self.set_right(text)
+            if parent is not None:
+                return_to_pool = getattr(parent, "return_to_pool", None)
+                if return_to_pool is not None:
+                    return_to_pool(prev_id, prev_text)
+        self.set_right(token_id, text)
         event.acceptProposedAction()
 
     def _set_idle_style(self) -> None:
@@ -177,13 +227,29 @@ class _MatchSlot(QFrame):
 
 
 class _MatchWidget(QWidget):
-    """Left slots + right pool for drag_match questions."""
+    """Left slots + right pool for drag_match questions.
+
+    Left and right collections are independent (no canonical pairing).
+    Each right-side token has an opaque ID so duplicate display strings
+    (e.g. two ``Server → Client`` values) restore and edit independently.
+    Answer payloads still use left/right display text for grading.
+    """
 
     answerChanged = Signal(object)
 
-    def __init__(self, pairs: list, parent: QWidget | None = None) -> None:
+    def __init__(
+        self,
+        left_items: list[dict[str, str]] | list,
+        right_items: list[dict[str, str]] | list,
+        parent: QWidget | None = None,
+    ) -> None:
         super().__init__(parent)
-        self._pairs = list(pairs)
+        # Normalize to {id, text} dicts.
+        self._left_items = [_normalize_drag_item(x, f"L{i}") for i, x in enumerate(left_items)]
+        self._right_items = [_normalize_drag_item(x, f"R{i}") for i, x in enumerate(right_items)]
+        self._tokens: dict[str, str] = {d["id"]: d["text"] for d in self._right_items}
+        self._token_ids: list[str] = [d["id"] for d in self._right_items]
+
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(16)
@@ -191,8 +257,8 @@ class _MatchWidget(QWidget):
         left_col = QVBoxLayout()
         left_col.addWidget(QLabel("Terms"))
         self._slots: list[_MatchSlot] = []
-        for pair in self._pairs:
-            slot = _MatchSlot(pair.left, self)
+        for item in self._left_items:
+            slot = _MatchSlot(item["text"], self)
             slot.changed.connect(self._emit)
             self._slots.append(slot)
             left_col.addWidget(slot)
@@ -202,16 +268,42 @@ class _MatchWidget(QWidget):
         right_col = QVBoxLayout()
         right_col.addWidget(QLabel("Match pool (drag onto a term)"))
         self._pool = _MatchPoolList()
-        rights = [p.right for p in self._pairs]
-        random.shuffle(rights)
-        for text in rights:
-            self._pool.addItem(text)
+        for tid in self._token_ids:
+            self._add_pool_item(tid)
         right_col.addWidget(self._pool)
         layout.addLayout(right_col, 1)
         self._emit()
 
-    def return_to_pool(self, text: str) -> None:
-        self._pool.addItem(text)
+    def token_text(self, token_id: str) -> str | None:
+        return self._tokens.get(token_id)
+
+    def _add_pool_item(self, token_id: str) -> None:
+        text = self._tokens[token_id]
+        item = QListWidgetItem(text)
+        item.setData(Qt.ItemDataRole.UserRole, token_id)
+        self._pool.addItem(item)
+
+    def return_to_pool(self, token_id: str, text: str | None = None) -> None:
+        if token_id not in self._tokens and text is not None:
+            # Legacy path: text-only token; reclaim an unused matching id.
+            for tid, t in self._tokens.items():
+                if t == text and not self._token_in_use(tid):
+                    token_id = tid
+                    break
+            else:
+                return
+        if token_id in self._tokens:
+            self._add_pool_item(token_id)
+
+    def _token_in_use(self, token_id: str) -> bool:
+        for slot in self._slots:
+            if slot.right_id() == token_id:
+                return True
+        for i in range(self._pool.count()):
+            item = self._pool.item(i)
+            if item is not None and item.data(Qt.ItemDataRole.UserRole) == token_id:
+                return True
+        return False
 
     def _emit(self) -> None:
         pairs = []
@@ -221,23 +313,34 @@ class _MatchWidget(QWidget):
         self.answerChanged.emit({"pairs": pairs})
 
     def set_pairs(self, pairs: list[dict[str, str]]) -> None:
-        # Rebuild pool from all rights, then assign.
-        all_rights = [p.right for p in self._pairs]
+        """Restore matches by consuming opaque tokens (supports duplicate rights)."""
         assigned = {p["left"]: p["right"] for p in pairs if "left" in p and "right" in p}
+        # Multiset of available token ids keyed by display text.
+        available: dict[str, list[str]] = {}
+        for tid, text in self._tokens.items():
+            available.setdefault(text, []).append(tid)
+
         self._pool.clear()
-        used: set[str] = set()
+        used_ids: set[str] = set()
         for slot in self._slots:
-            right = assigned.get(slot.left_label)
-            # Avoid triggering return_to_pool on set.
-            slot._right = None
-            if right and right in all_rights and right not in used:
-                slot.set_right(right)
-                used.add(right)
+            # Avoid triggering return_to_pool while resetting.
+            slot._right_id = None
+            slot._right_text = None
+            right_text = assigned.get(slot.left_label)
+            chosen: str | None = None
+            if right_text is not None:
+                bucket = available.get(right_text) or []
+                if bucket:
+                    chosen = bucket.pop(0)
+            if chosen is not None:
+                used_ids.add(chosen)
+                slot.set_right(chosen, self._tokens[chosen])
             else:
                 slot.set_right(None)
-        for text in all_rights:
-            if text not in used:
-                self._pool.addItem(text)
+
+        for tid in self._token_ids:
+            if tid not in used_ids:
+                self._add_pool_item(tid)
         self._emit()
 
     def set_locked(self, locked: bool) -> None:
@@ -252,10 +355,15 @@ class QuestionCard(QFrame):
 
     answerChanged = Signal(object)
 
-    def __init__(self, question: Question) -> None:
+    def __init__(
+        self,
+        question: Question,
+        presentation: QuestionPresentation | dict[str, Any] | None = None,
+    ) -> None:
         super().__init__()
         self.setObjectName("Card")
         self._question = question
+        self._presentation = _coerce_presentation(presentation, question)
         self._current_answer: Any = None
         self._locked = False
 
@@ -305,13 +413,24 @@ class QuestionCard(QFrame):
         else:
             self._input_container = QLabel("Unsupported question type.")
 
+    def _choice_order(self, q: Question) -> list:
+        """Choice list; prefer session presentation order when provided by engine."""
+        choices = list(q.choices or [])
+        order = self._presentation.get("choice_ids")
+        if order and choices:
+            by_id = {c.id: c for c in choices}
+            ordered = [by_id[cid] for cid in order if cid in by_id]
+            if len(ordered) == len(choices):
+                return ordered
+        return choices
+
     def _build_single_choice(self, q: Question) -> QWidget:
         w = QWidget()
         v = QVBoxLayout(w)
         v.setSpacing(8)
         self._radio_group = QButtonGroup(w)
         self._radio_group.setExclusive(True)
-        for choice in q.choices or []:
+        for choice in self._choice_order(q):
             rb = QRadioButton(choice.text)
             rb.setProperty("choice_id", choice.id)
             self._radio_group.addButton(rb)
@@ -330,7 +449,7 @@ class QuestionCard(QFrame):
         v = QVBoxLayout(w)
         v.setSpacing(8)
         self._checks: list[QCheckBox] = []
-        for choice in q.choices or []:
+        for choice in self._choice_order(q):
             cb = QCheckBox(choice.text)
             cb.setProperty("choice_id", choice.id)
             cb.stateChanged.connect(self._on_check)
@@ -355,11 +474,15 @@ class QuestionCard(QFrame):
         self._order_list.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self._order_list.setDropIndicatorShown(True)
         self._order_list.setStyleSheet(
-            "QListWidget::item:selected { background: #1f6feb; }"
-            "QListWidget { outline: none; }"
+            "QListWidget::item:selected { background: #1f6feb; }QListWidget { outline: none; }"
         )
         items = list(q.ordered_items or [])
-        random.shuffle(items)
+        # Prefer engine presentation order when available (stable across nav).
+        presented = self._presentation.get("ordered_items")
+        if presented is not None:
+            items = list(presented)
+        else:
+            random.shuffle(items)
         for idx, item in enumerate(items):
             li = QListWidgetItem(f"{idx + 1}. {item}")
             li.setData(Qt.ItemDataRole.UserRole, item)
@@ -419,7 +542,21 @@ class QuestionCard(QFrame):
         v = QVBoxLayout(wrap)
         v.setContentsMargins(0, 0, 0, 0)
         v.addWidget(note)
-        self._match_widget = _MatchWidget(q.drag_pairs or [])
+        # Engine contract: left_items / right_items via presentation.to_dict().
+        left_items = self._presentation.get("left_items")
+        right_items = self._presentation.get("right_items")
+        if not left_items or not right_items:
+            # Legacy alias fallback (pre-contract presentation dicts).
+            left_items = self._presentation.get("drag_left") or left_items
+            right_items = self._presentation.get("drag_right") or right_items
+        if not left_items or not right_items:
+            # Last resort: split authored pairs and shuffle independently.
+            pairs = list(q.drag_pairs or [])
+            left_items = [{"id": f"L{i}", "text": p.left} for i, p in enumerate(pairs)]
+            right_items = [{"id": f"R{i}", "text": p.right} for i, p in enumerate(pairs)]
+            random.shuffle(left_items)
+            random.shuffle(right_items)
+        self._match_widget = _MatchWidget(left_items, right_items)
         self._match_widget.answerChanged.connect(self._on_match)
         v.addWidget(self._match_widget)
         self._current_answer = {"pairs": []}

@@ -1,4 +1,6 @@
-"""Tests for the persistence/stats service (in-memory SQLite)."""
+"""Tests for the persistence/stats service (isolated temp SQLite)."""
+
+from pathlib import Path
 
 import pytest
 
@@ -8,34 +10,28 @@ from openboson.exsim.scoring import score_exam
 from openboson.exsim.session import ExamMode, ExamSession
 from openboson.netsim.lab_loader import load_lab
 from openboson.netsim.session import LabSession, score_lab
-from openboson.models import Base
-from sqlalchemy import create_engine
 
 
 @pytest.fixture
-def fake_engine(tmp_path):
-    """Use a temp-file SQLite so multiple sessions share the same DB."""
-    db = tmp_path / "test.db"
-    engine = create_engine(f"sqlite:///{db}", future=True)
-    Base.metadata.create_all(engine)
-    stats_service._engine = engine
-    yield engine
-    stats_service._engine = None
+def fake_engine(isolated_home):
+    """Alias: stats_service is already redirected by ``isolated_home``."""
+    return stats_service._engine
 
 
 @pytest.fixture
 def exam_bank():
-    from pathlib import Path
-
     bank_path = Path(__file__).resolve().parent / "fixtures" / "sample_bank.yaml"
     return load_exam_bank(bank_path)
 
 
 @pytest.fixture
 def lab():
-    from pathlib import Path
-
-    lab_path = Path(__file__).resolve().parents[1] / "data" / "demo_labs" / "ccna_branch_office_access.yaml"
+    lab_path = (
+        Path(__file__).resolve().parents[1]
+        / "data"
+        / "demo_labs"
+        / "ccna_branch_office_access.yaml"
+    )
     return load_lab(lab_path)
 
 
@@ -65,6 +61,8 @@ def test_exam_history(fake_engine, exam_bank):
     history = stats_service.exam_history()
     assert len(history) == 1
     assert history[0].score > 0
+    assert history[0].exam_code == exam_bank.code
+    assert history[0].exam_code != "exam-None"
 
 
 def test_practice_attempt_stats(fake_engine):

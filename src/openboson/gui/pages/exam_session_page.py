@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
+from collections.abc import Callable
+from typing import Any
+
 from PySide6.QtWidgets import (
     QFrame,
     QGridLayout,
@@ -14,10 +16,19 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from openboson.bank_schema import QuestionType
 from openboson.exsim.session import ExamMode, ExamSession
 from openboson.gui.engine import finish_and_score
 from openboson.gui.widgets.question_card import QuestionCard
 from openboson.gui.widgets.timer_bar import TimerBar
+
+
+def _presentation_for(session: ExamSession, question_id: str) -> dict[str, Any] | None:
+    """Resolve engine presentation as a dict (``presentation_for().to_dict()``)."""
+    data = session.presentation_for(question_id)
+    if data is None:
+        return None
+    return data.to_dict()
 
 
 class ExamSessionPage(QWidget):
@@ -28,9 +39,10 @@ class ExamSessionPage(QWidget):
     def __init__(self) -> None:
         super().__init__()
         self._session: ExamSession | None = None
-        self._on_result: callable | None = None
-        self._on_exit: callable | None = None
+        self._on_result: Callable[..., Any] | None = None
+        self._on_exit: Callable[..., Any] | None = None
         self._current_card: QuestionCard | None = None
+        self._active = False
 
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
@@ -120,9 +132,11 @@ class ExamSessionPage(QWidget):
     def start_session(self, session: ExamSession) -> None:
         """Start from an existing session (blueprint exam)."""
         self._session = session
+        self._active = True
         # Replace timer widget in place.
         old = self._timer
         old.stop()
+        old.set_on_timeout(None)
         self._timer_host.removeWidget(old)
         old.deleteLater()
         limit = session.exam.time_limit_minutes
@@ -139,13 +153,19 @@ class ExamSessionPage(QWidget):
     def set_on_exit(self, callback) -> None:
         self._on_exit = callback
 
+    def is_exam_active(self) -> bool:
+        return self._active and self._session is not None and not self._session.is_finished()
+
     def cleanup(self) -> None:
+        """Stop the timer and clear callbacks so hidden timeouts cannot fire."""
+        self._active = False
         self._timer.stop()
+        self._timer.set_on_timeout(None)
 
     def _build_grid(self) -> None:
         while self._grid_layout.count():
             item = self._grid_layout.takeAt(0)
-            w = item.widget()
+            w = item.widget() if item is not None else None
             if w is not None:
                 w.deleteLater()
         self._grid_buttons = []
@@ -174,15 +194,25 @@ class ExamSessionPage(QWidget):
         q = sess.current_question
         while self._card_layout.count():
             item = self._card_layout.takeAt(0)
-            widget = item.widget()
+            widget = item.widget() if item is not None else None
             if widget is not None:
                 widget.deleteLater()
 
-        card = QuestionCard(q)
+        presentation = _presentation_for(sess, q.id)
+        card = QuestionCard(q, presentation=presentation)
         existing = sess.answers.get(q.id)
         if existing is not None:
             card.set_answer(existing.answer)
         card.answerChanged.connect(lambda ans, qid=q.id: self._store_answer(qid, ans))
+        # Ordered lists emit an initial display order during construction, but
+        # the signal was not connected yet. Persist that order after wiring so
+        # next/back restores the same arrangement instead of reshuffling.
+        if (
+            existing is None
+            and q.type == QuestionType.ORDERED_LIST
+            and card.current_answer() is not None
+        ):
+            self._store_answer(q.id, card.current_answer())
         self._card_layout.addWidget(card)
         self._current_card = card
 
@@ -199,7 +229,8 @@ class ExamSessionPage(QWidget):
             return
         for i, btn in enumerate(self._grid_buttons):
             q = self._session.questions[i]
-            answered = q.id in self._session.answers and self._session.answers[q.id].answer is not None
+            ua = self._session.answers.get(q.id)
+            answered = ua is not None and ua.answer is not None
             bookmarked = q.id in self._session.bookmarked
             marked = q.id in self._session.marked_for_review
             current = i == self._session.current_index
@@ -269,12 +300,18 @@ class ExamSessionPage(QWidget):
             self._render_current()
 
     def _on_timeout(self) -> None:
+        # Ignore timeouts from a timer that outlived the visible exam page.
+        if not self._active or self._session is None or self._session.is_finished():
+            return
+        if not self.isVisible():
+            self.cleanup()
+            return
         self._finish_exam()
 
     def _finish_exam(self) -> None:
-        if self._session is None:
+        if self._session is None or self._session.is_finished():
             return
-        self._timer.stop()
+        self.cleanup()
         result = finish_and_score(self._session)
         if self._on_result:
             self._on_result(self._session, result)

@@ -29,6 +29,7 @@ class ExamBlueprint:
     id: str
     title: str
     code: str
+    version: str
     cert: CertTag
     question_count: int
     time_limit_minutes: int
@@ -56,21 +57,22 @@ _CCNA_DOMAINS: tuple[DomainWeight, ...] = (
     DomainWeight("6", 0.10, "Automation and Programmability"),
 )
 
-# ENCOR 350-401 domain weights (Cisco published %).
+# ENCOR 350-401 v1.2 domain weights (Cisco published %).
 _ENCOR_DOMAINS: tuple[DomainWeight, ...] = (
     DomainWeight("1", 0.15, "Architecture"),
-    DomainWeight("2", 0.20, "Virtualization"),
-    DomainWeight("3", 0.20, "Infrastructure"),
-    DomainWeight("4", 0.15, "Network Assurance"),
+    DomainWeight("2", 0.10, "Virtualization"),
+    DomainWeight("3", 0.30, "Infrastructure"),
+    DomainWeight("4", 0.10, "Network Assurance"),
     DomainWeight("5", 0.20, "Security"),
-    DomainWeight("6", 0.10, "Automation"),
+    DomainWeight("6", 0.15, "Automation and Artificial Intelligence"),
 )
 
 BLUEPRINTS: dict[str, ExamBlueprint] = {
     "ccna-200-301": ExamBlueprint(
         id="ccna-200-301",
-        title="CCNA 200-301 Practice Exam",
+        title="CCNA 200-301 v1.1 Practice Exam",
         code="200-301",
+        version="v1.1",
         cert="ccna",
         question_count=100,
         time_limit_minutes=120,
@@ -80,8 +82,9 @@ BLUEPRINTS: dict[str, ExamBlueprint] = {
     ),
     "encor-350-401": ExamBlueprint(
         id="encor-350-401",
-        title="CCNP ENCOR 350-401 Practice Exam",
+        title="CCNP ENCOR 350-401 v1.2 Practice Exam",
         code="350-401",
+        version="v1.2",
         cert="ccnp",
         question_count=100,
         time_limit_minutes=120,
@@ -93,6 +96,7 @@ BLUEPRINTS: dict[str, ExamBlueprint] = {
         id="enarsi-300-410",
         title="CCNP ENARSI 300-410 Practice Exam",
         code="300-410",
+        version="v1.0",
         cert="ccnp",
         question_count=100,
         time_limit_minutes=120,
@@ -170,9 +174,7 @@ def build_exam_from_blueprint(
         selected.extend(available[:need])
 
     if deficits:
-        parts = [
-            f"domain {p} needs {n} more question(s)" for p, n in sorted(deficits.items())
-        ]
+        parts = [f"domain {p} needs {n} more question(s)" for p, n in sorted(deficits.items())]
         raise InsufficientPoolError(
             f"Not enough questions for {blueprint.title}: " + "; ".join(parts),
             deficits=deficits,
@@ -194,7 +196,7 @@ def bank_from_blueprint(
     return ExamBank(
         title=blueprint.title,
         code=blueprint.code,
-        version="v1.1",
+        version=blueprint.version,
         provider="openboson",
         description=f"Blueprint exam ({blueprint.id})",
         topics=topics,

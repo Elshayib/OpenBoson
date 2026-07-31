@@ -7,13 +7,12 @@ from openboson.gui.main_window import MainWindow
 
 
 @pytest.fixture
-def fresh_settings(tmp_path, monkeypatch):
+def fresh_settings(isolated_home, monkeypatch):
     """Redirect settings to a temp dir so tests don't touch real data."""
-    monkeypatch.setenv("OPENBOSON_HOME", str(tmp_path))
     from openboson.gui.pages import settings_page
 
-    monkeypatch.setattr(settings_page, "_SETTINGS_FILE", tmp_path / "settings.json")
-    yield tmp_path
+    monkeypatch.setattr(settings_page, "_SETTINGS_FILE", isolated_home / "settings.json")
+    yield isolated_home
 
 
 def test_settings_page_renders(fresh_settings, qtbot):

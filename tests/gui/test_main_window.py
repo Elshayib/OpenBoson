@@ -5,6 +5,9 @@ import pytest
 from openboson.gui.main_window import MainWindow
 
 
+pytestmark = pytest.mark.usefixtures("isolated_home")
+
+
 @pytest.fixture
 def main_window(qtbot):
     mw = MainWindow()

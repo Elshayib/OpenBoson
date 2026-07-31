@@ -11,14 +11,15 @@ Usage::
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Iterator
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from openboson.config import settings
+from openboson.db_migrations import run_migrations
 from openboson.models import Base
 
 
@@ -35,10 +36,12 @@ def get_engine(url: str | None = None) -> Engine:
 
 
 def init_db(engine: Engine | None = None) -> Engine:
-    """Create the engine (if None) and all tables. Idempotent."""
+    """Create the engine (if None), apply migrations, and ensure tables exist."""
     if engine is None:
         engine = get_engine()
+    # create_all is a no-op for existing tables; migrations alter legacy ones.
     Base.metadata.create_all(engine)
+    run_migrations(engine)
     return engine
 
 
@@ -47,8 +50,7 @@ def init_db_at(path: Path | str) -> Engine:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(f"sqlite:///{path}", future=True)
-    Base.metadata.create_all(engine)
-    return engine
+    return init_db(engine)
 
 
 _SessionFactory = None

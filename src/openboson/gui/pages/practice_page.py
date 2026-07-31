@@ -47,15 +47,17 @@ class PracticePage(QWidget):
         exam_row = QHBoxLayout()
         for bp in list_blueprints():
             if bp.enabled:
-                btn = QPushButton(f"Start {bp.code} Exam")
+                btn = QPushButton(f"Start {bp.code} {bp.version} Exam")
                 btn.setObjectName("Primary")
                 btn.setToolTip(
-                    f"{bp.title} — {bp.question_count} questions, "
+                    f"{bp.title} ({bp.version}) — {bp.question_count} questions, "
                     f"{bp.time_limit_minutes} min, pass {int(bp.pass_score * 100)}%"
                 )
                 btn.clicked.connect(lambda _=False, bid=bp.id: self._start_exam(bid))
             else:
-                btn = QPushButton(f"{bp.code} ({bp.coming_soon_label or 'Coming soon'})")
+                btn = QPushButton(
+                    f"{bp.code} {bp.version} ({bp.coming_soon_label or 'Coming soon'})"
+                )
                 btn.setObjectName("Secondary")
                 btn.setEnabled(False)
             exam_row.addWidget(btn)
@@ -189,11 +191,7 @@ class PracticePage(QWidget):
         self._topic.blockSignals(True)
         self._topic.clear()
         self._topic.addItem("All topics", "all")
-        codes = {
-            q.topic_code
-            for q in self._all_questions
-            if cert == "all" or cert in q.cert_tags
-        }
+        codes = {q.topic_code for q in self._all_questions if cert == "all" or cert in q.cert_tags}
         for code in sorted(codes):
             self._topic.addItem(self._topic_label(code, cert), code)
         idx = max(0, self._topic.findData(current))
@@ -203,8 +201,10 @@ class PracticePage(QWidget):
     def _topic_label(self, code: str, cert: str | None = None) -> str:
         """Return ``code — name`` for the filter, using domain rollup if needed."""
         names = getattr(self, "_topic_names", {}) or {}
-        cert = cert if cert is not None else (
-            self._cert.currentData() if hasattr(self, "_cert") else "all"
+        cert = (
+            cert
+            if cert is not None
+            else (self._cert.currentData() if hasattr(self, "_cert") else "all")
         )
         name = names.get(code)
         prefix = code.split(".", 1)[0]

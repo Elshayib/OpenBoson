@@ -2,6 +2,8 @@
 
 OpenBoson is an open-source, fully-local study platform for network engineers preparing for CCNA/CCNP. It combines Boson ExSim-style practice exams and Boson NetSim-style guided labs with a Cisco IOS CLI simulator, built as a single Python desktop app.
 
+Practice blueprints and demo pools cover **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 v1.2**. Allowed topic codes live in `exsim/objectives.py` (Cisco public exam topics; refresh date **2026-07-31**).
+
 ## Quick reference
 
 | Item | Value |
@@ -9,7 +11,7 @@ OpenBoson is an open-source, fully-local study platform for network engineers pr
 | Language | Python 3.11+ |
 | GUI | PySide6 (Qt for Python), dark-first theme |
 | Persistence | SQLite via SQLAlchemy 2.0 |
-| Content | YAML question pools + CCNA/ENCOR exam blueprints |
+| Content | YAML pools + CCNA 200-301 v1.1 / ENCOR 350-401 v1.2 blueprints |
 | CLI | `openboson gui`, `openboson serve --port 0` |
 | Tests | `pytest` (unit + pytest-qt for GUI) |
 | Lint | `ruff check .`, `ruff format .`, `mypy src/openboson` |
@@ -26,7 +28,8 @@ src/openboson/
 ├── stats_service.py    # User stats, practice attempts, analytics
 ├── server.py           # FastAPI app (optional headless layer)
 ├── exsim/              # Practice exam engine
-│   ├── blueprint.py    # CCNA/ENCOR presets + weighted sampling
+│   ├── blueprint.py    # CCNA v1.1 / ENCOR v1.2 presets + sampling
+│   ├── objectives.py   # Versioned allowed topic-code registries
 │   ├── session.py      # Exam session (practice / exam modes)
 │   ├── scoring.py      # Answer grading and domain breakdown
 │   └── router.py       # FastAPI endpoints
@@ -55,7 +58,9 @@ data/
 └── demo_labs/          # Shipped demo lab YAML files
 ```
 
-All questions and labs must be tagged with topic codes (e.g. `1.1`). Questions carry `cert_tags: [ccna]` and/or `[ccnp]`. Never add copyrighted exam dumps or proprietary Boson content — only original demo/community material.
+All questions and labs must be tagged with topic codes (e.g. `1.1`) that exist in the matching objective map. Questions carry `cert_tags: [ccna]` and/or `[ccnp]`. Never add copyrighted exam dumps or proprietary Boson content — only original demo/community material.
+
+Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with public keys `choice_ids`, `ordered_items`, `left_items`, and `right_items`. Drag-match grading still uses left/right **text** pairs.
 
 ## Development workflow
 
@@ -73,7 +78,7 @@ When implementing features, follow the task plan in `.cursor/plans/2026-07-27_Op
 - Task 13 (partial): Stats page and `stats_service.py` (no separate analytics module)
 - Task 16 (partial): Settings page with data dir, theme toggle
 - OpenIOS: Real CLI lab simulator (`netsim/ios/`) beyond original plan scope
-- Practice rework: question library, Check + rationales, blueprint CCNA/ENCOR exams
+- Practice rework: question library, Check + rationales, blueprint CCNA v1.1 / ENCOR v1.2 exams
 
 **Not yet done:**
 - Task 14: Hot-loadable bank/lab registry

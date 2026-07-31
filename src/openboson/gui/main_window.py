@@ -25,16 +25,16 @@ from openboson.exsim.session import ExamSession
 from openboson.gui.pages import (
     DashboardPage,
 )
-from openboson.gui.pages.practice_page import PracticePage
-from openboson.gui.pages.practice_question_page import PracticeQuestionPage
 from openboson.gui.pages.exam_result_page import ExamResultPage
 from openboson.gui.pages.exam_review_page import ExamReviewPage
 from openboson.gui.pages.exam_session_page import ExamSessionPage
 from openboson.gui.pages.lab_list_page import LabListPage
 from openboson.gui.pages.lab_result_page import LabResultPage
 from openboson.gui.pages.lab_session_page import LabSessionPage
-from openboson.gui.pages.stats_page import StatsPage
+from openboson.gui.pages.practice_page import PracticePage
+from openboson.gui.pages.practice_question_page import PracticeQuestionPage
 from openboson.gui.pages.settings_page import SettingsPage
+from openboson.gui.pages.stats_page import StatsPage
 from openboson.netsim.session import LabResult, LabSession
 
 
@@ -133,8 +133,12 @@ class MainWindow(QMainWindow):
         root.addWidget(self._stack, 1)
         self.setCentralWidget(central)
 
-        self.statusBar().showMessage(f"openboson {__version__}  •  CCNA / CCNP practice")
+        self.statusBar().showMessage(
+            f"openboson {__version__}  •  CCNA 200-301 v1.1 / ENCOR 350-401 v1.2"
+        )
         self.apply_theme()
+        self._exam_active = False
+        self._nav_before_exam: QPushButton | None = None
 
     def apply_theme(self, theme: str = "dark") -> None:
         from pathlib import Path
@@ -147,6 +151,14 @@ class MainWindow(QMainWindow):
         self.apply_theme(theme)
 
     def _on_nav_clicked(self, button: QPushButton) -> None:
+        if self._exam_active:
+            # Keep the user on the exam; restore the previously checked nav button.
+            if self._nav_before_exam is not None:
+                self._nav_before_exam.setChecked(True)
+            else:
+                button.setChecked(False)
+            self.statusBar().showMessage("Finish or time out the exam before leaving.", 4000)
+            return
         label = button.text()
         idx = next(
             (i for i, (lbl, _c) in enumerate(self.STATIC_PAGES) if lbl == label),
@@ -158,7 +170,21 @@ class MainWindow(QMainWindow):
             if page is not None and hasattr(page, "refresh"):
                 page.refresh()
 
+    def _enter_exam(self) -> None:
+        self._exam_active = True
+        checked = self._nav_group.checkedButton()
+        self._nav_before_exam = checked
+        for btn in self._nav_group.buttons():
+            btn.setChecked(False)
+        self._stack.setCurrentWidget(self._session_page)
+
+    def _leave_exam(self) -> None:
+        self._exam_active = False
+        self._session_page.cleanup()
+        self._nav_before_exam = None
+
     def _go_to_practice(self) -> None:
+        self._leave_exam()
         idx = next(i for i, (lbl, _c) in enumerate(self.STATIC_PAGES) if lbl == "Practice")
         self._stack.setCurrentIndex(idx)
         self._practice_page.refresh()
@@ -172,17 +198,23 @@ class MainWindow(QMainWindow):
 
     def _on_blueprint_exam(self, session: ExamSession) -> None:
         self._session_page.start_session(session)
-        self._stack.setCurrentWidget(self._session_page)
+        self._enter_exam()
 
     def _on_exam_result(self, session: ExamSession, result: ExamResult) -> None:
+        from openboson.gui import engine as gui_engine
+
+        self._leave_exam()
         self._result_page.show_result(session, result)
         self._stack.setCurrentWidget(self._result_page)
+        if gui_engine.last_persistence_warning:
+            self.statusBar().showMessage(gui_engine.last_persistence_warning, 8000)
 
     def _on_review(self, session: ExamSession) -> None:
         self._review_page.show_review(session)
         self._stack.setCurrentWidget(self._review_page)
 
     def _on_retake(self, session: ExamSession) -> None:
+        """Start a fresh attempt; blueprint fallback runs start_exam exactly once."""
         if session.blueprint_id:
             from openboson.gui import engine
 
@@ -192,10 +224,11 @@ class MainWindow(QMainWindow):
                 self._session_page.start_exam(session.exam, mode=session.mode)
             else:
                 self._session_page.start_session(new_session)
-                self._stack.setCurrentWidget(self._session_page)
+                self._enter_exam()
                 return
-        self._session_page.start_exam(session.exam, mode=session.mode)
-        self._stack.setCurrentWidget(self._session_page)
+        else:
+            self._session_page.start_exam(session.exam, mode=session.mode)
+        self._enter_exam()
 
     def _on_lab_selected(self, lab) -> None:
         self._lab_session_page.start_lab(lab)
@@ -224,7 +257,7 @@ class MainWindow(QMainWindow):
     def start_exam_from_list(self, bank, mode) -> None:
         """Test helper: start a bank exam session."""
         self._session_page.start_exam(bank, mode=mode)
-        self._stack.setCurrentWidget(self._session_page)
+        self._enter_exam()
 
     def start_lab_from_list(self, lab) -> None:
         self._on_lab_selected(lab)

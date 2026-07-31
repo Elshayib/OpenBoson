@@ -2,16 +2,43 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
 import yaml
 
-from openboson.bank_schema import ExamBank, Question, QuestionPool, Topic
+from openboson.bank_schema import (
+    ExamBank,
+    Question,
+    QuestionPool,
+    Topic,
+    normalize_legacy_bank_dict,
+)
 
 
 class BankLoaderError(Exception):
     """Raised when a question bank fails to load or validate."""
+
+
+@dataclass(frozen=True)
+class BankLoadDiagnostic:
+    """One rejected (or noted) bank file with a human-readable reason."""
+
+    path: str
+    reason: str
+
+
+@dataclass
+class BankLoadResult:
+    """Outcome of loading a directory of bank YAML files."""
+
+    banks: list[ExamBank] = field(default_factory=list)
+    rejected: list[BankLoadDiagnostic] = field(default_factory=list)
+
+    @property
+    def ok(self) -> bool:
+        return not self.rejected
 
 
 def load_exam_bank(path_or_text: str | Path) -> ExamBank:
@@ -24,24 +51,47 @@ def load_exam_bank(path_or_text: str | Path) -> ExamBank:
     if not isinstance(raw, dict):
         raise BankLoaderError("Bank YAML root must be a mapping, got " + type(raw).__name__)
     try:
-        return ExamBank.model_validate(raw)
+        normalized = normalize_legacy_bank_dict(raw)
+        return ExamBank.model_validate(normalized)
     except Exception as exc:
         raise BankLoaderError(f"Failed to validate exam bank: {exc}") from exc
 
 
-def load_banks_from_dir(directory: str | Path) -> list[ExamBank]:
-    """Load every ``*.yaml`` / ``*.yml`` bank in ``directory`` (sorted by name)."""
+def load_banks_from_dir(
+    directory: str | Path,
+    *,
+    best_effort: bool = True,
+) -> list[ExamBank]:
+    """Load every ``*.yaml`` / ``*.yml`` bank in ``directory`` (sorted by name).
+
+    When ``best_effort`` is True (default), invalid files are skipped. Use
+    :func:`load_banks_detailed` to inspect rejection reasons. When False, the
+    first failure raises :class:`BankLoaderError`.
+    """
+    return load_banks_detailed(directory, best_effort=best_effort).banks
+
+
+def load_banks_detailed(
+    directory: str | Path,
+    *,
+    best_effort: bool = True,
+) -> BankLoadResult:
+    """Load banks from a directory and return accepted banks plus diagnostics."""
     root = Path(directory)
+    result = BankLoadResult()
     if not root.is_dir():
-        return []
-    banks: list[ExamBank] = []
+        return result
+
     paths = sorted(list(root.glob("*.yaml")) + list(root.glob("*.yml")))
     for path in paths:
         try:
-            banks.append(load_exam_bank(path))
-        except BankLoaderError:
-            continue
-    return banks
+            result.banks.append(load_exam_bank(path))
+        except BankLoaderError as exc:
+            diagnostic = BankLoadDiagnostic(path=str(path), reason=str(exc))
+            result.rejected.append(diagnostic)
+            if not best_effort:
+                raise BankLoaderError(f"Failed to load bank {path.name}: {exc}") from exc
+    return result
 
 
 def merge_banks(banks: list[ExamBank]) -> QuestionPool:
@@ -72,9 +122,9 @@ def merge_banks(banks: list[ExamBank]) -> QuestionPool:
     )
 
 
-def load_question_pool(directory: str | Path) -> QuestionPool:
+def load_question_pool(directory: str | Path, *, best_effort: bool = True) -> QuestionPool:
     """Load and merge all banks under ``directory``."""
-    return merge_banks(load_banks_from_dir(directory))
+    return merge_banks(load_banks_from_dir(directory, best_effort=best_effort))
 
 
 def _read_yaml(source: str | Path) -> Any:

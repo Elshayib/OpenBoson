@@ -6,13 +6,11 @@ exam session, including per-domain breakdown.
 
 from __future__ import annotations
 
-from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import Any
 
 from openboson.bank_schema import (
     DragMatchAnswer,
-    ExamBank,
     MultipleChoiceAnswer,
     OrderedListAnswer,
     Question,
@@ -188,9 +186,7 @@ def score_exam(session: ExamSession) -> ExamResult:
         prefix = parts[0] + "."
         if len(parts) >= 2 and parts[1] == "0":
             # Domain rollup entry; its weight is the full domain weight.
-            domain_weights[prefix] = (
-                domain_weights.get(prefix, 0.0) + topic.weight
-            )
+            domain_weights[prefix] = domain_weights.get(prefix, 0.0) + topic.weight
             domain_has_rollup.add(prefix)
         # Subtopic weights are tracked separately (not rolled up) to avoid
         # double-counting against the rollup.
@@ -208,9 +204,7 @@ def score_exam(session: ExamSession) -> ExamResult:
     breakdown: dict[str, DomainBreakdown] = {}
     # Pre-create domain entries from any topic present in the bank.
     for prefix, weight in domain_weights.items():
-        breakdown[prefix] = DomainBreakdown(
-            domain_prefix=prefix, weight=weight
-        )
+        breakdown[prefix] = DomainBreakdown(domain_prefix=prefix, weight=weight)
     # Exams bucket by domain (first segment) for MVP; subtopic breakdown comes later.
     for question in session.questions:
         prefix = question.topic_code.split(".")[0] + "."

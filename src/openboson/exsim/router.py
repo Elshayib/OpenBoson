@@ -23,18 +23,28 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict
 
-from openboson.bank_loader import load_exam_bank
-from openboson.bank_schema import ExamBank, Question, QuestionType
+from openboson.bank_loader import load_banks_from_dir, load_question_pool, merge_banks
+from openboson.bank_schema import ExamBank, Question, QuestionPool, QuestionType
+from openboson.exsim.blueprint import (
+    BLUEPRINTS,
+    ExamBlueprint,
+    InsufficientPoolError,
+    bank_from_blueprint,
+    build_exam_from_blueprint,
+    get_blueprint,
+    list_blueprints,
+)
 from openboson.exsim.scoring import ExamResult, score_exam
-from openboson.bank_loader import load_banks_from_dir, merge_banks
-from openboson.exsim.session import ExamMode, ExamSession
+from openboson.exsim.session import ExamMode, ExamSession, QuestionPresentation
 
 # Module-level state for MVP. A future task will replace this with a
 # registry that reads from data/ and persists sessions to SQLite.
 _ROUTER = APIRouter(prefix="/api/v1", tags=["exsim"])
 
-# Loaded banks, keyed by exam code (e.g. "200-301").
+# Loaded raw banks (library data). Not startable as mega-exams.
 _BANKS: dict[str, ExamBank] = {}
+# Merged question pool used for blueprint sampling.
+_POOL: QuestionPool | None = None
 # Active sessions, keyed by session_id.
 _SESSIONS: dict[str, ExamSession] = {}
 
@@ -44,20 +54,26 @@ _DEFAULT_BANKS_DIR = (
     Path(__file__).resolve().parents[3] / "data" / "demo_banks"
 )
 
+# Unambiguous exam-code aliases → blueprint id (never raw pool codes).
+_CODE_ALIASES: dict[str, str] = {
+    "200-301": "ccna-200-301",
+    "350-401": "encor-350-401",
+}
+
 
 def _load_default_banks() -> None:
-    """Pre-load the bundled demo banks if not already loaded."""
-    if _BANKS:
+    """Pre-load the bundled demo banks / pool if not already loaded."""
+    global _POOL
+    if _BANKS and _POOL is not None:
         return
     if not _DEFAULT_BANKS_DIR.is_dir():
         return
     for bank in load_banks_from_dir(_DEFAULT_BANKS_DIR):
-        # Prefer unique codes; if duplicates, later files overwrite.
         _BANKS[bank.code] = bank
-    # Also expose a merged pool under a stable key for clients that want all Qs.
     if _BANKS:
+        _POOL = load_question_pool(_DEFAULT_BANKS_DIR)
+        # Keep a merged synthetic bank for library lookups only.
         pool = merge_banks(list(_BANKS.values()))
-        # Synthetic bank wrapper for listing; only used if no single bank matches.
         _BANKS.setdefault(
             "pool",
             ExamBank(
@@ -65,16 +81,61 @@ def _load_default_banks() -> None:
                 code="pool",
                 version="v1",
                 provider="openboson",
-                description="Merged question pool",
+                description="Merged question pool (library only)",
                 topics=pool.topics or list(next(iter(_BANKS.values())).topics),
                 questions=pool.questions,
             ),
         )
 
 
-def _serialize_question_for_display(q: Question) -> dict[str, Any]:
+def _resolve_blueprint(exam_id: str) -> ExamBlueprint:
+    """Resolve an exam id / alias to an enabled blueprint.
+
+    Raw pool codes (e.g. ``pool-ccna``) are library data and are not startable.
+    """
+    if exam_id in BLUEPRINTS:
+        bp = BLUEPRINTS[exam_id]
+    elif exam_id in _CODE_ALIASES:
+        bp = get_blueprint(_CODE_ALIASES[exam_id])
+    else:
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                f"Exam {exam_id!r} not found. Start exams via blueprint IDs "
+                f"(e.g. ccna-200-301) or unambiguous codes (200-301, 350-401)."
+            ),
+        )
+    if not bp.enabled:
+        raise HTTPException(
+            status_code=400,
+            detail=bp.coming_soon_label or f"{bp.title} is not available yet",
+        )
+    return bp
+
+
+def _choices_for_display(
+    q: Question, presentation: QuestionPresentation | None
+) -> list[dict[str, Any]]:
+    by_id = {c.id: c for c in (q.choices or [])}
+    if presentation and presentation.choice_ids:
+        order = presentation.choice_ids
+    else:
+        order = list(by_id.keys())
+    out: list[dict[str, Any]] = []
+    for cid in order:
+        c = by_id.get(cid)
+        if c is None:
+            continue
+        out.append({"id": c.id, "text": c.text, "media_url": c.media_url})
+    return out
+
+
+def _serialize_question_for_display(
+    q: Question,
+    presentation: QuestionPresentation | None = None,
+) -> dict[str, Any]:
     """Render a question for the client WITHOUT leaking the correct answer."""
-    base = {
+    base: dict[str, Any] = {
         "id": q.id,
         "type": q.type.value,
         "topic_code": q.topic_code,
@@ -83,13 +144,26 @@ def _serialize_question_for_display(q: Question) -> dict[str, Any]:
         "media_url": q.media_url,
     }
     if q.type in (QuestionType.SINGLE_CHOICE, QuestionType.MULTIPLE_CHOICE):
-        base["choices"] = [
-            {"id": c.id, "text": c.text, "media_url": c.media_url} for c in (q.choices or [])
-        ]
+        base["choices"] = _choices_for_display(q, presentation)
     if q.type == QuestionType.DRAG_MATCH:
-        base["drag_pairs"] = [{"left": p.left, "right": p.right} for p in (q.drag_pairs or [])]
+        # Independently shuffled left/right with opaque IDs — never canonical pairs.
+        if presentation and presentation.drag_left is not None:
+            base["left_items"] = [d.to_dict() for d in presentation.drag_left]
+            base["right_items"] = [
+                d.to_dict() for d in (presentation.drag_right or [])
+            ]
+        else:
+            # Fallback without session presentation: shuffle but do not pair.
+            from openboson.exsim.session import build_question_presentation
+
+            fallback = build_question_presentation(q)
+            base["left_items"] = [d.to_dict() for d in (fallback.drag_left or [])]
+            base["right_items"] = [d.to_dict() for d in (fallback.drag_right or [])]
     if q.type == QuestionType.ORDERED_LIST:
-        base["ordered_items"] = list(q.ordered_items or [])
+        if presentation and presentation.ordered_items is not None:
+            base["ordered_items"] = list(presentation.ordered_items)
+        else:
+            base["ordered_items"] = list(q.ordered_items or [])
     if q.type == QuestionType.SIM and q.sim is not None:
         base["sim"] = {
             "instructions": q.sim.instructions,
@@ -120,37 +194,74 @@ class BookmarkRequest(BaseModel):
 
 @_ROUTER.get("/exams")
 def list_exams() -> list[dict[str, Any]]:
+    """List startable blueprint exams (not raw question pools)."""
     _load_default_banks()
-    return [
-        {
-            "id": code,
-            "title": bank.title,
-            "code": bank.code,
-            "version": bank.version,
-            "provider": bank.provider,
-            "description": bank.description,
-            "pass_score": bank.pass_score,
-            "time_limit_minutes": bank.time_limit_minutes,
-            "question_count": len(bank.questions),
-        }
-        for code, bank in _BANKS.items()
-    ]
+    items: list[dict[str, Any]] = []
+    for bp in list_blueprints():
+        if not bp.enabled:
+            items.append(
+                {
+                    "id": bp.id,
+                    "title": bp.title,
+                    "code": bp.code,
+                    "version": bp.version,
+                    "provider": "openboson",
+                    "description": bp.coming_soon_label or "Coming soon",
+                    "pass_score": bp.pass_score,
+                    "time_limit_minutes": bp.time_limit_minutes,
+                    "question_count": bp.question_count,
+                    "enabled": False,
+                    "blueprint_id": bp.id,
+                }
+            )
+            continue
+        items.append(
+            {
+                "id": bp.id,
+                "title": bp.title,
+                "code": bp.code,
+                "version": bp.version,
+                "provider": "openboson",
+                "description": f"Blueprint exam ({bp.id})",
+                "pass_score": bp.pass_score,
+                "time_limit_minutes": bp.time_limit_minutes,
+                "question_count": bp.question_count,
+                "enabled": True,
+                "blueprint_id": bp.id,
+            }
+        )
+    return items
 
 
 @_ROUTER.post("/exams/{exam_id}/sessions")
 def create_session(exam_id: str, body: CreateSessionRequest) -> dict[str, Any]:
     _load_default_banks()
-    bank = _BANKS.get(exam_id)
-    if bank is None:
-        raise HTTPException(status_code=404, detail=f"Exam {exam_id} not found")
-    session = ExamSession.create(bank, mode=body.mode)
+    blueprint = _resolve_blueprint(exam_id)
+    if _POOL is None:
+        raise HTTPException(status_code=503, detail="Question pool not loaded")
+    try:
+        questions = build_exam_from_blueprint(_POOL.questions, blueprint)
+    except InsufficientPoolError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    bank = bank_from_blueprint(blueprint, questions)
+    session = ExamSession.create(
+        bank,
+        mode=body.mode,
+        shuffle=False,
+        blueprint_id=blueprint.id,
+        questions=questions,
+    )
     _SESSIONS[session.session_id] = session
+    q = session.current_question
     return {
         "session_id": session.session_id,
         "exam_code": bank.code,
+        "blueprint_id": blueprint.id,
         "mode": session.mode.value,
         "total_questions": len(session.questions),
-        "question": _serialize_question_for_display(session.current_question),
+        "question": _serialize_question_for_display(
+            q, session.presentation_for(q.id)
+        ),
     }
 
 
@@ -162,7 +273,7 @@ def get_question(session_id: str, index: int) -> dict[str, Any]:
     if not (0 <= index < len(session.questions)):
         raise HTTPException(status_code=400, detail="Index out of range")
     q = session.questions[index]
-    return _serialize_question_for_display(q)
+    return _serialize_question_for_display(q, session.presentation_for(q.id))
 
 
 @_ROUTER.post("/sessions/{session_id}/answers")
@@ -176,7 +287,11 @@ def submit_answer(session_id: str, body: SubmitAnswerRequest) -> dict[str, Any]:
     graded = session.submit_answer(
         body.question_id, body.answer, time_spent_seconds=body.time_spent_seconds
     )
-    response = {"session_id": session_id, "question_id": body.question_id, "accepted": True}
+    response: dict[str, Any] = {
+        "session_id": session_id,
+        "question_id": body.question_id,
+        "accepted": True,
+    }
     if graded is not None:
         response["is_correct"] = graded
     return response
@@ -213,24 +328,23 @@ def review_session(session_id: str) -> dict[str, Any]:
     for q in session.questions:
         user_ans = session.answers.get(q.id)
         correct = q.correct_answer_model
-        items.append(
-            {
-                "question_id": q.id,
-                "topic_code": q.topic_code,
-                "type": q.type.value,
-                "stem": q.stem,
-                "choices": [
-                    {"id": c.id, "text": c.text} for c in (q.choices or [])
-                ],
-                "correct": correct.model_dump(),
-                "user_answer": user_ans.answer if user_ans is not None else None,
-                "is_correct": bool(user_ans.is_correct) if user_ans is not None else False,
-                "explanation": q.explanation,
-            }
-        )
+        pres = session.presentation_for(q.id)
+        item: dict[str, Any] = {
+            "question_id": q.id,
+            "topic_code": q.topic_code,
+            "type": q.type.value,
+            "stem": q.stem,
+            "choices": _choices_for_display(q, pres) if q.choices else [],
+            "correct": correct.model_dump(),
+            "user_answer": user_ans.answer if user_ans is not None else None,
+            "is_correct": bool(user_ans.is_correct) if user_ans is not None else False,
+            "explanation": q.explanation,
+        }
+        items.append(item)
     return {
         "session_id": session_id,
         "exam_code": session.exam.code,
+        "blueprint_id": session.blueprint_id,
         "result": _serialize_exam_result(result),
         "items": items,
     }

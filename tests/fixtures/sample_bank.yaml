@@ -124,25 +124,27 @@ questions:
     cert_tags: [ccna]
     stem: >
       Match each DHCP message with the direction in which it is sent.
+    # Duplicate right-hand values (OFFER/ACK both "Server → Client") exercise
+    # opaque-token restoration — mirrors shipped ccna-4-001.
     drag_pairs:
       - left: "DISCOVER"
-        right: "Client -> Server (broadcast)"
+        right: "Client → Server (broadcast)"
       - left: "OFFER"
-        right: "Server -> Client (unicast or broadcast)"
+        right: "Server → Client"
       - left: "REQUEST"
-        right: "Client -> Server (broadcast)"
+        right: "Client → Server"
       - left: "ACK"
-        right: "Server -> Client (unicast)"
+        right: "Server → Client"
     correct:
       pairs:
         - left: "DISCOVER"
-          right: "Client -> Server (broadcast)"
+          right: "Client → Server (broadcast)"
         - left: "OFFER"
-          right: "Server -> Client (unicast or broadcast)"
+          right: "Server → Client"
         - left: "REQUEST"
-          right: "Client -> Server (broadcast)"
+          right: "Client → Server"
         - left: "ACK"
-          right: "Server -> Client (unicast)"
+          right: "Server → Client"
     explanation: >
       DHCP uses DORA: Discover, Offer, Request, Ack.
     references:

@@ -1,11 +1,17 @@
 """Tests for the ExSim FastAPI router."""
 
+from __future__ import annotations
+
+from collections import Counter
+
 import pytest
 from fastapi.testclient import TestClient
 
+from openboson.exsim.blueprint import allocate_counts, get_blueprint
 from openboson.server import app
 
-EXAM_CODE = "pool-ccna"
+BLUEPRINT_ID = "ccna-200-301"
+EXAM_CODE = "200-301"
 
 
 @pytest.fixture(autouse=True)
@@ -14,9 +20,11 @@ def _reset_router_state():
 
     router._SESSIONS.clear()
     router._BANKS.clear()
+    router._POOL = None
     yield
     router._SESSIONS.clear()
     router._BANKS.clear()
+    router._POOL = None
 
 
 @pytest.fixture
@@ -24,8 +32,8 @@ def client() -> TestClient:
     return TestClient(app)
 
 
-def _create_session(client: TestClient, mode: str = "exam") -> dict:
-    resp = client.post(f"/api/v1/exams/{EXAM_CODE}/sessions", json={"mode": mode})
+def _create_session(client: TestClient, exam_id: str = BLUEPRINT_ID, mode: str = "exam") -> dict:
+    resp = client.post(f"/api/v1/exams/{exam_id}/sessions", json={"mode": mode})
     assert resp.status_code == 200, resp.text
     return resp.json()
 
@@ -33,9 +41,8 @@ def _create_session(client: TestClient, mode: str = "exam") -> dict:
 def _correct_answer_for(question: dict) -> dict | list | None:
     from openboson.exsim import router
 
-    bank = router._BANKS.get(EXAM_CODE)
-    assert bank is not None
-    q = next(qq for qq in bank.questions if qq.id == question["id"])
+    session = next(iter(router._SESSIONS.values()))
+    q = next(qq for qq in session.questions if qq.id == question["id"])
     correct = q.correct_answer_model
     if q.type.value == "single_choice":
         return {"answer": correct.answer}
@@ -50,22 +57,55 @@ def _correct_answer_for(question: dict) -> dict | list | None:
     return None
 
 
-def test_list_exams_loads_pools(client):
+def test_list_exams_returns_blueprints_not_raw_pools(client):
     resp = client.get("/api/v1/exams")
     assert resp.status_code == 200
     body = resp.json()
-    codes = {e["id"] for e in body}
-    assert "pool-ccna" in codes
-    assert "pool-encor" in codes
+    ids = {e["id"] for e in body}
+    assert "ccna-200-301" in ids
+    assert "encor-350-401" in ids
+    assert "pool-ccna" not in ids
+    assert "pool-encor" not in ids
+    assert "pool" not in ids
+    enabled = {e["id"] for e in body if e.get("enabled")}
+    assert "ccna-200-301" in enabled
+    for item in body:
+        if item["id"] in ("ccna-200-301", "encor-350-401"):
+            assert item["question_count"] == 100
 
 
-def test_create_session_returns_first_question(client):
+def test_create_session_uses_exact_blueprint_count(client):
     body = _create_session(client)
     assert body["mode"] == "exam"
-    assert body["total_questions"] >= 100
+    assert body["total_questions"] == 100
+    assert body["blueprint_id"] == BLUEPRINT_ID
+    assert body["exam_code"] == EXAM_CODE
     q = body["question"]
     assert "correct" not in q
     assert "id" in q
+
+
+def test_create_session_domain_quotas(client):
+    body = _create_session(client)
+    from openboson.exsim import router
+
+    session = router._SESSIONS[body["session_id"]]
+    bp = get_blueprint(BLUEPRINT_ID)
+    expected = allocate_counts(bp.question_count, bp.domain_weights)
+    actual = Counter(q.topic_code.split(".", 1)[0] for q in session.questions)
+    assert dict(actual) == expected
+    assert all(q.matches_cert("ccna") for q in session.questions)
+
+
+def test_create_session_code_alias(client):
+    body = _create_session(client, exam_id="200-301")
+    assert body["blueprint_id"] == "ccna-200-301"
+    assert body["total_questions"] == 100
+
+
+def test_create_session_rejects_raw_pool(client):
+    resp = client.post("/api/v1/exams/pool-ccna/sessions", json={"mode": "exam"})
+    assert resp.status_code == 404
 
 
 def test_create_session_unknown_exam_404(client):
@@ -136,7 +176,7 @@ def test_finish_session_returns_result(client):
     result = resp.json()
     assert result["session_id"] == sid
     assert result["exam_code"] == EXAM_CODE
-    assert result["total_questions"] == body["total_questions"]
+    assert result["total_questions"] == 100
     assert result["correct_count"] == 1
     assert "domain_breakdown" in result
 
@@ -153,7 +193,7 @@ def test_review_session_includes_explanations_and_correct(client):
     resp = client.get(f"/api/v1/sessions/{sid}/review")
     assert resp.status_code == 200
     review = resp.json()
-    assert len(review["items"]) == body["total_questions"]
+    assert len(review["items"]) == 100
     for item in review["items"][:5]:
         assert "correct" in item
         assert "explanation" in item
@@ -176,3 +216,55 @@ def test_question_payload_does_not_leak_correct_answer(client):
     q = body["question"]
     forbidden = {"correct", "correct_answer", "correct_answer_json", "explanation"}
     assert not (set(q) & forbidden), f"Question response leaked: {set(q) & forbidden}"
+
+
+def test_drag_match_does_not_leak_canonical_pairs(client):
+    body = _create_session(client)
+    sid = body["session_id"]
+    from openboson.exsim import router
+
+    session = router._SESSIONS[sid]
+    drag_idxs = [
+        i for i, q in enumerate(session.questions) if q.type.value == "drag_match"
+    ]
+    if not drag_idxs:
+        pytest.skip("no drag_match questions in sampled exam")
+    resp = client.get(f"/api/v1/sessions/{sid}/questions/{drag_idxs[0]}")
+    assert resp.status_code == 200
+    q = resp.json()
+    assert "drag_pairs" not in q
+    assert "correct" not in q
+    assert "left_items" in q and "right_items" in q
+    left_ids = {item["id"] for item in q["left_items"]}
+    right_ids = {item["id"] for item in q["right_items"]}
+    assert left_ids.isdisjoint(right_ids)
+    # No pairing field that reveals which left maps to which right.
+    for item in q["left_items"] + q["right_items"]:
+        assert set(item.keys()) <= {"id", "text"}
+
+
+def test_choice_presentation_stable_across_fetches(client):
+    body = _create_session(client)
+    sid = body["session_id"]
+    from openboson.exsim import router
+
+    session = router._SESSIONS[sid]
+    sc_idx = next(
+        i for i, q in enumerate(session.questions) if q.type.value == "single_choice"
+    )
+    r1 = client.get(f"/api/v1/sessions/{sid}/questions/{sc_idx}").json()
+    r2 = client.get(f"/api/v1/sessions/{sid}/questions/{sc_idx}").json()
+    assert [c["id"] for c in r1["choices"]] == [c["id"] for c in r2["choices"]]
+
+
+def test_encor_session_cert_isolation(client):
+    body = _create_session(client, exam_id="encor-350-401")
+    assert body["total_questions"] == 100
+    from openboson.exsim import router
+
+    session = router._SESSIONS[body["session_id"]]
+    assert all(q.matches_cert("ccnp") for q in session.questions)
+    bp = get_blueprint("encor-350-401")
+    expected = allocate_counts(bp.question_count, bp.domain_weights)
+    actual = Counter(q.topic_code.split(".", 1)[0] for q in session.questions)
+    assert dict(actual) == expected

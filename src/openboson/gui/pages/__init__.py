@@ -3,9 +3,9 @@
 Only Dashboard remains as a simple placeholder. Exams, Labs, Stats, and
 Settings each live in their own module.
 """
+
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget
 
 
@@ -33,8 +33,9 @@ class DashboardPage(_Page):
         header = QLabel("OpenBoson")
         header.setProperty("role", "h1")
         sub = QLabel(
-            "Local practice questions and blueprint exams for CCNA / CCNP,\n"
-            "plus NetSim guided labs. Open Practice to browse the library or start an exam."
+            "Local practice questions and blueprint exams for CCNA 200-301 v1.1 and "
+            "CCNP ENCOR 350-401 v1.2, plus NetSim guided labs. Open Practice to browse "
+            "the library or start an exam."
         )
         sub.setProperty("role", "muted")
         sub.setWordWrap(True)

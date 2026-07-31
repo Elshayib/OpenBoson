@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
     QLabel,
-    QPushButton,
+    QScrollArea,
     QTextBrowser,
     QVBoxLayout,
     QWidget,
@@ -28,6 +28,10 @@ class ExamReviewPage(QWidget):
         self._layout.setContentsMargins(24, 24, 24, 24)
         self._layout.setSpacing(12)
         self._session: ExamSession | None = None
+        self._scroll: QScrollArea | None = None
+        self._items_host: QWidget | None = None
+        self._items_holder: QVBoxLayout | None = None
+        self._filter: QComboBox | None = None
 
     def show_review(self, session: ExamSession) -> None:
         self._session = session
@@ -47,22 +51,41 @@ class ExamReviewPage(QWidget):
         filter_row.addStretch()
         self._layout.addLayout(filter_row)
 
-        self._items_holder = QVBoxLayout()
-        self._layout.addLayout(self._items_holder)
-        self._layout.addStretch()
+        self._scroll = QScrollArea()
+        self._scroll.setWidgetResizable(True)
+        self._scroll.setFrameShape(QFrame.Shape.NoFrame)
+        self._scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self._items_host = QWidget()
+        self._items_holder = QVBoxLayout(self._items_host)
+        self._items_holder.setContentsMargins(0, 0, 0, 0)
+        self._items_holder.setSpacing(12)
+        self._scroll.setWidget(self._items_host)
+        self._layout.addWidget(self._scroll, 1)
         self._rebuild()
 
+    def scroll_area(self) -> QScrollArea | None:
+        """Test / integration hook for the review scroll viewport."""
+        return self._scroll
+
+    def review_cards(self) -> list[QFrame]:
+        if self._items_host is None:
+            return []
+        return [
+            w
+            for w in self._items_host.findChildren(QFrame)
+            if w.objectName() == "Card"
+        ]
+
     def _rebuild(self) -> None:
-        if self._session is None:
+        if self._session is None or self._items_holder is None:
             return
-        # Clear items holder
         while self._items_holder.count():
             item = self._items_holder.takeAt(0)
             widget = item.widget()
             if widget is not None:
                 widget.deleteLater()
 
-        mode = self._filter.currentText()
+        mode = self._filter.currentText() if self._filter is not None else "All"
         for q in self._session.questions:
             ua = self._session.answers.get(q.id)
             is_correct = bool(ua.is_correct) if ua is not None else False
@@ -74,6 +97,7 @@ class ExamReviewPage(QWidget):
             if mode == "Bookmarked" and not bookmarked:
                 continue
             self._items_holder.addWidget(self._review_card(q, ua, is_correct))
+        self._items_holder.addStretch()
 
     def _review_card(self, q, ua, is_correct: bool) -> QFrame:
         card = QFrame()
@@ -136,8 +160,8 @@ class ExamReviewPage(QWidget):
             DragMatchAnswer,
             MultipleChoiceAnswer,
             OrderedListAnswer,
-            SingleChoiceAnswer,
             SimAnswer,
+            SingleChoiceAnswer,
         )
 
         if isinstance(correct, SingleChoiceAnswer):
@@ -149,7 +173,9 @@ class ExamReviewPage(QWidget):
         if isinstance(correct, DragMatchAnswer):
             return "pairs " + "; ".join(f"{p.left}={p.right}" for p in correct.pairs)
         if isinstance(correct, SimAnswer):
-            return (correct.expected_config or "\n".join(correct.expected_commands or [])).strip()[:80]
+            return (correct.expected_config or "\n".join(correct.expected_commands or [])).strip()[
+                :80
+            ]
         return ""
 
     @staticmethod
@@ -162,7 +188,9 @@ class ExamReviewPage(QWidget):
             if "order" in answer:
                 return "order " + " → ".join(answer["order"])
             if "pairs" in answer:
-                return "pairs " + "; ".join(f"{p['left']}={p['right']}" for p in answer["pairs"])
+                return "pairs " + "; ".join(
+                    f"{p['left']}={p['right']}" for p in answer["pairs"]
+                )
             if "config" in answer:
                 return answer["config"][:80]
         return str(answer)
@@ -173,3 +201,14 @@ class ExamReviewPage(QWidget):
             widget = item.widget()
             if widget is not None:
                 widget.deleteLater()
+            elif item.layout() is not None:
+                # Detach nested layouts so filters/rebuild start clean.
+                nested = item.layout()
+                while nested.count():
+                    child = nested.takeAt(0)
+                    if child.widget() is not None:
+                        child.widget().deleteLater()
+        self._scroll = None
+        self._items_host = None
+        self._items_holder = None
+        self._filter = None

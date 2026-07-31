@@ -1,6 +1,8 @@
 # OpenBoson
 
-An open-source, fully-local study platform that combines Boson ExSim-style practice exams and Boson NetSim-style guided labs / network simulator, focused first on Cisco CCNA 200-301 topics.
+An open-source, fully-local study platform that combines Boson ExSim-style practice exams and Boson NetSim-style guided labs / network simulator for Cisco certifications.
+
+Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 v1.2**. Objective maps are taken from Cisco’s public exam topics (Learning Network / topics PDFs); registry refresh date: **2026-07-31** (see `src/openboson/exsim/objectives.py`).
 
 ## Status
 
@@ -20,7 +22,7 @@ OpenBoson is a single Python desktop application:
 
 ```bash
 # Install (editable)
-pip install -e .
+pip install -e ".[all]"
 
 # Run GUI
 openboson gui

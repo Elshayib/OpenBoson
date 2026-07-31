@@ -79,6 +79,9 @@ class ExamSession(Base):
     exam_id: Mapped[int | None] = mapped_column(
         ForeignKey("exams.id", ondelete="CASCADE"), nullable=True
     )
+    # Stable attempt identity (survives missing Exam rows / bundled banks).
+    exam_code: Mapped[str] = mapped_column(String(40), default="", index=True)
+    exam_version: Mapped[str] = mapped_column(String(20), default="")
     mode: Mapped[str] = mapped_column(String(20), default="exam")
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
@@ -100,6 +103,8 @@ class UserAnswer(Base):
     question_id: Mapped[int | None] = mapped_column(
         ForeignKey("questions.id", ondelete="CASCADE"), nullable=True
     )
+    # Bank YAML question id (stable across runs; ORM question rows are optional).
+    bank_question_id: Mapped[str | None] = mapped_column(String(80), nullable=True, index=True)
     answer_json: Mapped[str] = mapped_column(Text, default="[]")
     is_correct: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     time_spent_seconds: Mapped[int] = mapped_column(Integer, default=0)

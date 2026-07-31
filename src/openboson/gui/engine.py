@@ -7,12 +7,12 @@ API so pages don't import engine internals directly.
 
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 from typing import Any
 
 from openboson.bank_loader import (
     BankLoaderError,
-    load_banks_from_dir,
     load_exam_bank,
     load_question_pool,
 )
@@ -31,6 +31,11 @@ from openboson.netsim.lab_loader import LabLoaderError, load_lab
 from openboson.netsim.lab_schema import LabBank
 from openboson.netsim.session import LabResult, LabSession, score_lab
 
+logger = logging.getLogger(__name__)
+
+# Non-fatal persistence warning from the last finish_and_score* call (GUI may show it).
+last_persistence_warning: str | None = None
+
 # Default content shipped with the repo: <repo>/data/...
 _DEFAULT_BANKS_DIR = Path(__file__).resolve().parents[3] / "data" / "demo_banks"
 _DEFAULT_LABS_DIR = Path(__file__).resolve().parents[3] / "data" / "demo_labs"
@@ -42,7 +47,12 @@ def banks_dir() -> Path:
 
 def load_available_banks() -> list[ExamBank]:
     """Load all YAML banks from the bundled demo banks dir (best-effort)."""
-    return load_banks_from_dir(_DEFAULT_BANKS_DIR)
+    from openboson.bank_loader import load_banks_detailed
+
+    result = load_banks_detailed(_DEFAULT_BANKS_DIR, best_effort=True)
+    for item in result.rejected:
+        logger.warning("Skipping bank %s: %s", item.path, item.reason)
+    return result.banks
 
 
 def load_pool() -> QuestionPool:
@@ -95,6 +105,8 @@ def blueprint_coverage(blueprint_id: str) -> Any:
 
 def finish_and_score(session: ExamSession) -> ExamResult:
     """Finish a session, compute its result, and persist to SQLite."""
+    global last_persistence_warning
+    last_persistence_warning = None
     if not session.is_finished():
         session.finish()
     result = score_exam(session)
@@ -103,8 +115,9 @@ def finish_and_score(session: ExamSession) -> ExamResult:
         from openboson import stats_service
 
         stats_service.save_exam_result(session, result)
-    except Exception:
-        pass
+    except Exception as exc:
+        last_persistence_warning = f"Could not save exam result: {exc}"
+        logger.warning("Failed to persist exam result: %s", exc, exc_info=True)
     return result
 
 
@@ -171,6 +184,8 @@ def start_lab_session(lab: LabBank) -> LabSession:
 
 def finish_and_score_lab(session: LabSession) -> LabResult:
     """Finish a lab session, compute its result, and persist to SQLite."""
+    global last_persistence_warning
+    last_persistence_warning = None
     if not session.is_finished():
         session.finish()
     result = score_lab(session)
@@ -178,6 +193,7 @@ def finish_and_score_lab(session: LabSession) -> LabResult:
         from openboson import stats_service
 
         stats_service.save_lab_result(session, result)
-    except Exception:
-        pass
+    except Exception as exc:
+        last_persistence_warning = f"Could not save lab result: {exc}"
+        logger.warning("Failed to persist lab result: %s", exc, exc_info=True)
     return result

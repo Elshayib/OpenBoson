@@ -3,26 +3,19 @@
 from pathlib import Path
 
 import pytest
-from sqlalchemy import create_engine
 
-from openboson import stats_service
 from openboson.bank_loader import load_exam_bank
 from openboson.exsim.session import ExamMode
 from openboson.gui.main_window import MainWindow
-from openboson.models import Base
 
 
 FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "sample_bank.yaml"
 
 
 @pytest.fixture
-def fresh_db(tmp_path, monkeypatch):
+def fresh_db(isolated_home):
     """Point stats_service at a temp SQLite so tests are isolated."""
-    db = tmp_path / "stats_test.db"
-    engine = create_engine(f"sqlite:///{db}", future=True)
-    Base.metadata.create_all(engine)
-    monkeypatch.setattr(stats_service, "_engine", engine)
-    yield engine
+    return isolated_home
 
 
 def test_stats_page_empty(fresh_db, qtbot):

@@ -14,12 +14,20 @@ Question ``type`` values:
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Literal, Union
+from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
-
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 CertTag = Literal["ccna", "ccnp"]
+
+# Well-known exam codes that uniquely imply a certification tag.
+_WELL_KNOWN_CERT_BY_CODE: dict[str, CertTag] = {
+    "200-301": "ccna",
+    "350-401": "ccnp",
+}
+
+# Current bank YAML schema version written by OpenBoson tooling.
+CURRENT_BANK_SCHEMA_VERSION = 1
 
 
 class QuestionType(str, Enum):
@@ -161,13 +169,15 @@ class Question(BaseModel):
         return value
 
     @property
-    def correct_answer_model(self) -> Union[
-        SingleChoiceAnswer,
-        MultipleChoiceAnswer,
-        DragMatchAnswer,
-        OrderedListAnswer,
-        SimAnswer,
-    ]:
+    def correct_answer_model(
+        self,
+    ) -> (
+        SingleChoiceAnswer
+        | MultipleChoiceAnswer
+        | DragMatchAnswer
+        | OrderedListAnswer
+        | SimAnswer
+    ):
         """Return the strongly-typed correct answer for this question type."""
         mapping: dict[QuestionType, type[BaseModel]] = {
             QuestionType.SINGLE_CHOICE: SingleChoiceAnswer,
@@ -183,6 +193,114 @@ class Question(BaseModel):
         return cert in self.cert_tags
 
 
+def infer_cert_tags_for_code(code: str) -> list[CertTag] | None:
+    """Return cert tags for well-known exam codes, else ``None`` if ambiguous."""
+    normalized = (code or "").strip()
+    tag = _WELL_KNOWN_CERT_BY_CODE.get(normalized)
+    if tag is None:
+        return None
+    return [tag]
+
+
+def normalize_legacy_bank_dict(raw: dict[str, Any]) -> dict[str, Any]:
+    """Pre-validate and upgrade legacy bank YAML before Pydantic validation.
+
+    Legacy banks may omit per-question ``cert_tags``. We accept:
+      1. Bank-level ``cert_tags`` / ``cert`` metadata applied to questions, or
+      2. Inference only for well-known codes (``200-301``, ``350-401``).
+
+    Ambiguous banks (missing tags and unknown code) raise ``ValueError``.
+    """
+    if not isinstance(raw, dict):
+        raise ValueError("Bank YAML root must be a mapping")
+
+    data = dict(raw)
+    # ``cert`` is a legacy alias; drop it so extra=forbid does not reject the bank.
+    bank_tags = _coerce_bank_level_cert_tags(data)
+    data.pop("cert", None)
+
+    questions = data.get("questions")
+    if not isinstance(questions, list):
+        if "schema_version" not in data:
+            data["schema_version"] = CURRENT_BANK_SCHEMA_VERSION
+        return data
+
+    code = str(data.get("code") or "")
+    inferred = infer_cert_tags_for_code(code) if bank_tags is None else None
+    default_tags = bank_tags or inferred
+
+    needs_tags = any(isinstance(q, dict) and not q.get("cert_tags") for q in questions)
+    if needs_tags and default_tags is None:
+        raise ValueError(
+            "Legacy bank questions are missing cert_tags and certification cannot be "
+            f"inferred from code {code!r}. Add bank-level cert_tags (e.g. [ccna]) "
+            "or use a well-known exam code (200-301, 350-401)."
+        )
+
+    if default_tags is not None:
+        upgraded: list[Any] = []
+        for q in questions:
+            if not isinstance(q, dict):
+                upgraded.append(q)
+                continue
+            q2 = dict(q)
+            if not q2.get("cert_tags"):
+                q2["cert_tags"] = list(default_tags)
+            upgraded.append(q2)
+        data["questions"] = upgraded
+        if data.get("cert_tags") is None and bank_tags is not None:
+            data["cert_tags"] = list(bank_tags)
+
+    if "schema_version" not in data:
+        data["schema_version"] = CURRENT_BANK_SCHEMA_VERSION
+
+    return data
+
+
+def _coerce_bank_level_cert_tags(data: dict[str, Any]) -> list[CertTag] | None:
+    """Read optional bank-level certification metadata."""
+    raw_tags = data.get("cert_tags")
+    if raw_tags is None and data.get("cert") is not None:
+        raw_tags = [data["cert"]]
+    if raw_tags is None:
+        return None
+    if isinstance(raw_tags, str):
+        raw_tags = [raw_tags]
+    if not isinstance(raw_tags, list) or not raw_tags:
+        raise ValueError("bank-level cert_tags must be a non-empty list")
+    out: list[CertTag] = []
+    for tag in raw_tags:
+        if tag not in ("ccna", "ccnp"):
+            raise ValueError(f"Unknown certification tag {tag!r}; expected 'ccna' or 'ccnp'")
+        if tag not in out:
+            out.append(tag)  # type: ignore[arg-type]
+    return out
+
+
+def topic_code_allowed(topic_code: str, declared: set[str]) -> bool:
+    """Return True if ``topic_code`` is covered by the bank's declared topics.
+
+    Exact matches always pass. Child objectives (e.g. ``1.1``) are allowed when
+    a domain topic such as ``1.0`` or ``1`` is declared.
+    """
+    if topic_code in declared:
+        return True
+    parts = topic_code.split(".")
+    if not parts:
+        return False
+    domain = parts[0]
+    if domain in declared:
+        return True
+    if f"{domain}.0" in declared:
+        return True
+    # Also allow when a more specific parent is declared (e.g. 1.1.a under 1.1).
+    for i in range(len(parts) - 1, 0, -1):
+        parent = ".".join(parts[:i])
+        if parent in declared:
+            return True
+    return False
+
+
 class ExamBank(BaseModel):
     """A complete exam question bank / pool file."""
 
@@ -191,12 +309,22 @@ class ExamBank(BaseModel):
     title: str
     code: str  # e.g. "200-301" or pool id
     version: str = "v1.1"
+    schema_version: int = CURRENT_BANK_SCHEMA_VERSION
     provider: str = "openboson"
     description: str | None = None
+    # Optional bank-level certification (also used when normalizing legacy YAML).
+    cert_tags: list[CertTag] | None = None
     topics: list[Topic]
     pass_score: float = Field(default=0.825, ge=0.0, le=1.0)
     time_limit_minutes: int = Field(default=120, ge=1)
     questions: list[Question]
+
+    @model_validator(mode="before")
+    @classmethod
+    def _normalize_legacy(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            return normalize_legacy_bank_dict(data)
+        return data
 
     @field_validator("questions")
     @classmethod
@@ -204,6 +332,31 @@ class ExamBank(BaseModel):
         if not value:
             raise ValueError("questions list must not be empty")
         return value
+
+    @model_validator(mode="after")
+    def _validate_ids_and_topics(self) -> ExamBank:
+        seen: set[str] = set()
+        dupes: list[str] = []
+        for q in self.questions:
+            if q.id in seen:
+                dupes.append(q.id)
+            else:
+                seen.add(q.id)
+        if dupes:
+            unique_dupes = ", ".join(sorted(set(dupes)))
+            raise ValueError(f"Duplicate question ids in bank: {unique_dupes}")
+
+        declared = {t.code for t in self.topics}
+        bad = [
+            f"{q.id} ({q.topic_code})"
+            for q in self.questions
+            if not topic_code_allowed(q.topic_code, declared)
+        ]
+        if bad:
+            preview = ", ".join(bad[:8])
+            more = f" (+{len(bad) - 8} more)" if len(bad) > 8 else ""
+            raise ValueError(f"Question topic_code(s) not covered by bank topics: {preview}{more}")
+        return self
 
     @property
     def topic_codes(self) -> set[str]:

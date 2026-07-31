@@ -7,6 +7,9 @@ from openboson.gui.engine import load_available_labs
 from openboson.gui.main_window import MainWindow
 
 
+pytestmark = pytest.mark.usefixtures("isolated_home")
+
+
 @pytest.fixture
 def window(qtbot):
     mw = MainWindow()
