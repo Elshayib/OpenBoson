@@ -1,4 +1,4 @@
-# OpenBoson Windows installer (Inno Setup 6)
+; OpenBoson Windows installer (Inno Setup 6)
 ; Per-user install under %LocalAppData%\Programs\OpenBoson
 ; Preserves %USERPROFILE%\.openboson across upgrades.
 
