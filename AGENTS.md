@@ -69,7 +69,7 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 3. Run GUI: `openboson gui`
 4. Run server (optional): `openboson serve --port 9876`
 
-When implementing features, follow the task plan in `.cursor/plans/2026-07-27_OpenBoson_ExSim_NetSim_v1.md`. Work task-by-task, run relevant tests after each change, and keep diffs focused.
+When implementing features, work task-by-task, run relevant tests after each change, and keep diffs focused.
 
 ## Implementation status (as of v0.2.0+)
 
@@ -103,5 +103,5 @@ When implementing features, follow the task plan in `.cursor/plans/2026-07-27_Op
 ## Key docs
 
 - `README.md` — user-facing overview and quick start
-- `.cursor/plans/2026-07-27_OpenBoson_ExSim_NetSim_v1.md` — full implementation plan
-- `IDEA.md` — original project idea
+- `docs/deferred-releases.md` — post-v0.2 deferred scope
+- `docs/quality-baseline.md` — CI / quality gates

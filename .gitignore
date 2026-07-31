@@ -29,14 +29,18 @@ env/
 *.spec.bak
 build/
 
-# IDE / editors
+# IDE / editors / local agent tooling (do not publish)
 .vscode/
 .idea/
+.cursor/
 *.swp
 *.swo
 *~
 .DS_Store
 Thumbs.db
+
+# Local notes / private drafts
+IDEA.md
 
 # Tauri / Node leftover patterns (kept for forward compatibility)
 node_modules/
