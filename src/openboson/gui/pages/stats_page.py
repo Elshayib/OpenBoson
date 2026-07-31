@@ -2,14 +2,18 @@
 
 from __future__ import annotations
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
     QLabel,
     QProgressBar,
+    QSizePolicy,
     QVBoxLayout,
     QWidget,
 )
+
+from openboson.gui.widgets.scroll_host import ScrollHost
 
 
 class StatsPage(QWidget):
@@ -17,19 +21,18 @@ class StatsPage(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
-        self._layout = QVBoxLayout(self)
-        self._layout.setContentsMargins(24, 24, 24, 24)
-        self._layout.setSpacing(16)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        root.addWidget(self._scroll, 1)
+        self._layout = self._scroll.content_layout
 
     def refresh(self) -> None:
         self._rebuild()
 
     def _rebuild(self) -> None:
-        while self._layout.count():
-            item = self._layout.takeAt(0)
-            w = item.widget()
-            if w is not None:
-                w.deleteLater()
+        self._scroll.clear_content()
 
         header = QLabel("Statistics")
         header.setProperty("role", "h1")
@@ -141,6 +144,7 @@ class StatsPage(QWidget):
     def _stat_card(self, label: str, value: str, sub: str) -> QFrame:
         card = QFrame()
         card.setObjectName("Card")
+        card.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         v = QVBoxLayout(card)
         v.setContentsMargins(18, 16, 18, 16)
         v.setSpacing(4)
@@ -148,10 +152,11 @@ class StatsPage(QWidget):
         title.setProperty("role", "muted")
         v.addWidget(title)
         big = QLabel(value)
-        big.setStyleSheet("font-size: 28px; font-weight: 700; color: #58a6ff;")
+        big.setProperty("role", "accent")
         v.addWidget(big)
         s = QLabel(sub)
         s.setProperty("role", "muted")
+        s.setWordWrap(True)
         v.addWidget(s)
         return card
 
@@ -172,18 +177,20 @@ class StatsPage(QWidget):
         h = QHBoxLayout(row)
         h.setContentsMargins(14, 10, 14, 10)
         name = QLabel(f"Domain {prefix.rstrip('.')}")
-        name.setFixedWidth(120)
-        h.addWidget(name)
+        name.setMinimumWidth(80)
+        name.setWordWrap(True)
+        h.addWidget(name, 1)
         bar = QProgressBar()
         bar.setRange(0, 100)
         bar.setValue(int(percent * 100))
-        h.addWidget(bar, 1)
+        h.addWidget(bar, 2)
         pct = QLabel(f"{int(percent * 100)}%")
-        pct.setFixedWidth(50)
+        pct.setMinimumWidth(40)
+        pct.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
         h.addWidget(pct)
         count = QLabel(f"{total} Q")
         count.setProperty("role", "muted")
-        count.setFixedWidth(50)
+        count.setMinimumWidth(36)
         h.addWidget(count)
         return row
 
@@ -195,20 +202,22 @@ class StatsPage(QWidget):
         mark = "✓" if passed else "✗"
         mark_lbl = QLabel(mark)
         mark_lbl.setStyleSheet("color: #3fb950;" if passed else "color: #f85149;")
-        mark_lbl.setFixedWidth(24)
+        mark_lbl.setMinimumWidth(20)
         h.addWidget(mark_lbl)
         name = QLabel(title)
-        name.setFixedWidth(260)
-        h.addWidget(name)
+        name.setWordWrap(True)
+        name.setMinimumWidth(80)
+        h.addWidget(name, 2)
         bar = QProgressBar()
         bar.setRange(0, 100)
         bar.setValue(int(score * 100))
-        h.addWidget(bar, 1)
+        h.addWidget(bar, 2)
         pct = QLabel(f"{int(score * 100)}%")
-        pct.setFixedWidth(50)
+        pct.setMinimumWidth(40)
+        pct.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
         h.addWidget(pct)
         ts = QLabel(when.strftime("%Y-%m-%d %H:%M") if when else "—")
         ts.setProperty("role", "muted")
-        ts.setFixedWidth(130)
+        ts.setMinimumWidth(90)
         h.addWidget(ts)
         return row

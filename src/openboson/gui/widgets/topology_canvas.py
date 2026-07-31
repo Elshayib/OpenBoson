@@ -42,7 +42,7 @@ class TopologyCanvas(QWidget):
         self._drag_origin: QPointF | None = None
         self._pan_origin = QPointF(0, 0)
         self._hover: str | None = None
-        self.setMinimumSize(360, 280)
+        self.setMinimumSize(200, 160)
         self.setMouseTracking(True)
         self.setFocusPolicy(Qt.FocusPolicy.ClickFocus)
         self.setStyleSheet("background-color: #0a0e16; border-radius: 8px;")

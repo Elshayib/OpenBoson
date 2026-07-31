@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
 )
 
 from openboson.gui.engine import load_available_labs
+from openboson.gui.widgets.scroll_host import ScrollHost
 
 
 class LabListPage(QWidget):
@@ -20,9 +21,12 @@ class LabListPage(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
-        self._layout = QVBoxLayout(self)
-        self._layout.setContentsMargins(24, 24, 24, 24)
-        self._layout.setSpacing(16)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        root.addWidget(self._scroll, 1)
+        self._layout = self._scroll.content_layout
         self._lab_selected_callback = None
 
     def set_on_lab_selected(self, callback) -> None:
@@ -32,11 +36,7 @@ class LabListPage(QWidget):
         self._rebuild()
 
     def _rebuild(self) -> None:
-        while self._layout.count():
-            item = self._layout.takeAt(0)
-            widget = item.widget()
-            if widget is not None:
-                widget.deleteLater()
+        self._scroll.clear_content()
 
         header = QLabel("Network Labs")
         header.setProperty("role", "h1")
@@ -47,6 +47,7 @@ class LabListPage(QWidget):
             empty = QLabel("No labs found in data/demo_labs.")
             empty.setProperty("role", "muted")
             self._layout.addWidget(empty)
+            self._layout.addStretch()
             return
 
         for lab in labs:
@@ -62,6 +63,7 @@ class LabListPage(QWidget):
 
         title = QLabel(lab.title)
         title.setProperty("role", "h2")
+        title.setWordWrap(True)
         v.addWidget(title)
 
         meta = QLabel(
@@ -69,6 +71,7 @@ class LabListPage(QWidget):
             f"difficulty {'★' * lab.difficulty}{'☆' * (5 - lab.difficulty)}"
         )
         meta.setProperty("role", "muted")
+        meta.setWordWrap(True)
         v.addWidget(meta)
 
         if lab.description:

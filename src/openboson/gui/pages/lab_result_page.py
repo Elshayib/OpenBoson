@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from openboson.gui.widgets.scroll_host import ScrollHost
 from openboson.netsim.session import LabResult, LabSession
 
 
@@ -21,16 +22,19 @@ class LabResultPage(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
-        self._layout = QVBoxLayout(self)
-        self._layout.setContentsMargins(24, 24, 24, 24)
-        self._layout.setSpacing(16)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        root.addWidget(self._scroll, 1)
+        self._layout = self._scroll.content_layout
         self._on_retake = None
 
     def set_on_retake(self, cb) -> None:
         self._on_retake = cb
 
     def show_result(self, session: LabSession, result: LabResult) -> None:
-        self._clear()
+        self._scroll.clear_content()
         header = QLabel("Lab Complete")
         header.setProperty("role", "h1")
         self._layout.addWidget(header)
@@ -44,6 +48,7 @@ class LabResultPage(QWidget):
             else f"{result.passed_tasks} / {result.total_tasks} TASKS PASSED"
         )
         verdict.setProperty("role", "h1")
+        verdict.setWordWrap(True)
         verdict.setStyleSheet(
             "color: #3fb950;" if result.passed_tasks == result.total_tasks else "color: #f85149;"
         )
@@ -77,17 +82,11 @@ class LabResultPage(QWidget):
         mark = "✓" if g.is_correct else "✗"
         label = QLabel(f"{mark} {tid}")
         label.setStyleSheet("color: #3fb950;" if g.is_correct else "color: #f85149;")
-        label.setFixedWidth(120)
+        label.setMinimumWidth(80)
+        label.setWordWrap(True)
         fb = QLabel(g.feedback)
         fb.setProperty("role", "muted")
         fb.setWordWrap(True)
-        h.addWidget(label)
-        h.addWidget(fb, 1)
+        h.addWidget(label, 1)
+        h.addWidget(fb, 3)
         return w
-
-    def _clear(self) -> None:
-        while self._layout.count():
-            item = self._layout.takeAt(0)
-            widget = item.widget()
-            if widget is not None:
-                widget.deleteLater()

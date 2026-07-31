@@ -52,6 +52,7 @@ class LabSessionPage(QWidget):
 
         # LEFT: objectives
         left = QWidget()
+        left.setMinimumWidth(0)
         left_l = QVBoxLayout(left)
         left_l.setContentsMargins(16, 8, 8, 16)
         left_l.setSpacing(10)
@@ -106,6 +107,7 @@ class LabSessionPage(QWidget):
 
         # CENTER: consoles
         center = QWidget()
+        center.setMinimumWidth(0)
         cl = QVBoxLayout(center)
         cl.setContentsMargins(8, 8, 8, 16)
         cl.setSpacing(6)
@@ -119,6 +121,7 @@ class LabSessionPage(QWidget):
 
         # RIGHT: topology
         right = QWidget()
+        right.setMinimumWidth(0)
         rl = QVBoxLayout(right)
         rl.setContentsMargins(8, 8, 16, 16)
         rl.setSpacing(6)
@@ -133,6 +136,8 @@ class LabSessionPage(QWidget):
         split.setStretchFactor(0, 2)
         split.setStretchFactor(1, 4)
         split.setStretchFactor(2, 3)
+        for i in range(3):
+            split.setCollapsible(i, True)
         root.addWidget(split, 1)
 
     def start_lab(self, lab: LabBank) -> None:

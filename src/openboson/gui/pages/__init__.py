@@ -10,6 +10,8 @@ from collections.abc import Callable
 
 from PySide6.QtWidgets import QFrame, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 
+from openboson.gui.widgets.scroll_host import ScrollHost
+
 
 class _Page(QWidget):
     """Base class for stacked pages."""
@@ -18,9 +20,12 @@ class _Page(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
-        self._layout = QVBoxLayout(self)
-        self._layout.setContentsMargins(24, 24, 24, 24)
-        self._layout.setSpacing(12)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=12)
+        root.addWidget(self._scroll, 1)
+        self._layout = self._scroll.content_layout
 
     def refresh(self) -> None:
         """Hook for reloading data when the user navigates back."""
@@ -48,11 +53,7 @@ class DashboardPage(_Page):
         self._on_continue = callback
 
     def _rebuild_static(self) -> None:
-        while self._layout.count():
-            item = self._layout.takeAt(0)
-            w = item.widget()
-            if w is not None:
-                w.deleteLater()
+        self._scroll.clear_content()
 
         header = QLabel("OpenBoson")
         header.setProperty("role", "h1")
@@ -167,6 +168,7 @@ class DashboardPage(_Page):
         v.setSpacing(8)
         t = QLabel(title)
         t.setProperty("role", "h2")
+        t.setWordWrap(True)
         v.addWidget(t)
         s = QLabel(subtitle)
         s.setProperty("role", "muted")

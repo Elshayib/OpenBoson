@@ -48,7 +48,7 @@ class ExamSessionPage(QWidget):
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
 
-        # Top bar
+        # Top bar — question number + timer only (actions live in bottom bar)
         self._top = QHBoxLayout()
         self._top.setContentsMargins(24, 16, 24, 16)
         self._qnum = QLabel("")
@@ -60,14 +60,6 @@ class ExamSessionPage(QWidget):
         self._timer.set_on_timeout(self._on_timeout)
         self._timer_host.addWidget(self._timer, 1)
         self._top.addLayout(self._timer_host, 1)
-        self._bookmark_btn = QPushButton("☆ Bookmark")
-        self._bookmark_btn.setObjectName("Secondary")
-        self._bookmark_btn.clicked.connect(self._toggle_bookmark)
-        self._top.addWidget(self._bookmark_btn)
-        self._mark_btn = QPushButton("Mark for review")
-        self._mark_btn.setObjectName("Secondary")
-        self._mark_btn.clicked.connect(self._toggle_mark)
-        self._top.addWidget(self._mark_btn)
         root.addLayout(self._top)
 
         mid = QHBoxLayout()
@@ -77,7 +69,8 @@ class ExamSessionPage(QWidget):
         # Question grid sidebar
         grid_wrap = QFrame()
         grid_wrap.setObjectName("Sidebar")
-        grid_wrap.setFixedWidth(200)
+        grid_wrap.setMinimumWidth(160)
+        grid_wrap.setMaximumWidth(220)
         gw = QVBoxLayout(grid_wrap)
         gw.setContentsMargins(8, 8, 8, 8)
         gw.addWidget(QLabel("Questions"))
@@ -92,16 +85,27 @@ class ExamSessionPage(QWidget):
         gw.addWidget(scroll, 1)
         mid.addWidget(grid_wrap)
 
-        # Question area
+        # Question area — scroll so tall cards (drag-match / sim) never clip
         self._card_holder = QFrame()
         self._card_holder.setObjectName("CardHolder")
-        card_layout = QVBoxLayout(self._card_holder)
-        card_layout.setContentsMargins(24, 16, 24, 16)
-        self._card_layout = card_layout
+        card_outer = QVBoxLayout(self._card_holder)
+        card_outer.setContentsMargins(0, 0, 0, 0)
+        card_scroll = QScrollArea()
+        card_scroll.setWidgetResizable(True)
+        card_scroll.setFrameShape(QFrame.Shape.NoFrame)
+        card_scroll.setObjectName("PageScroll")
+        self._card_host = QWidget()
+        self._card_host.setObjectName("ScrollContent")
+        self._card_host.setAutoFillBackground(True)
+        self._card_layout = QVBoxLayout(self._card_host)
+        self._card_layout.setContentsMargins(24, 16, 24, 16)
+        self._card_layout.setSpacing(12)
+        card_scroll.setWidget(self._card_host)
+        card_outer.addWidget(card_scroll, 1)
         mid.addWidget(self._card_holder, 1)
         root.addLayout(mid, 1)
 
-        # Bottom nav
+        # Bottom nav — prev/next, bookmark/mark, finish
         self._bottom = QHBoxLayout()
         self._bottom.setContentsMargins(24, 16, 24, 16)
         self._prev = QPushButton("‹ Previous")
@@ -110,12 +114,20 @@ class ExamSessionPage(QWidget):
         self._next = QPushButton("Next ›")
         self._next.setObjectName("Secondary")
         self._next.clicked.connect(self._go_next)
+        self._bookmark_btn = QPushButton("☆ Bookmark")
+        self._bookmark_btn.setObjectName("Secondary")
+        self._bookmark_btn.clicked.connect(self._toggle_bookmark)
+        self._mark_btn = QPushButton("Mark for review")
+        self._mark_btn.setObjectName("Secondary")
+        self._mark_btn.clicked.connect(self._toggle_mark)
         self._finish = QPushButton("Finish Exam")
         self._finish.setObjectName("Primary")
         self._finish.clicked.connect(self._finish_exam)
         self._bottom.addWidget(self._prev)
         self._bottom.addWidget(self._next)
         self._bottom.addStretch()
+        self._bottom.addWidget(self._bookmark_btn)
+        self._bottom.addWidget(self._mark_btn)
         self._bottom.addWidget(self._finish)
         root.addLayout(self._bottom)
 

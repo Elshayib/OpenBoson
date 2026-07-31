@@ -59,7 +59,10 @@ class PracticeQuestionPage(QWidget):
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setObjectName("PageScroll")
         self._host = QWidget()
+        self._host.setObjectName("ScrollContent")
+        self._host.setAutoFillBackground(True)
         self._host_layout = QVBoxLayout(self._host)
         self._host_layout.setContentsMargins(24, 8, 24, 24)
         self._host_layout.setSpacing(16)
@@ -144,6 +147,7 @@ class PracticeQuestionPage(QWidget):
             expl.setMarkdown(q.explanation.strip())
             expl.setMinimumHeight(80)
             expl.setFrameShape(QFrame.Shape.NoFrame)
+            expl.setObjectName("CardText")
             v.addWidget(expl)
 
         if q.choices:

@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QPushButton,
     QScrollArea,
+    QSizePolicy,
     QVBoxLayout,
     QWidget,
 )
@@ -73,7 +74,9 @@ class PracticePage(QWidget):
         # Filters
         filters = QFrame()
         filters.setObjectName("Card")
-        filters.setFixedWidth(260)
+        filters.setMinimumWidth(200)
+        filters.setMaximumWidth(280)
+        filters.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         fl = QVBoxLayout(filters)
         fl.setContentsMargins(14, 14, 14, 14)
         fl.setSpacing(8)
@@ -139,7 +142,10 @@ class PracticePage(QWidget):
         scroll.setWidgetResizable(True)
         scroll.setFrameShape(QFrame.Shape.NoFrame)
         scroll.setAccessibleName("Practice question list")
+        scroll.setObjectName("PageScroll")
         self._list_host = QWidget()
+        self._list_host.setObjectName("ScrollContent")
+        self._list_host.setAutoFillBackground(True)
         self._list_layout = QVBoxLayout(self._list_host)
         self._list_layout.setContentsMargins(0, 0, 0, 0)
         self._list_layout.setSpacing(8)

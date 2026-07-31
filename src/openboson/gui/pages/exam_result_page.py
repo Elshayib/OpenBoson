@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
@@ -13,6 +14,7 @@ from PySide6.QtWidgets import (
 )
 
 from openboson.exsim.scoring import ExamResult
+from openboson.gui.widgets.scroll_host import ScrollHost
 
 
 class ExamResultPage(QWidget):
@@ -22,9 +24,12 @@ class ExamResultPage(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
-        self._layout = QVBoxLayout(self)
-        self._layout.setContentsMargins(24, 24, 24, 24)
-        self._layout.setSpacing(16)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        root.addWidget(self._scroll, 1)
+        self._layout = self._scroll.content_layout
         self._on_review = None
         self._on_retake = None
 
@@ -35,7 +40,7 @@ class ExamResultPage(QWidget):
         self._on_retake = cb
 
     def show_result(self, session, result: ExamResult) -> None:
-        self._clear()
+        self._scroll.clear_content()
         header = QLabel("Exam Complete")
         header.setProperty("role", "h1")
         self._layout.addWidget(header)
@@ -52,6 +57,7 @@ class ExamResultPage(QWidget):
             f"Score: {result.score_percent:.1f}%  (pass mark {int(result.passing_score * 100)}%)"
         )
         score.setProperty("role", "muted")
+        score.setWordWrap(True)
         bl.addWidget(score)
         self._layout.addWidget(banner)
 
@@ -82,20 +88,15 @@ class ExamResultPage(QWidget):
         h = QHBoxLayout(w)
         h.setContentsMargins(14, 10, 14, 10)
         name = QLabel(f"{prefix}  ({int(d.weight * 100)}% of exam)")
-        name.setFixedWidth(220)
+        name.setMinimumWidth(100)
+        name.setWordWrap(True)
         bar = QProgressBar()
         bar.setRange(0, 100)
         bar.setValue(int(d.percent * 100))
         pct = QLabel(f"{int(d.percent * 100)}%  ({d.correct}/{d.total})")
-        pct.setFixedWidth(120)
-        h.addWidget(name)
-        h.addWidget(bar, 1)
+        pct.setMinimumWidth(80)
+        pct.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
+        h.addWidget(name, 2)
+        h.addWidget(bar, 3)
         h.addWidget(pct)
         return w
-
-    def _clear(self) -> None:
-        while self._layout.count():
-            item = self._layout.takeAt(0)
-            widget = item.widget()
-            if widget is not None:
-                widget.deleteLater()

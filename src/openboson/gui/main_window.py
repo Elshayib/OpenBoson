@@ -54,8 +54,10 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("OpenBoson")
         self.resize(1280, 800)
+        self.setMinimumSize(960, 640)
 
         central = QWidget()
+        central.setObjectName("Content")
         root = QHBoxLayout(central)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
@@ -73,6 +75,7 @@ class MainWindow(QMainWindow):
         brand.setEnabled(False)
         brand.setFixedHeight(56)
         side_layout.addWidget(brand)
+        side_layout.addSpacing(8)
 
         self._nav_group = QButtonGroup(self)
         self._nav_group.setExclusive(True)
@@ -159,6 +162,9 @@ class MainWindow(QMainWindow):
     def apply_theme(self, theme: str = "dark") -> None:
         from pathlib import Path
 
+        from PySide6.QtGui import QColor, QPalette
+        from PySide6.QtWidgets import QApplication
+
         name = "styles_light.qss" if theme == "light" else "styles.qss"
         qss_path = Path(__file__).resolve().parent / name
         if qss_path.is_file():
@@ -168,6 +174,45 @@ class MainWindow(QMainWindow):
             dark = Path(__file__).resolve().parent / "styles.qss"
             if dark.is_file():
                 self.setStyleSheet(dark.read_text(encoding="utf-8"))
+
+        # Scroll-area viewports and unstyled surfaces follow the app palette
+        # (Base / Window), not only QSS — keep them in sync with the theme.
+        app = QApplication.instance()
+        if app is not None:
+            pal = QPalette()
+            if theme == "light":
+                window = QColor("#f5f7fb")
+                base = QColor("#ffffff")
+                text = QColor("#1f2328")
+                muted = QColor("#656d76")
+                highlight = QColor("#0969da")
+                button = QColor("#ffffff")
+            else:
+                window = QColor("#0f1420")
+                base = QColor("#0b1019")
+                text = QColor("#e6edf3")
+                muted = QColor("#8b949e")
+                highlight = QColor("#2f81f7")
+                button = QColor("#161b27")
+            pal.setColor(QPalette.ColorRole.Window, window)
+            pal.setColor(QPalette.ColorRole.WindowText, text)
+            pal.setColor(QPalette.ColorRole.Base, base)
+            pal.setColor(QPalette.ColorRole.AlternateBase, window)
+            pal.setColor(QPalette.ColorRole.Text, text)
+            pal.setColor(QPalette.ColorRole.Button, button)
+            pal.setColor(QPalette.ColorRole.ButtonText, text)
+            pal.setColor(QPalette.ColorRole.ToolTipBase, base)
+            pal.setColor(QPalette.ColorRole.ToolTipText, text)
+            pal.setColor(QPalette.ColorRole.PlaceholderText, muted)
+            pal.setColor(QPalette.ColorRole.Highlight, highlight)
+            pal.setColor(QPalette.ColorRole.HighlightedText, QColor("#ffffff"))
+            app.setPalette(pal)
+
+        # Re-polish widgets that rely on dynamic QSS properties (e.g. MatchSlot).
+        style = self.style()
+        style.unpolish(self)
+        style.polish(self)
+        self.update()
 
     def _on_theme_changed(self, theme: str) -> None:
         self.apply_theme(theme)

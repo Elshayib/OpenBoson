@@ -77,7 +77,7 @@ class _MatchPoolList(QListWidget):
         self.setDefaultDropAction(Qt.DropAction.MoveAction)
         self.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self.setMinimumHeight(120)
-        self.setMaximumWidth(320)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
 
     def startDrag(self, supportedActions: Qt.DropAction) -> None:  # noqa: N802
         item = self.currentItem()
@@ -110,14 +110,16 @@ class _MatchSlot(QFrame):
         self.setAcceptDrops(True)
         self.setObjectName("MatchSlot")
         self.setMinimumHeight(40)
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
 
         layout = QHBoxLayout(self)
         layout.setContentsMargins(10, 6, 10, 6)
         self._left = QLabel(left_label)
-        self._left.setMinimumWidth(140)
+        self._left.setMinimumWidth(100)
+        self._left.setWordWrap(True)
         self._right_lbl = QLabel("Drop match here")
         self._right_lbl.setProperty("role", "muted")
+        self._right_lbl.setWordWrap(True)
         self._clear_btn = QPushButton("✕")
         self._clear_btn.setObjectName("Secondary")
         self._clear_btn.setFixedWidth(28)
@@ -212,19 +214,21 @@ class _MatchSlot(QFrame):
         event.acceptProposedAction()
 
     def _set_idle_style(self) -> None:
-        self.setStyleSheet(
-            "#MatchSlot { border: 1px dashed #484f58; border-radius: 6px; background: #161b22; }"
-        )
+        self._apply_match_state("idle")
 
     def _set_hover_style(self) -> None:
-        self.setStyleSheet(
-            "#MatchSlot { border: 2px solid #58a6ff; border-radius: 6px; background: #1f2937; }"
-        )
+        self._apply_match_state("hover")
 
     def _set_filled_style(self) -> None:
-        self.setStyleSheet(
-            "#MatchSlot { border: 1px solid #3fb950; border-radius: 6px; background: #12261a; }"
-        )
+        self._apply_match_state("filled")
+
+    def _apply_match_state(self, state: str) -> None:
+        """Drive MatchSlot chrome from theme QSS via ``matchState`` property."""
+        self.setProperty("matchState", state)
+        style = self.style()
+        style.unpolish(self)
+        style.polish(self)
+        self.update()
 
 
 class _MatchWidget(QWidget):
@@ -463,12 +467,15 @@ class QuestionCard(QFrame):
         header.addWidget(diff_lbl)
         layout.addLayout(header)
 
-        # Stem
+        # Stem — transparent so it matches the Card surface in both themes
         stem = QTextBrowser()
         stem.setOpenExternalLinks(False)
         stem.setMarkdown(question.stem.strip())
-        stem.setMinimumHeight(80)
         stem.setFrameShape(QFrame.Shape.NoFrame)
+        stem.setObjectName("CardText")
+        stem.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        doc_h = int(stem.document().size().height()) + 20
+        stem.setMinimumHeight(max(60, min(doc_h, 360)))
         layout.addWidget(stem)
 
         # Type-specific input
@@ -550,9 +557,7 @@ class QuestionCard(QFrame):
         self._order_list.setDefaultDropAction(Qt.DropAction.MoveAction)
         self._order_list.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
         self._order_list.setDropIndicatorShown(True)
-        self._order_list.setStyleSheet(
-            "QListWidget::item:selected { background: #1f6feb; }QListWidget { outline: none; }"
-        )
+        self._order_list.setStyleSheet("QListWidget { outline: none; }")
         items = list(q.ordered_items or [])
         # Prefer engine presentation order when available (stable across nav).
         presented = self._presentation.get("ordered_items")

@@ -21,6 +21,7 @@ from PySide6.QtWidgets import (
 
 from openboson.config import settings
 from openboson.gui.update_check import start_check_thread, start_download_thread
+from openboson.gui.widgets.scroll_host import ScrollHost
 from openboson.logging_setup import logs_dir
 from openboson.settings_store import load_settings, save_settings, update_settings
 from openboson.updater import (
@@ -48,9 +49,12 @@ class SettingsPage(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
-        self._layout = QVBoxLayout(self)
-        self._layout.setContentsMargins(24, 24, 24, 24)
-        self._layout.setSpacing(16)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        root.setSpacing(0)
+        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        root.addWidget(self._scroll, 1)
+        self._layout = self._scroll.content_layout
         self._on_theme_change = None
         self._pending_update: UpdateInfo | None = None
         self._check_thread = None
@@ -70,11 +74,7 @@ class SettingsPage(QWidget):
         self._rebuild()
 
     def _rebuild(self) -> None:
-        while self._layout.count():
-            item = self._layout.takeAt(0)
-            w = item.widget()
-            if w is not None:
-                w.deleteLater()
+        self._scroll.clear_content()
 
         header = QLabel("Settings")
         header.setProperty("role", "h1")
