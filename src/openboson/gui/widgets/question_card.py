@@ -21,6 +21,7 @@ from PySide6.QtWidgets import (
     QAbstractItemView,
     QButtonGroup,
     QCheckBox,
+    QComboBox,
     QFrame,
     QHBoxLayout,
     QLabel,
@@ -257,21 +258,31 @@ class _MatchWidget(QWidget):
         left_col = QVBoxLayout()
         left_col.addWidget(QLabel("Terms"))
         self._slots: list[_MatchSlot] = []
+        self._combos: list[QComboBox] = []
         for item in self._left_items:
             slot = _MatchSlot(item["text"], self)
-            slot.changed.connect(self._emit)
+            slot.changed.connect(self._on_slot_changed)
             self._slots.append(slot)
             left_col.addWidget(slot)
+
+            combo = QComboBox()
+            combo.setAccessibleName(f"Keyboard match for {item['text']}")
+            combo.setToolTip("Keyboard alternative to dragging")
+            combo.currentIndexChanged.connect(self._on_combo_changed)
+            self._combos.append(combo)
+            left_col.addWidget(combo)
         left_col.addStretch()
         layout.addLayout(left_col, 2)
 
         right_col = QVBoxLayout()
-        right_col.addWidget(QLabel("Match pool (drag onto a term)"))
+        right_col.addWidget(QLabel("Match pool (drag onto a term, or use the lists)"))
         self._pool = _MatchPoolList()
+        self._pool.setAccessibleName("Match pool")
         for tid in self._token_ids:
             self._add_pool_item(tid)
         right_col.addWidget(self._pool)
         layout.addLayout(right_col, 1)
+        self._rebuild_combos()
         self._emit()
 
     def token_text(self, token_id: str) -> str | None:
@@ -285,7 +296,6 @@ class _MatchWidget(QWidget):
 
     def return_to_pool(self, token_id: str, text: str | None = None) -> None:
         if token_id not in self._tokens and text is not None:
-            # Legacy path: text-only token; reclaim an unused matching id.
             for tid, t in self._tokens.items():
                 if t == text and not self._token_in_use(tid):
                     token_id = tid
@@ -294,6 +304,7 @@ class _MatchWidget(QWidget):
                 return
         if token_id in self._tokens:
             self._add_pool_item(token_id)
+        self._rebuild_combos()
 
     def _token_in_use(self, token_id: str) -> bool:
         for slot in self._slots:
@@ -305,6 +316,70 @@ class _MatchWidget(QWidget):
                 return True
         return False
 
+    def _free_token_ids(self, *, keep_for_slot: int | None = None) -> list[str]:
+        used = {
+            slot.right_id()
+            for i, slot in enumerate(self._slots)
+            if slot.right_id() and i != keep_for_slot
+        }
+        return [tid for tid in self._token_ids if tid not in used]
+
+    def _rebuild_combos(self) -> None:
+        for i, combo in enumerate(self._combos):
+            combo.blockSignals(True)
+            current = self._slots[i].right_id()
+            combo.clear()
+            combo.addItem("(unmatched)", None)
+            for tid in self._free_token_ids(keep_for_slot=i):
+                combo.addItem(self._tokens[tid], tid)
+            if current is not None:
+                idx = combo.findData(current)
+                if idx < 0:
+                    combo.addItem(self._tokens[current], current)
+                    idx = combo.findData(current)
+                combo.setCurrentIndex(max(0, idx))
+            else:
+                combo.setCurrentIndex(0)
+            combo.blockSignals(False)
+
+    def _on_slot_changed(self) -> None:
+        self._rebuild_combos()
+        self._emit()
+
+    def _on_combo_changed(self) -> None:
+        sender = self.sender()
+        if not isinstance(sender, QComboBox):
+            return
+        try:
+            idx = self._combos.index(sender)
+        except ValueError:
+            return
+        token_id = sender.currentData()
+        slot = self._slots[idx]
+        previous = slot.right_id()
+        if previous and previous != token_id:
+            # Return previous to pool if not selected elsewhere.
+            if previous not in {
+                s.right_id() for j, s in enumerate(self._slots) if j != idx and s.right_id()
+            }:
+                self._add_pool_item(previous)
+        if token_id is None:
+            slot.set_right(None)
+        else:
+            # Remove from pool if present.
+            for i in range(self._pool.count()):
+                item = self._pool.item(i)
+                if item is not None and item.data(Qt.ItemDataRole.UserRole) == token_id:
+                    self._pool.takeItem(i)
+                    break
+            # Clear other slots that held this token.
+            for j, other in enumerate(self._slots):
+                if j != idx and other.right_id() == token_id:
+                    other.set_right(None)
+            slot.set_right(token_id, self._tokens[token_id])
+        self._rebuild_combos()
+        self._emit()
+
     def _emit(self) -> None:
         pairs = []
         for slot in self._slots:
@@ -315,7 +390,6 @@ class _MatchWidget(QWidget):
     def set_pairs(self, pairs: list[dict[str, str]]) -> None:
         """Restore matches by consuming opaque tokens (supports duplicate rights)."""
         assigned = {p["left"]: p["right"] for p in pairs if "left" in p and "right" in p}
-        # Multiset of available token ids keyed by display text.
         available: dict[str, list[str]] = {}
         for tid, text in self._tokens.items():
             available.setdefault(text, []).append(tid)
@@ -323,7 +397,6 @@ class _MatchWidget(QWidget):
         self._pool.clear()
         used_ids: set[str] = set()
         for slot in self._slots:
-            # Avoid triggering return_to_pool while resetting.
             slot._right_id = None
             slot._right_text = None
             right_text = assigned.get(slot.left_label)
@@ -341,6 +414,7 @@ class _MatchWidget(QWidget):
         for tid in self._token_ids:
             if tid not in used_ids:
                 self._add_pool_item(tid)
+        self._rebuild_combos()
         self._emit()
 
     def set_locked(self, locked: bool) -> None:
@@ -348,6 +422,8 @@ class _MatchWidget(QWidget):
         for slot in self._slots:
             slot.setAcceptDrops(not locked)
             slot._clear_btn.setEnabled(not locked)
+        for combo in self._combos:
+            combo.setEnabled(not locked)
 
 
 class QuestionCard(QFrame):

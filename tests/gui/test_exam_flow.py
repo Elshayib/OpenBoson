@@ -51,6 +51,11 @@ def test_practice_page_lists_questions(window):
     buttons = [b.text() for b in page.findChildren(QPushButton)]
     assert any("200-301" in t for t in buttons)
     assert any("350-401" in t for t in buttons)
+    # Pagination controls exist for large pools
+    assert page._page_size == 50
+    assert "Page" in page._page_lbl.text()
+    if len(page._filtered) > page._page_size:
+        assert page._next_page.isEnabled()
 
 
 def test_start_exam_shows_session(window, qtbot):

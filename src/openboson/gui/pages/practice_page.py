@@ -132,19 +132,44 @@ class PracticePage(QWidget):
         right = QVBoxLayout()
         self._count_lbl = QLabel("")
         self._count_lbl.setProperty("role", "muted")
+        self._count_lbl.setAccessibleName("Question count")
         right.addWidget(self._count_lbl)
 
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setAccessibleName("Practice question list")
         self._list_host = QWidget()
         self._list_layout = QVBoxLayout(self._list_host)
         self._list_layout.setContentsMargins(0, 0, 0, 0)
         self._list_layout.setSpacing(8)
         scroll.setWidget(self._list_host)
         right.addWidget(scroll, 1)
+
+        pager = QHBoxLayout()
+        self._prev_page = QPushButton("‹ Prev page")
+        self._prev_page.setObjectName("Secondary")
+        self._prev_page.setAccessibleName("Previous practice page")
+        self._prev_page.clicked.connect(self._go_prev_page)
+        self._page_lbl = QLabel("")
+        self._page_lbl.setProperty("role", "muted")
+        self._page_lbl.setAccessibleName("Practice page indicator")
+        self._next_page = QPushButton("Next page ›")
+        self._next_page.setObjectName("Secondary")
+        self._next_page.setAccessibleName("Next practice page")
+        self._next_page.clicked.connect(self._go_next_page)
+        pager.addWidget(self._prev_page)
+        pager.addWidget(self._page_lbl)
+        pager.addStretch()
+        pager.addWidget(self._next_page)
+        right.addLayout(pager)
+
         body.addLayout(right, 1)
         root.addLayout(body, 1)
+
+        self._page_size = 50
+        self._page_index = 0
+        self._filtered: list[Question] = []
 
         for widget in (
             self._cert,
@@ -156,6 +181,13 @@ class PracticePage(QWidget):
         ):
             widget.currentIndexChanged.connect(self._on_filter_changed)
         self._search.textChanged.connect(self._apply_filters)
+        self._cert.setAccessibleName("Certification filter")
+        self._topic.setAccessibleName("Topic filter")
+        self._difficulty.setAccessibleName("Difficulty filter")
+        self._type.setAccessibleName("Question type filter")
+        self._seen.setAccessibleName("History filter")
+        self._sort.setAccessibleName("Sort order")
+        self._search.setAccessibleName("Search questions")
 
     def _on_filter_changed(self) -> None:
         # Manual filter changes clear deep-link constraints.
@@ -357,13 +389,49 @@ class PracticePage(QWidget):
         else:
             filtered.sort(key=lambda q: q.id)
 
-        self._count_lbl.setText(f"{len(filtered)} question(s)")
+        self._filtered = filtered
+        self._page_index = 0
+        self._render_page()
+
+    def _page_count(self) -> int:
+        if not self._filtered:
+            return 1
+        return max(1, (len(self._filtered) + self._page_size - 1) // self._page_size)
+
+    def _go_prev_page(self) -> None:
+        if self._page_index > 0:
+            self._page_index -= 1
+            self._render_page()
+
+    def _go_next_page(self) -> None:
+        if self._page_index + 1 < self._page_count():
+            self._page_index += 1
+            self._render_page()
+
+    def _render_page(self) -> None:
+        total = len(self._filtered)
+        pages = self._page_count()
+        self._page_index = min(self._page_index, pages - 1)
+        start = self._page_index * self._page_size
+        end = min(start + self._page_size, total)
+        page_items = self._filtered[start:end]
+
+        if total == 0:
+            self._count_lbl.setText("0 question(s)")
+            self._page_lbl.setText("Page 0 / 0")
+        else:
+            self._count_lbl.setText(f"{total} question(s) · showing {start + 1}–{end}")
+            self._page_lbl.setText(f"Page {self._page_index + 1} / {pages}")
+
+        self._prev_page.setEnabled(self._page_index > 0)
+        self._next_page.setEnabled(self._page_index + 1 < pages)
+
         while self._list_layout.count():
             item = self._list_layout.takeAt(0)
             w = item.widget()
             if w is not None:
                 w.deleteLater()
-        for q in filtered:
+        for q in page_items:
             self._list_layout.addWidget(self._row(q))
         self._list_layout.addStretch()
 
@@ -371,6 +439,8 @@ class PracticePage(QWidget):
         card = QFrame()
         card.setObjectName("Card")
         card.setCursor(Qt.CursorShape.PointingHandCursor)
+        card.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
+        card.setAccessibleName(f"Practice question {q.id}")
         v = QVBoxLayout(card)
         v.setContentsMargins(14, 12, 14, 12)
         v.setSpacing(4)
@@ -397,7 +467,14 @@ class PracticePage(QWidget):
             badge = self._muted(f"Seen {st.seen}×")
         v.addWidget(badge)
 
+        def _key(e, question=q) -> None:  # noqa: ANN001
+            if e.key() in (Qt.Key.Key_Return, Qt.Key.Key_Enter, Qt.Key.Key_Space):
+                self._open(question)
+            else:
+                QFrame.keyPressEvent(card, e)
+
         card.mousePressEvent = lambda _e, question=q: self._open(question)  # type: ignore[method-assign]
+        card.keyPressEvent = _key  # type: ignore[method-assign]
         return card
 
     def _open(self, q: Question) -> None:
