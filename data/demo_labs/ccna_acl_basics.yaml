@@ -1,0 +1,31 @@
+title: Named ACL Basics
+lab_id: ccna_acl_basics
+topic_code: '5.1'
+difficulty: 3
+description: Create a standard ACL denying a host.
+objectives:
+- access-list deny host
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: Create ACL 10 that denies host 10.10.10.50 then permits any.
+  grading_rules:
+    device: R1
+    require:
+    - access-list 10 deny 10.10.10.50
+    - access-list 10 permit any
+solution_config: 'access-list 10 deny 10.10.10.50
+
+  access-list 10 permit any
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

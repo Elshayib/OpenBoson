@@ -189,6 +189,9 @@ def test_migration_backfills_exam_identity_and_preserves_history(legacy_db, monk
         assert "exam_code" in cols and "exam_version" in cols
         answer_cols = {r[1] for r in conn.execute(text("PRAGMA table_info('user_answers')"))}
         assert "bank_question_id" in answer_cols
+        assert "topic_code" in answer_cols
+        assert "cert_tag" in answer_cols
+        assert "exam_version" in answer_cols
 
         row = conn.execute(
             text("SELECT exam_code, exam_version FROM exam_sessions WHERE id = 1")
@@ -229,6 +232,10 @@ def test_migration_then_new_save_keeps_question_ids(legacy_db, monkeypatch):
         assert len(answers) == len(sess.questions)
         saved_ids = {a.bank_question_id for a in answers}
         assert saved_ids == {q.id for q in sess.questions}
+        for a in answers:
+            assert a.topic_code
+            assert a.cert_tag
+            assert a.exam_version == bank.version
 
 
 def test_run_migrations_idempotent_on_fresh_db(tmp_path):

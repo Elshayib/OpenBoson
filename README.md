@@ -6,7 +6,9 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 ## Status
 
-Early development. See `.cursor/plans/2026-07-27_OpenBoson_ExSim_NetSim_v1.md` for the full implementation plan and `AGENTS.md` for agent/developer context.
+**v0.2 Study Ready content targets are met in-tree** (≥500 CCNA / ≥400 ENCOR questions, 20 labs). Windows installer, updater, registry, and CI are implemented; complete the beta matrix in `docs/v020-beta-checklist.md` before publishing a public tag. See `AGENTS.md`, `PRIVACY.md`, and `SUPPORT.md`.
+
+Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 v1.2**. Objective maps are taken from Cisco’s public exam topics; registry refresh date: **2026-07-31** (`src/openboson/exsim/objectives.py`).
 
 ## Architecture
 

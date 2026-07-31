@@ -1,43 +1,16 @@
 """Pydantic v2 schemas for NetSim guided labs.
 
-A lab bundles a topology (devices + links), a set of ordered tasks, and a
-reference solution. The grader (``openboson.netsim.grader``) compares the
-user's submitted configuration against each task's expected config.
-
-Lab YAML shape::
-
-    title: ...
-    topic_code: "2.1"
-    difficulty: 3
-    objectives: [ ... ]
-    topology:
-      devices:
-        - name: R1
-          type: router
-          interfaces: [GigabitEthernet0/0, GigabitEthernet0/1]
-      links:
-        - [R1, GigabitEthernet0/0, R2, GigabitEthernet0/0]
-    tasks:
-      - id: t1
-        instructions: ...
-        expected_config: |
-          hostname R1
-          ...
-        grading_rules:
-          require:
-            - "hostname R1"
-          forbid:
-            - "no ip domain-lookup"
-    solution_config: |
-      ...
+A lab bundles a topology (devices + links), ordered tasks, optional verify
+blocks, and a reference solution. The grader compares live OpenIOS state and
+submitted configuration against per-device requirements.
 """
 
 from __future__ import annotations
 
 from enum import Enum
-from typing import Literal
+from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class DeviceType(str, Enum):
@@ -54,8 +27,8 @@ class Interface(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     name: str
-    ip: str | None = None  # e.g. "10.0.0.1/24"
-    connected_to: str | None = None  # "DeviceName/InterfaceName"
+    ip: str | None = None
+    connected_to: str | None = None
     description: str | None = None
 
 
@@ -67,6 +40,9 @@ class Device(BaseModel):
     name: str
     type: DeviceType = DeviceType.ROUTER
     interfaces: list[Interface] = Field(default_factory=list)
+    base_config: str | None = None
+    x: float | None = None
+    y: float | None = None
 
 
 class Link(BaseModel):
@@ -74,8 +50,8 @@ class Link(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    a: str  # "DeviceName/InterfaceName"
-    b: str  # "DeviceName/InterfaceName"
+    a: str
+    b: str
 
 
 class Topology(BaseModel):
@@ -88,14 +64,45 @@ class Topology(BaseModel):
 
 
 class GradingRule(BaseModel):
-    """Per-task grading rules against the submitted configuration text."""
+    """Per-task grading rules against configuration text."""
 
     model_config = ConfigDict(extra="forbid")
 
-    require: list[str] = Field(default_factory=list)  # lines/commands that must be present
-    forbid: list[str] = Field(default_factory=list)  # lines/commands that must NOT be present
-    # Optional ordering requirement (e.g. OSPF network statements).
+    require: list[str] = Field(default_factory=list)
+    forbid: list[str] = Field(default_factory=list)
     require_order: list[str] = Field(default_factory=list)
+    # When set, only this device's running-config is graded.
+    device: str | None = None
+    weight: float = Field(default=1.0, ge=0.0)
+
+
+class VerifyPing(BaseModel):
+    """Reachability assertion evaluated against LabWorld.ping."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source: str
+    destination: str
+    should_succeed: bool = True
+
+
+class VerifyShow(BaseModel):
+    """Assert a substring appears in a device show/running output."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    device: str
+    contains: list[str] = Field(default_factory=list)
+    command: str | None = None  # informational; evaluator uses running-config by default
+
+
+class VerifyBlock(BaseModel):
+    """Non-config assertions for a task."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    ping: list[VerifyPing] = Field(default_factory=list)
+    show: list[VerifyShow] = Field(default_factory=list)
 
 
 class LabTask(BaseModel):
@@ -107,6 +114,8 @@ class LabTask(BaseModel):
     instructions: str
     expected_config: str | None = None
     grading_rules: GradingRule | None = None
+    verify: VerifyBlock | None = None
+    weight: float = Field(default=1.0, ge=0.0)
 
 
 class LabBank(BaseModel):
@@ -116,14 +125,30 @@ class LabBank(BaseModel):
 
     title: str
     lab_id: str
-    topic_code: str  # e.g. "2.1"
+    topic_code: str
     difficulty: int = Field(default=3, ge=1, le=5)
     description: str | None = None
     objectives: list[str] = Field(default_factory=list)
     topology: Topology = Field(default_factory=Topology)
     tasks: list[LabTask] = Field(default_factory=list)
     solution_config: str | None = None
+    schema_version: int = 1
+    cert_tags: list[str] = Field(default_factory=lambda: ["ccna"])
+    pass_threshold: float = Field(default=1.0, ge=0.0, le=1.0)
+    session_seed: int | None = None
 
     @property
     def device_names(self) -> list[str]:
         return [d.name for d in self.topology.devices]
+
+    @model_validator(mode="after")
+    def _validate_limits(self) -> LabBank:
+        devices = self.topology.devices
+        if len(devices) > 50:
+            raise ValueError("Lab exceeds maximum of 50 devices")
+        if len(self.tasks) > 200:
+            raise ValueError("Lab exceeds maximum of 200 tasks")
+        names = [d.name for d in devices]
+        if len(names) != len(set(names)):
+            raise ValueError("Duplicate device names in topology")
+        return self

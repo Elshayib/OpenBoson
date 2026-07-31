@@ -1,0 +1,46 @@
+title: Dual-Router Static Route
+lab_id: ccna_dual_router_static
+topic_code: '3.1'
+difficulty: 3
+description: Add a specific static route between two routers.
+objectives:
+- static route to remote LAN
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 10.0.0.1/24
+    - name: GigabitEthernet0/1
+      ip: 172.16.0.1/30
+    base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.1 255.255.255.0\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 172.16.0.1 255.255.255.252\n\
+      \ no shutdown\n"
+  - name: R2
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 172.16.0.2/30
+    - name: GigabitEthernet0/1
+      ip: 192.168.2.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 172.16.0.2 255.255.255.252\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 192.168.2.1 255.255.255.0\n\
+      \ no shutdown\n"
+  links:
+  - a: R1/GigabitEthernet0/1
+    b: R2/GigabitEthernet0/0
+tasks:
+- id: t1
+  instructions: On R1, add a static route to 192.168.2.0/24 via 172.16.0.2.
+  grading_rules:
+    device: R1
+    require:
+    - ip route 192.168.2.0 255.255.255.0 172.16.0.2
+solution_config: 'ip route 192.168.2.0 255.255.255.0 172.16.0.2
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

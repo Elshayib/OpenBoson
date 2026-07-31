@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openboson"
-version = "0.1.0"
+version = "0.2.0"
 description = "Open-source local ExSim + NetSim practice platform for CCNA."
 readme = "README.md"
 license = { text = "MIT" }
@@ -19,6 +19,10 @@ dependencies = [
     "pyqtgraph",
 ]
 
+[project.urls]
+Repository = "https://github.com/openboson/openboson"
+Issues = "https://github.com/openboson/openboson/issues"
+
 [project.optional-dependencies]
 server = ["fastapi", "uvicorn", "httpx"]
 dev = [
@@ -28,7 +32,10 @@ dev = [
     "ruff",
     "mypy",
 ]
-all = ["openboson[server,dev]"]
+packaging = [
+    "pyinstaller>=6.3,<7",
+]
+all = ["openboson[server,dev,packaging]"]
 
 [project.scripts]
 openboson = "openboson.cli:main"

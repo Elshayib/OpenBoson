@@ -144,6 +144,9 @@ class Question(BaseModel):
     correct: dict[str, Any]  # raw payload, validated per type in ``validate_correct``
     explanation: str | None = None
     references: list[str] | None = None
+    provider: str | None = None
+    license: str | None = None
+    provenance: str | None = None
 
     @field_validator("cert_tags")
     @classmethod

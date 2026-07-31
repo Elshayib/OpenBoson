@@ -4,14 +4,12 @@ import pytest
 from PySide6.QtWidgets import QLabel
 
 from openboson.gui.main_window import MainWindow
+from openboson.settings_store import load_settings
 
 
 @pytest.fixture
-def fresh_settings(isolated_home, monkeypatch):
-    """Redirect settings to a temp dir so tests don't touch real data."""
-    from openboson.gui.pages import settings_page
-
-    monkeypatch.setattr(settings_page, "_SETTINGS_FILE", isolated_home / "settings.json")
+def fresh_settings(isolated_home):
+    """Settings resolve under OPENBOSON_HOME via settings_store."""
     yield isolated_home
 
 
@@ -24,6 +22,8 @@ def test_settings_page_renders(fresh_settings, qtbot):
     labels = [l.text() for l in page.findChildren(QLabel)]
     assert any("Data Directory" in t for t in labels)
     assert any("Theme" in t for t in labels)
+    assert any("Content" in t for t in labels)
+    assert any("Updates" in t for t in labels)
     assert not any("Default Exam Mode" in t for t in labels)
 
 
@@ -37,10 +37,8 @@ def test_settings_save_persists(fresh_settings, qtbot):
     page._light_btn.click()
     page._save()
 
-    from openboson.gui.pages.settings_page import load_settings
-
     cfg = load_settings()
-    assert cfg["theme"] == "light"
+    assert cfg.theme == "light"
 
 
 def test_settings_theme_change_callback(fresh_settings, qtbot):

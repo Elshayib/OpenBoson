@@ -105,6 +105,10 @@ class UserAnswer(Base):
     )
     # Bank YAML question id (stable across runs; ORM question rows are optional).
     bank_question_id: Mapped[str | None] = mapped_column(String(80), nullable=True, index=True)
+    # Objective identity preserved at save time (survives bank reloads).
+    topic_code: Mapped[str | None] = mapped_column(String(20), nullable=True, index=True)
+    cert_tag: Mapped[str | None] = mapped_column(String(20), nullable=True, index=True)
+    exam_version: Mapped[str | None] = mapped_column(String(20), nullable=True, default="")
     answer_json: Mapped[str] = mapped_column(Text, default="[]")
     is_correct: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     time_spent_seconds: Mapped[int] = mapped_column(Integer, default=0)

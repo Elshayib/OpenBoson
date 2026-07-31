@@ -1,0 +1,28 @@
+title: Inter-VLAN Router-on-a-Stick
+lab_id: ccna_intervlan_roas
+topic_code: '3.3'
+difficulty: 4
+description: Create subinterfaces for VLAN 10 and 20.
+objectives:
+- encapsulation dot1Q
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: Configure Gi0/0.10 for VLAN 10 with 10.10.10.1/24.
+  grading_rules:
+    device: R1
+    require:
+    - encapsulation dot1Q 10
+    - ip address 10.10.10.1 255.255.255.0
+solution_config: "interface GigabitEthernet0/0.10\n encapsulation dot1Q 10\n ip address\
+  \ 10.10.10.1 255.255.255.0\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

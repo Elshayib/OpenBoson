@@ -6,7 +6,7 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
-from openboson.netsim.grader import TaskGrade, grade_task
+from openboson.netsim.grader import TaskGrade, grade_task, weighted_score
 from openboson.netsim.ios.world import LabWorld
 from openboson.netsim.lab_schema import LabBank
 
@@ -24,9 +24,31 @@ class LabSession:
     finished_at: datetime | None = None
 
     @classmethod
-    def create(cls, lab: LabBank) -> "LabSession":
+    def create(cls, lab: LabBank) -> LabSession:
         world = LabWorld.from_lab(lab)
-        return cls(session_id=uuid.uuid4().hex, lab=lab, world=world)
+        session = cls(session_id=uuid.uuid4().hex, lab=lab, world=world)
+        session._apply_base_configs()
+        return session
+
+    def _apply_base_configs(self) -> None:
+        """Feed each device's optional base_config through its shell."""
+        for device in self.lab.topology.devices:
+            if not device.base_config:
+                continue
+            shell = self.world.shell(device.name)
+            for raw in device.base_config.splitlines():
+                line = raw.strip()
+                if not line or line.startswith("!"):
+                    continue
+                shell.feed(line)
+
+    def reset(self) -> None:
+        """Restore topology, base configs, and task index; clear grades."""
+        self.world = LabWorld.from_lab(self.lab)
+        self._apply_base_configs()
+        self.current_task_index = 0
+        self.grades.clear()
+        self.finished_at = None
 
     @property
     def current_task(self):
@@ -35,10 +57,8 @@ class LabSession:
     def check_current_task(self) -> TaskGrade:
         """Grade the current task against live device running-configs."""
         task = self.current_task
-        # Prefer device-scoped config if task mentions a device name.
-        config = self._config_for_task(task.id, task.instructions)
-        grade = grade_task(task, config)
-        # Store the live combined config for review.
+        config = self._config_for_task(task)
+        grade = grade_task(task, config, world=self.world)
         grade.submitted_config = config
         self.grades[task.id] = grade
         return grade
@@ -50,24 +70,20 @@ class LabSession:
         return self.grades
 
     def submit_task(self, config: str) -> TaskGrade:
-        """Legacy API: grade current task against an explicit config blob.
-
-        Still used by the HTTP router and older tests. Prefer
-        ``check_current_task()`` for the GUI (grades live OpenIOS state).
-        """
+        """Legacy API: grade current task against an explicit config blob."""
         task = self.current_task
-        grade = grade_task(task, config)
+        grade = grade_task(task, config, world=self.world)
         self.grades[task.id] = grade
         return grade
 
-    def _config_for_task(self, task_id: str, instructions: str) -> str:
-        """Pick the most relevant running-config text for grading."""
-        text = (instructions or "").upper()
-        # If instructions name a single device, grade that device first.
+    def _config_for_task(self, task) -> str:
+        rules = task.grading_rules
+        if rules and rules.device and rules.device in self.world.devices:
+            return self.world.devices[rules.device].running_config()
+        text = (task.instructions or "").upper()
         named = [n for n in self.world.device_names() if n.upper() in text]
         if len(named) == 1:
             return self.world.devices[named[0]].running_config()
-        # Otherwise combine all (grader looks for required lines anywhere).
         return self.world.combined_running_config()
 
     def next_task(self):
@@ -103,7 +119,8 @@ class LabResult:
     lab_title: str
     total_tasks: int
     passed_tasks: int
-    score: float  # 0.0 - 1.0
+    score: float
+    passed: bool = False
     task_grades: dict[str, TaskGrade] = field(default_factory=dict)
 
     @property
@@ -112,16 +129,29 @@ class LabResult:
 
 
 def score_lab(session: LabSession) -> LabResult:
-    """Compute a lab result from graded tasks."""
+    """Compute a lab result using weighted task scores and pass_threshold."""
     total = len(session.lab.tasks)
-    passed = sum(1 for g in session.grades.values() if g.is_correct)
-    score = passed / total if total else 0.0
+    # Score only graded tasks; ungraded tasks count as zero weight earned.
+    grades = dict(session.grades)
+    for task in session.lab.tasks:
+        if task.id not in grades:
+            grades[task.id] = TaskGrade(
+                task_id=task.id,
+                is_correct=False,
+                score=0.0,
+                weight=float(task.weight),
+                feedback="Not graded.",
+            )
+    passed_tasks = sum(1 for g in grades.values() if g.is_correct)
+    score = weighted_score(grades)
+    threshold = float(getattr(session.lab, "pass_threshold", 1.0) or 1.0)
     return LabResult(
         session_id=session.session_id,
         lab_id=session.lab.lab_id,
         lab_title=session.lab.title,
         total_tasks=total,
-        passed_tasks=passed,
+        passed_tasks=passed_tasks,
         score=score,
-        task_grades=dict(session.grades),
+        passed=score >= threshold,
+        task_grades=grades,
     )

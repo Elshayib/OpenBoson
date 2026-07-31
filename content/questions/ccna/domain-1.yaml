@@ -1,0 +1,3628 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: ccna-1-001
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 2
+  cert_tags: &id001
+  - ccna
+  stem: How many usable host addresses does 192.168.10.0/26 provide?
+  choices:
+  - id: a
+    text: '62'
+    rationale: /26 = 64 addresses − 2 = 62 usable.
+  - id: b
+    text: '64'
+    rationale: 64 is the total size including network/broadcast.
+  - id: c
+    text: '30'
+    rationale: That is /27.
+  - id: d
+    text: '126'
+    rationale: That is /25.
+  correct:
+    answer: a
+  explanation: A /26 prefix has 2^(32−26)=64 addresses; subtract network and broadcast.
+  references:
+  - CCNA 1.6 — IPv4 addressing and subnetting
+- id: ccna-1-002
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which device operates primarily at OSI Layer 2 and forwards based on MAC addresses?
+  choices:
+  - id: a
+    text: Router
+    rationale: Routers make Layer 3 forwarding decisions.
+  - id: b
+    text: Switch
+    rationale: LAN switches forward frames using MAC tables.
+  - id: c
+    text: Firewall
+    rationale: Firewalls typically inspect Layer 3/4+.
+  - id: d
+    text: Wireless controller
+    rationale: Manages APs; not the classic L2 forwarder.
+  correct:
+    answer: b
+  explanation: Ethernet switches learn MAC addresses and forward frames within a VLAN/broadcast
+    domain.
+  references:
+  - CCNA 1.1 — network components
+- id: ccna-1-003
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What is the binary equivalent of dotted decimal 10.1.1.0 with a /30 mask's
+    host portion size?
+  choices:
+  - id: a
+    text: 2 usable hosts
+    rationale: /30 leaves 2 host bits → 4 addresses − 2 = 2 hosts.
+  - id: b
+    text: 6 usable hosts
+    rationale: That is /29.
+  - id: c
+    text: 14 usable hosts
+    rationale: That is /28.
+  - id: d
+    text: 30 usable hosts
+    rationale: That is /27.
+  correct:
+    answer: a
+  explanation: /30 point-to-point links commonly use 2 usable hosts.
+  references:
+  - CCNA 1.6 — IPv4 subnetting
+- id: ccna-1-004
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which cable type is typically used between a switch access port and a PC NIC?
+  choices:
+  - id: a
+    text: Straight-through UTP
+    rationale: Like devices historically needed crossover; PC↔switch uses straight-through.
+  - id: b
+    text: Crossover UTP
+    rationale: Used between like devices (switch↔switch) without Auto-MDIX.
+  - id: c
+    text: Rollover console
+    rationale: Used for console access to a router/switch.
+  - id: d
+    text: Coaxial RG-59
+    rationale: Not used for modern Ethernet access.
+  correct:
+    answer: a
+  explanation: Modern Auto-MDIX often corrects cabling, but the classic answer is
+    straight-through.
+  references:
+  - CCNA 1.3 — cabling
+- id: ccna-1-005
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: In TCP, which field helps ensure ordered delivery of segments?
+  choices:
+  - id: a
+    text: Sequence number
+    rationale: Sequence numbers order byte streams.
+  - id: b
+    text: Window size alone
+    rationale: Controls flow, not ordering by itself.
+  - id: c
+    text: TTL
+    rationale: IP hop limit, not TCP ordering.
+  - id: d
+    text: TOS/DSCP
+    rationale: Marks QoS, not segment order.
+  correct:
+    answer: a
+  explanation: TCP sequence and acknowledgment numbers provide reliable ordered delivery.
+  references:
+  - CCNA 1.5 — TCP vs UDP
+- id: ccna-1-006
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which IPv6 address type is typically used for one-to-nearest routing within
+    a group?
+  choices:
+  - id: a
+    text: Anycast
+    rationale: Anycast is one-to-nearest of a group.
+  - id: b
+    text: Multicast
+    rationale: One-to-many.
+  - id: c
+    text: Broadcast
+    rationale: IPv6 has no broadcast.
+  - id: d
+    text: Link-local only
+    rationale: Link-local is a scope, not anycast semantics.
+  correct:
+    answer: a
+  explanation: IPv6 anycast shares an address among nodes; routers deliver to the
+    nearest.
+  references:
+  - CCNA 1.9 — IPv6 address types
+- id: ccna-1-007
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What does ARP resolve?
+  choices:
+  - id: a
+    text: IPv4 address to MAC address
+    rationale: ARP maps L3→L2 on Ethernet.
+  - id: b
+    text: MAC to IPv6
+    rationale: That is not ARP (NDP does neighbor discovery).
+  - id: c
+    text: URL to IP
+    rationale: DNS.
+  - id: d
+    text: Port to process
+    rationale: Sockets/OS, not ARP.
+  correct:
+    answer: a
+  explanation: ARP requests broadcast who-has; replies provide the MAC for an IPv4
+    address.
+  references:
+  - CCNA 1.13 — switching concepts / ARP
+- id: ccna-1-008
+  type: multiple_choice
+  topic_code: '1.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which two characteristics apply to UDP? (Choose two.)
+  choices:
+  - id: a
+    text: Connectionless
+    rationale: No handshake.
+  - id: b
+    text: Guaranteed delivery
+    rationale: TCP provides reliability, not UDP.
+  - id: c
+    text: Lower overhead than TCP
+    rationale: No sequencing/acks by default.
+  - id: d
+    text: Always encrypts payloads
+    rationale: Encryption is application/TLS, not UDP itself.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: UDP is connectionless and lightweight; reliability is left to the application.
+  references:
+  - CCNA 1.5 — TCP vs UDP
+- id: ccna-1-009
+  type: drag_match
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Match each OSI layer with a primary PDU name.
+  drag_pairs: &id002
+  - left: Layer 2
+    right: Frame
+  - left: Layer 3
+    right: Packet
+  - left: Layer 4
+    right: Segment (TCP) / Datagram (UDP)
+  - left: Layer 1
+    right: Bits
+  correct:
+    pairs: *id002
+  explanation: 'Common teaching shorthand: bits, frames, packets, segments.'
+  references:
+  - CCNA 1.1 — network components / OSI
+- id: ccna-1-010
+  type: ordered_list
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Order the steps to design a VLSM plan for a site.
+  ordered_items:
+  - Assign largest subnets first
+  - List required host counts
+  - Document remaining address space
+  - Sort requirements descending
+  correct:
+    order:
+    - List required host counts
+    - Sort requirements descending
+    - Assign largest subnets first
+    - Document remaining address space
+  explanation: VLSM works best allocating big blocks first to avoid fragmentation
+    of free space.
+  references:
+  - CCNA 1.6 — subnetting / VLSM
+- id: ccna-1-011
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which cloud deployment model keeps infrastructure exclusively for one organization?
+  choices:
+  - id: a
+    text: Private cloud
+    rationale: Private cloud is single-tenant for one organization.
+  - id: b
+    text: Public cloud
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Community only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Hybrid CDN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Private cloud is single-tenant for one organization.
+  references:
+  - CCNA 1.2
+- id: ccna-1-012
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 2
+  cert_tags: *id001
+  stem: What is the network address of 172.16.5.33/28?
+  choices:
+  - id: a
+    text: 172.16.5.32
+    rationale: /28 block size is 16; 33 falls in 32–47.
+  - id: b
+    text: 172.16.5.33
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 172.16.5.0
+    rationale: Not correct for this scenario.
+  - id: d
+    text: 172.16.5.48
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: /28 block size is 16; 33 falls in 32–47.
+  references:
+  - CCNA 1.6
+- id: ccna-1-013
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which wireless standard introduced OFDMA in Wi-Fi 6?
+  choices:
+  - id: a
+    text: 802.11ax
+    rationale: 802.11ax (Wi-Fi 6) added OFDMA and other efficiency features.
+  - id: b
+    text: 802.11ac
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 802.11n
+    rationale: Not correct for this scenario.
+  - id: d
+    text: 802.11g
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: 802.11ax (Wi-Fi 6) added OFDMA and other efficiency features.
+  references:
+  - CCNA 1.11
+- id: ccna-1-014
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which port does HTTPS typically use on servers?
+  choices:
+  - id: a
+    text: '443'
+    rationale: HTTPS uses TCP 443 by default.
+  - id: b
+    text: '80'
+    rationale: Not correct for this scenario.
+  - id: c
+    text: '22'
+    rationale: Not correct for this scenario.
+  - id: d
+    text: '53'
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: HTTPS uses TCP 443 by default.
+  references:
+  - CCNA 1.1
+- id: ccna-1-015
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 2
+  cert_tags: *id001
+  stem: An IPv6 link-local address begins with which prefix?
+  choices:
+  - id: a
+    text: fe80::/10
+    rationale: Link-local addresses use fe80::/10.
+  - id: b
+    text: 2000::/3
+    rationale: Not correct for this scenario.
+  - id: c
+    text: ff00::/8
+    rationale: Not correct for this scenario.
+  - id: d
+    text: fc00::/7
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Link-local addresses use fe80::/10.
+  references:
+  - CCNA 1.9
+- id: ccna-1-016
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What happens when a switch has no MAC entry for a frame's destination?
+  choices:
+  - id: a
+    text: Floods the frame out other ports in the VLAN
+    rationale: Unknown unicast frames are flooded within the VLAN.
+  - id: b
+    text: Drops silently always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Sends ICMP redirect
+    rationale: Not correct for this scenario.
+  - id: d
+    text: ARPs for the MAC
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Unknown unicast frames are flooded within the VLAN.
+  references:
+  - CCNA 1.13
+- id: ccna-1-018
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which statement about a spine-leaf fabric is true?
+  choices:
+  - id: a
+    text: Every leaf connects to every spine
+    rationale: Leaf switches attach to all spines; east-west via spine.
+  - id: b
+    text: Leaves connect only to other leaves
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Spines connect servers directly
+    rationale: Not correct for this scenario.
+  - id: d
+    text: It requires Token Ring
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Leaf switches attach to all spines; east-west via spine.
+  references:
+  - CCNA 1.2
+- id: ccna-1-019
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: How many /30s fit inside a /24?
+  choices:
+  - id: a
+    text: '64'
+    rationale: Each /30 is 4 addresses; 256/4 = 64.
+  - id: b
+    text: '32'
+    rationale: Not correct for this scenario.
+  - id: c
+    text: '16'
+    rationale: Not correct for this scenario.
+  - id: d
+    text: '4'
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Each /30 is 4 addresses; 256/4 = 64.
+  references:
+  - CCNA 1.6
+- id: ccna-1-020
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: PoE delivers power over which pairs historically for 802.3af Mode A?
+  choices:
+  - id: a
+    text: Data pairs (1-2 and 3-6)
+    rationale: 802.3af Alternative A injects power on the data pairs.
+  - id: b
+    text: Only fiber strands
+    rationale: Not correct for this scenario.
+  - id: c
+    text: USB only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Coax center conductor
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: 802.3af Alternative A injects power on the data pairs.
+  references:
+  - CCNA 1.1
+- id: ccna-1-021
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which protocol is connection-oriented at Layer 4?
+  choices:
+  - id: a
+    text: TCP
+    rationale: TCP establishes a connection before data transfer.
+  - id: b
+    text: UDP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: ICMP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: ARP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: TCP establishes a connection before data transfer.
+  references:
+  - CCNA 1.5
+- id: ccna-1-022
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What is the IPv6 unspecified address?
+  choices:
+  - id: a
+    text: '::'
+    rationale: ':: means no address assigned yet.'
+  - id: b
+    text: ::1
+    rationale: Not correct for this scenario.
+  - id: c
+    text: fe80::1
+    rationale: Not correct for this scenario.
+  - id: d
+    text: ff02::1
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ':: means no address assigned yet.'
+  references:
+  - CCNA 1.9
+- id: ccna-1-023
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which RFC 1918 range is a Class A private block?
+  choices:
+  - id: a
+    text: 10.0.0.0/8
+    rationale: 10.0.0.0/8 is the Class A private range.
+  - id: b
+    text: 172.32.0.0/12
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 192.169.0.0/16
+    rationale: Not correct for this scenario.
+  - id: d
+    text: 198.51.100.0/24
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: 10.0.0.0/8 is the Class A private range.
+  references:
+  - CCNA 1.7
+- id: ccna-1-024
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which command shows IPv6 interface addresses on IOS?
+  choices:
+  - id: a
+    text: show ipv6 interface brief
+    rationale: IPv6 addressing is verified with IPv6-specific show commands.
+  - id: b
+    text: show ip interface brief only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: show vlan brief
+    rationale: Not correct for this scenario.
+  - id: d
+    text: show cdp neighbors
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: IPv6 addressing is verified with IPv6-specific show commands.
+  references:
+  - CCNA 1.8
+- id: ccna-1-025
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A duplex mismatch typically causes?
+  choices:
+  - id: a
+    text: Late collisions / poor performance
+    rationale: One side full / other half-duplex leads to collisions and errors.
+  - id: b
+    text: Instant OSPF adjacency
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Automatic trunking
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Mandatory encryption
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: One side full / other half-duplex leads to collisions and errors.
+  references:
+  - CCNA 1.4
+- id: ccna-1-026
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 4
+  cert_tags: *id001
+  stem: A VRF on a router primarily provides?
+  choices:
+  - id: a
+    text: Separate routing tables/instances
+    rationale: VRFs isolate routing contexts on one device.
+  - id: b
+    text: Only STP instances
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE budgets
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DNS views
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VRFs isolate routing contexts on one device.
+  references:
+  - CCNA 1.12
+- id: ccna-1-027
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 2
+  cert_tags: *id001
+  stem: On Windows, which command shows IP configuration?
+  choices:
+  - id: a
+    text: ipconfig
+    rationale: ipconfig displays adapter addressing on Windows.
+  - id: b
+    text: ifconfig only (Windows default)
+    rationale: Not correct for this scenario.
+  - id: c
+    text: show ip route
+    rationale: Not correct for this scenario.
+  - id: d
+    text: route print only without IP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ipconfig displays adapter addressing on Windows.
+  references:
+  - CCNA 1.10
+- id: ccna-1-028
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Nonoverlapping 2.4 GHz Wi-Fi channels in the US commonly include?
+  choices:
+  - id: a
+    text: 1, 6, and 11
+    rationale: 1/6/11 are the classic nonoverlapping 2.4 GHz set.
+  - id: b
+    text: 1, 2, and 3 only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only channel 14 everywhere
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Channels 36 and 40 only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: 1/6/11 are the classic nonoverlapping 2.4 GHz set.
+  references:
+  - CCNA 1.11
+- id: ccna-1-029
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Single-mode fiber vs multimode primarily differs in?
+  choices:
+  - id: a
+    text: Core size / distance capability
+    rationale: SMF has a smaller core and supports longer reaches.
+  - id: b
+    text: Only connector color mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE support
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only VLAN tagging
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SMF has a smaller core and supports longer reaches.
+  references:
+  - CCNA 1.3
+- id: ccna-1-030
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 2
+  cert_tags: *id001
+  stem: MAC address aging on a switch does what?
+  choices:
+  - id: a
+    text: Removes unused CAM entries after a timer
+    rationale: Aging clears stale MAC entries so topology changes relearn cleanly.
+  - id: b
+    text: Encrypts the MAC table
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Converts MAC to IPv6
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Disables flooding forever
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Aging clears stale MAC entries so topology changes relearn cleanly.
+  references:
+  - CCNA 1.13
+- id: ccna-2-013
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which frequency band do most enterprise 5 GHz Wi-Fi networks use?
+  choices:
+  - id: a
+    text: UNII 5 GHz bands
+    rationale: Enterprise Wi-Fi commonly uses UNII 5 GHz bands.
+  - id: b
+    text: Only 900 MHz ISM
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 60 GHz only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: HF shortwave
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Enterprise Wi-Fi commonly uses UNII 5 GHz bands.
+  references:
+  - CCNA 1.11
+- id: ccna-2-020
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SSID is best described as?
+  choices:
+  - id: a
+    text: Wireless network name
+    rationale: The SSID is the wireless network name clients associate to.
+  - id: b
+    text: AP serial number
+    rationale: Not correct for this scenario.
+  - id: c
+    text: WLC HA VIP only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: RADIUS shared secret
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: The SSID is the wireless network name clients associate to.
+  references:
+  - CCNA 1.11
+- id: ccna-gen-0000-91c572
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: &id003
+  - ccna
+  stem: '[CCNA 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0001-7fed52
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 1 (1.10): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.10; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.10; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.10; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.10: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.10, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0002-b51349
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 2 (1.11): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.11; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.11; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.11: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.11; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.11, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0003-7ba5df
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 3 (1.12): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.12; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.12: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.12; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.12; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.12, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0004-4fdffe
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 4 (1.13): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.13: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.13; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.13; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.13; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.13, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0005-f4b88c
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 5 (1.2): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.2; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.2; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.2; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.2: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0006-a0b6f6
+  type: multiple_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.3] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.3.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.3.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.3: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0007-8617c1
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 7 (1.4): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.4; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.4: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.4; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.4; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0008-60388a
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 8 (1.5): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.5: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.5; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.5; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.5; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.5, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0009-e84952
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 9 (1.6): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.6; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.6; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.6; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.6: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.6, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0010-038622
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 10 (1.7): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.7; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.7; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.7: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.7; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.7, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0011-4286d0
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 11 (1.8): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.8; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.8: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.8; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.8; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.8, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0012-b590d1
+  type: multiple_choice
+  topic_code: '1.9'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.9] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.9.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.9.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.9.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.9.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.9: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0053-140244
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 53 (1.1): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.1; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.1; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.1; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.1: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0054-754071
+  type: multiple_choice
+  topic_code: '1.10'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.10] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.10.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.10.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.10.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.10.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.10: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0055-a000ad
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 55 (1.11): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.11; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.11: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.11; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.11; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.11, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0056-338acd
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 56 (1.12): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.12: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.12; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.12; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.12; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.12, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0057-186db8
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 57 (1.13): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.13; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.13; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.13; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.13: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.13, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0058-facdd2
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 58 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0059-6fa423
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 59 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0060-c83a14
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.4.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.4.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0061-2a06f1
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 61 (1.5): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.5; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.5; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.5; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.5: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.5, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0062-078317
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 62 (1.6): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.6; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.6; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.6: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.6; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.6, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0063-1071f2
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 63 (1.7): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.7; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.7: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.7; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.7; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.7, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0064-2b1271
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 64 (1.8): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.8: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.8; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.8; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.8; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.8, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0065-dd3298
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 65 (1.9): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.9; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.9; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.9; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.9: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.9, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0106-392fee
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 106 (1.1): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.1; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.1; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.1: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.1; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0107-8a1285
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 107 (1.10): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.10; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.10: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.10; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.10; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.10, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0108-eb068f
+  type: multiple_choice
+  topic_code: '1.11'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.11] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.11.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.11.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.11.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.11.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.11: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0109-d5d233
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 109 (1.12): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.12; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.12; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.12; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.12: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.12, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0110-de2d1b
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 110 (1.13): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.13; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.13; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.13: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.13; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.13, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0111-f602b5
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 111 (1.2): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.2; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.2: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.2; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.2; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0112-b09816
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 112 (1.3): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.3: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.3; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.3; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.3; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0113-9d8a0c
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 113 (1.4): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.4; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.4; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.4; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.4: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0114-f50568
+  type: multiple_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.5] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.5.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.5.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.5: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0115-169fad
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 115 (1.6): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.6; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.6: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.6; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.6; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.6, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0116-a9b22f
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 116 (1.7): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.7: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.7; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.7; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.7; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.7, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0117-90f365
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 117 (1.8): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.8; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.8; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.8; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.8: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.8, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0118-80804a
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 118 (1.9): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.9; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.9; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.9: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.9; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.9, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0159-31e03a
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 159 (1.1): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.1; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.1; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.1; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0160-f7b770
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 160 (1.10): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.10: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.10; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.10; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.10; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.10, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0161-9d5398
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 161 (1.11): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.11; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.11; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.11; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.11: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.11, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0162-24adb1
+  type: multiple_choice
+  topic_code: '1.12'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.12] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.12.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.12.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.12.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.12.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.12: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0163-8abfe7
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 163 (1.13): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.13; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.13: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.13; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.13; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.13, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0164-ad379c
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 164 (1.2): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.2: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.2; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.2; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.2; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0165-f73198
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 165 (1.3): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.3; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.3; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.3; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.3: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0166-3e61cd
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 166 (1.4): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.4; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.4; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.4: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.4; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0167-6cb247
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 167 (1.5): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.5; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.5: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.5; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.5; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.5, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0168-af8282
+  type: multiple_choice
+  topic_code: '1.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.6] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.6.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.6.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.6.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.6.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.6: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0169-9b151b
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 169 (1.7): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.7; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.7; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.7; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.7: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.7, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0170-728add
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 170 (1.8): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.8; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.8; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.8: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.8; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.8, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0171-758801
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 171 (1.9): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.9; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.9: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.9; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.9; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.9, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0212-c6c65c
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 212 (1.1): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.1: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.1; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.1; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.1; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0213-b08eb6
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 213 (1.10): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.10; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.10; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.10; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.10: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.10, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0214-95f867
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 214 (1.11): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.11; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.11; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.11: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.11; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.11, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0215-75aa1d
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 215 (1.12): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.12; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.12: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.12; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.12; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.12, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0216-1163a8
+  type: multiple_choice
+  topic_code: '1.13'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.13] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.13.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.13.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.13.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.13.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.13: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0217-29e061
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 217 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0218-7516fd
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 218 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0219-36a673
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 219 (1.4): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.4; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.4; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.4; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0220-120d49
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 220 (1.5): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.5: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.5; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.5; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.5; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.5, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0221-4f9bdd
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 221 (1.6): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.6; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.6; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.6; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.6: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.6, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0222-36f557
+  type: multiple_choice
+  topic_code: '1.7'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.7] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.7.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.7.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.7.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.7.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.7: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0223-0ad6d2
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 223 (1.8): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.8; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.8: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.8; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.8; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.8, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0224-97a5c6
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 224 (1.9): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.9: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.9; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.9; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.9; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.9, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0265-5f2c07
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 265 (1.1): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.1; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.1; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.1; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.1: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0266-4da175
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 266 (1.10): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.10; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.10; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.10: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.10; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.10, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0267-c7533a
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 267 (1.11): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.11; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.11: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.11; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.11; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.11, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0268-817371
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 268 (1.12): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.12: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.12; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.12; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.12; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.12, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0269-2fe860
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 269 (1.13): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.13; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.13; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.13; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.13: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.13, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0270-fe811a
+  type: multiple_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.2] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.2.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.2.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.2: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0271-f1fb4e
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 271 (1.3): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.3; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.3: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.3; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.3; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0272-5167fd
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 272 (1.4): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.4: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.4; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.4; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.4; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0273-2c67f7
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 273 (1.5): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.5; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.5; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.5; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.5: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.5, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0274-c04705
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 274 (1.6): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.6; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.6; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.6: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.6; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.6, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0275-275f9f
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 275 (1.7): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.7; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.7: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.7; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.7; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.7, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0276-4028f7
+  type: multiple_choice
+  topic_code: '1.8'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.8] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.8.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.8.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.8.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.8.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.8: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0277-80226d
+  type: single_choice
+  topic_code: '1.9'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 277 (1.9): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.9; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.9; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.9; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.9: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.9, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0318-657332
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0319-6f913d
+  type: single_choice
+  topic_code: '1.10'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 319 (1.10): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.10; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.10: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.10; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.10; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.10, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0320-8e7a41
+  type: single_choice
+  topic_code: '1.11'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 320 (1.11): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.11: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.11; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.11; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.11; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.11, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0321-f2ebc6
+  type: single_choice
+  topic_code: '1.12'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 321 (1.12): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.12; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.12; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.12; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.12: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.12, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0322-f7b4b9
+  type: single_choice
+  topic_code: '1.13'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 322 (1.13): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.13; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.13; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.13: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.13; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.13, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0323-3a1bd9
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 323 (1.2): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.2; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.2: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.2; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.2; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0324-6b4746
+  type: multiple_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.3] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.3.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.3.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.3: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0325-9b6c17
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 325 (1.4): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.4; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.4; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.4; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.4: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0326-0a1c8e
+  type: single_choice
+  topic_code: '1.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 326 (1.5): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.5; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.5; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.5: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.5; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.5, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0327-c843b2
+  type: single_choice
+  topic_code: '1.6'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 327 (1.6): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.6; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.6: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.6; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.6; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.6, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0328-3c1835
+  type: single_choice
+  topic_code: '1.7'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 328 (1.7): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.7: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.7; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.7; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.7; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.7, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0329-e90110
+  type: single_choice
+  topic_code: '1.8'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 329 (1.8): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.8; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.8; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.8; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.8: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.8, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0330-a5c636
+  type: multiple_choice
+  topic_code: '1.9'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 1.9] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.9.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.9.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.9.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.9.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.9: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-0000
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: &id004
+  - ccna
+  stem: 'Multiple-select check for 1.1: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.1.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.1.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.1.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.1 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-0001
+  type: multiple_choice
+  topic_code: '1.10'
+  difficulty: 3
+  cert_tags: *id004
+  stem: 'Multiple-select check for 1.10: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.10.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.10.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.10.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.10.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.10 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-0002
+  type: multiple_choice
+  topic_code: '1.11'
+  difficulty: 3
+  cert_tags: *id004
+  stem: 'Multiple-select check for 1.11: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.11.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.11.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.11.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.11.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.11 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-0003
+  type: multiple_choice
+  topic_code: '1.12'
+  difficulty: 3
+  cert_tags: *id004
+  stem: 'Multiple-select check for 1.12: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.12.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.12.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.12.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.12.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.12 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-0004
+  type: multiple_choice
+  topic_code: '1.13'
+  difficulty: 3
+  cert_tags: *id004
+  stem: 'Multiple-select check for 1.13: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.13.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.13.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.13.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.13.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.13 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-0005
+  type: multiple_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id004
+  stem: 'Multiple-select check for 1.2: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.2.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.2.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.2.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.2 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-extra-00
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: &id005
+  - ccna
+  stem: Extra multi-select 0 for volume gate on 1.1?
+  choices:
+  - id: a
+    text: Verify before changes
+    rationale: Correct ops habit.
+  - id: b
+    text: Skip all logs
+    rationale: Unsafe.
+  - id: c
+    text: Capture show output
+    rationale: Correct verification.
+  - id: d
+    text: Disable AAA forever
+    rationale: Incorrect.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Verification and evidence collection are required study habits.
+  references:
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-nsc-extra-01
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id005
+  stem: Extra multi-select 1 for volume gate on 1.1?
+  choices:
+  - id: a
+    text: Verify before changes
+    rationale: Correct ops habit.
+  - id: b
+    text: Skip all logs
+    rationale: Unsafe.
+  - id: c
+    text: Capture show output
+    rationale: Correct verification.
+  - id: d
+    text: Disable AAA forever
+    rationale: Incorrect.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Verification and evidence collection are required study habits.
+  references:
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

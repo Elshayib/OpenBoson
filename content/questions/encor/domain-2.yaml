@@ -1,0 +1,1376 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: encor-2-001
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: &id001
+  - ccnp
+  stem: Type 1 hypervisor runs where?
+  choices:
+  - id: a
+    text: On bare metal
+    rationale: Bare-metal hypervisors sit on hardware.
+  - id: b
+    text: Only inside a guest OS as Type 2 exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only on printers
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only in STP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Bare-metal hypervisors sit on hardware.
+  references:
+  - ENCOR 2.1
+- id: encor-2-002
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: VXLAN uses which outer transport commonly?
+  choices:
+  - id: a
+    text: UDP
+    rationale: VXLAN encapsulates Ethernet in UDP.
+  - id: b
+    text: Only ICMP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP BPDUs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only ARP exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VXLAN encapsulates Ethernet in UDP.
+  references:
+  - ENCOR 2.3
+- id: encor-2-003
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: VNI in VXLAN identifies?
+  choices:
+  - id: a
+    text: Overlay segment
+    rationale: VNI separates overlay networks.
+  - id: b
+    text: Only physical port
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BGP ASN
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CoS bit
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VNI separates overlay networks.
+  references:
+  - ENCOR 2.3
+- id: encor-2-004
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: VRF provides?
+  choices:
+  - id: a
+    text: Separate routing/forwarding instances
+    rationale: VRFs isolate routing contexts.
+  - id: b
+    text: Only a single global RIB forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP instances
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE budgets
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VRFs isolate routing contexts.
+  references:
+  - ENCOR 2.2
+- id: encor-2-005
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Containers share which with the host?
+  choices:
+  - id: a
+    text: Kernel
+    rationale: Containers share the host kernel.
+  - id: b
+    text: Only entire guest kernel always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BIOS
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only ASIC TCAM exclusively
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Containers share the host kernel.
+  references:
+  - ENCOR 2.1
+- id: encor-2-006
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: LISP is primarily a?
+  choices:
+  - id: a
+    text: Network virtualization / location-identity protocol
+    rationale: LISP maps EIDs to RLOCs.
+  - id: b
+    text: Only a wireless cipher
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only an FHRP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only a syslog facility
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: LISP maps EIDs to RLOCs.
+  references:
+  - ENCOR 2.3
+- id: encor-2-007
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A VTEP is?
+  choices:
+  - id: a
+    text: VXLAN tunnel endpoint
+    rationale: VTEPs encapsulate/decapsulate VXLAN.
+  - id: b
+    text: Only STP root
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only DHCP server
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only syslog host
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VTEPs encapsulate/decapsulate VXLAN.
+  references:
+  - ENCOR 2.3
+- id: encor-2-008
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Virtual switching connects?
+  choices:
+  - id: a
+    text: VM/vNIC traffic on a hypervisor host
+    rationale: vSwitches bridge VM interfaces.
+  - id: b
+    text: Only ISP PEs exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only DNS roots
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NTP strata
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: vSwitches bridge VM interfaces.
+  references:
+  - ENCOR 2.1
+- id: encor-2-009
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: GRE tunneling commonly provides?
+  choices:
+  - id: a
+    text: Point-to-point overlay encapsulation
+    rationale: GRE encapsulates payloads over IP.
+  - id: b
+    text: Only STP enhancements
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AAA accounting
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE negotiation
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: GRE encapsulates payloads over IP.
+  references:
+  - ENCOR 2.2
+- id: encor-2-010
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: IPsec with GRE is often used to?
+  choices:
+  - id: a
+    text: Encrypt tunneled overlays
+    rationale: IPsec protects GRE/IP overlays.
+  - id: b
+    text: Only hash EtherChannels
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only elect DR
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only age CAM
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: IPsec protects GRE/IP overlays.
+  references:
+  - ENCOR 2.2
+- id: encor-2-011
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: A virtual machine includes?
+  choices:
+  - id: a
+    text: Guest OS + virtualized hardware abstraction
+    rationale: VMs virtualize compute for guest systems.
+  - id: b
+    text: Only a bare-metal Type 1 host exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only a physical ASIC
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only a copper SFP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VMs virtualize compute for guest systems.
+  references:
+  - ENCOR 2.1
+- id: encor-2-012
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Flood-and-learn VXLAN relies on?
+  choices:
+  - id: a
+    text: Data-plane learning / multicast or head-end replication
+    rationale: Without a control plane, flooding discovers endpoints.
+  - id: b
+    text: Only static ARP forever without flooding
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only RIP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Telnet
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Without a control plane, flooding discovers endpoints.
+  references:
+  - ENCOR 2.3
+- id: encor-2-013
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Live migration of VMs requires?
+  choices:
+  - id: a
+    text: Shared storage / network reachability design
+    rationale: vMotion-style moves need connectivity design.
+  - id: b
+    text: Only changing STP priority
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling IP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only removing default route
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: vMotion-style moves need connectivity design.
+  references:
+  - ENCOR 2.1
+- id: encor-2-014
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Underlay MTU for VXLAN must account for?
+  choices:
+  - id: a
+    text: Encapsulation overhead
+    rationale: Outer headers need headroom.
+  - id: b
+    text: Only reducing MTU below 576 always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only IPv4 options mandatory
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only disabling jumbo
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Outer headers need headroom.
+  references:
+  - ENCOR 2.3
+- id: encor-2-015
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: VRF-lite on an enterprise edge provides?
+  choices:
+  - id: a
+    text: Device-local routing separation without MPLS requirement
+    rationale: VRF-lite separates RIB/FIB without requiring MPLS.
+  - id: b
+    text: Only MPLS labels mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NAT
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only QoS marking
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VRF-lite separates RIB/FIB without requiring MPLS.
+  references:
+  - ENCOR 2.2
+- id: encor-2-016
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Hypervisor escape is a?
+  choices:
+  - id: a
+    text: Security risk class
+    rationale: Guest breakout to host is a critical risk.
+  - id: b
+    text: Routing metric
+    rationale: Not correct for this scenario.
+  - id: c
+    text: STP state
+    rationale: Not correct for this scenario.
+  - id: d
+    text: QoS PHB
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Guest breakout to host is a critical risk.
+  references:
+  - ENCOR 2.1
+- id: encor-2-090
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which two are true about VXLAN? (Choose two.)
+  choices:
+  - id: a
+    text: Uses a 24-bit VNI
+    rationale: Large segment space.
+  - id: b
+    text: Requires Token Ring core
+    rationale: No.
+  - id: c
+    text: Typically rides on UDP/IP underlay
+    rationale: Encapsulation.
+  - id: d
+    text: Replaces the need for any underlay routing
+    rationale: Still needs underlay.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: VXLAN VNIs identify overlays carried over an IP underlay, usually UDP.
+  references:
+  - ENCOR 2.3
+- id: encor-gen-0004-7f437d
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 5
+  cert_tags: &id002
+  - ccnp
+  stem: 'Scenario 4 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0005-469924
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 5 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0006-e2a3b2
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.3.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.3.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0031-89de30
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 31 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0032-abcf94
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 32 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0033-60e32c
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 33 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0058-1382cb
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 58 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0059-e87955
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 59 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0060-35d474
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.3.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.3.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0085-e88126
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 85 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0086-191144
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 86 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0087-aa3786
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 87 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0112-f61294
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 112 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0113-a585c3
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 113 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0114-d1240e
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.3.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.3.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0139-aede54
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 139 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0140-5192cb
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 140 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0141-220f8f
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 141 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0166-3b7268
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 166 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0167-49c7f4
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 167 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0168-5f19f6
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.3.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.3.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0193-3f37ec
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 193 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0194-43a763
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 194 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0195-8f1e92
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 195 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0220-905c77
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 220 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0221-ea7d4f
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 221 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0222-fd0d6f
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.3.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.3.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0247-79068c
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 247 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0248-2ec54f
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 248 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0249-d1e2bd
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 249 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0004
+  type: multiple_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: &id003
+  - ccnp
+  stem: 'Multiple-select check for 2.1: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 2.1.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 2.1.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 2.1.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 2.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 2.1 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0005
+  type: multiple_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Multiple-select check for 2.2: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 2.2.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 2.2.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 2.2.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 2.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 2.2 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0006
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Multiple-select check for 2.3: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 2.3.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 2.3.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 2.3.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 2.3 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

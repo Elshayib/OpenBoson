@@ -1,0 +1,1747 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: encor-5-001
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: &id001
+  - ccnp
+  stem: Cisco TrustSec uses SGTs for?
+  choices:
+  - id: a
+    text: Group-based policy
+    rationale: Security Group Tags.
+  - id: b
+    text: Only STP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CDP version
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Security Group Tags.
+  references:
+  - ENCOR 5.4
+- id: encor-5-002
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: MACsec provides?
+  choices:
+  - id: a
+    text: Hop-by-hop L2 encryption
+    rationale: 802.1AE.
+  - id: b
+    text: Only L3 IPsec exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only TLS to websites
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only WEP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: 802.1AE.
+  references:
+  - ENCOR 5.4
+- id: encor-5-003
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: CoPP protects?
+  choices:
+  - id: a
+    text: The control plane CPU
+    rationale: Control Plane Policing.
+  - id: b
+    text: Only data plane TCAM exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PoE
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only fans
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Control Plane Policing.
+  references:
+  - ENCOR 5.2
+- id: encor-5-004
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Next-generation firewalls are a component of?
+  choices:
+  - id: a
+    text: Network security design
+    rationale: NGFW is part of security design components.
+  - id: b
+    text: Only VTP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only LACP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only MST instances
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: NGFW is part of security design components.
+  references:
+  - ENCOR 5.4
+- id: encor-5-005
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: AAA on network devices provides?
+  choices:
+  - id: a
+    text: Authentication and authorization services
+    rationale: AAA controls device access.
+  - id: b
+    text: Only routing metrics
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only switching ASICs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only optics
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: AAA controls device access.
+  references:
+  - ENCOR 5.1
+- id: encor-5-006
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: CTS environment data includes?
+  choices:
+  - id: a
+    text: SGT mappings / policy
+    rationale: TrustSec env data.
+  - id: b
+    text: Only OSPF costs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only EIGRP K
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only BGP MED
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: TrustSec env data.
+  references:
+  - ENCOR 5.4
+- id: encor-5-007
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Lines and local user authentication protect?
+  choices:
+  - id: a
+    text: Device access (console/VTY/local users)
+    rationale: Local lines/users are device access control.
+  - id: b
+    text: Only underlay BFD
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VXLAN flooding
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NetFlow keys
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Local lines/users are device access control.
+  references:
+  - ENCOR 5.1
+- id: encor-5-008
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Infrastructure ACLs on a router are?
+  choices:
+  - id: a
+    text: ACLs protecting the device/control plane path
+    rationale: Infra ACLs harden device access.
+  - id: b
+    text: Only user web ACL unrelated
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NAT pool
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PBR set exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Infra ACLs harden device access.
+  references:
+  - ENCOR 5.2
+- id: encor-5-009
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Endpoint security is part of?
+  choices:
+  - id: a
+    text: Network security design components
+    rationale: Endpoint controls complement network defenses.
+  - id: b
+    text: Only EtherChannel hashing
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only OSPF stub
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SPAN sessions
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Endpoint controls complement network defenses.
+  references:
+  - ENCOR 5.4
+- id: encor-5-010
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: REST API security concerns include?
+  choices:
+  - id: a
+    text: AuthN/AuthZ, tokens, and least privilege
+    rationale: APIs need strong authentication and authorization.
+  - id: b
+    text: Only STP diameter
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only cable categories
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE classes
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: APIs need strong authentication and authorization.
+  references:
+  - ENCOR 5.3
+- id: encor-5-011
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SXP protocol shares?
+  choices:
+  - id: a
+    text: IP-SGT bindings
+    rationale: SGT Exchange Protocol.
+  - id: b
+    text: Only MAC tables
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only LLDP alone
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NTP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SGT Exchange Protocol.
+  references:
+  - ENCOR 5.4
+- id: encor-5-012
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Authentication vs authorization?
+  choices:
+  - id: a
+    text: Identity proof vs permission grant
+    rationale: AuthN identifies; AuthZ permits actions.
+  - id: b
+    text: Only identical forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only syslog facilities
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DSCP EF
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: AuthN identifies; AuthZ permits actions.
+  references:
+  - ENCOR 5.1
+- id: encor-5-013
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: CPU punt path abuse is mitigated by?
+  choices:
+  - id: a
+    text: CoPP / hardware rate limiters
+    rationale: Protect punt.
+  - id: b
+    text: Only increasing STP diameter
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling CEF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only clear arp
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Protect punt.
+  references:
+  - ENCOR 5.2
+- id: encor-5-014
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Threat defense architectures include?
+  choices:
+  - id: a
+    text: Layered controls against attacks
+    rationale: Threat defense is a design component.
+  - id: b
+    text: Only single ACL deny any as sole design
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling logging
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only open management planes
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Threat defense is a design component.
+  references:
+  - ENCOR 5.4
+- id: encor-5-015
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: TACACS+ command authorization can?
+  choices:
+  - id: a
+    text: Permit/deny per command
+    rationale: Command authz.
+  - id: b
+    text: Only authenticate without authz
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only encrypt STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only mark DSCP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Command authz.
+  references:
+  - ENCOR 5.1
+- id: encor-5-016
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: SGACL enforces?
+  choices:
+  - id: a
+    text: Downloadable group policy on data plane
+    rationale: Security group ACLs.
+  - id: b
+    text: Only VTY passwords
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only enable secret
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only banner motd
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Security group ACLs.
+  references:
+  - ENCOR 5.4
+- id: encor-5-017
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: API keys in REST integrations should be?
+  choices:
+  - id: a
+    text: Protected, rotated, and least-privileged
+    rationale: REST API security includes secret handling.
+  - id: b
+    text: Committed to public repos freely
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Shared in banners
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Used as OSPF passwords only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: REST API security includes secret handling.
+  references:
+  - ENCOR 5.3
+- id: encor-5-018
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Extended ACLs can match?
+  choices:
+  - id: a
+    text: L3/L4 fields (src/dst/ports/protocol)
+    rationale: Infrastructure ACL tooling includes extended ACLs.
+  - id: b
+    text: Only source IP like standard always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only MAC OUI exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP roles
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Infrastructure ACL tooling includes extended ACLs.
+  references:
+  - ENCOR 5.2
+- id: encor-5-019
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Dynamic SGT assignment can come from?
+  choices:
+  - id: a
+    text: ISE authorization results
+    rationale: AAA-driven SGT.
+  - id: b
+    text: Only static route
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only OSPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only EIGRP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: AAA-driven SGT.
+  references:
+  - ENCOR 5.4
+- id: encor-5-020
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Fail-open vs fail-closed access control is a?
+  choices:
+  - id: a
+    text: Availability vs security tradeoff
+    rationale: Design decision for access control.
+  - id: b
+    text: Only spanning-tree choice
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only EtherChannel hash
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only MTU
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Design decision for access control.
+  references:
+  - ENCOR 5.1
+- id: encor-5-021
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: MACsec vs TrustSec relationship?
+  choices:
+  - id: a
+    text: MACsec can encrypt; TrustSec provides group policy context
+    rationale: Both appear under security design components.
+  - id: b
+    text: Only identical protocols
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only replace OSPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only disable AAA
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Both appear under security design components.
+  references:
+  - ENCOR 5.4
+- id: encor-5-022
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Control-plane ACLs differ from interface data ACLs by?
+  choices:
+  - id: a
+    text: Protecting traffic to the device/control plane
+    rationale: CoPP/iACLs harden the control plane.
+  - id: b
+    text: Only switching CAM
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTP sync
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only LACP PDUs exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: CoPP/iACLs harden the control plane.
+  references:
+  - ENCOR 5.2
+- id: encor-5-023
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: OAuth/token-based API access is an example of?
+  choices:
+  - id: a
+    text: REST API security practice
+    rationale: Modern APIs use token auth models.
+  - id: b
+    text: Only STP tuning
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only multicast RPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only HSRP preempt
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Modern APIs use token auth models.
+  references:
+  - ENCOR 5.3
+- id: encor-5-024
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Local username privilege levels control?
+  choices:
+  - id: a
+    text: What commands authenticated users may run
+    rationale: Privilege levels are device access control.
+  - id: b
+    text: Only underlay MTU
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VXLAN flood lists
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NetFlow samplers
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Privilege levels are device access control.
+  references:
+  - ENCOR 5.1
+- id: encor-5-090
+  type: drag_match
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Match TrustSec building blocks.
+  drag_pairs: &id002
+  - left: SGT
+    right: Group tag on packets/context
+  - left: SGACL
+    right: Policy enforced by group
+  - left: SXP
+    right: Shares IP-to-SGT bindings
+  - left: ISE
+    right: Policy and AAA engine
+  correct:
+    pairs: *id002
+  explanation: TrustSec tags endpoints and enforces group policy.
+  references:
+  - ENCOR 5.4
+- id: encor-gen-0016-4ce3ac
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: &id003
+  - ccnp
+  stem: 'Scenario 16 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0017-9d56c4
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 17 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0018-489a18
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNP 5.3] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.3.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.3.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0019-71aba4
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 19 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0043-1797a9
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 43 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0044-e058b2
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 44 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0045-af6463
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 45 (5.3): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.3; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.3; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.3; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0046-731fc6
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 46 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0070-1447b6
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 70 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0071-f67a84
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 71 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0072-e87bf7
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNP 5.3] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.3.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.3.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0073-4b1381
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 73 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0097-2301af
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 97 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0098-c0bffb
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 98 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0099-b66e63
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 99 (5.3): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.3; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.3; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.3; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0100-59531f
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 100 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0124-902f53
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 124 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0125-95365f
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 125 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0126-e86d70
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNP 5.3] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.3.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.3.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0127-054bd9
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 127 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0151-ee97fa
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 151 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0152-255c2b
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 152 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0153-50c43b
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 153 (5.3): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.3; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.3; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.3; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0154-cca2e9
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 154 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0178-d811c3
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 178 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0179-12c332
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 179 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0180-917491
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNP 5.3] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.3.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.3.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0181-5ce70c
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 181 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0205-0e854a
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 205 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0206-6ea9ff
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 206 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0207-d1e5e1
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 207 (5.3): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.3; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.3; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.3; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0208-07a8f0
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 208 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0232-8a160f
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 232 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0233-095b60
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 233 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0234-9105a3
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNP 5.3] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.3.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.3.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0235-3f004d
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 235 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0259-7b26e0
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 259 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0260-4d05c7
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 260 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0261-3755e0
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 261 (5.3): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.3; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.3; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.3; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0262-d3626a
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 262 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

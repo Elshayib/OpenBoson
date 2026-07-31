@@ -1,0 +1,30 @@
+title: DHCP Pool
+lab_id: ccna_dhcp_pool
+topic_code: '4.3'
+difficulty: 3
+description: Create an IOS DHCP pool for a LAN.
+objectives:
+- ip dhcp pool
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: Create DHCP pool LAN with network 192.168.10.0/24 and default-router
+    192.168.10.1.
+  grading_rules:
+    device: R1
+    require:
+    - ip dhcp pool LAN
+    - network 192.168.10.0 255.255.255.0
+    - default-router 192.168.10.1
+solution_config: "ip dhcp pool LAN\n network 192.168.10.0 255.255.255.0\n default-router\
+  \ 192.168.10.1\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

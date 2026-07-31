@@ -1,0 +1,2370 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: ccna-2-001
+  type: multiple_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: &id001
+  - ccna
+  stem: Which two statements about 802.1Q trunks are correct? (Choose two.)
+  choices:
+  - id: a
+    text: A trunk can carry multiple VLANs with tags
+    rationale: Core trunk purpose.
+  - id: b
+    text: VLAN 1 can never be native
+    rationale: It can, though discouraged.
+  - id: c
+    text: Native VLAN frames are untagged
+    rationale: 802.1Q native VLAN.
+  - id: d
+    text: ISL is required on modern Catalyst
+    rationale: ISL is legacy.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 802.1Q tags non-native VLANs; native VLAN is untagged.
+  references:
+  - CCNA 2.2 — interswitch connectivity
+- id: ccna-2-002
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which Rapid PVST+ port role forwards traffic toward the root?
+  choices:
+  - id: a
+    text: Root port
+    rationale: Best path to root.
+  - id: b
+    text: Designated port on a blocked segment
+    rationale: Designated forwards onto a segment.
+  - id: c
+    text: Alternate port
+    rationale: Backup to root; discarding.
+  - id: d
+    text: Disabled
+    rationale: Administratively down.
+  correct:
+    answer: a
+  explanation: Each non-root bridge selects one root port closest to the root bridge.
+  references:
+  - CCNA 2.5 — Rapid PVST+
+- id: ccna-2-003
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: EtherChannel bundles multiple physical links into what logical interface type
+    on Cisco IOS?
+  choices:
+  - id: a
+    text: Port-channel
+    rationale: Logical Po interface.
+  - id: b
+    text: Loopback
+    rationale: Virtual IP interface.
+  - id: c
+    text: Tunnel
+    rationale: Overlay.
+  - id: d
+    text: Null0
+    rationale: Bit bucket.
+  correct:
+    answer: a
+  explanation: Port-channel (Po) is the logical EtherChannel interface.
+  references:
+  - CCNA 2.4 — EtherChannel (LACP)
+- id: ccna-2-004
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: In CAPWAP, which tunnel carries client data between AP and WLC in a centralized
+    design?
+  choices:
+  - id: a
+    text: CAPWAP data tunnel
+    rationale: Encrypted/optional DTLS data path.
+  - id: b
+    text: Only GRE without CAPWAP
+    rationale: CAPWAP is the Cisco LWAPP successor.
+  - id: c
+    text: IPsec VTI only
+    rationale: Not the standard AP-WLC control plane.
+  - id: d
+    text: PPPoE
+    rationale: WAN access method.
+  correct:
+    answer: a
+  explanation: Lightweight APs use CAPWAP control and data tunnels to the WLC.
+  references:
+  - CCNA 2.6 — wireless architectures / AP modes
+- id: ccna-2-005
+  type: drag_match
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Match VLAN concepts.
+  drag_pairs: &id002
+  - left: Access port
+    right: Carries a single untagged VLAN for end hosts
+  - left: Trunk port
+    right: Carries multiple VLANs with 802.1Q tags
+  - left: Native VLAN
+    right: Untagged on an 802.1Q trunk
+  - left: Voice VLAN
+    right: Auxiliary VLAN for IP phones
+  correct:
+    pairs: *id002
+  explanation: Access vs trunk and native/voice VLAN roles are core switching topics.
+  references:
+  - CCNA 2.1
+- id: ccna-2-006
+  type: ordered_list
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Order classic STP port states from blocking toward forwarding (802.1D teaching
+    order).
+  ordered_items:
+  - Learning
+  - Listening
+  - Forwarding
+  - Blocking
+  correct:
+    order:
+    - Blocking
+    - Listening
+    - Learning
+    - Forwarding
+  explanation: 802.1D progresses Blocking → Listening → Learning → Forwarding.
+  references:
+  - CCNA 2.5 — STP states
+- id: ccna-2-007
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What command creates VLAN 20 on a Cisco switch?
+  choices:
+  - id: a
+    text: vlan 20
+    rationale: Global VLAN configuration creates the VLAN.
+  - id: b
+    text: interface vlan 20 only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: switchport access vlan 20 alone
+    rationale: Not correct for this scenario.
+  - id: d
+    text: encapsulation dot1q 20
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Global VLAN configuration creates the VLAN.
+  references:
+  - CCNA 2.1
+- id: ccna-2-008
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: DTP dynamic desirable will actively try to form what?
+  choices:
+  - id: a
+    text: A trunk
+    rationale: Dynamic desirable initiates trunking.
+  - id: b
+    text: An EtherChannel
+    rationale: Not correct for this scenario.
+  - id: c
+    text: An OSPF adjacency
+    rationale: Not correct for this scenario.
+  - id: d
+    text: A VPN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Dynamic desirable initiates trunking.
+  references:
+  - CCNA 2.2
+- id: ccna-2-009
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which bridge ID component is preferred lower to win root election?
+  choices:
+  - id: a
+    text: Priority then MAC
+    rationale: Lowest bridge ID wins the root election.
+  - id: b
+    text: Highest MAC always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Highest priority
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Serial number only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Lowest bridge ID wins the root election.
+  references:
+  - CCNA 2.5
+- id: ccna-2-010
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: PortFast is intended for which ports?
+  choices:
+  - id: a
+    text: Edge ports to end hosts
+    rationale: PortFast is for edge/host ports to skip listening/learning delays.
+  - id: b
+    text: All trunks always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Routed ports only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Blocked alternate only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: PortFast is for edge/host ports to skip listening/learning delays.
+  references:
+  - CCNA 2.5
+- id: ccna-2-011
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: LACP uses which IEEE standard?
+  choices:
+  - id: a
+    text: 802.3ad / 802.1AX
+    rationale: LACP is the IEEE link-aggregation control protocol.
+  - id: b
+    text: 802.1Q
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 802.1X
+    rationale: Not correct for this scenario.
+  - id: d
+    text: 802.11i
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: LACP is the IEEE link-aggregation control protocol.
+  references:
+  - CCNA 2.4
+- id: ccna-2-012
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: PAgP is associated with which vendor historically?
+  choices:
+  - id: a
+    text: Cisco proprietary
+    rationale: PAgP is Cisco proprietary; LACP is standards-based.
+  - id: b
+    text: IETF standard only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: ITU SS7
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Bluetooth SIG
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: PAgP is Cisco proprietary; LACP is standards-based.
+  references:
+  - CCNA 2.4
+- id: ccna-2-014
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 4
+  cert_tags: *id001
+  stem: A WLC typically terminates which AP mode tunnels?
+  choices:
+  - id: a
+    text: Local mode CAPWAP
+    rationale: Local-mode APs tunnel client traffic to the WLC via CAPWAP.
+  - id: b
+    text: Only autonomous IOS AP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only mesh satellite RF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Bluetooth beacons
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Local-mode APs tunnel client traffic to the WLC via CAPWAP.
+  references:
+  - CCNA 2.6
+- id: ccna-2-016
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: BPDU Guard shuts a PortFast port when it receives what?
+  choices:
+  - id: a
+    text: A BPDU
+    rationale: BPDU Guard err-disables edge ports that receive BPDUs.
+  - id: b
+    text: An ARP reply
+    rationale: Not correct for this scenario.
+  - id: c
+    text: A DHCP offer
+    rationale: Not correct for this scenario.
+  - id: d
+    text: A DNS query
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: BPDU Guard err-disables edge ports that receive BPDUs.
+  references:
+  - CCNA 2.5
+- id: ccna-2-017
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: VTP transparent switches do what with VTP advertisements?
+  choices:
+  - id: a
+    text: Forward them but do not sync VLAN DB from them
+    rationale: Transparent mode forwards VTP without syncing the VLAN database.
+  - id: b
+    text: Always overwrite clients
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Drop all BPDUs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Disable all trunks
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Transparent mode forwards VTP without syncing the VLAN database.
+  references:
+  - CCNA 2.1
+- id: ccna-2-018
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: RSTP discarding state roughly replaces which 802.1D states?
+  choices:
+  - id: a
+    text: Blocking and listening
+    rationale: RSTP collapses blocking/listening into discarding.
+  - id: b
+    text: Only forwarding
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabled
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Learning only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: RSTP collapses blocking/listening into discarding.
+  references:
+  - CCNA 2.5
+- id: ccna-2-019
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: On EtherChannel, member ports must match which attribute?
+  choices:
+  - id: a
+    text: Speed/duplex and compatible configs
+    rationale: Inconsistent member settings suspend the channel.
+  - id: b
+    text: Unique VLANs only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Different native VLANs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Random MTUs
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Inconsistent member settings suspend the channel.
+  references:
+  - CCNA 2.4
+- id: ccna-2-021
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A native VLAN mismatch on a trunk typically causes what?
+  choices:
+  - id: a
+    text: CDP warnings and possible connectivity issues
+    rationale: Untagged frames disagree when native VLANs differ.
+  - id: b
+    text: Automatic OSPF adjacency
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Mandatory encryption
+    rationale: Not correct for this scenario.
+  - id: d
+    text: DHCP snooping disable
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Untagged frames disagree when native VLANs differ.
+  references:
+  - CCNA 2.2
+- id: ccna-2-022
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which Rapid PVST+ enhancement blocks superior BPDUs on a port?
+  choices:
+  - id: a
+    text: Root guard
+    rationale: Root guard protects the root role from unexpected superior BPDUs.
+  - id: b
+    text: Port security sticky
+    rationale: Not correct for this scenario.
+  - id: c
+    text: DHCP snooping
+    rationale: Not correct for this scenario.
+  - id: d
+    text: UDLD only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Root guard protects the root role from unexpected superior BPDUs.
+  references:
+  - CCNA 2.5
+- id: ccna-2-023
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: LLDP is best described as?
+  choices:
+  - id: a
+    text: IEEE neighbor discovery protocol
+    rationale: LLDP is the standards-based Layer 2 discovery protocol.
+  - id: b
+    text: Cisco-only proprietary CDP replacement mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: A routing protocol
+    rationale: Not correct for this scenario.
+  - id: d
+    text: A wireless encryption cipher
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: LLDP is the standards-based Layer 2 discovery protocol.
+  references:
+  - CCNA 2.3
+- id: ccna-2-024
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 2
+  cert_tags: *id001
+  stem: LAG between WLC and switch primarily provides?
+  choices:
+  - id: a
+    text: Bundled uplink capacity/redundancy
+    rationale: LAG aggregates WLC-to-switch connections.
+  - id: b
+    text: Only SSID encryption
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only RF channel planning
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CAPWAP DTLS keys
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: LAG aggregates WLC-to-switch connections.
+  references:
+  - CCNA 2.7
+- id: ccna-2-025
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Cloud-managed device access is an example of?
+  choices:
+  - id: a
+    text: Network device management access method
+    rationale: v1.1 includes cloud-managed access alongside SSH/HTTPS/AAA.
+  - id: b
+    text: Only OSPF network type
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only EtherChannel hash
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP diameter
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: v1.1 includes cloud-managed access alongside SSH/HTTPS/AAA.
+  references:
+  - CCNA 2.8
+- id: ccna-2-026
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Creating a WLAN with WPA2-PSK in a WLC GUI is primarily which task?
+  choices:
+  - id: a
+    text: Wireless LAN client connectivity configuration
+    rationale: WLAN GUI workflows cover SSID, security, and QoS profiles.
+  - id: b
+    text: Only underlay BFD
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BGP peering
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only VTP domain name
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: WLAN GUI workflows cover SSID, security, and QoS profiles.
+  references:
+  - CCNA 2.9
+- id: ccna-gen-0013-c25d4f
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: &id003
+  - ccna
+  stem: 'Scenario 13 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0014-76e0c6
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 14 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0015-77467b
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 15 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0016-c2ded6
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 16 (2.4): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.4: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.4; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.4; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.4; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.4, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0017-20e5fc
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 17 (2.5): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.5; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.5; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.5; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.5: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.5, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0018-0b8249
+  type: multiple_choice
+  topic_code: '2.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.6.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.6.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.6.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.6.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.6: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0019-6160d7
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 19 (2.7): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.7; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.7: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.7; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.7; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.7, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0020-b73f0f
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 20 (2.8): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.8: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.8; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.8; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.8; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.8, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0021-f6d16c
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 21 (2.9): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.9; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.9; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.9; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.9: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.9, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0066-84c96a
+  type: multiple_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.1] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.1.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.1.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.1: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0067-5ff3ed
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 67 (2.2): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.2; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.2: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.2; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.2; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0068-164686
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 68 (2.3): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.3: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.3; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.3; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.3; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0069-0eccfa
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 69 (2.4): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.4; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.4; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.4; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.4: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.4, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0070-346116
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 70 (2.5): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.5; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.5; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.5: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.5; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.5, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0071-06fb90
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 71 (2.6): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.6; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.6: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.6; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.6; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.6, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0072-8b551f
+  type: multiple_choice
+  topic_code: '2.7'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.7] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.7.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.7.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.7.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.7.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.7: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0073-385dcc
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 73 (2.8): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.8; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.8; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.8; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.8: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.8, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0074-6c9096
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 74 (2.9): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.9; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.9; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.9: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.9; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.9, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0119-dd80ce
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 119 (2.1): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.1; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.1: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.1; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.1; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0120-0f44d3
+  type: multiple_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.2] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.2.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.2.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.2: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0121-904fd0
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 121 (2.3): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.3; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.3; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.3; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.3: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0122-ed2153
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 122 (2.4): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.4; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.4; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.4: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.4; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.4, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0123-fb9b90
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 123 (2.5): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.5; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.5: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.5; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.5; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.5, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0124-836899
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 124 (2.6): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.6: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.6; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.6; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.6; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.6, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0125-22f309
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 125 (2.7): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.7; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.7; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.7; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.7: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.7, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0126-d036df
+  type: multiple_choice
+  topic_code: '2.8'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.8] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.8.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.8.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.8.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.8.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.8: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0127-63d808
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 127 (2.9): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.9; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.9: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.9; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.9; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.9, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0172-c25690
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 172 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0173-fdd6d4
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 173 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0174-ce1450
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.3.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.3.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0175-3d3980
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 175 (2.4): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.4; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.4: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.4; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.4; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.4, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0176-38eef7
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 176 (2.5): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.5: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.5; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.5; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.5; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.5, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0177-63ba15
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 177 (2.6): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.6; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.6; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.6; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.6: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.6, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0178-532a2a
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 178 (2.7): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.7; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.7; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.7: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.7; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.7, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0179-241eb9
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 179 (2.8): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.8; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.8: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.8; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.8; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.8, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0180-405e82
+  type: multiple_choice
+  topic_code: '2.9'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.9] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.9.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.9.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.9.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.9.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.9: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0225-a67cd8
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 225 (2.1): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.1; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.1; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.1; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.1: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0226-a3e6e8
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 226 (2.2): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.2; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.2; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.2: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.2; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0227-957908
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 227 (2.3): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.3; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.3: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.3; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.3; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0228-758047
+  type: multiple_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.4] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.4.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.4.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.4: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0229-42eedb
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 229 (2.5): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.5; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.5; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.5; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.5: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.5, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0230-1cb0b0
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 230 (2.6): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.6; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.6; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.6: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.6; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.6, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0231-f02984
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 231 (2.7): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.7; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.7: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.7; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.7; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.7, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0232-26f3b4
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 232 (2.8): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.8: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.8; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.8; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.8; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.8, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0233-9b138a
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 233 (2.9): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.9; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.9; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.9; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.9: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.9, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0278-e140b4
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 278 (2.1): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.1; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.1; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.1: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.1; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0279-a8ae39
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 279 (2.2): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.2; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.2: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.2; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.2; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0280-686134
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 280 (2.3): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.3: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.3; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.3; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.3; PAgP+LACP hybrid mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0281-ac2b25
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 281 (2.4): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.4; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.4; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.4; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.4: VLAN carrying untagged trunk frames → Native VLAN.'
+  correct:
+    answer: a
+  explanation: For 2.4, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0282-41e6dc
+  type: multiple_choice
+  topic_code: '2.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.5] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.5.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.5.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.5: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0283-c8a8f8
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 283 (2.6): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.6; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.6: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.6; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.6; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.6, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0284-7ab584
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 284 (2.7): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.7: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.7; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.7; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.7; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.7, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0285-0541b2
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 285 (2.8): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.8; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.8; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.8; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.8: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.8, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0286-c05b54
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 286 (2.9): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.9; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.9; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.9: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.9; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.9, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0331-b5c23b
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 331 (2.1): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.1; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.1; Static on only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.1, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0332-445ec4
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 332 (2.2): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.2, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0333-ddb8e0
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 333 (2.3): STP role that does not forward user frames?'
+  choices:
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.3; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.3; Root is a common mix-up.
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
+  correct:
+    answer: a
+  explanation: For 2.3, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0334-20c4b3
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 334 (2.4): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.4; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.4; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.4: Cisco proprietary EtherChannel negotiation → PAgP.'
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.4; LACP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.4, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0335-46e315
+  type: single_choice
+  topic_code: '2.5'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 335 (2.5): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.5; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.5: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.5; VLAN 1002 is a common mix-up.
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.5; Voice VLAN is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.5, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0336-b4ec81
+  type: multiple_choice
+  topic_code: '2.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
+  choices:
+  - id: a
+    text: Alternate/blocking
+    rationale: Correct for objective 2.6.
+  - id: b
+    text: Designated
+    rationale: Incorrect association for 2.6.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 2.6.
+  - id: d
+    text: Root
+    rationale: Distractor for 2.6.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 2.6: STP role that does not forward user frames maps to
+    Alternate/blocking.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0337-47e623
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 337 (2.7): Cisco proprietary EtherChannel negotiation?'
+  choices:
+  - id: b
+    text: LACP
+    rationale: Not correct for 2.7; LACP is a common mix-up.
+  - id: c
+    text: Static on only
+    rationale: Not correct for 2.7; Static on only is a common mix-up.
+  - id: d
+    text: PAgP+LACP hybrid mandatory
+    rationale: Not correct for 2.7; PAgP+LACP hybrid mandatory is a common mix-up.
+  - id: a
+    text: PAgP
+    rationale: 'Matches 2.7: Cisco proprietary EtherChannel negotiation → PAgP.'
+  correct:
+    answer: a
+  explanation: For 2.7, the accurate association is PAgP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0338-88c7f9
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 338 (2.8): VLAN carrying untagged trunk frames?'
+  choices:
+  - id: c
+    text: Voice VLAN
+    rationale: Not correct for 2.8; Voice VLAN is a common mix-up.
+  - id: d
+    text: Private VLAN always
+    rationale: Not correct for 2.8; Private VLAN always is a common mix-up.
+  - id: a
+    text: Native VLAN
+    rationale: 'Matches 2.8: VLAN carrying untagged trunk frames → Native VLAN.'
+  - id: b
+    text: VLAN 1002
+    rationale: Not correct for 2.8; VLAN 1002 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.8, the accurate association is Native VLAN.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0339-2e1c9f
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 339 (2.9): STP role that does not forward user frames?'
+  choices:
+  - id: d
+    text: Edge forwarding
+    rationale: Not correct for 2.9; Edge forwarding is a common mix-up.
+  - id: a
+    text: Alternate/blocking
+    rationale: 'Matches 2.9: STP role that does not forward user frames → Alternate/blocking.'
+  - id: b
+    text: Designated
+    rationale: Not correct for 2.9; Designated is a common mix-up.
+  - id: c
+    text: Root
+    rationale: Not correct for 2.9; Root is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 2.9, the accurate association is Alternate/blocking.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

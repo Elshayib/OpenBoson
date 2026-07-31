@@ -1,0 +1,90 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to build (e.g. v0.2.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Resolve tag
+        id: meta
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          VERSION="${TAG#v}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.meta.outputs.tag }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Validate version matches tag
+        shell: bash
+        run: |
+          VER=$(python -c "import tomllib,pathlib; print(tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'])")
+          test "$VER" = "${{ steps.meta.outputs.version }}" || {
+            echo "pyproject version $VER != tag version ${{ steps.meta.outputs.version }}"
+            exit 1
+          }
+
+      - name: Install packaging deps
+        run: python -m pip install -e ".[all]"
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build Windows installer
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: >
+          pwsh -File scripts/build_windows.ps1
+          -Version ${{ steps.meta.outputs.version }}
+          -Repository ${{ github.repository }}
+          -Channel stable
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: OpenBoson ${{ steps.meta.outputs.version }}
+          draft: false
+          prerelease: ${{ contains(steps.meta.outputs.version, '-') }}
+          fail_on_unmatched_files: true
+          files: |
+            dist/installer/OpenBoson-Setup-${{ steps.meta.outputs.version }}.exe
+            dist/installer/OpenBoson-Setup-${{ steps.meta.outputs.version }}.exe.sha256
+            dist/installer/OpenBoson-${{ steps.meta.outputs.version }}.json
+          body: |
+            ## OpenBoson ${{ steps.meta.outputs.version }}
+
+            Windows per-user installer (unsigned in v0.2 — see SUPPORT.md for SmartScreen guidance).
+
+            ### Assets
+            - `OpenBoson-Setup-${{ steps.meta.outputs.version }}.exe`
+            - `OpenBoson-Setup-${{ steps.meta.outputs.version }}.exe.sha256`
+            - `OpenBoson-${{ steps.meta.outputs.version }}.json`
+
+            Application updates never overwrite `~/.openboson/` user data.

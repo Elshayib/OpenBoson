@@ -1,0 +1,29 @@
+title: Access VLAN Isolation Check
+lab_id: ccna_vlan_isolation
+topic_code: '2.1'
+difficulty: 3
+description: Place PCs in different VLANs; verify isolation intent via config.
+objectives:
+- Different access VLANs
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  links: []
+tasks:
+- id: t1
+  instructions: Put Gi0/1 in VLAN 10 and Gi0/2 in VLAN 20 as access ports.
+  grading_rules:
+    device: SW1
+    require:
+    - switchport access vlan 10
+    - switchport access vlan 20
+solution_config: "interface GigabitEthernet0/1\n switchport access vlan 10\ninterface\
+  \ GigabitEthernet0/2\n switchport access vlan 20\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

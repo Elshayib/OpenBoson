@@ -1,0 +1,29 @@
+title: Hostname and Banner
+lab_id: ccna_hostname_banner
+topic_code: '4.1'
+difficulty: 1
+description: Set device identity basics.
+objectives:
+- hostname
+- banner
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: Set hostname BRANCH1.
+  grading_rules:
+    device: R1
+    require:
+    - hostname BRANCH1
+solution_config: 'hostname BRANCH1
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

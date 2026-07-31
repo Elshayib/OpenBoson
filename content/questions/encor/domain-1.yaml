@@ -1,0 +1,1872 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: encor-1-001
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: &id001
+  - ccnp
+  stem: In a 3-tier campus, which layer typically aggregates access switches?
+  choices:
+  - id: a
+    text: Distribution
+    rationale: Distribution aggregates access and applies policy toward core.
+  - id: b
+    text: Core
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Access
+    rationale: Not correct for this scenario.
+  - id: d
+    text: WAN edge
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Distribution aggregates access and applies policy toward core.
+  references:
+  - ENCOR 1.1
+- id: encor-1-002
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Cisco SD-Access fabric uses which overlay identifier commonly?
+  choices:
+  - id: a
+    text: LISP / VXLAN (VNI) concepts
+    rationale: SD-Access uses LISP control and VXLAN data plane overlays.
+  - id: b
+    text: Only Frame Relay DLCI
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only ATM VPI
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only HDLC
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SD-Access uses LISP control and VXLAN data plane overlays.
+  references:
+  - ENCOR 1.3
+- id: encor-1-003
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A spine-leaf Clos fabric primarily optimizes which traffic pattern?
+  choices:
+  - id: a
+    text: East-west
+    rationale: Leaf-spine equalizes east-west paths.
+  - id: b
+    text: Only north-south dialup
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only Token Ring
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only serial TDM
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Leaf-spine equalizes east-west paths.
+  references:
+  - ENCOR 1.1
+- id: encor-1-004
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Cisco Catalyst SD-WAN vManage is primarily responsible for?
+  choices:
+  - id: a
+    text: Centralized management/orchestration
+    rationale: vManage manages SD-WAN fabric policies and devices.
+  - id: b
+    text: Only BFD sessions
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only OSPF DR election
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE budgeting
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: vManage manages SD-WAN fabric policies and devices.
+  references:
+  - ENCOR 1.2
+- id: encor-1-005
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which design separates underlay reachability from overlay services?
+  choices:
+  - id: a
+    text: Fabric overlay/underlay
+    rationale: Underlay provides IP reachability; overlay carries endpoints/services.
+  - id: b
+    text: Only flat L2 everywhere
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only hub-spoke Frame Relay
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only static default only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Underlay provides IP reachability; overlay carries endpoints/services.
+  references:
+  - ENCOR 1.3
+- id: encor-1-006
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: SSO/NSF on dual supervisors primarily aims to?
+  choices:
+  - id: a
+    text: Minimize disruption on switchover
+    rationale: Stateful switchover with NSF keeps forwarding during RP failover.
+  - id: b
+    text: Increase STP diameter only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Disable CEF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Force process switching
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Stateful switchover with NSF keeps forwarding during RP failover.
+  references:
+  - ENCOR 1.1
+- id: encor-1-007
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: An anycast gateway in fabric means?
+  choices:
+  - id: a
+    text: Same gateway IP on multiple leaves
+    rationale: Anycast SVI provides local gateway on each leaf.
+  - id: b
+    text: Unique gateway per VLAN only globally
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only HSRP v1 required
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only GLBP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Anycast SVI provides local gateway on each leaf.
+  references:
+  - ENCOR 1.3
+- id: encor-1-008
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: A collapsed core design merges which layers?
+  choices:
+  - id: a
+    text: Core and distribution
+    rationale: Collapsed core combines core+distribution functions.
+  - id: b
+    text: Only access and WAN
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only wireless and firewall
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DNS and DHCP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Collapsed core combines core+distribution functions.
+  references:
+  - ENCOR 1.1
+- id: encor-1-009
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: ECMP in underlay typically requires?
+  choices:
+  - id: a
+    text: Equal-cost paths installed
+    rationale: Equal-cost multipath load-shares across equal metrics.
+  - id: b
+    text: Only single best path always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only policy routing
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only spanning tree
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Equal-cost multipath load-shares across equal metrics.
+  references:
+  - ENCOR 1.1
+- id: encor-1-010
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: LISP EID vs RLOC roles?
+  choices:
+  - id: a
+    text: Endpoint IDs vs routing locators
+    rationale: LISP separates identity (EID) from location (RLOC).
+  - id: b
+    text: Only VLAN vs VXLAN
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AS vs community
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DSCP vs CoS
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: LISP separates identity (EID) from location (RLOC).
+  references:
+  - ENCOR 1.3
+- id: encor-1-011
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: ToR switch in leaf-spine is typically a?
+  choices:
+  - id: a
+    text: Leaf
+    rationale: Top-of-rack leaves connect servers to spines.
+  - id: b
+    text: Spine only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Route reflector only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: WAN edge only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Top-of-rack leaves connect servers to spines.
+  references:
+  - ENCOR 1.1
+- id: encor-1-012
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Campus QoS trust boundary is often at?
+  choices:
+  - id: a
+    text: Access edge / IP phone
+    rationale: Trust and classify near the edge.
+  - id: b
+    text: Only ISP core
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only DNS root
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only BGP RR
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Trust and classify near the edge.
+  references:
+  - ENCOR 1.4
+- id: encor-1-013
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Cisco StackWise / StackWise Virtual primarily provides?
+  choices:
+  - id: a
+    text: Control-plane and forwarding abstraction across members
+    rationale: Stacking presents multiple chassis as one logical switch.
+  - id: b
+    text: Only wireless mesh
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only MPLS TE
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NetFlow export
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Stacking presents multiple chassis as one logical switch.
+  references:
+  - ENCOR 1.1
+- id: encor-1-014
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: FHRP in campus design primarily provides?
+  choices:
+  - id: a
+    text: First-hop gateway redundancy
+    rationale: HSRP/VRRP keep default gateway available.
+  - id: b
+    text: Only underlay multicast RP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VXLAN VNI allocation
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CoPP class-maps
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: HSRP/VRRP keep default gateway available.
+  references:
+  - ENCOR 1.1
+- id: encor-1-015
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: SD-WAN control plane elements typically include?
+  choices:
+  - id: a
+    text: vSmart / orchestration components
+    rationale: SD-WAN separates control/management from data plane edges.
+  - id: b
+    text: Only access switches as RR mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP root
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE PSE
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SD-WAN separates control/management from data plane edges.
+  references:
+  - ENCOR 1.2
+- id: encor-1-016
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Traditional campus interoperating with SD-Access often needs?
+  choices:
+  - id: a
+    text: Border/fusion design considerations
+    rationale: Borders connect fabric to non-fabric domains.
+  - id: b
+    text: Only disabling all routing
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only removing VLANs forever
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Token Ring bridges
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Borders connect fabric to non-fabric domains.
+  references:
+  - ENCOR 1.3
+- id: encor-1-017
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Interpreting a policy-map with police statements relates to?
+  choices:
+  - id: a
+    text: QoS configuration
+    rationale: QoS policies classify/mark/police/shape traffic.
+  - id: b
+    text: Only VTP pruning
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only CDP timers
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DHCP pools
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: QoS policies classify/mark/police/shape traffic.
+  references:
+  - ENCOR 1.4
+- id: encor-1-018
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A benefit of Catalyst SD-WAN is often?
+  choices:
+  - id: a
+    text: Centralized policy with transport independence
+    rationale: SD-WAN centralizes policy across transports.
+  - id: b
+    text: Mandatory single underlay protocol only forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Removal of encryption options
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only L2 loops required
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SD-WAN centralizes policy across transports.
+  references:
+  - ENCOR 1.2
+- id: encor-1-019
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Cloud / fabric capacity planning in enterprise design addresses?
+  choices:
+  - id: a
+    text: Scale and resiliency of tiers/fabrics
+    rationale: Design principles include capacity and HA for fabrics/cloud.
+  - id: b
+    text: Only cable color standards
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only console baud rates
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only banner motd text
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Design principles include capacity and HA for fabrics/cloud.
+  references:
+  - ENCOR 1.1
+- id: encor-1-020
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: DSCP markings in QoS configs primarily influence?
+  choices:
+  - id: a
+    text: Per-hop behavior treatment
+    rationale: Markings drive classification and PHB along the path.
+  - id: b
+    text: Only STP root priority
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTP domain
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only RADIUS ports
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Markings drive classification and PHB along the path.
+  references:
+  - ENCOR 1.4
+- id: encor-gen-0000-2ac411
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: &id002
+  - ccnp
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0001-10c48f
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 1 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0002-8e4b0e
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 2 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0003-8bd870
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 3 (1.4): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.4; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.4; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.4; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0027-fedb88
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 27 (1.1): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.1; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.1; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.1; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0028-5b954c
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 28 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0029-750db3
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 29 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0030-d3615c
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.4.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.4.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0054-74bff3
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0055-7ba44b
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 55 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0056-d10888
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 56 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0057-92ff7d
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 57 (1.4): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.4; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.4; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.4; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0081-f41cf0
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 81 (1.1): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.1; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.1; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.1; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0082-3dcc84
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 82 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0083-aa5693
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 83 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0084-1acb86
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.4.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.4.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0108-2eeb12
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0109-222c82
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 109 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0110-136560
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 110 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0111-d27b92
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 111 (1.4): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.4; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.4; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.4; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0135-d9c11e
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 135 (1.1): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.1; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.1; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.1; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0136-77c58c
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 136 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0137-46eda0
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 137 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0138-0a5001
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.4.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.4.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0162-1b44f9
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0163-815f59
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 163 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0164-2a30ec
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 164 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0165-6f237c
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 165 (1.4): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.4; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.4; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.4; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0189-f1916d
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 189 (1.1): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: b
+    text: Network
+    rationale: Not correct for 1.1; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.1; Data link is a common mix-up.
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.1; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0190-581ff0
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 190 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0191-7a44cb
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 191 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0192-318833
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.4.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.4.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0216-8027f1
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.1.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.1.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0217-6c7cc8
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 217 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0218-0f3033
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 218 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0219-0948c6
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 219 (1.4): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.4; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.4; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.4; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.4, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0243-524751
+  type: single_choice
+  topic_code: '1.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 243 (1.1): OSI layer for end-to-end reliable delivery?'
+  choices:
+  - id: d
+    text: Physical
+    rationale: Not correct for 1.1; Physical is a common mix-up.
+  - id: a
+    text: Transport
+    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
+  - id: b
+    text: Network
+    rationale: Not correct for 1.1; Network is a common mix-up.
+  - id: c
+    text: Data link
+    rationale: Not correct for 1.1; Data link is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.1, the accurate association is Transport.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0244-d0bcb3
+  type: single_choice
+  topic_code: '1.2'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 244 (1.2): IPv6 address type on every link?'
+  choices:
+  - id: a
+    text: Link-local
+    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
+  - id: b
+    text: Global unicast
+    rationale: Not correct for 1.2; Global unicast is a common mix-up.
+  - id: c
+    text: Unique local
+    rationale: Not correct for 1.2; Unique local is a common mix-up.
+  - id: d
+    text: Anycast only
+    rationale: Not correct for 1.2; Anycast only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 1.2, the accurate association is Link-local.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0245-c3adb7
+  type: single_choice
+  topic_code: '1.3'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 245 (1.3): Prefix length for mask 255.255.255.192?'
+  choices:
+  - id: b
+    text: /24
+    rationale: Not correct for 1.3; /24 is a common mix-up.
+  - id: c
+    text: /25
+    rationale: Not correct for 1.3; /25 is a common mix-up.
+  - id: d
+    text: /30
+    rationale: Not correct for 1.3; /30 is a common mix-up.
+  - id: a
+    text: /26
+    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
+  correct:
+    answer: a
+  explanation: For 1.3, the accurate association is /26.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0246-5008d6
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
+  choices:
+  - id: a
+    text: Transport
+    rationale: Correct for objective 1.4.
+  - id: b
+    text: Network
+    rationale: Incorrect association for 1.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 1.4.
+  - id: d
+    text: Data link
+    rationale: Distractor for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
+    Transport.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0000
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 3
+  cert_tags: &id003
+  - ccnp
+  stem: 'Multiple-select check for 1.1: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.1.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.1.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.1.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.1 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0001
+  type: multiple_choice
+  topic_code: '1.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Multiple-select check for 1.2: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.2.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.2.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.2.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.2 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0002
+  type: multiple_choice
+  topic_code: '1.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Multiple-select check for 1.3: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.3.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.3.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.3.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.3 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-0003
+  type: multiple_choice
+  topic_code: '1.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Multiple-select check for 1.4: which items are operationally sound?'
+  choices:
+  - id: a
+    text: Verify before change windows
+    rationale: Correct for 1.4.
+  - id: b
+    text: Skip documentation
+    rationale: Unsafe for 1.4.
+  - id: c
+    text: Capture show/verify outputs
+    rationale: Correct for 1.4.
+  - id: d
+    text: Disable logging permanently
+    rationale: Incorrect for 1.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Sound operations for 1.4 include verification and documentation.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-extra-00
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: &id004
+  - ccnp
+  stem: Extra multi-select 0 for volume gate on 1.1?
+  choices:
+  - id: a
+    text: Verify before changes
+    rationale: Correct ops habit.
+  - id: b
+    text: Skip all logs
+    rationale: Unsafe.
+  - id: c
+    text: Capture show output
+    rationale: Correct verification.
+  - id: d
+    text: Disable AAA forever
+    rationale: Incorrect.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Verification and evidence collection are required study habits.
+  references:
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-extra-01
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Extra multi-select 1 for volume gate on 1.1?
+  choices:
+  - id: a
+    text: Verify before changes
+    rationale: Correct ops habit.
+  - id: b
+    text: Skip all logs
+    rationale: Unsafe.
+  - id: c
+    text: Capture show output
+    rationale: Correct verification.
+  - id: d
+    text: Disable AAA forever
+    rationale: Incorrect.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Verification and evidence collection are required study habits.
+  references:
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-nsc-extra-02
+  type: multiple_choice
+  topic_code: '1.1'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Extra multi-select 2 for volume gate on 1.1?
+  choices:
+  - id: a
+    text: Verify before changes
+    rationale: Correct ops habit.
+  - id: b
+    text: Skip all logs
+    rationale: Unsafe.
+  - id: c
+    text: Capture show output
+    rationale: Correct verification.
+  - id: d
+    text: Disable AAA forever
+    rationale: Incorrect.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: Verification and evidence collection are required study habits.
+  references:
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

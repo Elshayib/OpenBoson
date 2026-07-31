@@ -1,0 +1,28 @@
+title: EtherChannel Static
+lab_id: ccna_etherchannel_static
+topic_code: '2.4'
+difficulty: 3
+description: Bundle two switch ports into a static Port-Channel.
+objectives:
+- channel-group mode on
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  links: []
+tasks:
+- id: t1
+  instructions: Place Gi0/1 and Gi0/2 into channel-group 1 mode on.
+  grading_rules:
+    device: SW1
+    require:
+    - channel-group 1 mode on
+solution_config: "interface GigabitEthernet0/1\n channel-group 1 mode on\ninterface\
+  \ GigabitEthernet0/2\n channel-group 1 mode on\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

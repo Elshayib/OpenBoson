@@ -84,11 +84,15 @@ def save_exam_result(session: ExamSession, result: ExamResult) -> int:
             ua = session.answers.get(q.id)
             ans_json = json.dumps(ua.answer) if ua and ua.answer is not None else "[]"
             is_correct = ua.is_correct if ua else None
+            cert_tag = q.cert_tags[0] if q.cert_tags else ""
             s.add(
                 UserAnswer(
                     session_id=orm.id,
                     question_id=None,  # questions aren't persisted as rows yet
                     bank_question_id=q.id,
+                    topic_code=q.topic_code or "",
+                    cert_tag=cert_tag,
+                    exam_version=exam_version,
                     answer_json=ans_json,
                     is_correct=is_correct,
                     time_spent_seconds=int(ua.time_spent_seconds) if ua else 0,
@@ -172,15 +176,48 @@ class LabHistoryItem:
 
 @dataclass
 class DomainAggregate:
-    """Aggregate stats for one CCNA domain prefix (e.g. '1.')."""
+    """Aggregate stats for one exam-domain prefix (e.g. '1.')."""
+
     domain_prefix: str
     total_questions: int
     correct: int
     weight: float = 0.0
+    cert_tag: str | None = None
 
     @property
     def percent(self) -> float:
         return self.correct / self.total_questions if self.total_questions else 0.0
+
+
+@dataclass
+class ScorePoint:
+    """One exam attempt in a score trend series."""
+
+    score: float
+    exam_code: str
+    finished_at: datetime | None
+
+
+_CERT_ALIASES: dict[str, str] = {
+    "encor": "ccnp",
+    "350-401": "ccnp",
+    "200-301": "ccna",
+}
+
+
+def _normalize_cert(cert: str | None) -> str | None:
+    if not cert:
+        return None
+    key = cert.strip().lower()
+    return _CERT_ALIASES.get(key, key)
+
+
+def _domain_prefix(topic_code: str | None) -> str:
+    """Roll a topic code (``1.1``) up to a domain prefix (``1.``)."""
+    if not topic_code:
+        return ""
+    head = topic_code.split(".", 1)[0].strip()
+    return f"{head}." if head else ""
 
 
 def exam_history(limit: int = 50) -> list[ExamHistoryItem]:
@@ -251,6 +288,123 @@ def lab_summary() -> dict[str, Any]:
             "total_labs": total,
             "avg_score": avg_score,
         }
+
+
+def domain_totals(cert: str | None = None) -> list[DomainAggregate]:
+    """Per-domain correct/total counts from persisted exam answers."""
+    cert_n = _normalize_cert(cert)
+    with _session() as s:
+        q = s.query(UserAnswer).filter(UserAnswer.is_correct.isnot(None))
+        if cert_n:
+            q = q.filter(UserAnswer.cert_tag == cert_n)
+        rows = q.all()
+
+    buckets: dict[str, list[int]] = {}  # prefix -> [correct, total]
+    for row in rows:
+        prefix = _domain_prefix(row.topic_code)
+        if not prefix:
+            continue
+        correct, total = buckets.setdefault(prefix, [0, 0])
+        total += 1
+        if row.is_correct:
+            correct += 1
+        buckets[prefix] = [correct, total]
+
+    return [
+        DomainAggregate(
+            domain_prefix=prefix,
+            total_questions=total,
+            correct=correct,
+            cert_tag=cert_n,
+        )
+        for prefix, (correct, total) in sorted(buckets.items())
+    ]
+
+
+def weak_domains(cert: str | None = None, limit: int = 5) -> list[DomainAggregate]:
+    """Domains with the lowest accuracy (weakest first)."""
+    domains = [d for d in domain_totals(cert=cert) if d.total_questions > 0]
+    domains.sort(key=lambda d: (d.percent, -d.total_questions, d.domain_prefix))
+    return domains[: max(0, limit)]
+
+
+def recent_missed_question_ids(limit: int = 20) -> list[str]:
+    """Bank question ids missed most recently (unique, newest first)."""
+    with _session() as s:
+        rows = (
+            s.query(UserAnswer.bank_question_id, ExamSessionORM.finished_at)
+            .join(ExamSessionORM, UserAnswer.session_id == ExamSessionORM.id)
+            .filter(UserAnswer.is_correct.is_(False))
+            .filter(UserAnswer.bank_question_id.isnot(None))
+            .order_by(ExamSessionORM.finished_at.desc(), UserAnswer.id.desc())
+            .all()
+        )
+    seen: set[str] = set()
+    out: list[str] = []
+    for qid, _finished in rows:
+        if not qid or qid in seen:
+            continue
+        seen.add(qid)
+        out.append(qid)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def score_trend(limit: int = 20) -> list[ScorePoint]:
+    """Recent exam scores, oldest first (convenient for sparkline/charts)."""
+    history = exam_history(limit=limit)
+    # exam_history is newest-first; reverse for chronological trend.
+    return [
+        ScorePoint(score=h.score, exam_code=h.exam_code, finished_at=h.finished_at)
+        for h in reversed(history)
+    ]
+
+
+def latest_activity() -> dict[str, Any] | None:
+    """Most recent finished exam or lab, for Dashboard 'continue' CTA."""
+    exams = exam_history(limit=1)
+    labs = lab_history(limit=1)
+    candidates: list[tuple[float, dict[str, Any]]] = []
+
+    def _ts(when: datetime | None) -> float:
+        if when is None:
+            return 0.0
+        if when.tzinfo is None:
+            return when.replace(tzinfo=timezone.utc).timestamp()
+        return when.timestamp()
+
+    if exams:
+        e = exams[0]
+        candidates.append(
+            (
+                _ts(e.finished_at),
+                {
+                    "kind": "exam",
+                    "exam_code": e.exam_code,
+                    "mode": e.mode,
+                    "score": e.score,
+                    "finished_at": e.finished_at,
+                },
+            )
+        )
+    if labs:
+        lab = labs[0]
+        candidates.append(
+            (
+                _ts(lab.finished_at),
+                {
+                    "kind": "lab",
+                    "lab_id": lab.lab_id,
+                    "score": lab.score,
+                    "finished_at": lab.finished_at,
+                },
+            )
+        )
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: item[0], reverse=True)
+    return candidates[0][1]
 
 
 # -----/ Practice attempts /-----

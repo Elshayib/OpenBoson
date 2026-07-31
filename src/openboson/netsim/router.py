@@ -2,34 +2,31 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict
 
-from openboson.netsim.lab_loader import load_lab
 from openboson.netsim.lab_schema import LabBank
 from openboson.netsim.session import LabResult, LabSession, score_lab
+from openboson.registry import get_registry
 
 _ROUTER = APIRouter(prefix="/api/v1", tags=["netsim"])
 
 _LABS: dict[str, LabBank] = {}
 _SESSIONS: dict[str, LabSession] = {}
-_DEFAULT_LABS_DIR = Path(__file__).resolve().parents[3] / "data" / "demo_labs"
+
+
+def clear_content_cache() -> None:
+    """Drop cached labs so the next request reloads from the registry."""
+    _LABS.clear()
 
 
 def _load_default_labs() -> None:
     if _LABS:
         return
-    if not _DEFAULT_LABS_DIR.is_dir():
-        return
-    for path in _DEFAULT_LABS_DIR.glob("*.yaml"):
-        try:
-            lab = load_lab(path)
-            _LABS[lab.lab_id] = lab
-        except Exception:
-            continue
+    for lab in get_registry().labs():
+        _LABS[lab.lab_id] = lab
 
 
 def _serialize_topology(lab: LabBank) -> dict[str, Any]:
@@ -126,6 +123,23 @@ def submit_config(session_id: str, body: SubmitConfigRequest) -> dict[str, Any]:
         "forbidden_found": grade.forbidden_found,
         "order_violations": grade.order_violations,
         "feedback": grade.feedback,
+    }
+
+
+@_ROUTER.post("/lab-sessions/{session_id}/reset")
+def reset_lab_session(session_id: str) -> dict[str, Any]:
+    session = _SESSIONS.get(session_id)
+    if session is None:
+        raise HTTPException(status_code=404, detail="Session not found")
+    session.reset()
+    lab = session.lab
+    return {
+        "session_id": session_id,
+        "lab_id": lab.lab_id,
+        "task_index": session.current_task_index,
+        "task_count": len(lab.tasks),
+        "task": _serialize_task(lab, session.current_task_index),
+        "topology": _serialize_topology(lab),
     }
 
 

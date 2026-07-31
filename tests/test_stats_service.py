@@ -100,6 +100,86 @@ def test_lab_history(fake_engine, lab):
     assert history[0].lab_id == lab.lab_id
 
 
+def test_save_exam_persists_objective_identity(fake_engine, exam_bank):
+    from openboson.db import get_sessionmaker
+    from openboson.models import UserAnswer
+
+    sess = ExamSession.create(exam_bank, mode=ExamMode.PRACTICE)
+    for q in sess.questions:
+        sess.submit_answer(q.id, _correct_answer(q), grade_now=True)
+    result = score_exam(sess)
+    row_id = stats_service.save_exam_result(sess, result)
+
+    Session = get_sessionmaker(stats_service._engine)
+    with Session() as s:
+        answers = s.query(UserAnswer).filter(UserAnswer.session_id == row_id).all()
+    by_id = {a.bank_question_id: a for a in answers}
+    for q in sess.questions:
+        saved = by_id[q.id]
+        assert saved.topic_code == q.topic_code
+        assert saved.cert_tag == q.cert_tags[0]
+        assert saved.exam_version == exam_bank.version
+
+
+def test_weak_domains_after_failed_exam(fake_engine, exam_bank):
+    """Fail every question → each domain is weak with 0% accuracy."""
+    sess = ExamSession.create(exam_bank, mode=ExamMode.EXAM)
+    for q in sess.questions:
+        sess.submit_answer(q.id, _wrong_answer(q), grade_now=True)
+    result = score_exam(sess)
+    assert result.score < 1.0
+    stats_service.save_exam_result(sess, result)
+
+    domains = stats_service.domain_totals()
+    assert domains
+    assert all(d.percent == 0.0 for d in domains)
+    assert all(d.total_questions > 0 for d in domains)
+
+    weak = stats_service.weak_domains(limit=5)
+    assert weak
+    assert weak[0].percent == 0.0
+
+    ccna_weak = stats_service.weak_domains(cert="ccna", limit=5)
+    assert ccna_weak
+    assert all(d.cert_tag == "ccna" for d in ccna_weak)
+
+    missed = stats_service.recent_missed_question_ids(limit=50)
+    assert set(missed) == {q.id for q in sess.questions}
+
+    trend = stats_service.score_trend(limit=5)
+    assert len(trend) == 1
+    assert trend[0].score == result.score
+
+
+def test_weak_domains_empty_without_history(fake_engine):
+    assert stats_service.weak_domains() == []
+    assert stats_service.recent_missed_question_ids() == []
+    assert stats_service.score_trend() == []
+    assert stats_service.latest_activity() is None
+
+
+def _wrong_answer(question):
+    """Return an incorrect payload so grading marks the question wrong."""
+    from openboson.bank_schema import QuestionType
+
+    ca = question.correct_answer_model
+    if question.type == QuestionType.SINGLE_CHOICE:
+        wrong = next(
+            (c.id for c in (question.choices or []) if c.id != ca.answer),
+            "__wrong__",
+        )
+        return {"answer": wrong}
+    if question.type == QuestionType.MULTIPLE_CHOICE:
+        return {"answers": []}
+    if question.type == QuestionType.DRAG_MATCH:
+        return {"pairs": []}
+    if question.type == QuestionType.ORDERED_LIST:
+        return {"order": list(reversed(ca.order))}
+    if question.type == QuestionType.SIM:
+        return {"config": "hostname WRONG"}
+    return {}
+
+
 def _correct_answer(question):
     """Extract the correct answer payload from a Question for submission."""
     from openboson.bank_schema import QuestionType

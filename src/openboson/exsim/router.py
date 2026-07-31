@@ -17,13 +17,12 @@ Endpoints (all under ``/api/v1``):
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict
 
-from openboson.bank_loader import load_banks_from_dir, load_question_pool, merge_banks
+from openboson.bank_loader import merge_banks
 from openboson.bank_schema import ExamBank, Question, QuestionPool, QuestionType
 from openboson.exsim.blueprint import (
     BLUEPRINTS,
@@ -36,9 +35,8 @@ from openboson.exsim.blueprint import (
 )
 from openboson.exsim.scoring import ExamResult, score_exam
 from openboson.exsim.session import ExamMode, ExamSession, QuestionPresentation
+from openboson.registry import get_registry
 
-# Module-level state for MVP. A future task will replace this with a
-# registry that reads from data/ and persists sessions to SQLite.
 _ROUTER = APIRouter(prefix="/api/v1", tags=["exsim"])
 
 # Loaded raw banks (library data). Not startable as mega-exams.
@@ -48,12 +46,6 @@ _POOL: QuestionPool | None = None
 # Active sessions, keyed by session_id.
 _SESSIONS: dict[str, ExamSession] = {}
 
-# Default banks shipped with the repo. The router preloads them lazily.
-# Path: src/openboson/exsim/router.py -> repo root (parents[3]) -> data/demo_banks
-_DEFAULT_BANKS_DIR = (
-    Path(__file__).resolve().parents[3] / "data" / "demo_banks"
-)
-
 # Unambiguous exam-code aliases → blueprint id (never raw pool codes).
 _CODE_ALIASES: dict[str, str] = {
     "200-301": "ccna-200-301",
@@ -61,31 +53,39 @@ _CODE_ALIASES: dict[str, str] = {
 }
 
 
+def clear_content_cache() -> None:
+    """Drop cached banks/pool so the next request reloads from the registry."""
+    global _POOL
+    _BANKS.clear()
+    _POOL = None
+
+
 def _load_default_banks() -> None:
-    """Pre-load the bundled demo banks / pool if not already loaded."""
+    """Pre-load banks / pool from the content registry if not already loaded."""
     global _POOL
     if _BANKS and _POOL is not None:
         return
-    if not _DEFAULT_BANKS_DIR.is_dir():
+    reg = get_registry()
+    banks = reg.banks()
+    if not banks:
         return
-    for bank in load_banks_from_dir(_DEFAULT_BANKS_DIR):
+    for bank in banks:
         _BANKS[bank.code] = bank
-    if _BANKS:
-        _POOL = load_question_pool(_DEFAULT_BANKS_DIR)
-        # Keep a merged synthetic bank for library lookups only.
-        pool = merge_banks(list(_BANKS.values()))
-        _BANKS.setdefault(
-            "pool",
-            ExamBank(
-                title="OpenBoson Question Pool",
-                code="pool",
-                version="v1",
-                provider="openboson",
-                description="Merged question pool (library only)",
-                topics=pool.topics or list(next(iter(_BANKS.values())).topics),
-                questions=pool.questions,
-            ),
-        )
+    _POOL = reg.question_pool()
+    # Keep a merged synthetic bank for library lookups only.
+    pool = merge_banks(list(_BANKS.values()))
+    _BANKS.setdefault(
+        "pool",
+        ExamBank(
+            title="OpenBoson Question Pool",
+            code="pool",
+            version="v1",
+            provider="openboson",
+            description="Merged question pool (library only)",
+            topics=pool.topics or list(next(iter(_BANKS.values())).topics),
+            questions=pool.questions,
+        ),
+    )
 
 
 def _resolve_blueprint(exam_id: str) -> ExamBlueprint:

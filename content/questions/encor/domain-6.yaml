@@ -1,0 +1,2336 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: encor-6-001
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 3
+  cert_tags: &id001
+  - ccnp
+  stem: Model-driven programmability centers on?
+  choices:
+  - id: a
+    text: YANG data models
+    rationale: YANG.
+  - id: b
+    text: Only TCL exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only expect scripts exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only macros exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: YANG.
+  references:
+  - ENCOR 6.3
+- id: encor-6-002
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Interpreting RESTCONF payloads often means reading?
+  choices:
+  - id: a
+    text: JSON/XML response bodies and status codes
+    rationale: REST API results include codes and payloads.
+  - id: b
+    text: Only STP BPDUs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only CDP version
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only PoE class
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: REST API results include codes and payloads.
+  references:
+  - ENCOR 6.5
+- id: encor-6-003
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Ansible is best categorized as?
+  choices:
+  - id: a
+    text: Agentless orchestration
+    rationale: Ansible is commonly agentless.
+  - id: b
+    text: Only agent-required Puppet exclusive forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only a routing protocol
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only a wireless cipher
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Ansible is commonly agentless.
+  references:
+  - ENCOR 6.7
+- id: encor-6-004
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Basic Python scripts for networking often use?
+  choices:
+  - id: a
+    text: Libraries to call APIs or parse text
+    rationale: ENCOR expects basic Python literacy.
+  - id: b
+    text: Only to replace ASICs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only to elect DR
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only to age CAM
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ENCOR expects basic Python literacy.
+  references:
+  - ENCOR 6.1
+- id: encor-6-005
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Valid JSON requires?
+  choices:
+  - id: a
+    text: Well-formed objects/arrays with quoted keys
+    rationale: Construct valid JSON-encoded files.
+  - id: b
+    text: Only Python True literals
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only trailing commas required
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only XML tags
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Construct valid JSON-encoded files.
+  references:
+  - ENCOR 6.2
+- id: encor-6-006
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: APIs for Catalyst Center and SD-WAN Manager enable?
+  choices:
+  - id: a
+    text: Programmatic inventory/policy/operations
+    rationale: Controller APIs automate platforms.
+  - id: b
+    text: Only console cabling
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only optical dBm reads exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only punch-down maps
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Controller APIs automate platforms.
+  references:
+  - ENCOR 6.4
+- id: encor-6-007
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: An EEM applet can automate?
+  choices:
+  - id: a
+    text: Configuration, troubleshooting, or data collection reactions
+    rationale: EEM reacts to events with actions.
+  - id: b
+    text: Only underlay ECMP math exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTP sync
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only LACP hashing exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: EEM reacts to events with actions.
+  references:
+  - ENCOR 6.6
+- id: encor-6-008
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Agent vs agentless orchestration differs by?
+  choices:
+  - id: a
+    text: Whether managed nodes run a persistent agent
+    rationale: Compare agent vs agentless tools.
+  - id: b
+    text: Only STP modes
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NAT types
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only syslog severity
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Compare agent vs agentless tools.
+  references:
+  - ENCOR 6.7
+- id: encor-6-009
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: YANG models describe?
+  choices:
+  - id: a
+    text: Configuration and operational data structure
+    rationale: YANG is a data modeling language.
+  - id: b
+    text: Only Ethernet PHY voltages
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only cable colors
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only rack U heights
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: YANG is a data modeling language.
+  references:
+  - ENCOR 6.3
+- id: encor-6-010
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: HTTP 201 Created commonly indicates?
+  choices:
+  - id: a
+    text: Successful resource creation
+    rationale: Interpret REST status codes.
+  - id: b
+    text: Unauthorized
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Server error
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Not found
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Interpret REST status codes.
+  references:
+  - ENCOR 6.5
+- id: encor-6-011
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: A Python list is written with?
+  choices:
+  - id: a
+    text: Square brackets
+    rationale: Basic Python components include lists/dicts.
+  - id: b
+    text: Only curly braces exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only angle brackets
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only parentheses exclusive forever
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Basic Python components include lists/dicts.
+  references:
+  - ENCOR 6.1
+- id: encor-6-012
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: JSON null is represented as?
+  choices:
+  - id: a
+    text: 'null'
+    rationale: JSON uses null.
+  - id: b
+    text: None (Python only as JSON)
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 'NULL'
+    rationale: Not correct for this scenario.
+  - id: d
+    text: undefined (JS only as JSON)
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: JSON uses null.
+  references:
+  - ENCOR 6.2
+- id: encor-6-013
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: SD-WAN Manager APIs are used to?
+  choices:
+  - id: a
+    text: Automate WAN fabric operations/policy
+    rationale: Controller APIs cover SD-WAN Manager.
+  - id: b
+    text: Only set STP priority
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only create VLANs on access
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only configure PortFast
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Controller APIs cover SD-WAN Manager.
+  references:
+  - ENCOR 6.4
+- id: encor-6-014
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 4
+  cert_tags: *id001
+  stem: EEM can trigger on?
+  choices:
+  - id: a
+    text: Syslog patterns / timers / events
+    rationale: Event-driven automation on box.
+  - id: b
+    text: Only manual cable moves
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only optical cleaning
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DNS TTL expiry exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Event-driven automation on box.
+  references:
+  - ENCOR 6.6
+- id: encor-6-015
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Puppet/Chef historically rely more on?
+  choices:
+  - id: a
+    text: Agents on managed nodes
+    rationale: Agent-based orchestration contrast.
+  - id: b
+    text: Only Ansible SSH exclusive always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only SNMP GET
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SPAN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Agent-based orchestration contrast.
+  references:
+  - ENCOR 6.7
+- id: encor-6-016
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Python dictionaries map?
+  choices:
+  - id: a
+    text: Keys to values
+    rationale: Dicts are core Python structures.
+  - id: b
+    text: Only VLANs to VNIs exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AS paths
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP costs exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Dicts are core Python structures.
+  references:
+  - ENCOR 6.1
+- id: encor-6-017
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Cisco Catalyst Center REST responses may include?
+  choices:
+  - id: a
+    text: JSON payloads with status metadata
+    rationale: Interpret controller API results.
+  - id: b
+    text: Only BPDUs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only HSRP hellos
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only LACP PDUs
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Interpret controller API results.
+  references:
+  - ENCOR 6.5
+- id: encor-6-018
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A benefit of YANG modeling is?
+  choices:
+  - id: a
+    text: Structured, machine-readable device data contracts
+    rationale: YANG enables model-driven management.
+  - id: b
+    text: Only free-form CLI forever without models
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only binary IOS images as models
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only CSV exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: YANG enables model-driven management.
+  references:
+  - ENCOR 6.3
+- id: encor-6-019
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: JSON arrays are delimited by?
+  choices:
+  - id: a
+    text: Square brackets []
+    rationale: Arrays use [].
+  - id: b
+    text: Only curly braces
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only quotes
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only commas without brackets
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Arrays use [].
+  references:
+  - ENCOR 6.2
+- id: encor-6-020
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Northbound controller APIs typically face?
+  choices:
+  - id: a
+    text: Applications / orchestration systems
+    rationale: Apps consume controller northbound APIs.
+  - id: b
+    text: Only ASIC TCAMs exclusive
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only copper PHYs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only console servers exclusive
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Apps consume controller northbound APIs.
+  references:
+  - ENCOR 6.4
+- id: encor-gen-0020-087e7c
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 1
+  cert_tags: &id002
+  - ccnp
+  stem: 'Scenario 20 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0021-30dd80
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 21 (6.2): Cisco LAN discovery protocol?'
+  choices:
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.2; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.2; TFTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.2; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
+  correct:
+    answer: a
+  explanation: For 6.2, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0022-074ae0
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 22 (6.3): Better password storage in configs?'
+  choices:
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0023-b18d05
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 23 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0024-3f49c5
+  type: multiple_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.5] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.5.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.5.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0025-509f00
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 25 (6.6): Better password storage in configs?'
+  choices:
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0026-d6702e
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 26 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0047-0d8d3b
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 47 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0048-8a183f
+  type: multiple_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.2] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.2.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.2.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0049-8cf61d
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 49 (6.3): Better password storage in configs?'
+  choices:
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0050-7c58fa
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 50 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0051-be2e60
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 51 (6.5): Cisco LAN discovery protocol?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.5; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.5; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.5; TFTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.5, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0052-ce80ab
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 52 (6.6): Better password storage in configs?'
+  choices:
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0053-c039d5
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 53 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0074-ff66b4
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 74 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0075-dd3525
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 75 (6.2): Cisco LAN discovery protocol?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.2; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.2; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.2; TFTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.2, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0076-bd74d3
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 76 (6.3): Better password storage in configs?'
+  choices:
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0077-411fc5
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 77 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0078-ddcf4b
+  type: multiple_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.5] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.5.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.5.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0079-0eaacd
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 79 (6.6): Better password storage in configs?'
+  choices:
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0080-984cf2
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 80 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0101-bdc652
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 101 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0102-a023f3
+  type: multiple_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.2] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.2.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.2.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0103-74bf8c
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 103 (6.3): Better password storage in configs?'
+  choices:
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0104-e0f2aa
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 104 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0105-d81de5
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 105 (6.5): Cisco LAN discovery protocol?'
+  choices:
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.5; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.5; TFTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.5; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
+  correct:
+    answer: a
+  explanation: For 6.5, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0106-993179
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 106 (6.6): Better password storage in configs?'
+  choices:
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0107-13fd30
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 107 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0128-5de3a4
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 128 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0129-45c7ed
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 129 (6.2): Cisco LAN discovery protocol?'
+  choices:
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.2; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.2; TFTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.2; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
+  correct:
+    answer: a
+  explanation: For 6.2, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0130-cda01b
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 130 (6.3): Better password storage in configs?'
+  choices:
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0131-9529a2
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 131 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0132-f1439c
+  type: multiple_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.5] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.5.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.5.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0133-fba9f6
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 133 (6.6): Better password storage in configs?'
+  choices:
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0134-e63d96
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 134 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0155-af0504
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 155 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0156-3486e5
+  type: multiple_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.2] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.2.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.2.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0157-8c48de
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 157 (6.3): Better password storage in configs?'
+  choices:
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0158-1184ba
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 158 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0159-2267db
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 159 (6.5): Cisco LAN discovery protocol?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.5; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.5; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.5; TFTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.5, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0160-4cd60e
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 160 (6.6): Better password storage in configs?'
+  choices:
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0161-f6bfa6
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 161 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0182-2b8495
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 182 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0183-0da6f4
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 183 (6.2): Cisco LAN discovery protocol?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.2; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.2; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.2; TFTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.2, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0184-8fcf7f
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 184 (6.3): Better password storage in configs?'
+  choices:
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0185-1e8fb4
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 185 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0186-d4028b
+  type: multiple_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.5] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.5.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.5.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0187-1ccd76
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 187 (6.6): Better password storage in configs?'
+  choices:
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0188-0e3b2d
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 188 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0209-983f45
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 209 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0210-1fcd90
+  type: multiple_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.2] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.2.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.2.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0211-141f17
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 211 (6.3): Better password storage in configs?'
+  choices:
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0212-3bd790
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 212 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0213-e4c947
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 213 (6.5): Cisco LAN discovery protocol?'
+  choices:
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.5; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.5; TFTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.5; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
+  correct:
+    answer: a
+  explanation: For 6.5, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0214-44212f
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 214 (6.6): Better password storage in configs?'
+  choices:
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0215-51666e
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 215 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0236-6c2d0b
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 236 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0237-7018fa
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 237 (6.2): Cisco LAN discovery protocol?'
+  choices:
+  - id: b
+    text: FTP
+    rationale: Not correct for 6.2; FTP is a common mix-up.
+  - id: c
+    text: TFTP
+    rationale: Not correct for 6.2; TFTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 6.2; SMTP is a common mix-up.
+  - id: a
+    text: CDP
+    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
+  correct:
+    answer: a
+  explanation: For 6.2, the accurate association is CDP.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0238-6107f7
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 238 (6.3): Better password storage in configs?'
+  choices:
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.3; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0239-973a10
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 239 (6.4): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.4, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0240-de0d2a
+  type: multiple_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.5] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.5.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.5.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0241-f2e3a6
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 241 (6.6): Better password storage in configs?'
+  choices:
+  - id: b
+    text: Banner plaintext
+    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
+  - id: c
+    text: Disable AAA
+    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
+  - id: d
+    text: Telnet only
+    rationale: Not correct for 6.6; Telnet only is a common mix-up.
+  - id: a
+    text: Type 8/9 secrets
+    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
+  correct:
+    answer: a
+  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0242-220572
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 242 (6.7): ACL on vty lines purpose?'
+  choices:
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.7, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0263-de822c
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 263 (6.1): ACL on vty lines purpose?'
+  choices:
+  - id: d
+    text: Assign VLANs
+    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
+  - id: a
+    text: Restrict management access
+    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
+  - id: b
+    text: Encrypt OSPF
+    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
+  - id: c
+    text: Form Port-Channels
+    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 6.1, the accurate association is Restrict management access.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-gen-0264-964406
+  type: multiple_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNP 6.2] Select ALL that correctly relate to: Cisco LAN discovery protocol.'
+  choices:
+  - id: a
+    text: CDP
+    rationale: Correct for objective 6.2.
+  - id: b
+    text: FTP
+    rationale: Incorrect association for 6.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 6.2.
+  - id: d
+    text: TFTP
+    rationale: Distractor for 6.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

@@ -92,10 +92,14 @@ class LabSessionPage(QWidget):
         self._finish = QPushButton("Finish Lab")
         self._finish.setObjectName("Secondary")
         self._finish.clicked.connect(self._finish_lab)
+        self._reset = QPushButton("Reset Lab")
+        self._reset.setObjectName("Secondary")
+        self._reset.clicked.connect(self._reset_lab)
         actions.addWidget(self._prev)
         actions.addWidget(self._check)
         actions.addWidget(self._next)
         actions.addStretch()
+        actions.addWidget(self._reset)
         actions.addWidget(self._finish)
         left_l.addLayout(actions)
         split.addWidget(left)
@@ -145,8 +149,12 @@ class LabSessionPage(QWidget):
     def set_on_result(self, callback) -> None:
         self._on_result = callback
 
+    def is_lab_active(self) -> bool:
+        return self._session is not None
+
     def cleanup(self) -> None:
         self._terminals.clear()
+        self._session = None
 
     def _build_terminals(self) -> None:
         self._tabs.clear()
@@ -269,6 +277,31 @@ class LabSessionPage(QWidget):
         result = finish_and_score_lab(self._session)
         if self._on_result:
             self._on_result(self._session, result)
+
+    def _reset_lab(self) -> None:
+        if self._session is None:
+            return
+        from PySide6.QtWidgets import QMessageBox
+
+        confirm = QMessageBox.question(
+            self,
+            "Reset lab?",
+            "Reset topology, base configurations, and task progress?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+        if confirm != QMessageBox.StandardButton.Yes:
+            return
+        self._session.reset()
+        self._build_terminals()
+        self._render_tasks()
+        self._render_current()
+        self._feedback.setText("Lab reset.")
+        self._feedback.setStyleSheet("")
+        names = self._session.world.device_names()
+        if names:
+            self._select_device(names[0])
+        self._sync_topology_status()
 
     def current_task_id(self) -> str | None:
         if self._session is None:

@@ -1,0 +1,2288 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: ccna-2-015
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 2
+  cert_tags: &id001
+  - ccna
+  stem: Which feature prevents a switchport from learning more than N MACs?
+  choices:
+  - id: a
+    text: Port security
+    rationale: Port security limits learned MAC addresses per port.
+  - id: b
+    text: UplinkFast
+    rationale: Not correct for this scenario.
+  - id: c
+    text: VTP pruning
+    rationale: Not correct for this scenario.
+  - id: d
+    text: CDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Port security limits learned MAC addresses per port.
+  references:
+  - CCNA 5.7
+- id: ccna-5-001
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A vulnerability is best defined as?
+  choices:
+  - id: a
+    text: A weakness that can be exploited
+    rationale: Vulnerability.
+  - id: b
+    text: The attack itself
+    rationale: Exploit/threat action.
+  - id: c
+    text: Only a firewall rule
+    rationale: Control.
+  - id: d
+    text: Only an ACL line
+    rationale: Control.
+  correct:
+    answer: a
+  explanation: Threats exploit vulnerabilities; mitigations reduce risk.
+  references:
+  - CCNA 5.1 — security concepts
+- id: ccna-5-002
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A standard ACL typically filters based on?
+  choices:
+  - id: a
+    text: Source IP address
+    rationale: Standard ACLs.
+  - id: b
+    text: Only destination port
+    rationale: Extended.
+  - id: c
+    text: Only DSCP
+    rationale: QoS.
+  - id: d
+    text: Only MAC OUI
+    rationale: Other features.
+  correct:
+    answer: a
+  explanation: Standard numbered ACLs match source IPv4 addresses.
+  references:
+  - CCNA 5.6 — ACLs
+- id: ccna-5-003
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Dynamic ARP Inspection validates ARP using?
+  choices:
+  - id: a
+    text: DHCP snooping bindings (typically)
+    rationale: DAI.
+  - id: b
+    text: Only OSPF LSDB
+    rationale: No.
+  - id: c
+    text: Only CDP
+    rationale: No.
+  - id: d
+    text: Only NetFlow
+    rationale: No.
+  correct:
+    answer: a
+  explanation: DAI checks ARP against DHCP snooping binding tables.
+  references:
+  - CCNA 5.7 — L2 security
+- id: ccna-5-004
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Site-to-site IPsec VPNs typically protect traffic between?
+  choices:
+  - id: a
+    text: Gateways/networks
+    rationale: Lan-to-lan.
+  - id: b
+    text: Only a single laptop user
+    rationale: Remote access.
+  - id: c
+    text: Only Layer 2 loops
+    rationale: STP.
+  - id: d
+    text: Only DNS queries
+    rationale: App.
+  correct:
+    answer: a
+  explanation: Site-to-site VPNs encrypt traffic between network gateways.
+  references:
+  - CCNA 5.5 — VPNs
+- id: ccna-5-005
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 2
+  cert_tags: *id001
+  stem: WPA3 improves on WPA2 primarily with stronger?
+  choices:
+  - id: a
+    text: Handshake / encryption practices
+    rationale: SAE etc.
+  - id: b
+    text: Only open SSIDs mandatory
+    rationale: Opposite.
+  - id: c
+    text: Only WEP reintroduction
+    rationale: Worse.
+  - id: d
+    text: Only disabling AES
+    rationale: Opposite.
+  correct:
+    answer: a
+  explanation: WPA3 strengthens authentication and cryptographic practices.
+  references:
+  - CCNA 5.9 — wireless security
+- id: ccna-5-006
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Local device access control commonly uses?
+  choices:
+  - id: a
+    text: Line/console/VTY passwords or local usernames
+    rationale: Local passwords protect device management access.
+  - id: b
+    text: Only BGP communities
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP priority
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only VTP password as sole AAA
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Local passwords protect device management access.
+  references:
+  - CCNA 5.3
+- id: ccna-5-007
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 3
+  cert_tags: *id001
+  stem: AAA stands for?
+  choices:
+  - id: a
+    text: Authentication, Authorization, Accounting
+    rationale: AAA covers identity, permissions, and accounting.
+  - id: b
+    text: Anycast, ACL, ARP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: AS, Area, ABR
+    rationale: Not correct for this scenario.
+  - id: d
+    text: AES, AH, ESP only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: AAA covers identity, permissions, and accounting.
+  references:
+  - CCNA 5.8
+- id: ccna-5-008
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id001
+  stem: User awareness training is an example of?
+  choices:
+  - id: a
+    text: Security program element
+    rationale: Awareness/training are security program elements.
+  - id: b
+    text: Only OSPF tuning
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only EtherChannel
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SPAN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Awareness/training are security program elements.
+  references:
+  - CCNA 5.2
+- id: ccna-5-009
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Multifactor authentication is a password policy alternative that adds?
+  choices:
+  - id: a
+    text: Additional factors beyond a password
+    rationale: MFA combines something you know/have/are.
+  - id: b
+    text: Only longer Telnet banners
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VTY ACL deny any
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only disabling SSH
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: MFA combines something you know/have/are.
+  references:
+  - CCNA 5.4
+- id: ccna-5-010
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Named ACLs on IOS are configured under which mode?
+  choices:
+  - id: a
+    text: ip access-list standard/extended NAME
+    rationale: Named ACLs use ip access-list configuration mode.
+  - id: b
+    text: Only interface vlan exclusively
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only line vty without ACL
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only spanning-tree mode
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Named ACLs use ip access-list configuration mode.
+  references:
+  - CCNA 5.6
+- id: ccna-5-011
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 4
+  cert_tags: *id001
+  stem: DHCP snooping builds a binding table of?
+  choices:
+  - id: a
+    text: IP–MAC–port–VLAN mappings
+    rationale: Bindings track DHCP-assigned addresses per port.
+  - id: b
+    text: Only OSPF neighbors
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only BGP paths
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP roots
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Bindings track DHCP-assigned addresses per port.
+  references:
+  - CCNA 5.7
+- id: ccna-5-012
+  type: single_choice
+  topic_code: '5.10'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Configuring WLAN WPA2-PSK in a GUI primarily sets?
+  choices:
+  - id: a
+    text: Wireless security for client SSIDs
+    rationale: GUI WLAN workflows apply WPA2-PSK to SSIDs.
+  - id: b
+    text: Only underlay ECMP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only CoPP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NetFlow exporters
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: GUI WLAN workflows apply WPA2-PSK to SSIDs.
+  references:
+  - CCNA 5.10
+- id: ccna-5-013
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: An exploit is?
+  choices:
+  - id: a
+    text: A method that takes advantage of a vulnerability
+    rationale: Exploits weaponize vulnerabilities.
+  - id: b
+    text: Only a firewall
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only a syslog facility
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only a VLAN
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Exploits weaponize vulnerabilities.
+  references:
+  - CCNA 5.1
+- id: ccna-5-014
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: IPsec ESP provides?
+  choices:
+  - id: a
+    text: Confidentiality and optionally integrity/auth
+    rationale: ESP encrypts (and may authenticate) payloads.
+  - id: b
+    text: Only routing updates
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DNSSEC
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ESP encrypts (and may authenticate) payloads.
+  references:
+  - CCNA 5.5
+- id: ccna-5-015
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 2
+  cert_tags: *id001
+  stem: RADIUS typically uses which ports?
+  choices:
+  - id: a
+    text: UDP 1812/1813 (or legacy 1645/1646)
+    rationale: RADIUS auth/accounting use UDP 1812/1813.
+  - id: b
+    text: TCP 22
+    rationale: Not correct for this scenario.
+  - id: c
+    text: UDP 53
+    rationale: Not correct for this scenario.
+  - id: d
+    text: TCP 443 only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: RADIUS auth/accounting use UDP 1812/1813.
+  references:
+  - CCNA 5.8
+- id: ccna-5-016
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: enable secret stores passwords using what by default historically?
+  choices:
+  - id: a
+    text: Hashed (MD5/type 5 or stronger modern types)
+    rationale: enable secret uses a hash; enable password was weaker/clearer.
+  - id: b
+    text: Cleartext always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only ROT13
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Base64
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: enable secret uses a hash; enable password was weaker/clearer.
+  references:
+  - CCNA 5.3
+- id: ccna-5-017
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 4
+  cert_tags: *id001
+  stem: In 802.1X, the authenticator is typically?
+  choices:
+  - id: a
+    text: The switch/AP
+    rationale: The authenticator enforces port access pending AAA.
+  - id: b
+    text: The end-user laptop alone
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only the root DNS
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only the STP root
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: The authenticator enforces port access pending AAA.
+  references:
+  - CCNA 5.8
+- id: ccna-5-018
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 2
+  cert_tags: *id001
+  stem: ACL implicit final rule is?
+  choices:
+  - id: a
+    text: deny any
+    rationale: ACLs end with an implicit deny any.
+  - id: b
+    text: permit any
+    rationale: Not correct for this scenario.
+  - id: c
+    text: permit icmp
+    rationale: Not correct for this scenario.
+  - id: d
+    text: deny tcp only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ACLs end with an implicit deny any.
+  references:
+  - CCNA 5.6
+- id: ccna-5-019
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 3
+  cert_tags: *id001
+  stem: IP Source Guard uses bindings to prevent?
+  choices:
+  - id: a
+    text: IP spoofing on a port
+    rationale: IPSG drops traffic not matching bindings.
+  - id: b
+    text: STP loops
+    rationale: Not correct for this scenario.
+  - id: c
+    text: WLAN roaming
+    rationale: Not correct for this scenario.
+  - id: d
+    text: BGP hijacks alone
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: IPSG drops traffic not matching bindings.
+  references:
+  - CCNA 5.7
+- id: ccna-5-020
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Password complexity policies typically require?
+  choices:
+  - id: a
+    text: Length/character diversity rules
+    rationale: Complexity raises guessing difficulty.
+  - id: b
+    text: Only identical passwords forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only blank enable
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Telnet without AAA
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Complexity raises guessing difficulty.
+  references:
+  - CCNA 5.4
+- id: ccna-5-021
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Physical access control is part of?
+  choices:
+  - id: a
+    text: Security program elements
+    rationale: Physical controls complement awareness and training.
+  - id: b
+    text: Only QoS PHB
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only ECMP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only LACP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Physical controls complement awareness and training.
+  references:
+  - CCNA 5.2
+- id: ccna-5-022
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 3
+  cert_tags: *id001
+  stem: WPA2 personal mode commonly uses?
+  choices:
+  - id: a
+    text: PSK
+    rationale: WPA2-PSK is personal/pre-shared key mode.
+  - id: b
+    text: Only open auth mandatory
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only WEP-40
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only TKIP exclusive forever
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: WPA2-PSK is personal/pre-shared key mode.
+  references:
+  - CCNA 5.9
+- id: ccna-gen-0036-2b7b18
+  type: multiple_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: &id002
+  - ccna
+  stem: '[CCNA 5.1] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.1.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.1.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.1: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0037-6c3877
+  type: single_choice
+  topic_code: '5.10'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 37 (5.10): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.10; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.10; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.10; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.10: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.10, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0038-4cdf93
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 38 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0039-3f030f
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 39 (5.3): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.3; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.3; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.3; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0040-1a15d8
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 40 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0041-5e9a6a
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 41 (5.5): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.5; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.5; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.5; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.5: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.5, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0042-8fdbf9
+  type: multiple_choice
+  topic_code: '5.6'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.6] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.6.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.6.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.6.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.6.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.6: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0043-b482c3
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 43 (5.7): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.7; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.7: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.7; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.7; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.7, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0044-82095e
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 44 (5.8): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.8: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.8; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.8; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.8; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.8, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0045-39a7da
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 45 (5.9): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.9; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.9; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.9; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.9: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.9, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0089-296dee
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 89 (5.1): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.1; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.1; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.1; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.1: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0090-297fb1
+  type: multiple_choice
+  topic_code: '5.10'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.10] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.10.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.10.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.10.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.10.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.10: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0091-af0bcd
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 91 (5.2): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.2; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.2: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.2; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.2; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0092-1471ae
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 92 (5.3): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.3: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.3; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.3; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.3; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0093-6bf44e
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 93 (5.4): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.4; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.4; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.4; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.4: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0094-b4727e
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 94 (5.5): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.5; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.5; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.5: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.5; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.5, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0095-262fe7
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 95 (5.6): WPA3 era wireless security focus?'
+  choices:
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.6; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.6: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.6; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.6; Clear-text PSK mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.6, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0096-2c95ee
+  type: multiple_choice
+  topic_code: '5.7'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.7] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.7.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.7.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.7.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.7.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.7: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0097-664bb2
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 97 (5.8): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.8; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.8; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.8; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.8: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.8, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0098-dfef7a
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 98 (5.9): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.9; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.9; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.9: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.9; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.9, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0142-fc57b1
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 142 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0143-a61baa
+  type: single_choice
+  topic_code: '5.10'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 143 (5.10): WPA3 era wireless security focus?'
+  choices:
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.10; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.10: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.10; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.10; Clear-text PSK mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.10, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0144-9caccf
+  type: multiple_choice
+  topic_code: '5.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.2] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.2.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.2.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.2: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0145-c18f27
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 145 (5.3): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.3; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.3; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.3; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.3: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0146-38d8bd
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 146 (5.4): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.4; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.4; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.4: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.4; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0147-f29f32
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 147 (5.5): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.5; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.5: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.5; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.5; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.5, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0148-3deb07
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 148 (5.6): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.6: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.6; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.6; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.6; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.6, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0149-c99e80
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 149 (5.7): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.7; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.7; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.7; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.7: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.7, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0150-778640
+  type: multiple_choice
+  topic_code: '5.8'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.8] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.8.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.8.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.8.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.8.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.8: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0151-805d47
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 151 (5.9): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.9; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.9: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.9; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.9; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.9, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0195-677043
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 195 (5.1): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.1; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.1: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.1; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.1; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0196-a0076e
+  type: single_choice
+  topic_code: '5.10'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 196 (5.10): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.10: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.10; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.10; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.10; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.10, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0197-683607
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 197 (5.2): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.2; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0198-fc508b
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.3] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.3.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.3.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0199-fe4d15
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 199 (5.4): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.4; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0200-7f50af
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 200 (5.5): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.5: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.5; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.5; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.5; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.5, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0201-156d94
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 201 (5.6): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.6; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.6; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.6; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.6: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.6, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0202-a60623
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 202 (5.7): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.7; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.7; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.7: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.7; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.7, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0203-333c7d
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 203 (5.8): WPA3 era wireless security focus?'
+  choices:
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.8; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.8: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.8; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.8; Clear-text PSK mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.8, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0204-809bce
+  type: multiple_choice
+  topic_code: '5.9'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.9] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.9.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.9.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.9.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.9.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.9: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0248-42a935
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 248 (5.1): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.1: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.1; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.1; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.1; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0249-ee452b
+  type: single_choice
+  topic_code: '5.10'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 249 (5.10): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.10; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.10; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.10; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.10: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.10, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0250-ba58ea
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 250 (5.2): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.2; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.2; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.2: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.2; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0251-1a2799
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 251 (5.3): WPA3 era wireless security focus?'
+  choices:
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.3; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.3: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.3; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.3; Clear-text PSK mandatory is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0252-53e8a8
+  type: multiple_choice
+  topic_code: '5.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.4] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.4.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.4.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.4: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0253-62555b
+  type: single_choice
+  topic_code: '5.5'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 253 (5.5): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.5; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.5; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.5; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.5: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.5, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0254-51d32d
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 254 (5.6): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.6; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.6; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.6: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.6; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.6, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0255-ebe564
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 255 (5.7): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.7; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.7: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.7; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.7; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.7, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0256-8a2e2b
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 256 (5.8): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.8: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.8; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.8; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.8; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.8, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0257-70646d
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 257 (5.9): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.9; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.9; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.9; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.9: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.9, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0301-c8dfe7
+  type: single_choice
+  topic_code: '5.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 301 (5.1): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.1; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  correct:
+    answer: a
+  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0302-e76073
+  type: single_choice
+  topic_code: '5.10'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 302 (5.10): WPA3 era wireless security focus?'
+  choices:
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.10; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.10; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.10: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.10; WEP revival is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.10, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0303-a2fb65
+  type: single_choice
+  topic_code: '5.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 303 (5.2): Typical CAPWAP termination?'
+  choices:
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.2; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.2: Typical CAPWAP termination → WLC.'
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.2; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.2; NTP is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.2, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0304-af9731
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 304 (5.3): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.3: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.3; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.3; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.3; Visible light only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.3, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0305-df0a50
+  type: single_choice
+  topic_code: '5.4'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 305 (5.4): WPA3 era wireless security focus?'
+  choices:
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.4; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.4; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.4; Disable 802.1X always is a common mix-up.
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.4: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  correct:
+    answer: a
+  explanation: For 5.4, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0306-a3b9b6
+  type: multiple_choice
+  topic_code: '5.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 5.5] Select ALL that correctly relate to: Typical CAPWAP termination.'
+  choices:
+  - id: a
+    text: WLC
+    rationale: Correct for objective 5.5.
+  - id: b
+    text: DNS
+    rationale: Incorrect association for 5.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 5.5.
+  - id: d
+    text: NTP
+    rationale: Distractor for 5.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 5.5: Typical CAPWAP termination maps to WLC.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0307-7b8ac3
+  type: single_choice
+  topic_code: '5.6'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 307 (5.6): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.6; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.6: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.6; 60 GHz only is a common mix-up.
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.6; Sub-GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.6, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0308-3d5209
+  type: single_choice
+  topic_code: '5.7'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 308 (5.7): WPA3 era wireless security focus?'
+  choices:
+  - id: a
+    text: Stronger SAE/handshake protections
+    rationale: 'Matches 5.7: WPA3 era wireless security focus → Stronger SAE/handshake
+      protections.'
+  - id: b
+    text: WEP revival
+    rationale: Not correct for 5.7; WEP revival is a common mix-up.
+  - id: c
+    text: Clear-text PSK mandatory
+    rationale: Not correct for 5.7; Clear-text PSK mandatory is a common mix-up.
+  - id: d
+    text: Disable 802.1X always
+    rationale: Not correct for 5.7; Disable 802.1X always is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.7, the accurate association is Stronger SAE/handshake protections.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0309-f5e716
+  type: single_choice
+  topic_code: '5.8'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 309 (5.8): Typical CAPWAP termination?'
+  choices:
+  - id: b
+    text: DNS
+    rationale: Not correct for 5.8; DNS is a common mix-up.
+  - id: c
+    text: NTP
+    rationale: Not correct for 5.8; NTP is a common mix-up.
+  - id: d
+    text: SMTP
+    rationale: Not correct for 5.8; SMTP is a common mix-up.
+  - id: a
+    text: WLC
+    rationale: 'Matches 5.8: Typical CAPWAP termination → WLC.'
+  correct:
+    answer: a
+  explanation: For 5.8, the accurate association is WLC.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0310-7d4583
+  type: single_choice
+  topic_code: '5.9'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 310 (5.9): Common 2.4 GHz Wi-Fi band?'
+  choices:
+  - id: c
+    text: Sub-GHz only
+    rationale: Not correct for 5.9; Sub-GHz only is a common mix-up.
+  - id: d
+    text: Visible light only
+    rationale: Not correct for 5.9; Visible light only is a common mix-up.
+  - id: a
+    text: 2.4 GHz ISM
+    rationale: 'Matches 5.9: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
+  - id: b
+    text: 60 GHz only
+    rationale: Not correct for 5.9; 60 GHz only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 5.9, the accurate association is 2.4 GHz ISM.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

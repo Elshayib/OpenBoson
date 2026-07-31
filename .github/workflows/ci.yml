@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    name: pytest (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -e ".[all]"
+      - name: Install Linux Qt deps
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libxkbcommon0 libxcb-cursor0 libxcb-icccm4 \
+            libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 \
+            libxcb-xinerama0 libxcb-xfixes0 libgl1
+      - name: Run tests
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: pytest -v
+
+  lint:
+    name: ruff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install ruff
+        run: python -m pip install "ruff>=0.6"
+      - name: Ruff check (governed paths)
+        run: ruff check src/openboson tests scripts
+      - name: Ruff format check (governed paths)
+        run: ruff format --check src/openboson tests scripts
+
+  typing:
+    name: mypy (typed core)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -e ".[all]"
+      - name: MyPy typed-core modules
+        run: >
+          mypy
+          src/openboson/config.py
+          src/openboson/resource_paths.py
+          src/openboson/settings_store.py
+          src/openboson/logging_setup.py
+          src/openboson/_build_info.py
+          src/openboson/bank_schema.py
+          src/openboson/exsim/objectives.py
+          src/openboson/exsim/blueprint.py
+          src/openboson/exsim/scoring.py
+          src/openboson/netsim/lab_schema.py
+
+  content:
+    name: content checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -e ".[all]"
+      - name: Validate question pools
+        run: pytest -v tests/exsim/test_content_pools.py tests/exsim/test_objectives.py tests/exsim/test_blueprint.py
+
+  labs:
+    name: lab checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -e ".[all]"
+      - name: Validate labs
+        run: pytest -v tests/netsim/test_lab_loader.py tests/netsim/test_grader.py tests/netsim/test_lab_session.py

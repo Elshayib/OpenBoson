@@ -1,0 +1,26 @@
+title: Interface Descriptions
+lab_id: ccna_interface_descriptions
+topic_code: '1.1'
+difficulty: 1
+description: Document an uplink with an interface description.
+objectives:
+- description
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: Set Gi0/1 description to UPLINK-TO-R1.
+  grading_rules:
+    device: SW1
+    require:
+    - description UPLINK-TO-R1
+solution_config: "interface GigabitEthernet0/1\n description UPLINK-TO-R1\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

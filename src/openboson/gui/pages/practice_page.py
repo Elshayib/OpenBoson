@@ -34,6 +34,9 @@ class PracticePage(QWidget):
         self._stats: dict[str, QuestionStat] = {}
         self._all_questions: list[Question] = []
         self._topic_names: dict[str, str] = {}
+        # Programmatic deep-link filters (Dashboard / Stats CTAs).
+        self._deep_question_ids: set[str] | None = None
+        self._deep_topic_prefix: str | None = None
 
         root = QVBoxLayout(self)
         root.setContentsMargins(24, 24, 24, 24)
@@ -155,6 +158,9 @@ class PracticePage(QWidget):
         self._search.textChanged.connect(self._apply_filters)
 
     def _on_filter_changed(self) -> None:
+        # Manual filter changes clear deep-link constraints.
+        self._deep_question_ids = None
+        self._deep_topic_prefix = None
         # Cert changes which topics exist / which domain names apply.
         if self.sender() is self._cert:
             self._rebuild_topic_combo()
@@ -166,7 +172,77 @@ class PracticePage(QWidget):
     def set_on_start_exam(self, callback) -> None:
         self._on_start_exam = callback
 
+    def apply_deep_link(
+        self,
+        *,
+        cert: str | None = None,
+        topic_code: str | None = None,
+        question_ids: list[str] | None = None,
+    ) -> None:
+        """Apply a programmatic Practice filter (cert / topic / id list)."""
+        self.refresh()
+        self._deep_question_ids = set(question_ids) if question_ids is not None else None
+        self._deep_topic_prefix = None
+
+        for widget in (
+            self._cert,
+            self._topic,
+            self._difficulty,
+            self._type,
+            self._seen,
+            self._sort,
+        ):
+            widget.blockSignals(True)
+
+        # Start from a clean filter slate for deep links.
+        self._cert.setCurrentIndex(0)
+        self._difficulty.setCurrentIndex(0)
+        self._type.setCurrentIndex(0)
+        self._seen.setCurrentIndex(0)
+        self._search.blockSignals(True)
+        self._search.clear()
+        self._search.blockSignals(False)
+
+        if cert:
+            cert_key = cert.strip().lower()
+            if cert_key in {"encor", "350-401"}:
+                cert_key = "ccnp"
+            elif cert_key in {"200-301"}:
+                cert_key = "ccna"
+            idx = self._cert.findData(cert_key)
+            if idx >= 0:
+                self._cert.setCurrentIndex(idx)
+            self._rebuild_topic_combo()
+
+        if topic_code:
+            code = topic_code.strip()
+            idx = self._topic.findData(code)
+            if idx >= 0:
+                self._topic.setCurrentIndex(idx)
+            else:
+                # Domain prefix deep link (e.g. ``1.`` or ``1``).
+                self._deep_topic_prefix = code
+                self._topic.setCurrentIndex(0)
+
+        if question_ids is not None:
+            # Focus the id list; leave other filters at "all".
+            self._seen.setCurrentIndex(0)
+
+        for widget in (
+            self._cert,
+            self._topic,
+            self._difficulty,
+            self._type,
+            self._seen,
+            self._sort,
+        ):
+            widget.blockSignals(False)
+
+        self._apply_filters()
+
     def refresh(self) -> None:
+        self._deep_question_ids = None
+        self._deep_topic_prefix = None
         pool = engine.load_pool()
         self._all_questions = list(pool.questions)
         # Prefer exact topic names; also keep domain rollups from every bank file
@@ -246,10 +322,18 @@ class PracticePage(QWidget):
         search = self._search.text().strip().lower()
 
         filtered: list[Question] = []
+        deep_ids = self._deep_question_ids
+        deep_prefix = self._deep_topic_prefix
         for q in self._all_questions:
+            if deep_ids is not None and q.id not in deep_ids:
+                continue
             if cert != "all" and cert not in q.cert_tags:
                 continue
-            if topic != "all" and q.topic_code != topic:
+            if deep_prefix:
+                head = deep_prefix.rstrip(".")
+                if not (q.topic_code == head or q.topic_code.startswith(head + ".")):
+                    continue
+            elif topic != "all" and q.topic_code != topic:
                 continue
             if diff and q.difficulty != diff:
                 continue

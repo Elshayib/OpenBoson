@@ -11,11 +11,7 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from openboson.bank_loader import (
-    BankLoaderError,
-    load_exam_bank,
-    load_question_pool,
-)
+from openboson.bank_loader import BankLoaderError, load_exam_bank
 from openboson.bank_schema import ExamBank, Question, QuestionPool
 from openboson.exsim.blueprint import (
     InsufficientPoolError,
@@ -30,34 +26,41 @@ from openboson.exsim.session import ExamMode, ExamSession
 from openboson.netsim.lab_loader import LabLoaderError, load_lab
 from openboson.netsim.lab_schema import LabBank
 from openboson.netsim.session import LabResult, LabSession, score_lab
+from openboson.registry import ContentDiagnostics, get_registry
+from openboson.resource_paths import bundled_banks_dir, bundled_labs_dir
 
 logger = logging.getLogger(__name__)
 
 # Non-fatal persistence warning from the last finish_and_score* call (GUI may show it).
 last_persistence_warning: str | None = None
 
-# Default content shipped with the repo: <repo>/data/...
-_DEFAULT_BANKS_DIR = Path(__file__).resolve().parents[3] / "data" / "demo_banks"
-_DEFAULT_LABS_DIR = Path(__file__).resolve().parents[3] / "data" / "demo_labs"
-
 
 def banks_dir() -> Path:
-    return _DEFAULT_BANKS_DIR
+    return bundled_banks_dir()
+
+
+def labs_dir() -> Path:
+    return bundled_labs_dir()
 
 
 def load_available_banks() -> list[ExamBank]:
-    """Load all YAML banks from the bundled demo banks dir (best-effort)."""
-    from openboson.bank_loader import load_banks_detailed
-
-    result = load_banks_detailed(_DEFAULT_BANKS_DIR, best_effort=True)
-    for item in result.rejected:
-        logger.warning("Skipping bank %s: %s", item.path, item.reason)
-    return result.banks
+    """Load all accepted banks from the content registry."""
+    return get_registry().banks()
 
 
 def load_pool() -> QuestionPool:
-    """Load the merged question pool from bundled banks."""
-    return load_question_pool(_DEFAULT_BANKS_DIR)
+    """Load the merged question pool from the content registry."""
+    return get_registry().question_pool()
+
+
+def refresh_content() -> ContentDiagnostics:
+    """Rescan banks/labs/packs and return diagnostics."""
+    return get_registry().refresh()
+
+
+def content_diagnostics() -> ContentDiagnostics:
+    """Return the latest registry diagnostics (scanning if needed)."""
+    return get_registry().diagnostics()
 
 
 def get_exam_by_code(code: str) -> ExamBank | None:
@@ -138,12 +141,15 @@ __all__ = [
     "get_exam_by_code",
     "get_question",
     "list_blueprints",
+    "content_diagnostics",
     "load_available_banks",
     "load_exam_bank",
     "load_pool",
+    "refresh_content",
     "start_blueprint_exam",
     "start_session",
     # labs
+    "ContentDiagnostics",
     "LabBank",
     "LabLoaderError",
     "LabResult",
@@ -158,16 +164,8 @@ __all__ = [
 
 # -----/ NetSim facade /-----
 def load_available_labs() -> list[LabBank]:
-    """Load all YAML labs from the bundled demo labs dir (best-effort)."""
-    labs: list[LabBank] = []
-    if not _DEFAULT_LABS_DIR.is_dir():
-        return labs
-    for path in sorted(_DEFAULT_LABS_DIR.glob("*.yaml")):
-        try:
-            labs.append(load_lab(path))
-        except LabLoaderError:
-            continue
-    return labs
+    """Load all accepted labs from the content registry."""
+    return get_registry().labs()
 
 
 def get_lab_by_id(lab_id: str) -> LabBank | None:

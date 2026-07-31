@@ -71,22 +71,25 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 
 When implementing features, follow the task plan in `.cursor/plans/2026-07-27_OpenBoson_ExSim_NetSim_v1.md`. Work task-by-task, run relevant tests after each change, and keep diffs focused.
 
-## Implementation status (as of v0.1.0)
+## Implementation status (as of v0.2.0+)
 
 **Done:**
-- Tasks 1–12: Full scaffold, ExSim engine + GUI, NetSim engine + GUI
-- Task 13 (partial): Stats page and `stats_service.py` (no separate analytics module)
-- Task 16 (partial): Settings page with data dir, theme toggle
-- OpenIOS: Real CLI lab simulator (`netsim/ios/`) beyond original plan scope
-- Practice rework: question library, Check + rationales, blueprint CCNA v1.1 / ENCOR v1.2 exams
+- ExSim engine + GUI (practice library, blueprints, Check + rationales)
+- NetSim engine + GUI (OpenIOS, reset, per-device grading hooks)
+- Hot-load registry (bundled + local + packs), content refresh API/Settings
+- Stats weak-domain analytics + Dashboard/Practice deep links
+- Settings: theme, logs/backups, updates card, content diagnostics
+- Resource paths, logging, DB backups, typed settings store
+- CI (Windows/Ubuntu), Makefile / `scripts/dev.ps1`, quality baseline
+- Windows packaging: PyInstaller onedir, Inno script, release workflow
+- Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥20 labs
 
-**Not yet done:**
-- Task 14: Hot-loadable bank/lab registry
-- Task 15: CI workflow and Makefile
-- Task 16 (packaging): PyInstaller installer scripts
-- Network Designer (drag-drop topology builder)
-- Real packet simulation (intentionally deferred)
-- ENARSI blueprint content (UI placeholder only)
+**Deferred (see `docs/deferred-releases.md`):**
+- v0.3 ExSim depth (custom exams, pause/resume, exports, PBQs)
+- v0.4 NetSim depth (50 labs, broader OpenIOS/packets)
+- v0.5 Network Designer
+- v1.0 signed cross-platform installers / pack index
+
 
 ## Conventions
 

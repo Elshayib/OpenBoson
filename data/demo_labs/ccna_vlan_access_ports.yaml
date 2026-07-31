@@ -1,0 +1,37 @@
+title: VLAN Access Ports
+lab_id: ccna_vlan_access_ports
+topic_code: '2.1'
+difficulty: 2
+description: Create a user VLAN and place two access ports into it.
+objectives:
+- Create VLAN 20
+- Assign access ports
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, create **VLAN 20** named **SALES**.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 20
+    - name SALES
+- id: t2
+  instructions: Put Gi0/1 and Gi0/2 into VLAN 20 as access ports.
+  grading_rules:
+    device: SW1
+    require:
+    - switchport mode access
+    - switchport access vlan 20
+solution_config: "vlan 20\n name SALES\ninterface GigabitEthernet0/1\n switchport\
+  \ mode access\n switchport access vlan 20\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

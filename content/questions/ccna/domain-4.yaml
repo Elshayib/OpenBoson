@@ -1,0 +1,2281 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: ccna-1-017
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 4
+  cert_tags: &id001
+  - ccna
+  stem: DNS primarily maps which of the following?
+  choices:
+  - id: a
+    text: Names to IP addresses
+    rationale: DNS resolves names to addresses (and reverse lookups).
+  - id: b
+    text: MAC to VLAN
+    rationale: Not correct for this scenario.
+  - id: c
+    text: AS numbers to communities
+    rationale: Not correct for this scenario.
+  - id: d
+    text: SPIDs to DLCI
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: DNS resolves names to addresses (and reverse lookups).
+  references:
+  - CCNA 4.3
+- id: ccna-4-001
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Inside source NAT typically translates which addresses?
+  choices:
+  - id: a
+    text: Internal private sources to public/global
+    rationale: Inside local → inside global.
+  - id: b
+    text: Only destination ports
+    rationale: PAT can include ports but NAT maps addresses.
+  - id: c
+    text: Only MAC addresses
+    rationale: L2.
+  - id: d
+    text: Only VLAN tags
+    rationale: L2.
+  correct:
+    answer: a
+  explanation: Inside source NAT changes inside local source addresses for outside
+    reachability.
+  references:
+  - CCNA 4.1 — NAT
+- id: ccna-4-002
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: An NTP client synchronizes its clock to?
+  choices:
+  - id: a
+    text: An NTP server / higher stratum source
+    rationale: Client mode.
+  - id: b
+    text: Only STP root
+    rationale: L2.
+  - id: c
+    text: Only DHCP option 150 exclusive
+    rationale: TFTP for phones.
+  - id: d
+    text: Only RADIUS
+    rationale: AAA.
+  correct:
+    answer: a
+  explanation: NTP clients sync to configured servers.
+  references:
+  - CCNA 4.2 — NTP
+- id: ccna-4-003
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: DHCP's primary role in a network is to?
+  choices:
+  - id: a
+    text: Dynamically assign IP addressing parameters
+    rationale: DHCP.
+  - id: b
+    text: Encrypt all trunks
+    rationale: No.
+  - id: c
+    text: Elect OSPF DR
+    rationale: OSPF.
+  - id: d
+    text: Hash EtherChannels
+    rationale: L2.
+  correct:
+    answer: a
+  explanation: DHCP assigns addresses, mask, gateway, DNS, and related options.
+  references:
+  - CCNA 4.3 — DHCP/DNS
+- id: ccna-4-004
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Syslog severity 0 is?
+  choices:
+  - id: a
+    text: Emergency
+    rationale: Most severe.
+  - id: b
+    text: Debug
+    rationale: '7.'
+  - id: c
+    text: Informational
+    rationale: '6.'
+  - id: d
+    text: Notice
+    rationale: '5.'
+  correct:
+    answer: a
+  explanation: Severity 0 is emergency; 7 is debug.
+  references:
+  - CCNA 4.5 — syslog
+- id: ccna-4-005
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 3
+  cert_tags: *id001
+  stem: DSCP EF is commonly associated with?
+  choices:
+  - id: a
+    text: Voice / expedited forwarding
+    rationale: EF PHB.
+  - id: b
+    text: Bulk scavenger only
+    rationale: CS1 often.
+  - id: c
+    text: Only STP
+    rationale: L2.
+  - id: d
+    text: Only NAT
+    rationale: Services.
+  correct:
+    answer: a
+  explanation: Expedited Forwarding (EF) is commonly used for voice.
+  references:
+  - CCNA 4.7 — QoS PHB
+- id: ccna-4-006
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A DHCP relay agent sets which field to help the server?
+  choices:
+  - id: a
+    text: GIADDR (gateway address)
+    rationale: GIADDR identifies the client subnet to the DHCP server.
+  - id: b
+    text: Only CHADDR to zero
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only UDP sport 179
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only DSCP EF
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: GIADDR identifies the client subnet to the DHCP server.
+  references:
+  - CCNA 4.6
+- id: ccna-4-007
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Stratum 0 in NTP refers to?
+  choices:
+  - id: a
+    text: Reference clocks (not network NTP servers themselves)
+    rationale: Stratum 0 are reference clocks; servers attaching are stratum 1.
+  - id: b
+    text: Only leaf clients
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only stratum 16 sync success
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only GPS denied sources
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Stratum 0 are reference clocks; servers attaching are stratum 1.
+  references:
+  - CCNA 4.2
+- id: ccna-4-008
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: SNMP GET operations primarily?
+  choices:
+  - id: a
+    text: Retrieve MIB object values
+    rationale: GET retrieves management information from agents.
+  - id: b
+    text: Encrypt STP BPDUs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Assign VLANs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Form OSPF adjacencies
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: GET retrieves management information from agents.
+  references:
+  - CCNA 4.4
+- id: ccna-4-009
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 2
+  cert_tags: *id001
+  stem: What does 'ip nat inside' mark?
+  choices:
+  - id: a
+    text: Inside NAT interface
+    rationale: Inside interfaces face the private/translated inside network.
+  - id: b
+    text: Only outside global
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VRF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SPAN source
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Inside interfaces face the private/translated inside network.
+  references:
+  - CCNA 4.1
+- id: ccna-4-010
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 3
+  cert_tags: *id001
+  stem: SSH remote access should replace?
+  choices:
+  - id: a
+    text: Cleartext Telnet for device management
+    rationale: SSH encrypts management sessions unlike Telnet.
+  - id: b
+    text: Only HTTPS forever
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only console cables
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only SNMP traps
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SSH encrypts management sessions unlike Telnet.
+  references:
+  - CCNA 4.8
+- id: ccna-4-011
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 4
+  cert_tags: *id001
+  stem: TFTP is commonly used to?
+  choices:
+  - id: a
+    text: Transfer IOS/config files simply
+    rationale: TFTP is a lightweight file transfer protocol.
+  - id: b
+    text: Encrypt site-to-site VPNs
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Elect HSRP active
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Tag 802.1Q
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: TFTP is a lightweight file transfer protocol.
+  references:
+  - CCNA 4.9
+- id: ccna-4-012
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: DNS forward lookup maps?
+  choices:
+  - id: a
+    text: Name to IP
+    rationale: Forward DNS resolves names to addresses.
+  - id: b
+    text: IP to MAC only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: AS to community
+    rationale: Not correct for this scenario.
+  - id: d
+    text: VLAN to VNI
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Forward DNS resolves names to addresses.
+  references:
+  - CCNA 4.3
+- id: ccna-4-013
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 3
+  cert_tags: *id001
+  stem: DHCP snooping trusted ports typically face?
+  choices:
+  - id: a
+    text: Legitimate DHCP servers / uplinks
+    rationale: Trust server-facing ports; untrust access ports.
+  - id: b
+    text: All access ports always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only SPAN destinations
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only Null0
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Trust server-facing ports; untrust access ports.
+  references:
+  - CCNA 4.6
+- id: ccna-4-014
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Traffic policing typically?
+  choices:
+  - id: a
+    text: Drops or remarks excess over a rate
+    rationale: Policers enforce rates by drop/remark.
+  - id: b
+    text: Only increases STP diameter
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only creates VLANs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only disables CDP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Policers enforce rates by drop/remark.
+  references:
+  - CCNA 4.7
+- id: ccna-4-015
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: SNMP informs differ from traps primarily by?
+  choices:
+  - id: a
+    text: Acknowledged delivery
+    rationale: Informs expect acknowledgment; traps are unacknowledged.
+  - id: b
+    text: Using only Telnet
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Requiring OSPF
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Disabling MIBs
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Informs expect acknowledgment; traps are unacknowledged.
+  references:
+  - CCNA 4.4
+- id: ccna-4-016
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Syslog facilities help?
+  choices:
+  - id: a
+    text: Classify message sources/categories
+    rationale: Facilities categorize log origins.
+  - id: b
+    text: Encrypt EtherChannels
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Assign BGP MED
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Elect DR
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Facilities categorize log origins.
+  references:
+  - CCNA 4.5
+- id: ccna-4-017
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: PAT (NAT overload) conserves public IPs by?
+  choices:
+  - id: a
+    text: Translating many insides to one/few globals with ports
+    rationale: Overload NAT uses port multiplexing.
+  - id: b
+    text: Only 1:1 static always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disabling TCP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only using IPv6 exclusively
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Overload NAT uses port multiplexing.
+  references:
+  - CCNA 4.1
+- id: ccna-4-018
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which transport does SSH use by default?
+  choices:
+  - id: a
+    text: TCP 22
+    rationale: SSH listens on TCP 22 by default.
+  - id: b
+    text: UDP 161
+    rationale: Not correct for this scenario.
+  - id: c
+    text: UDP 69
+    rationale: Not correct for this scenario.
+  - id: d
+    text: TCP 23
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: SSH listens on TCP 22 by default.
+  references:
+  - CCNA 4.8
+- id: ccna-4-019
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Which command shows NTP associations on IOS?
+  choices:
+  - id: a
+    text: show ntp associations
+    rationale: show ntp associations displays peer/server sync state.
+  - id: b
+    text: show vlan brief
+    rationale: Not correct for this scenario.
+  - id: c
+    text: show spanning-tree
+    rationale: Not correct for this scenario.
+  - id: d
+    text: show etherchannel summary
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: show ntp associations displays peer/server sync state.
+  references:
+  - CCNA 4.2
+- id: ccna-gen-0027-161363
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 3
+  cert_tags: &id002
+  - ccna
+  stem: 'Scenario 27 (4.1): Many-to-one NAT using ports?'
+  choices:
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.1; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.1: Many-to-one NAT using ports → PAT/overload.'
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.1; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.1; One-to-one dynamic only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.1, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0028-cbb178
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 28 (4.2): DHCP client broadcast to find servers?'
+  choices:
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.2: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.2; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.2; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.2; DHCPOFFER is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.2, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0029-9b6b69
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 29 (4.3): DNS record for IPv6?'
+  choices:
+  - id: b
+    text: A
+    rationale: Not correct for 4.3; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.3; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.3; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.3: DNS record for IPv6 → AAAA.'
+  correct:
+    answer: a
+  explanation: For 4.3, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0030-277593
+  type: multiple_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.4] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.4.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.4.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.4: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0031-ea4dd2
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 31 (4.5): DHCP client broadcast to find servers?'
+  choices:
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.5; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.5: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.5; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.5; Only DHCPREQUEST is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.5, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0032-0bedca
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 32 (4.6): DNS record for IPv6?'
+  choices:
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.6: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.6; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.6; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.6; PTR only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.6, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0033-060823
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 33 (4.7): Many-to-one NAT using ports?'
+  choices:
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.7; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.7; One-to-one dynamic only is a common mix-up.
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.7; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.7: Many-to-one NAT using ports → PAT/overload.'
+  correct:
+    answer: a
+  explanation: For 4.7, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0034-90341e
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 34 (4.8): DHCP client broadcast to find servers?'
+  choices:
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.8; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.8; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.8: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.8; DHCPACK is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.8, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0035-cbeff5
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 35 (4.9): DNS record for IPv6?'
+  choices:
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.9; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.9: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.9; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.9; MX is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.9, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0080-5bf6b9
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 80 (4.1): DNS record for IPv6?'
+  choices:
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.1: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.1; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.1; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.1; PTR only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.1, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0081-752165
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 81 (4.2): Many-to-one NAT using ports?'
+  choices:
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.2; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.2; One-to-one dynamic only is a common mix-up.
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.2; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.2: Many-to-one NAT using ports → PAT/overload.'
+  correct:
+    answer: a
+  explanation: For 4.2, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0082-8f2d31
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 82 (4.3): DHCP client broadcast to find servers?'
+  choices:
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.3; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.3; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.3: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.3; DHCPACK is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.3, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0083-11f856
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 83 (4.4): DNS record for IPv6?'
+  choices:
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.4; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.4: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.4; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.4; MX is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.4, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0084-855996
+  type: multiple_choice
+  topic_code: '4.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.5] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.5.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.5.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.5: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0085-e8e99c
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 85 (4.6): DHCP client broadcast to find servers?'
+  choices:
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.6; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.6; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.6; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.6: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  correct:
+    answer: a
+  explanation: For 4.6, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0086-572661
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 86 (4.7): DNS record for IPv6?'
+  choices:
+  - id: c
+    text: MX
+    rationale: Not correct for 4.7; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.7; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.7: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.7; A is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.7, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0087-88bc1b
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 87 (4.8): Many-to-one NAT using ports?'
+  choices:
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.8; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.8: Many-to-one NAT using ports → PAT/overload.'
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.8; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.8; One-to-one dynamic only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.8, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0088-9e7e99
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 88 (4.9): DHCP client broadcast to find servers?'
+  choices:
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.9: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.9; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.9; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.9; DHCPOFFER is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.9, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0133-dfc84c
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 133 (4.1): DHCP client broadcast to find servers?'
+  choices:
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  correct:
+    answer: a
+  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0134-07f485
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 134 (4.2): DNS record for IPv6?'
+  choices:
+  - id: c
+    text: MX
+    rationale: Not correct for 4.2; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.2; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.2; A is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.2, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0135-c1cf48
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 135 (4.3): Many-to-one NAT using ports?'
+  choices:
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.3; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.3: Many-to-one NAT using ports → PAT/overload.'
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.3; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.3; One-to-one dynamic only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.3, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0136-ef32f1
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 136 (4.4): DHCP client broadcast to find servers?'
+  choices:
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0137-aa2d09
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 137 (4.5): DNS record for IPv6?'
+  choices:
+  - id: b
+    text: A
+    rationale: Not correct for 4.5; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.5; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.5; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
+  correct:
+    answer: a
+  explanation: For 4.5, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0138-aa483e
+  type: multiple_choice
+  topic_code: '4.6'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.6] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.6.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.6.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.6.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.6.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.6: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0139-47dbd7
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 139 (4.7): DHCP client broadcast to find servers?'
+  choices:
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.7; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.7: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.7; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.7; Only DHCPREQUEST is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.7, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0140-8657eb
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 140 (4.8): DNS record for IPv6?'
+  choices:
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.8: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.8; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.8; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.8; PTR only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.8, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0141-0b1de9
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 141 (4.9): Many-to-one NAT using ports?'
+  choices:
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.9; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.9; One-to-one dynamic only is a common mix-up.
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.9; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.9: Many-to-one NAT using ports → PAT/overload.'
+  correct:
+    answer: a
+  explanation: For 4.9, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0186-c79828
+  type: multiple_choice
+  topic_code: '4.1'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.1] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.1.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.1.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.1: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0187-ea694d
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 187 (4.2): DHCP client broadcast to find servers?'
+  choices:
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.2; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.2: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.2; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.2; Only DHCPREQUEST is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.2, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0188-eff409
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 188 (4.3): DNS record for IPv6?'
+  choices:
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.3: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.3; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.3; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.3; PTR only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.3, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0189-c95b1f
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 189 (4.4): Many-to-one NAT using ports?'
+  choices:
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.4; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.4; One-to-one dynamic only is a common mix-up.
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.4; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.4: Many-to-one NAT using ports → PAT/overload.'
+  correct:
+    answer: a
+  explanation: For 4.4, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0190-bf5c5c
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 190 (4.5): DHCP client broadcast to find servers?'
+  choices:
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.5; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.5; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.5: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.5; DHCPACK is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.5, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0191-1b420c
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 191 (4.6): DNS record for IPv6?'
+  choices:
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.6; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.6: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.6; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.6; MX is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.6, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0192-d31089
+  type: multiple_choice
+  topic_code: '4.7'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.7] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.7.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.7.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.7.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.7.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.7: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0193-24c71b
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 193 (4.8): DHCP client broadcast to find servers?'
+  choices:
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.8; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.8; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.8; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.8: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  correct:
+    answer: a
+  explanation: For 4.8, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0194-9c5e19
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 194 (4.9): DNS record for IPv6?'
+  choices:
+  - id: c
+    text: MX
+    rationale: Not correct for 4.9; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.9; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.9: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.9; A is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.9, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0239-113398
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 239 (4.1): DNS record for IPv6?'
+  choices:
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.1; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.1: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.1; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.1; MX is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.1, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0240-d55f0a
+  type: multiple_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.2] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.2.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.2.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.2: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0241-bedb64
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 241 (4.3): DHCP client broadcast to find servers?'
+  choices:
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.3; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.3; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.3; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.3: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  correct:
+    answer: a
+  explanation: For 4.3, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0242-514081
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 242 (4.4): DNS record for IPv6?'
+  choices:
+  - id: c
+    text: MX
+    rationale: Not correct for 4.4; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.4; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.4: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.4; A is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.4, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0243-d6dd54
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 243 (4.5): Many-to-one NAT using ports?'
+  choices:
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.5; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.5: Many-to-one NAT using ports → PAT/overload.'
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.5; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.5; One-to-one dynamic only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.5, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0244-798fc9
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 244 (4.6): DHCP client broadcast to find servers?'
+  choices:
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.6: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.6; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.6; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.6; DHCPOFFER is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.6, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0245-342a71
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 245 (4.7): DNS record for IPv6?'
+  choices:
+  - id: b
+    text: A
+    rationale: Not correct for 4.7; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.7; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.7; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.7: DNS record for IPv6 → AAAA.'
+  correct:
+    answer: a
+  explanation: For 4.7, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0246-a40a7b
+  type: multiple_choice
+  topic_code: '4.8'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.8] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.8.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.8.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.8.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.8.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.8: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0247-7d1553
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 247 (4.9): DHCP client broadcast to find servers?'
+  choices:
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.9; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.9: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.9; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.9; Only DHCPREQUEST is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.9, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0292-72452d
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 292 (4.1): DHCP client broadcast to find servers?'
+  choices:
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0293-ae7032
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 293 (4.2): DNS record for IPv6?'
+  choices:
+  - id: b
+    text: A
+    rationale: Not correct for 4.2; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.2; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.2; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
+  correct:
+    answer: a
+  explanation: For 4.2, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0294-ec392b
+  type: multiple_choice
+  topic_code: '4.3'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.3] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.3.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.3.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.3: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0295-a7b026
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 295 (4.4): DHCP client broadcast to find servers?'
+  choices:
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0296-5777a6
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 296 (4.5): DNS record for IPv6?'
+  choices:
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.5; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.5; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.5; PTR only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.5, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0297-bfb6af
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 297 (4.6): Many-to-one NAT using ports?'
+  choices:
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.6; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.6; One-to-one dynamic only is a common mix-up.
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.6; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.6: Many-to-one NAT using ports → PAT/overload.'
+  correct:
+    answer: a
+  explanation: For 4.6, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0298-3510f9
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 298 (4.7): DHCP client broadcast to find servers?'
+  choices:
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.7; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.7; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.7: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.7; DHCPACK is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.7, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0299-202013
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 299 (4.8): DNS record for IPv6?'
+  choices:
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.8; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.8: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.8; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.8; MX is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.8, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0300-4d3aa6
+  type: multiple_choice
+  topic_code: '4.9'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.9] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.9.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.9.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.9.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.9.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.9: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0345-2d9d30
+  type: single_choice
+  topic_code: '4.1'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 345 (4.1): Many-to-one NAT using ports?'
+  choices:
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.1; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.1; One-to-one dynamic only is a common mix-up.
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.1; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.1: Many-to-one NAT using ports → PAT/overload.'
+  correct:
+    answer: a
+  explanation: For 4.1, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0346-aff007
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 346 (4.2): DHCP client broadcast to find servers?'
+  choices:
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.2; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.2; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.2: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.2; DHCPACK is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.2, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0347-421743
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 347 (4.3): DNS record for IPv6?'
+  choices:
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.3; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.3: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.3; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.3; MX is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.3, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0348-622998
+  type: multiple_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id002
+  stem: '[CCNA 4.4] Select ALL that correctly relate to: Many-to-one NAT using ports.'
+  choices:
+  - id: a
+    text: PAT/overload
+    rationale: Correct for objective 4.4.
+  - id: b
+    text: Static NAT
+    rationale: Incorrect association for 4.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 4.4.
+  - id: d
+    text: One-to-one dynamic only
+    rationale: Distractor for 4.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 4.4: Many-to-one NAT using ports maps to PAT/overload.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0349-fca78b
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 5
+  cert_tags: *id002
+  stem: 'Scenario 349 (4.5): DHCP client broadcast to find servers?'
+  choices:
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.5; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.5; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.5; DHCPOFFER is a common mix-up.
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.5: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  correct:
+    answer: a
+  explanation: For 4.5, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0350-e1f8df
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 1
+  cert_tags: *id002
+  stem: 'Scenario 350 (4.6): DNS record for IPv6?'
+  choices:
+  - id: c
+    text: MX
+    rationale: Not correct for 4.6; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.6; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.6: DNS record for IPv6 → AAAA.'
+  - id: b
+    text: A
+    rationale: Not correct for 4.6; A is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.6, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0351-7c082d
+  type: single_choice
+  topic_code: '4.7'
+  difficulty: 2
+  cert_tags: *id002
+  stem: 'Scenario 351 (4.7): Many-to-one NAT using ports?'
+  choices:
+  - id: d
+    text: NPTv6 only
+    rationale: Not correct for 4.7; NPTv6 only is a common mix-up.
+  - id: a
+    text: PAT/overload
+    rationale: 'Matches 4.7: Many-to-one NAT using ports → PAT/overload.'
+  - id: b
+    text: Static NAT
+    rationale: Not correct for 4.7; Static NAT is a common mix-up.
+  - id: c
+    text: One-to-one dynamic only
+    rationale: Not correct for 4.7; One-to-one dynamic only is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.7, the accurate association is PAT/overload.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0352-1b5cf0
+  type: single_choice
+  topic_code: '4.8'
+  difficulty: 3
+  cert_tags: *id002
+  stem: 'Scenario 352 (4.8): DHCP client broadcast to find servers?'
+  choices:
+  - id: a
+    text: DHCPDISCOVER
+    rationale: 'Matches 4.8: DHCP client broadcast to find servers → DHCPDISCOVER.'
+  - id: b
+    text: DHCPACK
+    rationale: Not correct for 4.8; DHCPACK is a common mix-up.
+  - id: c
+    text: Only DHCPREQUEST
+    rationale: Not correct for 4.8; Only DHCPREQUEST is a common mix-up.
+  - id: d
+    text: DHCPOFFER
+    rationale: Not correct for 4.8; DHCPOFFER is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 4.8, the accurate association is DHCPDISCOVER.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0353-153ab6
+  type: single_choice
+  topic_code: '4.9'
+  difficulty: 4
+  cert_tags: *id002
+  stem: 'Scenario 353 (4.9): DNS record for IPv6?'
+  choices:
+  - id: b
+    text: A
+    rationale: Not correct for 4.9; A is a common mix-up.
+  - id: c
+    text: MX
+    rationale: Not correct for 4.9; MX is a common mix-up.
+  - id: d
+    text: PTR only
+    rationale: Not correct for 4.9; PTR only is a common mix-up.
+  - id: a
+    text: AAAA
+    rationale: 'Matches 4.9: DNS record for IPv6 → AAAA.'
+  correct:
+    answer: a
+  explanation: For 4.9, the accurate association is AAAA.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

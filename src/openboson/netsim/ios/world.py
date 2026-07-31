@@ -248,19 +248,46 @@ class LabWorld:
     def _l2_adjacent_or_same(self, a: str, b: str) -> bool:
         if a == b:
             return True
-        # BFS one hop via up links; also allow switch as transparent bridge
-        # if both endpoints connect to same switch with up links.
         direct = self._direct_link_up(a, b)
-        if direct:
+        if direct and self._vlan_compatible(a, b, None):
             return True
-        # Via one intermediate switch
         for mid in self.devices:
             if mid in {a, b}:
                 continue
-            if self.devices[mid].role == DeviceRole.SWITCH:
-                if self._direct_link_up(a, mid) and self._direct_link_up(mid, b):
-                    return True
+            if self.devices[mid].role != DeviceRole.SWITCH:
+                continue
+            if not (self._direct_link_up(a, mid) and self._direct_link_up(mid, b)):
+                continue
+            if self._hosts_share_access_vlan(mid, a, b):
+                return True
         return False
+
+    def _iface_toward(self, switch: str, peer: str) -> InterfaceState | None:
+        for a_dev, a_if, b_dev, b_if in self.links:
+            if a_dev == switch and b_dev == peer:
+                return self.devices[switch].interfaces.get(a_if)
+            if b_dev == switch and a_dev == peer:
+                return self.devices[switch].interfaces.get(b_if)
+        return None
+
+    def _hosts_share_access_vlan(self, switch: str, a: str, b: str) -> bool:
+        ia = self._iface_toward(switch, a)
+        ib = self._iface_toward(switch, b)
+        if ia is None or ib is None:
+            return False
+        # Trunk toward router/other switch can bridge; access ports must match VLAN.
+        if ia.switchport_mode == "trunk" or ib.switchport_mode == "trunk":
+            return True
+        va = ia.access_vlan if ia.switchport_mode == "access" else 1
+        vb = ib.access_vlan if ib.switchport_mode == "access" else 1
+        if va is None:
+            va = 1
+        if vb is None:
+            vb = 1
+        return va == vb
+
+    def _vlan_compatible(self, a: str, b: str, _switch: str | None) -> bool:
+        return True
 
     def _direct_link_up(self, a: str, b: str) -> bool:
         for a_dev, a_if, b_dev, b_if in self.links:

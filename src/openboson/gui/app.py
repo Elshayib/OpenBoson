@@ -7,13 +7,12 @@ a configured :class:`QApplication` without entering the event loop.
 from __future__ import annotations
 
 import sys
-from pathlib import Path
 
-from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication
 
 from openboson import __version__
 from openboson.gui.main_window import MainWindow
+from openboson.logging_setup import setup_logging
 
 
 def make_app(argv: list[str] | None = None) -> QApplication:
@@ -32,6 +31,7 @@ def make_app(argv: list[str] | None = None) -> QApplication:
 
 
 def run_gui() -> int:
+    setup_logging()
     app = make_app()
     window = MainWindow()
     window.show()

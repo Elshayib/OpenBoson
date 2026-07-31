@@ -7,11 +7,12 @@ starts studying or taking an exam.
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import (
     QButtonGroup,
     QHBoxLayout,
     QMainWindow,
+    QMessageBox,
     QPushButton,
     QStackedWidget,
     QVBoxLayout,
@@ -94,6 +95,11 @@ class MainWindow(QMainWindow):
         self._practice_page.set_on_practice_question(self._on_practice_question)
         self._practice_page.set_on_start_exam(self._on_blueprint_exam)
 
+        self._dashboard_page = self._static_pages["Dashboard"]
+        self._dashboard_page.set_on_practice_weakest(self.navigate_practice_weakest_domain)
+        self._dashboard_page.set_on_practice_missed(self.navigate_practice_missed)
+        self._dashboard_page.set_on_continue(self.navigate_continue_activity)
+
         # Transient pages
         self._practice_q_page = PracticeQuestionPage()
         self._session_page = ExamSessionPage()
@@ -136,16 +142,32 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage(
             f"openboson {__version__}  •  CCNA 200-301 v1.1 / ENCOR 350-401 v1.2"
         )
-        self.apply_theme()
+        try:
+            from openboson.settings_store import load_settings
+
+            self.apply_theme(load_settings().theme)
+        except Exception:
+            self.apply_theme("dark")
         self._exam_active = False
         self._nav_before_exam: QPushButton | None = None
+        self._update_thread = None
+        self._update_worker = None
+        self._startup_update_pending = None
+        # Defer startup update check until the window is shown and interactive.
+        QTimer.singleShot(750, self._maybe_startup_update_check)
 
     def apply_theme(self, theme: str = "dark") -> None:
         from pathlib import Path
 
-        qss_path = Path(__file__).resolve().parent / "styles.qss"
+        name = "styles_light.qss" if theme == "light" else "styles.qss"
+        qss_path = Path(__file__).resolve().parent / name
         if qss_path.is_file():
             self.setStyleSheet(qss_path.read_text(encoding="utf-8"))
+        else:
+            # Fall back to dark stylesheet if light asset is missing.
+            dark = Path(__file__).resolve().parent / "styles.qss"
+            if dark.is_file():
+                self.setStyleSheet(dark.read_text(encoding="utf-8"))
 
     def _on_theme_changed(self, theme: str) -> None:
         self.apply_theme(theme)
@@ -192,6 +214,53 @@ class MainWindow(QMainWindow):
             if btn.text() == "Practice":
                 btn.setChecked(True)
 
+    def navigate_practice(
+        self,
+        *,
+        cert: str | None = None,
+        topic_code: str | None = None,
+        question_ids: list[str] | None = None,
+    ) -> None:
+        """Navigate to Practice with an optional deep-link filter."""
+        self._leave_exam()
+        idx = next(i for i, (lbl, _c) in enumerate(self.STATIC_PAGES) if lbl == "Practice")
+        self._stack.setCurrentIndex(idx)
+        for btn in self._nav_group.buttons():
+            if btn.text() == "Practice":
+                btn.setChecked(True)
+        if cert or topic_code or question_ids is not None:
+            self._practice_page.apply_deep_link(
+                cert=cert, topic_code=topic_code, question_ids=question_ids
+            )
+        else:
+            self._practice_page.refresh()
+
+    def navigate_practice_weakest_domain(self, cert: str | None = None) -> None:
+        from openboson import stats_service as svc
+
+        weak = svc.weak_domains(cert=cert, limit=1)
+        if not weak:
+            self.navigate_practice()
+            return
+        domain = weak[0]
+        self.navigate_practice(cert=domain.cert_tag or cert, topic_code=domain.domain_prefix)
+
+    def navigate_practice_missed(self, limit: int = 20) -> None:
+        from openboson import stats_service as svc
+
+        ids = svc.recent_missed_question_ids(limit=limit)
+        self.navigate_practice(question_ids=ids)
+
+    def navigate_continue_activity(self) -> None:
+        """Open Practice or Labs based on latest finished activity (no resume)."""
+        from openboson import stats_service as svc
+
+        activity = svc.latest_activity()
+        if activity and activity.get("kind") == "lab":
+            self.select_page("Labs")
+            return
+        self.navigate_practice()
+
     def _on_practice_question(self, question: Question) -> None:
         self._practice_q_page.show_question(question)
         self._stack.setCurrentWidget(self._practice_q_page)
@@ -235,6 +304,7 @@ class MainWindow(QMainWindow):
         self._stack.setCurrentWidget(self._lab_session_page)
 
     def _on_lab_result(self, session: LabSession, result: LabResult) -> None:
+        self._lab_session_page.cleanup()
         self._lab_result_page.show_result(session, result)
         self._stack.setCurrentWidget(self._lab_result_page)
 
@@ -261,3 +331,84 @@ class MainWindow(QMainWindow):
 
     def start_lab_from_list(self, lab) -> None:
         self._on_lab_selected(lab)
+
+    def has_active_study_session(self) -> bool:
+        """True while an exam or lab session should not be interrupted by update UI."""
+        if self._exam_active:
+            return True
+        if self._stack.currentWidget() is self._lab_session_page:
+            return bool(getattr(self._lab_session_page, "is_lab_active", lambda: False)())
+        return False
+
+    def _maybe_startup_update_check(self) -> None:
+        from openboson.updater import should_run_startup_check
+
+        if not should_run_startup_check():
+            return
+        if self.has_active_study_session():
+            # Retry shortly — exam/lab may end; avoid blocking or interrupting.
+            QTimer.singleShot(5000, self._maybe_startup_update_check)
+            return
+        self._start_background_update_check(force=False)
+
+    def _start_background_update_check(self, *, force: bool) -> None:
+        from openboson.gui.update_check import start_check_thread
+
+        def _on_finished(result: object) -> None:
+            self._on_startup_update_result(result)
+
+        self._update_thread, self._update_worker = start_check_thread(
+            force=force,
+            on_finished=_on_finished,
+        )
+
+    def _on_startup_update_result(self, result: object) -> None:
+        from openboson.updater import CheckResult, CheckStatus
+
+        if not isinstance(result, CheckResult):
+            return
+        if result.status != CheckStatus.UPDATE_AVAILABLE or result.update is None:
+            if result.status == CheckStatus.ERROR:
+                self.statusBar().showMessage(result.message, 6000)
+            return
+        if self.has_active_study_session():
+            # Defer notification until the session ends.
+            self._startup_update_pending = result.update
+            QTimer.singleShot(5000, self._flush_pending_update_banner)
+            return
+        self._show_update_available(result.update)
+
+    def _flush_pending_update_banner(self) -> None:
+        pending = self._startup_update_pending
+        if pending is None:
+            return
+        if self.has_active_study_session():
+            QTimer.singleShot(5000, self._flush_pending_update_banner)
+            return
+        self._startup_update_pending = None
+        self._show_update_available(pending)
+
+    def _show_update_available(self, update) -> None:
+        from openboson.updater import skip_version
+
+        self.statusBar().showMessage(f"Update {update.version} is available.", 10000)
+        box = QMessageBox(self)
+        box.setIcon(QMessageBox.Icon.Information)
+        box.setWindowTitle("Update available")
+        box.setText(f"OpenBoson {update.version} is available.")
+        box.setInformativeText(
+            "You can download and install from Settings → Updates. "
+            "Windows installers are currently unsigned; SmartScreen may warn before install.\n\n"
+            f"Release notes: {update.release_url}"
+        )
+        install_btn = box.addButton("Open Settings", QMessageBox.ButtonRole.AcceptRole)
+        later_btn = box.addButton("Remind later", QMessageBox.ButtonRole.RejectRole)
+        skip_btn = box.addButton("Skip this version", QMessageBox.ButtonRole.DestructiveRole)
+        box.setDefaultButton(later_btn)
+        box.exec()
+        clicked = box.clickedButton()
+        if clicked is install_btn:
+            self.select_page("Settings")
+        elif clicked is skip_btn:
+            skip_version(update.version)
+        # Remind later: dismiss only.

@@ -1,0 +1,45 @@
+title: Multi-task Campus Edge
+lab_id: ccna_campus_edge
+topic_code: '2.1'
+difficulty: 4
+description: Combine VLAN, trunk, and gateway addressing tasks.
+objectives:
+- VLAN
+- trunk
+- gateway
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  links:
+  - a: R1/GigabitEthernet0/0
+    b: SW1/GigabitEthernet0/1
+tasks:
+- id: t1
+  instructions: On R1 set Gi0/0 to 10.20.20.1/24 and no shut.
+  grading_rules:
+    device: R1
+    require:
+    - ip address 10.20.20.1 255.255.255.0
+    - no shutdown
+- id: t2
+  instructions: On SW1 create VLAN 20 and trunk Gi0/1.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 20
+    - switchport mode trunk
+solution_config: "hostname R1\ninterface GigabitEthernet0/0\n ip address 10.20.20.1\
+  \ 255.255.255.0\n no shutdown\nvlan 20\ninterface GigabitEthernet0/1\n switchport\
+  \ mode trunk\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

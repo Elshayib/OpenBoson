@@ -1,0 +1,26 @@
+title: Trunk Uplink
+lab_id: ccna_trunk_uplink
+topic_code: '2.1'
+difficulty: 2
+description: Configure a switch uplink as an 802.1Q trunk.
+objectives:
+- Trunk Gi0/1
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: Configure SW1 Gi0/1 as a trunk.
+  grading_rules:
+    device: SW1
+    require:
+    - switchport mode trunk
+solution_config: "interface GigabitEthernet0/1\n switchport mode trunk\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

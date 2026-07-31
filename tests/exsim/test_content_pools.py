@@ -185,3 +185,18 @@ def test_full_pool_coverage_ready():
         assert cov.ready, cov.deficits
         qs = build_exam_from_blueprint(pool.questions, bp, rng=random.Random(42))
         assert len(qs) == 100
+
+
+def test_release_content_volume_gates():
+    ccna = load_exam_bank(BANKS / "pool_ccna.yaml")
+    encor = load_exam_bank(BANKS / "pool_encor.yaml")
+    assert len(ccna.questions) >= 500
+    assert len(encor.questions) >= 400
+    for bank in (ccna, encor):
+        non_sc = sum(1 for q in bank.questions if q.type.value != "single_choice")
+        assert non_sc / len(bank.questions) >= 0.15
+
+
+def test_lab_catalog_count():
+    labs = list((ROOT / "data" / "demo_labs").glob("*.yaml"))
+    assert len(labs) >= 20

@@ -38,5 +38,9 @@ class Settings:
     def labs_dir(self) -> Path:
         return self.data_dir / "labs"
 
+    @property
+    def packs_dir(self) -> Path:
+        return self.data_dir / "packs"
+
 
 settings = Settings()

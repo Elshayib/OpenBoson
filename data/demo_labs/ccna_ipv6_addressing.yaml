@@ -1,0 +1,28 @@
+title: IPv6 Interface Addressing
+lab_id: ccna_ipv6_addressing
+topic_code: '1.9'
+difficulty: 3
+description: Enable IPv6 and set a link address.
+objectives:
+- ipv6 address
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: Enable IPv6 unicast-routing and set Gi0/0 to 2001:db8:1::1/64.
+  grading_rules:
+    device: R1
+    require:
+    - ipv6 unicast-routing
+    - ipv6 address 2001:db8:1::1/64
+solution_config: "ipv6 unicast-routing\ninterface GigabitEthernet0/0\n ipv6 address\
+  \ 2001:db8:1::1/64\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

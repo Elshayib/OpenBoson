@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 from collections.abc import Callable
+from pathlib import Path
 
 from sqlalchemy import text
 from sqlalchemy.engine import Connection, Engine
@@ -15,7 +16,7 @@ from sqlalchemy.engine import Connection, Engine
 logger = logging.getLogger(__name__)
 
 # Bump when adding a new migration function below.
-CURRENT_SCHEMA_VERSION = 1
+CURRENT_SCHEMA_VERSION = 2
 
 _SCHEMA_VERSION_TABLE = "schema_version"
 
@@ -25,6 +26,23 @@ def run_migrations(engine: Engine) -> int:
     with engine.begin() as conn:
         _ensure_version_table(conn)
         version = _read_version(conn)
+        pending = any(version < target for target, _ in _MIGRATIONS) or (
+            version < CURRENT_SCHEMA_VERSION
+        )
+        if pending and version > 0:
+            # Back up only when upgrading an existing DB (version already stamped).
+            try:
+                from openboson.db_backup import backup_database
+
+                url = str(engine.url)
+                if url.startswith("sqlite///") or url.startswith("sqlite:///"):
+                    # sqlite:////path or sqlite:///path
+                    db_path = url.split("sqlite:///")[-1]
+                    if db_path and db_path != ":memory:":
+                        backup_database(Path(db_path), reason=f"pre-migration-v{version}")
+            except Exception as exc:  # noqa: BLE001 — never block migrations on backup
+                logger.warning("Pre-migration backup failed: %s", exc)
+
         for target, migrate in _MIGRATIONS:
             if version < target:
                 logger.info("Applying DB migration v%s (from v%s)", target, version)
@@ -225,6 +243,36 @@ def _rebuild_user_answers(conn: Connection) -> None:
     conn.execute(text("PRAGMA foreign_keys=ON"))
 
 
+def _migrate_v2_answer_objective_identity(conn: Connection) -> None:
+    """Add topic_code / cert_tag / exam_version on each saved user answer."""
+    if not _table_exists(conn, "user_answers"):
+        return
+
+    cols = _columns(conn, "user_answers")
+    additions = (
+        ("topic_code", "VARCHAR(20)"),
+        ("cert_tag", "VARCHAR(20)"),
+        ("exam_version", "VARCHAR(20)"),
+    )
+    for name, sql_type in additions:
+        if name not in cols:
+            conn.execute(text(f"ALTER TABLE user_answers ADD COLUMN {name} {sql_type}"))
+
+    conn.execute(
+        text(
+            "CREATE INDEX IF NOT EXISTS ix_user_answers_topic_code "
+            "ON user_answers (topic_code)"
+        )
+    )
+    conn.execute(
+        text(
+            "CREATE INDEX IF NOT EXISTS ix_user_answers_cert_tag "
+            "ON user_answers (cert_tag)"
+        )
+    )
+
+
 _MIGRATIONS: list[tuple[int, Callable[[Connection], None]]] = [
     (1, _migrate_v1_exam_identity),
+    (2, _migrate_v2_answer_objective_identity),
 ]

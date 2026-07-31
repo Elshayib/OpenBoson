@@ -1,0 +1,1720 @@
+provider: openboson
+license: MIT
+provenance: original
+questions:
+- id: ccna-3-001
+  type: ordered_list
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: &id001
+  - ccna
+  stem: Place OSPF adjacency states in order from Down to Full.
+  ordered_items:
+  - ExStart
+  - Init
+  - Down
+  - Full
+  - 2-Way
+  - Loading
+  - Exchange
+  correct:
+    order:
+    - Down
+    - Init
+    - 2-Way
+    - ExStart
+    - Exchange
+    - Loading
+    - Full
+  explanation: OSPF progresses Down → Init → 2-Way → ExStart → Exchange → Loading
+    → Full.
+  references:
+  - CCNA 3.4 — OSPF
+- id: ccna-3-002
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which administrative distance does Cisco IOS assign to OSPF by default?
+  choices:
+  - id: a
+    text: '110'
+    rationale: OSPF AD.
+  - id: b
+    text: '90'
+    rationale: EIGRP internal.
+  - id: c
+    text: '120'
+    rationale: RIP.
+  - id: d
+    text: '1'
+    rationale: Static.
+  correct:
+    answer: a
+  explanation: 'Default AD: connected 0, static 1, eBGP 20, EIGRP 90, OSPF 110, RIP
+    120, iBGP 200.'
+  references:
+  - CCNA 3.2 — forwarding decision
+- id: ccna-3-003
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A default route is commonly written as which prefix?
+  choices:
+  - id: a
+    text: 0.0.0.0/0
+    rationale: Default.
+  - id: b
+    text: 255.255.255.255/32
+    rationale: Host broadcast-ish.
+  - id: c
+    text: 127.0.0.0/8
+    rationale: Loopback net.
+  - id: d
+    text: 224.0.0.0/4
+    rationale: Multicast.
+  correct:
+    answer: a
+  explanation: 0.0.0.0/0 matches all destinations as last resort.
+  references:
+  - CCNA 3.3 — static routing
+- id: ccna-3-004
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: In OSPF, what identifies a router uniquely in the domain?
+  choices:
+  - id: a
+    text: Router ID
+    rationale: 32-bit RID.
+  - id: b
+    text: Process ID alone
+    rationale: Local significance.
+  - id: c
+    text: ASN
+    rationale: BGP.
+  - id: d
+    text: VLAN ID
+    rationale: L2.
+  correct:
+    answer: a
+  explanation: OSPF Router ID uniquely identifies the router in LSAs.
+  references:
+  - CCNA 3.4 — OSPF
+- id: ccna-3-005
+  type: drag_match
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Match protocol to default Cisco AD.
+  drag_pairs: &id002
+  - left: EIGRP (internal)
+    right: '90'
+  - left: OSPF
+    right: '110'
+  - left: RIP
+    right: '120'
+  - left: eBGP
+    right: '20'
+  correct:
+    pairs: *id002
+  explanation: Lower AD is preferred when prefixes are equal length.
+  references:
+  - CCNA 3.2
+- id: ccna-3-006
+  type: sim
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Configure a static default route on R1 via next hop 203.0.113.1.
+  sim:
+    instructions: Enter the IOS command(s) for a default static route.
+  correct:
+    expected_commands:
+    - ip route 0.0.0.0 0.0.0.0 203.0.113.1
+  explanation: ip route 0.0.0.0 0.0.0.0 <next-hop> installs a default static.
+  references:
+  - CCNA 3.3
+- id: ccna-3-007
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: OSPF Hello packets on Ethernet use which multicast?
+  choices:
+  - id: a
+    text: 224.0.0.5
+    rationale: AllSPFRouters is 224.0.0.5.
+  - id: b
+    text: 224.0.0.9
+    rationale: Not correct for this scenario.
+  - id: c
+    text: 224.0.0.10
+    rationale: Not correct for this scenario.
+  - id: d
+    text: 255.255.255.255
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: AllSPFRouters is 224.0.0.5.
+  references:
+  - CCNA 3.4
+- id: ccna-3-008
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which OSPF network type elects DR/BDR on multiaccess?
+  choices:
+  - id: a
+    text: Broadcast
+    rationale: Broadcast multiaccess elects DR/BDR.
+  - id: b
+    text: Point-to-point
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Loopback
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Nonbroadcast always without DR
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Broadcast multiaccess elects DR/BDR.
+  references:
+  - CCNA 3.4
+- id: ccna-3-009
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Longest prefix match prefers which route to 10.1.1.5?
+  choices:
+  - id: a
+    text: 10.1.1.0/28 over 10.1.0.0/16
+    rationale: More-specific prefixes win longest-match forwarding.
+  - id: b
+    text: Always AD only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Always metric only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Random ECMP only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: More-specific prefixes win longest-match forwarding.
+  references:
+  - CCNA 3.2
+- id: ccna-3-010
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: What does a routing table 'S*' typically indicate on Cisco?
+  choices:
+  - id: a
+    text: Candidate default static
+    rationale: S* marks a candidate default static route.
+  - id: b
+    text: OSPF summary
+    rationale: Not correct for this scenario.
+  - id: c
+    text: BGP aggregate
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Connected
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: S* marks a candidate default static route.
+  references:
+  - CCNA 3.1
+- id: ccna-3-011
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Floating static routes use what technique?
+  choices:
+  - id: a
+    text: Higher AD than primary
+    rationale: A higher AD keeps the backup inactive until the primary fails.
+  - id: b
+    text: Lower AD than connected
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only PBR
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only NAT
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: A higher AD keeps the backup inactive until the primary fails.
+  references:
+  - CCNA 3.3
+- id: ccna-3-012
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: OSPF areas exist primarily to?
+  choices:
+  - id: a
+    text: Limit LSA flooding scope
+    rationale: Areas hierarchicalize LSA flooding.
+  - id: b
+    text: Replace IP addresses
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Encrypt all payloads
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Terminate VLANs
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Areas hierarchicalize LSA flooding.
+  references:
+  - CCNA 3.4
+- id: ccna-3-013
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 3
+  cert_tags: *id001
+  stem: 'First Hop Redundancy: HSRP uses which virtual concept?'
+  choices:
+  - id: a
+    text: Virtual IP and virtual MAC
+    rationale: HSRP presents a virtual IP/MAC to hosts.
+  - id: b
+    text: Only anycast DNS
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VRRP exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only GLBP without VIP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: HSRP presents a virtual IP/MAC to hosts.
+  references:
+  - CCNA 3.5
+- id: ccna-3-014
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: VRRP is best described as?
+  choices:
+  - id: a
+    text: Standards-based FHRP
+    rationale: VRRP is the standards-based first-hop redundancy protocol.
+  - id: b
+    text: Cisco-only proprietary
+    rationale: Not correct for this scenario.
+  - id: c
+    text: A link-state IGP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: A wireless roaming protocol
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: VRRP is the standards-based first-hop redundancy protocol.
+  references:
+  - CCNA 3.5
+- id: ccna-3-015
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which LSA type describes a router’s own links in an area?
+  choices:
+  - id: a
+    text: Type 1 Router LSA
+    rationale: Type 1 LSAs describe a router's links.
+  - id: b
+    text: Type 5 External
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Type 4 ASBR summary
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Type 3 Network summary only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Type 1 LSAs describe a router's links.
+  references:
+  - CCNA 3.4
+- id: ccna-3-016
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Equal-cost multipath requires routes with equal what?
+  choices:
+  - id: a
+    text: Metric (and eligible for install)
+    rationale: ECMP installs equal-metric paths.
+  - id: b
+    text: Only interface bandwidth randomly
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only AD different
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only AS path length for OSPF
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ECMP installs equal-metric paths.
+  references:
+  - CCNA 3.2
+- id: ccna-3-017
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Which command displays the IPv4 routing table?
+  choices:
+  - id: a
+    text: show ip route
+    rationale: show ip route displays the RIB.
+  - id: b
+    text: show vlan brief
+    rationale: Not correct for this scenario.
+  - id: c
+    text: show cdp neighbors
+    rationale: Not correct for this scenario.
+  - id: d
+    text: show spanning-tree
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: show ip route displays the RIB.
+  references:
+  - CCNA 3.1
+- id: ccna-3-018
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: An ABR sits on the border of?
+  choices:
+  - id: a
+    text: Area 0 and non-backbone areas (typically)
+    rationale: ABRs connect non-backbone areas to the backbone.
+  - id: b
+    text: Only two autonomous systems
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only VLANs
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only wireless controllers
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: ABRs connect non-backbone areas to the backbone.
+  references:
+  - CCNA 3.4
+- id: ccna-3-019
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id001
+  stem: OSPF cost on Cisco is often derived from?
+  choices:
+  - id: a
+    text: Reference bandwidth / interface bandwidth
+    rationale: Cisco OSPF cost uses reference BW / interface BW.
+  - id: b
+    text: Hop count only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Delay by default like IGRP classic
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Administrative distance
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Cisco OSPF cost uses reference BW / interface BW.
+  references:
+  - CCNA 3.4
+- id: ccna-3-020
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Connected routes appear with which code?
+  choices:
+  - id: a
+    text: C
+    rationale: Connected routes use code C.
+  - id: b
+    text: S
+    rationale: Not correct for this scenario.
+  - id: c
+    text: O
+    rationale: Not correct for this scenario.
+  - id: d
+    text: R
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Connected routes use code C.
+  references:
+  - CCNA 3.1
+- id: ccna-3-021
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 2
+  cert_tags: *id001
+  stem: GLBP provides what additional capability vs classic HSRP?
+  choices:
+  - id: a
+    text: Per-host load balancing across gateways
+    rationale: GLBP can load-share first-hop traffic.
+  - id: b
+    text: Only active/standby with no sharing
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only IPv6 RA exclusive
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only STP root election
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: GLBP can load-share first-hop traffic.
+  references:
+  - CCNA 3.5
+- id: ccna-3-022
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 3
+  cert_tags: *id001
+  stem: A recursive static route resolves the next hop via?
+  choices:
+  - id: a
+    text: Another route in the RIB
+    rationale: Recursive lookup finds how to reach the next hop.
+  - id: b
+    text: Only ARP without routing
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only CDP
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only VTP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Recursive lookup finds how to reach the next hop.
+  references:
+  - CCNA 3.3
+- id: ccna-3-023
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Passive interface in OSPF means?
+  choices:
+  - id: a
+    text: Suppress Hellos / no adjacency on that interface
+    rationale: Passive interfaces advertise the network without forming neighbors.
+  - id: b
+    text: Disable the interface IP
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Force DR forever
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Clear the RID
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Passive interfaces advertise the network without forming neighbors.
+  references:
+  - CCNA 3.4
+- id: ccna-3-024
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Which packet starts OSPF neighbor formation?
+  choices:
+  - id: a
+    text: Hello
+    rationale: OSPF Hellos discover and maintain neighbors.
+  - id: b
+    text: LSA Type 5 only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: BGP OPEN
+    rationale: Not correct for this scenario.
+  - id: d
+    text: DHCP Discover
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: OSPF Hellos discover and maintain neighbors.
+  references:
+  - CCNA 3.4
+- id: ccna-3-025
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Policy-based routing primarily uses what to override normal RIB choice?
+  choices:
+  - id: a
+    text: Route maps / match criteria
+    rationale: PBR can override destination-based forwarding.
+  - id: b
+    text: Only longest prefix always alone
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only STP cost
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only VTP revision
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: PBR can override destination-based forwarding.
+  references:
+  - CCNA 3.2
+- id: ccna-3-026
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id001
+  stem: HSRP version 2 expands which capability notably?
+  choices:
+  - id: a
+    text: IPv6 and larger group ID space
+    rationale: HSRPv2 adds IPv6 support and broader group ranges.
+  - id: b
+    text: Only removes virtual MAC
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only disables preempt
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only forces VRRP
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: HSRPv2 adds IPv6 support and broader group ranges.
+  references:
+  - CCNA 3.5
+- id: ccna-3-027
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: Null0 is often used with static routes for?
+  choices:
+  - id: a
+    text: Discard / blackhole aggregation safety
+    rationale: Null0 statics discard unmatched traffic for summaries.
+  - id: b
+    text: Preferred transit path always
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only NAT pools
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only AAA
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Null0 statics discard unmatched traffic for summaries.
+  references:
+  - CCNA 3.3
+- id: ccna-3-028
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id001
+  stem: Inter-area OSPF routes are shown with which code?
+  choices:
+  - id: a
+    text: O IA
+    rationale: O IA indicates OSPF inter-area routes.
+  - id: b
+    text: O E2 only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: S*
+    rationale: Not correct for this scenario.
+  - id: d
+    text: B
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: O IA indicates OSPF inter-area routes.
+  references:
+  - CCNA 3.1
+- id: ccna-3-029
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 4
+  cert_tags: *id001
+  stem: Gateway of last resort in show ip route refers to?
+  choices:
+  - id: a
+    text: The default route next hop
+    rationale: Gateway of last resort is the default route.
+  - id: b
+    text: Only the STP root
+    rationale: Not correct for this scenario.
+  - id: c
+    text: Only the VTP server
+    rationale: Not correct for this scenario.
+  - id: d
+    text: Only the RADIUS host
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Gateway of last resort is the default route.
+  references:
+  - CCNA 3.1
+- id: ccna-3-030
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id001
+  stem: A host route is typically which mask length for IPv4?
+  choices:
+  - id: a
+    text: /32
+    rationale: Host routes use /32.
+  - id: b
+    text: /24 only
+    rationale: Not correct for this scenario.
+  - id: c
+    text: /0 only
+    rationale: Not correct for this scenario.
+  - id: d
+    text: /16 only
+    rationale: Not correct for this scenario.
+  correct:
+    answer: a
+  explanation: Host routes use /32.
+  references:
+  - CCNA 3.3
+- id: ccna-gen-0022-e8faf6
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: &id003
+  - ccna
+  stem: 'Scenario 22 (3.1): Default AD of eBGP?'
+  choices:
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.1; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.1; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.1; 90 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.1, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0023-e963dc
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 23 (3.2): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.2, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0024-77f412
+  type: multiple_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 3.3] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
+  choices:
+  - id: a
+    text: ABR
+    rationale: Correct for objective 3.3.
+  - id: b
+    text: ASBR
+    rationale: Incorrect association for 3.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 3.3.
+  - id: d
+    text: DR
+    rationale: Distractor for 3.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0025-a7389e
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 25 (3.4): Default AD of eBGP?'
+  choices:
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.4; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.4; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.4; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.4: Default AD of eBGP → 20.'
+  correct:
+    answer: a
+  explanation: For 3.4, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0026-d03939
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 26 (3.5): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.5; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.5; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.5: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.5; Prefer higher RID is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.5, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0075-f0a099
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 75 (3.1): OSPF router connecting two areas?'
+  choices:
+  - id: d
+    text: BDR
+    rationale: Not correct for 3.1; BDR is a common mix-up.
+  - id: a
+    text: ABR
+    rationale: 'Matches 3.1: OSPF router connecting two areas → ABR.'
+  - id: b
+    text: ASBR
+    rationale: Not correct for 3.1; ASBR is a common mix-up.
+  - id: c
+    text: DR
+    rationale: Not correct for 3.1; DR is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.1, the accurate association is ABR.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0076-8b449e
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 76 (3.2): Default AD of eBGP?'
+  choices:
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.2: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.2; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.2; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.2; 120 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.2, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0077-524292
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 77 (3.3): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.3; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.3; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.3; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.3: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  correct:
+    answer: a
+  explanation: For 3.3, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0078-ee0dfa
+  type: multiple_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 3.4] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
+  choices:
+  - id: a
+    text: ABR
+    rationale: Correct for objective 3.4.
+  - id: b
+    text: ASBR
+    rationale: Incorrect association for 3.4.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 3.4.
+  - id: d
+    text: DR
+    rationale: Distractor for 3.4.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 3.4: OSPF router connecting two areas maps to ABR.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0079-3532aa
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 79 (3.5): Default AD of eBGP?'
+  choices:
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.5; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.5: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.5; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.5; 110 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.5, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0128-2ddb08
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 128 (3.1): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.1: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.1; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.1; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.1; Drop randomly is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.1, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0129-eabe69
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 129 (3.2): OSPF router connecting two areas?'
+  choices:
+  - id: b
+    text: ASBR
+    rationale: Not correct for 3.2; ASBR is a common mix-up.
+  - id: c
+    text: DR
+    rationale: Not correct for 3.2; DR is a common mix-up.
+  - id: d
+    text: BDR
+    rationale: Not correct for 3.2; BDR is a common mix-up.
+  - id: a
+    text: ABR
+    rationale: 'Matches 3.2: OSPF router connecting two areas → ABR.'
+  correct:
+    answer: a
+  explanation: For 3.2, the accurate association is ABR.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0130-938826
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 130 (3.3): Default AD of eBGP?'
+  choices:
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.3; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.3; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.3: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.3; 90 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.3, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0131-109172
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 131 (3.4): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.4; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.4: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.4; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.4; Prefer older LSA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.4, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0132-231d9f
+  type: multiple_choice
+  topic_code: '3.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 3.5] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
+  choices:
+  - id: a
+    text: ABR
+    rationale: Correct for objective 3.5.
+  - id: b
+    text: ASBR
+    rationale: Incorrect association for 3.5.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 3.5.
+  - id: d
+    text: DR
+    rationale: Distractor for 3.5.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 3.5: OSPF router connecting two areas maps to ABR.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0181-dee8ae
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 181 (3.1): Default AD of eBGP?'
+  choices:
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.1; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.1; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.1; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
+  correct:
+    answer: a
+  explanation: For 3.1, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0182-6c196b
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 182 (3.2): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.2, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0183-7fadd7
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 183 (3.3): OSPF router connecting two areas?'
+  choices:
+  - id: d
+    text: BDR
+    rationale: Not correct for 3.3; BDR is a common mix-up.
+  - id: a
+    text: ABR
+    rationale: 'Matches 3.3: OSPF router connecting two areas → ABR.'
+  - id: b
+    text: ASBR
+    rationale: Not correct for 3.3; ASBR is a common mix-up.
+  - id: c
+    text: DR
+    rationale: Not correct for 3.3; DR is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.3, the accurate association is ABR.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0184-44ef90
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 184 (3.4): Default AD of eBGP?'
+  choices:
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.4: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.4; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.4; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.4; 120 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.4, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0185-ad828a
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 185 (3.5): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.5; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.5; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.5; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.5: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  correct:
+    answer: a
+  explanation: For 3.5, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0234-71582c
+  type: multiple_choice
+  topic_code: '3.1'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 3.1] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
+  choices:
+  - id: a
+    text: ABR
+    rationale: Correct for objective 3.1.
+  - id: b
+    text: ASBR
+    rationale: Incorrect association for 3.1.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 3.1.
+  - id: d
+    text: DR
+    rationale: Distractor for 3.1.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 3.1: OSPF router connecting two areas maps to ABR.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0235-31ce76
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 235 (3.2): Default AD of eBGP?'
+  choices:
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.2; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.2: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.2; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.2; 110 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.2, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0236-01dcd3
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 236 (3.3): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.3: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.3; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.3; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.3; Drop randomly is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.3, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0237-1dfb66
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 237 (3.4): OSPF router connecting two areas?'
+  choices:
+  - id: b
+    text: ASBR
+    rationale: Not correct for 3.4; ASBR is a common mix-up.
+  - id: c
+    text: DR
+    rationale: Not correct for 3.4; DR is a common mix-up.
+  - id: d
+    text: BDR
+    rationale: Not correct for 3.4; BDR is a common mix-up.
+  - id: a
+    text: ABR
+    rationale: 'Matches 3.4: OSPF router connecting two areas → ABR.'
+  correct:
+    answer: a
+  explanation: For 3.4, the accurate association is ABR.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0238-cd746b
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 238 (3.5): Default AD of eBGP?'
+  choices:
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.5; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.5; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.5: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.5; 90 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.5, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0287-41cd89
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 3
+  cert_tags: *id003
+  stem: 'Scenario 287 (3.1): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.1; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.1: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.1; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.1; Prefer older LSA is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.1, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0288-2b32bc
+  type: multiple_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 3.2] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
+  choices:
+  - id: a
+    text: ABR
+    rationale: Correct for objective 3.2.
+  - id: b
+    text: ASBR
+    rationale: Incorrect association for 3.2.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 3.2.
+  - id: d
+    text: DR
+    rationale: Distractor for 3.2.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 3.2: OSPF router connecting two areas maps to ABR.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0289-543e2c
+  type: single_choice
+  topic_code: '3.3'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 289 (3.3): Default AD of eBGP?'
+  choices:
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.3; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.3; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.3; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.3: Default AD of eBGP → 20.'
+  correct:
+    answer: a
+  explanation: For 3.3, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0290-093a0c
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 290 (3.4): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.4; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.4; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.4: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.4; Prefer higher RID is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.4, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0291-8f1a9c
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 291 (3.5): OSPF router connecting two areas?'
+  choices:
+  - id: d
+    text: BDR
+    rationale: Not correct for 3.5; BDR is a common mix-up.
+  - id: a
+    text: ABR
+    rationale: 'Matches 3.5: OSPF router connecting two areas → ABR.'
+  - id: b
+    text: ASBR
+    rationale: Not correct for 3.5; ASBR is a common mix-up.
+  - id: c
+    text: DR
+    rationale: Not correct for 3.5; DR is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.5, the accurate association is ABR.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0340-38a11a
+  type: single_choice
+  topic_code: '3.1'
+  difficulty: 1
+  cert_tags: *id003
+  stem: 'Scenario 340 (3.1): Default AD of eBGP?'
+  choices:
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.1; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.1; 110 is a common mix-up.
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.1; 120 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.1, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0341-336727
+  type: single_choice
+  topic_code: '3.2'
+  difficulty: 2
+  cert_tags: *id003
+  stem: 'Scenario 341 (3.2): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  correct:
+    answer: a
+  explanation: For 3.2, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0342-a33d2d
+  type: multiple_choice
+  topic_code: '3.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[CCNA 3.3] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
+  choices:
+  - id: a
+    text: ABR
+    rationale: Correct for objective 3.3.
+  - id: b
+    text: ASBR
+    rationale: Incorrect association for 3.3.
+  - id: c
+    text: Document verification steps before changes.
+    rationale: Sound ops practice for 3.3.
+  - id: d
+    text: DR
+    rationale: Distractor for 3.3.
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0343-2d9c24
+  type: single_choice
+  topic_code: '3.4'
+  difficulty: 4
+  cert_tags: *id003
+  stem: 'Scenario 343 (3.4): Default AD of eBGP?'
+  choices:
+  - id: d
+    text: '120'
+    rationale: Not correct for 3.4; 120 is a common mix-up.
+  - id: a
+    text: '20'
+    rationale: 'Matches 3.4: Default AD of eBGP → 20.'
+  - id: b
+    text: '90'
+    rationale: Not correct for 3.4; 90 is a common mix-up.
+  - id: c
+    text: '110'
+    rationale: Not correct for 3.4; 110 is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.4, the accurate association is 20.
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-gen-0344-311ce5
+  type: single_choice
+  topic_code: '3.5'
+  difficulty: 5
+  cert_tags: *id003
+  stem: 'Scenario 344 (3.5): Equal-cost OSPF paths behavior?'
+  choices:
+  - id: a
+    text: Install both (ECMP)
+    rationale: 'Matches 3.5: Equal-cost OSPF paths behavior → Install both (ECMP).'
+  - id: b
+    text: Prefer higher RID
+    rationale: Not correct for 3.5; Prefer higher RID is a common mix-up.
+  - id: c
+    text: Prefer older LSA
+    rationale: Not correct for 3.5; Prefer older LSA is a common mix-up.
+  - id: d
+    text: Drop randomly
+    rationale: Not correct for 3.5; Drop randomly is a common mix-up.
+  correct:
+    answer: a
+  explanation: For 3.5, the accurate association is Install both (ECMP).
+  references:
+  - Cisco exam topics (public)
+  - OpenBoson original content
+  provider: openboson
+  license: MIT
+  provenance: original

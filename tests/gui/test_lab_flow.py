@@ -3,11 +3,13 @@
 import pytest
 from PySide6.QtWidgets import QFrame, QLabel
 
-from openboson.gui.engine import load_available_labs
+from openboson.gui.engine import get_lab_by_id, load_available_labs
 from openboson.gui.main_window import MainWindow
 
 
 pytestmark = pytest.mark.usefixtures("isolated_home")
+
+GOLD_LAB_ID = "ccna_branch_office_access"
 
 
 @pytest.fixture
@@ -17,24 +19,30 @@ def window(qtbot):
     return mw
 
 
+@pytest.fixture
+def gold_lab():
+    lab = get_lab_by_id(GOLD_LAB_ID)
+    assert lab is not None, f"missing gold lab {GOLD_LAB_ID}"
+    return lab
+
+
 def test_labs_page_lists_gold_lab(window):
     window.select_page("Labs")
     page = window._labs_page
     cards = page.findChildren(QFrame)
     assert len(cards) >= 1
+    assert any(lab.lab_id == GOLD_LAB_ID for lab in load_available_labs())
 
 
-def test_start_lab_shows_four_consoles(window, qtbot):
-    lab = load_available_labs()[0]
-    window.start_lab_from_list(lab)
+def test_start_lab_shows_four_consoles(window, qtbot, gold_lab):
+    window.start_lab_from_list(gold_lab)
     qtbot.wait(50)
     assert window.visible_page_label() == "Lab"
     assert window._lab_session_page._tabs.count() == 4
 
 
-def test_gold_lab_full_cli_path(window, qtbot):
-    lab = load_available_labs()[0]
-    window.start_lab_from_list(lab)
+def test_gold_lab_full_cli_path(window, qtbot, gold_lab):
+    window.start_lab_from_list(gold_lab)
     qtbot.wait(50)
     page = window._lab_session_page
 
@@ -94,9 +102,8 @@ def test_gold_lab_full_cli_path(window, qtbot):
     assert any("ALL TASKS PASSED" in (l.text() or "") for l in labels)
 
 
-def test_fail_feedback_has_no_ios_commands(window, qtbot):
-    lab = load_available_labs()[0]
-    window.start_lab_from_list(lab)
+def test_fail_feedback_has_no_ios_commands(window, qtbot, gold_lab):
+    window.start_lab_from_list(gold_lab)
     qtbot.wait(30)
     page = window._lab_session_page
     page._check_task()
@@ -106,16 +113,14 @@ def test_fail_feedback_has_no_ios_commands(window, qtbot):
     assert fb  # coachy
 
 
-def test_topology_canvas_renders(window, qtbot):
-    lab = load_available_labs()[0]
-    window.start_lab_from_list(lab)
+def test_topology_canvas_renders(window, qtbot, gold_lab):
+    window.start_lab_from_list(gold_lab)
     qtbot.wait(50)
     assert window._lab_session_page._canvas._topology is not None
 
 
-def test_click_topology_selects_console(window, qtbot):
-    lab = load_available_labs()[0]
-    window.start_lab_from_list(lab)
+def test_click_topology_selects_console(window, qtbot, gold_lab):
+    window.start_lab_from_list(gold_lab)
     qtbot.wait(50)
     page = window._lab_session_page
     page._on_device_clicked("PC1")
