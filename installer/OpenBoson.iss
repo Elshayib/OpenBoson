@@ -7,7 +7,7 @@
   #define MyAppVersion "0.2.0"
 #endif
 #define MyAppPublisher "OpenBoson contributors"
-#define MyAppURL "https://github.com/openboson/openboson"
+#define MyAppURL "https://github.com/Elshayib/OpenBoson"
 #define MyAppExeName "OpenBoson.exe"
 
 [Setup]

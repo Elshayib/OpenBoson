@@ -20,8 +20,8 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/openboson/openboson"
-Issues = "https://github.com/openboson/openboson/issues"
+Repository = "https://github.com/Elshayib/OpenBoson"
+Issues = "https://github.com/Elshayib/OpenBoson/issues"
 
 [project.optional-dependencies]
 server = ["fastapi", "uvicorn", "httpx"]
