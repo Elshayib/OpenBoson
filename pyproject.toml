@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openboson"
-version = "0.2.0"
+version = "0.2.2"
 description = "Open-source local ExSim + NetSim practice platform for CCNA."
 readme = "README.md"
 license = { text = "MIT" }

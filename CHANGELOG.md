@@ -2,18 +2,20 @@
 
 All notable changes to OpenBoson are documented in this file.
 
-## [0.2.2] — Study Ready
+## [0.2.2] — 2026-07-31 — Study Ready
 
 ### Application
 - Usable light theme stylesheet; Settings theme toggle is truthful.
 - Content volume gates enforced in tests (≥500 CCNA / ≥400 ENCOR, ≥15% non-SC, ≥20 labs).
+- Practice library pagination; keyboard alternatives for drag-match items.
 
 ### Content
 - Domain-sharded authoring under `content/questions/` with assemble/bootstrap scripts.
 - 20 graded CCNA demo labs covering VLAN/trunk/STP/EtherChannel/static/OSPF/ACL/NAT/DHCP/SSH/IPv6.
 
 ### Known Issues
-- Windows installers remain unsigned until v1.0 Authenticode work.
+- Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
+- Manual Win10/11 install matrix remains a community verification checklist (`docs/v020-beta-checklist.md`).
 
 ## [0.2.0] — Platform
 
@@ -36,5 +38,4 @@ All notable changes to OpenBoson are documented in this file.
 - Answer rows persist topic/cert/exam version identity.
 
 ### Known Issues
-- Manual Win10/11 beta matrix must be completed before public tag publish (see `docs/v020-beta-checklist.md`).
-- No Git remote configured in some developer clones; release builds require `GITHUB_REPOSITORY`.
+- See [0.2.2] for current packaging / verification notes.

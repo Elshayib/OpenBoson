@@ -71,7 +71,7 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 
 When implementing features, work task-by-task, run relevant tests after each change, and keep diffs focused.
 
-## Implementation status (as of v0.2.0+)
+## Implementation status (as of v0.2.2)
 
 **Done:**
 - ExSim engine + GUI (practice library, blueprints, Check + rationales)

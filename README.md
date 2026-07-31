@@ -6,9 +6,7 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 ## Status
 
-**v0.2 Study Ready content targets are met in-tree** (≥500 CCNA / ≥400 ENCOR questions, 20 labs). Windows installer, updater, registry, and CI are implemented; complete the beta matrix in `docs/v020-beta-checklist.md` before publishing a public tag. See `AGENTS.md`, `PRIVACY.md`, and `SUPPORT.md`.
-
-Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 v1.2**. Objective maps are taken from Cisco’s public exam topics; registry refresh date: **2026-07-31** (`src/openboson/exsim/objectives.py`).
+**v0.2.2 Study Ready** — ≥500 CCNA / ≥400 ENCOR questions, 20 labs, Windows installer + updater + CI. Installers are **unsigned** (SmartScreen expected); see `SUPPORT.md`. Optional install verification: `docs/v020-beta-checklist.md`. Contributor notes: `AGENTS.md`, `PRIVACY.md`.
 
 ## Architecture
 

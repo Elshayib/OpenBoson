@@ -1,6 +1,6 @@
-# Later releases (deferred until v0.2.2 gates pass)
+# Later releases (post v0.2.2)
 
-These items are intentionally **not started** until Study Ready (v0.2.2) acceptance criteria pass. Criteria are summarized from the competitive roadmap.
+v0.2.2 Study Ready gates are met in-tree. The items below remain deferred until you choose to start that release track.
 
 ## v0.3 — ExSim depth
 
