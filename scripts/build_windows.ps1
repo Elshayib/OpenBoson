@@ -56,11 +56,19 @@ try {
         throw "PyInstaller output missing OpenBoson.exe"
     }
 
-    # Smoke: bundled content present
-    $banks = Join-Path $distApp "data\demo_banks"
-    $labs = Join-Path $distApp "data\demo_labs"
-    if (-not (Test-Path $banks)) { throw "Bundled banks missing from dist" }
-    if (-not (Test-Path $labs)) { throw "Bundled labs missing from dist" }
+    # Smoke: bundled content present (PyInstaller 6 onedir nests datas under _internal/)
+    $banks = @(
+        (Join-Path $distApp "data\demo_banks"),
+        (Join-Path $distApp "_internal\data\demo_banks")
+    ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+    $labs = @(
+        (Join-Path $distApp "data\demo_labs"),
+        (Join-Path $distApp "_internal\data\demo_labs")
+    ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if (-not $banks) { throw "Bundled banks missing from dist (checked data/ and _internal/data/)" }
+    if (-not $labs) { throw "Bundled labs missing from dist (checked data/ and _internal/data/)" }
+    Write-Host "Bundled banks: $banks"
+    Write-Host "Bundled labs:  $labs"
 
     if (-not $SkipInstaller) {
         $iscc = @(

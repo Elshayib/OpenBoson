@@ -12,6 +12,7 @@ DATA = ROOT / "data"
 
 datas = [
     (str(SRC / "gui" / "styles.qss"), "openboson/gui"),
+    (str(SRC / "gui" / "styles_light.qss"), "openboson/gui"),
     (str(DATA / "demo_banks"), "data/demo_banks"),
     (str(DATA / "demo_labs"), "data/demo_labs"),
     (str(ROOT / "LICENSE"), "."),

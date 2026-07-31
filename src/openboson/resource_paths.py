@@ -38,7 +38,13 @@ def bundled_data_dir() -> Path:
     """Directory containing shipped ``demo_banks`` / ``demo_labs`` content."""
     meipass = _meipass()
     if meipass is not None:
-        for candidate in (meipass / "data", meipass):
+        exe_dir = Path(sys.executable).resolve().parent
+        for candidate in (
+            meipass / "data",
+            meipass,
+            exe_dir / "data",
+            exe_dir / "_internal" / "data",
+        ):
             if (candidate / "demo_banks").is_dir() or (candidate / "demo_labs").is_dir():
                 return candidate
 
