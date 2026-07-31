@@ -31,7 +31,7 @@ To restore a backup manually:
 
 ## Windows SmartScreen / unsigned installs
 
-Early Windows installers may be **unsigned**. Windows Defender SmartScreen can warn on first run. Prefer downloads from the official GitHub Releases page for this repository. Authenticode signing is planned before v1.0.
+Windows installers are **unsigned** in v0.2.x. Windows Defender SmartScreen can warn on first run. Prefer downloads from the official Releases page: https://github.com/Elshayib/OpenBoson/releases — Authenticode signing is planned before v1.0.
 
 ## Updates
 

@@ -15,11 +15,14 @@ Assemble into shipped pools:
 python scripts/assemble_question_pools.py
 ```
 
-To expand from current pools toward release targets:
+To expand from current pools toward release targets (v0.3 aims for ≥1000 CCNA / ≥800 ENCOR):
 
 ```bash
 python scripts/bootstrap_content_shards.py
+python scripts/assemble_question_pools.py
 ```
+
+Current shipped gates and next content goals: [`status.md`](status.md), [`deferred-releases.md`](deferred-releases.md).
 
 ## Question requirements
 

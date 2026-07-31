@@ -15,7 +15,10 @@ All notable changes to OpenBoson are documented in this file.
 
 ### Known Issues
 - Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
-- Manual Win10/11 install matrix remains a community verification checklist (`docs/v020-beta-checklist.md`).
+- Manual Win10/11 install matrix remains optional community verification (`docs/v020-beta-checklist.md`).
+
+### Docs
+- Handoff synced in `docs/status.md`; next track documented in `docs/deferred-releases.md` (v0.3).
 
 ## [0.2.0] — Platform
 

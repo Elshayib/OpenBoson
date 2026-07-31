@@ -6,7 +6,12 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 ## Status
 
-**v0.2.2 Study Ready** — ≥500 CCNA / ≥400 ENCOR questions, 20 labs, Windows installer + updater + CI. Installers are **unsigned** (SmartScreen expected); see `SUPPORT.md`. Optional install verification: `docs/v020-beta-checklist.md`. Contributor notes: `AGENTS.md`, `PRIVACY.md`.
+**[v0.2.2 Study Ready](https://github.com/Elshayib/OpenBoson/releases/tag/v0.2.2)** — ≥500 CCNA / ≥400 ENCOR questions, 20 labs, Windows installer + updater + CI.
+
+- Download: [GitHub Releases](https://github.com/Elshayib/OpenBoson/releases) (installer is **unsigned**; SmartScreen expected — see `SUPPORT.md`)
+- Handoff / next work: `docs/status.md`
+- Optional install verification: `docs/v020-beta-checklist.md`
+- Contributors: `AGENTS.md`, `PRIVACY.md`
 
 ## Architecture
 

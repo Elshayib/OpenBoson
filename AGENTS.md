@@ -73,8 +73,10 @@ When implementing features, work task-by-task, run relevant tests after each cha
 
 ## Implementation status (as of v0.2.2)
 
+**Shipped:** https://github.com/Elshayib/OpenBoson/releases/tag/v0.2.2 — see `docs/status.md` for handoff.
+
 **Done:**
-- ExSim engine + GUI (practice library, blueprints, Check + rationales)
+- ExSim engine + GUI (practice library pagination, blueprints, Check + rationales, keyboard drag-match)
 - NetSim engine + GUI (OpenIOS, reset, per-device grading hooks)
 - Hot-load registry (bundled + local + packs), content refresh API/Settings
 - Stats weak-domain analytics + Dashboard/Practice deep links
@@ -84,24 +86,28 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
 - Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥20 labs
 
-**Deferred (see `docs/deferred-releases.md`):**
-- v0.3 ExSim depth (custom exams, pause/resume, exports, PBQs)
-- v0.4 NetSim depth (50 labs, broader OpenIOS/packets)
-- v0.5 Network Designer
-- v1.0 signed cross-platform installers / pack index
+**Next (v0.3 — see `docs/deferred-releases.md`):**
+- Custom exams, pause/resume, exports, content scale, PBQs
 
+**Later:**
+- v0.4 NetSim depth · v0.5 Network Designer · v0.6 packs · v1.0 signed cross-platform
 
 ## Conventions
 
 - Use Pydantic v2 for all YAML schema validation.
 - Keep engine logic pure Python — no Qt imports outside `gui/`.
 - GUI pages live in `gui/pages/`, reusable widgets in `gui/widgets/`.
-- Style with `gui/styles.qss`; avoid inline styles unless necessary.
+- Style with `gui/styles.qss` / `styles_light.qss`; avoid inline styles unless necessary.
 - Write tests alongside new engine logic; use `pytest-qt` for widget tests.
 - Line length 100 (ruff). Target Python 3.11.
+- Never commit `.cursor/`, `IDEA.md`, or other local agent/private notes.
+- Public commit messages must be professional (repo is public).
 
 ## Key docs
 
+- `docs/status.md` — current handoff / what’s next
 - `README.md` — user-facing overview and quick start
-- `docs/deferred-releases.md` — post-v0.2 deferred scope
+- `docs/deferred-releases.md` — v0.3+ scope and gates
 - `docs/quality-baseline.md` — CI / quality gates
+- `docs/v020-beta-checklist.md` — optional Windows install verification
+- `CHANGELOG.md` / `SUPPORT.md` / `PRIVACY.md`

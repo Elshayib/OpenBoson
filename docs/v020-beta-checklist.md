@@ -1,12 +1,15 @@
-# v0.2.0 beta matrix checklist
+# Windows install verification checklist (v0.2.2+)
 
-Manual verification before publishing a Windows platform release.
+Optional community / maintainer verification for packaged Windows builds.
+**v0.2.2 is already published** — use this after downloading assets from
+[GitHub Releases](https://github.com/Elshayib/OpenBoson/releases/tag/v0.2.2)
+or after cutting a new tag.
 
 ## Environments
 
 - [ ] Clean Windows 10 install (no Python)
 - [ ] Clean Windows 11 install (no Python)
-- [ ] Upgrade from prior v0.2 beta DB
+- [ ] Upgrade from a prior v0.2.x install (settings/DB preserved)
 - [ ] Offline startup (no network)
 - [ ] GitHub outage / bad manifest / bad hash (updater diagnostics only)
 
@@ -29,7 +32,7 @@ Manual verification before publishing a Windows platform release.
 - [ ] Installer ≤ 250MB
 - [ ] Idle GUI ≤ 350MB
 
-## Publish gate
+## Publish gate (when cutting a new tag)
 
 - [ ] CI green on tag commit
 - [ ] Assets: `OpenBoson-Setup-X.Y.Z.exe`, `.sha256`, `OpenBoson-X.Y.Z.json`
