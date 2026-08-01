@@ -1,6 +1,6 @@
 # Project status (handoff)
 
-Last synced: **2026-08-01** · Current release: **v0.3.0 ExSim Depth** (tag when packaging)
+Last synced: **2026-08-01** · Current release: **[v0.3.0 ExSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.3.0)**
 
 Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming work. The full competitive roadmap lives in the local Cursor plan `openboson_competitive_roadmap_ceb1329f` and must stay out of git.
 
