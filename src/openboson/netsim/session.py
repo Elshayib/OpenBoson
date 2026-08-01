@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
 from openboson.netsim.grader import TaskGrade, grade_task, weighted_score
+from openboson.netsim.ios.device import DeviceRole
 from openboson.netsim.ios.world import LabWorld
 from openboson.netsim.lab_schema import LabBank
 
@@ -22,33 +23,80 @@ class LabSession:
     grades: dict[str, TaskGrade] = field(default_factory=dict)
     started_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     finished_at: datetime | None = None
+    command_log: list[tuple[str, str]] = field(default_factory=list)
 
     @classmethod
     def create(cls, lab: LabBank) -> LabSession:
         world = LabWorld.from_lab(lab)
         session = cls(session_id=uuid.uuid4().hex, lab=lab, world=world)
+        session._wire_command_logging()
         session._apply_base_configs()
         return session
 
+    def _wire_command_logging(self) -> None:
+        """Wrap each shell ``feed`` so student commands are recorded for replay."""
+        for name in self.world.device_names():
+            shell = self.world.shell(name)
+            original = shell.feed
+
+            def make_feed(dev: str = name, orig=original):
+                def feed(line: str) -> str:
+                    text = (line or "").rstrip("\n")
+                    if text.strip() and not text.strip().startswith("!"):
+                        self.command_log.append((dev, text))
+                    return orig(line)
+
+                return feed
+
+            shell.feed = make_feed()  # type: ignore[method-assign]
+
     def _apply_base_configs(self) -> None:
         """Feed each device's optional base_config through its shell."""
+        # Base configs are bootstrap, not student commands — pause logging.
+        saved = list(self.command_log)
         for device in self.lab.topology.devices:
             if not device.base_config:
                 continue
             shell = self.world.shell(device.name)
-            for raw in device.base_config.splitlines():
-                line = raw.strip()
-                if not line or line.startswith("!"):
-                    continue
-                shell.feed(line)
+            runtime = self.world.devices[device.name]
+            lines = [
+                raw.strip()
+                for raw in device.base_config.splitlines()
+                if raw.strip() and not raw.strip().startswith("!")
+            ]
+            if not lines:
+                continue
+            if runtime.role == DeviceRole.PC:
+                for line in lines:
+                    shell.feed(line)
+            else:
+                # OpenIOS requires privileged config mode for interface/routing lines.
+                shell.feed("enable")
+                shell.feed("configure terminal")
+                for line in lines:
+                    shell.feed(line)
+                shell.feed("end")
+        self.command_log[:] = saved
 
-    def reset(self) -> None:
-        """Restore topology, base configs, and task index; clear grades."""
+    def reset(self, *, replay: bool = False) -> None:
+        """Restore topology, base configs, and task index; clear grades.
+
+        When ``replay`` is True, re-feed the prior student ``command_log`` after
+        rebuilding the world (lab walkthrough replay).
+        """
+        log = list(self.command_log) if replay else []
         self.world = LabWorld.from_lab(self.lab)
+        self.command_log.clear()
+        self._wire_command_logging()
         self._apply_base_configs()
         self.current_task_index = 0
         self.grades.clear()
         self.finished_at = None
+        if replay and log:
+            for device, line in log:
+                if device not in self.world.devices:
+                    continue
+                self.world.shell(device).feed(line)
 
     @property
     def current_task(self):

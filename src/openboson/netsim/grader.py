@@ -194,8 +194,17 @@ def grade_task(
 
     if task.grading_rules is not None:
         rules = task.grading_rules
-        if rules.device and world is not None and rules.device in world.devices:
+        # Honor an explicit submitted blob (legacy submit API / tests). Only fall
+        # back to the live device running-config when nothing was submitted.
+        if (
+            not submitted_config.strip()
+            and rules.device
+            and world is not None
+            and rules.device in world.devices
+        ):
             config = world.devices[rules.device].running_config()
+        else:
+            config = submitted_config
         missing, forbidden_found, order_violations, score = _grade_rules(rules, config)
         weight = float(rules.weight if rules.weight is not None else task.weight)
 

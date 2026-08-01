@@ -1,0 +1,29 @@
+title: Trunk Native VLAN 99
+lab_id: ccna_trunk_native_99
+topic_code: '2.1'
+difficulty: 3
+description: Configure a trunk and set native VLAN 99.
+objectives:
+- trunk
+- native vlan
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, make Gi0/1 a trunk with native VLAN **99**.
+  grading_rules:
+    device: SW1
+    require:
+    - switchport mode trunk
+    - switchport trunk native vlan 99
+solution_config: "interface GigabitEthernet0/1\n switchport mode trunk\n switchport\
+  \ trunk native vlan 99\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

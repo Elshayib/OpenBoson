@@ -96,11 +96,16 @@ class LabSessionPage(QWidget):
         self._reset = QPushButton("Reset Lab")
         self._reset.setObjectName("Secondary")
         self._reset.clicked.connect(self._reset_lab)
+        self._replay = QPushButton("Reset & Replay")
+        self._replay.setObjectName("Secondary")
+        self._replay.setToolTip("Rebuild the lab world and re-run recorded commands")
+        self._replay.clicked.connect(self._reset_and_replay)
         actions.addWidget(self._prev)
         actions.addWidget(self._check)
         actions.addWidget(self._next)
         actions.addStretch()
         actions.addWidget(self._reset)
+        actions.addWidget(self._replay)
         actions.addWidget(self._finish)
         left_l.addLayout(actions)
         split.addWidget(left)
@@ -289,17 +294,44 @@ class LabSessionPage(QWidget):
         confirm = QMessageBox.question(
             self,
             "Reset lab?",
-            "Reset topology, base configurations, and task progress?",
+            "Reset topology and task progress?\n\n"
+            "Choose Yes to clear everything, or No to cancel.\n"
+            "Use Reset & Replay from the button menu to replay commands.",
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
             QMessageBox.StandardButton.No,
         )
         if confirm != QMessageBox.StandardButton.Yes:
             return
-        self._session.reset()
+        self._do_reset(replay=False)
+
+    def _reset_and_replay(self) -> None:
+        if self._session is None:
+            return
+        from PySide6.QtWidgets import QMessageBox
+
+        if not self._session.command_log:
+            QMessageBox.information(self, "Nothing to replay", "No commands recorded yet.")
+            return
+        confirm = QMessageBox.question(
+            self,
+            "Reset & Replay?",
+            f"Rebuild the lab and replay {len(self._session.command_log)} command(s)?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+        if confirm != QMessageBox.StandardButton.Yes:
+            return
+        self._do_reset(replay=True)
+
+    def _do_reset(self, *, replay: bool) -> None:
+        if self._session is None:
+            return
+        self._session.reset(replay=replay)
         self._build_terminals()
         self._render_tasks()
         self._render_current()
-        self._feedback.setText("Lab reset.")
+        msg = "Lab reset and commands replayed." if replay else "Lab reset."
+        self._feedback.setText(msg)
         self._feedback.setStyleSheet("")
         names = self._session.world.device_names()
         if names:

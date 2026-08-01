@@ -6,7 +6,7 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 ## Status
 
-**[v0.3.0 ExSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.3.0)** — pause/resume, custom exams, exports, domain heatmap; content scale ≥1000/800 continues in v0.3.x.
+**[v0.4.0 NetSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.0)** — ≥50 labs, catalog filters, Reset & Replay, ARP/OSPF ping paths; next is Network Designer (v0.5).
 
 - Download: [GitHub Releases](https://github.com/Elshayib/OpenBoson/releases) (installer is **unsigned**; SmartScreen expected — see `SUPPORT.md`)
 - Handoff / next work: `docs/status.md`

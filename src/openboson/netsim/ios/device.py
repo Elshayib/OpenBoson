@@ -73,6 +73,9 @@ class DeviceRuntime:
     interfaces: dict[str, InterfaceState] = field(default_factory=dict)
     vlans: dict[int, str] = field(default_factory=dict)  # id -> name
     static_routes: list[StaticRoute] = field(default_factory=list)
+    # OSPF-learned routes installed by LabWorld (not typed as running-config lines).
+    ospf_routes: list[StaticRoute] = field(default_factory=list)
+    arp_table: dict[str, str] = field(default_factory=dict)  # IP -> MAC
     startup_config: str = ""
     banner_motd: str = ""
     # Extra freeform config lines under global that we don't model deeply.
@@ -84,6 +87,14 @@ class DeviceRuntime:
         # Switches always have VLAN 1.
         if self.role == DeviceRole.SWITCH and 1 not in self.vlans:
             self.vlans[1] = "default"
+
+    def mac_for_iface(self, ifname: str) -> str:
+        """Deterministic fake burned-in MAC for ``ifname``."""
+        seed = sum(ord(c) for c in f"{self.name}:{ifname}")
+        return f"aabb.cc00.{seed % 10000:04d}"
+
+    def learn_arp(self, ip: str, mac: str) -> None:
+        self.arp_table[ip] = mac
 
     def get_iface(self, name: str) -> InterfaceState | None:
         # Case-insensitive + common abbreviations (g0/0, gi0/0, f0/0).
@@ -174,7 +185,7 @@ class DeviceRuntime:
 
     def show_ip_route(self) -> str:
         lines = [
-            "Codes: C - connected, S - static",
+            "Codes: C - connected, S - static, O - OSPF",
             "",
             "Gateway of last resort is not set",
             "",
@@ -192,6 +203,14 @@ class DeviceRuntime:
                 lines.append(f"S    {net.network_address} /{net.prefixlen} [1/0] via {r.next_hop}")
             except ValueError:
                 lines.append(f"S    {r.network} {r.mask} via {r.next_hop}")
+        for r in self.ospf_routes:
+            try:
+                net = IPv4Network(f"{r.network}/{r.mask}", strict=False)
+                lines.append(
+                    f"O    {net.network_address} /{net.prefixlen} [110/1] via {r.next_hop}"
+                )
+            except ValueError:
+                lines.append(f"O    {r.network} {r.mask} via {r.next_hop}")
         if len(lines) == 4:
             lines.append("     (no routes)")
         return "\n".join(lines)

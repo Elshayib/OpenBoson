@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from ipaddress import IPv4Address, IPv4Interface, IPv4Network
 from typing import Any
 
-from openboson.netsim.ios.device import DeviceRole, DeviceRuntime, InterfaceState
+from openboson.netsim.ios.device import DeviceRole, DeviceRuntime, InterfaceState, StaticRoute
 from openboson.netsim.ios.host import HostShell
 from openboson.netsim.ios.shell import OpenIOSShell
 from openboson.netsim.lab_schema import LabBank
@@ -156,6 +156,7 @@ class LabWorld:
 
     def ping(self, from_device: str, target_ip: str) -> str:
         self._refresh_link_state()
+        self._rebuild_ospf_routes()
         try:
             dst = IPv4Address(target_ip)
         except ValueError:
@@ -166,6 +167,8 @@ class LabWorld:
             return "% Source device not found."
 
         path_ok = self._can_reach(from_device, dst)
+        if path_ok:
+            self._learn_arp_on_success(from_device, dst)
         header = (
             f"Type escape sequence to abort.\n"
             f"Sending 5, 100-byte ICMP Echos to {target_ip}, timeout is 2 seconds:\n"
@@ -178,8 +181,50 @@ class LabWorld:
             )
         return header + ".....\n" + "Success rate is 0 percent (0/5)"
 
+    def show_arp(self, device: str) -> str:
+        """Render a compact ``show ip arp`` table for ``device``."""
+        dev = self.devices.get(device)
+        if dev is None:
+            return "% Device not found."
+        lines = [
+            "Protocol  Address          Age (min)  Hardware Addr   Type   Interface",
+        ]
+        # Connected interface IPs appear as local/incomplete until learned.
+        for iname, iface in sorted(dev.interfaces.items()):
+            if iface.ip and iface.admin_up:
+                mac = dev.arp_table.get(iface.ip) or dev.mac_for_iface(iname)
+                lines.append(f"Internet  {iface.ip:<15}  -          {mac}  ARPA   {iname}")
+        for ip, mac in sorted(dev.arp_table.items()):
+            if any(iface.ip == ip for iface in dev.interfaces.values()):
+                continue
+            lines.append(f"Internet  {ip:<15}  0          {mac}  ARPA")
+        if len(lines) == 1:
+            lines.append("")
+        return "\n".join(lines)
+
+    def _learn_arp_on_success(self, from_device: str, dst: IPv4Address) -> None:
+        src = self.devices[from_device]
+        owner = self._owner_of_ip(dst)
+        if owner is None:
+            return
+        peer = self.devices[owner]
+        # Pick a connected iface MAC on the owner when possible.
+        mac = "aabb.cc00.0001"
+        for iname, iface in peer.interfaces.items():
+            if iface.ip and iface.admin_up:
+                try:
+                    if IPv4Address(iface.ip) == dst:
+                        mac = peer.mac_for_iface(iname)
+                        break
+                except ValueError:
+                    continue
+            else:
+                mac = peer.mac_for_iface(iname)
+        src.learn_arp(str(dst), mac)
+
     def traceroute(self, from_device: str, target_ip: str) -> str:
         self._refresh_link_state()
+        self._rebuild_ospf_routes()
         try:
             dst = IPv4Address(target_ip)
         except ValueError:
@@ -299,8 +344,14 @@ class LabWorld:
         return False
 
     def _routed(self, from_device: str, dst: IPv4Address) -> bool:
+        return self._follow_routes(from_device, dst, include_ospf=True)
+
+    def _follow_routes(self, from_device: str, dst: IPv4Address, *, include_ospf: bool) -> bool:
         dev = self.devices[from_device]
-        for r in dev.static_routes:
+        routes: list[StaticRoute] = list(dev.static_routes)
+        if include_ospf:
+            routes.extend(dev.ospf_routes)
+        for r in routes:
             try:
                 net = IPv4Network(f"{r.network}/{r.mask}", strict=False)
                 nh = IPv4Address(r.next_hop)
@@ -316,10 +367,100 @@ class LabWorld:
                     return True
         return False
 
+    def _rebuild_ospf_routes(self) -> None:
+        """Install simplified OSPF routes between adjacent OSPF routers."""
+        for dev in self.devices.values():
+            dev.ospf_routes.clear()
+
+        speakers: dict[str, list[IPv4Network]] = {}
+        for name, dev in self.devices.items():
+            nets = self._ospf_advertised_networks(dev)
+            if nets:
+                speakers[name] = nets
+        if len(speakers) < 2:
+            return
+
+        for a_name in speakers:
+            a_dev = self.devices[a_name]
+            for b_name, b_nets in speakers.items():
+                if a_name == b_name:
+                    continue
+                if not self._l2_adjacent_or_same(a_name, b_name):
+                    continue
+                nh = self._peer_ip_on_link(a_name, b_name)
+                if not nh:
+                    continue
+                connected = {n for n, _ in self._connected_subnets(a_name)}
+                for net in b_nets:
+                    if any(net == c or net.subnet_of(c) or c.subnet_of(net) for c in connected):
+                        continue
+                    if any(
+                        IPv4Network(f"{r.network}/{r.mask}", strict=False) == net
+                        for r in a_dev.static_routes + a_dev.ospf_routes
+                    ):
+                        continue
+                    a_dev.ospf_routes.append(
+                        StaticRoute(
+                            network=str(net.network_address),
+                            mask=str(net.netmask),
+                            next_hop=nh,
+                        )
+                    )
+
+    def _ospf_advertised_networks(self, dev) -> list[IPv4Network]:
+        """Return connected nets that match ``network … area`` under ``router ospf``."""
+        if not any(line.lower().startswith("router ospf") for line in (dev.extra_global or [])):
+            return []
+        statements: list[tuple[IPv4Address, IPv4Address]] = []
+        for line in dev.extra_global:
+            parts = line.split()
+            if len(parts) < 5 or parts[0].lower() != "network":
+                continue
+            if parts[3].lower() != "area":
+                continue
+            try:
+                network = IPv4Address(parts[1])
+                wildcard = IPv4Address(parts[2])
+            except ValueError:
+                continue
+            statements.append((network, wildcard))
+        if not statements:
+            return []
+        out: list[IPv4Network] = []
+        for iface in dev.interfaces.values():
+            if not (iface.admin_up and iface.ip and iface.mask and iface.network):
+                continue
+            try:
+                ip = IPv4Address(iface.ip)
+            except ValueError:
+                continue
+            for network, wildcard in statements:
+                # Cisco: (ip & ~wc) == (network & ~wc)
+                mask_int = (~int(wildcard)) & 0xFFFFFFFF
+                if (int(ip) & mask_int) == (int(network) & mask_int):
+                    out.append(iface.network)
+                    break
+        return out
+
+    def _peer_ip_on_link(self, from_device: str, peer: str) -> str | None:
+        for a_dev, a_if, b_dev, b_if in self.links:
+            if a_dev == from_device and b_dev == peer:
+                return self.devices[peer].interfaces[b_if].ip
+            if b_dev == from_device and a_dev == peer:
+                return self.devices[peer].interfaces[a_if].ip
+        return None
+
     def _can_reach_simple(self, from_device: str, dst: IPv4Address, depth: int) -> bool:
         if depth > 4:
             return False
-        return any(dst in net for net, _ in self._connected_subnets(from_device))
+        for net, _ in self._connected_subnets(from_device):
+            if dst not in net:
+                continue
+            owner = self._owner_of_ip(dst)
+            if owner is None or owner == from_device:
+                return True
+            return self._l2_adjacent_or_same(from_device, owner)
+        return False
 
     def _hop_ips(self, from_device: str, dst: IPv4Address) -> list[str]:
         owner = self._owner_of_ip(dst)

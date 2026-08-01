@@ -141,16 +141,28 @@ def submit_config(session_id: str, body: SubmitConfigRequest) -> dict[str, Any]:
     }
 
 
+class ResetLabRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    replay: bool = False
+
+
 @_ROUTER.post("/lab-sessions/{session_id}/reset")
-def reset_lab_session(session_id: str) -> dict[str, Any]:
+def reset_lab_session(
+    session_id: str, body: ResetLabRequest | None = None
+) -> dict[str, Any]:
     session = _SESSIONS.get(session_id)
     if session is None:
         raise HTTPException(status_code=404, detail="Session not found")
-    session.reset()
+    replay = bool(body.replay) if body is not None else False
+    prior = len(session.command_log)
+    session.reset(replay=replay)
     lab = session.lab
     return {
         "session_id": session_id,
         "lab_id": lab.lab_id,
+        "replayed": replay,
+        "commands_replayed": prior if replay else 0,
         "task_index": session.current_task_index,
         "task_count": len(lab.tasks),
         "task": _serialize_task(lab, session.current_task_index),

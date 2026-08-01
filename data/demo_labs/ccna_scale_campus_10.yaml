@@ -1,0 +1,128 @@
+title: Scale Campus Ten Devices
+lab_id: ccna_scale_campus_10
+topic_code: "1.1"
+difficulty: 2
+description: >
+  Light configuration across a 10-device campus edge used for performance
+  and catalog scale. Hostname each device and address R1 Gi0/0.
+objectives:
+  - Configure hostnames on core devices
+  - Address the campus gateway
+cert_tags:
+  - ccna
+pass_threshold: 1.0
+schema_version: 1
+topology:
+  devices:
+    - name: R1
+      type: router
+      interfaces:
+        - name: GigabitEthernet0/0
+          connected_to: SW1/GigabitEthernet0/1
+        - name: GigabitEthernet0/1
+          connected_to: SW2/GigabitEthernet0/1
+    - name: R2
+      type: router
+      interfaces:
+        - name: GigabitEthernet0/0
+          connected_to: SW3/GigabitEthernet0/1
+    - name: SW1
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: R1/GigabitEthernet0/0
+        - name: GigabitEthernet0/2
+          connected_to: SW4/GigabitEthernet0/1
+    - name: SW2
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: R1/GigabitEthernet0/1
+        - name: GigabitEthernet0/2
+          connected_to: SW5/GigabitEthernet0/1
+    - name: SW3
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: R2/GigabitEthernet0/0
+        - name: GigabitEthernet0/2
+          connected_to: SW6/GigabitEthernet0/1
+    - name: SW4
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: SW1/GigabitEthernet0/2
+        - name: GigabitEthernet0/2
+          connected_to: PC1/eth0
+    - name: SW5
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: SW2/GigabitEthernet0/2
+        - name: GigabitEthernet0/2
+          connected_to: PC2/eth0
+    - name: SW6
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+          connected_to: SW3/GigabitEthernet0/2
+        - name: GigabitEthernet0/2
+          connected_to: PC3/eth0
+    - name: PC1
+      type: pc
+      interfaces:
+        - name: eth0
+          connected_to: SW4/GigabitEthernet0/2
+    - name: PC2
+      type: pc
+      interfaces:
+        - name: eth0
+          connected_to: SW5/GigabitEthernet0/2
+    - name: PC3
+      type: pc
+      interfaces:
+        - name: eth0
+          connected_to: SW6/GigabitEthernet0/2
+  links:
+    - a: R1/GigabitEthernet0/0
+      b: SW1/GigabitEthernet0/1
+    - a: R1/GigabitEthernet0/1
+      b: SW2/GigabitEthernet0/1
+    - a: R2/GigabitEthernet0/0
+      b: SW3/GigabitEthernet0/1
+    - a: SW1/GigabitEthernet0/2
+      b: SW4/GigabitEthernet0/1
+    - a: SW2/GigabitEthernet0/2
+      b: SW5/GigabitEthernet0/1
+    - a: SW3/GigabitEthernet0/2
+      b: SW6/GigabitEthernet0/1
+    - a: SW4/GigabitEthernet0/2
+      b: PC1/eth0
+    - a: SW5/GigabitEthernet0/2
+      b: PC2/eth0
+    - a: SW6/GigabitEthernet0/2
+      b: PC3/eth0
+tasks:
+  - id: t1
+    instructions: |
+      Set hostnames: **R1** → **CAMPUS-R1**, **SW1** → **CAMPUS-SW1**.
+    grading_rules:
+      require:
+        - "hostname CAMPUS-R1"
+        - "hostname CAMPUS-SW1"
+  - id: t2
+    instructions: |
+      On **R1**, address Gi0/0 as **10.10.0.1/24** and bring it up.
+    grading_rules:
+      device: R1
+      require:
+        - "ip address 10.10.0.1 255.255.255.0"
+        - "no shutdown"
+solution_config: |
+  ! --- R1 ---
+  hostname CAMPUS-R1
+  interface GigabitEthernet0/0
+   ip address 10.10.0.1 255.255.255.0
+   no shutdown
+  ! --- SW1 ---
+  hostname CAMPUS-SW1

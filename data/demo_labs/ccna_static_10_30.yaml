@@ -1,0 +1,28 @@
+title: Static Route 10.30.0.0
+lab_id: ccna_static_10_30
+topic_code: '3.1'
+difficulty: 2
+description: Add a static route for 10.30.0.0/255.255.0.0 via 192.168.1.2.
+objectives:
+- ip route
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: On **R1**, add ``ip route 10.30.0.0 255.255.0.0 192.168.1.2``.
+  grading_rules:
+    device: R1
+    require:
+    - ip route 10.30.0.0 255.255.0.0 192.168.1.2
+solution_config: 'ip route 10.30.0.0 255.255.0.0 192.168.1.2
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

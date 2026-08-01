@@ -57,6 +57,7 @@ tasks:
        ip address 10.10.10.1 255.255.255.0
        no shutdown
     grading_rules:
+      device: R1
       require:
         - "ip address 10.10.10.1 255.255.255.0"
         - "no shutdown"
@@ -78,6 +79,7 @@ tasks:
        switchport mode access
        switchport access vlan 10
     grading_rules:
+      device: SW1
       require:
         - "vlan 10"
         - "name USERS"
@@ -102,27 +104,27 @@ tasks:
     instructions: |
       **Verification — end-to-end**
 
-      From either PC, the other PC and the gateway **10.10.10.1** must be
-      reachable. Device configs from prior tasks must remain correct.
+      From **PC1**, the gateway **10.10.10.1** and **PC2** (**10.10.10.20**)
+      must be reachable. Prior task configs must remain correct.
     expected_config: |
       ip address 10.10.10.1 255.255.255.0
-      no shutdown
       vlan 10
-      name USERS
-      switchport mode trunk
-      switchport access vlan 10
       ip address 10.10.10.10 255.255.255.0
       ip address 10.10.10.20 255.255.255.0
     grading_rules:
       require:
         - "ip address 10.10.10.1 255.255.255.0"
-        - "no shutdown"
         - "vlan 10"
-        - "name USERS"
-        - "switchport mode trunk"
-        - "switchport access vlan 10"
         - "ip address 10.10.10.10 255.255.255.0"
         - "ip address 10.10.10.20 255.255.255.0"
+    verify:
+      ping:
+        - source: PC1
+          destination: "10.10.10.1"
+          should_succeed: true
+        - source: PC1
+          destination: "10.10.10.20"
+          should_succeed: true
 solution_config: |
   ! --- R1 ---
   hostname R1

@@ -71,27 +71,28 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 
 When implementing features, work task-by-task, run relevant tests after each change, and keep diffs focused.
 
-## Implementation status (as of v0.3.0)
+## Implementation status (as of v0.4.0)
 
-**Current:** v0.3.0 ExSim Depth — see `docs/status.md` for handoff.
+**Current:** v0.4.0 NetSim Depth — see `docs/status.md` for handoff.
 
 **Done:**
 - ExSim engine + GUI (practice library pagination, blueprints, custom exams, Check + rationales, keyboard drag-match)
 - Pause/resume with SQLite persistence; score/review exports (HTML/JSON/CSV/Print-PDF, redacted)
 - Stats weak-domains + domain × version heatmap
-- NetSim engine + GUI (OpenIOS, reset, per-device grading hooks)
+- NetSim engine + GUI (OpenIOS, catalog filters, ≥50 labs, per-device grading, verify.ping, reset/replay)
+- ARP learning, static + simplified OSPF routes for ping/traceroute; 10-device perf gate
 - Hot-load registry (bundled + local + packs), content refresh API/Settings
 - Settings: theme, logs/backups, updates card, content diagnostics
 - Resource paths, logging, DB backups, typed settings store
 - CI (Windows/Ubuntu), Makefile / `scripts/dev.ps1`, quality baseline
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
-- Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥20 labs
+- Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥50 labs
 
-**Next (v0.4 NetSim — see `docs/deferred-releases.md`):**
-- Catalog filters, ≥50 labs, OpenIOS/packet depth, grading/replay, 10-device perf
+**Next (v0.5 Designer — see `docs/deferred-releases.md`):**
+- Lab schema v2 freeze; editable topology canvas; save/load user topologies
 
 **Later:**
-- v0.5 Network Designer · v0.6 packs · pre-v1.0 content scale (≥1000/800, ≥5% PBQ) · v1.0 signed cross-platform
+- v0.6 packs · pre-v1.0 content scale (≥1000/800, ≥5% PBQ) · v1.0 signed cross-platform
 
 ## Conventions
 

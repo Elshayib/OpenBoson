@@ -146,3 +146,21 @@ def test_click_topology_selects_console(window, qtbot, gold_lab):
     page._on_device_clicked("PC1")
     idx = page._tabs.currentIndex()
     assert "PC1" in page._tabs.tabText(idx)
+
+
+def test_reset_and_replay_restores_hostname(window, qtbot, gold_lab):
+    window.start_lab_from_list(gold_lab)
+    qtbot.wait(50)
+    page = window._lab_session_page
+    page.type_on_device(
+        "R1",
+        "enable",
+        "configure terminal",
+        "hostname BRANCH-R1",
+        "end",
+    )
+    assert "hostname BRANCH-R1" in page._session.world.devices["R1"].running_config()
+    assert page._session.command_log
+    page._do_reset(replay=True)
+    qtbot.wait(30)
+    assert "hostname BRANCH-R1" in page._session.world.devices["R1"].running_config()

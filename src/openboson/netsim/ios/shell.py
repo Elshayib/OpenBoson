@@ -185,6 +185,8 @@ class OpenIOSShell:
                 "shutdown": self._cmd_shutdown,
                 "description": self._cmd_description,
                 "switchport": self._cmd_switchport,
+                # Real IOS allows jumping to another interface without exit.
+                "interface": self._cmd_interface,
                 "exit": self._cmd_exit_if,
                 "end": self._cmd_end,
                 "do": self._cmd_do,
@@ -193,6 +195,8 @@ class OpenIOSShell:
         elif m == Mode.CONFIG_VLAN:
             base = {
                 "name": self._cmd_vlan_name,
+                "interface": self._cmd_interface,
+                "vlan": self._cmd_vlan,
                 "exit": self._cmd_exit_vlan,
                 "end": self._cmd_end,
                 "do": self._cmd_do,
@@ -348,6 +352,10 @@ class OpenIOSShell:
             return self.device.show_ip_int_brief()
         if _abbrev_match("route", args[0]):
             return self.device.show_ip_route()
+        if _abbrev_match("arp", args[0]):
+            if self.world is not None and hasattr(self.world, "show_arp"):
+                return self.world.show_arp(self.device.name)  # type: ignore[attr-defined]
+            return "Protocol  Address          Age (min)  Hardware Addr   Type   Interface\n"
         raise _CmdError("% Incomplete command.")
 
     def _show_interfaces(self, args: list[str]) -> str:
@@ -468,6 +476,7 @@ class OpenIOSShell:
                 iface = self.device.interfaces[resolved]
                 expanded = resolved
         self._if_ctx = iface.name
+        self._vlan_ctx = None
         self.mode = Mode.CONFIG_IF
         return ""
 

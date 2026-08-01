@@ -1,6 +1,6 @@
 # Later releases (post v0.2.2)
 
-**Current:** v0.3.0 ExSim Depth is shipped. Next executable track is **v0.4 NetSim depth**.
+**Current:** v0.4.0 NetSim Depth is shipped. Next executable track is **v0.5 Network Designer**.
 See [`status.md`](status.md) for handoff.
 
 Question-bank content scale (≥1000 CCNA / ≥800 ENCOR) and ≥5% PBQ/sim depth are
@@ -17,15 +17,16 @@ Shipped in **v0.3.0**:
 - Score/review export (HTML, JSON, CSV, Print-PDF; redacted mode)
 - API + GUI parity for finish, mark, coverage, session list/resume, custom exams
 
-## v0.4 — NetSim depth (NEXT)
+## v0.4 — NetSim depth (DONE)
+
+Shipped in **v0.4.0**:
 
 - ≥50 golden labs; catalog filters (objective, difficulty, text)
-- Broader OpenIOS matrix required by those labs
-- Expanded packet semantics (ARP, route-consistent ping/traceroute, OSPF-derived paths where modeled)
-- Mature multi-device grading / reset / replay
+- Broader OpenIOS matrix (incl. interface jump from config-if/vlan)
+- Packet semantics: ARP, route-consistent ping/traceroute, OSPF-derived paths where modeled
+- Multi-device grading / reset / replay + `verify.ping` labs
 - 10-device lab: ≤100 ms/command on reference hardware
-
-Suggested order: catalog filters → lab scale toward 50 → grading/verify maturity → packet semantics → replay → perf lab → tag `v0.4.0`.
+- Correct `base_config` application in privileged config mode
 
 ## v0.5 — Network Designer
 

@@ -1,0 +1,32 @@
+title: ACL 20 Deny Host
+lab_id: ccna_acl_20
+topic_code: '5.1'
+difficulty: 3
+description: Create standard ACL 20 denying host 10.10.10.50.
+objectives:
+- access-list 20
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: On **R1**, create ACL **20** denying host **10.10.10.50** then permit
+    any.
+  grading_rules:
+    device: R1
+    require:
+    - access-list 20 deny host 10.10.10.50
+    - access-list 20 permit any
+solution_config: 'access-list 20 deny host 10.10.10.50
+
+  access-list 20 permit any
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

@@ -1,0 +1,79 @@
+title: OSPF Two-Router Reachability
+lab_id: ccna_ospf_two_router
+topic_code: "3.2"
+difficulty: 4
+description: Enable OSPF on adjacent routers and verify remote LAN reachability.
+objectives:
+  - OSPFv2 adjacency (simplified)
+  - network statements
+  - ping remote LAN via OSPF
+topology:
+  devices:
+    - name: R1
+      type: router
+      interfaces:
+        - name: GigabitEthernet0/0
+          ip: 10.0.0.1/30
+        - name: GigabitEthernet0/1
+          ip: 192.168.1.1/24
+      base_config: |
+        interface GigabitEthernet0/0
+         ip address 10.0.0.1 255.255.255.252
+         no shutdown
+        interface GigabitEthernet0/1
+         ip address 192.168.1.1 255.255.255.0
+         no shutdown
+    - name: R2
+      type: router
+      interfaces:
+        - name: GigabitEthernet0/0
+          ip: 10.0.0.2/30
+        - name: GigabitEthernet0/1
+          ip: 192.168.2.1/24
+      base_config: |
+        interface GigabitEthernet0/0
+         ip address 10.0.0.2 255.255.255.252
+         no shutdown
+        interface GigabitEthernet0/1
+         ip address 192.168.2.1 255.255.255.0
+         no shutdown
+  links:
+    - a: R1/GigabitEthernet0/0
+      b: R2/GigabitEthernet0/0
+tasks:
+  - id: t1
+    instructions: |
+      On **R1** and **R2**, start OSPF process 1 and advertise both local networks
+      in area 0 (link `10.0.0.0/30` and each LAN). Then verify R1 can ping
+      **192.168.2.1**.
+    expected_config: |
+      router ospf 1
+       network 10.0.0.0 0.0.0.3 area 0
+       network 192.168.1.0 0.0.0.255 area 0
+      router ospf 1
+       network 10.0.0.0 0.0.0.3 area 0
+       network 192.168.2.0 0.0.0.255 area 0
+    grading_rules:
+      require:
+        - router ospf 1
+        - network 10.0.0.0 0.0.0.3 area 0
+        - network 192.168.1.0 0.0.0.255 area 0
+        - network 192.168.2.0 0.0.0.255 area 0
+    verify:
+      ping:
+        - source: R1
+          destination: "192.168.2.1"
+          should_succeed: true
+solution_config: |
+  ! --- R1 ---
+  router ospf 1
+   network 10.0.0.0 0.0.0.3 area 0
+   network 192.168.1.0 0.0.0.255 area 0
+  ! --- R2 ---
+  router ospf 1
+   network 10.0.0.0 0.0.0.3 area 0
+   network 192.168.2.0 0.0.0.255 area 0
+schema_version: 1
+cert_tags:
+  - ccna
+pass_threshold: 1.0

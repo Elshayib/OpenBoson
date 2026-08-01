@@ -1,29 +1,60 @@
 title: Access VLAN Isolation Check
 lab_id: ccna_vlan_isolation
-topic_code: '2.1'
+topic_code: "2.1"
 difficulty: 3
-description: Place PCs in different VLANs; verify isolation intent via config.
+description: Place PCs in different VLANs and verify they cannot reach each other.
 objectives:
-- Different access VLANs
+  - Different access VLANs
+  - L2 isolation via ping
 topology:
   devices:
-  - name: SW1
-    type: switch
-    interfaces:
-    - name: GigabitEthernet0/1
-    - name: GigabitEthernet0/2
-  links: []
+    - name: SW1
+      type: switch
+      interfaces:
+        - name: GigabitEthernet0/1
+        - name: GigabitEthernet0/2
+    - name: PC1
+      type: pc
+      interfaces:
+        - name: eth0
+          ip: 10.10.10.10/24
+      base_config: |
+        ip address 10.10.10.10 255.255.255.0
+    - name: PC2
+      type: pc
+      interfaces:
+        - name: eth0
+          ip: 10.10.10.20/24
+      base_config: |
+        ip address 10.10.10.20 255.255.255.0
+  links:
+    - a: PC1/eth0
+      b: SW1/GigabitEthernet0/1
+    - a: PC2/eth0
+      b: SW1/GigabitEthernet0/2
 tasks:
-- id: t1
-  instructions: Put Gi0/1 in VLAN 10 and Gi0/2 in VLAN 20 as access ports.
-  grading_rules:
-    device: SW1
-    require:
-    - switchport access vlan 10
-    - switchport access vlan 20
-solution_config: "interface GigabitEthernet0/1\n switchport access vlan 10\ninterface\
-  \ GigabitEthernet0/2\n switchport access vlan 20\n"
+  - id: t1
+    instructions: |
+      Put **Gi0/1** in VLAN 10 and **Gi0/2** in VLAN 20 as access ports.
+      PC1 and PC2 share the same IP subnet but must **not** reach each other.
+    grading_rules:
+      device: SW1
+      require:
+        - switchport access vlan 10
+        - switchport access vlan 20
+    verify:
+      ping:
+        - source: PC1
+          destination: "10.10.10.20"
+          should_succeed: false
+solution_config: |
+  interface GigabitEthernet0/1
+   switchport mode access
+   switchport access vlan 10
+  interface GigabitEthernet0/2
+   switchport mode access
+   switchport access vlan 20
 schema_version: 1
 cert_tags:
-- ccna
+  - ccna
 pass_threshold: 1.0

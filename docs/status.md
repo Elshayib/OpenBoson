@@ -1,6 +1,6 @@
 # Project status (handoff)
 
-Last synced: **2026-08-01** · Current release: **[v0.3.0 ExSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.3.0)**
+Last synced: **2026-08-01** · Current release: **[v0.4.0 NetSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.0)**
 
 Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming work. The full competitive roadmap lives in the local Cursor plan `openboson_competitive_roadmap_ceb1329f` and must stay out of git.
 
@@ -9,8 +9,8 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 | Area | Notes |
 |------|--------|
 | ExSim | Practice library, blueprints, custom exams, Check + rationales, pause/resume, exports |
-| NetSim | OpenIOS labs, reset, per-device / weighted grading, VLAN-aware L2 (20 labs) |
-| Content | Domain shards; ≥500 CCNA / ≥400 ENCOR; 20 labs |
+| NetSim | OpenIOS labs, catalog filters, reset/replay, per-device grading, ARP, OSPF-derived routes, VLAN-aware L2 (**≥50 labs**) |
+| Content | Domain shards; ≥500 CCNA / ≥400 ENCOR; ≥50 labs |
 | Platform | Registry, stats weak-domains + heatmap, settings, logging, DB backups, light/dark theme |
 | CI | Windows + Ubuntu; ruff; typed-core mypy; content + lab jobs |
 | Packaging | PyInstaller onedir + Inno per-user installer; GitHub Releases updater |
@@ -22,18 +22,15 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 - Full-package `mypy src/openboson` is not green yet; expand typed-core gradually ([`quality-baseline.md`](quality-baseline.md)).
 - Question-bank scale (≥1000/800) and ≥5% PBQ are deferred to a **pre-v1.0 content gate** (after v0.6).
 
-## Next release: v0.4 NetSim depth
+## Next release: v0.5 Network Designer
 
 Start here — details in [`deferred-releases.md`](deferred-releases.md):
 
-1. Lab catalog filters (objective / difficulty / text) — **next**
-2. Scale toward ≥50 golden labs
-3. Grading maturity (verify.ping, consistent per-device rules)
-4. Packet semantics (ARP, route-consistent ping/traceroute, OSPF paths where modeled)
-5. Command replay after reset
-6. 10-device lab perf gate (≤100 ms/command)
+1. Freeze lab schema v2
+2. Editable topology canvas; save/load user topologies
+3. Round-trip through `LabWorld`; pytest-qt for invalid links and save/load
 
-Do **not** begin v0.5 Designer or v0.6 packs until v0.4 gates pass.
+Do **not** begin v0.6 packs until v0.5 Designer gates pass.
 
 ## Local-only (never commit)
 

@@ -130,6 +130,7 @@ def test_show_run_after_config(shell):
 def test_switch_vlan_and_trunk():
     sw = DeviceRuntime(name="SW1", role=DeviceRole.SWITCH)
     sw.interfaces["GigabitEthernet0/1"] = InterfaceState(name="GigabitEthernet0/1")
+    sw.interfaces["GigabitEthernet0/2"] = InterfaceState(name="GigabitEthernet0/2")
     sh = OpenIOSShell(sw)
     _run(
         sh,
@@ -138,14 +139,18 @@ def test_switch_vlan_and_trunk():
         "hostname SW1",
         "vlan 10",
         "name USERS",
-        "exit",
-        "int g0/1",
+        "interface GigabitEthernet0/1",
         "switchport mode trunk",
+        "interface GigabitEthernet0/2",
+        "switchport mode access",
+        "switchport access vlan 10",
         "end",
     )
     assert 10 in sw.vlans
     assert sw.vlans[10] == "USERS"
     assert sw.interfaces["GigabitEthernet0/1"].switchport_mode == "trunk"
+    assert sw.interfaces["GigabitEthernet0/2"].switchport_mode == "access"
+    assert sw.interfaces["GigabitEthernet0/2"].access_vlan == 10
     cfg = sw.running_config()
     assert "vlan 10" in cfg
     assert "switchport mode trunk" in cfg

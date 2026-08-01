@@ -1,0 +1,39 @@
+title: VLAN 60 Access (IOT)
+lab_id: ccna_vlan_60_iot
+topic_code: '2.1'
+difficulty: 2
+description: Create VLAN 60 (IOT) and assign two access ports.
+objectives:
+- Create VLAN 60
+- Assign access ports
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/4
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, create **VLAN 60** named **IOT**.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 60
+    - name IOT
+- id: t2
+  instructions: Put GigabitEthernet0/1 and GigabitEthernet0/4 into VLAN 60 as access
+    ports.
+  grading_rules:
+    device: SW1
+    require:
+    - switchport mode access
+    - switchport access vlan 60
+solution_config: "vlan 60\n name IOT\ninterface GigabitEthernet0/1\n switchport mode\
+  \ access\n switchport access vlan 60\ninterface GigabitEthernet0/4\n switchport\
+  \ mode access\n switchport access vlan 60\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

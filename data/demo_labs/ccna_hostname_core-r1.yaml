@@ -1,0 +1,28 @@
+title: Hostname CORE-R1
+lab_id: ccna_hostname_core-r1
+topic_code: '1.1'
+difficulty: 1
+description: Set the device hostname to CORE-R1.
+objectives:
+- hostname CORE-R1
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: On **R1**, set hostname to **CORE-R1**.
+  grading_rules:
+    device: R1
+    require:
+    - hostname CORE-R1
+solution_config: 'hostname CORE-R1
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

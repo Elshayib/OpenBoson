@@ -1,0 +1,39 @@
+title: VLAN 70 Access (LAB)
+lab_id: ccna_vlan_70_lab
+topic_code: '2.1'
+difficulty: 2
+description: Create VLAN 70 (LAB) and assign two access ports.
+objectives:
+- Create VLAN 70
+- Assign access ports
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/2
+    - name: GigabitEthernet0/4
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, create **VLAN 70** named **LAB**.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 70
+    - name LAB
+- id: t2
+  instructions: Put GigabitEthernet0/2 and GigabitEthernet0/4 into VLAN 70 as access
+    ports.
+  grading_rules:
+    device: SW1
+    require:
+    - switchport mode access
+    - switchport access vlan 70
+solution_config: "vlan 70\n name LAB\ninterface GigabitEthernet0/2\n switchport mode\
+  \ access\n switchport access vlan 70\ninterface GigabitEthernet0/4\n switchport\
+  \ mode access\n switchport access vlan 70\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

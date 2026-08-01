@@ -2,6 +2,24 @@
 
 All notable changes to OpenBoson are documented in this file.
 
+## [0.4.0] — 2026-08-01 — NetSim Depth
+
+### Application
+- Lab catalog filters (objective / difficulty / text) in GUI and `GET /api/v1/labs`.
+- Reset & Replay: rebuild lab world and re-feed the session command log (engine, API, GUI).
+- OpenIOS: interface jumps from config-if/vlan mode; `base_config` applied under `enable` / `configure terminal`.
+- Packet semantics: ARP learning + `show ip arp`; static and simplified OSPF-derived routes for ping/traceroute; `show ip route` shows C/S/O.
+
+### Content
+- ≥50 CCNA demo labs (scale campus 10-device lab, generated variants, OSPF two-router reachability).
+- Broader `verify.ping` coverage (branch office, dual-router static, VLAN isolation, OSPF).
+
+### Known Issues
+- Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
+
+### Docs
+- Handoff synced in `docs/status.md`; next track is Network Designer (v0.5) in `docs/deferred-releases.md`.
+
 ## [0.3.0] — 2026-08-01 — ExSim Depth
 
 ### Application

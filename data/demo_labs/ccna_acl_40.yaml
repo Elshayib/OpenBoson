@@ -1,0 +1,32 @@
+title: ACL 40 Deny Host
+lab_id: ccna_acl_40
+topic_code: '5.1'
+difficulty: 3
+description: Create standard ACL 40 denying host 172.16.1.10.
+objectives:
+- access-list 40
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: On **R1**, create ACL **40** denying host **172.16.1.10** then permit
+    any.
+  grading_rules:
+    device: R1
+    require:
+    - access-list 40 deny host 172.16.1.10
+    - access-list 40 permit any
+solution_config: 'access-list 40 deny host 172.16.1.10
+
+  access-list 40 permit any
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

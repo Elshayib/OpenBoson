@@ -1,0 +1,26 @@
+title: Interface Description TO-ACCESS
+lab_id: ccna_desc_to_access
+topic_code: '1.1'
+difficulty: 1
+description: Set GigabitEthernet0/2 description to TO-ACCESS.
+objectives:
+- interface description
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/2
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, set GigabitEthernet0/2 description to **TO-ACCESS**.
+  grading_rules:
+    device: SW1
+    require:
+    - description TO-ACCESS
+solution_config: "interface GigabitEthernet0/2\n description TO-ACCESS\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

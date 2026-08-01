@@ -1,0 +1,26 @@
+title: Interface Description UPLINK-CORE
+lab_id: ccna_desc_uplink_core
+topic_code: '1.1'
+difficulty: 1
+description: Set GigabitEthernet0/1 description to UPLINK-CORE.
+objectives:
+- interface description
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, set GigabitEthernet0/1 description to **UPLINK-CORE**.
+  grading_rules:
+    device: SW1
+    require:
+    - description UPLINK-CORE
+solution_config: "interface GigabitEthernet0/1\n description UPLINK-CORE\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

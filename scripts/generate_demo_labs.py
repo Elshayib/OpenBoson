@@ -657,6 +657,448 @@ LABS = [
 ]
 
 
+def _vlan_variant(vlan: int, name: str, ports: tuple[str, str], difficulty: int = 2) -> dict:
+    p1, p2 = ports
+    return _lab(
+        title=f"VLAN {vlan} Access ({name})",
+        lab_id=f"ccna_vlan_{vlan}_{name.lower()}",
+        topic_code="2.1",
+        difficulty=difficulty,
+        description=f"Create VLAN {vlan} ({name}) and assign two access ports.",
+        objectives=[f"Create VLAN {vlan}", "Assign access ports"],
+        topology={
+            "devices": [
+                {
+                    "name": "SW1",
+                    "type": "switch",
+                    "interfaces": [{"name": p1}, {"name": p2}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": f"On **SW1**, create **VLAN {vlan}** named **{name}**.",
+                "grading_rules": {
+                    "device": "SW1",
+                    "require": [f"vlan {vlan}", f"name {name}"],
+                },
+            },
+            {
+                "id": "t2",
+                "instructions": f"Put {p1} and {p2} into VLAN {vlan} as access ports.",
+                "grading_rules": {
+                    "device": "SW1",
+                    "require": [
+                        "switchport mode access",
+                        f"switchport access vlan {vlan}",
+                    ],
+                },
+            },
+        ],
+        solution_config=(
+            f"vlan {vlan}\n name {name}\n"
+            f"interface {p1}\n switchport mode access\n switchport access vlan {vlan}\n"
+            f"interface {p2}\n switchport mode access\n switchport access vlan {vlan}\n"
+        ),
+    )
+
+
+def _hostname_lab(device: str, hostname: str, topic: str, difficulty: int) -> dict:
+    return _lab(
+        title=f"Hostname {hostname}",
+        lab_id=f"ccna_hostname_{hostname.lower()}",
+        topic_code=topic,
+        difficulty=difficulty,
+        description=f"Set the device hostname to {hostname}.",
+        objectives=[f"hostname {hostname}"],
+        topology={
+            "devices": [{"name": device, "type": "router", "interfaces": [{"name": "GigabitEthernet0/0"}]}],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": f"On **{device}**, set hostname to **{hostname}**.",
+                "grading_rules": {"device": device, "require": [f"hostname {hostname}"]},
+            }
+        ],
+        solution_config=f"hostname {hostname}\n",
+    )
+
+
+def _iface_address_lab(
+    lab_id: str,
+    title: str,
+    ip: str,
+    mask: str,
+    topic: str,
+    difficulty: int,
+) -> dict:
+    return _lab(
+        title=title,
+        lab_id=lab_id,
+        topic_code=topic,
+        difficulty=difficulty,
+        description=f"Address Gi0/0 as {ip}/{mask} and bring it up.",
+        objectives=["Interface addressing", "no shutdown"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": (
+                    f"On **R1**, set Gi0/0 to **{ip}** with mask **{mask}** and no shut."
+                ),
+                "grading_rules": {
+                    "device": "R1",
+                    "require": [f"ip address {ip} {mask}", "no shutdown"],
+                },
+            }
+        ],
+        solution_config=(
+            f"interface GigabitEthernet0/0\n ip address {ip} {mask}\n no shutdown\n"
+        ),
+    )
+
+
+def _static_route_lab(lab_id: str, network: str, mask: str, nh: str, difficulty: int) -> dict:
+    return _lab(
+        title=f"Static Route {network}",
+        lab_id=lab_id,
+        topic_code="3.1",
+        difficulty=difficulty,
+        description=f"Add a static route for {network}/{mask} via {nh}.",
+        objectives=["ip route"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": f"On **R1**, add ``ip route {network} {mask} {nh}``.",
+                "grading_rules": {
+                    "device": "R1",
+                    "require": [f"ip route {network} {mask} {nh}"],
+                },
+            }
+        ],
+        solution_config=f"ip route {network} {mask} {nh}\n",
+    )
+
+
+def _acl_lab(lab_id: str, acl: int, deny_host: str, difficulty: int) -> dict:
+    return _lab(
+        title=f"ACL {acl} Deny Host",
+        lab_id=lab_id,
+        topic_code="5.1",
+        difficulty=difficulty,
+        description=f"Create standard ACL {acl} denying host {deny_host}.",
+        objectives=[f"access-list {acl}"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": (
+                    f"On **R1**, create ACL **{acl}** denying host **{deny_host}** "
+                    "then permit any."
+                ),
+                "grading_rules": {
+                    "device": "R1",
+                    "require": [
+                        f"access-list {acl} deny host {deny_host}",
+                        f"access-list {acl} permit any",
+                    ],
+                },
+            }
+        ],
+        solution_config=(
+            f"access-list {acl} deny host {deny_host}\naccess-list {acl} permit any\n"
+        ),
+    )
+
+
+def _desc_lab(lab_id: str, iface: str, description: str, difficulty: int) -> dict:
+    return _lab(
+        title=f"Interface Description {description}",
+        lab_id=lab_id,
+        topic_code="1.1",
+        difficulty=difficulty,
+        description=f"Set {iface} description to {description}.",
+        objectives=["interface description"],
+        topology={
+            "devices": [
+                {
+                    "name": "SW1",
+                    "type": "switch",
+                    "interfaces": [{"name": iface}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": f"On **SW1**, set {iface} description to **{description}**.",
+                "grading_rules": {
+                    "device": "SW1",
+                    "require": [f"description {description}"],
+                },
+            }
+        ],
+        solution_config=f"interface {iface}\n description {description}\n",
+    )
+
+
+# Procedural variants to reach the v0.4 ≥50 lab catalog target.
+_VARIANT_LABS = [
+    _vlan_variant(30, "ENG", ("GigabitEthernet0/1", "GigabitEthernet0/2"), 2),
+    _vlan_variant(40, "GUEST", ("GigabitEthernet0/1", "GigabitEthernet0/3"), 2),
+    _vlan_variant(50, "VOICE", ("GigabitEthernet0/2", "GigabitEthernet0/3"), 3),
+    _vlan_variant(60, "IOT", ("GigabitEthernet0/1", "GigabitEthernet0/4"), 2),
+    _vlan_variant(70, "LAB", ("GigabitEthernet0/2", "GigabitEthernet0/4"), 2),
+    _hostname_lab("R1", "EDGE-R1", "1.1", 1),
+    _hostname_lab("R1", "CORE-R1", "1.1", 1),
+    _hostname_lab("R1", "BR-R1", "1.1", 1),
+    _hostname_lab("R1", "HQ-R1", "1.1", 1),
+    _iface_address_lab(
+        "ccna_iface_192_168_10", "LAN Addressing 192.168.10.1", "192.168.10.1", "255.255.255.0", "1.1", 2
+    ),
+    _iface_address_lab(
+        "ccna_iface_192_168_20", "LAN Addressing 192.168.20.1", "192.168.20.1", "255.255.255.0", "1.1", 2
+    ),
+    _iface_address_lab(
+        "ccna_iface_10_0_0_1", "LAN Addressing 10.0.0.1", "10.0.0.1", "255.255.255.0", "1.1", 2
+    ),
+    _iface_address_lab(
+        "ccna_iface_172_16_0_1", "LAN Addressing 172.16.0.1", "172.16.0.1", "255.255.255.0", "1.1", 2
+    ),
+    _static_route_lab("ccna_static_10_20", "10.20.0.0", "255.255.0.0", "192.168.1.2", 2),
+    _static_route_lab("ccna_static_10_30", "10.30.0.0", "255.255.0.0", "192.168.1.2", 2),
+    _static_route_lab("ccna_static_172_16", "172.16.0.0", "255.255.0.0", "10.0.0.2", 3),
+    _static_route_lab("ccna_static_default_alt", "0.0.0.0", "0.0.0.0", "203.0.113.1", 2),
+    _acl_lab("ccna_acl_20", 20, "10.10.10.50", 3),
+    _acl_lab("ccna_acl_30", 30, "192.168.5.5", 3),
+    _acl_lab("ccna_acl_40", 40, "172.16.1.10", 3),
+    _desc_lab("ccna_desc_uplink_core", "GigabitEthernet0/1", "UPLINK-CORE", 1),
+    _desc_lab("ccna_desc_to_wan", "GigabitEthernet0/1", "TO-WAN", 1),
+    _desc_lab("ccna_desc_to_access", "GigabitEthernet0/2", "TO-ACCESS", 1),
+    _desc_lab("ccna_desc_mgmt", "GigabitEthernet0/1", "MGMT-ONLY", 1),
+    _lab(
+        title="SSH Login Banner",
+        lab_id="ccna_banner_ssh",
+        topic_code="5.3",
+        difficulty=2,
+        description="Configure an MOTD banner for login messaging.",
+        objectives=["banner motd"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": "On **R1**, set banner motd to **AUTHORIZED ONLY**.",
+                "grading_rules": {
+                    "device": "R1",
+                    "require": ["banner motd", "AUTHORIZED ONLY"],
+                },
+            }
+        ],
+        solution_config="banner motd ^AUTHORIZED ONLY^\n",
+    ),
+    _lab(
+        title="OSPFv2 Router ID Prep",
+        lab_id="ccna_ospf_router_id",
+        topic_code="3.2",
+        difficulty=3,
+        description="Start OSPF process 1 and set a stable router-id.",
+        objectives=["router ospf", "router-id"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": "On **R1**, configure ``router ospf 1`` with router-id **1.1.1.1**.",
+                "grading_rules": {
+                    "device": "R1",
+                    "require": ["router ospf 1", "router-id 1.1.1.1"],
+                },
+            }
+        ],
+        solution_config="router ospf 1\n router-id 1.1.1.1\n",
+    ),
+    _lab(
+        title="DHCP Excluded Addresses",
+        lab_id="ccna_dhcp_excluded",
+        topic_code="4.3",
+        difficulty=2,
+        description="Exclude a range from a DHCP pool.",
+        objectives=["ip dhcp excluded-address"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": (
+                    "On **R1**, exclude **192.168.10.1** through **192.168.10.10** "
+                    "from DHCP."
+                ),
+                "grading_rules": {
+                    "device": "R1",
+                    "require": ["ip dhcp excluded-address 192.168.10.1 192.168.10.10"],
+                },
+            }
+        ],
+        solution_config="ip dhcp excluded-address 192.168.10.1 192.168.10.10\n",
+    ),
+    _lab(
+        title="NAT Inside Interface Mark",
+        lab_id="ccna_nat_inside_mark",
+        topic_code="4.1",
+        difficulty=3,
+        description="Mark Gi0/0 as ip nat inside.",
+        objectives=["ip nat inside"],
+        topology={
+            "devices": [
+                {
+                    "name": "R1",
+                    "type": "router",
+                    "interfaces": [{"name": "GigabitEthernet0/0"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": "On **R1**, configure Gi0/0 with ``ip nat inside``.",
+                "grading_rules": {"device": "R1", "require": ["ip nat inside"]},
+            }
+        ],
+        solution_config="interface GigabitEthernet0/0\n ip nat inside\n",
+    ),
+    _lab(
+        title="Trunk Native VLAN 99",
+        lab_id="ccna_trunk_native_99",
+        topic_code="2.1",
+        difficulty=3,
+        description="Configure a trunk and set native VLAN 99.",
+        objectives=["trunk", "native vlan"],
+        topology={
+            "devices": [
+                {
+                    "name": "SW1",
+                    "type": "switch",
+                    "interfaces": [{"name": "GigabitEthernet0/1"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": (
+                    "On **SW1**, make Gi0/1 a trunk with native VLAN **99**."
+                ),
+                "grading_rules": {
+                    "device": "SW1",
+                    "require": [
+                        "switchport mode trunk",
+                        "switchport trunk native vlan 99",
+                    ],
+                },
+            }
+        ],
+        solution_config=(
+            "interface GigabitEthernet0/1\n"
+            " switchport mode trunk\n"
+            " switchport trunk native vlan 99\n"
+        ),
+    ),
+    _lab(
+        title="EtherChannel Mode Active",
+        lab_id="ccna_etherchannel_active",
+        topic_code="2.4",
+        difficulty=3,
+        description="Bundle Gi0/1 into a channel-group with mode active.",
+        objectives=["channel-group"],
+        topology={
+            "devices": [
+                {
+                    "name": "SW1",
+                    "type": "switch",
+                    "interfaces": [{"name": "GigabitEthernet0/1"}],
+                }
+            ],
+            "links": [],
+        },
+        tasks=[
+            {
+                "id": "t1",
+                "instructions": (
+                    "On **SW1**, put Gi0/1 in ``channel-group 1 mode active``."
+                ),
+                "grading_rules": {
+                    "device": "SW1",
+                    "require": ["channel-group 1 mode active"],
+                },
+            }
+        ],
+        solution_config="interface GigabitEthernet0/1\n channel-group 1 mode active\n",
+    ),
+]
+
+LABS.extend(_VARIANT_LABS)
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     written = 0

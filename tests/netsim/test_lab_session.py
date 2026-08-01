@@ -33,6 +33,41 @@ def lab():
     return load_lab(LAB_PATH)
 
 
+def _apply_branch_solution(session: LabSession) -> None:
+    """Feed the branch-office golden solution into the live OpenIOS world."""
+    for line in (
+        "enable",
+        "configure terminal",
+        "hostname R1",
+        "interface GigabitEthernet0/0",
+        "ip address 10.10.10.1 255.255.255.0",
+        "no shutdown",
+        "end",
+    ):
+        session.world.shell("R1").feed(line)
+    for line in (
+        "enable",
+        "configure terminal",
+        "hostname SW1",
+        "vlan 10",
+        "name USERS",
+        "exit",
+        "interface GigabitEthernet0/1",
+        "switchport trunk encapsulation dot1q",
+        "switchport mode trunk",
+        "interface GigabitEthernet0/2",
+        "switchport mode access",
+        "switchport access vlan 10",
+        "interface GigabitEthernet0/3",
+        "switchport mode access",
+        "switchport access vlan 10",
+        "end",
+    ):
+        session.world.shell("SW1").feed(line)
+    session.world.shell("PC1").feed("ip address 10.10.10.10 255.255.255.0")
+    session.world.shell("PC2").feed("ip address 10.10.10.20 255.255.255.0")
+
+
 def test_session_create_and_grade(lab):
     s = LabSession.create(lab)
     assert s.current_task.id == lab.tasks[0].id
@@ -50,8 +85,9 @@ def test_session_navigation(lab):
 
 def test_score_lab_all_correct(lab):
     s = LabSession.create(lab)
-    for t in lab.tasks:
-        s.submit_task(t.expected_config)
+    _apply_branch_solution(s)
+    for _t in lab.tasks:
+        s.check_current_task()
         s.next_task()
     result = score_lab(s)
     assert result.passed_tasks == result.total_tasks
@@ -122,8 +158,11 @@ def test_finish_lab_returns_result(client):
     sess = client.post(f"/api/v1/labs/{LAB_ID}/sessions", json={}).json()
     sid = sess["session_id"]
     lab = _LABS[LAB_ID]
-    for t in lab.tasks:
-        client.post(f"/api/v1/lab-sessions/{sid}/submit", json={"config": t.expected_config})
+    session = _SESSIONS[sid]
+    _apply_branch_solution(session)
+    for _t in lab.tasks:
+        session.check_current_task()
+        session.next_task()
     resp = client.post(f"/api/v1/lab-sessions/{sid}/finish")
     assert resp.status_code == 200
     result = resp.json()

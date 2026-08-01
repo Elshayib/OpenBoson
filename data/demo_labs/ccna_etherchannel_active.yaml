@@ -1,0 +1,26 @@
+title: EtherChannel Mode Active
+lab_id: ccna_etherchannel_active
+topic_code: '2.4'
+difficulty: 3
+description: Bundle Gi0/1 into a channel-group with mode active.
+objectives:
+- channel-group
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: On **SW1**, put Gi0/1 in ``channel-group 1 mode active``.
+  grading_rules:
+    device: SW1
+    require:
+    - channel-group 1 mode active
+solution_config: "interface GigabitEthernet0/1\n channel-group 1 mode active\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

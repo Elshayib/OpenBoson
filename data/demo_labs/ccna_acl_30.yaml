@@ -1,0 +1,32 @@
+title: ACL 30 Deny Host
+lab_id: ccna_acl_30
+topic_code: '5.1'
+difficulty: 3
+description: Create standard ACL 30 denying host 192.168.5.5.
+objectives:
+- access-list 30
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: On **R1**, create ACL **30** denying host **192.168.5.5** then permit
+    any.
+  grading_rules:
+    device: R1
+    require:
+    - access-list 30 deny host 192.168.5.5
+    - access-list 30 permit any
+solution_config: 'access-list 30 deny host 192.168.5.5
+
+  access-list 30 permit any
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0
