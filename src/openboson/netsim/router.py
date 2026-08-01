@@ -148,9 +148,7 @@ class ResetLabRequest(BaseModel):
 
 
 @_ROUTER.post("/lab-sessions/{session_id}/reset")
-def reset_lab_session(
-    session_id: str, body: ResetLabRequest | None = None
-) -> dict[str, Any]:
+def reset_lab_session(session_id: str, body: ResetLabRequest | None = None) -> dict[str, Any]:
     session = _SESSIONS.get(session_id)
     if session is None:
         raise HTTPException(status_code=404, detail="Session not found")

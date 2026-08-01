@@ -714,7 +714,9 @@ def _hostname_lab(device: str, hostname: str, topic: str, difficulty: int) -> di
         description=f"Set the device hostname to {hostname}.",
         objectives=[f"hostname {hostname}"],
         topology={
-            "devices": [{"name": device, "type": "router", "interfaces": [{"name": "GigabitEthernet0/0"}]}],
+            "devices": [
+                {"name": device, "type": "router", "interfaces": [{"name": "GigabitEthernet0/0"}]}
+            ],
             "links": [],
         },
         tasks=[
@@ -765,9 +767,7 @@ def _iface_address_lab(
                 },
             }
         ],
-        solution_config=(
-            f"interface GigabitEthernet0/0\n ip address {ip} {mask}\n no shutdown\n"
-        ),
+        solution_config=(f"interface GigabitEthernet0/0\n ip address {ip} {mask}\n no shutdown\n"),
     )
 
 
@@ -825,8 +825,7 @@ def _acl_lab(lab_id: str, acl: int, deny_host: str, difficulty: int) -> dict:
             {
                 "id": "t1",
                 "instructions": (
-                    f"On **R1**, create ACL **{acl}** denying host **{deny_host}** "
-                    "then permit any."
+                    f"On **R1**, create ACL **{acl}** denying host **{deny_host}** then permit any."
                 ),
                 "grading_rules": {
                     "device": "R1",
@@ -887,16 +886,31 @@ _VARIANT_LABS = [
     _hostname_lab("R1", "BR-R1", "1.1", 1),
     _hostname_lab("R1", "HQ-R1", "1.1", 1),
     _iface_address_lab(
-        "ccna_iface_192_168_10", "LAN Addressing 192.168.10.1", "192.168.10.1", "255.255.255.0", "1.1", 2
+        "ccna_iface_192_168_10",
+        "LAN Addressing 192.168.10.1",
+        "192.168.10.1",
+        "255.255.255.0",
+        "1.1",
+        2,
     ),
     _iface_address_lab(
-        "ccna_iface_192_168_20", "LAN Addressing 192.168.20.1", "192.168.20.1", "255.255.255.0", "1.1", 2
+        "ccna_iface_192_168_20",
+        "LAN Addressing 192.168.20.1",
+        "192.168.20.1",
+        "255.255.255.0",
+        "1.1",
+        2,
     ),
     _iface_address_lab(
         "ccna_iface_10_0_0_1", "LAN Addressing 10.0.0.1", "10.0.0.1", "255.255.255.0", "1.1", 2
     ),
     _iface_address_lab(
-        "ccna_iface_172_16_0_1", "LAN Addressing 172.16.0.1", "172.16.0.1", "255.255.255.0", "1.1", 2
+        "ccna_iface_172_16_0_1",
+        "LAN Addressing 172.16.0.1",
+        "172.16.0.1",
+        "255.255.255.0",
+        "1.1",
+        2,
     ),
     _static_route_lab("ccna_static_10_20", "10.20.0.0", "255.255.0.0", "192.168.1.2", 2),
     _static_route_lab("ccna_static_10_30", "10.30.0.0", "255.255.0.0", "192.168.1.2", 2),
@@ -988,8 +1002,7 @@ _VARIANT_LABS = [
             {
                 "id": "t1",
                 "instructions": (
-                    "On **R1**, exclude **192.168.10.1** through **192.168.10.10** "
-                    "from DHCP."
+                    "On **R1**, exclude **192.168.10.1** through **192.168.10.10** from DHCP."
                 ),
                 "grading_rules": {
                     "device": "R1",
@@ -1045,9 +1058,7 @@ _VARIANT_LABS = [
         tasks=[
             {
                 "id": "t1",
-                "instructions": (
-                    "On **SW1**, make Gi0/1 a trunk with native VLAN **99**."
-                ),
+                "instructions": ("On **SW1**, make Gi0/1 a trunk with native VLAN **99**."),
                 "grading_rules": {
                     "device": "SW1",
                     "require": [
@@ -1083,9 +1094,7 @@ _VARIANT_LABS = [
         tasks=[
             {
                 "id": "t1",
-                "instructions": (
-                    "On **SW1**, put Gi0/1 in ``channel-group 1 mode active``."
-                ),
+                "instructions": ("On **SW1**, put Gi0/1 in ``channel-group 1 mode active``."),
                 "grading_rules": {
                     "device": "SW1",
                     "require": ["channel-group 1 mode active"],

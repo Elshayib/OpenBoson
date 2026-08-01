@@ -104,7 +104,8 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Line length 100 (ruff). Target Python 3.11.
 - Never commit `.cursor/`, `IDEA.md`, or other local agent/private notes.
 - Public commit messages must be professional (repo is public).
-
+- Never push a `v*` release tag until GitHub Actions **CI** is green on that commit.
+  Push the release commit first, wait for CI, then tag.
 ## Key docs
 
 - `docs/status.md` — current handoff / what’s next
