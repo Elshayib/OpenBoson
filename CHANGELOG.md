@@ -2,6 +2,25 @@
 
 All notable changes to OpenBoson are documented in this file.
 
+## [0.3.0] — 2026-08-01 — ExSim Depth
+
+### Application
+- Pause/resume exams with SQLite persistence (answers, order, bookmarks, marks, remaining time); periodic and quit flush.
+- Custom exam builder: cert / topic / difficulty / missed / unseen / length / time / seed; JSON presets under `~/.openboson/custom_exams/`.
+- Score/review export: HTML, JSON, CSV, and Print/PDF with redacted mode that omits answers and explanations.
+- Stats domain × exam-version heatmap and domain trend series; cert/version filters.
+- API parity: blueprint coverage, custom-exam presets/preview/sessions, existing pause/resume/list/finish/mark.
+
+### Content
+- Pool volume gates remain ≥500 CCNA / ≥400 ENCOR for this release.
+- Scaling to ≥1000/800 and ≥5% PBQ/sim depth is deferred to a v0.3.x content track (see `docs/deferred-releases.md`).
+
+### Known Issues
+- Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
+
+### Docs
+- Handoff synced in `docs/status.md`; content/PBQ follow-ups documented in `docs/deferred-releases.md`.
+
 ## [0.2.2] — 2026-07-31 — Study Ready
 
 ### Application

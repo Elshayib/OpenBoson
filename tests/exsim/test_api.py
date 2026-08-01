@@ -299,3 +299,52 @@ def test_pause_resume_list_and_mark(client):
     meta = client.get(f"/api/v1/sessions/{sid}")
     assert meta.status_code == 200
     assert qid in meta.json()["marked_for_review"]
+
+
+def test_blueprint_coverage(client):
+    resp = client.get(f"/api/v1/blueprints/{BLUEPRINT_ID}/coverage")
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["blueprint_id"] == BLUEPRINT_ID
+    assert "counts" in body
+    assert "required" in body
+    assert "ready" in body
+
+
+def test_custom_exam_preset_preview_and_session(client, isolated_home):
+    save = client.post(
+        "/api/v1/custom-exams/presets",
+        json={
+            "title": "API Mini",
+            "cert": "ccna",
+            "question_count": 3,
+            "time_limit_minutes": 15,
+            "seed": 11,
+        },
+    )
+    assert save.status_code == 200, save.text
+    preset_id = save.json()["id"]
+
+    listed = client.get("/api/v1/custom-exams/presets")
+    assert listed.status_code == 200
+    assert any(p["id"] == preset_id for p in listed.json())
+
+    preview = client.post(
+        "/api/v1/custom-exams/preview",
+        json={"preset_id": preset_id},
+    )
+    assert preview.status_code == 200
+    assert preview.json()["eligible"] >= 3
+    assert preview.json()["requested"] == 3
+
+    started = client.post(
+        "/api/v1/custom-exams/sessions",
+        json={"preset_id": preset_id},
+    )
+    assert started.status_code == 200, started.text
+    assert started.json()["total_questions"] == 3
+    assert started.json()["custom_preset_id"] == preset_id
+
+    deleted = client.delete(f"/api/v1/custom-exams/presets/{preset_id}")
+    assert deleted.status_code == 200
+    assert deleted.json()["deleted"] is True

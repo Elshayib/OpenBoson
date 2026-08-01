@@ -6,7 +6,7 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 ## Status
 
-**[v0.2.2 Study Ready](https://github.com/Elshayib/OpenBoson/releases/tag/v0.2.2)** — ≥500 CCNA / ≥400 ENCOR questions, 20 labs, Windows installer + updater + CI.
+**[v0.3.0 ExSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.3.0)** — pause/resume, custom exams, exports, domain heatmap; content scale ≥1000/800 continues in v0.3.x.
 
 - Download: [GitHub Releases](https://github.com/Elshayib/OpenBoson/releases) (installer is **unsigned**; SmartScreen expected — see `SUPPORT.md`)
 - Handoff / next work: `docs/status.md`

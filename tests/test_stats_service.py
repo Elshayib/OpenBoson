@@ -158,6 +158,27 @@ def test_weak_domains_empty_without_history(fake_engine):
     assert stats_service.latest_activity() is None
 
 
+def test_domain_accuracy_by_version_and_trend(fake_engine, exam_bank):
+    sess = ExamSession.create(exam_bank, mode=ExamMode.PRACTICE, shuffle=False)
+    for q in sess.questions:
+        sess.submit_answer(q.id, _correct_answer(q), grade_now=True)
+    result = score_exam(sess)
+    stats_service.save_exam_result(sess, result)
+
+    cells = stats_service.domain_accuracy_by_version()
+    assert cells
+    versions = stats_service.list_exam_versions()
+    assert exam_bank.version in versions or any(v for v in versions)
+    filtered = stats_service.domain_accuracy_by_version(exam_version=exam_bank.version)
+    assert filtered
+    assert all(c.exam_version == exam_bank.version for c in filtered)
+
+    series = stats_service.domain_trend(limit=5)
+    assert len(series) == 1
+    assert series[0].domains
+    assert all(0.0 <= pct <= 1.0 for pct in series[0].domains.values())
+
+
 def _wrong_answer(question):
     """Return an incorrect payload so grading marks the question wrong."""
     from openboson.bank_schema import QuestionType

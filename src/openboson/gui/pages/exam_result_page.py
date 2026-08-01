@@ -1,24 +1,32 @@
-"""Exam result page — score, pass/fail, per-domain breakdown."""
+"""Exam result page — score, pass/fail, per-domain breakdown, exports."""
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QTextDocument
+from PySide6.QtPrintSupport import QPrintDialog, QPrinter
 from PySide6.QtWidgets import (
+    QCheckBox,
+    QFileDialog,
     QFrame,
     QHBoxLayout,
     QLabel,
+    QMessageBox,
     QProgressBar,
     QPushButton,
     QVBoxLayout,
     QWidget,
 )
 
+from openboson.exsim.export import export_text
 from openboson.exsim.scoring import ExamResult
 from openboson.gui.widgets.scroll_host import ScrollHost
 
 
 class ExamResultPage(QWidget):
-    """Shows the final score and lets the user review or retake."""
+    """Shows the final score and lets the user review, export, or retake."""
 
     title = "Result"
 
@@ -32,6 +40,9 @@ class ExamResultPage(QWidget):
         self._layout = self._scroll.content_layout
         self._on_review = None
         self._on_retake = None
+        self._session = None
+        self._result: ExamResult | None = None
+        self._redacted_checked = False
 
     def set_on_review(self, cb) -> None:
         self._on_review = cb
@@ -40,6 +51,8 @@ class ExamResultPage(QWidget):
         self._on_retake = cb
 
     def show_result(self, session, result: ExamResult) -> None:
+        self._session = session
+        self._result = result
         self._scroll.clear_content()
         header = QLabel("Exam Complete")
         header.setProperty("role", "h1")
@@ -80,7 +93,81 @@ class ExamResultPage(QWidget):
         actions.addWidget(retake)
         actions.addStretch()
         self._layout.addLayout(actions)
+
+        export_row = QHBoxLayout()
+        self._redacted = QCheckBox("Redacted (no answers)")
+        self._redacted.setToolTip("Omit correct answers, rationales, and explanations")
+        self._redacted.setChecked(self._redacted_checked)
+        self._redacted.toggled.connect(self._on_redacted_toggled)
+        export_row.addWidget(self._redacted)
+        for label, fmt in (("JSON", "json"), ("CSV", "csv"), ("HTML", "html")):
+            btn = QPushButton(f"Export {label}")
+            btn.setObjectName("Secondary")
+            btn.clicked.connect(lambda _=False, f=fmt: self._export(f))
+            export_row.addWidget(btn)
+        print_btn = QPushButton("Print / PDF")
+        print_btn.setObjectName("Secondary")
+        print_btn.clicked.connect(self._print_pdf)
+        export_row.addWidget(print_btn)
+        export_row.addStretch()
+        self._layout.addLayout(export_row)
         self._layout.addStretch()
+
+    def _on_redacted_toggled(self, checked: bool) -> None:
+        self._redacted_checked = bool(checked)
+
+    def _is_redacted(self) -> bool:
+        return bool(getattr(self, "_redacted", None) and self._redacted.isChecked())
+
+    def _export(self, fmt: str) -> None:
+        if self._session is None or self._result is None:
+            return
+        filters = {
+            "json": "JSON (*.json)",
+            "csv": "CSV (*.csv)",
+            "html": "HTML (*.html)",
+        }
+        path, _ = QFileDialog.getSaveFileName(
+            self,
+            f"Export {fmt.upper()}",
+            f"openboson-exam.{fmt}",
+            filters.get(fmt, "All files (*.*)"),
+        )
+        if not path:
+            return
+        try:
+            text = export_text(
+                self._session,
+                fmt,  # type: ignore[arg-type]
+                self._result,
+                redacted=self._is_redacted(),
+            )
+            Path(path).write_text(text, encoding="utf-8")
+        except Exception as exc:
+            QMessageBox.critical(self, "Export failed", str(exc))
+            return
+        QMessageBox.information(self, "Export saved", f"Saved to:\n{path}")
+
+    def _print_pdf(self) -> None:
+        if self._session is None or self._result is None:
+            return
+        try:
+            html_doc = export_text(
+                self._session,
+                "html",
+                self._result,
+                redacted=self._is_redacted(),
+            )
+            printer = QPrinter(QPrinter.PrinterMode.HighResolution)
+            printer.setOutputFormat(QPrinter.OutputFormat.NativeFormat)
+            dialog = QPrintDialog(printer, self)
+            if dialog.exec() != QPrintDialog.DialogCode.Accepted:
+                return
+            doc = QTextDocument()
+            doc.setHtml(html_doc)
+            doc.print_(printer)
+        except Exception as exc:
+            QMessageBox.critical(self, "Print failed", str(exc))
 
     def _domain_row(self, prefix: str, d) -> QWidget:
         w = QFrame()

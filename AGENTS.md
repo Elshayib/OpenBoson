@@ -71,23 +71,24 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 
 When implementing features, work task-by-task, run relevant tests after each change, and keep diffs focused.
 
-## Implementation status (as of v0.2.2)
+## Implementation status (as of v0.3.0)
 
-**Shipped:** https://github.com/Elshayib/OpenBoson/releases/tag/v0.2.2 — see `docs/status.md` for handoff.
+**Current:** v0.3.0 ExSim Depth — see `docs/status.md` for handoff.
 
 **Done:**
-- ExSim engine + GUI (practice library pagination, blueprints, Check + rationales, keyboard drag-match)
+- ExSim engine + GUI (practice library pagination, blueprints, custom exams, Check + rationales, keyboard drag-match)
+- Pause/resume with SQLite persistence; score/review exports (HTML/JSON/CSV/Print-PDF, redacted)
+- Stats weak-domains + domain × version heatmap
 - NetSim engine + GUI (OpenIOS, reset, per-device grading hooks)
 - Hot-load registry (bundled + local + packs), content refresh API/Settings
-- Stats weak-domain analytics + Dashboard/Practice deep links
 - Settings: theme, logs/backups, updates card, content diagnostics
 - Resource paths, logging, DB backups, typed settings store
 - CI (Windows/Ubuntu), Makefile / `scripts/dev.ps1`, quality baseline
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
 - Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥20 labs
 
-**Next (v0.3 — see `docs/deferred-releases.md`):**
-- Custom exams, pause/resume, exports, content scale, PBQs
+**Next (v0.3.x content — see `docs/deferred-releases.md`):**
+- Scale toward ≥1000 CCNA / ≥800 ENCOR; ≥5% PBQ/sim depth
 
 **Later:**
 - v0.4 NetSim depth · v0.5 Network Designer · v0.6 packs · v1.0 signed cross-platform

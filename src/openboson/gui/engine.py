@@ -207,6 +207,19 @@ def finish_and_score(session: ExamSession) -> ExamResult:
     return result
 
 
+def export_exam(
+    session: ExamSession,
+    fmt: str,
+    result: ExamResult | None = None,
+    *,
+    redacted: bool = False,
+) -> str:
+    """Return exam review export text (json/csv/html)."""
+    from openboson.exsim.export import export_text
+
+    return export_text(session, fmt, result, redacted=redacted)  # type: ignore[arg-type]
+
+
 def save_active_session(session: ExamSession, *, remaining_seconds: int | None = None) -> None:
     """Persist an in-progress / paused session snapshot (best-effort)."""
     global last_persistence_warning

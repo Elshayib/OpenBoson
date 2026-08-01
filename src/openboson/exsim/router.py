@@ -6,6 +6,12 @@ SQLite via ``session_store`` so pause/resume survives process restart.
 Endpoints (all under ``/api/v1``):
     GET    /exams
     POST   /exams/{exam_id}/sessions
+    GET    /blueprints/{blueprint_id}/coverage
+    GET    /custom-exams/presets
+    POST   /custom-exams/presets
+    DELETE /custom-exams/presets/{preset_id}
+    POST   /custom-exams/preview
+    POST   /custom-exams/sessions
     GET    /sessions
     GET    /sessions/{session_id}
     GET    /sessions/{session_id}/questions/{index}
@@ -34,8 +40,15 @@ from openboson.exsim.blueprint import (
     InsufficientPoolError,
     bank_from_blueprint,
     build_exam_from_blueprint,
+    coverage_for_blueprint,
     get_blueprint,
     list_blueprints,
+)
+from openboson.exsim.custom_exam import (
+    CustomExamSpec,
+    bank_from_custom,
+    build_exam_from_custom,
+    coverage_for_custom,
 )
 from openboson.exsim.scoring import ExamResult, score_exam
 from openboson.exsim.session import ExamMode, ExamSession, QuestionPresentation
@@ -204,6 +217,21 @@ class PauseRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     remaining_seconds: int | None = None
+
+
+class CustomExamStartRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    mode: ExamMode = ExamMode.EXAM
+    preset_id: str | None = None
+    spec: dict[str, Any] | None = None
+
+
+class CustomExamPreviewRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    preset_id: str | None = None
+    spec: dict[str, Any] | None = None
 
 
 def _pool_by_id() -> dict[str, Question]:
@@ -508,4 +536,124 @@ def _serialize_exam_result(result: ExamResult) -> dict[str, Any]:
             for prefix, d in result.domain_breakdown.items()
         },
         "question_results": result.question_results,
+    }
+
+
+@_ROUTER.get("/blueprints/{blueprint_id}/coverage")
+def blueprint_coverage(blueprint_id: str) -> dict[str, Any]:
+    _load_default_banks()
+    try:
+        blueprint = get_blueprint(blueprint_id)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    if _POOL is None:
+        raise HTTPException(status_code=503, detail="Question pool not loaded")
+    cov = coverage_for_blueprint(_POOL.questions, blueprint)
+    return {
+        "blueprint_id": cov.blueprint_id,
+        "counts": cov.counts,
+        "required": cov.required,
+        "ready": cov.ready,
+        "deficits": cov.deficits,
+    }
+
+
+def _resolve_custom_spec(
+    *,
+    preset_id: str | None,
+    spec: dict[str, Any] | None,
+) -> tuple[CustomExamSpec, str | None]:
+    from openboson.exsim import custom_exam_store
+
+    if preset_id:
+        preset = custom_exam_store.get_preset(preset_id)
+        if preset is None:
+            raise HTTPException(status_code=404, detail=f"Unknown preset: {preset_id}")
+        exam_spec = CustomExamSpec.model_validate(
+            preset.model_dump(exclude={"id", "created_at", "updated_at"})
+        )
+        return exam_spec, preset.id
+    if spec is None:
+        raise HTTPException(status_code=400, detail="Provide preset_id or spec")
+    return CustomExamSpec.model_validate(spec), spec.get("id")
+
+
+@_ROUTER.get("/custom-exams/presets")
+def list_custom_presets() -> list[dict[str, Any]]:
+    from openboson.exsim import custom_exam_store
+
+    return [p.model_dump() for p in custom_exam_store.list_presets()]
+
+
+@_ROUTER.post("/custom-exams/presets")
+def save_custom_preset(body: dict[str, Any]) -> dict[str, Any]:
+    from openboson.exsim import custom_exam_store
+
+    try:
+        saved = custom_exam_store.save_preset(body)
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    return saved.model_dump()
+
+
+@_ROUTER.delete("/custom-exams/presets/{preset_id}")
+def delete_custom_preset(preset_id: str) -> dict[str, Any]:
+    from openboson.exsim import custom_exam_store
+
+    ok = custom_exam_store.delete_preset(preset_id)
+    if not ok:
+        raise HTTPException(status_code=404, detail=f"Unknown preset: {preset_id}")
+    return {"deleted": True, "id": preset_id}
+
+
+@_ROUTER.post("/custom-exams/preview")
+def preview_custom_exam(body: CustomExamPreviewRequest) -> dict[str, Any]:
+    _load_default_banks()
+    if _POOL is None:
+        raise HTTPException(status_code=503, detail="Question pool not loaded")
+    exam_spec, _preset_id = _resolve_custom_spec(preset_id=body.preset_id, spec=body.spec)
+    history = None
+    if exam_spec.history != "any":
+        from openboson import stats_service
+
+        history = stats_service.question_history_map()
+    return coverage_for_custom(_POOL.questions, exam_spec, history=history)
+
+
+@_ROUTER.post("/custom-exams/sessions")
+def create_custom_session(body: CustomExamStartRequest) -> dict[str, Any]:
+    _load_default_banks()
+    if _POOL is None:
+        raise HTTPException(status_code=503, detail="Question pool not loaded")
+    exam_spec, preset_id = _resolve_custom_spec(preset_id=body.preset_id, spec=body.spec)
+    history = None
+    if exam_spec.history != "any":
+        from openboson import stats_service
+
+        history = stats_service.question_history_map()
+    try:
+        questions = build_exam_from_custom(_POOL.questions, exam_spec, history=history)
+    except InsufficientPoolError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    bank = bank_from_custom(exam_spec, questions)
+    session = ExamSession.create(
+        bank,
+        mode=body.mode,
+        shuffle=False,
+        questions=questions,
+        seed=exam_spec.seed,
+        custom_preset_id=preset_id,
+    )
+    _SESSIONS[session.session_id] = session
+    _persist(session)
+    q = session.current_question
+    return {
+        "session_id": session.session_id,
+        "exam_code": bank.code,
+        "custom_preset_id": preset_id,
+        "mode": session.mode.value,
+        "status": str(session.status),
+        "remaining_seconds": session.remaining_seconds,
+        "total_questions": len(session.questions),
+        "question": _serialize_question_for_display(q, session.presentation_for(q.id)),
     }

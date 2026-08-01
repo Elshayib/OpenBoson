@@ -168,6 +168,31 @@ class ScorePoint:
     finished_at: datetime | None
 
 
+@dataclass
+class DomainVersionCell:
+    """Accuracy for one domain prefix under one exam version."""
+
+    domain_prefix: str
+    exam_version: str
+    correct: int
+    total: int
+
+    @property
+    def percent(self) -> float:
+        return self.correct / self.total if self.total else 0.0
+
+
+@dataclass
+class DomainTrendPoint:
+    """Per-domain accuracy for one finished exam attempt (oldest→newest series)."""
+
+    session_id: int
+    exam_code: str
+    exam_version: str
+    finished_at: datetime | None
+    domains: dict[str, float]  # prefix -> percent
+
+
 _CERT_ALIASES: dict[str, str] = {
     "encor": "ccnp",
     "350-401": "ccnp",
@@ -288,6 +313,116 @@ def weak_domains(cert: str | None = None, limit: int = 5) -> list[DomainAggregat
     domains = [d for d in domain_totals(cert=cert) if d.total_questions > 0]
     domains.sort(key=lambda d: (d.percent, -d.total_questions, d.domain_prefix))
     return domains[: max(0, limit)]
+
+
+def domain_accuracy_by_version(
+    cert: str | None = None,
+    exam_version: str | None = None,
+) -> list[DomainVersionCell]:
+    """Matrix cells: domain prefix × exam_version accuracy from graded answers."""
+    cert_n = _normalize_cert(cert)
+    with _session() as s:
+        q = s.query(UserAnswer).filter(UserAnswer.is_correct.isnot(None))
+        if cert_n:
+            q = q.filter(UserAnswer.cert_tag == cert_n)
+        if exam_version:
+            q = q.filter(UserAnswer.exam_version == exam_version)
+        rows = q.all()
+
+    buckets: dict[tuple[str, str], list[int]] = {}
+    for row in rows:
+        prefix = _domain_prefix(row.topic_code)
+        if not prefix:
+            continue
+        version = (row.exam_version or "").strip() or "unknown"
+        key = (prefix, version)
+        correct, total = buckets.setdefault(key, [0, 0])
+        total += 1
+        if row.is_correct:
+            correct += 1
+        buckets[key] = [correct, total]
+
+    return [
+        DomainVersionCell(
+            domain_prefix=prefix,
+            exam_version=version,
+            correct=correct,
+            total=total,
+        )
+        for (prefix, version), (correct, total) in sorted(buckets.items())
+    ]
+
+
+def list_exam_versions(cert: str | None = None) -> list[str]:
+    """Distinct exam versions seen in graded answers (newest-ish lexical sort)."""
+    cert_n = _normalize_cert(cert)
+    with _session() as s:
+        q = s.query(UserAnswer.exam_version).filter(UserAnswer.is_correct.isnot(None))
+        if cert_n:
+            q = q.filter(UserAnswer.cert_tag == cert_n)
+        versions = {(v or "").strip() or "unknown" for (v,) in q.distinct().all()}
+    return sorted(versions)
+
+
+def domain_trend(
+    limit: int = 10,
+    cert: str | None = None,
+) -> list[DomainTrendPoint]:
+    """Recent finished exams with per-domain accuracy (oldest first for charts)."""
+    cert_n = _normalize_cert(cert)
+    with _session() as s:
+        q = (
+            s.query(ExamSessionORM)
+            .filter(ExamSessionORM.finished_at.isnot(None))
+            .order_by(ExamSessionORM.finished_at.desc())
+        )
+        if cert_n:
+            # Prefer sessions whose answers carry the cert tag.
+            session_ids = [
+                sid
+                for (sid,) in s.query(UserAnswer.session_id)
+                .filter(UserAnswer.cert_tag == cert_n)
+                .distinct()
+                .all()
+            ]
+            if not session_ids:
+                return []
+            q = q.filter(ExamSessionORM.id.in_(session_ids))
+        sessions = q.limit(limit).all()
+        out: list[DomainTrendPoint] = []
+        for sess in reversed(sessions):
+            answers = (
+                s.query(UserAnswer)
+                .filter(UserAnswer.session_id == sess.id)
+                .filter(UserAnswer.is_correct.isnot(None))
+                .all()
+            )
+            buckets: dict[str, list[int]] = {}
+            for row in answers:
+                if cert_n and row.cert_tag and row.cert_tag != cert_n:
+                    continue
+                prefix = _domain_prefix(row.topic_code)
+                if not prefix:
+                    continue
+                correct, total = buckets.setdefault(prefix, [0, 0])
+                total += 1
+                if row.is_correct:
+                    correct += 1
+                buckets[prefix] = [correct, total]
+            domains = {
+                prefix: (correct / total if total else 0.0)
+                for prefix, (correct, total) in sorted(buckets.items())
+            }
+            out.append(
+                DomainTrendPoint(
+                    session_id=sess.id,
+                    exam_code=_display_exam_code(sess),
+                    exam_version=sess.exam_version or "",
+                    finished_at=sess.finished_at,
+                    domains=domains,
+                )
+            )
+        return out
 
 
 def recent_missed_question_ids(limit: int = 20) -> list[str]:

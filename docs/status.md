@@ -1,6 +1,6 @@
 # Project status (handoff)
 
-Last synced: **2026-07-31** · Current release: **[v0.2.2 Study Ready](https://github.com/Elshayib/OpenBoson/releases/tag/v0.2.2)**
+Last synced: **2026-08-01** · Current release: **v0.3.0 ExSim Depth** (tag when packaging)
 
 Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming work. The full competitive roadmap lives in the local Cursor plan `openboson_competitive_roadmap_ceb1329f` and must stay out of git.
 
@@ -8,30 +8,30 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 
 | Area | Notes |
 |------|--------|
-| ExSim | Practice library (paginated), blueprints, Check + rationales, keyboard drag-match |
+| ExSim | Practice library, blueprints, custom exams, Check + rationales, pause/resume, exports |
 | NetSim | OpenIOS labs, reset, per-device / weighted grading, VLAN-aware L2 |
-| Content | Domain shards under `content/questions/`; ≥500 CCNA / ≥400 ENCOR; 20 labs |
-| Platform | Registry, stats weak-domains, settings, logging, DB backups, light/dark theme |
+| Content | Domain shards; ≥500 CCNA / ≥400 ENCOR; 20 labs (v0.3.x content scale still open) |
+| Platform | Registry, stats weak-domains + heatmap, settings, logging, DB backups, light/dark theme |
 | CI | Windows + Ubuntu; ruff; typed-core mypy; content + lab jobs |
 | Packaging | PyInstaller onedir + Inno per-user installer; GitHub Releases updater |
 
 ## Open / known
 
 - Windows installer is **unsigned** (SmartScreen expected). Signing is a v1.0 item.
-- Optional community install matrix: [`v020-beta-checklist.md`](v020-beta-checklist.md) (not a blocker for starting v0.3).
+- Optional community install matrix: [`v020-beta-checklist.md`](v020-beta-checklist.md).
 - Full-package `mypy src/openboson` is not green yet; expand typed-core gradually ([`quality-baseline.md`](quality-baseline.md)).
+- **Content follow-up (post-0.3.0):** scale toward ≥1000 CCNA / ≥800 ENCOR and ≥5% PBQ/sim with structured grading.
 
-## Next release: v0.3 ExSim depth
+## v0.3 product gates
 
-Start here — details in [`deferred-releases.md`](deferred-releases.md):
+1. Session persistence + pause/resume — **done**
+2. Custom exam builder (presets) — **done**
+3. Exports (HTML / JSON / CSV / Print-PDF, redacted) — **done**
+4. Domain trends / heatmap by exam version — **done**
+5. API + GUI parity (coverage, custom exams, session list/resume) — **done**
+6. Content ≥1000/800 + ≥5% PBQ — **deferred** to v0.3.x content track
 
-1. Session persistence + pause/resume — **done** (engine snapshot, SQLite, GUI Pause & Exit / Dashboard resume, API pause/resume/list, periodic + quit flush for remaining time)
-2. Custom exam builder (presets) — **in progress** (engine filter/sample/seed, JSON presets under `~/.openboson/custom_exams/`, Practice → Custom exam UI)
-3. Exports (HTML / JSON / CSV / PDF)
-4. Scale content toward ≥1000 CCNA / ≥800 ENCOR
-5. Meaningful PBQ / sim coverage
-
-Do **not** begin v0.4 NetSim depth, Designer, or pack ecosystem until v0.3 gates pass.
+Do **not** begin v0.4 NetSim depth, Designer, or pack ecosystem until you intentionally start that track.
 
 ## Local-only (never commit)
 
