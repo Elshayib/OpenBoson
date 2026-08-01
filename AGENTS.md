@@ -87,11 +87,11 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
 - Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥20 labs
 
-**Next (v0.3.x content — see `docs/deferred-releases.md`):**
-- Scale toward ≥1000 CCNA / ≥800 ENCOR; ≥5% PBQ/sim depth
+**Next (v0.4 NetSim — see `docs/deferred-releases.md`):**
+- Catalog filters, ≥50 labs, OpenIOS/packet depth, grading/replay, 10-device perf
 
 **Later:**
-- v0.4 NetSim depth · v0.5 Network Designer · v0.6 packs · v1.0 signed cross-platform
+- v0.5 Network Designer · v0.6 packs · pre-v1.0 content scale (≥1000/800, ≥5% PBQ) · v1.0 signed cross-platform
 
 ## Conventions
 

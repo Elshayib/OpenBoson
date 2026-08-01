@@ -28,9 +28,30 @@ def gold_lab():
 def test_labs_page_lists_gold_lab(window):
     window.select_page("Labs")
     page = window._labs_page
+    page.refresh()
     cards = page.findChildren(QFrame)
     assert len(cards) >= 1
     assert any(lab.lab_id == GOLD_LAB_ID for lab in load_available_labs())
+    assert "lab" in page._count.text().lower()
+
+
+def test_labs_page_filters_by_text(window, qtbot):
+    window.select_page("Labs")
+    page = window._labs_page
+    page.refresh()
+    qtbot.wait(30)
+    before = int(page._count.text().split()[0])
+    page._search.setText("zzzz-no-match-zzzz")
+    qtbot.wait(30)
+    assert int(page._count.text().split()[0]) == 0
+    page._search.setText("")
+    qtbot.wait(30)
+    assert int(page._count.text().split()[0]) == before
+    # Topic filter should narrow when a specific code is chosen.
+    if page._topic.count() > 1:
+        page._topic.setCurrentIndex(1)
+        qtbot.wait(30)
+        assert int(page._count.text().split()[0]) <= before
 
 
 def test_start_lab_shows_four_consoles(window, qtbot, gold_lab):

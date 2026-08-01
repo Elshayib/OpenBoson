@@ -72,8 +72,23 @@ def test_score_lab_partial(lab):
 def test_list_labs(client):
     resp = client.get("/api/v1/labs")
     assert resp.status_code == 200
-    ids = {item["id"] for item in resp.json()}
+    body = resp.json()
+    ids = {item["id"] for item in body}
     assert LAB_ID in ids
+    sample = next(item for item in body if item["id"] == LAB_ID)
+    assert "objectives" in sample
+    assert "cert_tags" in sample
+
+
+def test_list_labs_filters(client):
+    all_labs = client.get("/api/v1/labs").json()
+    assert all_labs
+    topic = all_labs[0]["topic_code"]
+    filtered = client.get("/api/v1/labs", params={"topic_code": topic}).json()
+    assert filtered
+    assert all(item["topic_code"] == topic for item in filtered)
+    empty = client.get("/api/v1/labs", params={"q": "zzzz-no-lab-zzzz"}).json()
+    assert empty == []
 
 
 def test_create_lab_session_returns_topology_and_task(client):

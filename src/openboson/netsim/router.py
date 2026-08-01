@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from typing import Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, ConfigDict
 
+from openboson.netsim.lab_catalog import filter_labs
 from openboson.netsim.lab_schema import LabBank
 from openboson.netsim.session import LabResult, LabSession, score_lab
 from openboson.registry import get_registry
@@ -57,8 +58,20 @@ class SubmitConfigRequest(BaseModel):
 
 
 @_ROUTER.get("/labs")
-def list_labs() -> list[dict[str, Any]]:
+def list_labs(
+    topic_code: str | None = Query(default=None),
+    difficulty: int | None = Query(default=None, ge=1, le=5),
+    cert: str | None = Query(default=None),
+    q: str | None = Query(default=None),
+) -> list[dict[str, Any]]:
     _load_default_labs()
+    labs = filter_labs(
+        list(_LABS.values()),
+        topic_code=topic_code,
+        difficulty=difficulty,
+        cert=cert,
+        q=q,
+    )
     return [
         {
             "id": lab.lab_id,
@@ -66,9 +79,11 @@ def list_labs() -> list[dict[str, Any]]:
             "topic_code": lab.topic_code,
             "difficulty": lab.difficulty,
             "description": lab.description,
+            "objectives": list(lab.objectives or []),
+            "cert_tags": list(lab.cert_tags or []),
             "task_count": len(lab.tasks),
         }
-        for lab in _LABS.values()
+        for lab in labs
     ]
 
 

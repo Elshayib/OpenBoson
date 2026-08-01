@@ -9,8 +9,8 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 | Area | Notes |
 |------|--------|
 | ExSim | Practice library, blueprints, custom exams, Check + rationales, pause/resume, exports |
-| NetSim | OpenIOS labs, reset, per-device / weighted grading, VLAN-aware L2 |
-| Content | Domain shards; ≥500 CCNA / ≥400 ENCOR; 20 labs (v0.3.x content scale still open) |
+| NetSim | OpenIOS labs, reset, per-device / weighted grading, VLAN-aware L2 (20 labs) |
+| Content | Domain shards; ≥500 CCNA / ≥400 ENCOR; 20 labs |
 | Platform | Registry, stats weak-domains + heatmap, settings, logging, DB backups, light/dark theme |
 | CI | Windows + Ubuntu; ruff; typed-core mypy; content + lab jobs |
 | Packaging | PyInstaller onedir + Inno per-user installer; GitHub Releases updater |
@@ -20,18 +20,20 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 - Windows installer is **unsigned** (SmartScreen expected). Signing is a v1.0 item.
 - Optional community install matrix: [`v020-beta-checklist.md`](v020-beta-checklist.md).
 - Full-package `mypy src/openboson` is not green yet; expand typed-core gradually ([`quality-baseline.md`](quality-baseline.md)).
-- **Content follow-up (post-0.3.0):** scale toward ≥1000 CCNA / ≥800 ENCOR and ≥5% PBQ/sim with structured grading.
+- Question-bank scale (≥1000/800) and ≥5% PBQ are deferred to a **pre-v1.0 content gate** (after v0.6).
 
-## v0.3 product gates
+## Next release: v0.4 NetSim depth
 
-1. Session persistence + pause/resume — **done**
-2. Custom exam builder (presets) — **done**
-3. Exports (HTML / JSON / CSV / Print-PDF, redacted) — **done**
-4. Domain trends / heatmap by exam version — **done**
-5. API + GUI parity (coverage, custom exams, session list/resume) — **done**
-6. Content ≥1000/800 + ≥5% PBQ — **deferred** to v0.3.x content track
+Start here — details in [`deferred-releases.md`](deferred-releases.md):
 
-Do **not** begin v0.4 NetSim depth, Designer, or pack ecosystem until you intentionally start that track.
+1. Lab catalog filters (objective / difficulty / text) — **next**
+2. Scale toward ≥50 golden labs
+3. Grading maturity (verify.ping, consistent per-device rules)
+4. Packet semantics (ARP, route-consistent ping/traceroute, OSPF paths where modeled)
+5. Command replay after reset
+6. 10-device lab perf gate (≤100 ms/command)
+
+Do **not** begin v0.5 Designer or v0.6 packs until v0.4 gates pass.
 
 ## Local-only (never commit)
 
