@@ -1,0 +1,37 @@
+name: Content issue
+description: Problem with a question, lab, or objective tagging
+title: "Content: "
+labels: ["content"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Content type
+      options:
+        - Question bank
+        - Lab
+        - Objective map / topic code
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: id
+    attributes:
+      label: Question / lab ID
+      placeholder: "e.g. ccna_branch_office_access or a question id"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What is wrong?
+      description: Factual error, broken grading, bad topic tag, unclear instructions, etc.
+    validations:
+      required: true
+  - type: checkboxes
+    id: originality
+    attributes:
+      label: Confirmation
+      options:
+        - label: I am not requesting or attaching copyrighted exam dump material
+          required: true

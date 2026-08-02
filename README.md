@@ -8,10 +8,16 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 **[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)** — themed Cisco terminal, Ctrl+Z/paging, OpenIOS matrix cmds; next major track is Network Designer (v0.5).
 
-- Download: [GitHub Releases](https://github.com/Elshayib/OpenBoson/releases) (installer is **unsigned**; SmartScreen expected — see `SUPPORT.md`)
-- Handoff / next work: `docs/status.md`
-- Optional install verification: `docs/v020-beta-checklist.md`
-- Contributors: `AGENTS.md`, `PRIVACY.md`
+### At a glance
+
+- **Local-first** — study data stays on your machine (`PRIVACY.md`); no accounts, no study telemetry
+- **Windows installer** — unsigned until v1.0 (SmartScreen expected; `SUPPORT.md`)
+- **Original demo content only** — no copyrighted exam dumps accepted
+
+- Download: [GitHub Releases](https://github.com/Elshayib/OpenBoson/releases)
+- Contributing: [`CONTRIBUTING.md`](CONTRIBUTING.md) · Conduct: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+- Security: [`SECURITY.md`](SECURITY.md) · Privacy: [`PRIVACY.md`](PRIVACY.md) · Support: [`SUPPORT.md`](SUPPORT.md)
+- Developer handoff: `docs/status.md` · Agent guide: `AGENTS.md`
 
 ## Architecture
 
@@ -21,7 +27,7 @@ OpenBoson is a single Python desktop application:
 - **Engine:** Pure Python modules for question-bank parsing, exam sessions, lab grading, and simulation orchestration.
 - **Persistence:** SQLite in the user data directory.
 - **Content format:** YAML question banks and lab definitions; human-readable, diff-friendly, and local-first.
-- **Optional HTTP layer:** FastAPI/uvicorn for headless use and automated testing.
+- **Optional HTTP layer:** FastAPI/uvicorn for headless use and automated testing (localhost; no auth).
 
 ## Quick start
 
@@ -32,7 +38,7 @@ pip install -e ".[all]"
 # Run GUI
 openboson gui
 
-# Run engine server (optional, for headless use)
+# Run engine server (optional, for headless use — keep on localhost)
 openboson serve --port 0
 ```
 
@@ -42,4 +48,4 @@ MIT. See `LICENSE`.
 
 ## Contributing
 
-Contributions are welcome. Please open an issue first to discuss substantial changes. All content shipped with the repository is original demo material; we do not accept copyrighted exam dumps or proprietary question banks.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Please open an issue before substantial changes. All content shipped with the repository is original demo material; we do not accept copyrighted exam dumps or proprietary question banks.

@@ -31,7 +31,7 @@ To restore a backup manually:
 
 ## Windows SmartScreen / unsigned installs
 
-Windows installers are **unsigned** in v0.2.x. Windows Defender SmartScreen can warn on first run. Prefer downloads from the official Releases page: https://github.com/Elshayib/OpenBoson/releases — Authenticode signing is planned before v1.0.
+Windows installers remain **unsigned** until Authenticode signing (planned for v1.0). Windows Defender SmartScreen can warn on first run. Prefer downloads from the official Releases page: https://github.com/Elshayib/OpenBoson/releases — use **More info → Run anyway** only when you trust that source.
 
 ## Updates
 
@@ -44,9 +44,14 @@ Windows installers are **unsigned** in v0.2.x. Windows Defender SmartScreen can 
 
 Use Settings content diagnostics (when available) or check logs after **Refresh**. Bundled content wins over user packs on ID collisions; colliding packs are rejected as a unit.
 
+We do not accept copyrighted exam dumps. Report factual errors in shipped demo content via a **Content** GitHub issue.
+
 ## Reporting issues
 
-Open a GitHub issue with:
+- Bugs / features / content: GitHub Issues (templates provided)
+- Security: private advisory — see `SECURITY.md`
+
+When filing a bug, include:
 
 - OpenBoson version
 - OS version

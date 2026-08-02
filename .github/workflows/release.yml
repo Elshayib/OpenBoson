@@ -80,7 +80,7 @@ jobs:
           body: |
             ## OpenBoson ${{ steps.meta.outputs.version }}
 
-            Windows per-user installer (unsigned in v0.2 — see SUPPORT.md for SmartScreen guidance).
+            Windows per-user installer (**unsigned** until v1.0 — see SUPPORT.md for SmartScreen guidance).
 
             ### Assets
             - `OpenBoson-Setup-${{ steps.meta.outputs.version }}.exe`

@@ -20,6 +20,19 @@ htmlcov/
 venv/
 env/
 
+# Local env / secrets (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa
+id_rsa.pub
+*credentials*
+*secret*
+
 # SQLite local databases
 *.db
 *.sqlite
@@ -41,6 +54,9 @@ Thumbs.db
 
 # Local notes / private drafts
 IDEA.md
+
+# uv lockfile — this project installs via pip/setuptools; do not commit accidental locks
+uv.lock
 
 # Tauri / Node leftover patterns (kept for forward compatibility)
 node_modules/

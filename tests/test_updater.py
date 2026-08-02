@@ -424,3 +424,11 @@ def test_dns_failure(repo_enabled, monkeypatch):
     result = upd.check_for_updates(force=True, current_version="0.2.0")
     assert result.status == upd.CheckStatus.ERROR
     assert result.error_kind == upd.ErrorKind.OFFLINE
+
+
+def test_validate_urls_requires_https_github_hosts():
+    assert upd._validate_urls("https://api.github.com/repos/x/y/releases")
+    assert upd._validate_urls("https://objects.githubusercontent.com/path")
+    assert not upd._validate_urls("http://api.github.com/repos/x/y")
+    assert not upd._validate_urls("https://evil.example/installer.exe")
+    assert not upd._validate_urls("https://github.com.evil.example/x")

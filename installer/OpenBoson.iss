@@ -4,7 +4,7 @@
 
 #define MyAppName "OpenBoson"
 #ifndef MyAppVersion
-  #define MyAppVersion "0.2.2"
+  #define MyAppVersion "0.4.1"
 #endif
 #define MyAppPublisher "OpenBoson contributors"
 #define MyAppURL "https://github.com/Elshayib/OpenBoson"

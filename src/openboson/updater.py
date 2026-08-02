@@ -464,10 +464,24 @@ def _pick_release(
     return release, ver_s
 
 
+# Hosts allowed for update metadata and installer downloads (defense in depth).
+_ALLOWED_UPDATE_HOSTS = frozenset(
+    {
+        "api.github.com",
+        "github.com",
+        "objects.githubusercontent.com",
+        "release-assets.githubusercontent.com",
+    }
+)
+
+
 def _validate_urls(*urls: str) -> bool:
     for url in urls:
         parsed = urlparse(url)
         if parsed.scheme != "https" or not parsed.netloc:
+            return False
+        host = (parsed.hostname or "").lower()
+        if host not in _ALLOWED_UPDATE_HOSTS:
             return False
     return True
 

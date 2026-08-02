@@ -111,7 +111,8 @@ When implementing features, work task-by-task, run relevant tests after each cha
 
 - `docs/status.md` — current handoff / what’s next
 - `README.md` — user-facing overview and quick start
-- `docs/deferred-releases.md` — v0.3+ scope and gates
+- `CONTRIBUTING.md` / `SECURITY.md` / `PRIVACY.md` / `SUPPORT.md` — community and safety docs
+- `docs/deferred-releases.md` — v0.5+ scope and gates
 - `docs/quality-baseline.md` — CI / quality gates
 - `docs/v020-beta-checklist.md` — optional Windows install verification
-- `CHANGELOG.md` / `SUPPORT.md` / `PRIVACY.md`
+- `CHANGELOG.md` / `CODE_OF_CONDUCT.md`
