@@ -106,14 +106,14 @@ def _release(
         assets.append(
             {
                 "name": upd.installer_name(version),
-                "browser_download_url": f"https://example.test/{upd.installer_name(version)}",
+                "browser_download_url": f"https://objects.githubusercontent.com/{upd.installer_name(version)}",
                 "size": size,
             }
         )
     assets.append(
         {
             "name": upd.checksum_name(version),
-            "browser_download_url": f"https://example.test/{upd.checksum_name(version)}",
+            "browser_download_url": f"https://objects.githubusercontent.com/{upd.checksum_name(version)}",
             "size": 80,
         }
     )
@@ -121,7 +121,7 @@ def _release(
         assets.append(
             {
                 "name": upd.manifest_name(version),
-                "browser_download_url": f"https://example.test/{upd.manifest_name(version)}",
+                "browser_download_url": f"https://objects.githubusercontent.com/{upd.manifest_name(version)}",
                 "size": 200,
             }
         )
@@ -172,7 +172,7 @@ def test_check_finds_stable_update(repo_enabled, monkeypatch):
     version = "0.3.0"
     release, payload, digest, size = _release(version=version)
     releases_url = "https://api.github.com/repos/openboson/openboson/releases?per_page=30"
-    man_url = f"https://example.test/{upd.manifest_name(version)}"
+    man_url = f"https://objects.githubusercontent.com/{upd.manifest_name(version)}"
     mapping = {
         releases_url: (200, json.dumps([release]).encode(), {}),
         man_url: (200, json.dumps(_manifest(version, digest, size)).encode(), {}),
@@ -204,7 +204,7 @@ def test_beta_accepts_beta_prerelease(repo_enabled, monkeypatch):
     version = "0.3.0-beta.1"
     release, _payload, digest, size = _release(version=version, prerelease=True)
     releases_url = "https://api.github.com/repos/openboson/openboson/releases?per_page=30"
-    man_url = f"https://example.test/{upd.manifest_name(version)}"
+    man_url = f"https://objects.githubusercontent.com/{upd.manifest_name(version)}"
     mapping = {
         releases_url: (200, json.dumps([release]).encode(), {}),
         man_url: (
@@ -245,7 +245,7 @@ def test_skip_version_on_startup_style_check(repo_enabled, monkeypatch):
     version = "0.3.0"
     release, _payload, digest, size = _release(version=version)
     releases_url = "https://api.github.com/repos/openboson/openboson/releases?per_page=30"
-    man_url = f"https://example.test/{upd.manifest_name(version)}"
+    man_url = f"https://objects.githubusercontent.com/{upd.manifest_name(version)}"
     mapping = {
         releases_url: (200, json.dumps([release]).encode(), {}),
         man_url: (200, json.dumps(_manifest(version, digest, size)).encode(), {}),
@@ -263,7 +263,7 @@ def test_missing_asset_failure(repo_enabled, monkeypatch):
     version = "0.3.0"
     release, _payload, digest, size = _release(version=version, omit_installer=True)
     releases_url = "https://api.github.com/repos/openboson/openboson/releases?per_page=30"
-    man_url = f"https://example.test/{upd.manifest_name(version)}"
+    man_url = f"https://objects.githubusercontent.com/{upd.manifest_name(version)}"
     mapping = {
         releases_url: (200, json.dumps([release]).encode(), {}),
         man_url: (200, json.dumps(_manifest(version, digest, size)).encode(), {}),
@@ -278,7 +278,7 @@ def test_malformed_manifest(repo_enabled, monkeypatch):
     version = "0.3.0"
     release, _payload, _digest, _size = _release(version=version)
     releases_url = "https://api.github.com/repos/openboson/openboson/releases?per_page=30"
-    man_url = f"https://example.test/{upd.manifest_name(version)}"
+    man_url = f"https://objects.githubusercontent.com/{upd.manifest_name(version)}"
     mapping = {
         releases_url: (200, json.dumps([release]).encode(), {}),
         man_url: (200, b"{not-json", {}),
@@ -312,9 +312,9 @@ def test_download_verifies_hash_and_deletes_tampered(repo_enabled, monkeypatch, 
         sha256=digest,
         minimum_updater_version="1.0.0",
         release_url="https://github.com/openboson/openboson/releases/tag/v0.3.0",
-        installer_url=f"https://example.test/{upd.installer_name(version)}",
-        checksum_url=f"https://example.test/{upd.checksum_name(version)}",
-        manifest_url=f"https://example.test/{upd.manifest_name(version)}",
+        installer_url=f"https://objects.githubusercontent.com/{upd.installer_name(version)}",
+        checksum_url=f"https://objects.githubusercontent.com/{upd.checksum_name(version)}",
+        manifest_url=f"https://objects.githubusercontent.com/{upd.manifest_name(version)}",
     )
     checksum_body = f"{digest}  {info.asset_name}\n".encode()
     mapping = {
@@ -355,9 +355,9 @@ def test_download_size_mismatch_deletes(repo_enabled, monkeypatch, tmp_path):
         sha256=digest,
         minimum_updater_version="1.0.0",
         release_url="https://github.com/x/y/releases/tag/v0.3.0",
-        installer_url=f"https://example.test/{upd.installer_name(version)}",
-        checksum_url=f"https://example.test/{upd.checksum_name(version)}",
-        manifest_url=f"https://example.test/{upd.manifest_name(version)}",
+        installer_url=f"https://objects.githubusercontent.com/{upd.installer_name(version)}",
+        checksum_url=f"https://objects.githubusercontent.com/{upd.checksum_name(version)}",
+        manifest_url=f"https://objects.githubusercontent.com/{upd.manifest_name(version)}",
     )
     mapping = {
         info.checksum_url: (200, f"{digest}  {info.asset_name}\n".encode(), {}),
