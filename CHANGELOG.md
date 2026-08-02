@@ -2,6 +2,22 @@
 
 All notable changes to OpenBoson are documented in this file.
 
+## [0.4.1] — 2026-08-02 — Lab console polish
+
+### Application
+- Theme `CiscoTerminal` and topology canvas for light/dark via QSS.
+- Terminal muscle memory: Ctrl+Z → `end`, Ctrl+L clear, history selection/copy, `--More--` paging keys.
+- Lab session chrome: objective styles, Lab actions menu, console-focused splitter, tab focus.
+- OpenIOS: IOS-shaped connect banner, richer `show`/`interface` completion, `terminal length` paging.
+- Matrix commands typed live: `spanning-tree portfast`, `channel-group … mode …`, `ipv6 unicast-routing` / `ipv6 address`.
+- Topology display: honor `Device.x`/`y`, role-banded layout, fit-to-view, zoom toward cursor.
+
+### Docs
+- Handoff points at this polish cut; Network Designer remains the next major track (v0.5).
+
+### Known Issues
+- Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
+
 ## [0.4.0] — 2026-08-01 — NetSim Depth
 
 ### Application

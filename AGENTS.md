@@ -71,15 +71,16 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 
 When implementing features, work task-by-task, run relevant tests after each change, and keep diffs focused.
 
-## Implementation status (as of v0.4.0)
+## Implementation status (as of v0.4.1)
 
-**Current:** v0.4.0 NetSim Depth — see `docs/status.md` for handoff.
+**Current:** v0.4.1 Lab console polish — see `docs/status.md` for handoff.
 
 **Done:**
 - ExSim engine + GUI (practice library pagination, blueprints, custom exams, Check + rationales, keyboard drag-match)
 - Pause/resume with SQLite persistence; score/review exports (HTML/JSON/CSV/Print-PDF, redacted)
 - Stats weak-domains + domain × version heatmap
 - NetSim engine + GUI (OpenIOS, catalog filters, ≥50 labs, per-device grading, verify.ping, reset/replay)
+- Lab console polish (themed terminal/topology, Ctrl+Z/paging, matrix STP/EtherChannel/IPv6)
 - ARP learning, static + simplified OSPF routes for ping/traceroute; 10-device perf gate
 - Hot-load registry (bundled + local + packs), content refresh API/Settings
 - Settings: theme, logs/backups, updates card, content diagnostics
@@ -88,10 +89,7 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
 - Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥50 labs
 
-**Next (v0.4.x polish — see `docs/deferred-releases.md`):**
-- Lab UI + Cisco CLI feel (terminal QSS, Ctrl+Z, OpenIOS matrix cmds, topology display)
-
-**Then (v0.5 Designer):**
+**Next (v0.5 Designer — see `docs/deferred-releases.md`):**
 - Lab schema v2 freeze; editable topology canvas; save/load user topologies
 
 **Later:**

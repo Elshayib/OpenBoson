@@ -1,7 +1,6 @@
 # Later releases (post v0.2.2)
 
-**Current:** v0.4.0 NetSim Depth is shipped. Immediate work is **v0.4.x lab UI + Cisco CLI polish**;
-**v0.5 Network Designer** follows after that cut.
+**Current:** v0.4.1 Lab console polish is shipped. Next executable track is **v0.5 Network Designer**.
 See [`status.md`](status.md) for handoff.
 
 Question-bank content scale (≥1000 CCNA / ≥800 ENCOR) and ≥5% PBQ/sim depth are
@@ -29,16 +28,16 @@ Shipped in **v0.4.0**:
 - 10-device lab: ≤100 ms/command on reference hardware
 - Correct `base_config` application in privileged config mode
 
-## v0.4.x — Lab UI + Cisco CLI polish (IN PROGRESS)
+## v0.4.x — Lab UI + Cisco CLI polish (DONE)
 
-Interim cut before Designer:
+Shipped in **v0.4.1**:
 
 - Theme console via QSS; Ctrl+Z, selection/copy, clearer banners
 - Lab session chrome polish (objectives, actions, splitter)
 - OpenIOS fidelity for shipped labs (show/? completion, STP / EtherChannel / IPv6, paging)
 - Read-only topology display polish
 
-## v0.5 — Network Designer (NEXT after polish)
+## v0.5 — Network Designer (NEXT)
 
 - Freeze lab schema v2 first
 - Editable topology canvas; save/load user topologies

@@ -6,7 +6,7 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 ## Status
 
-**[v0.4.0 NetSim Depth](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.0)** — ≥50 labs, catalog filters, Reset & Replay, ARP/OSPF ping paths; next is Network Designer (v0.5).
+**[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)** — themed Cisco terminal, Ctrl+Z/paging, OpenIOS matrix cmds; next major track is Network Designer (v0.5).
 
 - Download: [GitHub Releases](https://github.com/Elshayib/OpenBoson/releases) (installer is **unsigned**; SmartScreen expected — see `SUPPORT.md`)
 - Handoff / next work: `docs/status.md`
