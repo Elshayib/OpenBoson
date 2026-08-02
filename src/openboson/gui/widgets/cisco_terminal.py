@@ -6,27 +6,31 @@ from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QKeyEvent, QTextCursor
 from PySide6.QtWidgets import QPlainTextEdit
 
-from openboson.netsim.ios.shell import OpenIOSShell
+from openboson.netsim.ios.shell import Mode, OpenIOSShell
 
 
 class CiscoTerminal(QPlainTextEdit):
-    """Interactive terminal bound to an ``OpenIOSShell``.
+    """Interactive terminal bound to an ``OpenIOSShell`` (or HostShell).
 
-    - History is read-only; only the current input line is editable.
+    - History is read-only for typing; mouse selection/copy is allowed.
     - Enter feeds the line to the shell and appends output + new prompt.
     - Ctrl+C prints ``^C`` and redisplays the prompt.
-    - Tab inserts the first completion candidate when unique-ish.
+    - Ctrl+Z sends ``end`` while in a config mode (IOS muscle memory).
+    - Ctrl+L clears the screen and redraws the prompt.
+    - Tab inserts completion candidates; Space/Enter/q continue ``--More--``.
     """
 
-    commandSubmitted = Signal(str)  # raw command line (for logging/tests)
+    commandSubmitted = Signal(str)
 
     def __init__(self, shell: OpenIOSShell | None = None, parent=None) -> None:
         super().__init__(parent)
+        self.setObjectName("CiscoTerminal")
         self._shell = shell
         self._prompt = ">"
-        self._prompt_pos = 0  # cursor position where current input starts
+        self._prompt_pos = 0
         self._hist: list[str] = []
         self._hist_idx = 0
+        self._more_mode = False
 
         font = QFont("Cascadia Mono")
         if not font.exactMatch():
@@ -37,19 +41,6 @@ class CiscoTerminal(QPlainTextEdit):
         font.setPointSize(11)
         self.setFont(font)
 
-        self.setStyleSheet(
-            """
-            QPlainTextEdit {
-                background-color: #0d1117;
-                color: #e6edf3;
-                border: 1px solid #30363d;
-                border-radius: 8px;
-                padding: 10px;
-                selection-background-color: #1f6feb;
-                selection-color: #ffffff;
-            }
-            """
-        )
         self.setUndoRedoEnabled(False)
         self.setLineWrapMode(QPlainTextEdit.LineWrapMode.WidgetWidth)
         self.setTabChangesFocus(False)
@@ -59,48 +50,97 @@ class CiscoTerminal(QPlainTextEdit):
 
     def bind_shell(self, shell: OpenIOSShell) -> None:
         self._shell = shell
+        self._more_mode = False
         self.clear()
         banner = shell.banner()
         self._append_raw(banner)
         self._prompt = shell.prompt()
-        # banner already ends with prompt
         self._prompt_pos = len(self.toPlainText())
         self._move_cursor_end()
 
     def shell(self) -> OpenIOSShell | None:
         return self._shell
 
+    def clear_screen(self) -> None:
+        """Clear buffer and redraw the current prompt (Ctrl+L / cls)."""
+        if self._shell is None:
+            return
+        self.clear()
+        self._more_mode = False
+        self._prompt = self._shell.prompt()
+        self._append_raw(self._prompt)
+        self._prompt_pos = len(self.toPlainText())
+        self._move_cursor_end()
+
     # -----/ Input handling /-----
     def keyPressEvent(self, e: QKeyEvent) -> None:  # noqa: N802
         if self._shell is None:
             return
 
-        # Keep cursor in the editable region.
-        if self.textCursor().position() < self._prompt_pos:
-            self._move_cursor_end()
-
         key = e.key()
         mods = e.modifiers()
 
-        if key in (Qt.Key.Key_Return, Qt.Key.Key_Enter):
-            self._submit()
-            return
+        # --More-- pager: Space / Enter / q without requiring a full typed line.
+        if self._more_mode and not (mods & Qt.KeyboardModifier.ControlModifier):
+            if key == Qt.Key.Key_Space:
+                self._set_current_input(" ")
+                self._submit()
+                return
+            if key in (Qt.Key.Key_Return, Qt.Key.Key_Enter):
+                self._set_current_input("")
+                self._submit()
+                return
+            if key == Qt.Key.Key_Q:
+                self._set_current_input("q")
+                self._submit()
+                return
 
         if key == Qt.Key.Key_C and mods & Qt.KeyboardModifier.ControlModifier:
+            # With a selection, allow default copy; otherwise IOS ^C interrupt.
+            if self.textCursor().hasSelection():
+                super().keyPressEvent(e)
+                return
+            self._more_mode = False
             self._append_raw("^C\n" + self._shell.prompt())
             self._prompt = self._shell.prompt()
             self._prompt_pos = len(self.toPlainText())
             self._move_cursor_end()
             return
 
+        if key == Qt.Key.Key_Z and mods & Qt.KeyboardModifier.ControlModifier:
+            if self._in_config_mode():
+                self._set_current_input("end")
+                self._submit()
+            return
+
+        if key == Qt.Key.Key_L and mods & Qt.KeyboardModifier.ControlModifier:
+            self.clear_screen()
+            return
+
+        # Typing keys must stay on the input line; selection/navigation can roam.
+        if self._is_editing_key(key, mods) and self.textCursor().position() < self._prompt_pos:
+            self._move_cursor_end()
+
+        if key in (Qt.Key.Key_Return, Qt.Key.Key_Enter):
+            if self.textCursor().position() < self._prompt_pos:
+                self._move_cursor_end()
+            self._submit()
+            return
+
         if key == Qt.Key.Key_Tab:
+            if self.textCursor().position() < self._prompt_pos:
+                self._move_cursor_end()
             self._tab_complete()
             return
 
         if key == Qt.Key.Key_Up:
+            if self.textCursor().position() < self._prompt_pos:
+                self._move_cursor_end()
             self._history(-1)
             return
         if key == Qt.Key.Key_Down:
+            if self.textCursor().position() < self._prompt_pos:
+                self._move_cursor_end()
             self._history(1)
             return
 
@@ -117,21 +157,21 @@ class CiscoTerminal(QPlainTextEdit):
             return
 
         if key == Qt.Key.Key_Home:
+            if self.textCursor().position() < self._prompt_pos:
+                return
             c = self.textCursor()
             c.setPosition(self._prompt_pos)
             self.setTextCursor(c)
             return
 
-        # Block edits that would mangle history (Ctrl+X etc. simplified).
-        if key in (Qt.Key.Key_Delete,) and self.textCursor().position() < self._prompt_pos:
+        if key == Qt.Key.Key_Delete and self.textCursor().position() < self._prompt_pos:
             return
 
         super().keyPressEvent(e)
 
     def mousePressEvent(self, e) -> None:  # noqa: N802
+        # Allow selecting history for copy; do not force caret to input on click.
         super().mousePressEvent(e)
-        if self.textCursor().position() < self._prompt_pos:
-            self._move_cursor_end()
 
     def insertFromMimeData(self, source) -> None:  # noqa: N802
         """Paste only into the current input line (multi-line → feed each)."""
@@ -140,8 +180,9 @@ class CiscoTerminal(QPlainTextEdit):
         text = source.text()
         if not text:
             return
+        if self.textCursor().position() < self._prompt_pos:
+            self._move_cursor_end()
         lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-        # First line goes into current buffer; subsequent lines auto-submit.
         if lines:
             self.insertPlainText(lines[0])
         for extra in lines[1:]:
@@ -150,6 +191,38 @@ class CiscoTerminal(QPlainTextEdit):
                 self.insertPlainText(extra)
 
     # -----/ Internals /-----
+    def _in_config_mode(self) -> bool:
+        mode = getattr(self._shell, "mode", None)
+        if mode is None:
+            return False
+        return mode in {
+            Mode.CONFIG,
+            Mode.CONFIG_IF,
+            Mode.CONFIG_VLAN,
+            Mode.CONFIG_LINE,
+            Mode.CONFIG_ROUTER,
+        }
+
+    @staticmethod
+    def _is_editing_key(key: int, mods: Qt.KeyboardModifier) -> bool:
+        if mods & Qt.KeyboardModifier.ControlModifier:
+            return key in {
+                Qt.Key.Key_V,
+                Qt.Key.Key_X,
+                Qt.Key.Key_Backspace,
+                Qt.Key.Key_Delete,
+            }
+        if key in (
+            Qt.Key.Key_Backspace,
+            Qt.Key.Key_Delete,
+            Qt.Key.Key_Tab,
+            Qt.Key.Key_Return,
+            Qt.Key.Key_Enter,
+        ):
+            return True
+        # Printable / text entry
+        return key < 0x01000000  # Qt non-special keys
+
     def _current_input(self) -> str:
         full = self.toPlainText()
         return full[self._prompt_pos :]
@@ -163,25 +236,32 @@ class CiscoTerminal(QPlainTextEdit):
         assert self._shell is not None
         line = self._current_input()
         self.commandSubmitted.emit(line)
-        if line.strip():
+        if line.strip() and not self._more_mode:
             self._hist.append(line)
         self._hist_idx = len(self._hist)
-        # Echo already on screen; just newline then output.
         self._append_raw("\n")
         result = self._shell.feed(line)
         if result.output:
             out = result.output
-            if not out.endswith("\n"):
+            if not out.endswith("\n") and "--More--" not in out:
                 out += "\n"
-            # If help left prompt at end already, avoid double prompt later.
             self._append_raw(out)
+        self._more_mode = "--More--" in (result.output or "")
         self._prompt = self._shell.prompt()
-        # Help handler may already include prompt at end.
         text = self.toPlainText()
-        if not text.endswith(self._prompt):
+        if self._more_mode:
+            # Pager waits for Space / Enter / q — no normal prompt yet.
+            self._prompt_pos = len(text)
+        elif not text.endswith(self._prompt):
             self._append_raw(self._prompt)
-        self._prompt_pos = len(self.toPlainText())
+            self._prompt_pos = len(self.toPlainText())
+        else:
+            self._prompt_pos = len(self.toPlainText())
         self._move_cursor_end()
+
+        # Host ``cls`` clears with ANSI — honor by wiping the widget.
+        if "\x1b[2J" in (result.output or ""):
+            self.clear_screen()
 
     def _tab_complete(self) -> None:
         assert self._shell is not None
@@ -197,7 +277,6 @@ class CiscoTerminal(QPlainTextEdit):
                 tokens[-1] = cands[0]
                 self._set_current_input(" ".join(tokens) + " ")
         else:
-            # Show candidates like IOS
             self._append_raw("\n" + "  ".join(cands) + "\n" + self._prompt + partial)
             self._prompt_pos = len(self.toPlainText()) - len(partial)
             self._move_cursor_end()
@@ -221,7 +300,6 @@ class CiscoTerminal(QPlainTextEdit):
         c.movePosition(QTextCursor.MoveOperation.End)
         self.setTextCursor(c)
 
-    # Test helpers
     def type_line(self, line: str) -> str:
         """Test helper: type a full line and submit. Returns shell output."""
         self._set_current_input(line)

@@ -174,6 +174,43 @@ QTextEdit, QPlainTextEdit, QTextBrowser {
     selection-color: #ffffff;
 }
 
+QPlainTextEdit#CiscoTerminal {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px;
+    color: #e6edf3;
+    selection-background-color: #1f6feb;
+    selection-color: #ffffff;
+    font-family: "Cascadia Mono", "Consolas", "Courier New", monospace;
+    font-size: 11pt;
+}
+
+QPushButton#LabObjectivePending {
+    text-align: left;
+    color: #8b9cb3;
+}
+QPushButton#LabObjectivePassed {
+    text-align: left;
+    color: #3fb950;
+}
+QPushButton#LabObjectiveFailed {
+    text-align: left;
+    color: #f85149;
+}
+
+QLabel#LabFeedbackOk {
+    color: #3fb950;
+}
+QLabel#LabFeedbackBad {
+    color: #f85149;
+}
+
+QWidget#TopologyCanvas {
+    background-color: #0a0e16;
+    border-radius: 8px;
+}
+
 /* Stem / explanation browsers sit on Cards — blend with card surface */
 QTextBrowser#CardText,
 QFrame#Card QTextBrowser {

@@ -26,6 +26,8 @@ class InterfaceState:
     switchport_mode: str | None = None  # access | trunk | None
     access_vlan: int | None = None
     connected_to: str | None = None  # "SW1/GigabitEthernet0/1"
+    # Extra interface lines (STP, EtherChannel, IPv6, …) rendered under the iface.
+    extra_lines: list[str] = field(default_factory=list)
 
     @property
     def cidr(self) -> str | None:
@@ -138,6 +140,8 @@ class DeviceRuntime:
                 lines.append(" switchport mode access")
                 if iface.access_vlan is not None:
                     lines.append(f" switchport access vlan {iface.access_vlan}")
+            for extra in iface.extra_lines:
+                lines.append(f" {extra}" if not extra.startswith(" ") else extra)
             if iface.admin_up:
                 lines.append(" no shutdown")
             else:

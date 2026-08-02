@@ -7,10 +7,12 @@ from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
     QLabel,
+    QMenu,
     QPushButton,
     QSplitter,
     QTabWidget,
     QTextBrowser,
+    QToolButton,
     QVBoxLayout,
     QWidget,
 )
@@ -32,6 +34,9 @@ class LabSessionPage(QWidget):
         self._session: LabSession | None = None
         self._on_result = None
         self._terminals: dict[str, CiscoTerminal] = {}
+        self._tab_devices: list[str] = []
+        self._tabs_connected = False
+        self._split: QSplitter | None = None
 
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
@@ -49,6 +54,7 @@ class LabSessionPage(QWidget):
         root.addLayout(top)
 
         split = QSplitter(Qt.Orientation.Horizontal)
+        self._split = split
 
         # LEFT: objectives
         left = QWidget()
@@ -80,34 +86,37 @@ class LabSessionPage(QWidget):
         self._feedback.setMinimumHeight(48)
         left_l.addWidget(self._feedback)
 
-        actions = QHBoxLayout()
-        self._check = QPushButton("Check Task")
-        self._check.setObjectName("Primary")
-        self._check.clicked.connect(self._check_task)
+        nav = QHBoxLayout()
         self._prev = QPushButton("‹ Prev")
         self._prev.setObjectName("Secondary")
         self._prev.clicked.connect(self._go_prev)
+        self._check = QPushButton("Check Task")
+        self._check.setObjectName("Primary")
+        self._check.clicked.connect(self._check_task)
         self._next = QPushButton("Next ›")
         self._next.setObjectName("Secondary")
         self._next.clicked.connect(self._go_next)
+        nav.addWidget(self._prev)
+        nav.addWidget(self._check)
+        nav.addWidget(self._next)
+        left_l.addLayout(nav)
+
+        secondary = QHBoxLayout()
         self._finish = QPushButton("Finish Lab")
         self._finish.setObjectName("Secondary")
         self._finish.clicked.connect(self._finish_lab)
-        self._reset = QPushButton("Reset Lab")
-        self._reset.setObjectName("Secondary")
-        self._reset.clicked.connect(self._reset_lab)
-        self._replay = QPushButton("Reset & Replay")
-        self._replay.setObjectName("Secondary")
-        self._replay.setToolTip("Rebuild the lab world and re-run recorded commands")
-        self._replay.clicked.connect(self._reset_and_replay)
-        actions.addWidget(self._prev)
-        actions.addWidget(self._check)
-        actions.addWidget(self._next)
-        actions.addStretch()
-        actions.addWidget(self._reset)
-        actions.addWidget(self._replay)
-        actions.addWidget(self._finish)
-        left_l.addLayout(actions)
+        self._lab_menu_btn = QToolButton()
+        self._lab_menu_btn.setText("Lab actions")
+        self._lab_menu_btn.setObjectName("Secondary")
+        self._lab_menu_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+        menu = QMenu(self._lab_menu_btn)
+        menu.addAction("Reset Lab", self._reset_lab)
+        menu.addAction("Reset & Replay", self._reset_and_replay)
+        self._lab_menu_btn.setMenu(menu)
+        secondary.addWidget(self._lab_menu_btn)
+        secondary.addStretch()
+        secondary.addWidget(self._finish)
+        left_l.addLayout(secondary)
         split.addWidget(left)
 
         # CENTER: consoles
@@ -116,9 +125,15 @@ class LabSessionPage(QWidget):
         cl = QVBoxLayout(center)
         cl.setContentsMargins(8, 8, 8, 16)
         cl.setSpacing(6)
+        cons_row = QHBoxLayout()
         cons_hdr = QLabel("Console")
         cons_hdr.setProperty("role", "h2")
-        cl.addWidget(cons_hdr)
+        cons_row.addWidget(cons_hdr)
+        cons_row.addStretch()
+        self._console_device = QLabel("")
+        self._console_device.setProperty("role", "muted")
+        cons_row.addWidget(self._console_device)
+        cl.addLayout(cons_row)
         self._tabs = QTabWidget()
         self._tabs.setDocumentMode(True)
         cl.addWidget(self._tabs, 1)
@@ -139,10 +154,11 @@ class LabSessionPage(QWidget):
         split.addWidget(right)
 
         split.setStretchFactor(0, 2)
-        split.setStretchFactor(1, 4)
+        split.setStretchFactor(1, 5)
         split.setStretchFactor(2, 3)
         for i in range(3):
             split.setCollapsible(i, True)
+        split.setSizes([260, 520, 320])
         root.addWidget(split, 1)
 
     def start_lab(self, lab: LabBank) -> None:
@@ -164,38 +180,50 @@ class LabSessionPage(QWidget):
 
     def cleanup(self) -> None:
         self._terminals.clear()
+        self._tab_devices.clear()
         self._session = None
 
     def _build_terminals(self) -> None:
+        if self._tabs_connected:
+            self._tabs.currentChanged.disconnect(self._on_tab_changed)
+            self._tabs_connected = False
         self._tabs.clear()
         self._terminals.clear()
+        self._tab_devices.clear()
         if self._session is None:
             return
         world = self._session.world
         for name in world.device_names():
             term = CiscoTerminal(world.shell(name))
-            # Subtle role tint on tab via stylesheet is limited; label carries role.
             self._terminals[name] = term
+            self._tab_devices.append(name)
             role = world.devices[name].role.value
             self._tabs.addTab(term, f"  {name}  ·  {role}  ")
         self._tabs.currentChanged.connect(self._on_tab_changed)
+        self._tabs_connected = True
 
     def _on_tab_changed(self, idx: int) -> None:
-        if idx < 0 or self._session is None:
+        if idx < 0 or self._session is None or idx >= len(self._tab_devices):
             return
-        name = self._tabs.tabText(idx).strip().split()[0]
+        name = self._tab_devices[idx]
+        self._console_device.setText(name)
         self._canvas.set_selected(name)
+        term = self._terminals.get(name)
+        if term is not None:
+            term.setFocus()
         self._sync_topology_status()
 
     def _on_device_clicked(self, name: str) -> None:
         self._select_device(name)
 
     def _select_device(self, name: str) -> None:
-        for i in range(self._tabs.count()):
-            if self._tabs.tabText(i).strip().startswith(name):
-                self._tabs.setCurrentIndex(i)
-                break
+        if name in self._tab_devices:
+            self._tabs.setCurrentIndex(self._tab_devices.index(name))
         self._canvas.set_selected(name)
+        self._console_device.setText(name)
+        term = self._terminals.get(name)
+        if term is not None:
+            term.setFocus()
 
     def _sync_topology_status(self) -> None:
         if self._session is None:
@@ -203,11 +231,8 @@ class LabSessionPage(QWidget):
         world = self._session.world
         self._canvas.set_link_states(world.link_states())
         for name, dev in world.devices.items():
-            sum(1 for i in dev.interfaces.values() if i.admin_up and i.protocol_up)
             ip = next((i.ip for i in dev.interfaces.values() if i.ip), None)
-            label = dev.hostname
-            if ip:
-                label = f"{dev.hostname} · {ip}"
+            label = f"{dev.hostname} · {ip}" if ip else dev.hostname
             self._canvas.set_device_status(name, label)
             self._canvas.set_device_tooltip(name, world.device_tooltip(name))
 
@@ -222,16 +247,27 @@ class LabSessionPage(QWidget):
         for i, task in enumerate(self._session.lab.tasks):
             grade = self._session.grades.get(task.id)
             if grade is None:
-                mark, color = "○", "#8b9cb3"
+                mark, obj = "○", "LabObjectivePending"
             elif grade.is_correct:
-                mark, color = "✓", "#3fb950"
+                mark, obj = "✓", "LabObjectivePassed"
             else:
-                mark, color = "✗", "#f85149"
+                mark, obj = "✗", "LabObjectiveFailed"
             btn = QPushButton(f"{mark}  Objective {i + 1}")
-            btn.setStyleSheet(f"text-align: left; color: {color};")
-            btn.setObjectName("Secondary")
+            btn.setObjectName(obj)
             btn.clicked.connect(lambda _=False, idx=i: self._goto_task(idx))
             self._task_list.addWidget(btn)
+
+    def _set_feedback(self, text: str, *, ok: bool | None = None) -> None:
+        self._feedback.setText(text)
+        if ok is True:
+            self._feedback.setObjectName("LabFeedbackOk")
+        elif ok is False:
+            self._feedback.setObjectName("LabFeedbackBad")
+        else:
+            self._feedback.setObjectName("")
+            self._feedback.setProperty("role", "muted")
+        self._feedback.style().unpolish(self._feedback)
+        self._feedback.style().polish(self._feedback)
 
     def _render_current(self) -> None:
         if self._session is None:
@@ -243,13 +279,9 @@ class LabSessionPage(QWidget):
         self._instructions.setMarkdown(task.instructions.strip())
         grade = sess.grades.get(task.id)
         if grade is None:
-            self._feedback.setText("")
-            self._feedback.setStyleSheet("")
+            self._set_feedback("")
         else:
-            self._feedback.setText(grade.feedback)
-            self._feedback.setStyleSheet(
-                "color: #3fb950;" if grade.is_correct else "color: #f85149;"
-            )
+            self._set_feedback(grade.feedback, ok=grade.is_correct)
         self._prev.setEnabled(sess.current_task_index > 0)
         self._next.setEnabled(sess.current_task_index < n - 1)
         self._render_tasks()
@@ -273,8 +305,7 @@ class LabSessionPage(QWidget):
         if self._session is None:
             return
         grade = self._session.check_current_task()
-        self._feedback.setText(grade.feedback)
-        self._feedback.setStyleSheet("color: #3fb950;" if grade.is_correct else "color: #f85149;")
+        self._set_feedback(grade.feedback, ok=grade.is_correct)
         self._render_tasks()
         self._sync_topology_status()
 
@@ -295,8 +326,8 @@ class LabSessionPage(QWidget):
             self,
             "Reset lab?",
             "Reset topology and task progress?\n\n"
-            "Choose Yes to clear everything, or No to cancel.\n"
-            "Use Reset & Replay from the button menu to replay commands.",
+            "This clears grades and restores base configs.\n"
+            "Use Lab actions → Reset & Replay to rebuild and replay typed commands.",
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
             QMessageBox.StandardButton.No,
         )
@@ -331,8 +362,7 @@ class LabSessionPage(QWidget):
         self._render_tasks()
         self._render_current()
         msg = "Lab reset and commands replayed." if replay else "Lab reset."
-        self._feedback.setText(msg)
-        self._feedback.setStyleSheet("")
+        self._set_feedback(msg)
         names = self._session.world.device_names()
         if names:
             self._select_device(names[0])
@@ -349,6 +379,10 @@ class LabSessionPage(QWidget):
         sh = self._session.world.shell(device)
         for line in lines:
             sh.feed(line)
+        # Refresh bound terminal display if present.
+        term = self._terminals.get(device)
+        if term is not None:
+            term.bind_shell(sh)
         self._sync_topology_status()
 
     def submit_config(self, config: str) -> None:

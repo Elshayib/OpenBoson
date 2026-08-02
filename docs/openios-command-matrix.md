@@ -17,6 +17,7 @@ Each shipped lab must map to parser/state/running-config/show behavior that Open
 | DHCP | `ip dhcp pool`, `network`, `default-router`, excluded-address | DHCP labs |
 | VTY/SSH | `line vty`, `transport input ssh`, `banner motd` | SSH / banner labs |
 | IPv6 | `ipv6 unicast-routing`, `ipv6 address` | IPv6 lab |
+| Terminal | `terminal length` (paging / `--More--`) | long show output |
 | Verify | `ping`, `traceroute`/`tracert`, `show run`, `show vlan`, `show ip int brief`, `show ip arp`, `show ip route` (C/S/O) | branch, dual-router static, VLAN isolation, OSPF two-router |
 
 ## Grading notes

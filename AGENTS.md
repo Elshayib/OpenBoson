@@ -88,7 +88,10 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
 - Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥50 labs
 
-**Next (v0.5 Designer — see `docs/deferred-releases.md`):**
+**Next (v0.4.x polish — see `docs/deferred-releases.md`):**
+- Lab UI + Cisco CLI feel (terminal QSS, Ctrl+Z, OpenIOS matrix cmds, topology display)
+
+**Then (v0.5 Designer):**
 - Lab schema v2 freeze; editable topology canvas; save/load user topologies
 
 **Later:**

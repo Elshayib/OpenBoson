@@ -206,3 +206,64 @@ def test_write_memory(shell):
     out = shell.feed("write memory").output
     assert "OK" in out
     assert "hostname R1" in shell.device.startup_config
+
+
+def test_show_and_interface_completion(shell):
+    _run(shell, "enable")
+    assert "running-config" in shell.complete("show ")
+    assert "route" in shell.complete("show ip ")
+    _run(shell, "configure terminal")
+    cands = shell.complete("interface ")
+    assert any("GigabitEthernet0/0" in c for c in cands)
+
+
+def test_matrix_stp_etherchannel_ipv6():
+    sw = DeviceRuntime(name="SW1", role=DeviceRole.SWITCH)
+    sw.interfaces["GigabitEthernet0/2"] = InterfaceState(name="GigabitEthernet0/2")
+    sw.interfaces["GigabitEthernet0/1"] = InterfaceState(name="GigabitEthernet0/1")
+    sh = OpenIOSShell(sw)
+    _run(
+        sh,
+        "en",
+        "conf t",
+        "interface GigabitEthernet0/2",
+        "spanning-tree portfast",
+        "interface GigabitEthernet0/1",
+        "channel-group 1 mode on",
+        "end",
+    )
+    cfg = sw.running_config()
+    assert "spanning-tree portfast" in cfg
+    assert "channel-group 1 mode on" in cfg
+
+    r = DeviceRuntime(name="R1", role=DeviceRole.ROUTER)
+    r.interfaces["GigabitEthernet0/0"] = InterfaceState(name="GigabitEthernet0/0")
+    rsh = OpenIOSShell(r)
+    _run(
+        rsh,
+        "en",
+        "conf t",
+        "ipv6 unicast-routing",
+        "interface GigabitEthernet0/0",
+        "ipv6 address 2001:db8:1::1/64",
+        "end",
+    )
+    rcfg = r.running_config()
+    assert "ipv6 unicast-routing" in rcfg
+    assert "ipv6 address 2001:db8:1::1/64" in rcfg
+
+
+def test_terminal_length_paging(shell):
+    _run(shell, "enable", "terminal length 5")
+    # Build a long running-config via many interface descriptions.
+    _run(shell, "configure terminal")
+    for i in range(12):
+        name = f"Loopback{i}"
+        shell.device.interfaces[name] = InterfaceState(name=name, admin_up=True)
+        _run(shell, f"interface {name}", f"description pad-{i}")
+    _run(shell, "end")
+    out = shell.feed("show running-config").output
+    assert "--More--" in out
+    more = shell.feed(" ").output
+    assert more  # continued
+    shell.feed("q")  # quit pager

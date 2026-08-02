@@ -55,6 +55,8 @@ class OpenIOSShell:
         self._router_ctx: str | None = None
         self.history: list[str] = []
         self._paging = False
+        self._term_length = 24  # 0 = disable paging
+        self._more_rest: list[str] | None = None
 
     # -----/ Prompt /-----
     def prompt(self) -> str:
@@ -76,10 +78,18 @@ class OpenIOSShell:
         return f"{h}>"
 
     def banner(self) -> str:
-        role = self.device.role.value.upper()
+        ver = self.device.show_version().splitlines()[0]
+        host = self.device.hostname or self.device.name
+        motd = ""
+        if self.device.banner_motd:
+            motd = f"\n{self.device.banner_motd}\n"
         return (
-            f"\nOpenBoson OpenIOS — {role} {self.device.name}\n"
-            f"Simulated platform. Not affiliated with Cisco Systems.\n"
+            f"\n{ver}\n"
+            f"Technical Support: https://github.com/openboson (community)\n"
+            f"Copyright (c) OpenBoson contributors. Simulated — not affiliated with Cisco.\n"
+            f"\n"
+            f"{host} uptime is 0 days, 0 hours, 5 minutes\n"
+            f"{motd}"
             f"\n"
             f"{self.prompt()}"
         )
@@ -88,6 +98,11 @@ class OpenIOSShell:
     def feed(self, line: str) -> ShellResult:
         """Process one user input line (without the prompt)."""
         raw = line.rstrip("\r\n")
+
+        # Continue a paged ``--More--`` dump.
+        if self._more_rest is not None:
+            return self._continue_more(raw)
+
         if raw.strip():
             self.history.append(raw)
 
@@ -99,15 +114,94 @@ class OpenIOSShell:
         if not stripped:
             return ShellResult(output="")
 
-        return self._dispatch(stripped)
+        result = self._dispatch(stripped)
+        if result.output:
+            result = ShellResult(output=self._maybe_page(result.output), silent=result.silent)
+        return result
 
     def complete(self, partial: str) -> list[str]:
-        """Tab-completion candidates for the current mode."""
+        """Tab-completion candidates for the current mode / context."""
         cmds = self._commands_for_mode()
-        token = partial.strip().split()[-1] if partial.strip() else ""
-        if not partial.strip() or partial.endswith(" "):
+        stripped = partial.strip()
+        tokens = stripped.split() if stripped else []
+
+        # ``show <tab>`` / ``show ip <tab>``
+        if (
+            tokens
+            and _abbrev_match("show", tokens[0])
+            and (partial.endswith(" ") or len(tokens) >= 2)
+        ):
+            show_l1 = [
+                "running-config",
+                "startup-config",
+                "version",
+                "vlan",
+                "interfaces",
+                "ip",
+                "users",
+            ]
+            if len(tokens) == 1 and partial.endswith(" "):
+                return show_l1
+            if len(tokens) >= 2 and _abbrev_match("ip", tokens[1]):
+                ip_subs = ["interface", "route", "arp"]
+                if len(tokens) == 2 and partial.endswith(" "):
+                    return ip_subs
+                if len(tokens) >= 3:
+                    t = tokens[2]
+                    return [c for c in ip_subs if c.startswith(t.lower()) or _abbrev_match(c, t)]
+                t = tokens[1]
+                return [c for c in show_l1 if c.startswith(t.lower()) or _abbrev_match(c, t)]
+            if len(tokens) >= 2 and not partial.endswith(" "):
+                t = tokens[1]
+                return [c for c in show_l1 if c.startswith(t.lower()) or _abbrev_match(c, t)]
+            return show_l1
+
+        # ``interface <tab>`` — suggest known interface names.
+        if tokens and _abbrev_match("interface", tokens[0]):
+            names = sorted(self.device.interfaces.keys())
+            if len(tokens) == 1 and partial.endswith(" "):
+                return names
+            if len(tokens) >= 2 and not partial.endswith(" "):
+                t = tokens[1]
+                return [n for n in names if n.lower().startswith(t.lower())]
+            return names
+
+        token = tokens[-1] if tokens and not partial.endswith(" ") else ""
+        if not stripped or partial.endswith(" "):
             return sorted(cmds.keys())
         return sorted(c for c in cmds if c.startswith(token.lower()) or _abbrev_match(c, token))
+
+    def _maybe_page(self, text: str) -> str:
+        if self._term_length <= 0 or not text:
+            return text
+        lines = text.splitlines(keepends=True)
+        if len(lines) <= self._term_length:
+            return text if text.endswith("\n") else text + "\n"
+        self._more_rest = lines[self._term_length :]
+        chunk = "".join(lines[: self._term_length])
+        if not chunk.endswith("\n"):
+            chunk += "\n"
+        return chunk + " --More-- "
+
+    def _continue_more(self, raw: str) -> ShellResult:
+        assert self._more_rest is not None
+        cmd = raw.strip().lower()
+        if cmd in {"q", "quit"}:
+            self._more_rest = None
+            return ShellResult(output="")
+        # Space or empty Enter → next page; any other char → next page (IOS-ish).
+        rest = self._more_rest
+        if len(rest) <= self._term_length:
+            self._more_rest = None
+            out = "".join(rest)
+            if out and not out.endswith("\n"):
+                out += "\n"
+            return ShellResult(output=out)
+        chunk = "".join(rest[: self._term_length])
+        self._more_rest = rest[self._term_length :]
+        if not chunk.endswith("\n"):
+            chunk += "\n"
+        return ShellResult(output=chunk + " --More-- ")
 
     # -----/ Dispatch /-----
     def _dispatch(self, line: str) -> ShellResult:
@@ -168,6 +262,7 @@ class OpenIOSShell:
                 "interface": self._cmd_interface,
                 "vlan": self._cmd_vlan,
                 "ip": self._cmd_ip_global,
+                "ipv6": self._cmd_ipv6_global,
                 "access-list": self._cmd_access_list,
                 "no": self._cmd_no_global,
                 "banner": self._cmd_banner,
@@ -181,10 +276,13 @@ class OpenIOSShell:
         elif m == Mode.CONFIG_IF:
             base = {
                 "ip": self._cmd_ip_if,
+                "ipv6": self._cmd_ipv6_if,
                 "no": self._cmd_no_if,
                 "shutdown": self._cmd_shutdown,
                 "description": self._cmd_description,
                 "switchport": self._cmd_switchport,
+                "spanning-tree": self._cmd_spanning_tree,
+                "channel-group": self._cmd_channel_group,
                 # Real IOS allows jumping to another interface without exit.
                 "interface": self._cmd_interface,
                 "exit": self._cmd_exit_if,
@@ -244,6 +342,13 @@ class OpenIOSShell:
                 "  vlan                   VTP VLAN status\n"
                 f"\n{self.prompt()}{prefix}"
             )
+        if _abbrev_match("show", parts[0]) and len(parts) == 2 and _abbrev_match("ip", parts[1]):
+            return (
+                "  arp                    IP ARP table\n"
+                "  interface              IP interface status and configuration\n"
+                "  route                  IP routing table\n"
+                f"\n{self.prompt()}{prefix}"
+            )
         filtered = [
             c for c in cmds if c.startswith(parts[-1].lower()) or _abbrev_match(c, parts[-1])
         ]
@@ -287,6 +392,21 @@ class OpenIOSShell:
         return "Enter configuration commands, one per line.  End with CNTL/Z."
 
     def _cmd_terminal(self, args: list[str], line: str) -> str:
+        # terminal length <n>  |  terminal length 0
+        if not args:
+            raise _CmdError("% Incomplete command.")
+        if _abbrev_match("length", args[0]):
+            if len(args) < 2:
+                raise _CmdError("% Incomplete command.")
+            try:
+                n = int(args[1])
+            except ValueError as exc:
+                raise _CmdError("% Invalid input detected.") from exc
+            if n < 0:
+                raise _CmdError("% Invalid input detected.")
+            self._term_length = n
+            self._more_rest = None
+            return ""
         return ""
 
     def _cmd_help_cmd(self, args: list[str], line: str) -> str:
@@ -652,6 +772,57 @@ class OpenIOSShell:
     def _cmd_description(self, args: list[str], line: str) -> str:
         iface = self._require_if()
         iface.description = " ".join(args)
+        return ""
+
+    def _cmd_spanning_tree(self, args: list[str], line: str) -> str:
+        iface = self._require_if()
+        if self.device.role not in (DeviceRole.SWITCH, DeviceRole.AP):
+            raise _CmdError("% Spanning-tree not supported on this platform.")
+        if not args or not _abbrev_match("portfast", args[0]):
+            raise _CmdError("% Incomplete command.")
+        line_txt = "spanning-tree portfast"
+        if line_txt not in iface.extra_lines:
+            iface.extra_lines.append(line_txt)
+        return ""
+
+    def _cmd_channel_group(self, args: list[str], line: str) -> str:
+        iface = self._require_if()
+        if self.device.role not in (DeviceRole.SWITCH, DeviceRole.AP):
+            raise _CmdError("% EtherChannel not supported on this platform.")
+        if len(args) < 3 or not _abbrev_match("mode", args[1]):
+            raise _CmdError("% Incomplete command.")
+        try:
+            group = int(args[0])
+        except ValueError as exc:
+            raise _CmdError("% Invalid channel-group number.") from exc
+        mode = args[2].lower()
+        if mode not in {"on", "active", "passive", "auto", "desirable"}:
+            raise _CmdError("% Invalid EtherChannel mode.")
+        line_txt = f"channel-group {group} mode {mode}"
+        # Replace any prior channel-group on this interface.
+        iface.extra_lines = [x for x in iface.extra_lines if not x.startswith("channel-group ")]
+        iface.extra_lines.append(line_txt)
+        return ""
+
+    def _cmd_ipv6_global(self, args: list[str], line: str) -> str:
+        if not args:
+            raise _CmdError("% Incomplete command.")
+        if _abbrev_match("unicast-routing", args[0]):
+            if "ipv6 unicast-routing" not in self.device.extra_global:
+                self.device.extra_global.append("ipv6 unicast-routing")
+            return ""
+        raise _CmdError("% Incomplete command.")
+
+    def _cmd_ipv6_if(self, args: list[str], line: str) -> str:
+        iface = self._require_if()
+        if not args or not _abbrev_match("address", args[0]):
+            raise _CmdError("% Incomplete command.")
+        if len(args) < 2:
+            raise _CmdError("% Incomplete command.")
+        addr = args[1]
+        line_txt = f"ipv6 address {addr}"
+        iface.extra_lines = [x for x in iface.extra_lines if not x.startswith("ipv6 address ")]
+        iface.extra_lines.append(line_txt)
         return ""
 
     def _cmd_switchport(self, args: list[str], line: str) -> str:
