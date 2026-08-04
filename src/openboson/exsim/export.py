@@ -124,9 +124,7 @@ def to_html(
     verdict = "PASSED" if payload["passed"] else "FAILED"
     score = payload["score_percent"]
     pass_mark = int(payload["passing_score"] * 100)
-    redacted_note = (
-        "<p><em>Redacted export — correct answers omitted.</em></p>" if redacted else ""
-    )
+    redacted_note = "<p><em>Redacted export — correct answers omitted.</em></p>" if redacted else ""
     domain_rows = []
     for prefix, d in payload["domain_breakdown"].items():
         pct = int(d["percent"] * 100)

@@ -88,9 +88,8 @@ def test_per_leaf_topic_coverage(ccna_bank, encor_bank):
         leaves = sorted(c for c in allowed if "." in c)
         counts = Counter(q.topic_code for q in bank.questions)
         missing = [code for code in leaves if counts.get(code, 0) < floor]
-        assert not missing, (
-            f"{label} topics below {floor} questions: "
-            + ", ".join(f"{c}={counts.get(c, 0)}" for c in missing[:20])
+        assert not missing, f"{label} topics below {floor} questions: " + ", ".join(
+            f"{c}={counts.get(c, 0)}" for c in missing[:20]
         )
 
 
