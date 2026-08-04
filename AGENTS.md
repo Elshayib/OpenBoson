@@ -87,13 +87,19 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Resource paths, logging, DB backups, typed settings store
 - CI (Windows/Ubuntu), Makefile / `scripts/dev.ps1`, quality baseline
 - Windows packaging: PyInstaller onedir, Inno script, release workflow
-- Domain-sharded content pipeline; ≥500 CCNA / ≥400 ENCOR; ≥50 labs
+- Domain-sharded content pipeline; teaching-depth + per-leaf floors (v0.5); ≥50 labs
 
-**Next (v0.5 Designer — see `docs/deferred-releases.md`):**
-- Lab schema v2 freeze; editable topology canvas; save/load user topologies
+
+**Next (v0.5 — see `docs/deferred-releases.md`):**
+- Full CCNA / ENCOR leaf coverage (≥12 / ≥15); pool volume floors
+- Practice Check remains correct / incorrect only (no explanation UI)
+- No in-app lab creation and no pack-store product track
 
 **Later:**
-- v0.6 packs · pre-v1.0 content scale (≥1000/800, ≥5% PBQ) · v1.0 signed cross-platform
+- Further volume / ≥5% PBQ · v1.0 signed cross-platform
+
+
+
 
 ## Conventions
 
@@ -112,7 +118,8 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - `docs/status.md` — current handoff / what’s next
 - `README.md` — user-facing overview and quick start
 - `CONTRIBUTING.md` / `SECURITY.md` / `PRIVACY.md` / `SUPPORT.md` — community and safety docs
-- `docs/deferred-releases.md` — v0.5+ scope and gates
+- `docs/deferred-releases.md` — post-v0.4 scope and gates
+
 - `docs/quality-baseline.md` — CI / quality gates
 - `docs/v020-beta-checklist.md` — optional Windows install verification
 - `CHANGELOG.md` / `CODE_OF_CONDUCT.md`

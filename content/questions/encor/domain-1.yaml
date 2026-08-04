@@ -12,21 +12,31 @@ questions:
   choices:
   - id: a
     text: Distribution
-    rationale: Distribution aggregates access and applies policy toward core.
   - id: b
     text: Core
-    rationale: Not correct for this scenario.
   - id: c
     text: Access
-    rationale: Not correct for this scenario.
   - id: d
     text: WAN edge
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Distribution aggregates access and applies policy toward core.
+  explanation: '**Distribution**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
+    within a broadcast domain or VLAN. This is the correct answer for the stem.
+
+
+    **Core** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Access** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **WAN edge** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-002
   type: single_choice
   topic_code: '1.3'
@@ -36,21 +46,34 @@ questions:
   choices:
   - id: a
     text: LISP / VXLAN (VNI) concepts
-    rationale: SD-Access uses LISP control and VXLAN data plane overlays.
   - id: b
     text: Only Frame Relay DLCI
-    rationale: Not correct for this scenario.
   - id: c
     text: Only ATM VPI
-    rationale: Not correct for this scenario.
   - id: d
     text: Only HDLC
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: SD-Access uses LISP control and VXLAN data plane overlays.
+  explanation: '**LISP / VXLAN (VNI) concepts** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only Frame Relay DLCI** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only ATM VPI** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only HDLC** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 1.3
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-003
   type: single_choice
   topic_code: '1.1'
@@ -60,21 +83,35 @@ questions:
   choices:
   - id: a
     text: East-west
-    rationale: Leaf-spine equalizes east-west paths.
   - id: b
     text: Only north-south dialup
-    rationale: Not correct for this scenario.
   - id: c
     text: Only Token Ring
-    rationale: Not correct for this scenario.
   - id: d
     text: Only serial TDM
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Leaf-spine equalizes east-west paths.
+  explanation: '**East-west**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Only north-south dialup** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only Token Ring** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only serial TDM** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-004
   type: single_choice
   topic_code: '1.2'
@@ -84,21 +121,35 @@ questions:
   choices:
   - id: a
     text: Centralized management/orchestration
-    rationale: vManage manages SD-WAN fabric policies and devices.
   - id: b
     text: Only BFD sessions
-    rationale: Not correct for this scenario.
   - id: c
     text: Only OSPF DR election
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE budgeting
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: vManage manages SD-WAN fabric policies and devices.
+  explanation: '**Centralized management/orchestration** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only BFD sessions** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only OSPF DR election**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only PoE budgeting** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.2
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-005
   type: single_choice
   topic_code: '1.3'
@@ -108,21 +159,34 @@ questions:
   choices:
   - id: a
     text: Fabric overlay/underlay
-    rationale: Underlay provides IP reachability; overlay carries endpoints/services.
   - id: b
     text: Only flat L2 everywhere
-    rationale: Not correct for this scenario.
   - id: c
     text: Only hub-spoke Frame Relay
-    rationale: Not correct for this scenario.
   - id: d
     text: Only static default only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Underlay provides IP reachability; overlay carries endpoints/services.
+  explanation: '**Fabric overlay/underlay** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only flat L2 everywhere** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only hub-spoke Frame Relay** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only static default only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - ENCOR 1.3
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-006
   type: single_choice
   topic_code: '1.1'
@@ -132,21 +196,34 @@ questions:
   choices:
   - id: a
     text: Minimize disruption on switchover
-    rationale: Stateful switchover with NSF keeps forwarding during RP failover.
   - id: b
     text: Increase STP diameter only
-    rationale: Not correct for this scenario.
   - id: c
     text: Disable CEF
-    rationale: Not correct for this scenario.
   - id: d
     text: Force process switching
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Stateful switchover with NSF keeps forwarding during RP failover.
+  explanation: '**Minimize disruption on switchover**: A Layer 2 **switch** forwards Ethernet frames based
+    on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+
+
+    **Increase STP diameter only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable CEF** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Force process switching**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
+    within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-007
   type: single_choice
   topic_code: '1.3'
@@ -156,21 +233,34 @@ questions:
   choices:
   - id: a
     text: Same gateway IP on multiple leaves
-    rationale: Anycast SVI provides local gateway on each leaf.
   - id: b
     text: Unique gateway per VLAN only globally
-    rationale: Not correct for this scenario.
   - id: c
     text: Only HSRP v1 required
-    rationale: Not correct for this scenario.
   - id: d
     text: Only GLBP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Anycast SVI provides local gateway on each leaf.
+  explanation: '**Same gateway IP on multiple leaves**: **Anycast** assigns the same address to multiple
+    nodes; routers forward to the topologically nearest member. IPv6 does not use broadcast. This is the
+    correct answer for the stem.
+
+
+    **Unique gateway per VLAN only globally** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Only HSRP v1 required** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only GLBP** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 1.3
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-008
   type: single_choice
   topic_code: '1.1'
@@ -180,21 +270,34 @@ questions:
   choices:
   - id: a
     text: Core and distribution
-    rationale: Collapsed core combines core+distribution functions.
   - id: b
     text: Only access and WAN
-    rationale: Not correct for this scenario.
   - id: c
     text: Only wireless and firewall
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DNS and DHCP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Collapsed core combines core+distribution functions.
+  explanation: '**Core and distribution** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only access and WAN** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only wireless and firewall** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only DNS and DHCP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-009
   type: single_choice
   topic_code: '1.1'
@@ -204,21 +307,36 @@ questions:
   choices:
   - id: a
     text: Equal-cost paths installed
-    rationale: Equal-cost multipath load-shares across equal metrics.
   - id: b
     text: Only single best path always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only policy routing
-    rationale: Not correct for this scenario.
   - id: d
     text: Only spanning tree
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Equal-cost multipath load-shares across equal metrics.
+  explanation: '**Equal-cost paths installed**: **PAT** (NAT overload) maps many inside addresses to one
+    outside address using unique transport port numbers. This is the correct answer for the stem. Configuration
+    uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only single best path always**: **PAT** (NAT overload) maps many inside addresses to one outside
+    address using unique transport port numbers. This does not satisfy the condition required by the stem.
+    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only policy routing** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only spanning tree** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-010
   type: single_choice
   topic_code: '1.3'
@@ -228,21 +346,34 @@ questions:
   choices:
   - id: a
     text: Endpoint IDs vs routing locators
-    rationale: LISP separates identity (EID) from location (RLOC).
   - id: b
     text: Only VLAN vs VXLAN
-    rationale: Not correct for this scenario.
   - id: c
     text: Only AS vs community
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DSCP vs CoS
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: LISP separates identity (EID) from location (RLOC).
+  explanation: '**Endpoint IDs vs routing locators** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only VLAN vs VXLAN** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only AS vs community** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only DSCP vs CoS** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.3
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-011
   type: single_choice
   topic_code: '1.1'
@@ -252,21 +383,33 @@ questions:
   choices:
   - id: a
     text: Leaf
-    rationale: Top-of-rack leaves connect servers to spines.
   - id: b
     text: Spine only
-    rationale: Not correct for this scenario.
   - id: c
     text: Route reflector only
-    rationale: Not correct for this scenario.
   - id: d
     text: WAN edge only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Top-of-rack leaves connect servers to spines.
+  explanation: '**Leaf**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables within
+    a broadcast domain or VLAN. This is the correct answer for the stem.
+
+
+    **Spine only** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Route reflector only** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **WAN edge only** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-012
   type: single_choice
   topic_code: '1.4'
@@ -276,21 +419,35 @@ questions:
   choices:
   - id: a
     text: Access edge / IP phone
-    rationale: Trust and classify near the edge.
   - id: b
     text: Only ISP core
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DNS root
-    rationale: Not correct for this scenario.
   - id: d
     text: Only BGP RR
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Trust and classify near the edge.
+  explanation: '**Access edge / IP phone** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only ISP core** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only DNS root** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only BGP RR**: **BGP** exchanges reachability among autonomous systems and selects paths using an
+    ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
+    the condition required by the stem. Configuration uses `router bgp <asn>`.'
   references:
-  - ENCOR 1.4
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-013
   type: single_choice
   topic_code: '1.1'
@@ -300,21 +457,34 @@ questions:
   choices:
   - id: a
     text: Control-plane and forwarding abstraction across members
-    rationale: Stacking presents multiple chassis as one logical switch.
   - id: b
     text: Only wireless mesh
-    rationale: Not correct for this scenario.
   - id: c
     text: Only MPLS TE
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NetFlow export
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Stacking presents multiple chassis as one logical switch.
+  explanation: '**Control-plane and forwarding abstraction across members** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only wireless mesh** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only MPLS TE** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NetFlow export** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-014
   type: single_choice
   topic_code: '1.1'
@@ -324,21 +494,34 @@ questions:
   choices:
   - id: a
     text: First-hop gateway redundancy
-    rationale: HSRP/VRRP keep default gateway available.
   - id: b
     text: Only underlay multicast RP
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VXLAN VNI allocation
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CoPP class-maps
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: HSRP/VRRP keep default gateway available.
+  explanation: '**First-hop gateway redundancy** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only underlay multicast RP** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only VXLAN VNI allocation** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only CoPP class-maps** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-015
   type: single_choice
   topic_code: '1.2'
@@ -348,21 +531,35 @@ questions:
   choices:
   - id: a
     text: vSmart / orchestration components
-    rationale: SD-WAN separates control/management from data plane edges.
   - id: b
     text: Only access switches as RR mandatory
-    rationale: Not correct for this scenario.
   - id: c
     text: Only STP root
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE PSE
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: SD-WAN separates control/management from data plane edges.
+  explanation: '**vSmart / orchestration components** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only access switches as RR mandatory**: A Layer 2 **switch** forwards Ethernet frames based on MAC
+    address tables within a broadcast domain or VLAN. This does not satisfy the condition required by
+    the stem.
+
+
+    **Only STP root** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only PoE PSE** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.2
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-016
   type: single_choice
   topic_code: '1.3'
@@ -372,21 +569,34 @@ questions:
   choices:
   - id: a
     text: Border/fusion design considerations
-    rationale: Borders connect fabric to non-fabric domains.
   - id: b
     text: Only disabling all routing
-    rationale: Not correct for this scenario.
   - id: c
     text: Only removing VLANs forever
-    rationale: Not correct for this scenario.
   - id: d
     text: Only Token Ring bridges
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Borders connect fabric to non-fabric domains.
+  explanation: '**Border/fusion design considerations** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only disabling all routing** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only removing VLANs forever** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only Token Ring bridges** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - ENCOR 1.3
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-017
   type: single_choice
   topic_code: '1.4'
@@ -396,21 +606,35 @@ questions:
   choices:
   - id: a
     text: QoS configuration
-    rationale: QoS policies classify/mark/police/shape traffic.
   - id: b
     text: Only VTP pruning
-    rationale: Not correct for this scenario.
   - id: c
     text: Only CDP timers
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DHCP pools
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: QoS policies classify/mark/police/shape traffic.
+  explanation: '**QoS configuration** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only VTP pruning** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only CDP timers**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
+    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
+    uses `cdp run` / `show cdp neighbors`.
+
+
+    **Only DHCP pools** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.4
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-018
   type: single_choice
   topic_code: '1.2'
@@ -420,21 +644,34 @@ questions:
   choices:
   - id: a
     text: Centralized policy with transport independence
-    rationale: SD-WAN centralizes policy across transports.
   - id: b
     text: Mandatory single underlay protocol only forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Removal of encryption options
-    rationale: Not correct for this scenario.
   - id: d
     text: Only L2 loops required
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: SD-WAN centralizes policy across transports.
+  explanation: '**Centralized policy with transport independence** is correct. It is the selection that
+    meets the requirement stated in the stem.
+
+
+    **Mandatory single underlay protocol only forever** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Removal of encryption options** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only L2 loops required** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.2
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-019
   type: single_choice
   topic_code: '1.1'
@@ -444,21 +681,34 @@ questions:
   choices:
   - id: a
     text: Scale and resiliency of tiers/fabrics
-    rationale: Design principles include capacity and HA for fabrics/cloud.
   - id: b
     text: Only cable color standards
-    rationale: Not correct for this scenario.
   - id: c
     text: Only console baud rates
-    rationale: Not correct for this scenario.
   - id: d
     text: Only banner motd text
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Design principles include capacity and HA for fabrics/cloud.
+  explanation: '**Scale and resiliency of tiers/fabrics** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only cable color standards** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only console baud rates** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only banner motd text** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.1
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-1-020
   type: single_choice
   topic_code: '1.4'
@@ -468,52 +718,72 @@ questions:
   choices:
   - id: a
     text: Per-hop behavior treatment
-    rationale: Markings drive classification and PHB along the path.
   - id: b
     text: Only STP root priority
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP domain
-    rationale: Not correct for this scenario.
   - id: d
     text: Only RADIUS ports
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Markings drive classification and PHB along the path.
+  explanation: '**Per-hop behavior treatment** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only STP root priority** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only VTP domain** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only RADIUS ports** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 1.4
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-gen-0000-2ac411
   type: multiple_choice
   topic_code: '1.1'
   difficulty: 2
   cert_tags: &id002
   - ccnp
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.1.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.1.
   - id: d
     text: Data link
-    rationale: Distractor for 1.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -526,22 +796,31 @@ questions:
   choices:
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -554,22 +833,31 @@ questions:
   choices:
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -582,22 +870,31 @@ questions:
   choices:
   - id: d
     text: Physical
-    rationale: Not correct for 1.4; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
   - id: b
     text: Network
-    rationale: Not correct for 1.4; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.4; Data link is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.4, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -610,22 +907,31 @@ questions:
   choices:
   - id: d
     text: Physical
-    rationale: Not correct for 1.1; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
   - id: b
     text: Network
-    rationale: Not correct for 1.1; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.1; Data link is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.1, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -638,22 +944,31 @@ questions:
   choices:
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -666,22 +981,31 @@ questions:
   choices:
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -690,31 +1014,38 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.4.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.4.
   - id: d
     text: Data link
-    rationale: Distractor for 1.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -723,31 +1054,38 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.1.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.1.
   - id: d
     text: Data link
-    rationale: Distractor for 1.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -760,22 +1098,31 @@ questions:
   choices:
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -788,22 +1135,31 @@ questions:
   choices:
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -816,22 +1172,31 @@ questions:
   choices:
   - id: b
     text: Network
-    rationale: Not correct for 1.4; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.4; Data link is a common mix-up.
   - id: d
     text: Physical
-    rationale: Not correct for 1.4; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
   correct:
     answer: a
-  explanation: For 1.4, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -844,22 +1209,31 @@ questions:
   choices:
   - id: b
     text: Network
-    rationale: Not correct for 1.1; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.1; Data link is a common mix-up.
   - id: d
     text: Physical
-    rationale: Not correct for 1.1; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
   correct:
     answer: a
-  explanation: For 1.1, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -872,22 +1246,31 @@ questions:
   choices:
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -900,22 +1283,31 @@ questions:
   choices:
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -924,31 +1316,38 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.4.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.4.
   - id: d
     text: Data link
-    rationale: Distractor for 1.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -957,31 +1356,38 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.1.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.1.
   - id: d
     text: Data link
-    rationale: Distractor for 1.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -994,22 +1400,31 @@ questions:
   choices:
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1022,22 +1437,31 @@ questions:
   choices:
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1050,22 +1474,31 @@ questions:
   choices:
   - id: d
     text: Physical
-    rationale: Not correct for 1.4; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
   - id: b
     text: Network
-    rationale: Not correct for 1.4; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.4; Data link is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.4, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1078,22 +1511,31 @@ questions:
   choices:
   - id: d
     text: Physical
-    rationale: Not correct for 1.1; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
   - id: b
     text: Network
-    rationale: Not correct for 1.1; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.1; Data link is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.1, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1106,22 +1548,31 @@ questions:
   choices:
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1134,22 +1585,31 @@ questions:
   choices:
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1158,31 +1618,38 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.4.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.4.
   - id: d
     text: Data link
-    rationale: Distractor for 1.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1191,31 +1658,38 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.1.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.1.
   - id: d
     text: Data link
-    rationale: Distractor for 1.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1228,22 +1702,31 @@ questions:
   choices:
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1256,22 +1739,31 @@ questions:
   choices:
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1284,22 +1776,31 @@ questions:
   choices:
   - id: b
     text: Network
-    rationale: Not correct for 1.4; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.4; Data link is a common mix-up.
   - id: d
     text: Physical
-    rationale: Not correct for 1.4; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
   correct:
     answer: a
-  explanation: For 1.4, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1312,22 +1813,31 @@ questions:
   choices:
   - id: b
     text: Network
-    rationale: Not correct for 1.1; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.1; Data link is a common mix-up.
   - id: d
     text: Physical
-    rationale: Not correct for 1.1; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
   correct:
     answer: a
-  explanation: For 1.1, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1340,22 +1850,31 @@ questions:
   choices:
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1368,22 +1887,31 @@ questions:
   choices:
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1392,31 +1920,38 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.4.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.4.
   - id: d
     text: Data link
-    rationale: Distractor for 1.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1425,31 +1960,38 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.1.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.1.
   - id: d
     text: Data link
-    rationale: Distractor for 1.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.1: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1462,22 +2004,31 @@ questions:
   choices:
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1490,22 +2041,31 @@ questions:
   choices:
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1518,22 +2078,31 @@ questions:
   choices:
   - id: d
     text: Physical
-    rationale: Not correct for 1.4; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.4: OSI layer for end-to-end reliable delivery → Transport.'
   - id: b
     text: Network
-    rationale: Not correct for 1.4; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.4; Data link is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.4, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1546,22 +2115,31 @@ questions:
   choices:
   - id: d
     text: Physical
-    rationale: Not correct for 1.1; Physical is a common mix-up.
   - id: a
     text: Transport
-    rationale: 'Matches 1.1: OSI layer for end-to-end reliable delivery → Transport.'
   - id: b
     text: Network
-    rationale: Not correct for 1.1; Network is a common mix-up.
   - id: c
     text: Data link
-    rationale: Not correct for 1.1; Data link is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.1, the accurate association is Transport.
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1574,22 +2152,31 @@ questions:
   choices:
   - id: a
     text: Link-local
-    rationale: 'Matches 1.2: IPv6 address type on every link → Link-local.'
   - id: b
     text: Global unicast
-    rationale: Not correct for 1.2; Global unicast is a common mix-up.
   - id: c
     text: Unique local
-    rationale: Not correct for 1.2; Unique local is a common mix-up.
   - id: d
     text: Anycast only
-    rationale: Not correct for 1.2; Anycast only is a common mix-up.
   correct:
     answer: a
-  explanation: For 1.2, the accurate association is Link-local.
+  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
+    and are not routed beyond the local link. This is the correct answer for the stem.
+
+
+    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
+    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1602,22 +2189,31 @@ questions:
   choices:
   - id: b
     text: /24
-    rationale: Not correct for 1.3; /24 is a common mix-up.
   - id: c
     text: /25
-    rationale: Not correct for 1.3; /25 is a common mix-up.
   - id: d
     text: /30
-    rationale: Not correct for 1.3; /30 is a common mix-up.
   - id: a
     text: /26
-    rationale: 'Matches 1.3: Prefix length for mask 255.255.255.192 → /26.'
   correct:
     answer: a
-  explanation: For 1.3, the accurate association is /26.
+  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
+    usable host addresses. This is the correct answer for the stem.
+
+
+    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
+    links. This does not satisfy the condition required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1626,31 +2222,38 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
-    reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
   choices:
   - id: a
     text: Transport
-    rationale: Correct for objective 1.4.
   - id: b
     text: Network
-    rationale: Incorrect association for 1.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 1.4.
   - id: d
     text: Data link
-    rationale: Distractor for 1.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 1.4: OSI layer for end-to-end reliable delivery maps to
-    Transport.'
+  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1664,25 +2267,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 1.1.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 1.1.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 1.1.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 1.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 1.1 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1695,25 +2307,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 1.2.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 1.2.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 1.2.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 1.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 1.2 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1726,25 +2347,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 1.3.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 1.3.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 1.3.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 1.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 1.3 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1757,25 +2387,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 1.4.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 1.4.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 1.4.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 1.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 1.4 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1789,24 +2428,33 @@ questions:
   choices:
   - id: a
     text: Verify before changes
-    rationale: Correct ops habit.
   - id: b
     text: Skip all logs
-    rationale: Unsafe.
   - id: c
     text: Capture show output
-    rationale: Correct verification.
   - id: d
     text: Disable AAA forever
-    rationale: Incorrect.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Verification and evidence collection are required study habits.
+  explanation: '**Verify before changes** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Capture show output** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Skip all logs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA forever** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1819,24 +2467,33 @@ questions:
   choices:
   - id: a
     text: Verify before changes
-    rationale: Correct ops habit.
   - id: b
     text: Skip all logs
-    rationale: Unsafe.
   - id: c
     text: Capture show output
-    rationale: Correct verification.
   - id: d
     text: Disable AAA forever
-    rationale: Incorrect.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Verification and evidence collection are required study habits.
+  explanation: '**Verify before changes** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Capture show output** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Skip all logs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA forever** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1849,24 +2506,112 @@ questions:
   choices:
   - id: a
     text: Verify before changes
-    rationale: Correct ops habit.
   - id: b
     text: Skip all logs
-    rationale: Unsafe.
   - id: c
     text: Capture show output
-    rationale: Correct verification.
   - id: d
     text: Disable AAA forever
-    rationale: Incorrect.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Verification and evidence collection are required study habits.
+  explanation: '**Verify before changes** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Capture show output** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Skip all logs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA forever** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-12-0000-34b325
+  type: multiple_choice
+  topic_code: '1.2'
+  difficulty: 2
+  cert_tags: &id005
+  - ccnp
+  stem: '[ENCOR 1.2] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 1.2 with show/ping evidence
+  - id: b
+    text: Skip change control because 1.2 is low risk
+  - id: c
+    text: Document the 1.2 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 1.2
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 1.2 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 1.2 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 1.2 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 1.2** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-14-0001-d2b89c
+  type: single_choice
+  topic_code: '1.4'
+  difficulty: 2
+  cert_tags: *id005
+  stem: Regarding ENCOR topic 1.4. Which reply is accurate?
+  choices:
+  - id: b
+    text: Confuse 1.4 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 1.4
+  - id: d
+    text: Use clear-text shared secrets as the only control for 1.4
+  - id: a
+    text: Validate with show/verify steps before relying on 1.4 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 1.4 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 1.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 1.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 1.4** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Architecture
+  - ENCOR exam topic 1.4
   provider: openboson
   license: MIT
   provenance: original

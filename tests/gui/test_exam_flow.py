@@ -134,6 +134,8 @@ def test_practice_question_check_shows_feedback(window, qtbot):
     qtbot.wait(50)
     labels = [lbl.text() for lbl in page.findChildren(QLabel)]
     assert any(t == "Correct" for t in labels)
+    assert not any(t == "Explanation" for t in labels)
+    assert not any("Your answer:" in t for t in labels)
 
 
 def test_question_card_emits_answer_on_radio(qtbot):

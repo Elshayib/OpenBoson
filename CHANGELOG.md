@@ -2,6 +2,19 @@
 
 All notable changes to OpenBoson are documented in this file.
 
+## [Unreleased] — v0.5 topic coverage (in progress)
+
+### Application
+- Practice Check shows correct / incorrect only (no explanation or rationale UI).
+- Exam review and score exports omit teaching explanations.
+
+### Content
+- Per-leaf coverage floors (≥12 CCNA / ≥15 ENCOR); pool volumes ≥636 / ≥405.
+- Authoring guide documents explanation fields as unused by the app.
+
+### Docs
+- Roadmap focused on topic coverage (no lab creation / pack-store track).
+
 ## [0.4.1] — 2026-08-02 — Lab console polish
 
 ### Application
@@ -13,7 +26,10 @@ All notable changes to OpenBoson are documented in this file.
 - Topology display: honor `Device.x`/`y`, role-banded layout, fit-to-view, zoom toward cursor.
 
 ### Docs
-- Handoff points at this polish cut; Network Designer remains the next major track (v0.5).
+- Handoff points at this polish cut; next major track is v0.5 Educational Depth (teaching explanations + full topic coverage).
+
+
+
 
 ### Known Issues
 - Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
@@ -34,7 +50,8 @@ All notable changes to OpenBoson are documented in this file.
 - Windows installers remain unsigned until v1.0 Authenticode work (SmartScreen warnings expected).
 
 ### Docs
-- Handoff synced in `docs/status.md`; next track is Network Designer (v0.5) in `docs/deferred-releases.md`.
+- Handoff synced in `docs/status.md`; later roadmap lives in `docs/deferred-releases.md`.
+
 
 ## [0.3.0] — 2026-08-01 — ExSim Depth
 

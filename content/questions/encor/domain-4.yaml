@@ -12,21 +12,35 @@ questions:
   choices:
   - id: a
     text: Traffic flow records
-    rationale: Flow telemetry.
   - id: b
     text: Only STP topology
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CDP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Flow telemetry.
+  explanation: '**Traffic flow records** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only STP topology** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only CDP**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
+    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
+    uses `cdp run` / `show cdp neighbors`.'
   references:
-  - ENCOR 4.1
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-002
   type: single_choice
   topic_code: '4.3'
@@ -36,21 +50,34 @@ questions:
   choices:
   - id: a
     text: A destination analyzer port
-    rationale: Switched Port Analyzer.
   - id: b
     text: Only Null0
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DHCP pool
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NTP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Switched Port Analyzer.
+  explanation: '**A destination analyzer port** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only Null0** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCP pool** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 4.3
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-003
   type: single_choice
   topic_code: '4.5'
@@ -60,21 +87,34 @@ questions:
   choices:
   - id: a
     text: Apply configuration, monitoring, and management workflows
-    rationale: Catalyst Center provides traditional and AI-powered workflows.
   - id: b
     text: Only replace underlay routing forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only terminate PPPoE
-    rationale: Not correct for this scenario.
   - id: d
     text: Only hash EtherChannels
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Catalyst Center provides traditional and AI-powered workflows.
+  explanation: '**Apply configuration, monitoring, and management workflows** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only replace underlay routing forever** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.
+
+
+    **Only terminate PPPoE** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only hash EtherChannels** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - ENCOR 4.5
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-004
   type: single_choice
   topic_code: '4.3'
@@ -84,21 +124,34 @@ questions:
   choices:
   - id: a
     text: IP/GRE-like encapsulation
-    rationale: Encapsulated RSPAN.
   - id: b
     text: Only L1 copper always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only console
-    rationale: Not correct for this scenario.
   - id: d
     text: Only USB
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Encapsulated RSPAN.
+  explanation: '**IP/GRE-like encapsulation** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only L1 copper always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only console** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only USB** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 4.3
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-005
   type: single_choice
   topic_code: '4.4'
@@ -108,21 +161,34 @@ questions:
   choices:
   - id: a
     text: Latency/jitter/loss probes
-    rationale: Synthetic probes.
   - id: b
     text: Only CPU temperature exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only PoE draw exclusive
-    rationale: Not correct for this scenario.
   - id: d
     text: Only fan RPM exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Synthetic probes.
+  explanation: '**Latency/jitter/loss probes** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only CPU temperature exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only PoE draw exclusive** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only fan RPM exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.4
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-006
   type: single_choice
   topic_code: '4.2'
@@ -132,21 +198,34 @@ questions:
   choices:
   - id: a
     text: User-defined flow keys/fields
-    rationale: FNF customization.
   - id: b
     text: Only fixed v5 forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disables export
-    rationale: Not correct for this scenario.
   - id: d
     text: Only STP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: FNF customization.
+  explanation: '**User-defined flow keys/fields** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only fixed v5 forever** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only disables export** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only STP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 4.2
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-007
   type: single_choice
   topic_code: '4.3'
@@ -156,21 +235,34 @@ questions:
   choices:
   - id: a
     text: A special VLAN to carry mirrored frames
-    rationale: Remote SPAN VLAN.
   - id: b
     text: Only ERSPAN mandatory
-    rationale: Not correct for this scenario.
   - id: c
     text: Only NetFlow
-    rationale: Not correct for this scenario.
   - id: d
     text: Only gRPC
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Remote SPAN VLAN.
+  explanation: '**A special VLAN to carry mirrored frames** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only ERSPAN mandatory** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NetFlow** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only gRPC** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 4.3
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-008
   type: single_choice
   topic_code: '4.1'
@@ -180,21 +272,35 @@ questions:
   choices:
   - id: a
     text: Limiting debug output to matching traffic
-    rationale: Conditional debugs reduce noise while diagnosing.
   - id: b
     text: Disabling all logging forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Clearing the RIB
-    rationale: Not correct for this scenario.
   - id: d
     text: Negotiating LACP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Conditional debugs reduce noise while diagnosing.
+  explanation: '**Limiting debug output to matching traffic** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Disabling all logging forever** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Clearing the RIB** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Negotiating LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 4.1
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-009
   type: single_choice
   topic_code: '4.4'
@@ -204,21 +310,35 @@ questions:
   choices:
   - id: a
     text: Voice/video path quality assessment
-    rationale: Jitter/latency probes.
   - id: b
     text: Only VLAN creation
-    rationale: Not correct for this scenario.
   - id: c
     text: Only ACL lines
-    rationale: Not correct for this scenario.
   - id: d
     text: Only VTP password
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Jitter/latency probes.
+  explanation: '**Voice/video path quality assessment**: **PAT** (NAT overload) maps many inside addresses
+    to one outside address using unique transport port numbers. This is the correct answer for the stem.
+    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only VLAN creation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only ACL lines**: An **ACL** filters traffic by matching header fields and applying permit or deny
+    actions in sequential order. This does not satisfy the condition required by the stem.
+
+
+    **Only VTP password** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.4
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-010
   type: single_choice
   topic_code: '4.6'
@@ -228,21 +348,35 @@ questions:
   choices:
   - id: a
     text: SSH (TCP 830)
-    rationale: NETCONF over SSH is typical.
   - id: b
     text: Only Telnet 23
-    rationale: Not correct for this scenario.
   - id: c
     text: Only UDP 161
-    rationale: Not correct for this scenario.
   - id: d
     text: Only TCP 179
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: NETCONF over SSH is typical.
+  explanation: '**SSH (TCP 830)**: **TCP** provides reliable, ordered, connection-oriented delivery using
+    sequence and acknowledgment numbers, among other mechanisms. This is the correct answer for the stem.
+
+
+    **Only Telnet 23** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only UDP 161**: **UDP** provides connectionless datagram delivery without TCP’s reliability or ordering
+    guarantees. This does not satisfy the condition required by the stem.
+
+
+    **Only TCP 179**: **TCP** provides reliable, ordered, connection-oriented delivery using sequence
+    and acknowledgment numbers, among other mechanisms. This does not satisfy the condition required by
+    the stem.'
   references:
-  - ENCOR 4.6
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-011
   type: single_choice
   topic_code: '4.1'
@@ -252,21 +386,35 @@ questions:
   choices:
   - id: a
     text: Diagnose reachability and path issues
-    rationale: Classic diagnostic tools.
   - id: b
     text: Only configure VRFs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only elect MST root
-    rationale: Not correct for this scenario.
   - id: d
     text: Only create SGTs
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Classic diagnostic tools.
+  explanation: '**Diagnose reachability and path issues**: **PAT** (NAT overload) maps many inside addresses
+    to one outside address using unique transport port numbers. This is the correct answer for the stem.
+    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only configure VRFs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only elect MST root** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only create SGTs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.1
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-012
   type: single_choice
   topic_code: '4.2'
@@ -276,21 +424,34 @@ questions:
   choices:
   - id: a
     text: Collectors / analyzers
-    rationale: Exporters deliver flow records.
   - id: b
     text: Only STP root
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP servers
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DHCP pools
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Exporters deliver flow records.
+  explanation: '**Collectors / analyzers** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only STP root** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only VTP servers** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only DHCP pools** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.2
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-013
   type: single_choice
   topic_code: '4.6'
@@ -300,21 +461,36 @@ questions:
   choices:
   - id: a
     text: HTTP/HTTPS APIs
-    rationale: RESTCONF maps YANG to HTTP.
   - id: b
     text: Only CDP TLVs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only BPDU guards
-    rationale: Not correct for this scenario.
   - id: d
     text: Only HSRP hellos
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: RESTCONF maps YANG to HTTP.
+  explanation: '**HTTP/HTTPS APIs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only CDP TLVs**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
+    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
+    uses `cdp run` / `show cdp neighbors`.
+
+
+    **Only BPDU guards**: **BPDU guard** err-disables a PortFast-enabled port that receives a BPDU, protecting
+    the edge from an accidental switch attachment that could create a loop. This does not satisfy the
+    condition required by the stem. Configuration uses `spanning-tree bpduguard enable`.
+
+
+    **Only HSRP hellos** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.6
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-014
   type: single_choice
   topic_code: '4.5'
@@ -324,21 +500,34 @@ questions:
   choices:
   - id: a
     text: Assurance insights and guided operations
-    rationale: v1.2 calls out AI-powered Catalyst Center workflows.
   - id: b
     text: Only manually cabling racks
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabling telemetry
-    rationale: Not correct for this scenario.
   - id: d
     text: Only removing SNMP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: v1.2 calls out AI-powered Catalyst Center workflows.
+  explanation: '**Assurance insights and guided operations** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only manually cabling racks** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only disabling telemetry** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only removing SNMP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.5
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-015
   type: single_choice
   topic_code: '4.1'
@@ -348,21 +537,35 @@ questions:
   choices:
   - id: a
     text: Device/event visibility
-    rationale: Operational telemetry via SNMP/syslog.
   - id: b
     text: Only underlay ECMP hashing
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VXLAN VNIs
-    rationale: Not correct for this scenario.
   - id: d
     text: Only LACP priorities
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Operational telemetry via SNMP/syslog.
+  explanation: '**Device/event visibility** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only underlay ECMP hashing** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only VXLAN VNIs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only LACP priorities**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 4.1
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-4-016
   type: single_choice
   topic_code: '4.3'
@@ -372,21 +575,34 @@ questions:
   choices:
   - id: a
     text: Same switch typically
-    rationale: Classic SPAN locality.
   - id: b
     text: Only cross-continent mandatory
-    rationale: Not correct for this scenario.
   - id: c
     text: Only wireless exclusive
-    rationale: Not correct for this scenario.
   - id: d
     text: Only MPLS exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Classic SPAN locality.
+  explanation: '**Same switch typically**: A Layer 2 **switch** forwards Ethernet frames based on MAC
+    address tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+
+
+    **Only cross-continent mandatory** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only wireless exclusive** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only MPLS exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 4.3
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-gen-0010-085e53
   type: single_choice
   topic_code: '4.1'
@@ -397,22 +613,31 @@ questions:
   choices:
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -425,22 +650,31 @@ questions:
   choices:
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -453,25 +687,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.3.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.3.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.3: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -484,22 +728,31 @@ questions:
   choices:
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -512,22 +765,31 @@ questions:
   choices:
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -540,22 +802,32 @@ questions:
   choices:
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.6; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.6: Many-to-one NAT using ports → PAT/overload.'
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.6; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.6; One-to-one dynamic only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.6, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -568,22 +840,31 @@ questions:
   choices:
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -596,22 +877,31 @@ questions:
   choices:
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -624,22 +914,32 @@ questions:
   choices:
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.3; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.3: Many-to-one NAT using ports → PAT/overload.'
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.3; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.3; One-to-one dynamic only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.3, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -652,22 +952,31 @@ questions:
   choices:
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -680,22 +989,31 @@ questions:
   choices:
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -708,25 +1026,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.6.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.6.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.6: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -739,22 +1067,31 @@ questions:
   choices:
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -767,22 +1104,31 @@ questions:
   choices:
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -795,25 +1141,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.3.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.3.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.3: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -826,22 +1182,31 @@ questions:
   choices:
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -854,22 +1219,31 @@ questions:
   choices:
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -882,22 +1256,32 @@ questions:
   choices:
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.6; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.6; One-to-one dynamic only is a common mix-up.
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.6; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.6: Many-to-one NAT using ports → PAT/overload.'
   correct:
     answer: a
-  explanation: For 4.6, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -910,22 +1294,31 @@ questions:
   choices:
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -938,22 +1331,31 @@ questions:
   choices:
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -966,22 +1368,32 @@ questions:
   choices:
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.3; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.3; One-to-one dynamic only is a common mix-up.
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.3; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.3: Many-to-one NAT using ports → PAT/overload.'
   correct:
     answer: a
-  explanation: For 4.3, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -994,22 +1406,31 @@ questions:
   choices:
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1022,22 +1443,31 @@ questions:
   choices:
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1050,25 +1480,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.6.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.6.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.6: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1081,22 +1521,31 @@ questions:
   choices:
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1109,22 +1558,31 @@ questions:
   choices:
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1137,25 +1595,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.3.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.3.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.3: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1168,22 +1636,31 @@ questions:
   choices:
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1196,22 +1673,31 @@ questions:
   choices:
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1224,22 +1710,32 @@ questions:
   choices:
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.6; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.6: Many-to-one NAT using ports → PAT/overload.'
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.6; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.6; One-to-one dynamic only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.6, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1252,22 +1748,31 @@ questions:
   choices:
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1280,22 +1785,31 @@ questions:
   choices:
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1308,22 +1822,32 @@ questions:
   choices:
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.3; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.3: Many-to-one NAT using ports → PAT/overload.'
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.3; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.3; One-to-one dynamic only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.3, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1336,22 +1860,31 @@ questions:
   choices:
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1364,22 +1897,31 @@ questions:
   choices:
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1392,25 +1934,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.6.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.6.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.6: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1423,22 +1975,31 @@ questions:
   choices:
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1451,22 +2012,31 @@ questions:
   choices:
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1479,25 +2049,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.3.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.3.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.3: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1510,22 +2090,31 @@ questions:
   choices:
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1538,22 +2127,31 @@ questions:
   choices:
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1566,22 +2164,32 @@ questions:
   choices:
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.6; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.6; One-to-one dynamic only is a common mix-up.
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.6; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.6: Many-to-one NAT using ports → PAT/overload.'
   correct:
     answer: a
-  explanation: For 4.6, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1594,22 +2202,31 @@ questions:
   choices:
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1622,22 +2239,31 @@ questions:
   choices:
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1650,22 +2276,32 @@ questions:
   choices:
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.3; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.3; One-to-one dynamic only is a common mix-up.
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.3; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.3: Many-to-one NAT using ports → PAT/overload.'
   correct:
     answer: a
-  explanation: For 4.3, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1678,22 +2314,31 @@ questions:
   choices:
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1706,22 +2351,31 @@ questions:
   choices:
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1734,25 +2388,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.6.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.6.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.6: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1765,22 +2429,31 @@ questions:
   choices:
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1793,22 +2466,31 @@ questions:
   choices:
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1821,25 +2503,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.3.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.3.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.3: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1852,22 +2544,31 @@ questions:
   choices:
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1880,22 +2581,31 @@ questions:
   choices:
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1908,22 +2618,32 @@ questions:
   choices:
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.6; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.6: Many-to-one NAT using ports → PAT/overload.'
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.6; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.6; One-to-one dynamic only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.6, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1936,22 +2656,31 @@ questions:
   choices:
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.1; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.1; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.1; DHCPOFFER is a common mix-up.
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.1: DHCP client broadcast to find servers → DHCPDISCOVER.'
   correct:
     answer: a
-  explanation: For 4.1, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1964,22 +2693,31 @@ questions:
   choices:
   - id: c
     text: MX
-    rationale: Not correct for 4.2; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.2; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.2: DNS record for IPv6 → AAAA.'
   - id: b
     text: A
-    rationale: Not correct for 4.2; A is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.2, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1992,22 +2730,32 @@ questions:
   choices:
   - id: d
     text: NPTv6 only
-    rationale: Not correct for 4.3; NPTv6 only is a common mix-up.
   - id: a
     text: PAT/overload
-    rationale: 'Matches 4.3: Many-to-one NAT using ports → PAT/overload.'
   - id: b
     text: Static NAT
-    rationale: Not correct for 4.3; Static NAT is a common mix-up.
   - id: c
     text: One-to-one dynamic only
-    rationale: Not correct for 4.3; One-to-one dynamic only is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.3, the accurate association is PAT/overload.
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
   provider: openboson
   license: MIT
   provenance: original
@@ -2020,22 +2768,31 @@ questions:
   choices:
   - id: a
     text: DHCPDISCOVER
-    rationale: 'Matches 4.4: DHCP client broadcast to find servers → DHCPDISCOVER.'
   - id: b
     text: DHCPACK
-    rationale: Not correct for 4.4; DHCPACK is a common mix-up.
   - id: c
     text: Only DHCPREQUEST
-    rationale: Not correct for 4.4; Only DHCPREQUEST is a common mix-up.
   - id: d
     text: DHCPOFFER
-    rationale: Not correct for 4.4; DHCPOFFER is a common mix-up.
   correct:
     answer: a
-  explanation: For 4.4, the accurate association is DHCPDISCOVER.
+  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
+    (or via a relay). This is the correct answer for the stem.
+
+
+    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
   provider: openboson
   license: MIT
   provenance: original
@@ -2048,22 +2805,31 @@ questions:
   choices:
   - id: b
     text: A
-    rationale: Not correct for 4.5; A is a common mix-up.
   - id: c
     text: MX
-    rationale: Not correct for 4.5; MX is a common mix-up.
   - id: d
     text: PTR only
-    rationale: Not correct for 4.5; PTR only is a common mix-up.
   - id: a
     text: AAAA
-    rationale: 'Matches 4.5: DNS record for IPv6 → AAAA.'
   correct:
     answer: a
-  explanation: For 4.5, the accurate association is AAAA.
+  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
+    IPv4. This is the correct answer for the stem.
+
+
+    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
   provider: openboson
   license: MIT
   provenance: original
@@ -2076,25 +2842,35 @@ questions:
   choices:
   - id: a
     text: PAT/overload
-    rationale: Correct for objective 4.6.
   - id: b
     text: Static NAT
-    rationale: Incorrect association for 4.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 4.6.
   - id: d
     text: One-to-one dynamic only
-    rationale: Distractor for 4.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 4.6: Many-to-one NAT using ports maps to PAT/overload.'
+  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
+    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
+    nat inside source list <acl> interface <if> overload`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original
@@ -2108,25 +2884,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 4.1.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 4.1.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 4.1.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 4.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 4.1 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.1
   provider: openboson
   license: MIT
   provenance: original
@@ -2139,25 +2924,487 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 4.2.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 4.2.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 4.2.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 4.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 4.2 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-42-0002-800d13
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 3
+  cert_tags: &id004
+  - ccnp
+  stem: During troubleshooting related to 4.2, which observation is most relevant?
+  choices:
+  - id: c
+    text: Use clear-text shared secrets as the only control for 4.2
+  - id: d
+    text: Skip documentation for 4.2 changes in production
+  - id: a
+    text: Use the standard model for 4.2 rather than a look-alike concept
+  - id: b
+    text: Disable logging permanently while testing 4.2
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 4.2 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 4.2** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 4.2** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 4.2 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-42-0003-c0a9c8
+  type: single_choice
+  topic_code: '4.2'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Which configuration intent aligns with ENCOR objective 4.2?
+  choices:
+  - id: d
+    text: Treat 4.2 as optional when the blueprint lists it
+  - id: a
+    text: Prefer the documented 4.2 approach used in enterprise designs
+  - id: b
+    text: Use clear-text shared secrets as the only control for 4.2
+  - id: c
+    text: Skip documentation for 4.2 changes in production
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 4.2 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 4.2** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 4.2 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 4.2 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-43-0004-e97c57
+  type: single_choice
+  topic_code: '4.3'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Select the correct association for exam topic 4.3.
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 4.3
+  - id: b
+    text: Skip documentation for 4.3 changes in production
+  - id: c
+    text: Treat 4.3 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 4.3 always works
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 4.3** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 4.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 4.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 4.3 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-44-0005-064f13
+  type: multiple_choice
+  topic_code: '4.4'
+  difficulty: 4
+  cert_tags: *id004
+  stem: '[ENCOR 4.4] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 4.4 with show/ping evidence
+  - id: b
+    text: Skip change control because 4.4 is low risk
+  - id: c
+    text: Document the 4.4 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 4.4
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 4.4 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 4.4 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 4.4 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 4.4** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-44-0006-fb7dd6
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 2
+  cert_tags: *id004
+  stem: For ENCOR objective 4.4, which statement best matches production best practice?
+  choices:
+  - id: c
+    text: Confuse 4.4 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 4.4
+  - id: a
+    text: Use the standard model for 4.4 rather than a look-alike concept
+  - id: b
+    text: Ignore verification and assume 4.4 always works
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 4.4 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 4.4 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 4.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 4.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-44-0007-c589d4
+  type: single_choice
+  topic_code: '4.4'
+  difficulty: 3
+  cert_tags: *id004
+  stem: Regarding ENCOR topic 4.4. Which reply is accurate?
+  choices:
+  - id: d
+    text: Use clear-text shared secrets as the only control for 4.4
+  - id: a
+    text: Prefer the documented 4.4 approach used in enterprise designs
+  - id: b
+    text: Confuse 4.4 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 4.4
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 4.4 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 4.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 4.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 4.4** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-45-0008-a92729
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 4
+  cert_tags: *id004
+  stem: During troubleshooting related to 4.5, which observation is most relevant?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 4.5
+  - id: b
+    text: Disable logging permanently while testing 4.5
+  - id: c
+    text: Use clear-text shared secrets as the only control for 4.5
+  - id: d
+    text: Skip documentation for 4.5 changes in production
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 4.5** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 4.5** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 4.5** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 4.5 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-45-0009-b6a30b
+  type: single_choice
+  topic_code: '4.5'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Which configuration intent aligns with ENCOR objective 4.5?
+  choices:
+  - id: b
+    text: Use clear-text shared secrets as the only control for 4.5
+  - id: c
+    text: Skip documentation for 4.5 changes in production
+  - id: d
+    text: Treat 4.5 as optional when the blueprint lists it
+  - id: a
+    text: Validate with show/verify steps before relying on 4.5 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 4.5 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 4.5** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 4.5 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 4.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-45-0010-b23653
+  type: multiple_choice
+  topic_code: '4.5'
+  difficulty: 3
+  cert_tags: *id004
+  stem: '[ENCOR 4.5] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 4.5 with show/ping evidence
+  - id: b
+    text: Skip change control because 4.5 is low risk
+  - id: c
+    text: Document the 4.5 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 4.5
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 4.5 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 4.5 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 4.5 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 4.5** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-46-0011-015761
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 4.6?
+  choices:
+  - id: d
+    text: Confuse 4.6 with an unrelated Layer mismatch
+  - id: a
+    text: Prefer the documented 4.6 approach used in enterprise designs
+  - id: b
+    text: Treat 4.6 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 4.6 always works
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 4.6 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 4.6 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 4.6 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 4.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-46-0012-7993fc
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 3
+  cert_tags: *id004
+  stem: For ENCOR objective 4.6, which statement best matches production best practice?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 4.6
+  - id: b
+    text: Ignore verification and assume 4.6 always works
+  - id: c
+    text: Confuse 4.6 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 4.6
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 4.6** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 4.6 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 4.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 4.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-46-0013-12368c
+  type: single_choice
+  topic_code: '4.6'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Regarding ENCOR topic 4.6. Which reply is accurate?
+  choices:
+  - id: b
+    text: Confuse 4.6 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 4.6
+  - id: d
+    text: Use clear-text shared secrets as the only control for 4.6
+  - id: a
+    text: Validate with show/verify steps before relying on 4.6 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 4.6 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 4.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 4.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 4.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Network Assurance
+  - ENCOR exam topic 4.6
   provider: openboson
   license: MIT
   provenance: original

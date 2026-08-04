@@ -12,21 +12,35 @@ questions:
   choices:
   - id: a
     text: Group-based policy
-    rationale: Security Group Tags.
   - id: b
     text: Only STP
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CDP version
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Security Group Tags.
+  explanation: '**Group-based policy** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only STP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only CDP version**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
+    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
+    uses `cdp run` / `show cdp neighbors`.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-002
   type: single_choice
   topic_code: '5.4'
@@ -36,21 +50,34 @@ questions:
   choices:
   - id: a
     text: Hop-by-hop L2 encryption
-    rationale: 802.1AE.
   - id: b
     text: Only L3 IPsec exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only TLS to websites
-    rationale: Not correct for this scenario.
   - id: d
     text: Only WEP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: 802.1AE.
+  explanation: '**Hop-by-hop L2 encryption** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only L3 IPsec exclusive** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only TLS to websites** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only WEP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-003
   type: single_choice
   topic_code: '5.2'
@@ -60,21 +87,34 @@ questions:
   choices:
   - id: a
     text: The control plane CPU
-    rationale: Control Plane Policing.
   - id: b
     text: Only data plane TCAM exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only PoE
-    rationale: Not correct for this scenario.
   - id: d
     text: Only fans
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Control Plane Policing.
+  explanation: '**The control plane CPU** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only data plane TCAM exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only PoE** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only fans** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 5.2
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-004
   type: single_choice
   topic_code: '5.4'
@@ -84,21 +124,35 @@ questions:
   choices:
   - id: a
     text: Network security design
-    rationale: NGFW is part of security design components.
   - id: b
     text: Only VTP
-    rationale: Not correct for this scenario.
   - id: c
     text: Only LACP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only MST instances
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: NGFW is part of security design components.
+  explanation: '**Network security design** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.
+
+
+    **Only MST instances** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-005
   type: single_choice
   topic_code: '5.1'
@@ -108,21 +162,34 @@ questions:
   choices:
   - id: a
     text: Authentication and authorization services
-    rationale: AAA controls device access.
   - id: b
     text: Only routing metrics
-    rationale: Not correct for this scenario.
   - id: c
     text: Only switching ASICs
-    rationale: Not correct for this scenario.
   - id: d
     text: Only optics
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: AAA controls device access.
+  explanation: '**Authentication and authorization services** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only routing metrics** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only switching ASICs**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
+    within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+
+
+    **Only optics** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.1
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-006
   type: single_choice
   topic_code: '5.4'
@@ -132,21 +199,37 @@ questions:
   choices:
   - id: a
     text: SGT mappings / policy
-    rationale: TrustSec env data.
   - id: b
     text: Only OSPF costs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only EIGRP K
-    rationale: Not correct for this scenario.
   - id: d
     text: Only BGP MED
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: TrustSec env data.
+  explanation: '**SGT mappings / policy** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only OSPF costs**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only EIGRP K**: **EIGRP** is an advanced distance-vector protocol that uses the Diffusing Update
+    Algorithm (DUAL) and composite metric components such as bandwidth and delay. This does not satisfy
+    the condition required by the stem. Configuration uses `router eigrp <as>`.
+
+
+    **Only BGP MED**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
+    the condition required by the stem. Configuration uses `router bgp <asn>`.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-007
   type: single_choice
   topic_code: '5.1'
@@ -156,21 +239,34 @@ questions:
   choices:
   - id: a
     text: Device access (console/VTY/local users)
-    rationale: Local lines/users are device access control.
   - id: b
     text: Only underlay BFD
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VXLAN flooding
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NetFlow keys
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Local lines/users are device access control.
+  explanation: '**Device access (console/VTY/local users)** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only underlay BFD** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only VXLAN flooding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NetFlow keys** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.1
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-008
   type: single_choice
   topic_code: '5.2'
@@ -180,21 +276,35 @@ questions:
   choices:
   - id: a
     text: ACLs protecting the device/control plane path
-    rationale: Infra ACLs harden device access.
   - id: b
     text: Only user web ACL unrelated
-    rationale: Not correct for this scenario.
   - id: c
     text: Only NAT pool
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PBR set exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Infra ACLs harden device access.
+  explanation: '**ACLs protecting the device/control plane path**: **PAT** (NAT overload) maps many inside
+    addresses to one outside address using unique transport port numbers. This is the correct answer for
+    the stem. Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only user web ACL unrelated**: An **ACL** filters traffic by matching header fields and applying
+    permit or deny actions in sequential order. This does not satisfy the condition required by the stem.
+
+
+    **Only NAT pool** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only PBR set exclusive** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - ENCOR 5.2
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-009
   type: single_choice
   topic_code: '5.4'
@@ -204,21 +314,35 @@ questions:
   choices:
   - id: a
     text: Network security design components
-    rationale: Endpoint controls complement network defenses.
   - id: b
     text: Only EtherChannel hashing
-    rationale: Not correct for this scenario.
   - id: c
     text: Only OSPF stub
-    rationale: Not correct for this scenario.
   - id: d
     text: Only SPAN sessions
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Endpoint controls complement network defenses.
+  explanation: '**Network security design components** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only EtherChannel hashing** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only OSPF stub**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only SPAN sessions** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-010
   type: single_choice
   topic_code: '5.3'
@@ -228,21 +352,34 @@ questions:
   choices:
   - id: a
     text: AuthN/AuthZ, tokens, and least privilege
-    rationale: APIs need strong authentication and authorization.
   - id: b
     text: Only STP diameter
-    rationale: Not correct for this scenario.
   - id: c
     text: Only cable categories
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE classes
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: APIs need strong authentication and authorization.
+  explanation: '**AuthN/AuthZ, tokens, and least privilege** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only STP diameter** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only cable categories** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only PoE classes** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.3
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-011
   type: single_choice
   topic_code: '5.4'
@@ -252,21 +389,35 @@ questions:
   choices:
   - id: a
     text: IP-SGT bindings
-    rationale: SGT Exchange Protocol.
   - id: b
     text: Only MAC tables
-    rationale: Not correct for this scenario.
   - id: c
     text: Only LLDP alone
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NTP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: SGT Exchange Protocol.
+  explanation: '**IP-SGT bindings** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only MAC tables** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only LLDP alone**: **LLDP** is the standards-based Layer 2 neighbor discovery protocol (IEEE 802.1AB).
+    This does not satisfy the condition required by the stem. Configuration uses `lldp run` / `show lldp
+    neighbors`.
+
+
+    **Only NTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-012
   type: single_choice
   topic_code: '5.1'
@@ -276,21 +427,34 @@ questions:
   choices:
   - id: a
     text: Identity proof vs permission grant
-    rationale: AuthN identifies; AuthZ permits actions.
   - id: b
     text: Only identical forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only syslog facilities
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DSCP EF
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: AuthN identifies; AuthZ permits actions.
+  explanation: '**Identity proof vs permission grant** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only identical forever** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only syslog facilities** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only DSCP EF** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.1
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-013
   type: single_choice
   topic_code: '5.2'
@@ -300,21 +464,35 @@ questions:
   choices:
   - id: a
     text: CoPP / hardware rate limiters
-    rationale: Protect punt.
   - id: b
     text: Only increasing STP diameter
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabling CEF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only clear arp
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Protect punt.
+  explanation: '**CoPP / hardware rate limiters**: **PAT** (NAT overload) maps many inside addresses to
+    one outside address using unique transport port numbers. This is the correct answer for the stem.
+    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only increasing STP diameter** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only disabling CEF** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only clear arp** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 5.2
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-014
   type: single_choice
   topic_code: '5.4'
@@ -324,21 +502,35 @@ questions:
   choices:
   - id: a
     text: Layered controls against attacks
-    rationale: Threat defense is a design component.
   - id: b
     text: Only single ACL deny any as sole design
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabling logging
-    rationale: Not correct for this scenario.
   - id: d
     text: Only open management planes
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Threat defense is a design component.
+  explanation: '**Layered controls against attacks** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only single ACL deny any as sole design**: An **ACL** filters traffic by matching header fields
+    and applying permit or deny actions in sequential order. This does not satisfy the condition required
+    by the stem.
+
+
+    **Only disabling logging** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only open management planes** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-015
   type: single_choice
   topic_code: '5.1'
@@ -348,21 +540,34 @@ questions:
   choices:
   - id: a
     text: Permit/deny per command
-    rationale: Command authz.
   - id: b
     text: Only authenticate without authz
-    rationale: Not correct for this scenario.
   - id: c
     text: Only encrypt STP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only mark DSCP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Command authz.
+  explanation: '**Permit/deny per command** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only authenticate without authz** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only encrypt STP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only mark DSCP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.1
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-016
   type: single_choice
   topic_code: '5.4'
@@ -372,21 +577,35 @@ questions:
   choices:
   - id: a
     text: Downloadable group policy on data plane
-    rationale: Security group ACLs.
   - id: b
     text: Only VTY passwords
-    rationale: Not correct for this scenario.
   - id: c
     text: Only enable secret
-    rationale: Not correct for this scenario.
   - id: d
     text: Only banner motd
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Security group ACLs.
+  explanation: '**Downloadable group policy on data plane**: An **ACL** filters traffic by matching header
+    fields and applying permit or deny actions in sequential order. This is the correct answer for the
+    stem.
+
+
+    **Only VTY passwords** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only enable secret** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only banner motd** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-017
   type: single_choice
   topic_code: '5.3'
@@ -396,21 +615,35 @@ questions:
   choices:
   - id: a
     text: Protected, rotated, and least-privileged
-    rationale: REST API security includes secret handling.
   - id: b
     text: Committed to public repos freely
-    rationale: Not correct for this scenario.
   - id: c
     text: Shared in banners
-    rationale: Not correct for this scenario.
   - id: d
     text: Used as OSPF passwords only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: REST API security includes secret handling.
+  explanation: '**Protected, rotated, and least-privileged** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Committed to public repos freely** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Shared in banners** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Used as OSPF passwords only**: **OSPF** is a link-state IGP that builds a topology database and
+    calculates loop-free paths with cost based primarily on interface bandwidth. This does not satisfy
+    the condition required by the stem. Configuration uses `router ospf <process>`.'
   references:
-  - ENCOR 5.3
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-018
   type: single_choice
   topic_code: '5.2'
@@ -420,21 +653,35 @@ questions:
   choices:
   - id: a
     text: L3/L4 fields (src/dst/ports/protocol)
-    rationale: Infrastructure ACL tooling includes extended ACLs.
   - id: b
     text: Only source IP like standard always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only MAC OUI exclusive
-    rationale: Not correct for this scenario.
   - id: d
     text: Only STP roles
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Infrastructure ACL tooling includes extended ACLs.
+  explanation: '**L3/L4 fields (src/dst/ports/protocol)**: An **ACL** filters traffic by matching header
+    fields and applying permit or deny actions in sequential order. This is the correct answer for the
+    stem.
+
+
+    **Only source IP like standard always** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Only MAC OUI exclusive** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only STP roles** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 5.2
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-019
   type: single_choice
   topic_code: '5.4'
@@ -444,21 +691,36 @@ questions:
   choices:
   - id: a
     text: ISE authorization results
-    rationale: AAA-driven SGT.
   - id: b
     text: Only static route
-    rationale: Not correct for this scenario.
   - id: c
     text: Only OSPF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only EIGRP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: AAA-driven SGT.
+  explanation: '**ISE authorization results** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only static route** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only EIGRP**: **EIGRP** is an advanced distance-vector protocol that uses the Diffusing Update Algorithm
+    (DUAL) and composite metric components such as bandwidth and delay. This does not satisfy the condition
+    required by the stem. Configuration uses `router eigrp <as>`.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-020
   type: single_choice
   topic_code: '5.1'
@@ -468,21 +730,34 @@ questions:
   choices:
   - id: a
     text: Availability vs security tradeoff
-    rationale: Design decision for access control.
   - id: b
     text: Only spanning-tree choice
-    rationale: Not correct for this scenario.
   - id: c
     text: Only EtherChannel hash
-    rationale: Not correct for this scenario.
   - id: d
     text: Only MTU
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Design decision for access control.
+  explanation: '**Availability vs security tradeoff** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only spanning-tree choice** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only EtherChannel hash** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only MTU** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 5.1
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-021
   type: single_choice
   topic_code: '5.4'
@@ -492,21 +767,35 @@ questions:
   choices:
   - id: a
     text: MACsec can encrypt; TrustSec provides group policy context
-    rationale: Both appear under security design components.
   - id: b
     text: Only identical protocols
-    rationale: Not correct for this scenario.
   - id: c
     text: Only replace OSPF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only disable AAA
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Both appear under security design components.
+  explanation: '**MACsec can encrypt; TrustSec provides group policy context** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only identical protocols** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only replace OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-022
   type: single_choice
   topic_code: '5.2'
@@ -516,21 +805,36 @@ questions:
   choices:
   - id: a
     text: Protecting traffic to the device/control plane
-    rationale: CoPP/iACLs harden the control plane.
   - id: b
     text: Only switching CAM
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP sync
-    rationale: Not correct for this scenario.
   - id: d
     text: Only LACP PDUs exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: CoPP/iACLs harden the control plane.
+  explanation: '**Protecting traffic to the device/control plane**: An **ACL** filters traffic by matching
+    header fields and applying permit or deny actions in sequential order. This is the correct answer
+    for the stem.
+
+
+    **Only switching CAM**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
+    within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+
+
+    **Only VTP sync** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only LACP PDUs exclusive**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 5.2
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-023
   type: single_choice
   topic_code: '5.3'
@@ -540,21 +844,34 @@ questions:
   choices:
   - id: a
     text: REST API security practice
-    rationale: Modern APIs use token auth models.
   - id: b
     text: Only STP tuning
-    rationale: Not correct for this scenario.
   - id: c
     text: Only multicast RPF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only HSRP preempt
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Modern APIs use token auth models.
+  explanation: '**REST API security practice** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only STP tuning** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only multicast RPF** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only HSRP preempt** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.3
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-024
   type: single_choice
   topic_code: '5.1'
@@ -564,21 +881,34 @@ questions:
   choices:
   - id: a
     text: What commands authenticated users may run
-    rationale: Privilege levels are device access control.
   - id: b
     text: Only underlay MTU
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VXLAN flood lists
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NetFlow samplers
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Privilege levels are device access control.
+  explanation: '**What commands authenticated users may run** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only underlay MTU** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only VXLAN flood lists** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NetFlow samplers** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 5.1
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-5-090
   type: drag_match
   topic_code: '5.4'
@@ -596,9 +926,15 @@ questions:
     right: Policy and AAA engine
   correct:
     pairs: *id002
-  explanation: TrustSec tags endpoints and enforces group policy.
+  explanation: 'The correct mappings are: SGT → Group tag on packets/context; SGACL → Policy enforced
+    by group; SXP → Shares IP-to-SGT bindings; ISE → Policy and AAA engine. Each left item associates
+    with exactly one right item.'
   references:
-  - ENCOR 5.4
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-gen-0016-4ce3ac
   type: single_choice
   topic_code: '5.1'
@@ -609,22 +945,31 @@ questions:
   choices:
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -637,23 +982,31 @@ questions:
   choices:
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -666,25 +1019,33 @@ questions:
   choices:
   - id: a
     text: WLC
-    rationale: Correct for objective 5.3.
   - id: b
     text: DNS
-    rationale: Incorrect association for 5.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 5.3.
   - id: d
     text: NTP
-    rationale: Distractor for 5.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -697,22 +1058,31 @@ questions:
   choices:
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -725,22 +1095,31 @@ questions:
   choices:
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -753,23 +1132,31 @@ questions:
   choices:
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -782,22 +1169,30 @@ questions:
   choices:
   - id: b
     text: DNS
-    rationale: Not correct for 5.3; DNS is a common mix-up.
   - id: c
     text: NTP
-    rationale: Not correct for 5.3; NTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 5.3; SMTP is a common mix-up.
   - id: a
     text: WLC
-    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
   correct:
     answer: a
-  explanation: For 5.3, the accurate association is WLC.
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -810,22 +1205,31 @@ questions:
   choices:
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -838,22 +1242,31 @@ questions:
   choices:
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -866,23 +1279,31 @@ questions:
   choices:
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -895,25 +1316,33 @@ questions:
   choices:
   - id: a
     text: WLC
-    rationale: Correct for objective 5.3.
   - id: b
     text: DNS
-    rationale: Incorrect association for 5.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 5.3.
   - id: d
     text: NTP
-    rationale: Distractor for 5.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -926,22 +1355,31 @@ questions:
   choices:
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -954,22 +1392,31 @@ questions:
   choices:
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -982,23 +1429,31 @@ questions:
   choices:
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1011,22 +1466,30 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 5.3; SMTP is a common mix-up.
   - id: a
     text: WLC
-    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
   - id: b
     text: DNS
-    rationale: Not correct for 5.3; DNS is a common mix-up.
   - id: c
     text: NTP
-    rationale: Not correct for 5.3; NTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.3, the accurate association is WLC.
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1039,22 +1502,31 @@ questions:
   choices:
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1067,22 +1539,31 @@ questions:
   choices:
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1095,23 +1576,31 @@ questions:
   choices:
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1124,25 +1613,33 @@ questions:
   choices:
   - id: a
     text: WLC
-    rationale: Correct for objective 5.3.
   - id: b
     text: DNS
-    rationale: Incorrect association for 5.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 5.3.
   - id: d
     text: NTP
-    rationale: Distractor for 5.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1155,22 +1652,31 @@ questions:
   choices:
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1183,22 +1689,31 @@ questions:
   choices:
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1211,23 +1726,31 @@ questions:
   choices:
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1240,22 +1763,30 @@ questions:
   choices:
   - id: b
     text: DNS
-    rationale: Not correct for 5.3; DNS is a common mix-up.
   - id: c
     text: NTP
-    rationale: Not correct for 5.3; NTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 5.3; SMTP is a common mix-up.
   - id: a
     text: WLC
-    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
   correct:
     answer: a
-  explanation: For 5.3, the accurate association is WLC.
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1268,22 +1799,31 @@ questions:
   choices:
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1296,22 +1836,31 @@ questions:
   choices:
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1324,23 +1873,31 @@ questions:
   choices:
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1353,25 +1910,33 @@ questions:
   choices:
   - id: a
     text: WLC
-    rationale: Correct for objective 5.3.
   - id: b
     text: DNS
-    rationale: Incorrect association for 5.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 5.3.
   - id: d
     text: NTP
-    rationale: Distractor for 5.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1384,22 +1949,31 @@ questions:
   choices:
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1412,22 +1986,31 @@ questions:
   choices:
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1440,23 +2023,31 @@ questions:
   choices:
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1469,22 +2060,30 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 5.3; SMTP is a common mix-up.
   - id: a
     text: WLC
-    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
   - id: b
     text: DNS
-    rationale: Not correct for 5.3; DNS is a common mix-up.
   - id: c
     text: NTP
-    rationale: Not correct for 5.3; NTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.3, the accurate association is WLC.
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1497,22 +2096,31 @@ questions:
   choices:
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1525,22 +2133,31 @@ questions:
   choices:
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1553,23 +2170,31 @@ questions:
   choices:
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1582,25 +2207,33 @@ questions:
   choices:
   - id: a
     text: WLC
-    rationale: Correct for objective 5.3.
   - id: b
     text: DNS
-    rationale: Incorrect association for 5.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 5.3.
   - id: d
     text: NTP
-    rationale: Distractor for 5.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 5.3: Typical CAPWAP termination maps to WLC.'
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1613,22 +2246,31 @@ questions:
   choices:
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1641,22 +2283,31 @@ questions:
   choices:
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.1; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.1: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.1; 60 GHz only is a common mix-up.
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.1; Sub-GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.1, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1669,23 +2320,31 @@ questions:
   choices:
   - id: a
     text: Stronger SAE/handshake protections
-    rationale: 'Matches 5.2: WPA3 era wireless security focus → Stronger SAE/handshake
-      protections.'
   - id: b
     text: WEP revival
-    rationale: Not correct for 5.2; WEP revival is a common mix-up.
   - id: c
     text: Clear-text PSK mandatory
-    rationale: Not correct for 5.2; Clear-text PSK mandatory is a common mix-up.
   - id: d
     text: Disable 802.1X always
-    rationale: Not correct for 5.2; Disable 802.1X always is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.2, the accurate association is Stronger SAE/handshake protections.
+  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1698,22 +2357,30 @@ questions:
   choices:
   - id: b
     text: DNS
-    rationale: Not correct for 5.3; DNS is a common mix-up.
   - id: c
     text: NTP
-    rationale: Not correct for 5.3; NTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 5.3; SMTP is a common mix-up.
   - id: a
     text: WLC
-    rationale: 'Matches 5.3: Typical CAPWAP termination → WLC.'
   correct:
     answer: a
-  explanation: For 5.3, the accurate association is WLC.
+  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1726,22 +2393,110 @@ questions:
   choices:
   - id: c
     text: Sub-GHz only
-    rationale: Not correct for 5.4; Sub-GHz only is a common mix-up.
   - id: d
     text: Visible light only
-    rationale: Not correct for 5.4; Visible light only is a common mix-up.
   - id: a
     text: 2.4 GHz ISM
-    rationale: 'Matches 5.4: Common 2.4 GHz Wi-Fi band → 2.4 GHz ISM.'
   - id: b
     text: 60 GHz only
-    rationale: Not correct for 5.4; 60 GHz only is a common mix-up.
   correct:
     answer: a
-  explanation: For 5.4, the accurate association is 2.4 GHz ISM.
+  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-53-0014-db715b
+  type: single_choice
+  topic_code: '5.3'
+  difficulty: 5
+  cert_tags: &id004
+  - ccnp
+  stem: During troubleshooting related to 5.3, which observation is most relevant?
+  choices:
+  - id: c
+    text: Use clear-text shared secrets as the only control for 5.3
+  - id: d
+    text: Skip documentation for 5.3 changes in production
+  - id: a
+    text: Use the standard model for 5.3 rather than a look-alike concept
+  - id: b
+    text: Disable logging permanently while testing 5.3
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 5.3 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 5.3** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 5.3** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 5.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-53-0015-82ff5d
+  type: multiple_choice
+  topic_code: '5.3'
+  difficulty: 2
+  cert_tags: *id004
+  stem: '[ENCOR 5.3] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 5.3 with show/ping evidence
+  - id: b
+    text: Skip change control because 5.3 is low risk
+  - id: c
+    text: Document the 5.3 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 5.3
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 5.3 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 5.3 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 5.3 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 5.3** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Security
+  - ENCOR exam topic 5.3
   provider: openboson
   license: MIT
   provenance: original

@@ -12,21 +12,36 @@ questions:
   choices:
   - id: a
     text: Bandwidth and delay (by default K values)
-    rationale: Classic EIGRP metric.
   - id: b
     text: Only hop count
-    rationale: Not correct for this scenario.
   - id: c
     text: Only AS path
-    rationale: Not correct for this scenario.
   - id: d
     text: Only STP cost
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Classic EIGRP metric.
+  explanation: '**Bandwidth and delay (by default K values)**: **EIGRP** is an advanced distance-vector
+    protocol that uses the Diffusing Update Algorithm (DUAL) and composite metric components such as bandwidth
+    and delay. This is the correct answer for the stem. Configuration uses `router eigrp <as>`.
+
+
+    **Only hop count** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only AS path**: **PAT** (NAT overload) maps many inside addresses to one outside address using unique
+    transport port numbers. This does not satisfy the condition required by the stem. Configuration uses
+    `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only STP cost** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-002
   type: single_choice
   topic_code: '3.2'
@@ -36,21 +51,34 @@ questions:
   choices:
   - id: a
     text: IPv6 (address-family designs)
-    rationale: OSPFv3 for IPv6.
   - id: b
     text: Only IPv4 classful
-    rationale: Not correct for this scenario.
   - id: c
     text: Only IPX
-    rationale: Not correct for this scenario.
   - id: d
     text: Only AppleTalk
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: OSPFv3 for IPv6.
+  explanation: '**IPv6 (address-family designs)**: **OSPF** is a link-state IGP that builds a topology
+    database and calculates loop-free paths with cost based primarily on interface bandwidth. This is
+    the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only IPv4 classful** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only IPX** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Only AppleTalk** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-003
   type: single_choice
   topic_code: '3.2'
@@ -60,21 +88,35 @@ questions:
   choices:
   - id: a
     text: Local Preference (among early steps)
-    rationale: LOC_PREF is a key enterprise knob.
   - id: b
     text: Always lowest MED first exclusively
-    rationale: Not correct for this scenario.
   - id: c
     text: Always random
-    rationale: Not correct for this scenario.
   - id: d
     text: Always IGP metric only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: LOC_PREF is a key enterprise knob.
+  explanation: '**Local Preference (among early steps)**: **BGP** exchanges reachability among autonomous
+    systems and selects paths using an ordered attribute policy (weight, local preference, AS-path, MED,
+    and others). This is the correct answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Always lowest MED first exclusively** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Always random** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Always IGP metric only** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-004
   type: single_choice
   topic_code: '3.1'
@@ -84,21 +126,37 @@ questions:
   choices:
   - id: a
     text: DTP/native VLAN mismatches
-    rationale: Trunk troubleshooting focuses on tagging/DTP/native VLAN.
   - id: b
     text: Only OSPF RID
-    rationale: Not correct for this scenario.
   - id: c
     text: Only BGP AS path
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NTP stratum
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Trunk troubleshooting focuses on tagging/DTP/native VLAN.
+  explanation: '**DTP/native VLAN mismatches**: The **native VLAN** carries untagged frames on an 802.1Q
+    trunk. Tagged frames belong to other VLANs carried on the same trunk. This is the correct answer for
+    the stem. Configuration uses `switchport trunk native vlan <id>`.
+
+
+    **Only OSPF RID**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only BGP AS path**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
+    the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only NTP stratum** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.1
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-005
   type: single_choice
   topic_code: '3.3'
@@ -108,21 +166,34 @@ questions:
   choices:
   - id: a
     text: RP for shared trees
-    rationale: ASM with Rendezvous Point.
   - id: b
     text: Only dense flood always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only STP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only HSRP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ASM with Rendezvous Point.
+  explanation: '**RP for shared trees** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only dense flood always** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only STP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only HSRP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-006
   type: single_choice
   topic_code: '3.2'
@@ -132,21 +203,33 @@ questions:
   choices:
   - id: a
     text: Best metric to destination
-    rationale: FD is best known metric.
   - id: b
     text: Only AD
-    rationale: Not correct for this scenario.
   - id: c
     text: Only hop count
-    rationale: Not correct for this scenario.
   - id: d
     text: Only MTU
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: FD is best known metric.
+  explanation: '**Best metric to destination**: **EIGRP** is an advanced distance-vector protocol that
+    uses the Diffusing Update Algorithm (DUAL) and composite metric components such as bandwidth and delay.
+    This is the correct answer for the stem. Configuration uses `router eigrp <as>`.
+
+
+    **Only AD** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Only hop count** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only MTU** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-007
   type: single_choice
   topic_code: '3.2'
@@ -156,21 +239,33 @@ questions:
   choices:
   - id: a
     text: DR/BDR election
-    rationale: No DR on p2p.
   - id: b
     text: All Hellos
-    rationale: Not correct for this scenario.
   - id: c
     text: All LSAs
-    rationale: Not correct for this scenario.
   - id: d
     text: Authentication always
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: No DR on p2p.
+  explanation: '**DR/BDR election**: **OSPF** is a link-state IGP that builds a topology database and
+    calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct answer
+    for the stem. Configuration uses `router ospf <process>`.
+
+
+    **All Hellos** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **All LSAs** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Authentication always** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-008
   type: single_choice
   topic_code: '3.2'
@@ -180,21 +275,35 @@ questions:
   choices:
   - id: a
     text: Neighbor relationships and best-path selection
-    rationale: ENCOR emphasizes eBGP peering and best path.
   - id: b
     text: Only STP root guard
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP pruning
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ENCOR emphasizes eBGP peering and best path.
+  explanation: '**Neighbor relationships and best-path selection**: **PAT** (NAT overload) maps many inside
+    addresses to one outside address using unique transport port numbers. This is the correct answer for
+    the stem. Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only STP root guard**: **Root guard** prevents a neighboring switch from becoming the root bridge
+    by keeping the receiving port in a root-inconsistent state if superior BPDUs arrive. This does not
+    satisfy the condition required by the stem. Configuration uses `spanning-tree guard root`.
+
+
+    **Only VTP pruning** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only PoE** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-009
   type: single_choice
   topic_code: '3.1'
@@ -204,21 +313,35 @@ questions:
   choices:
   - id: a
     text: Member speed/duplex/mode consistency
-    rationale: Inconsistent members suspend channels.
   - id: b
     text: Only BGP communities
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DNS TTL
-    rationale: Not correct for this scenario.
   - id: d
     text: Only syslog facility
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Inconsistent members suspend channels.
+  explanation: '**Member speed/duplex/mode consistency** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only BGP communities**: **BGP** exchanges reachability among autonomous systems and selects paths
+    using an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does
+    not satisfy the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only DNS TTL** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only syslog facility** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 3.1
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-010
   type: single_choice
   topic_code: '3.3'
@@ -228,21 +351,34 @@ questions:
   choices:
   - id: a
     text: Multicast flooding on L2
-    rationale: Switch learns multicast receivers.
   - id: b
     text: Unicast ARP
-    rationale: Not correct for this scenario.
   - id: c
     text: STP
-    rationale: Not correct for this scenario.
   - id: d
     text: NTP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Switch learns multicast receivers.
+  explanation: '**Multicast flooding on L2** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Unicast ARP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **STP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-011
   type: single_choice
   topic_code: '3.2'
@@ -252,21 +388,34 @@ questions:
   choices:
   - id: a
     text: Query scope
-    rationale: Stubs reduce SIA risk.
   - id: b
     text: Only hello timers to zero
-    rationale: Not correct for this scenario.
   - id: c
     text: Only bandwidth to 0
-    rationale: Not correct for this scenario.
   - id: d
     text: Only delay infinite always
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Stubs reduce SIA risk.
+  explanation: '**Query scope**: A **router** forwards IP packets between networks using the routing table
+    and operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **Only hello timers to zero** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only bandwidth to 0** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only delay infinite always** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-012
   type: single_choice
   topic_code: '3.2'
@@ -276,21 +425,34 @@ questions:
   choices:
   - id: a
     text: Limited external injection into stub-like area
-    rationale: NSSA Type 7.
   - id: b
     text: Only Type 5 flood everywhere
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabling ABR
-    rationale: Not correct for this scenario.
   - id: d
     text: Only RIP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: NSSA Type 7.
+  explanation: '**Limited external injection into stub-like area**: **OSPF** is a link-state IGP that
+    builds a topology database and calculates loop-free paths with cost based primarily on interface bandwidth.
+    This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only Type 5 flood everywhere** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only disabling ABR** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only RIP** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-013
   type: single_choice
   topic_code: '3.2'
@@ -300,21 +462,35 @@ questions:
   choices:
   - id: a
     text: Override destination-based forwarding with policy
-    rationale: PBR steers traffic by match criteria.
   - id: b
     text: Only elect HSRP active
-    rationale: Not correct for this scenario.
   - id: c
     text: Only age MAC tables
-    rationale: Not correct for this scenario.
   - id: d
     text: Only negotiate LACP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: PBR steers traffic by match criteria.
+  explanation: '**Override destination-based forwarding with policy** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only elect HSRP active** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only age MAC tables** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only negotiate LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-014
   type: single_choice
   topic_code: '3.1'
@@ -324,21 +500,35 @@ questions:
   choices:
   - id: a
     text: Root guard and BPDU guard
-    rationale: STP enhancements protect topology stability.
   - id: b
     text: Only NAT pools
-    rationale: Not correct for this scenario.
   - id: c
     text: Only NetFlow keys
-    rationale: Not correct for this scenario.
   - id: d
     text: Only EEM applets
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: STP enhancements protect topology stability.
+  explanation: '**Root guard and BPDU guard**: **Root guard** prevents a neighboring switch from becoming
+    the root bridge by keeping the receiving port in a root-inconsistent state if superior BPDUs arrive.
+    This is the correct answer for the stem. Configuration uses `spanning-tree guard root`.
+
+
+    **Only NAT pools** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NetFlow keys** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only EEM applets** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 3.1
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-015
   type: single_choice
   topic_code: '3.3'
@@ -348,21 +538,34 @@ questions:
   choices:
   - id: a
     text: PIM domains’ RPs
-    rationale: Multicast Source Discovery.
   - id: b
     text: Only VLANs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only AAA servers
-    rationale: Not correct for this scenario.
   - id: d
     text: Only syslog
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Multicast Source Discovery.
+  explanation: '**PIM domains’ RPs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only VLANs** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only AAA servers** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only syslog** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-016
   type: single_choice
   topic_code: '3.2'
@@ -372,21 +575,33 @@ questions:
   choices:
   - id: a
     text: Address-families under eigrp NAME
-    rationale: Named mode AF.
   - id: b
     text: Only process numbers forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only RIP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only static
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Named mode AF.
+  explanation: '**Address-families under eigrp NAME**: **EIGRP** is an advanced distance-vector protocol
+    that uses the Diffusing Update Algorithm (DUAL) and composite metric components such as bandwidth
+    and delay. This is the correct answer for the stem. Configuration uses `router eigrp <as>`.
+
+
+    **Only process numbers forever** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only RIP** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Only static** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-017
   type: single_choice
   topic_code: '3.2'
@@ -396,21 +611,33 @@ questions:
   choices:
   - id: a
     text: Multiple instances on a link
-    rationale: Instance ID.
   - id: b
     text: Only VLAN IDs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DSCP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only ASN
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Instance ID.
+  explanation: '**Multiple instances on a link**: **OSPF** is a link-state IGP that builds a topology
+    database and calculates loop-free paths with cost based primarily on interface bandwidth. This is
+    the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only VLAN IDs** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only DSCP** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Only ASN** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-018
   type: single_choice
   topic_code: '3.2'
@@ -420,21 +647,36 @@ questions:
   choices:
   - id: a
     text: From same neighboring AS (default)
-    rationale: MED multi-exit discriminator.
   - id: b
     text: Always across all AS freely without knob
-    rationale: Not correct for this scenario.
   - id: c
     text: Only for OSPF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only for EIGRP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: MED multi-exit discriminator.
+  explanation: '**From same neighboring AS (default)** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Always across all AS freely without knob** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.
+
+
+    **Only for OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only for EIGRP**: **EIGRP** is an advanced distance-vector protocol that uses the Diffusing Update
+    Algorithm (DUAL) and composite metric components such as bandwidth and delay. This does not satisfy
+    the condition required by the stem. Configuration uses `router eigrp <as>`.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-019
   type: single_choice
   topic_code: '3.3'
@@ -444,21 +686,35 @@ questions:
   choices:
   - id: a
     text: Translate inside addresses for outside reachability
-    rationale: NAT/PAT conserves/publicizes addressing.
   - id: b
     text: Only hash EtherChannels
-    rationale: Not correct for this scenario.
   - id: c
     text: Only elect DR
-    rationale: Not correct for this scenario.
   - id: d
     text: Only set STP priority
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: NAT/PAT conserves/publicizes addressing.
+  explanation: '**Translate inside addresses for outside reachability**: A **router** forwards IP packets
+    between networks using the routing table and operates primarily at Layer 3. This is the correct answer
+    for the stem.
+
+
+    **Only hash EtherChannels** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only elect DR** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only set STP priority** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-020
   type: single_choice
   topic_code: '3.3'
@@ -468,21 +724,35 @@ questions:
   choices:
   - id: a
     text: RP redundancy
-    rationale: Anycast RP.
   - id: b
     text: Only unique RP mandatory single
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disables multicast
-    rationale: Not correct for this scenario.
   - id: d
     text: Only L2 flooding
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Anycast RP.
+  explanation: '**RP redundancy**: **Anycast** assigns the same address to multiple nodes; routers forward
+    to the topologically nearest member. IPv6 does not use broadcast. This is the correct answer for the
+    stem.
+
+
+    **Only unique RP mandatory single** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Only disables multicast** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only L2 flooding** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-021
   type: single_choice
   topic_code: '3.2'
@@ -492,21 +762,34 @@ questions:
   choices:
   - id: a
     text: Higher interface speeds accurately
-    rationale: Wide metrics.
   - id: b
     text: Only 10 Mbps max
-    rationale: Not correct for this scenario.
   - id: c
     text: Only Token Ring
-    rationale: Not correct for this scenario.
   - id: d
     text: Only ISDN
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Wide metrics.
+  explanation: '**Higher interface speeds accurately**: **EIGRP** is an advanced distance-vector protocol
+    that uses the Diffusing Update Algorithm (DUAL) and composite metric components such as bandwidth
+    and delay. This is the correct answer for the stem. Configuration uses `router eigrp <as>`.
+
+
+    **Only 10 Mbps max** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only Token Ring** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only ISDN** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-022
   type: single_choice
   topic_code: '3.2'
@@ -516,21 +799,33 @@ questions:
   choices:
   - id: a
     text: Preserve forwarding during restart
-    rationale: NSF/GR.
   - id: b
     text: Flush all routes immediately always
-    rationale: Not correct for this scenario.
   - id: c
     text: Disable BFD
-    rationale: Not correct for this scenario.
   - id: d
     text: Clear ARP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: NSF/GR.
+  explanation: '**Preserve forwarding during restart**: **OSPF** is a link-state IGP that builds a topology
+    database and calculates loop-free paths with cost based primarily on interface bandwidth. This is
+    the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Flush all routes immediately always** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Disable BFD** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Clear ARP** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-023
   type: single_choice
   topic_code: '3.3'
@@ -540,21 +835,34 @@ questions:
   choices:
   - id: a
     text: First-hop gateway redundancy
-    rationale: FHRPs keep default gateways available.
   - id: b
     text: Only VXLAN VNIs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only NETCONF datastores
-    rationale: Not correct for this scenario.
   - id: d
     text: Only gRPC dial-out
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: FHRPs keep default gateways available.
+  explanation: '**First-hop gateway redundancy**: A Layer 2 **switch** forwards Ethernet frames based
+    on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+
+
+    **Only VXLAN VNIs** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only NETCONF datastores** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only gRPC dial-out** is incorrect. It does not describe the intended use or behavior required by
+    the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-024
   type: single_choice
   topic_code: '3.3'
@@ -564,21 +872,35 @@ questions:
   choices:
   - id: a
     text: PTP offers higher precision use cases; NTP is ubiquitous sync
-    rationale: ENCOR covers NTP and PTP timing configs.
   - id: b
     text: Only STP timers
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP revisions
-    rationale: Not correct for this scenario.
   - id: d
     text: Only LACP priorities
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ENCOR covers NTP and PTP timing configs.
+  explanation: '**PTP offers higher precision use cases; NTP is ubiquitous sync** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Only STP timers** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only VTP revisions** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only LACP priorities**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-025
   type: single_choice
   topic_code: '3.1'
@@ -588,21 +910,36 @@ questions:
   choices:
   - id: a
     text: Instances to reduce STP scale
-    rationale: MST groups VLANs into instances.
   - id: b
     text: Only OSPF areas
-    rationale: Not correct for this scenario.
   - id: c
     text: Only BGP confederations
-    rationale: Not correct for this scenario.
   - id: d
     text: Only VRF tables
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: MST groups VLANs into instances.
+  explanation: '**Instances to reduce STP scale** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only OSPF areas**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only BGP confederations**: **BGP** exchanges reachability among autonomous systems and selects paths
+    using an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does
+    not satisfy the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only VRF tables** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 3.1
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-026
   type: single_choice
   topic_code: '3.2'
@@ -612,21 +949,34 @@ questions:
   choices:
   - id: a
     text: ABRs (and ASBRs for externals)
-    rationale: ABRs summarize between areas.
   - id: b
     text: Only access ports
-    rationale: Not correct for this scenario.
   - id: c
     text: Only WLC LAG
-    rationale: Not correct for this scenario.
   - id: d
     text: Only syslog hosts
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ABRs summarize between areas.
+  explanation: '**ABRs (and ASBRs for externals)**: **OSPF** is a link-state IGP that builds a topology
+    database and calculates loop-free paths with cost based primarily on interface bandwidth. This is
+    the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only access ports** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only WLC LAG** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Only syslog hosts** is incorrect. It does not describe the intended use or behavior required by
+    the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-027
   type: single_choice
   topic_code: '3.2'
@@ -636,21 +986,36 @@ questions:
   choices:
   - id: a
     text: Advanced distance vector; OSPF is link state
-    rationale: ENCOR compares EIGRP and OSPF concepts.
   - id: b
     text: Only link state for both identical
-    rationale: Not correct for this scenario.
   - id: c
     text: Only path-vector like BGP for both
-    rationale: Not correct for this scenario.
   - id: d
     text: Only RIP clones
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ENCOR compares EIGRP and OSPF concepts.
+  explanation: '**Advanced distance vector; OSPF is link state**: **OSPF** is a link-state IGP that builds
+    a topology database and calculates loop-free paths with cost based primarily on interface bandwidth.
+    This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only link state for both identical** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Only path-vector like BGP for both**: **BGP** exchanges reachability among autonomous systems and
+    selects paths using an ordered attribute policy (weight, local preference, AS-path, MED, and others).
+    This does not satisfy the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only RIP clones** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-028
   type: single_choice
   topic_code: '3.3'
@@ -660,21 +1025,36 @@ questions:
   choices:
   - id: a
     text: Accepting multicast on the wrong reverse path
-    rationale: RPF validates expected reverse path to source.
   - id: b
     text: Only TCP SYN floods exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VLAN hopping exclusive
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DNS amplification exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: RPF validates expected reverse path to source.
+  explanation: '**Accepting multicast on the wrong reverse path**: **PAT** (NAT overload) maps many inside
+    addresses to one outside address using unique transport port numbers. This is the correct answer for
+    the stem. Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only TCP SYN floods exclusive**: **TCP** provides reliable, ordered, connection-oriented delivery
+    using sequence and acknowledgment numbers, among other mechanisms. This does not satisfy the condition
+    required by the stem.
+
+
+    **Only VLAN hopping exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only DNS amplification exclusive** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-029
   type: single_choice
   topic_code: '3.1'
@@ -684,21 +1064,36 @@ questions:
   choices:
   - id: a
     text: Matching member configurations on-mode
-    rationale: On-mode channels still need consistent members.
   - id: b
     text: Only BGP sessions
-    rationale: Not correct for this scenario.
   - id: c
     text: Only IPsec profiles
-    rationale: Not correct for this scenario.
   - id: d
     text: Only YANG models
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: On-mode channels still need consistent members.
+  explanation: '**Matching member configurations on-mode**: **LACP** (IEEE 802.3ad) negotiates EtherChannel
+    bundles and is the standards-based alternative to PAgP. This is the correct answer for the stem. Configuration
+    uses `channel-group <id> mode active|passive`.
+
+
+    **Only BGP sessions**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
+    the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only IPsec profiles** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only YANG models** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.1
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-030
   type: single_choice
   topic_code: '3.2'
@@ -708,21 +1103,35 @@ questions:
   choices:
   - id: a
     text: Advertise a network without forming Hellos/adjacency
-    rationale: Passive interfaces suppress Hellos.
   - id: b
     text: Disable the IP address
-    rationale: Not correct for this scenario.
   - id: c
     text: Force Type 5 everywhere
-    rationale: Not correct for this scenario.
   - id: d
     text: Clear the RID automatically
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Passive interfaces suppress Hellos.
+  explanation: '**Advertise a network without forming Hellos/adjacency**: **OSPF** is a link-state IGP
+    that builds a topology database and calculates loop-free paths with cost based primarily on interface
+    bandwidth. This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Disable the IP address** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Force Type 5 everywhere** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Clear the RID automatically** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-031
   type: single_choice
   topic_code: '3.3'
@@ -732,21 +1141,34 @@ questions:
   choices:
   - id: a
     text: Source-specific multicast joins
-    rationale: IGMPv3 supports SSM source filters.
   - id: b
     text: Only dense-mode flood forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only STP Fast Hellos
-    rationale: Not correct for this scenario.
   - id: d
     text: Only AAA CoA
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: IGMPv3 supports SSM source filters.
+  explanation: '**Source-specific multicast joins** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only dense-mode flood forever** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only STP Fast Hellos** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only AAA CoA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-032
   type: single_choice
   topic_code: '3.2'
@@ -756,21 +1178,36 @@ questions:
   choices:
   - id: a
     text: Local to the router and highest preferred first
-    rationale: Cisco weight is local and considered early.
   - id: b
     text: Transitive across the AS always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only an OSPF metric
-    rationale: Not correct for this scenario.
   - id: d
     text: Only a VLAN ID
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Cisco weight is local and considered early.
+  explanation: '**Local to the router and highest preferred first**: A **router** forwards IP packets
+    between networks using the routing table and operates primarily at Layer 3. This is the correct answer
+    for the stem.
+
+
+    **Transitive across the AS always** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Only an OSPF metric**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only a VLAN ID** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-033
   type: single_choice
   topic_code: '3.1'
@@ -780,21 +1217,36 @@ questions:
   choices:
   - id: a
     text: Err-disables the port
-    rationale: BPDU guard protects edge ports.
   - id: b
     text: Becomes root immediately always
-    rationale: Not correct for this scenario.
   - id: c
     text: Negotiates LACP
-    rationale: Not correct for this scenario.
   - id: d
     text: Creates a VRF
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: BPDU guard protects edge ports.
+  explanation: '**Err-disables the port**: **BPDU guard** err-disables a PortFast-enabled port that receives
+    a BPDU, protecting the edge from an accidental switch attachment that could create a loop. This is
+    the correct answer for the stem. Configuration uses `spanning-tree bpduguard enable`.
+
+
+    **Becomes root immediately always** is incorrect. It does not describe the intended use or behavior
+    required by the stem.
+
+
+    **Negotiates LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.
+
+
+    **Creates a VRF** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.1
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-034
   type: single_choice
   topic_code: '3.3'
@@ -804,21 +1256,34 @@ questions:
   choices:
   - id: a
     text: Source trees without a shared-tree RP dependency
-    rationale: SSM builds source-specific trees.
   - id: b
     text: Only dense flood
-    rationale: Not correct for this scenario.
   - id: c
     text: Only MSDP mandatory always
-    rationale: Not correct for this scenario.
   - id: d
     text: Only IGMP v1 exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: SSM builds source-specific trees.
+  explanation: '**Source trees without a shared-tree RP dependency** is correct. It is the selection that
+    meets the requirement stated in the stem.
+
+
+    **Only dense flood** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only MSDP mandatory always** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only IGMP v1 exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 3.3
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-035
   type: single_choice
   topic_code: '3.2'
@@ -828,21 +1293,36 @@ questions:
   choices:
   - id: a
     text: Connectivity via backbone area 0 (classic design)
-    rationale: Non-backbone areas attach through area 0.
   - id: b
     text: Only a single area forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only EIGRP redistribution mandatory
-    rationale: Not correct for this scenario.
   - id: d
     text: Only static defaults exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Non-backbone areas attach through area 0.
+  explanation: '**Connectivity via backbone area 0 (classic design)**: **OSPF** is a link-state IGP that
+    builds a topology database and calculates loop-free paths with cost based primarily on interface bandwidth.
+    This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only a single area forever** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only EIGRP redistribution mandatory**: **EIGRP** is an advanced distance-vector protocol that uses
+    the Diffusing Update Algorithm (DUAL) and composite metric components such as bandwidth and delay.
+    This does not satisfy the condition required by the stem. Configuration uses `router eigrp <as>`.
+
+
+    **Only static defaults exclusive** is incorrect. It does not describe the intended use or behavior
+    required by the stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-036
   type: single_choice
   topic_code: '3.2'
@@ -852,28 +1332,43 @@ questions:
   choices:
   - id: a
     text: Area filter-lists / summarization controls
-    rationale: ABRs can filter/summarize inter-area prefixes.
   - id: b
     text: Only VTP passwords
-    rationale: Not correct for this scenario.
   - id: c
     text: Only PortFast
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CAPWAP DTLS
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ABRs can filter/summarize inter-area prefixes.
+  explanation: '**Area filter-lists / summarization controls**: **OSPF** is a link-state IGP that builds
+    a topology database and calculates loop-free paths with cost based primarily on interface bandwidth.
+    This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only VTP passwords** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Only PortFast**: **PortFast** places an edge port into the forwarding state immediately, bypassing
+    the listening and learning states and thereby reducing STP convergence time for end stations. This
+    does not satisfy the condition required by the stem. Configuration uses `spanning-tree portfast`.
+
+
+    **Only CAPWAP DTLS** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 3.2
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-3-090
   type: ordered_list
   topic_code: '3.2'
   difficulty: 4
   cert_tags: *id001
-  stem: Order early BGP best-path decision steps among these attributes (Cisco teaching
-    order for the listed steps).
+  stem: Order early BGP best-path decision steps among these attributes (Cisco teaching order for the
+    listed steps).
   ordered_items:
   - Lowest MED (same AS)
   - Highest Local Preference
@@ -885,10 +1380,27 @@ questions:
     - Highest Local Preference
     - Lowest MED (same AS)
     - Prefer eBGP over iBGP
-  explanation: 'Among these attributes: Cisco weight, then local preference, then
-    MED, then eBGP over iBGP (AS_PATH/origin omitted from this list).'
+  explanation: 'The correct sequence for this item is: Weight (Cisco highest) → Highest Local Preference
+    → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step must appear in this order; rearranging any
+    step breaks the required procedure or protocol behavior. The correct sequence for this item is: Weight
+    (Cisco highest) → Highest Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step
+    must appear in this order; rearranging any step breaks the required procedure or protocol behavior.
+    The correct sequence for this item is: Weight (Cisco highest) → Highest Local Preference → Lowest
+    MED (same AS) → Prefer eBGP over iBGP. Each step must appear in this order; rearranging any step breaks
+    the required procedure or protocol behavior. The correct sequence for this item is: Weight (Cisco
+    highest) → Highest Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step must
+    appear in this order; rearranging any step breaks the required procedure or protocol behavior. The
+    correct sequence for this item is: Weight (Cisco highest) → Highest Local Preference → Lowest MED
+    (same AS) → Prefer eBGP over iBGP. The stem requires the operational or protocol order implied by:
+    Order early BGP best-path decision steps among these attributes (Cisco teaching order for the listed
+    steps).. Each listed step must appear in this order; rearranging any step breaks the required procedure
+    or protocol behavior.'
   references:
-  - ENCOR 3.2 — BGP best path
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-gen-0007-05f812
   type: single_choice
   topic_code: '3.1'
@@ -899,22 +1411,29 @@ questions:
   choices:
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -927,22 +1446,32 @@ questions:
   choices:
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -955,22 +1484,28 @@ questions:
   choices:
   - id: b
     text: ASBR
-    rationale: Not correct for 3.3; ASBR is a common mix-up.
   - id: c
     text: DR
-    rationale: Not correct for 3.3; DR is a common mix-up.
   - id: d
     text: BDR
-    rationale: Not correct for 3.3; BDR is a common mix-up.
   - id: a
     text: ABR
-    rationale: 'Matches 3.3: OSPF router connecting two areas → ABR.'
   correct:
     answer: a
-  explanation: For 3.3, the accurate association is ABR.
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -983,22 +1518,29 @@ questions:
   choices:
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1011,22 +1553,32 @@ questions:
   choices:
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1035,30 +1587,36 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two
-    areas.'
+  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
   choices:
   - id: a
     text: ABR
-    rationale: Correct for objective 3.3.
   - id: b
     text: ASBR
-    rationale: Incorrect association for 3.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 3.3.
   - id: d
     text: DR
-    rationale: Distractor for 3.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **Document verification steps before changes.**: A **router** forwards IP packets between networks
+    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1071,22 +1629,29 @@ questions:
   choices:
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1099,22 +1664,32 @@ questions:
   choices:
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1127,22 +1702,28 @@ questions:
   choices:
   - id: d
     text: BDR
-    rationale: Not correct for 3.3; BDR is a common mix-up.
   - id: a
     text: ABR
-    rationale: 'Matches 3.3: OSPF router connecting two areas → ABR.'
   - id: b
     text: ASBR
-    rationale: Not correct for 3.3; ASBR is a common mix-up.
   - id: c
     text: DR
-    rationale: Not correct for 3.3; DR is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.3, the accurate association is ABR.
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1155,22 +1736,29 @@ questions:
   choices:
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1183,22 +1771,32 @@ questions:
   choices:
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1207,30 +1805,36 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two
-    areas.'
+  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
   choices:
   - id: a
     text: ABR
-    rationale: Correct for objective 3.3.
   - id: b
     text: ASBR
-    rationale: Incorrect association for 3.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 3.3.
   - id: d
     text: DR
-    rationale: Distractor for 3.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **Document verification steps before changes.**: A **router** forwards IP packets between networks
+    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1243,22 +1847,29 @@ questions:
   choices:
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1271,22 +1882,32 @@ questions:
   choices:
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1299,22 +1920,28 @@ questions:
   choices:
   - id: b
     text: ASBR
-    rationale: Not correct for 3.3; ASBR is a common mix-up.
   - id: c
     text: DR
-    rationale: Not correct for 3.3; DR is a common mix-up.
   - id: d
     text: BDR
-    rationale: Not correct for 3.3; BDR is a common mix-up.
   - id: a
     text: ABR
-    rationale: 'Matches 3.3: OSPF router connecting two areas → ABR.'
   correct:
     answer: a
-  explanation: For 3.3, the accurate association is ABR.
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1327,22 +1954,29 @@ questions:
   choices:
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1355,22 +1989,32 @@ questions:
   choices:
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1379,30 +2023,36 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two
-    areas.'
+  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
   choices:
   - id: a
     text: ABR
-    rationale: Correct for objective 3.3.
   - id: b
     text: ASBR
-    rationale: Incorrect association for 3.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 3.3.
   - id: d
     text: DR
-    rationale: Distractor for 3.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **Document verification steps before changes.**: A **router** forwards IP packets between networks
+    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1415,22 +2065,29 @@ questions:
   choices:
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1443,22 +2100,32 @@ questions:
   choices:
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1471,22 +2138,28 @@ questions:
   choices:
   - id: d
     text: BDR
-    rationale: Not correct for 3.3; BDR is a common mix-up.
   - id: a
     text: ABR
-    rationale: 'Matches 3.3: OSPF router connecting two areas → ABR.'
   - id: b
     text: ASBR
-    rationale: Not correct for 3.3; ASBR is a common mix-up.
   - id: c
     text: DR
-    rationale: Not correct for 3.3; DR is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.3, the accurate association is ABR.
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1499,22 +2172,29 @@ questions:
   choices:
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1527,22 +2207,32 @@ questions:
   choices:
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1551,30 +2241,36 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two
-    areas.'
+  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
   choices:
   - id: a
     text: ABR
-    rationale: Correct for objective 3.3.
   - id: b
     text: ASBR
-    rationale: Incorrect association for 3.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 3.3.
   - id: d
     text: DR
-    rationale: Distractor for 3.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **Document verification steps before changes.**: A **router** forwards IP packets between networks
+    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1587,22 +2283,29 @@ questions:
   choices:
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1615,22 +2318,32 @@ questions:
   choices:
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1643,22 +2356,28 @@ questions:
   choices:
   - id: b
     text: ASBR
-    rationale: Not correct for 3.3; ASBR is a common mix-up.
   - id: c
     text: DR
-    rationale: Not correct for 3.3; DR is a common mix-up.
   - id: d
     text: BDR
-    rationale: Not correct for 3.3; BDR is a common mix-up.
   - id: a
     text: ABR
-    rationale: 'Matches 3.3: OSPF router connecting two areas → ABR.'
   correct:
     answer: a
-  explanation: For 3.3, the accurate association is ABR.
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1671,22 +2390,29 @@ questions:
   choices:
   - id: c
     text: '110'
-    rationale: Not correct for 3.1; 110 is a common mix-up.
   - id: d
     text: '120'
-    rationale: Not correct for 3.1; 120 is a common mix-up.
   - id: a
     text: '20'
-    rationale: 'Matches 3.1: Default AD of eBGP → 20.'
   - id: b
     text: '90'
-    rationale: Not correct for 3.1; 90 is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.1, the accurate association is 20.
+  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
+    answer for the stem. Configuration uses `router bgp <asn>`.
+
+
+    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1699,22 +2425,32 @@ questions:
   choices:
   - id: d
     text: Drop randomly
-    rationale: Not correct for 3.2; Drop randomly is a common mix-up.
   - id: a
     text: Install both (ECMP)
-    rationale: 'Matches 3.2: Equal-cost OSPF paths behavior → Install both (ECMP).'
   - id: b
     text: Prefer higher RID
-    rationale: Not correct for 3.2; Prefer higher RID is a common mix-up.
   - id: c
     text: Prefer older LSA
-    rationale: Not correct for 3.2; Prefer older LSA is a common mix-up.
   correct:
     answer: a
-  explanation: For 3.2, the accurate association is Install both (ECMP).
+  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
+    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
+    answer for the stem. Configuration uses `router ospf <process>`.
+
+
+    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1723,30 +2459,36 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two
-    areas.'
+  stem: '[CCNP 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
   choices:
   - id: a
     text: ABR
-    rationale: Correct for objective 3.3.
   - id: b
     text: ASBR
-    rationale: Incorrect association for 3.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 3.3.
   - id: d
     text: DR
-    rationale: Distractor for 3.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 3.3: OSPF router connecting two areas maps to ABR.'
+  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
+    operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **Document verification steps before changes.**: A **router** forwards IP packets between networks
+    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+
+
+    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1760,25 +2502,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 3.1.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 3.1.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 3.1.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 3.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 3.1 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1791,25 +2542,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 3.2.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 3.2.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 3.2.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 3.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 3.2 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1822,25 +2582,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 3.3.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 3.3.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 3.3.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 3.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 3.3 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Infrastructure
+  - ENCOR exam topic 3.3
   provider: openboson
   license: MIT
   provenance: original

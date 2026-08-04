@@ -498,7 +498,6 @@ def review_session(session_id: str) -> dict[str, Any]:
             "correct": correct.model_dump(),
             "user_answer": user_ans.answer if user_ans is not None else None,
             "is_correct": bool(user_ans.is_correct) if user_ans is not None else False,
-            "explanation": q.explanation,
         }
         items.append(item)
     return {

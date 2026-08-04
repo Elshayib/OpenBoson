@@ -1,4 +1,4 @@
-"""Exam review page — per-question explanation with correct vs user answer."""
+"""Exam review page — correct vs user answer (no explanations)."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from openboson.exsim.session import ExamSession
 
 
 class ExamReviewPage(QWidget):
-    """Lists questions with correct/user answers and explanations."""
+    """Lists questions with correct / user answers only."""
 
     title = "Review"
 
@@ -41,7 +41,6 @@ class ExamReviewPage(QWidget):
         header.setProperty("role", "h1")
         self._layout.addWidget(header)
 
-        # Filter
         filter_row = QHBoxLayout()
         filter_row.addWidget(QLabel("Show:"))
         self._filter = QComboBox()
@@ -119,38 +118,13 @@ class ExamReviewPage(QWidget):
         stem.setFrameShape(QFrame.Shape.NoFrame)
         v.addWidget(stem)
 
-        # Correct answer summary
         correct = q.correct_answer_model
-        correct_text = self._summarize(correct)
-        v.addWidget(QLabel(f"Correct: {correct_text}"))
+        v.addWidget(QLabel(f"Correct: {self._summarize(correct)}"))
 
         user_text = "(unanswered)"
         if ua is not None and ua.answer is not None:
             user_text = self._summarize_answer(ua.answer)
         v.addWidget(QLabel(f"Your answer: {user_text}"))
-
-        if q.explanation:
-            expl = QTextBrowser()
-            expl.setMarkdown(q.explanation.strip())
-            expl.setMinimumHeight(40)
-            expl.setFrameShape(QFrame.Shape.NoFrame)
-            v.addWidget(expl)
-
-        if q.choices:
-            for choice in q.choices:
-                if not choice.rationale:
-                    continue
-                rat = QLabel(f"{choice.id}: {choice.rationale}")
-                rat.setWordWrap(True)
-                rat.setProperty("role", "muted")
-                v.addWidget(rat)
-
-        if q.references:
-            for ref in q.references:
-                r = QLabel(f"• {ref}")
-                r.setWordWrap(True)
-                r.setProperty("role", "muted")
-                v.addWidget(r)
         return card
 
     @staticmethod
@@ -199,7 +173,6 @@ class ExamReviewPage(QWidget):
             if widget is not None:
                 widget.deleteLater()
             elif item.layout() is not None:
-                # Detach nested layouts so filters/rebuild start clean.
                 nested = item.layout()
                 while nested.count():
                     child = nested.takeAt(0)

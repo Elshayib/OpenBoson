@@ -12,24 +12,39 @@ questions:
   choices:
   - id: a
     text: A trunk can carry multiple VLANs with tags
-    rationale: Core trunk purpose.
   - id: b
     text: VLAN 1 can never be native
-    rationale: It can, though discouraged.
   - id: c
     text: Native VLAN frames are untagged
-    rationale: 802.1Q native VLAN.
   - id: d
     text: ISL is required on modern Catalyst
-    rationale: ISL is legacy.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 802.1Q tags non-native VLANs; native VLAN is untagged.
+  explanation: '**A trunk can carry multiple VLANs with tags**: **802.1Q** trunks tag frames so a single
+    physical link can carry multiple VLANs. The native VLAN remains untagged by default. This is the correct
+    answer for the stem.
+
+
+    **Native VLAN frames are untagged**: The **native VLAN** carries untagged frames on an 802.1Q trunk.
+    Tagged frames belong to other VLANs carried on the same trunk. This is the correct answer for the
+    stem. Configuration uses `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1 can never be native** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **ISL is required on modern Catalyst** is incorrect. It does not describe the intended use or behavior
+    required by the stem.'
   references:
-  - CCNA 2.2 — interswitch connectivity
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-002
   type: single_choice
   topic_code: '2.5'
@@ -39,71 +54,108 @@ questions:
   choices:
   - id: a
     text: Root port
-    rationale: Best path to root.
   - id: b
     text: Designated port on a blocked segment
-    rationale: Designated forwards onto a segment.
   - id: c
     text: Alternate port
-    rationale: Backup to root; discarding.
   - id: d
     text: Disabled
-    rationale: Administratively down.
   correct:
     answer: a
-  explanation: Each non-root bridge selects one root port closest to the root bridge.
+  explanation: '**Root port** is correct. It is the selection that meets the requirement stated in the
+    stem.
+
+
+    **Designated port on a blocked segment** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.
+
+
+    **Alternate port** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disabled** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - CCNA 2.5 — Rapid PVST+
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-003
   type: single_choice
   topic_code: '2.4'
   difficulty: 2
   cert_tags: *id001
-  stem: EtherChannel bundles multiple physical links into what logical interface type
-    on Cisco IOS?
+  stem: EtherChannel bundles multiple physical links into what logical interface type on Cisco IOS?
   choices:
   - id: a
     text: Port-channel
-    rationale: Logical Po interface.
   - id: b
     text: Loopback
-    rationale: Virtual IP interface.
   - id: c
     text: Tunnel
-    rationale: Overlay.
   - id: d
     text: Null0
-    rationale: Bit bucket.
   correct:
     answer: a
-  explanation: Port-channel (Po) is the logical EtherChannel interface.
+  explanation: '**Port-channel** is correct. It is the selection that meets the requirement stated in
+    the stem.
+
+
+    **Loopback** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Tunnel** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Null0** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - CCNA 2.4 — EtherChannel (LACP)
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-004
   type: single_choice
   topic_code: '2.6'
   difficulty: 3
   cert_tags: *id001
-  stem: In CAPWAP, which tunnel carries client data between AP and WLC in a centralized
-    design?
+  stem: In CAPWAP, which tunnel carries client data between AP and WLC in a centralized design?
   choices:
   - id: a
     text: CAPWAP data tunnel
-    rationale: Encrypted/optional DTLS data path.
   - id: b
     text: Only GRE without CAPWAP
-    rationale: CAPWAP is the Cisco LWAPP successor.
   - id: c
     text: IPsec VTI only
-    rationale: Not the standard AP-WLC control plane.
   - id: d
     text: PPPoE
-    rationale: WAN access method.
   correct:
     answer: a
-  explanation: Lightweight APs use CAPWAP control and data tunnels to the WLC.
+  explanation: '**CAPWAP data tunnel** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only GRE without CAPWAP** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **IPsec VTI only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PPPoE** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - CCNA 2.6 — wireless architectures / AP modes
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-005
   type: drag_match
   topic_code: '2.1'
@@ -121,16 +173,21 @@ questions:
     right: Auxiliary VLAN for IP phones
   correct:
     pairs: *id002
-  explanation: Access vs trunk and native/voice VLAN roles are core switching topics.
+  explanation: 'The correct mappings are: Access port → Carries a single untagged VLAN for end hosts;
+    Trunk port → Carries multiple VLANs with 802.1Q tags; Native VLAN → Untagged on an 802.1Q trunk; Voice
+    VLAN → Auxiliary VLAN for IP phones. Each left item associates with exactly one right item.'
   references:
-  - CCNA 2.1
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-006
   type: ordered_list
   topic_code: '2.5'
   difficulty: 3
   cert_tags: *id001
-  stem: Order classic STP port states from blocking toward forwarding (802.1D teaching
-    order).
+  stem: Order classic STP port states from blocking toward forwarding (802.1D teaching order).
   ordered_items:
   - Learning
   - Listening
@@ -142,9 +199,24 @@ questions:
     - Listening
     - Learning
     - Forwarding
-  explanation: 802.1D progresses Blocking → Listening → Learning → Forwarding.
+  explanation: 'The correct sequence for this item is: Blocking → Listening → Learning → Forwarding. Each
+    step must appear in this order; rearranging any step breaks the required procedure or protocol behavior.
+    The correct sequence for this item is: Blocking → Listening → Learning → Forwarding. Each step must
+    appear in this order; rearranging any step breaks the required procedure or protocol behavior. The
+    correct sequence for this item is: Blocking → Listening → Learning → Forwarding. Each step must appear
+    in this order; rearranging any step breaks the required procedure or protocol behavior. The correct
+    sequence for this item is: Blocking → Listening → Learning → Forwarding. Each step must appear in
+    this order; rearranging any step breaks the required procedure or protocol behavior. The correct sequence
+    for this item is: Blocking → Listening → Learning → Forwarding. The stem requires the operational
+    or protocol order implied by: Order classic STP port states from blocking toward forwarding (802.1D
+    teaching order).. Each listed step must appear in this order; rearranging any step breaks the required
+    procedure or protocol behavior.'
   references:
-  - CCNA 2.5 — STP states
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-007
   type: single_choice
   topic_code: '2.1'
@@ -154,21 +226,34 @@ questions:
   choices:
   - id: a
     text: vlan 20
-    rationale: Global VLAN configuration creates the VLAN.
   - id: b
     text: interface vlan 20 only
-    rationale: Not correct for this scenario.
   - id: c
     text: switchport access vlan 20 alone
-    rationale: Not correct for this scenario.
   - id: d
     text: encapsulation dot1q 20
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Global VLAN configuration creates the VLAN.
+  explanation: '**vlan 20**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
+    within a broadcast domain or VLAN. This is the correct answer for the stem.
+
+
+    **interface vlan 20 only** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **switchport access vlan 20 alone**: A Layer 2 **switch** forwards Ethernet frames based on MAC address
+    tables within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+
+
+    **encapsulation dot1q 20** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - CCNA 2.1
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-008
   type: single_choice
   topic_code: '2.2'
@@ -178,21 +263,34 @@ questions:
   choices:
   - id: a
     text: A trunk
-    rationale: Dynamic desirable initiates trunking.
   - id: b
     text: An EtherChannel
-    rationale: Not correct for this scenario.
   - id: c
     text: An OSPF adjacency
-    rationale: Not correct for this scenario.
   - id: d
     text: A VPN
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Dynamic desirable initiates trunking.
+  explanation: '**A trunk** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **An EtherChannel** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **An OSPF adjacency**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **A VPN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - CCNA 2.2
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-009
   type: single_choice
   topic_code: '2.5'
@@ -202,21 +300,34 @@ questions:
   choices:
   - id: a
     text: Priority then MAC
-    rationale: Lowest bridge ID wins the root election.
   - id: b
     text: Highest MAC always
-    rationale: Not correct for this scenario.
   - id: c
     text: Highest priority
-    rationale: Not correct for this scenario.
   - id: d
     text: Serial number only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Lowest bridge ID wins the root election.
+  explanation: '**Priority then MAC** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Highest MAC always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Highest priority** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Serial number only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 2.5
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-010
   type: single_choice
   topic_code: '2.5'
@@ -226,21 +337,36 @@ questions:
   choices:
   - id: a
     text: Edge ports to end hosts
-    rationale: PortFast is for edge/host ports to skip listening/learning delays.
   - id: b
     text: All trunks always
-    rationale: Not correct for this scenario.
   - id: c
     text: Routed ports only
-    rationale: Not correct for this scenario.
   - id: d
     text: Blocked alternate only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: PortFast is for edge/host ports to skip listening/learning delays.
+  explanation: '**Edge ports to end hosts**: **PortFast** places an edge port into the forwarding state
+    immediately, bypassing the listening and learning states and thereby reducing STP convergence time
+    for end stations. This is the correct answer for the stem. Configuration uses `spanning-tree portfast`.
+    **Note:** PortFast must not be combined with loop guard on the same interface.
+
+
+    **All trunks always** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Routed ports only** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Blocked alternate only** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - CCNA 2.5
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-011
   type: single_choice
   topic_code: '2.4'
@@ -250,21 +376,33 @@ questions:
   choices:
   - id: a
     text: 802.3ad / 802.1AX
-    rationale: LACP is the IEEE link-aggregation control protocol.
   - id: b
     text: 802.1Q
-    rationale: Not correct for this scenario.
   - id: c
     text: 802.1X
-    rationale: Not correct for this scenario.
   - id: d
     text: 802.11i
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: LACP is the IEEE link-aggregation control protocol.
+  explanation: '**802.3ad / 802.1AX**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is
+    the standards-based alternative to PAgP. This is the correct answer for the stem. Configuration uses
+    `channel-group <id> mode active|passive`.
+
+
+    **802.1Q** trunks tag frames so a single physical link can carry multiple VLANs. The native VLAN remains
+    untagged by default. This does not satisfy the condition required by the stem.
+
+
+    **802.1X** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **802.11i** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - CCNA 2.4
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-012
   type: single_choice
   topic_code: '2.4'
@@ -274,21 +412,34 @@ questions:
   choices:
   - id: a
     text: Cisco proprietary
-    rationale: PAgP is Cisco proprietary; LACP is standards-based.
   - id: b
     text: IETF standard only
-    rationale: Not correct for this scenario.
   - id: c
     text: ITU SS7
-    rationale: Not correct for this scenario.
   - id: d
     text: Bluetooth SIG
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: PAgP is Cisco proprietary; LACP is standards-based.
+  explanation: '**Cisco proprietary**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This is the correct answer for the stem. Configuration
+    uses `channel-group <id> mode desirable|auto`.
+
+
+    **IETF standard only** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **ITU SS7** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **Bluetooth SIG** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - CCNA 2.4
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-014
   type: single_choice
   topic_code: '2.6'
@@ -298,21 +449,34 @@ questions:
   choices:
   - id: a
     text: Local mode CAPWAP
-    rationale: Local-mode APs tunnel client traffic to the WLC via CAPWAP.
   - id: b
     text: Only autonomous IOS AP
-    rationale: Not correct for this scenario.
   - id: c
     text: Only mesh satellite RF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only Bluetooth beacons
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Local-mode APs tunnel client traffic to the WLC via CAPWAP.
+  explanation: '**Local mode CAPWAP** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only autonomous IOS AP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only mesh satellite RF** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only Bluetooth beacons** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 2.6
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-016
   type: single_choice
   topic_code: '2.5'
@@ -322,21 +486,32 @@ questions:
   choices:
   - id: a
     text: A BPDU
-    rationale: BPDU Guard err-disables edge ports that receive BPDUs.
   - id: b
     text: An ARP reply
-    rationale: Not correct for this scenario.
   - id: c
     text: A DHCP offer
-    rationale: Not correct for this scenario.
   - id: d
     text: A DNS query
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: BPDU Guard err-disables edge ports that receive BPDUs.
+  explanation: '**BPDU guard** err-disables a PortFast-enabled port that receives a BPDU, protecting the
+    edge from an accidental switch attachment that could create a loop. This is the correct answer for
+    the stem. Configuration uses `spanning-tree bpduguard enable`.
+
+
+    **An ARP reply** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **A DHCP offer** is incorrect. It does not describe the intended use or behavior required by the stem.
+
+
+    **A DNS query** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - CCNA 2.5
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-017
   type: single_choice
   topic_code: '2.1'
@@ -346,21 +521,35 @@ questions:
   choices:
   - id: a
     text: Forward them but do not sync VLAN DB from them
-    rationale: Transparent mode forwards VTP without syncing the VLAN database.
   - id: b
     text: Always overwrite clients
-    rationale: Not correct for this scenario.
   - id: c
     text: Drop all BPDUs
-    rationale: Not correct for this scenario.
   - id: d
     text: Disable all trunks
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Transparent mode forwards VTP without syncing the VLAN database.
+  explanation: '**Forward them but do not sync VLAN DB from them**: A Layer 2 **switch** forwards Ethernet
+    frames based on MAC address tables within a broadcast domain or VLAN. This is the correct answer for
+    the stem.
+
+
+    **Always overwrite clients** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Drop all BPDUs** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Disable all trunks** is incorrect. It does not describe the intended use or behavior required by
+    the stem.'
   references:
-  - CCNA 2.1
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-018
   type: single_choice
   topic_code: '2.5'
@@ -370,21 +559,34 @@ questions:
   choices:
   - id: a
     text: Blocking and listening
-    rationale: RSTP collapses blocking/listening into discarding.
   - id: b
     text: Only forwarding
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabled
-    rationale: Not correct for this scenario.
   - id: d
     text: Learning only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: RSTP collapses blocking/listening into discarding.
+  explanation: '**Blocking and listening** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only disabled** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Learning only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 2.5
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-019
   type: single_choice
   topic_code: '2.4'
@@ -394,21 +596,36 @@ questions:
   choices:
   - id: a
     text: Speed/duplex and compatible configs
-    rationale: Inconsistent member settings suspend the channel.
   - id: b
     text: Unique VLANs only
-    rationale: Not correct for this scenario.
   - id: c
     text: Different native VLANs
-    rationale: Not correct for this scenario.
   - id: d
     text: Random MTUs
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Inconsistent member settings suspend the channel.
+  explanation: '**Speed/duplex and compatible configs**: **PAT** (NAT overload) maps many inside addresses
+    to one outside address using unique transport port numbers. This is the correct answer for the stem.
+    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Unique VLANs only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Different native VLANs**: The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged
+    frames belong to other VLANs carried on the same trunk. This does not satisfy the condition required
+    by the stem. Configuration uses `switchport trunk native vlan <id>`.
+
+
+    **Random MTUs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 2.4
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-021
   type: single_choice
   topic_code: '2.2'
@@ -418,21 +635,36 @@ questions:
   choices:
   - id: a
     text: CDP warnings and possible connectivity issues
-    rationale: Untagged frames disagree when native VLANs differ.
   - id: b
     text: Automatic OSPF adjacency
-    rationale: Not correct for this scenario.
   - id: c
     text: Mandatory encryption
-    rationale: Not correct for this scenario.
   - id: d
     text: DHCP snooping disable
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Untagged frames disagree when native VLANs differ.
+  explanation: '**CDP warnings and possible connectivity issues**: **CDP** is Cisco’s Layer 2 neighbor
+    discovery protocol used for topology visibility and some provisioning features. This is the correct
+    answer for the stem. Configuration uses `cdp run` / `show cdp neighbors`.
+
+
+    **Automatic OSPF adjacency**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Mandatory encryption** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **DHCP snooping disable** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - CCNA 2.2
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-022
   type: single_choice
   topic_code: '2.5'
@@ -442,21 +674,35 @@ questions:
   choices:
   - id: a
     text: Root guard
-    rationale: Root guard protects the root role from unexpected superior BPDUs.
   - id: b
     text: Port security sticky
-    rationale: Not correct for this scenario.
   - id: c
     text: DHCP snooping
-    rationale: Not correct for this scenario.
   - id: d
     text: UDLD only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Root guard protects the root role from unexpected superior BPDUs.
+  explanation: '**Root guard** prevents a neighboring switch from becoming the root bridge by keeping
+    the receiving port in a root-inconsistent state if superior BPDUs arrive. This is the correct answer
+    for the stem. Configuration uses `spanning-tree guard root`.
+
+
+    **Port security sticky** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **DHCP snooping** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **UDLD only** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - CCNA 2.5
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-023
   type: single_choice
   topic_code: '2.3'
@@ -466,21 +712,36 @@ questions:
   choices:
   - id: a
     text: IEEE neighbor discovery protocol
-    rationale: LLDP is the standards-based Layer 2 discovery protocol.
   - id: b
     text: Cisco-only proprietary CDP replacement mandatory
-    rationale: Not correct for this scenario.
   - id: c
     text: A routing protocol
-    rationale: Not correct for this scenario.
   - id: d
     text: A wireless encryption cipher
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: LLDP is the standards-based Layer 2 discovery protocol.
+  explanation: '**IEEE neighbor discovery protocol**: **LLDP** is the standards-based Layer 2 neighbor
+    discovery protocol (IEEE 802.1AB). This is the correct answer for the stem. Configuration uses `lldp
+    run` / `show lldp neighbors`.
+
+
+    **Cisco-only proprietary CDP replacement mandatory**: **CDP** is Cisco’s Layer 2 neighbor discovery
+    protocol used for topology visibility and some provisioning features. This does not satisfy the condition
+    required by the stem. Configuration uses `cdp run` / `show cdp neighbors`.
+
+
+    **A routing protocol** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **A wireless encryption cipher** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - CCNA 2.3
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-024
   type: single_choice
   topic_code: '2.7'
@@ -490,21 +751,35 @@ questions:
   choices:
   - id: a
     text: Bundled uplink capacity/redundancy
-    rationale: LAG aggregates WLC-to-switch connections.
   - id: b
     text: Only SSID encryption
-    rationale: Not correct for this scenario.
   - id: c
     text: Only RF channel planning
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CAPWAP DTLS keys
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: LAG aggregates WLC-to-switch connections.
+  explanation: '**Bundled uplink capacity/redundancy**: A Layer 2 **switch** forwards Ethernet frames
+    based on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the
+    stem.
+
+
+    **Only SSID encryption** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only RF channel planning** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only CAPWAP DTLS keys** is incorrect. It does not describe the intended use or behavior required
+    by the stem.'
   references:
-  - CCNA 2.7
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-025
   type: single_choice
   topic_code: '2.8'
@@ -514,21 +789,35 @@ questions:
   choices:
   - id: a
     text: Network device management access method
-    rationale: v1.1 includes cloud-managed access alongside SSH/HTTPS/AAA.
   - id: b
     text: Only OSPF network type
-    rationale: Not correct for this scenario.
   - id: c
     text: Only EtherChannel hash
-    rationale: Not correct for this scenario.
   - id: d
     text: Only STP diameter
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: v1.1 includes cloud-managed access alongside SSH/HTTPS/AAA.
+  explanation: '**Network device management access method** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only OSPF network type**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only EtherChannel hash** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only STP diameter** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 2.8
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-2-026
   type: single_choice
   topic_code: '2.9'
@@ -538,21 +827,35 @@ questions:
   choices:
   - id: a
     text: Wireless LAN client connectivity configuration
-    rationale: WLAN GUI workflows cover SSID, security, and QoS profiles.
   - id: b
     text: Only underlay BFD
-    rationale: Not correct for this scenario.
   - id: c
     text: Only BGP peering
-    rationale: Not correct for this scenario.
   - id: d
     text: Only VTP domain name
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: WLAN GUI workflows cover SSID, security, and QoS profiles.
+  explanation: '**Wireless LAN client connectivity configuration** is correct. It is the selection that
+    meets the requirement stated in the stem.
+
+
+    **Only underlay BFD** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only BGP peering**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
+    the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only VTP domain name** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 2.9
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-gen-0013-c25d4f
   type: single_choice
   topic_code: '2.1'
@@ -563,22 +866,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -591,22 +906,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -619,22 +944,31 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -647,22 +981,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.4: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.4; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.4; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.4; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.4, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -675,22 +1021,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.5; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.5; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.5; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.5: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.5, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -699,31 +1055,38 @@ questions:
   topic_code: '2.6'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.6.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.6.
   - id: d
     text: Root
-    rationale: Distractor for 2.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.6: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -736,22 +1099,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.7; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.7: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.7; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.7; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.7, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -764,22 +1139,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.8: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.8; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.8; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.8; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.8, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -792,22 +1177,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.9; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.9; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.9; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.9: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.9, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original
@@ -816,31 +1210,38 @@ questions:
   topic_code: '2.1'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.1] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.1] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.1.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.1.
   - id: d
     text: Root
-    rationale: Distractor for 2.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.1: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -853,22 +1254,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.2; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.2: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.2; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.2; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -881,22 +1294,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.3: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.3; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.3; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.3; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -909,22 +1332,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.4; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.4; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.4; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.4: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.4, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -937,22 +1369,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.5; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.5; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.5: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.5; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.5, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -965,22 +1409,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.6; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.6: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.6; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.6; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.6, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -989,31 +1443,38 @@ questions:
   topic_code: '2.7'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.7] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.7] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.7.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.7.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.7.
   - id: d
     text: Root
-    rationale: Distractor for 2.7.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.7: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1026,22 +1487,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.8; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.8; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.8; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.8: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.8, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -1054,22 +1527,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.9; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.9; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.9: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.9; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.9, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original
@@ -1082,22 +1565,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.1; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.1: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.1; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.1; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1106,31 +1599,38 @@ questions:
   topic_code: '2.2'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.2] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.2] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.2.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.2.
   - id: d
     text: Root
-    rationale: Distractor for 2.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.2: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1143,22 +1643,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.3; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.3; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.3; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.3: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1171,22 +1683,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.4; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.4; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.4: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.4; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.4, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1199,22 +1721,31 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.5; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.5: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.5; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.5; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.5, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1227,22 +1758,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.6: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.6; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.6; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.6; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.6, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1255,22 +1798,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.7; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.7; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.7; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.7: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.7, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1279,31 +1832,38 @@ questions:
   topic_code: '2.8'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.8] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.8] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.8.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.8.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.8.
   - id: d
     text: Root
-    rationale: Distractor for 2.8.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.8: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -1316,22 +1876,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.9; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.9: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.9; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.9; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.9, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original
@@ -1344,22 +1916,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1372,22 +1956,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1396,31 +1990,38 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.3] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.3.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.3.
   - id: d
     text: Root
-    rationale: Distractor for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1433,22 +2034,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.4; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.4: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.4; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.4; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.4, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1461,22 +2074,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.5: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.5; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.5; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.5; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.5, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1489,22 +2112,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.6; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.6; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.6; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.6: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.6, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1517,22 +2149,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.7; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.7; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.7: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.7; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.7, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1545,22 +2189,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.8; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.8: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.8; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.8; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.8, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -1569,31 +2223,38 @@ questions:
   topic_code: '2.9'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.9] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.9] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.9.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.9.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.9.
   - id: d
     text: Root
-    rationale: Distractor for 2.9.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.9: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original
@@ -1606,22 +2267,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.1; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.1; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.1; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.1: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1634,22 +2304,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.2; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.2; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.2: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.2; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1662,22 +2344,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.3; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.3: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.3; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.3; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1686,31 +2378,38 @@ questions:
   topic_code: '2.4'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.4] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.4] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.4.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.4.
   - id: d
     text: Root
-    rationale: Distractor for 2.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.4: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1723,22 +2422,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.5; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.5; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.5; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.5: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.5, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1751,22 +2462,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.6; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.6; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.6: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.6; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.6, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1779,22 +2500,31 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.7; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.7: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.7; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.7; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.7, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1807,22 +2537,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.8: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.8; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.8; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.8; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.8, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -1835,22 +2577,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.9; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.9; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.9; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.9: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.9, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original
@@ -1863,22 +2615,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.1; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.1; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.1: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.1; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1891,22 +2653,31 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.2; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.2: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.2; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.2; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1919,22 +2690,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.3: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.3; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.3; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.3; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1947,22 +2730,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.4; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.4; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.4; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.4: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.4, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1971,31 +2764,38 @@ questions:
   topic_code: '2.5'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.5] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.5] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.5.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.5.
   - id: d
     text: Root
-    rationale: Distractor for 2.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.5: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -2008,22 +2808,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.6; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.6: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.6; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.6; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.6, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -2036,22 +2848,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.7: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.7; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.7; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.7; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.7, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -2064,22 +2886,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.8; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.8; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.8; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.8: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.8, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -2092,22 +2923,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.9; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.9; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.9: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.9; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.9, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original
@@ -2120,22 +2963,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -2148,22 +3003,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -2176,22 +3041,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -2204,22 +3078,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.4; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.4; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.4: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.4; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.4, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
   provider: openboson
   license: MIT
   provenance: original
@@ -2232,22 +3118,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.5; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.5: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.5; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.5; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.5, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.5
   provider: openboson
   license: MIT
   provenance: original
@@ -2256,31 +3152,38 @@ questions:
   topic_code: '2.6'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.6.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.6.
   - id: d
     text: Root
-    rationale: Distractor for 2.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.6: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
   provider: openboson
   license: MIT
   provenance: original
@@ -2293,22 +3196,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.7; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.7; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.7; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.7: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.7, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
   provider: openboson
   license: MIT
   provenance: original
@@ -2321,22 +3236,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.8; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.8; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.8: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.8; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.8, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
   provider: openboson
   license: MIT
   provenance: original
@@ -2349,22 +3274,940 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.9; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.9: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.9; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.9; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.9, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-21-0028-502dbe
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 4
+  cert_tags: &id004
+  - ccna
+  stem: Select the correct association for exam topic 2.1.
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 2.1
+  - id: b
+    text: Skip documentation for 2.1 changes in production
+  - id: c
+    text: Treat 2.1 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 2.1 always works
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 2.1** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 2.1 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 2.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.1 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-21-0029-8d7d40
+  type: single_choice
+  topic_code: '2.1'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 2.1?
+  choices:
+  - id: b
+    text: Treat 2.1 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 2.1 always works
+  - id: d
+    text: Confuse 2.1 with an unrelated Layer mismatch
+  - id: a
+    text: Validate with show/verify steps before relying on 2.1 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 2.1 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 2.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.1 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 2.1 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-22-0030-79007e
+  type: multiple_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id004
+  stem: '[CCNA 2.2] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 2.2 with show/ping evidence
+  - id: b
+    text: Skip change control because 2.2 is low risk
+  - id: c
+    text: Document the 2.2 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 2.2
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 2.2 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 2.2 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 2.2 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 2.2** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-22-0031-35d2bf
+  type: single_choice
+  topic_code: '2.2'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Regarding CCNA topic 2.2. Which reply is accurate?
+  choices:
+  - id: d
+    text: Use clear-text shared secrets as the only control for 2.2
+  - id: a
+    text: Prefer the documented 2.2 approach used in enterprise designs
+  - id: b
+    text: Confuse 2.2 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 2.2
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 2.2 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 2.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.2** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.2** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-23-0032-9d3707
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 3
+  cert_tags: *id004
+  stem: During troubleshooting related to 2.3, which observation is most relevant?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 2.3
+  - id: b
+    text: Disable logging permanently while testing 2.3
+  - id: c
+    text: Use clear-text shared secrets as the only control for 2.3
+  - id: d
+    text: Skip documentation for 2.3 changes in production
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 2.3** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.3** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.3** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 2.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-23-0033-0e98de
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Which configuration intent aligns with CCNA objective 2.3?
+  choices:
+  - id: b
+    text: Use clear-text shared secrets as the only control for 2.3
+  - id: c
+    text: Skip documentation for 2.3 changes in production
+  - id: d
+    text: Treat 2.3 as optional when the blueprint lists it
+  - id: a
+    text: Validate with show/verify steps before relying on 2.3 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 2.3 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.3** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 2.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 2.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-23-0034-7de6b5
+  type: single_choice
+  topic_code: '2.3'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Select the correct association for exam topic 2.3.
+  choices:
+  - id: c
+    text: Treat 2.3 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 2.3 always works
+  - id: a
+    text: Use the standard model for 2.3 rather than a look-alike concept
+  - id: b
+    text: Skip documentation for 2.3 changes in production
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 2.3 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 2.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 2.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.3 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-23-0035-81394a
+  type: multiple_choice
+  topic_code: '2.3'
+  difficulty: 4
+  cert_tags: *id004
+  stem: '[CCNA 2.3] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 2.3 with show/ping evidence
+  - id: b
+    text: Skip change control because 2.3 is low risk
+  - id: c
+    text: Document the 2.3 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 2.3
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 2.3 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 2.3 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 2.3 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 2.3** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-24-0036-97d32c
+  type: single_choice
+  topic_code: '2.4'
+  difficulty: 2
+  cert_tags: *id004
+  stem: For CCNA objective 2.4, which statement best matches production best practice?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 2.4
+  - id: b
+    text: Ignore verification and assume 2.4 always works
+  - id: c
+    text: Confuse 2.4 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 2.4
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 2.4** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.4 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 2.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-26-0037-b8f48c
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 3
+  cert_tags: *id004
+  stem: Regarding CCNA topic 2.6. Which reply is accurate?
+  choices:
+  - id: b
+    text: Confuse 2.6 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 2.6
+  - id: d
+    text: Use clear-text shared secrets as the only control for 2.6
+  - id: a
+    text: Validate with show/verify steps before relying on 2.6 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 2.6 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 2.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-26-0038-03ce0c
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 4
+  cert_tags: *id004
+  stem: During troubleshooting related to 2.6, which observation is most relevant?
+  choices:
+  - id: c
+    text: Use clear-text shared secrets as the only control for 2.6
+  - id: d
+    text: Skip documentation for 2.6 changes in production
+  - id: a
+    text: Use the standard model for 2.6 rather than a look-alike concept
+  - id: b
+    text: Disable logging permanently while testing 2.6
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 2.6 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 2.6 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-26-0039-ddb574
+  type: single_choice
+  topic_code: '2.6'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Which configuration intent aligns with CCNA objective 2.6?
+  choices:
+  - id: d
+    text: Treat 2.6 as optional when the blueprint lists it
+  - id: a
+    text: Prefer the documented 2.6 approach used in enterprise designs
+  - id: b
+    text: Use clear-text shared secrets as the only control for 2.6
+  - id: c
+    text: Skip documentation for 2.6 changes in production
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 2.6 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 2.6 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 2.6 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-27-0040-c89175
+  type: multiple_choice
+  topic_code: '2.7'
+  difficulty: 3
+  cert_tags: *id004
+  stem: '[CCNA 2.7] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 2.7 with show/ping evidence
+  - id: b
+    text: Skip change control because 2.7 is low risk
+  - id: c
+    text: Document the 2.7 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 2.7
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 2.7 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 2.7 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 2.7 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 2.7** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-27-0041-707ba2
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 2.7?
+  choices:
+  - id: b
+    text: Treat 2.7 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 2.7 always works
+  - id: d
+    text: Confuse 2.7 with an unrelated Layer mismatch
+  - id: a
+    text: Validate with show/verify steps before relying on 2.7 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 2.7 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 2.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.7 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 2.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-27-0042-2e9092
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 3
+  cert_tags: *id004
+  stem: For CCNA objective 2.7, which statement best matches production best practice?
+  choices:
+  - id: c
+    text: Confuse 2.7 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 2.7
+  - id: a
+    text: Use the standard model for 2.7 rather than a look-alike concept
+  - id: b
+    text: Ignore verification and assume 2.7 always works
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 2.7 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.7 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 2.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.7** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-27-0043-63e972
+  type: single_choice
+  topic_code: '2.7'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Regarding CCNA topic 2.7. Which reply is accurate?
+  choices:
+  - id: d
+    text: Use clear-text shared secrets as the only control for 2.7
+  - id: a
+    text: Prefer the documented 2.7 approach used in enterprise designs
+  - id: b
+    text: Confuse 2.7 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 2.7
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 2.7 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 2.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.7** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.7** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-28-0044-805533
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 5
+  cert_tags: *id004
+  stem: During troubleshooting related to 2.8, which observation is most relevant?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 2.8
+  - id: b
+    text: Disable logging permanently while testing 2.8
+  - id: c
+    text: Use clear-text shared secrets as the only control for 2.8
+  - id: d
+    text: Skip documentation for 2.8 changes in production
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 2.8** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.8** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.8** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 2.8 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-28-0045-7f9f77
+  type: multiple_choice
+  topic_code: '2.8'
+  difficulty: 2
+  cert_tags: *id004
+  stem: '[CCNA 2.8] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 2.8 with show/ping evidence
+  - id: b
+    text: Skip change control because 2.8 is low risk
+  - id: c
+    text: Document the 2.8 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 2.8
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 2.8 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 2.8 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 2.8 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 2.8** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-28-0046-dc98fb
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Select the correct association for exam topic 2.8.
+  choices:
+  - id: c
+    text: Treat 2.8 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 2.8 always works
+  - id: a
+    text: Use the standard model for 2.8 rather than a look-alike concept
+  - id: b
+    text: Skip documentation for 2.8 changes in production
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 2.8 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 2.8 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 2.8 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.8 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-28-0047-1823d2
+  type: single_choice
+  topic_code: '2.8'
+  difficulty: 3
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 2.8?
+  choices:
+  - id: d
+    text: Confuse 2.8 with an unrelated Layer mismatch
+  - id: a
+    text: Prefer the documented 2.8 approach used in enterprise designs
+  - id: b
+    text: Treat 2.8 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 2.8 always works
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 2.8 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 2.8 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.8 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 2.8 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.8
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-29-0048-22b44a
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 4
+  cert_tags: *id004
+  stem: For CCNA objective 2.9, which statement best matches production best practice?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 2.9
+  - id: b
+    text: Ignore verification and assume 2.9 always works
+  - id: c
+    text: Confuse 2.9 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 2.9
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 2.9** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 2.9 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 2.9 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.9** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-29-0049-305787
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Regarding CCNA topic 2.9. Which reply is accurate?
+  choices:
+  - id: b
+    text: Confuse 2.9 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 2.9
+  - id: d
+    text: Use clear-text shared secrets as the only control for 2.9
+  - id: a
+    text: Validate with show/verify steps before relying on 2.9 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 2.9 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 2.9 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 2.9** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.9** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-29-0050-065c52
+  type: multiple_choice
+  topic_code: '2.9'
+  difficulty: 4
+  cert_tags: *id004
+  stem: '[CCNA 2.9] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 2.9 with show/ping evidence
+  - id: b
+    text: Skip change control because 2.9 is low risk
+  - id: c
+    text: Document the 2.9 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 2.9
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 2.9 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 2.9 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 2.9 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 2.9** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-29-0051-a03d4a
+  type: single_choice
+  topic_code: '2.9'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Which configuration intent aligns with CCNA objective 2.9?
+  choices:
+  - id: d
+    text: Treat 2.9 as optional when the blueprint lists it
+  - id: a
+    text: Prefer the documented 2.9 approach used in enterprise designs
+  - id: b
+    text: Use clear-text shared secrets as the only control for 2.9
+  - id: c
+    text: Skip documentation for 2.9 changes in production
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 2.9 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 2.9** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 2.9 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 2.9 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
+  - CCNA exam topic 2.9
   provider: openboson
   license: MIT
   provenance: original

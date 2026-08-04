@@ -1,7 +1,7 @@
 """Export finished exam score/review to JSON, CSV, and HTML.
 
-Redacted mode omits correct answers, rationales, explanations, and per-question
-correctness so shared reports cannot leak keys.
+Redacted mode omits correct answers and per-question correctness so shared
+reports cannot leak keys. Exports do not include teaching explanations.
 """
 
 from __future__ import annotations
@@ -52,16 +52,8 @@ def build_export_payload(
             correct = q.correct_answer_model
             item["correct"] = correct.model_dump()
             item["is_correct"] = bool(user_ans.is_correct) if user_ans is not None else False
-            item["explanation"] = q.explanation
             if q.choices:
-                item["choices"] = [
-                    {
-                        "id": c.id,
-                        "text": c.text,
-                        "rationale": c.rationale,
-                    }
-                    for c in q.choices
-                ]
+                item["choices"] = [{"id": c.id, "text": c.text} for c in q.choices]
         items.append(item)
 
     summary: dict[str, Any] = {
@@ -83,8 +75,6 @@ def build_export_payload(
         "items": items,
     }
     if redacted:
-        # Keep domain totals/weights but drop per-domain correct counts that
-        # reveal which domains were missed when combined with item order.
         for d in summary["domain_breakdown"].values():
             d.pop("correct", None)
             d["percent"] = round(d["percent"], 4)
@@ -113,7 +103,7 @@ def to_csv(
         "user_answer",
     ]
     if not redacted:
-        fieldnames.extend(["is_correct", "correct", "explanation"])
+        fieldnames.extend(["is_correct", "correct"])
     writer = csv.DictWriter(buf, fieldnames=fieldnames, extrasaction="ignore")
     writer.writeheader()
     for item in payload["items"]:
@@ -122,7 +112,6 @@ def to_csv(
         if not redacted:
             row["correct"] = json.dumps(item.get("correct"), default=str)
             row["is_correct"] = item.get("is_correct")
-            row["explanation"] = item.get("explanation") or ""
         writer.writerow(row)
     return buf.getvalue()
 
@@ -136,9 +125,7 @@ def to_html(
     score = payload["score_percent"]
     pass_mark = int(payload["passing_score"] * 100)
     redacted_note = (
-        "<p><em>Redacted export — correct answers and explanations omitted.</em></p>"
-        if redacted
-        else ""
+        "<p><em>Redacted export — correct answers omitted.</em></p>" if redacted else ""
     )
     domain_rows = []
     for prefix, d in payload["domain_breakdown"].items():
@@ -158,11 +145,9 @@ def to_html(
         if not redacted:
             correct = html.escape(json.dumps(item.get("correct"), default=str))
             ok = "correct" if item.get("is_correct") else "incorrect"
-            expl = html.escape(item.get("explanation") or "")
             extra = (
                 f"<p><strong>Result:</strong> {ok}</p>"
                 f"<p><strong>Correct:</strong> <code>{correct}</code></p>"
-                f"<p><strong>Explanation:</strong> {expl}</p>"
             )
         item_blocks.append(
             f"<section><h3>Q{i}. {html.escape(item['question_id'])}</h3>"

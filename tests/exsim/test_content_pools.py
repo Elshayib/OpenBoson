@@ -16,11 +16,17 @@ from openboson.exsim.blueprint import (
     coverage_for_blueprint,
     get_blueprint,
 )
-from openboson.exsim.objectives import invalid_topic_codes
+from openboson.exsim.objectives import get_allowed_objectives, invalid_topic_codes
 
 ROOT = Path(__file__).resolve().parents[2]
 BANKS = ROOT / "data" / "demo_banks"
 GENERATOR = ROOT / "scripts" / "generate_question_pools.py"
+
+# v0.5 content volume / coverage gates (see docs/content-authoring.md).
+CCNA_PER_LEAF = 12
+ENCOR_PER_LEAF = 15
+CCNA_VOLUME_MIN = 636
+ENCOR_VOLUME_MIN = 405
 
 
 def _load_generator():
@@ -68,10 +74,24 @@ def test_encor_objectives_valid(encor_bank):
     assert bad == []
 
 
-def test_questions_have_explanations_and_references(ccna_bank, encor_bank):
+def test_questions_have_references(ccna_bank, encor_bank):
     for q in (*ccna_bank.questions, *encor_bank.questions):
-        assert q.explanation and q.explanation.strip()
         assert q.references, f"{q.id} missing references"
+
+
+def test_per_leaf_topic_coverage(ccna_bank, encor_bank):
+    for bank, exam, ver, floor, label in (
+        (ccna_bank, "200-301", "v1.1", CCNA_PER_LEAF, "CCNA"),
+        (encor_bank, "350-401", "v1.2", ENCOR_PER_LEAF, "ENCOR"),
+    ):
+        allowed = get_allowed_objectives(exam, ver) or frozenset()
+        leaves = sorted(c for c in allowed if "." in c)
+        counts = Counter(q.topic_code for q in bank.questions)
+        missing = [code for code in leaves if counts.get(code, 0) < floor]
+        assert not missing, (
+            f"{label} topics below {floor} questions: "
+            + ", ".join(f"{c}={counts.get(c, 0)}" for c in missing[:20])
+        )
 
 
 def test_answer_refs_resolve(ccna_bank, encor_bank):
@@ -190,8 +210,8 @@ def test_full_pool_coverage_ready():
 def test_release_content_volume_gates():
     ccna = load_exam_bank(BANKS / "pool_ccna.yaml")
     encor = load_exam_bank(BANKS / "pool_encor.yaml")
-    assert len(ccna.questions) >= 500
-    assert len(encor.questions) >= 400
+    assert len(ccna.questions) >= CCNA_VOLUME_MIN
+    assert len(encor.questions) >= ENCOR_VOLUME_MIN
     for bank in (ccna, encor):
         non_sc = sum(1 for q in bank.questions if q.type.value != "single_choice")
         assert non_sc / len(bank.questions) >= 0.15

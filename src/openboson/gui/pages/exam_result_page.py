@@ -96,7 +96,7 @@ class ExamResultPage(QWidget):
 
         export_row = QHBoxLayout()
         self._redacted = QCheckBox("Redacted (no answers)")
-        self._redacted.setToolTip("Omit correct answers, rationales, and explanations")
+        self._redacted.setToolTip("Omit correct answers")
         self._redacted.setChecked(self._redacted_checked)
         self._redacted.toggled.connect(self._on_redacted_toggled)
         export_row.addWidget(self._redacted)

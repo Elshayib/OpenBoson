@@ -12,21 +12,35 @@ questions:
   choices:
   - id: a
     text: GET/POST/PUT/PATCH/DELETE
-    rationale: CRUD via HTTP.
   - id: b
     text: Only HELLO/DBD
-    rationale: OSPF.
   - id: c
     text: Only INVITE/BYE
-    rationale: SIP.
   - id: d
     text: Only SYN/ACK
-    rationale: TCP.
   correct:
     answer: a
-  explanation: REST maps create/read/update/delete to HTTP verbs.
+  explanation: '**GET/POST/PUT/PATCH/DELETE**: **PAT** (NAT overload) maps many inside addresses to one
+    outside address using unique transport port numbers. This is the correct answer for the stem. Configuration
+    uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only HELLO/DBD** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only INVITE/BYE** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only SYN/ACK** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.5 — REST APIs
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-002
   type: single_choice
   topic_code: '6.6'
@@ -36,21 +50,34 @@ questions:
   choices:
   - id: a
     text: Agentless automation using SSH/APIs and YAML playbooks
-    rationale: Ansible.
   - id: b
     text: A link-state routing protocol
-    rationale: OSPF/IS-IS.
   - id: c
     text: A Layer 2 loop prevention protocol
-    rationale: STP.
   - id: d
     text: A wireless encryption cipher
-    rationale: CCMP etc.
   correct:
     answer: a
-  explanation: Ansible automates configuration with playbooks, often without agents.
+  explanation: '**Agentless automation using SSH/APIs and YAML playbooks** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **A link-state routing protocol** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **A Layer 2 loop prevention protocol** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **A wireless encryption cipher** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - CCNA 6.6 — Ansible/Terraform
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-003
   type: single_choice
   topic_code: '6.7'
@@ -60,21 +87,34 @@ questions:
   choices:
   - id: a
     text: Objects and arrays
-    rationale: '{} and [].'
   - id: b
     text: Only XML tags
-    rationale: XML.
   - id: c
     text: Only YANG identities
-    rationale: Modeling.
   - id: d
     text: Only TLV binary
-    rationale: Other encodings.
   correct:
     answer: a
-  explanation: JSON objects and arrays are the core structures for API payloads.
+  explanation: '**Objects and arrays** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only XML tags** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only YANG identities** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only TLV binary** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.7 — JSON
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-004
   type: single_choice
   topic_code: '6.4'
@@ -84,22 +124,36 @@ questions:
   choices:
   - id: a
     text: Models that create content/suggestions from learned patterns
-    rationale: Generative AI.
   - id: b
     text: Only OSPF SPF calculation
-    rationale: Routing.
   - id: c
     text: Only CAM aging
-    rationale: Switching.
   - id: d
     text: Only PoE budgeting
-    rationale: Power.
   correct:
     answer: a
-  explanation: v1.1 expects high-level understanding of generative/predictive AI and
-    ML in ops.
+  explanation: '**Models that create content/suggestions from learned patterns**: **PAT** (NAT overload)
+    maps many inside addresses to one outside address using unique transport port numbers. This is the
+    correct answer for the stem. Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only OSPF SPF calculation**: **OSPF** is a link-state IGP that builds a topology database and calculates
+    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
+    required by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only CAM aging** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only PoE budgeting** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.4 — AI/ML
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-005
   type: drag_match
   topic_code: '6.3'
@@ -117,9 +171,15 @@ questions:
     right: Controller to network devices
   correct:
     pairs: *id002
-  explanation: Controller-based architectures separate control/data planes with APIs.
+  explanation: 'The correct mappings are: Overlay → Virtual network services over an underlay; Underlay
+    → Physical/IP reachability fabric; Northbound API → Controller to applications; Southbound API → Controller
+    to network devices. Each left item associates with exactly one right item.'
   references:
-  - CCNA 6.3
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-006
   type: single_choice
   topic_code: '6.1'
@@ -129,21 +189,34 @@ questions:
   choices:
   - id: a
     text: Reducing manual repetitive changes / increasing consistency
-    rationale: Automation improves consistency and speed of changes.
   - id: b
     text: Eliminating all need for routing protocols
-    rationale: Not correct for this scenario.
   - id: c
     text: Removing switching entirely
-    rationale: Not correct for this scenario.
   - id: d
     text: Forcing Telnet only
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Automation improves consistency and speed of changes.
+  explanation: '**Reducing manual repetitive changes / increasing consistency** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Eliminating all need for routing protocols** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Removing switching entirely**: A Layer 2 **switch** forwards Ethernet frames based on MAC address
+    tables within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+
+
+    **Forcing Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.1
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-007
   type: single_choice
   topic_code: '6.2'
@@ -153,21 +226,34 @@ questions:
   choices:
   - id: a
     text: Centralizing control-plane decisions via a controller
-    rationale: Controllers centralize policy/control while devices forward.
   - id: b
     text: Removing all data planes
-    rationale: Not correct for this scenario.
   - id: c
     text: Using only hubs
-    rationale: Not correct for this scenario.
   - id: d
     text: Disabling APIs
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Controllers centralize policy/control while devices forward.
+  explanation: '**Centralizing control-plane decisions via a controller** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Removing all data planes** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Using only hubs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disabling APIs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.2
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-008
   type: single_choice
   topic_code: '6.5'
@@ -177,21 +263,34 @@ questions:
   choices:
   - id: a
     text: Unauthorized
-    rationale: 401 indicates authentication failure/required.
   - id: b
     text: OK
-    rationale: Not correct for this scenario.
   - id: c
     text: Not Found
-    rationale: Not correct for this scenario.
   - id: d
     text: Server Error
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: 401 indicates authentication failure/required.
+  explanation: '**Unauthorized** is correct. It is the selection that meets the requirement stated in
+    the stem.
+
+
+    **OK** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **Not Found** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Server Error** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.5
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-009
   type: single_choice
   topic_code: '6.7'
@@ -201,21 +300,34 @@ questions:
   choices:
   - id: a
     text: true (lowercase)
-    rationale: JSON boolean literals are lowercase true/false.
   - id: b
     text: True (Python style only)
-    rationale: Not correct for this scenario.
   - id: c
     text: 'TRUE'
-    rationale: Not correct for this scenario.
   - id: d
     text: 1 as only legal form
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: JSON boolean literals are lowercase true/false.
+  explanation: '**true (lowercase)** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **True (Python style only)** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **TRUE** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **1 as only legal form** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.7
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-010
   type: single_choice
   topic_code: '6.6'
@@ -225,21 +337,34 @@ questions:
   choices:
   - id: a
     text: Declarative infrastructure as code
-    rationale: Terraform declares desired infrastructure state.
   - id: b
     text: Only STP tuning
-    rationale: Not correct for this scenario.
   - id: c
     text: Only EtherChannel hashing
-    rationale: Not correct for this scenario.
   - id: d
     text: Only syslog facilities
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Terraform declares desired infrastructure state.
+  explanation: '**Declarative infrastructure as code** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only STP tuning** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only EtherChannel hashing** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only syslog facilities** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.6
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-011
   type: single_choice
   topic_code: '6.5'
@@ -249,21 +374,34 @@ questions:
   choices:
   - id: a
     text: Create, Read, Update, Delete
-    rationale: CRUD names the basic data operations APIs expose.
   - id: b
     text: CPU, RAM, Uplink, Disk
-    rationale: Not correct for this scenario.
   - id: c
     text: Cisco Routing Update Daemon
-    rationale: Not correct for this scenario.
   - id: d
     text: Classful Routing Under Demand
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: CRUD names the basic data operations APIs expose.
+  explanation: '**Create, Read, Update, Delete** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **CPU, RAM, Uplink, Disk** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Cisco Routing Update Daemon** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Classful Routing Under Demand** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - CCNA 6.5
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-012
   type: single_choice
   topic_code: '6.3'
@@ -273,21 +411,35 @@ questions:
   choices:
   - id: a
     text: Central policy with distributed forwarding
-    rationale: SDN/controller designs split control from forwarding.
   - id: b
     text: Only single-process routers forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabling CEF
-    rationale: Not correct for this scenario.
   - id: d
     text: Only removing FIBs
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: SDN/controller designs split control from forwarding.
+  explanation: '**Central policy with distributed forwarding** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only single-process routers forever**: A **router** forwards IP packets between networks using the
+    routing table and operates primarily at Layer 3. This does not satisfy the condition required by the
+    stem.
+
+
+    **Only disabling CEF** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only removing FIBs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.3
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-013
   type: single_choice
   topic_code: '6.4'
@@ -297,21 +449,35 @@ questions:
   choices:
   - id: a
     text: Anomaly detection / predictive insights
-    rationale: ML supports predictive/anomaly use cases in operations.
   - id: b
     text: Only manually typing ACLs faster without models
-    rationale: Not correct for this scenario.
   - id: c
     text: Only increasing STP diameter
-    rationale: Not correct for this scenario.
   - id: d
     text: Only disabling telemetry
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ML supports predictive/anomaly use cases in operations.
+  explanation: '**Anomaly detection / predictive insights** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only manually typing ACLs faster without models**: An **ACL** filters traffic by matching header
+    fields and applying permit or deny actions in sequential order. This does not satisfy the condition
+    required by the stem.
+
+
+    **Only increasing STP diameter** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only disabling telemetry** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - CCNA 6.4
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-014
   type: single_choice
   topic_code: '6.1'
@@ -321,21 +487,34 @@ questions:
   choices:
   - id: a
     text: Repeatable, auditable changes
-    rationale: Automation improves repeatability and auditability.
   - id: b
     text: Guaranteed zero outages forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Removal of all security
-    rationale: Not correct for this scenario.
   - id: d
     text: Mandatory cleartext protocols
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Automation improves repeatability and auditability.
+  explanation: '**Repeatable, auditable changes** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Guaranteed zero outages forever** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Removal of all security** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Mandatory cleartext protocols** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - CCNA 6.1
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-015
   type: single_choice
   topic_code: '6.2'
@@ -345,21 +524,34 @@ questions:
   choices:
   - id: a
     text: Network devices
-    rationale: Southbound interfaces program the network devices.
   - id: b
     text: Only business apps exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DNS roots
-    rationale: Not correct for this scenario.
   - id: d
     text: Only end-user browsers exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Southbound interfaces program the network devices.
+  explanation: '**Network devices** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only business apps exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only DNS roots** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only end-user browsers exclusive** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.'
   references:
-  - CCNA 6.2
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-016
   type: single_choice
   topic_code: '6.6'
@@ -369,21 +561,34 @@ questions:
   choices:
   - id: a
     text: Hosts/groups and variables
-    rationale: Inventory lists managed hosts and group vars.
   - id: b
     text: Only TCAM
-    rationale: Not correct for this scenario.
   - id: c
     text: Only FIB
-    rationale: Not correct for this scenario.
   - id: d
     text: Only RIB
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Inventory lists managed hosts and group vars.
+  explanation: '**Hosts/groups and variables** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only TCAM** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only FIB** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only RIB** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - CCNA 6.6
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-017
   type: single_choice
   topic_code: '6.7'
@@ -393,21 +598,34 @@ questions:
   choices:
   - id: a
     text: Curly braces {}
-    rationale: Objects use {}; arrays use [].
   - id: b
     text: Only angle brackets
-    rationale: Not correct for this scenario.
   - id: c
     text: Only parentheses
-    rationale: Not correct for this scenario.
   - id: d
     text: Only spaces
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Objects use {}; arrays use [].
+  explanation: '**Curly braces {}** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only angle brackets** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only parentheses** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only spaces** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.7
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-018
   type: single_choice
   topic_code: '6.5'
@@ -417,21 +635,35 @@ questions:
   choices:
   - id: a
     text: Authorization
-    rationale: Bearer tokens commonly travel in Authorization.
   - id: b
     text: Only X-STP-Root
-    rationale: Not correct for this scenario.
   - id: c
     text: Only Via OSPF
-    rationale: Not correct for this scenario.
   - id: d
     text: 'Only Server: nginx required'
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Bearer tokens commonly travel in Authorization.
+  explanation: '**Authorization** is correct. It is the selection that meets the requirement stated in
+    the stem.
+
+
+    **Only X-STP-Root** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only Via OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Only Server: nginx required** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - CCNA 6.5
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-6-019
   type: single_choice
   topic_code: '6.3'
@@ -441,21 +673,34 @@ questions:
   choices:
   - id: a
     text: Overlay services on an underlay
-    rationale: Fabrics combine underlay reachability with overlay services.
   - id: b
     text: Only serial TDM
-    rationale: Not correct for this scenario.
   - id: c
     text: Only Token Ring
-    rationale: Not correct for this scenario.
   - id: d
     text: Only analog modems
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Fabrics combine underlay reachability with overlay services.
+  explanation: '**Overlay services on an underlay** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only serial TDM** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only Token Ring** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only analog modems** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - CCNA 6.3
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: ccna-gen-0046-ec29bb
   type: single_choice
   topic_code: '6.1'
@@ -466,22 +711,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.1; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.1; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.1: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.1; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -494,22 +748,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.2; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.2: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.2; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.2; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -522,25 +785,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.3.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.3.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.3: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -553,22 +826,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.4; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.4; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.4; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.4: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -581,22 +863,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.5; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.5; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.5: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.5; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -609,22 +900,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.6; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.6: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.6; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.6; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -637,22 +938,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.7: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.7; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.7; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.7; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -665,22 +975,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.1; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.1: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.1; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.1; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -693,22 +1013,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.2: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.2; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.2; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.2; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -721,22 +1050,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.3; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.3; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.3; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.3: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -749,25 +1087,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.4.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.4.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.4.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.4.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.4: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -780,22 +1128,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.5; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.5: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.5; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.5; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -808,22 +1165,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.6: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.6; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.6; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.6; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -836,22 +1202,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.7; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.7; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.7; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.7: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -864,22 +1240,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -892,22 +1277,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.2; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.2; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.2; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -920,22 +1315,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -948,22 +1352,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -976,25 +1389,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.5.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.5.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1007,22 +1430,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1035,22 +1467,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1063,22 +1504,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.1; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.1; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.1; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.1: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1091,22 +1541,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.2; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.2; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.2: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.2; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1119,22 +1578,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.3; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.3: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.3; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.3; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1147,22 +1616,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.4: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.4; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.4; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.4; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1175,22 +1653,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.5; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.5; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.5; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.5: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1203,25 +1690,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.6.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.6.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.6.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.6.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.6: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1234,22 +1731,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.7; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.7: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.7; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.7; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1262,25 +1768,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.1.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.1.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.1.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.1: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1293,22 +1809,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.2; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.2: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.2; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.2; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1321,22 +1846,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.3: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.3; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.3; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.3; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1349,22 +1883,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.4; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.4; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.4; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.4: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1377,22 +1921,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.5; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.5; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.5: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.5; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1405,22 +1958,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.6; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.6: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.6; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.6; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1433,25 +1995,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.7.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.7.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.7.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.7.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.7: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1464,22 +2036,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1492,25 +2073,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.2.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.2.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1523,22 +2114,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1551,22 +2151,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1579,22 +2188,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.5; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.5; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.5; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1607,22 +2226,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1635,22 +2263,903 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-61-0115-043e85
+  type: multiple_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: &id004
+  - ccna
+  stem: '[CCNA 6.1] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.1 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.1 is low risk
+  - id: c
+    text: Document the 6.1 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.1
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.1 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.1 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.1 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.1** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-61-0116-512f3e
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 2
+  cert_tags: *id004
+  stem: During troubleshooting related to 6.1, which observation is most relevant?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.1
+  - id: b
+    text: Disable logging permanently while testing 6.1
+  - id: c
+    text: Use clear-text shared secrets as the only control for 6.1
+  - id: d
+    text: Skip documentation for 6.1 changes in production
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.1** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.1** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.1** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.1 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-61-0117-9d6cbb
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id004
+  stem: Which configuration intent aligns with CCNA objective 6.1?
+  choices:
+  - id: b
+    text: Use clear-text shared secrets as the only control for 6.1
+  - id: c
+    text: Skip documentation for 6.1 changes in production
+  - id: d
+    text: Treat 6.1 as optional when the blueprint lists it
+  - id: a
+    text: Validate with show/verify steps before relying on 6.1 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.1 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.1** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.1 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-61-0118-7ea9ea
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Select the correct association for exam topic 6.1.
+  choices:
+  - id: c
+    text: Treat 6.1 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.1 always works
+  - id: a
+    text: Use the standard model for 6.1 rather than a look-alike concept
+  - id: b
+    text: Skip documentation for 6.1 changes in production
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.1 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.1 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.1 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-62-0119-75866b
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 6.2?
+  choices:
+  - id: d
+    text: Confuse 6.2 with an unrelated Layer mismatch
+  - id: a
+    text: Prefer the documented 6.2 approach used in enterprise designs
+  - id: b
+    text: Treat 6.2 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 6.2 always works
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.2 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 6.2 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.2 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-62-0120-fdc808
+  type: multiple_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id004
+  stem: '[CCNA 6.2] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.2 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.2 is low risk
+  - id: c
+    text: Document the 6.2 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.2
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.2 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.2 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.2 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.2** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-62-0121-1a6092
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Regarding CCNA topic 6.2. Which reply is accurate?
+  choices:
+  - id: b
+    text: Confuse 6.2 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 6.2
+  - id: d
+    text: Use clear-text shared secrets as the only control for 6.2
+  - id: a
+    text: Validate with show/verify steps before relying on 6.2 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.2 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 6.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.2** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.2** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-62-0122-812cd6
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 3
+  cert_tags: *id004
+  stem: During troubleshooting related to 6.2, which observation is most relevant?
+  choices:
+  - id: c
+    text: Use clear-text shared secrets as the only control for 6.2
+  - id: d
+    text: Skip documentation for 6.2 changes in production
+  - id: a
+    text: Use the standard model for 6.2 rather than a look-alike concept
+  - id: b
+    text: Disable logging permanently while testing 6.2
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.2 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.2** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.2** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.2 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-63-0123-a16a20
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Which configuration intent aligns with CCNA objective 6.3?
+  choices:
+  - id: d
+    text: Treat 6.3 as optional when the blueprint lists it
+  - id: a
+    text: Prefer the documented 6.3 approach used in enterprise designs
+  - id: b
+    text: Use clear-text shared secrets as the only control for 6.3
+  - id: c
+    text: Skip documentation for 6.3 changes in production
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.3 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.3** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-63-0124-0031f1
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Select the correct association for exam topic 6.3.
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.3
+  - id: b
+    text: Skip documentation for 6.3 changes in production
+  - id: c
+    text: Treat 6.3 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.3 always works
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.3** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.3 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-63-0125-bf9cf1
+  type: multiple_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id004
+  stem: '[CCNA 6.3] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.3 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.3 is low risk
+  - id: c
+    text: Document the 6.3 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.3
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.3 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.3 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.3 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.3** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-64-0126-89b486
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 2
+  cert_tags: *id004
+  stem: For CCNA objective 6.4, which statement best matches production best practice?
+  choices:
+  - id: c
+    text: Confuse 6.4 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 6.4
+  - id: a
+    text: Use the standard model for 6.4 rather than a look-alike concept
+  - id: b
+    text: Ignore verification and assume 6.4 always works
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.4 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.4 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-64-0127-739941
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 3
+  cert_tags: *id004
+  stem: Regarding CCNA topic 6.4. Which reply is accurate?
+  choices:
+  - id: d
+    text: Use clear-text shared secrets as the only control for 6.4
+  - id: a
+    text: Prefer the documented 6.4 approach used in enterprise designs
+  - id: b
+    text: Confuse 6.4 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 6.4
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.4 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 6.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.4** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-64-0128-2cfdf8
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 4
+  cert_tags: *id004
+  stem: During troubleshooting related to 6.4, which observation is most relevant?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.4
+  - id: b
+    text: Disable logging permanently while testing 6.4
+  - id: c
+    text: Use clear-text shared secrets as the only control for 6.4
+  - id: d
+    text: Skip documentation for 6.4 changes in production
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.4** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.4** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.4 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-64-0129-8b49ee
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 5
+  cert_tags: *id004
+  stem: Which configuration intent aligns with CCNA objective 6.4?
+  choices:
+  - id: b
+    text: Use clear-text shared secrets as the only control for 6.4
+  - id: c
+    text: Skip documentation for 6.4 changes in production
+  - id: d
+    text: Treat 6.4 as optional when the blueprint lists it
+  - id: a
+    text: Validate with show/verify steps before relying on 6.4 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.4 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.4** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.4 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.4 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-65-0130-ee9230
+  type: multiple_choice
+  topic_code: '6.5'
+  difficulty: 3
+  cert_tags: *id004
+  stem: '[CCNA 6.5] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.5 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.5 is low risk
+  - id: c
+    text: Document the 6.5 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.5
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.5 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.5 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.5 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.5** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-65-0131-c68c0c
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 6.5?
+  choices:
+  - id: d
+    text: Confuse 6.5 with an unrelated Layer mismatch
+  - id: a
+    text: Prefer the documented 6.5 approach used in enterprise designs
+  - id: b
+    text: Treat 6.5 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 6.5 always works
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.5 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 6.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.5 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.5 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-66-0132-f61f76
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 3
+  cert_tags: *id004
+  stem: For CCNA objective 6.6, which statement best matches production best practice?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.6
+  - id: b
+    text: Ignore verification and assume 6.6 always works
+  - id: c
+    text: Confuse 6.6 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 6.6
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.6** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.6 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-66-0133-c96c1c
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 4
+  cert_tags: *id004
+  stem: Regarding CCNA topic 6.6. Which reply is accurate?
+  choices:
+  - id: b
+    text: Confuse 6.6 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 6.6
+  - id: d
+    text: Use clear-text shared secrets as the only control for 6.6
+  - id: a
+    text: Validate with show/verify steps before relying on 6.6 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.6 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 6.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-66-0134-eda0c9
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 5
+  cert_tags: *id004
+  stem: During troubleshooting related to 6.6, which observation is most relevant?
+  choices:
+  - id: c
+    text: Use clear-text shared secrets as the only control for 6.6
+  - id: d
+    text: Skip documentation for 6.6 changes in production
+  - id: a
+    text: Use the standard model for 6.6 rather than a look-alike concept
+  - id: b
+    text: Disable logging permanently while testing 6.6
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.6 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.6 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-67-0135-f16423
+  type: multiple_choice
+  topic_code: '6.7'
+  difficulty: 2
+  cert_tags: *id004
+  stem: '[CCNA 6.7] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.7 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.7 is low risk
+  - id: c
+    text: Document the 6.7 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.7
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.7 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.7 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.7 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.7** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-67-0136-b9f2bd
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 2
+  cert_tags: *id004
+  stem: Select the correct association for exam topic 6.7.
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.7
+  - id: b
+    text: Skip documentation for 6.7 changes in production
+  - id: c
+    text: Treat 6.7 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.7 always works
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.7** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.7 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.7 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: ccna-v05-67-0137-237c87
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 3
+  cert_tags: *id004
+  stem: Which option correctly describes a key idea under 6.7?
+  choices:
+  - id: b
+    text: Treat 6.7 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 6.7 always works
+  - id: d
+    text: Confuse 6.7 with an unrelated Layer mismatch
+  - id: a
+    text: Validate with show/verify steps before relying on 6.7 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.7 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 6.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.7 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
+  - CCNA exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original

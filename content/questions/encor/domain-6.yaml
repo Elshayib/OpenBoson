@@ -12,21 +12,34 @@ questions:
   choices:
   - id: a
     text: YANG data models
-    rationale: YANG.
   - id: b
     text: Only TCL exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only expect scripts exclusive
-    rationale: Not correct for this scenario.
   - id: d
     text: Only macros exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: YANG.
+  explanation: '**YANG data models** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only TCL exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only expect scripts exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only macros exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.3
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-002
   type: single_choice
   topic_code: '6.5'
@@ -36,21 +49,35 @@ questions:
   choices:
   - id: a
     text: JSON/XML response bodies and status codes
-    rationale: REST API results include codes and payloads.
   - id: b
     text: Only STP BPDUs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only CDP version
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE class
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: REST API results include codes and payloads.
+  explanation: '**JSON/XML response bodies and status codes** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only STP BPDUs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only CDP version**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
+    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
+    uses `cdp run` / `show cdp neighbors`.
+
+
+    **Only PoE class** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.5
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-003
   type: single_choice
   topic_code: '6.7'
@@ -60,21 +87,34 @@ questions:
   choices:
   - id: a
     text: Agentless orchestration
-    rationale: Ansible is commonly agentless.
   - id: b
     text: Only agent-required Puppet exclusive forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only a routing protocol
-    rationale: Not correct for this scenario.
   - id: d
     text: Only a wireless cipher
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Ansible is commonly agentless.
+  explanation: '**Agentless orchestration** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only agent-required Puppet exclusive forever** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Only a routing protocol** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only a wireless cipher** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.7
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-004
   type: single_choice
   topic_code: '6.1'
@@ -84,21 +124,34 @@ questions:
   choices:
   - id: a
     text: Libraries to call APIs or parse text
-    rationale: ENCOR expects basic Python literacy.
   - id: b
     text: Only to replace ASICs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only to elect DR
-    rationale: Not correct for this scenario.
   - id: d
     text: Only to age CAM
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: ENCOR expects basic Python literacy.
+  explanation: '**Libraries to call APIs or parse text** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only to replace ASICs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only to elect DR** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only to age CAM** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.1
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-005
   type: single_choice
   topic_code: '6.2'
@@ -108,21 +161,34 @@ questions:
   choices:
   - id: a
     text: Well-formed objects/arrays with quoted keys
-    rationale: Construct valid JSON-encoded files.
   - id: b
     text: Only Python True literals
-    rationale: Not correct for this scenario.
   - id: c
     text: Only trailing commas required
-    rationale: Not correct for this scenario.
   - id: d
     text: Only XML tags
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Construct valid JSON-encoded files.
+  explanation: '**Well-formed objects/arrays with quoted keys** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only Python True literals** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only trailing commas required** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only XML tags** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.2
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-006
   type: single_choice
   topic_code: '6.4'
@@ -132,21 +198,34 @@ questions:
   choices:
   - id: a
     text: Programmatic inventory/policy/operations
-    rationale: Controller APIs automate platforms.
   - id: b
     text: Only console cabling
-    rationale: Not correct for this scenario.
   - id: c
     text: Only optical dBm reads exclusive
-    rationale: Not correct for this scenario.
   - id: d
     text: Only punch-down maps
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Controller APIs automate platforms.
+  explanation: '**Programmatic inventory/policy/operations** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only console cabling** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only optical dBm reads exclusive** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Only punch-down maps** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.4
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-007
   type: single_choice
   topic_code: '6.6'
@@ -156,21 +235,35 @@ questions:
   choices:
   - id: a
     text: Configuration, troubleshooting, or data collection reactions
-    rationale: EEM reacts to events with actions.
   - id: b
     text: Only underlay ECMP math exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only VTP sync
-    rationale: Not correct for this scenario.
   - id: d
     text: Only LACP hashing exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: EEM reacts to events with actions.
+  explanation: '**Configuration, troubleshooting, or data collection reactions** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Only underlay ECMP math exclusive** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Only VTP sync** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only LACP hashing exclusive**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the
+    standards-based alternative to PAgP. This does not satisfy the condition required by the stem. Configuration
+    uses `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 6.6
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-008
   type: single_choice
   topic_code: '6.7'
@@ -180,21 +273,34 @@ questions:
   choices:
   - id: a
     text: Whether managed nodes run a persistent agent
-    rationale: Compare agent vs agentless tools.
   - id: b
     text: Only STP modes
-    rationale: Not correct for this scenario.
   - id: c
     text: Only NAT types
-    rationale: Not correct for this scenario.
   - id: d
     text: Only syslog severity
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Compare agent vs agentless tools.
+  explanation: '**Whether managed nodes run a persistent agent** is correct. It is the selection that
+    meets the requirement stated in the stem.
+
+
+    **Only STP modes** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only NAT types** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only syslog severity** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.7
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-009
   type: single_choice
   topic_code: '6.3'
@@ -204,21 +310,34 @@ questions:
   choices:
   - id: a
     text: Configuration and operational data structure
-    rationale: YANG is a data modeling language.
   - id: b
     text: Only Ethernet PHY voltages
-    rationale: Not correct for this scenario.
   - id: c
     text: Only cable colors
-    rationale: Not correct for this scenario.
   - id: d
     text: Only rack U heights
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: YANG is a data modeling language.
+  explanation: '**Configuration and operational data structure** is correct. It is the selection that
+    meets the requirement stated in the stem.
+
+
+    **Only Ethernet PHY voltages** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only cable colors** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only rack U heights** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.3
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-010
   type: single_choice
   topic_code: '6.5'
@@ -228,21 +347,34 @@ questions:
   choices:
   - id: a
     text: Successful resource creation
-    rationale: Interpret REST status codes.
   - id: b
     text: Unauthorized
-    rationale: Not correct for this scenario.
   - id: c
     text: Server error
-    rationale: Not correct for this scenario.
   - id: d
     text: Not found
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Interpret REST status codes.
+  explanation: '**Successful resource creation** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Unauthorized** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Server error** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Not found** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 6.5
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-011
   type: single_choice
   topic_code: '6.1'
@@ -252,21 +384,34 @@ questions:
   choices:
   - id: a
     text: Square brackets
-    rationale: Basic Python components include lists/dicts.
   - id: b
     text: Only curly braces exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only angle brackets
-    rationale: Not correct for this scenario.
   - id: d
     text: Only parentheses exclusive forever
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Basic Python components include lists/dicts.
+  explanation: '**Square brackets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only curly braces exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only angle brackets** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only parentheses exclusive forever** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.'
   references:
-  - ENCOR 6.1
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-012
   type: single_choice
   topic_code: '6.2'
@@ -276,21 +421,33 @@ questions:
   choices:
   - id: a
     text: 'null'
-    rationale: JSON uses null.
   - id: b
     text: None (Python only as JSON)
-    rationale: Not correct for this scenario.
   - id: c
     text: 'NULL'
-    rationale: Not correct for this scenario.
   - id: d
     text: undefined (JS only as JSON)
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: JSON uses null.
+  explanation: '**null** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **None (Python only as JSON)** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **NULL** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **undefined (JS only as JSON)** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - ENCOR 6.2
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-013
   type: single_choice
   topic_code: '6.4'
@@ -300,21 +457,35 @@ questions:
   choices:
   - id: a
     text: Automate WAN fabric operations/policy
-    rationale: Controller APIs cover SD-WAN Manager.
   - id: b
     text: Only set STP priority
-    rationale: Not correct for this scenario.
   - id: c
     text: Only create VLANs on access
-    rationale: Not correct for this scenario.
   - id: d
     text: Only configure PortFast
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Controller APIs cover SD-WAN Manager.
+  explanation: '**Automate WAN fabric operations/policy** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only set STP priority** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only create VLANs on access** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only configure PortFast**: **PortFast** places an edge port into the forwarding state immediately,
+    bypassing the listening and learning states and thereby reducing STP convergence time for end stations.
+    This does not satisfy the condition required by the stem. Configuration uses `spanning-tree portfast`.'
   references:
-  - ENCOR 6.4
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-014
   type: single_choice
   topic_code: '6.6'
@@ -324,21 +495,35 @@ questions:
   choices:
   - id: a
     text: Syslog patterns / timers / events
-    rationale: Event-driven automation on box.
   - id: b
     text: Only manual cable moves
-    rationale: Not correct for this scenario.
   - id: c
     text: Only optical cleaning
-    rationale: Not correct for this scenario.
   - id: d
     text: Only DNS TTL expiry exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Event-driven automation on box.
+  explanation: '**Syslog patterns / timers / events**: **PAT** (NAT overload) maps many inside addresses
+    to one outside address using unique transport port numbers. This is the correct answer for the stem.
+    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only manual cable moves** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only optical cleaning** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only DNS TTL expiry exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - ENCOR 6.6
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-015
   type: single_choice
   topic_code: '6.7'
@@ -348,21 +533,34 @@ questions:
   choices:
   - id: a
     text: Agents on managed nodes
-    rationale: Agent-based orchestration contrast.
   - id: b
     text: Only Ansible SSH exclusive always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only SNMP GET
-    rationale: Not correct for this scenario.
   - id: d
     text: Only SPAN
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Agent-based orchestration contrast.
+  explanation: '**Agents on managed nodes** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only Ansible SSH exclusive always** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Only SNMP GET** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only SPAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 6.7
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-016
   type: single_choice
   topic_code: '6.1'
@@ -372,21 +570,35 @@ questions:
   choices:
   - id: a
     text: Keys to values
-    rationale: Dicts are core Python structures.
   - id: b
     text: Only VLANs to VNIs exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only AS paths
-    rationale: Not correct for this scenario.
   - id: d
     text: Only STP costs exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Dicts are core Python structures.
+  explanation: '**Keys to values** is correct. It is the selection that meets the requirement stated in
+    the stem.
+
+
+    **Only VLANs to VNIs exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only AS paths**: **PAT** (NAT overload) maps many inside addresses to one outside address using
+    unique transport port numbers. This does not satisfy the condition required by the stem. Configuration
+    uses `ip nat inside source list <acl> interface <if> overload`.
+
+
+    **Only STP costs exclusive** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - ENCOR 6.1
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-017
   type: single_choice
   topic_code: '6.5'
@@ -396,21 +608,35 @@ questions:
   choices:
   - id: a
     text: JSON payloads with status metadata
-    rationale: Interpret controller API results.
   - id: b
     text: Only BPDUs
-    rationale: Not correct for this scenario.
   - id: c
     text: Only HSRP hellos
-    rationale: Not correct for this scenario.
   - id: d
     text: Only LACP PDUs
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Interpret controller API results.
+  explanation: '**JSON payloads with status metadata** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only BPDUs** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only HSRP hellos** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only LACP PDUs**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
+    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
+    `channel-group <id> mode active|passive`.'
   references:
-  - ENCOR 6.5
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-018
   type: single_choice
   topic_code: '6.3'
@@ -420,21 +646,34 @@ questions:
   choices:
   - id: a
     text: Structured, machine-readable device data contracts
-    rationale: YANG enables model-driven management.
   - id: b
     text: Only free-form CLI forever without models
-    rationale: Not correct for this scenario.
   - id: c
     text: Only binary IOS images as models
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CSV exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: YANG enables model-driven management.
+  explanation: '**Structured, machine-readable device data contracts** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only free-form CLI forever without models** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Only binary IOS images as models** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Only CSV exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 6.3
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-019
   type: single_choice
   topic_code: '6.2'
@@ -444,21 +683,34 @@ questions:
   choices:
   - id: a
     text: Square brackets []
-    rationale: Arrays use [].
   - id: b
     text: Only curly braces
-    rationale: Not correct for this scenario.
   - id: c
     text: Only quotes
-    rationale: Not correct for this scenario.
   - id: d
     text: Only commas without brackets
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Arrays use [].
+  explanation: '**Square brackets []** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only curly braces** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only quotes** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only commas without brackets** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - ENCOR 6.2
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-6-020
   type: single_choice
   topic_code: '6.4'
@@ -468,21 +720,34 @@ questions:
   choices:
   - id: a
     text: Applications / orchestration systems
-    rationale: Apps consume controller northbound APIs.
   - id: b
     text: Only ASIC TCAMs exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only copper PHYs
-    rationale: Not correct for this scenario.
   - id: d
     text: Only console servers exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Apps consume controller northbound APIs.
+  explanation: '**Applications / orchestration systems** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only ASIC TCAMs exclusive** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only copper PHYs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only console servers exclusive** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - ENCOR 6.4
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-gen-0020-087e7c
   type: single_choice
   topic_code: '6.1'
@@ -493,22 +758,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -521,22 +795,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.2; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.2; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.2; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -549,22 +833,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -577,22 +870,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -605,25 +907,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.5.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.5.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -636,22 +948,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -664,22 +985,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -692,22 +1022,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -720,25 +1059,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.2.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.2.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -751,22 +1100,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -779,22 +1137,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -807,22 +1174,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.5; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.5; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.5; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -835,22 +1212,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -863,22 +1249,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -891,22 +1286,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -919,22 +1323,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.2; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.2; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.2; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -947,22 +1361,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -975,22 +1398,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1003,25 +1435,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.5.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.5.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1034,22 +1476,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1062,22 +1513,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1090,22 +1550,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1118,25 +1587,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.2.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.2.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1149,22 +1628,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1177,22 +1665,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1205,22 +1702,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.5; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.5; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.5; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1233,22 +1740,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1261,22 +1777,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1289,22 +1814,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1317,22 +1851,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.2; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.2; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.2; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1345,22 +1889,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1373,22 +1926,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1401,25 +1963,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.5.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.5.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1432,22 +2004,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1460,22 +2041,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1488,22 +2078,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1516,25 +2115,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.2.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.2.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1547,22 +2156,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1575,22 +2193,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1603,22 +2230,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.5; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.5; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.5; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1631,22 +2268,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1659,22 +2305,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1687,22 +2342,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1715,22 +2379,32 @@ questions:
   choices:
   - id: d
     text: SMTP
-    rationale: Not correct for 6.2; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
   - id: b
     text: FTP
-    rationale: Not correct for 6.2; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.2; TFTP is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1743,22 +2417,31 @@ questions:
   choices:
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1771,22 +2454,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -1799,25 +2491,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.5.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.5.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -1830,22 +2532,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -1858,22 +2569,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -1886,22 +2606,31 @@ questions:
   choices:
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1914,25 +2643,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.2.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.2.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1945,22 +2684,31 @@ questions:
   choices:
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1973,22 +2721,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -2001,22 +2758,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.5; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.5; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.5; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.5: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.5, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -2029,22 +2796,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -2057,22 +2833,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -2085,22 +2870,31 @@ questions:
   choices:
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -2113,22 +2907,32 @@ questions:
   choices:
   - id: b
     text: FTP
-    rationale: Not correct for 6.2; FTP is a common mix-up.
   - id: c
     text: TFTP
-    rationale: Not correct for 6.2; TFTP is a common mix-up.
   - id: d
     text: SMTP
-    rationale: Not correct for 6.2; SMTP is a common mix-up.
   - id: a
     text: CDP
-    rationale: 'Matches 6.2: Cisco LAN discovery protocol → CDP.'
   correct:
     answer: a
-  explanation: For 6.2, the accurate association is CDP.
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
   provider: openboson
   license: MIT
   provenance: original
@@ -2141,22 +2945,31 @@ questions:
   choices:
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.3; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.3; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.3: Better password storage in configs → Type 8/9 secrets.'
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.3; Banner plaintext is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.3, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
   provider: openboson
   license: MIT
   provenance: original
@@ -2169,22 +2982,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.4; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.4: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.4; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.4; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.4, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
   provider: openboson
   license: MIT
   provenance: original
@@ -2197,25 +3019,35 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.5.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.5.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.5.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.5.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.5: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
   provider: openboson
   license: MIT
   provenance: original
@@ -2228,22 +3060,31 @@ questions:
   choices:
   - id: b
     text: Banner plaintext
-    rationale: Not correct for 6.6; Banner plaintext is a common mix-up.
   - id: c
     text: Disable AAA
-    rationale: Not correct for 6.6; Disable AAA is a common mix-up.
   - id: d
     text: Telnet only
-    rationale: Not correct for 6.6; Telnet only is a common mix-up.
   - id: a
     text: Type 8/9 secrets
-    rationale: 'Matches 6.6: Better password storage in configs → Type 8/9 secrets.'
   correct:
     answer: a
-  explanation: For 6.6, the accurate association is Type 8/9 secrets.
+  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
   provider: openboson
   license: MIT
   provenance: original
@@ -2256,22 +3097,31 @@ questions:
   choices:
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.7; Form Port-Channels is a common mix-up.
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.7; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.7: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.7; Encrypt OSPF is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.7, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original
@@ -2284,22 +3134,31 @@ questions:
   choices:
   - id: d
     text: Assign VLANs
-    rationale: Not correct for 6.1; Assign VLANs is a common mix-up.
   - id: a
     text: Restrict management access
-    rationale: 'Matches 6.1: ACL on vty lines purpose → Restrict management access.'
   - id: b
     text: Encrypt OSPF
-    rationale: Not correct for 6.1; Encrypt OSPF is a common mix-up.
   - id: c
     text: Form Port-Channels
-    rationale: Not correct for 6.1; Form Port-Channels is a common mix-up.
   correct:
     answer: a
-  explanation: For 6.1, the accurate association is Restrict management access.
+  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
+    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+
+
+    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
+    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
+    by the stem. Configuration uses `router ospf <process>`.
+
+
+    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
+    the stem.
+
+
+    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
   provider: openboson
   license: MIT
   provenance: original
@@ -2312,25 +3171,792 @@ questions:
   choices:
   - id: a
     text: CDP
-    rationale: Correct for objective 6.2.
   - id: b
     text: FTP
-    rationale: Incorrect association for 6.2.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 6.2.
   - id: d
     text: TFTP
-    rationale: Distractor for 6.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 6.2: Cisco LAN discovery protocol maps to CDP.'
+  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
+    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
+    / `show cdp neighbors`.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
+    the stem.
+
+
+    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-61-0016-9439d3
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 2
+  cert_tags: &id003
+  - ccnp
+  stem: Select the correct association for exam topic 6.1.
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.1
+  - id: b
+    text: Skip documentation for 6.1 changes in production
+  - id: c
+    text: Treat 6.1 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.1 always works
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.1** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.1 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.1 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-61-0017-764d3a
+  type: single_choice
+  topic_code: '6.1'
+  difficulty: 3
+  cert_tags: *id003
+  stem: Which option correctly describes a key idea under 6.1?
+  choices:
+  - id: b
+    text: Treat 6.1 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 6.1 always works
+  - id: d
+    text: Confuse 6.1 with an unrelated Layer mismatch
+  - id: a
+    text: Validate with show/verify steps before relying on 6.1 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.1 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 6.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.1 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.1 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.1
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-62-0018-0fb249
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 4
+  cert_tags: *id003
+  stem: For ENCOR objective 6.2, which statement best matches production best practice?
+  choices:
+  - id: c
+    text: Confuse 6.2 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 6.2
+  - id: a
+    text: Use the standard model for 6.2 rather than a look-alike concept
+  - id: b
+    text: Ignore verification and assume 6.2 always works
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.2 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.2 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.2** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-62-0019-9b54e7
+  type: single_choice
+  topic_code: '6.2'
+  difficulty: 5
+  cert_tags: *id003
+  stem: Regarding ENCOR topic 6.2. Which reply is accurate?
+  choices:
+  - id: d
+    text: Use clear-text shared secrets as the only control for 6.2
+  - id: a
+    text: Prefer the documented 6.2 approach used in enterprise designs
+  - id: b
+    text: Confuse 6.2 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 6.2
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.2 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 6.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.2** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.2** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.2
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-63-0020-835a61
+  type: multiple_choice
+  topic_code: '6.3'
+  difficulty: 4
+  cert_tags: *id003
+  stem: '[ENCOR 6.3] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.3 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.3 is low risk
+  - id: c
+    text: Document the 6.3 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.3
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.3 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.3 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.3 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.3** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-63-0021-acea9d
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 2
+  cert_tags: *id003
+  stem: Which configuration intent aligns with ENCOR objective 6.3?
+  choices:
+  - id: b
+    text: Use clear-text shared secrets as the only control for 6.3
+  - id: c
+    text: Skip documentation for 6.3 changes in production
+  - id: d
+    text: Treat 6.3 as optional when the blueprint lists it
+  - id: a
+    text: Validate with show/verify steps before relying on 6.3 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.3 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.3** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-63-0022-074ae0
+  type: single_choice
+  topic_code: '6.3'
+  difficulty: 3
+  cert_tags: *id003
+  stem: Select the correct association for exam topic 6.3.
+  choices:
+  - id: c
+    text: Treat 6.3 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.3 always works
+  - id: a
+    text: Use the standard model for 6.3 rather than a look-alike concept
+  - id: b
+    text: Skip documentation for 6.3 changes in production
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.3 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.3 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.3 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.3
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-64-0023-b18d05
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 4
+  cert_tags: *id003
+  stem: Which option correctly describes a key idea under 6.4?
+  choices:
+  - id: d
+    text: Confuse 6.4 with an unrelated Layer mismatch
+  - id: a
+    text: Prefer the documented 6.4 approach used in enterprise designs
+  - id: b
+    text: Treat 6.4 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 6.4 always works
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.4 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 6.4 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.4 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-64-0024-06019e
+  type: single_choice
+  topic_code: '6.4'
+  difficulty: 5
+  cert_tags: *id003
+  stem: For ENCOR objective 6.4, which statement best matches production best practice?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.4
+  - id: b
+    text: Ignore verification and assume 6.4 always works
+  - id: c
+    text: Confuse 6.4 with an unrelated Layer mismatch
+  - id: d
+    text: Disable logging permanently while testing 6.4
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.4** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.4 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.4** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-64-0025-2bec29
+  type: multiple_choice
+  topic_code: '6.4'
+  difficulty: 3
+  cert_tags: *id003
+  stem: '[ENCOR 6.4] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.4 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.4 is low risk
+  - id: c
+    text: Document the 6.4 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.4
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.4 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.4 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.4 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.4** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.4
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-65-0026-1ae6a5
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 2
+  cert_tags: *id003
+  stem: During troubleshooting related to 6.5, which observation is most relevant?
+  choices:
+  - id: c
+    text: Use clear-text shared secrets as the only control for 6.5
+  - id: d
+    text: Skip documentation for 6.5 changes in production
+  - id: a
+    text: Use the standard model for 6.5 rather than a look-alike concept
+  - id: b
+    text: Disable logging permanently while testing 6.5
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.5 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.5** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.5** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.5 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-65-0027-98f086
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 3
+  cert_tags: *id003
+  stem: Which configuration intent aligns with ENCOR objective 6.5?
+  choices:
+  - id: d
+    text: Treat 6.5 as optional when the blueprint lists it
+  - id: a
+    text: Prefer the documented 6.5 approach used in enterprise designs
+  - id: b
+    text: Use clear-text shared secrets as the only control for 6.5
+  - id: c
+    text: Skip documentation for 6.5 changes in production
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.5 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.5** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.5 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-65-0028-45c377
+  type: single_choice
+  topic_code: '6.5'
+  difficulty: 4
+  cert_tags: *id003
+  stem: Select the correct association for exam topic 6.5.
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.5
+  - id: b
+    text: Skip documentation for 6.5 changes in production
+  - id: c
+    text: Treat 6.5 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.5 always works
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.5** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.5 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.5 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.5
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-66-0029-8baded
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 5
+  cert_tags: *id003
+  stem: Which option correctly describes a key idea under 6.6?
+  choices:
+  - id: b
+    text: Treat 6.6 as optional when the blueprint lists it
+  - id: c
+    text: Ignore verification and assume 6.6 always works
+  - id: d
+    text: Confuse 6.6 with an unrelated Layer mismatch
+  - id: a
+    text: Validate with show/verify steps before relying on 6.6 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.6 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Treat 6.6 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.6 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Confuse 6.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-66-0030-8fba43
+  type: multiple_choice
+  topic_code: '6.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: '[ENCOR 6.6] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.6 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.6 is low risk
+  - id: c
+    text: Document the 6.6 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.6
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.6 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.6 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.6 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.6** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-66-0031-e70012
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 2
+  cert_tags: *id003
+  stem: Regarding ENCOR topic 6.6. Which reply is accurate?
+  choices:
+  - id: d
+    text: Use clear-text shared secrets as the only control for 6.6
+  - id: a
+    text: Prefer the documented 6.6 approach used in enterprise designs
+  - id: b
+    text: Confuse 6.6 with an unrelated Layer mismatch
+  - id: c
+    text: Disable logging permanently while testing 6.6
+  correct:
+    answer: a
+  explanation: '**Prefer the documented 6.6 approach used in enterprise designs** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Confuse 6.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-66-0032-62f3db
+  type: single_choice
+  topic_code: '6.6'
+  difficulty: 3
+  cert_tags: *id003
+  stem: During troubleshooting related to 6.6, which observation is most relevant?
+  choices:
+  - id: a
+    text: Apply the verified behavior required by objective 6.6
+  - id: b
+    text: Disable logging permanently while testing 6.6
+  - id: c
+    text: Use clear-text shared secrets as the only control for 6.6
+  - id: d
+    text: Skip documentation for 6.6 changes in production
+  correct:
+    answer: a
+  explanation: '**Apply the verified behavior required by objective 6.6** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.6** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.6 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.6
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-67-0033-7b0a62
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 4
+  cert_tags: *id003
+  stem: Which configuration intent aligns with ENCOR objective 6.7?
+  choices:
+  - id: b
+    text: Use clear-text shared secrets as the only control for 6.7
+  - id: c
+    text: Skip documentation for 6.7 changes in production
+  - id: d
+    text: Treat 6.7 as optional when the blueprint lists it
+  - id: a
+    text: Validate with show/verify steps before relying on 6.7 changes
+  correct:
+    answer: a
+  explanation: '**Validate with show/verify steps before relying on 6.7 changes** is correct. It is the
+    selection that meets the requirement stated in the stem.
+
+
+    **Use clear-text shared secrets as the only control for 6.7** is incorrect. It describes a different
+    behavior and does not meet the requirement stated in the stem.
+
+
+    **Skip documentation for 6.7 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-67-0034-04348f
+  type: single_choice
+  topic_code: '6.7'
+  difficulty: 5
+  cert_tags: *id003
+  stem: Select the correct association for exam topic 6.7.
+  choices:
+  - id: c
+    text: Treat 6.7 as optional when the blueprint lists it
+  - id: d
+    text: Ignore verification and assume 6.7 always works
+  - id: a
+    text: Use the standard model for 6.7 rather than a look-alike concept
+  - id: b
+    text: Skip documentation for 6.7 changes in production
+  correct:
+    answer: a
+  explanation: '**Use the standard model for 6.7 rather than a look-alike concept** is correct. It is
+    the selection that meets the requirement stated in the stem.
+
+
+    **Skip documentation for 6.7 changes in production** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Treat 6.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.
+
+
+    **Ignore verification and assume 6.7 always works** is incorrect. It describes a different behavior
+    and does not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
+  provider: openboson
+  license: MIT
+  provenance: original
+- id: encor-v05-67-0035-3df5d3
+  type: multiple_choice
+  topic_code: '6.7'
+  difficulty: 4
+  cert_tags: *id003
+  stem: '[ENCOR 6.7] Select ALL actions that support a correct implementation or verification for this
+    objective.'
+  choices:
+  - id: a
+    text: Verify expected state for 6.7 with show/ping evidence
+  - id: b
+    text: Skip change control because 6.7 is low risk
+  - id: c
+    text: Document the 6.7 design intent and rollback plan
+  - id: d
+    text: Disable all monitoring related to 6.7
+  correct:
+    answers:
+    - a
+    - c
+    partial_credit: false
+  explanation: '**Verify expected state for 6.7 with show/ping evidence** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Document the 6.7 design intent and rollback plan** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Skip change control because 6.7 is low risk** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Disable all monitoring related to 6.7** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.'
+  references:
+  - ENCOR 350-401 Official Cert Guide — Automation
+  - ENCOR exam topic 6.7
   provider: openboson
   license: MIT
   provenance: original

@@ -40,27 +40,30 @@ def _finished_session():
     return session, score_exam(session)
 
 
-def test_full_export_includes_answers_and_explanations():
+def test_full_export_includes_answers_not_explanations():
     session, result = _finished_session()
     payload = build_export_payload(session, result, redacted=False)
     assert payload["redacted"] is False
     assert "correct_count" in payload
     item = payload["items"][0]
     assert "correct" in item
-    assert "explanation" in item
+    assert "explanation" not in item
     assert "is_correct" in item
     raw = to_json(session, result, redacted=False)
     data = json.loads(raw)
     assert data["items"][0]["correct"]
+    assert "explanation" not in data["items"][0]
+    csv_text = to_csv(session, result, redacted=False)
+    header = csv_text.splitlines()[0]
+    assert "is_correct" in header
+    assert "explanation" not in header
+    html_text = to_html(session, result, redacted=False)
+    assert "Result:" in html_text
+    assert "Explanation" not in html_text
 
 
-def test_redacted_export_omits_keys_and_explanations():
+def test_redacted_export_omits_keys():
     session, result = _finished_session()
-    # Grab a distinctive explanation substring to assert absence.
-    sample_expl = next(
-        (q.explanation for q in session.questions if q.explanation),
-        None,
-    )
     payload = build_export_payload(session, result, redacted=True)
     assert payload["redacted"] is True
     assert "correct_count" not in payload
@@ -75,11 +78,7 @@ def test_redacted_export_omits_keys_and_explanations():
     text = to_json(session, result, redacted=True) + to_csv(session, result, redacted=True)
     text += to_html(session, result, redacted=True)
     assert '"correct"' not in text or "correct answers" in text.lower()
-    # Ensure correct answer blobs / explanations do not leak as structured fields.
     assert "is_correct" not in text
-    assert "explanation" not in text.lower() or "explanations omitted" in text.lower()
-    if sample_expl and len(sample_expl) > 20:
-        assert sample_expl[:40] not in text
 
 
 def test_write_export_json(tmp_path):

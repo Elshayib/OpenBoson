@@ -181,7 +181,7 @@ def test_finish_session_returns_result(client):
     assert "domain_breakdown" in result
 
 
-def test_review_session_includes_explanations_and_correct(client):
+def test_review_session_includes_correct_not_explanations(client):
     body = _create_session(client)
     sid = body["session_id"]
     q = body["question"]
@@ -196,7 +196,8 @@ def test_review_session_includes_explanations_and_correct(client):
     assert len(review["items"]) == 100
     for item in review["items"][:5]:
         assert "correct" in item
-        assert "explanation" in item
+        assert "is_correct" in item
+        assert "explanation" not in item
 
 
 def test_review_session_not_finished_returns_400(client):

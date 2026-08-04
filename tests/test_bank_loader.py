@@ -62,10 +62,12 @@ def test_correct_answer_model_per_type(qtype, model_cls):
     assert isinstance(q.correct_answer_model, model_cls)
 
 
-def test_choice_rationale_present():
+def test_choice_rationale_optional():
     bank = load_exam_bank(FIXTURE_PATH)
     q = next(qq for qq in bank.questions if qq.type == QuestionType.SINGLE_CHOICE)
-    assert any(c.rationale for c in (q.choices or []))
+    assert q.choices
+    # Rationale remains schema-optional; UI does not require it.
+    assert all(c.rationale is None or isinstance(c.rationale, str) for c in q.choices)
 
 
 def test_invalid_yaml_raises():

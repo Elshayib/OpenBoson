@@ -1,11 +1,11 @@
 # Later releases (post v0.2.2)
 
-**Current:** v0.4.1 Lab console polish is shipped. Next executable track is **v0.5 Network Designer**.
+**Current:** v0.4.1 Lab console polish is shipped. Next executable track is
+**v0.5 Educational Depth & Full Topic Coverage**.
 See [`status.md`](status.md) for handoff.
 
-Question-bank content scale (≥1000 CCNA / ≥800 ENCOR) and ≥5% PBQ/sim depth are
-**deferred until just before v1.0** — after packs (v0.6), as a pre-1.0 content gate.
-Do not block NetSim / Designer / packs on that work.
+Labs stay **pre-made only** (bundled demo labs). In-app lab creation / Network Designer
+and a pack-store product track are **out of scope**.
 
 ## v0.3 — ExSim depth (DONE)
 
@@ -37,20 +37,18 @@ Shipped in **v0.4.1**:
 - OpenIOS fidelity for shipped labs (show/? completion, STP / EtherChannel / IPv6, paging)
 - Read-only topology display polish
 
-## v0.5 — Network Designer (NEXT)
+## v0.5 — Educational Depth & Full Topic Coverage (NEXT)
 
-- Freeze lab schema v2 first
-- Editable topology canvas; save/load user topologies
-- Round-trip through `LabWorld`; pytest-qt for invalid links and save/load
+CCNA 200-301 v1.1 + ENCOR 350-401 v1.2 only (no ENARSI).
 
-## v0.6 — Pack ecosystem
+- Full CCNA / ENCOR leaf coverage (≥12 / ≥15 per topic); pool floors ≥636 / ≥405
+- Practice Check: correct / incorrect only (no explanation essays in the app)
+- Production polish + pytest / pytest-qt coverage
+- Authoring standard: [`content-authoring.md`](content-authoring.md)
 
-- Curated GitHub pack index, verified manifests, install/update/remove UI
-- No executable pack content; DMCA / content report process
+## Post-v0.5 / toward v1.0
 
-## Pre-v1.0 content gate
-
-- ≥1,000 CCNA and ≥800 ENCOR questions
+- Further volume (≥1000 CCNA / ≥800 ENCOR if not already exceeded)
 - ≥5% PBQ/sim items with structured grading / OpenIOS where feasible
 - ENARSI stays disabled unless a versioned objective map and ≥100 valid questions exist
 
@@ -59,4 +57,4 @@ Shipped in **v0.4.1**:
 - Authenticode + macOS/Linux packages; signed updates
 - Documented simulation scope vs real IOS
 - Polished UX / a11y / support; objective maps refreshed
-- Content gate above must pass before the v1.0 tag
+- Content gates above must pass before the v1.0 tag

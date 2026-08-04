@@ -1,4 +1,4 @@
-"""Single-question practice page with Check + rich explanation."""
+"""Single-question practice page with Check (correct / incorrect only)."""
 
 from __future__ import annotations
 
@@ -10,26 +10,18 @@ from PySide6.QtWidgets import (
     QLabel,
     QPushButton,
     QScrollArea,
-    QTextBrowser,
     QVBoxLayout,
     QWidget,
 )
 
 from openboson import stats_service
-from openboson.bank_schema import (
-    DragMatchAnswer,
-    MultipleChoiceAnswer,
-    OrderedListAnswer,
-    Question,
-    SimAnswer,
-    SingleChoiceAnswer,
-)
+from openboson.bank_schema import Question
 from openboson.exsim.scoring import grade_answer
 from openboson.gui.widgets.question_card import QuestionCard
 
 
 class PracticeQuestionPage(QWidget):
-    """Answer one question, Check, then read a full explanation."""
+    """Answer one question and Check for correct / incorrect only."""
 
     title = "Practice Question"
 
@@ -115,11 +107,9 @@ class PracticeQuestionPage(QWidget):
             stats_service.save_practice_attempt(self._question.id, is_correct)
         self._card.set_locked(True)
         self._check.setEnabled(False)
-        self._render_feedback(is_correct, answer)
+        self._render_feedback(is_correct)
 
-    def _render_feedback(self, is_correct: bool, answer) -> None:
-        q = self._question
-        assert q is not None
+    def _render_feedback(self, is_correct: bool) -> None:
         while self._feedback_holder.count():
             item = self._feedback_holder.takeAt(0)
             w = item.widget()
@@ -130,7 +120,7 @@ class PracticeQuestionPage(QWidget):
         panel.setObjectName("Card")
         v = QVBoxLayout(panel)
         v.setContentsMargins(18, 16, 18, 16)
-        v.setSpacing(10)
+        v.setSpacing(0)
 
         banner = QLabel("Correct" if is_correct else "Incorrect")
         banner.setProperty("role", "h2")
@@ -138,92 +128,4 @@ class PracticeQuestionPage(QWidget):
             "color: #3fb950;" if is_correct else "color: #f85149; font-weight: 700;"
         )
         v.addWidget(banner)
-
-        v.addWidget(QLabel(f"Your answer: {self._summarize_answer(answer)}"))
-        v.addWidget(QLabel(f"Correct answer: {self._summarize_correct(q)}"))
-
-        if q.explanation:
-            expl = QTextBrowser()
-            expl.setMarkdown(q.explanation.strip())
-            expl.setMinimumHeight(80)
-            expl.setFrameShape(QFrame.Shape.NoFrame)
-            expl.setObjectName("CardText")
-            v.addWidget(expl)
-
-        if q.choices:
-            v.addWidget(QLabel("Choice rationales"))
-            correct_ids: set[str] = set()
-            model = q.correct_answer_model
-            if isinstance(model, SingleChoiceAnswer):
-                correct_ids = {model.answer}
-            elif isinstance(model, MultipleChoiceAnswer):
-                correct_ids = set(model.answers)
-            user_ids: set[str] = set()
-            if isinstance(answer, dict):
-                if "answer" in answer:
-                    user_ids = {str(answer["answer"])}
-                elif "answers" in answer:
-                    user_ids = set(answer["answers"])
-
-            for choice in q.choices:
-                bits = []
-                if choice.id in correct_ids:
-                    bits.append("correct")
-                if choice.id in user_ids and choice.id not in correct_ids or choice.id in user_ids:
-                    bits.append("your pick")
-                title = f"{choice.id}. {choice.text}"
-                if bits:
-                    title += f" ({', '.join(bits)})"
-                row = QLabel(title)
-                row.setWordWrap(True)
-                v.addWidget(row)
-                if choice.rationale:
-                    rat = QLabel(choice.rationale.strip())
-                    rat.setWordWrap(True)
-                    rat.setProperty("role", "muted")
-                    v.addWidget(rat)
-
-        if q.references:
-            v.addWidget(QLabel("References"))
-            for ref in q.references:
-                r = QLabel(f"• {ref}")
-                r.setWordWrap(True)
-                r.setProperty("role", "muted")
-                v.addWidget(r)
-
         self._feedback_holder.addWidget(panel)
-
-    @staticmethod
-    def _summarize_correct(q: Question) -> str:
-        correct = q.correct_answer_model
-        if isinstance(correct, SingleChoiceAnswer):
-            if q.choices:
-                for c in q.choices:
-                    if c.id == correct.answer:
-                        return f"{c.id}. {c.text}"
-            return correct.answer
-        if isinstance(correct, MultipleChoiceAnswer):
-            return ", ".join(correct.answers)
-        if isinstance(correct, OrderedListAnswer):
-            return " → ".join(correct.order)
-        if isinstance(correct, DragMatchAnswer):
-            return "; ".join(f"{p.left} → {p.right}" for p in correct.pairs)
-        if isinstance(correct, SimAnswer):
-            cmds = correct.expected_commands or []
-            return "; ".join(cmds) if cmds else (correct.expected_config or "")[:120]
-        return ""
-
-    @staticmethod
-    def _summarize_answer(answer) -> str:
-        if isinstance(answer, dict):
-            if "answer" in answer:
-                return str(answer["answer"])
-            if "answers" in answer:
-                return ", ".join(answer["answers"])
-            if "order" in answer:
-                return " → ".join(answer["order"])
-            if "pairs" in answer:
-                return "; ".join(f"{p['left']} → {p['right']}" for p in answer["pairs"])
-            if "config" in answer:
-                return (answer["config"] or "")[:120] or "(empty)"
-        return str(answer) if answer is not None else "(unanswered)"

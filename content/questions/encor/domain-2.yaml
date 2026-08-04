@@ -12,21 +12,34 @@ questions:
   choices:
   - id: a
     text: On bare metal
-    rationale: Bare-metal hypervisors sit on hardware.
   - id: b
     text: Only inside a guest OS as Type 2 exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only on printers
-    rationale: Not correct for this scenario.
   - id: d
     text: Only in STP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Bare-metal hypervisors sit on hardware.
+  explanation: '**On bare metal** is correct. It is the selection that meets the requirement stated in
+    the stem.
+
+
+    **Only inside a guest OS as Type 2 exclusive** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.
+
+
+    **Only on printers** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only in STP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.1
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-002
   type: single_choice
   topic_code: '2.3'
@@ -36,21 +49,34 @@ questions:
   choices:
   - id: a
     text: UDP
-    rationale: VXLAN encapsulates Ethernet in UDP.
   - id: b
     text: Only ICMP
-    rationale: Not correct for this scenario.
   - id: c
     text: Only STP BPDUs
-    rationale: Not correct for this scenario.
   - id: d
     text: Only ARP exclusive
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: VXLAN encapsulates Ethernet in UDP.
+  explanation: '**UDP** provides connectionless datagram delivery without TCP’s reliability or ordering
+    guarantees. This is the correct answer for the stem.
+
+
+    **Only ICMP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only STP BPDUs** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only ARP exclusive** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-003
   type: single_choice
   topic_code: '2.3'
@@ -60,21 +86,35 @@ questions:
   choices:
   - id: a
     text: Overlay segment
-    rationale: VNI separates overlay networks.
   - id: b
     text: Only physical port
-    rationale: Not correct for this scenario.
   - id: c
     text: Only BGP ASN
-    rationale: Not correct for this scenario.
   - id: d
     text: Only CoS bit
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: VNI separates overlay networks.
+  explanation: '**Overlay segment** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only physical port** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only BGP ASN**: **BGP** exchanges reachability among autonomous systems and selects paths using
+    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
+    the condition required by the stem. Configuration uses `router bgp <asn>`.
+
+
+    **Only CoS bit** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-004
   type: single_choice
   topic_code: '2.2'
@@ -84,21 +124,34 @@ questions:
   choices:
   - id: a
     text: Separate routing/forwarding instances
-    rationale: VRFs isolate routing contexts.
   - id: b
     text: Only a single global RIB forever
-    rationale: Not correct for this scenario.
   - id: c
     text: Only STP instances
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE budgets
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: VRFs isolate routing contexts.
+  explanation: '**Separate routing/forwarding instances** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only a single global RIB forever** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Only STP instances** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only PoE budgets** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.2
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-005
   type: single_choice
   topic_code: '2.1'
@@ -108,21 +161,33 @@ questions:
   choices:
   - id: a
     text: Kernel
-    rationale: Containers share the host kernel.
   - id: b
     text: Only entire guest kernel always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only BIOS
-    rationale: Not correct for this scenario.
   - id: d
     text: Only ASIC TCAM exclusively
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Containers share the host kernel.
+  explanation: '**Kernel** is correct. It is the selection that meets the requirement stated in the stem.
+
+
+    **Only entire guest kernel always** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only BIOS** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only ASIC TCAM exclusively** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.'
   references:
-  - ENCOR 2.1
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-006
   type: single_choice
   topic_code: '2.3'
@@ -132,21 +197,34 @@ questions:
   choices:
   - id: a
     text: Network virtualization / location-identity protocol
-    rationale: LISP maps EIDs to RLOCs.
   - id: b
     text: Only a wireless cipher
-    rationale: Not correct for this scenario.
   - id: c
     text: Only an FHRP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only a syslog facility
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: LISP maps EIDs to RLOCs.
+  explanation: '**Network virtualization / location-identity protocol** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only a wireless cipher** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only an FHRP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only a syslog facility** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-007
   type: single_choice
   topic_code: '2.3'
@@ -156,21 +234,34 @@ questions:
   choices:
   - id: a
     text: VXLAN tunnel endpoint
-    rationale: VTEPs encapsulate/decapsulate VXLAN.
   - id: b
     text: Only STP root
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DHCP server
-    rationale: Not correct for this scenario.
   - id: d
     text: Only syslog host
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: VTEPs encapsulate/decapsulate VXLAN.
+  explanation: '**VXLAN tunnel endpoint** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Only STP root** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only DHCP server** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only syslog host** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-008
   type: single_choice
   topic_code: '2.1'
@@ -180,21 +271,35 @@ questions:
   choices:
   - id: a
     text: VM/vNIC traffic on a hypervisor host
-    rationale: vSwitches bridge VM interfaces.
   - id: b
     text: Only ISP PEs exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only DNS roots
-    rationale: Not correct for this scenario.
   - id: d
     text: Only NTP strata
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: vSwitches bridge VM interfaces.
+  explanation: '**VM/vNIC traffic on a hypervisor host**: A Layer 2 **switch** forwards Ethernet frames
+    based on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the
+    stem.
+
+
+    **Only ISP PEs exclusive** is incorrect. It does not describe the intended use or behavior required
+    by the stem.
+
+
+    **Only DNS roots** is incorrect. It does not describe the intended use or behavior required by the
+    stem.
+
+
+    **Only NTP strata** is incorrect. It does not describe the intended use or behavior required by the
+    stem.'
   references:
-  - ENCOR 2.1
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-009
   type: single_choice
   topic_code: '2.2'
@@ -204,21 +309,34 @@ questions:
   choices:
   - id: a
     text: Point-to-point overlay encapsulation
-    rationale: GRE encapsulates payloads over IP.
   - id: b
     text: Only STP enhancements
-    rationale: Not correct for this scenario.
   - id: c
     text: Only AAA accounting
-    rationale: Not correct for this scenario.
   - id: d
     text: Only PoE negotiation
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: GRE encapsulates payloads over IP.
+  explanation: '**Point-to-point overlay encapsulation** is correct. It is the selection that meets the
+    requirement stated in the stem.
+
+
+    **Only STP enhancements** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only AAA accounting** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only PoE negotiation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.2
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-010
   type: single_choice
   topic_code: '2.2'
@@ -228,21 +346,34 @@ questions:
   choices:
   - id: a
     text: Encrypt tunneled overlays
-    rationale: IPsec protects GRE/IP overlays.
   - id: b
     text: Only hash EtherChannels
-    rationale: Not correct for this scenario.
   - id: c
     text: Only elect DR
-    rationale: Not correct for this scenario.
   - id: d
     text: Only age CAM
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: IPsec protects GRE/IP overlays.
+  explanation: '**Encrypt tunneled overlays** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only hash EtherChannels** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only elect DR** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only age CAM** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.2
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-011
   type: single_choice
   topic_code: '2.1'
@@ -252,21 +383,34 @@ questions:
   choices:
   - id: a
     text: Guest OS + virtualized hardware abstraction
-    rationale: VMs virtualize compute for guest systems.
   - id: b
     text: Only a bare-metal Type 1 host exclusive
-    rationale: Not correct for this scenario.
   - id: c
     text: Only a physical ASIC
-    rationale: Not correct for this scenario.
   - id: d
     text: Only a copper SFP
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: VMs virtualize compute for guest systems.
+  explanation: '**Guest OS + virtualized hardware abstraction** is correct. It is the selection that meets
+    the requirement stated in the stem.
+
+
+    **Only a bare-metal Type 1 host exclusive** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.
+
+
+    **Only a physical ASIC** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only a copper SFP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.1
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-012
   type: single_choice
   topic_code: '2.3'
@@ -276,21 +420,34 @@ questions:
   choices:
   - id: a
     text: Data-plane learning / multicast or head-end replication
-    rationale: Without a control plane, flooding discovers endpoints.
   - id: b
     text: Only static ARP forever without flooding
-    rationale: Not correct for this scenario.
   - id: c
     text: Only RIP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only Telnet
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Without a control plane, flooding discovers endpoints.
+  explanation: '**Data-plane learning / multicast or head-end replication** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only static ARP forever without flooding** is incorrect. It describes a different behavior and does
+    not meet the requirement stated in the stem.
+
+
+    **Only RIP** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only Telnet** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-013
   type: single_choice
   topic_code: '2.1'
@@ -300,21 +457,34 @@ questions:
   choices:
   - id: a
     text: Shared storage / network reachability design
-    rationale: vMotion-style moves need connectivity design.
   - id: b
     text: Only changing STP priority
-    rationale: Not correct for this scenario.
   - id: c
     text: Only disabling IP
-    rationale: Not correct for this scenario.
   - id: d
     text: Only removing default route
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: vMotion-style moves need connectivity design.
+  explanation: '**Shared storage / network reachability design** is correct. It is the selection that
+    meets the requirement stated in the stem.
+
+
+    **Only changing STP priority** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only disabling IP** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Only removing default route** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - ENCOR 2.1
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-014
   type: single_choice
   topic_code: '2.3'
@@ -324,21 +494,34 @@ questions:
   choices:
   - id: a
     text: Encapsulation overhead
-    rationale: Outer headers need headroom.
   - id: b
     text: Only reducing MTU below 576 always
-    rationale: Not correct for this scenario.
   - id: c
     text: Only IPv4 options mandatory
-    rationale: Not correct for this scenario.
   - id: d
     text: Only disabling jumbo
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Outer headers need headroom.
+  explanation: '**Encapsulation overhead** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Only reducing MTU below 576 always** is incorrect. It describes a different behavior and does not
+    meet the requirement stated in the stem.
+
+
+    **Only IPv4 options mandatory** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.
+
+
+    **Only disabling jumbo** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-015
   type: single_choice
   topic_code: '2.2'
@@ -348,21 +531,34 @@ questions:
   choices:
   - id: a
     text: Device-local routing separation without MPLS requirement
-    rationale: VRF-lite separates RIB/FIB without requiring MPLS.
   - id: b
     text: Only MPLS labels mandatory
-    rationale: Not correct for this scenario.
   - id: c
     text: Only NAT
-    rationale: Not correct for this scenario.
   - id: d
     text: Only QoS marking
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: VRF-lite separates RIB/FIB without requiring MPLS.
+  explanation: '**Device-local routing separation without MPLS requirement** is correct. It is the selection
+    that meets the requirement stated in the stem.
+
+
+    **Only MPLS labels mandatory** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Only NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Only QoS marking** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - ENCOR 2.2
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-016
   type: single_choice
   topic_code: '2.1'
@@ -372,21 +568,34 @@ questions:
   choices:
   - id: a
     text: Security risk class
-    rationale: Guest breakout to host is a critical risk.
   - id: b
     text: Routing metric
-    rationale: Not correct for this scenario.
   - id: c
     text: STP state
-    rationale: Not correct for this scenario.
   - id: d
     text: QoS PHB
-    rationale: Not correct for this scenario.
   correct:
     answer: a
-  explanation: Guest breakout to host is a critical risk.
+  explanation: '**Security risk class** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Routing metric** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **STP state** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **QoS PHB** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - ENCOR 2.1
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-2-090
   type: multiple_choice
   topic_code: '2.3'
@@ -396,24 +605,37 @@ questions:
   choices:
   - id: a
     text: Uses a 24-bit VNI
-    rationale: Large segment space.
   - id: b
     text: Requires Token Ring core
-    rationale: No.
   - id: c
     text: Typically rides on UDP/IP underlay
-    rationale: Encapsulation.
   - id: d
     text: Replaces the need for any underlay routing
-    rationale: Still needs underlay.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: VXLAN VNIs identify overlays carried over an IP underlay, usually UDP.
+  explanation: '**Uses a 24-bit VNI** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Typically rides on UDP/IP underlay**: **UDP** provides connectionless datagram delivery without
+    TCP’s reliability or ordering guarantees. This is the correct answer for the stem.
+
+
+    **Requires Token Ring core** is incorrect. It describes a different behavior and does not meet the
+    requirement stated in the stem.
+
+
+    **Replaces the need for any underlay routing** is incorrect. It describes a different behavior and
+    does not meet the requirement stated in the stem.'
   references:
-  - ENCOR 2.3
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
+  provider: openboson
+  license: MIT
+  provenance: original
 - id: encor-gen-0004-7f437d
   type: single_choice
   topic_code: '2.1'
@@ -424,22 +646,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -452,22 +686,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -476,31 +720,38 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.3.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.3.
   - id: d
     text: Root
-    rationale: Distractor for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -513,22 +764,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -541,22 +804,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -569,22 +842,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -597,22 +879,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -625,22 +919,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -649,31 +953,38 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.3.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.3.
   - id: d
     text: Root
-    rationale: Distractor for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -686,22 +997,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -714,22 +1037,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -742,22 +1075,31 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -770,22 +1112,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -798,22 +1152,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -822,31 +1186,38 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.3.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.3.
   - id: d
     text: Root
-    rationale: Distractor for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -859,22 +1230,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -887,22 +1270,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -915,22 +1308,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -943,22 +1345,34 @@ questions:
   choices:
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -971,22 +1385,32 @@ questions:
   choices:
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -995,31 +1419,38 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.3.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.3.
   - id: d
     text: Root
-    rationale: Distractor for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1032,22 +1463,34 @@ questions:
   choices:
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1060,22 +1503,32 @@ questions:
   choices:
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1088,22 +1541,31 @@ questions:
   choices:
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1116,22 +1578,34 @@ questions:
   choices:
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1144,22 +1618,32 @@ questions:
   choices:
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1168,31 +1652,38 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
-    user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
   choices:
   - id: a
     text: Alternate/blocking
-    rationale: Correct for objective 2.3.
   - id: b
     text: Designated
-    rationale: Incorrect association for 2.3.
   - id: c
     text: Document verification steps before changes.
-    rationale: Sound ops practice for 2.3.
   - id: d
     text: Root
-    rationale: Distractor for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: 'Objective 2.3: STP role that does not forward user frames maps to
-    Alternate/blocking.'
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1205,22 +1696,34 @@ questions:
   choices:
   - id: d
     text: PAgP+LACP hybrid mandatory
-    rationale: Not correct for 2.1; PAgP+LACP hybrid mandatory is a common mix-up.
   - id: a
     text: PAgP
-    rationale: 'Matches 2.1: Cisco proprietary EtherChannel negotiation → PAgP.'
   - id: b
     text: LACP
-    rationale: Not correct for 2.1; LACP is a common mix-up.
   - id: c
     text: Static on only
-    rationale: Not correct for 2.1; Static on only is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.1, the accurate association is PAgP.
+  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
+    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
+    <id> mode desirable|auto`.
+
+
+    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
+    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
+    <id> mode active|passive`.
+
+
+    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
+    used to form Port-Channels between capable peers. This does not satisfy the condition required by
+    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1233,22 +1736,32 @@ questions:
   choices:
   - id: a
     text: Native VLAN
-    rationale: 'Matches 2.2: VLAN carrying untagged trunk frames → Native VLAN.'
   - id: b
     text: VLAN 1002
-    rationale: Not correct for 2.2; VLAN 1002 is a common mix-up.
   - id: c
     text: Voice VLAN
-    rationale: Not correct for 2.2; Voice VLAN is a common mix-up.
   - id: d
     text: Private VLAN always
-    rationale: Not correct for 2.2; Private VLAN always is a common mix-up.
   correct:
     answer: a
-  explanation: For 2.2, the accurate association is Native VLAN.
+  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
+    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
+    `switchport trunk native vlan <id>`.
+
+
+    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1261,22 +1774,31 @@ questions:
   choices:
   - id: b
     text: Designated
-    rationale: Not correct for 2.3; Designated is a common mix-up.
   - id: c
     text: Root
-    rationale: Not correct for 2.3; Root is a common mix-up.
   - id: d
     text: Edge forwarding
-    rationale: Not correct for 2.3; Edge forwarding is a common mix-up.
   - id: a
     text: Alternate/blocking
-    rationale: 'Matches 2.3: STP role that does not forward user frames → Alternate/blocking.'
   correct:
     answer: a
-  explanation: For 2.3, the accurate association is Alternate/blocking.
+  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
+    in the stem.
+
+
+    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original
@@ -1290,25 +1812,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 2.1.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 2.1.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 2.1.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 2.1.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 2.1 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.1
   provider: openboson
   license: MIT
   provenance: original
@@ -1321,25 +1852,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 2.2.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 2.2.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 2.2.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 2.2.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 2.2 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.2
   provider: openboson
   license: MIT
   provenance: original
@@ -1352,25 +1892,34 @@ questions:
   choices:
   - id: a
     text: Verify before change windows
-    rationale: Correct for 2.3.
   - id: b
     text: Skip documentation
-    rationale: Unsafe for 2.3.
   - id: c
     text: Capture show/verify outputs
-    rationale: Correct for 2.3.
   - id: d
     text: Disable logging permanently
-    rationale: Incorrect for 2.3.
   correct:
     answers:
     - a
     - c
     partial_credit: false
-  explanation: Sound operations for 2.3 include verification and documentation.
+  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
+    stated in the stem.
+
+
+    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
+    in the stem.
+
+
+    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
+    stated in the stem.
+
+
+    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
+    the requirement stated in the stem.'
   references:
-  - Cisco exam topics (public)
-  - OpenBoson original content
+  - ENCOR 350-401 Official Cert Guide — Virtualization
+  - ENCOR exam topic 2.3
   provider: openboson
   license: MIT
   provenance: original

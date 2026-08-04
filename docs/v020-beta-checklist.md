@@ -20,7 +20,7 @@ or after cutting a new tag.
 - [ ] Settings/history/user packs survive upgrade
 - [ ] Failed/cancelled installer leaves prior app runnable
 - [ ] Reinstall previous version retains forward-compatible user data backup
-- [ ] Practice check + rationale
+- [ ] Practice check (correct / incorrect)
 - [ ] Blueprint exam finish + stats weak-domain CTA
 - [ ] Multi-device lab check/reset/finish
 
