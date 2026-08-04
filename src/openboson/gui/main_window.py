@@ -243,10 +243,11 @@ class MainWindow(QMainWindow):
             None,
         )
         if idx is not None:
+            # Switch first so the tab feels instant; refresh after the paint.
             self._stack.setCurrentIndex(idx)
             page = self._static_pages.get(label)
             if page is not None and hasattr(page, "refresh"):
-                page.refresh()
+                QTimer.singleShot(0, page.refresh)
 
     def _enter_exam(self) -> None:
         self._exam_active = True
@@ -265,7 +266,7 @@ class MainWindow(QMainWindow):
         self._leave_exam()
         idx = next(i for i, (lbl, _c) in enumerate(self.STATIC_PAGES) if lbl == "Practice")
         self._stack.setCurrentIndex(idx)
-        self._practice_page.refresh()
+        self._practice_page.refresh(refresh_list=True)
         for btn in self._nav_group.buttons():
             if btn.text() == "Practice":
                 btn.setChecked(True)
@@ -388,8 +389,13 @@ class MainWindow(QMainWindow):
             return True
         return False
 
-    def _on_practice_question(self, question: Question) -> None:
-        self._practice_q_page.show_question(question)
+    def _on_practice_question(
+        self,
+        question: Question,
+        *,
+        queue: list[Question] | None = None,
+    ) -> None:
+        self._practice_q_page.show_question(question, queue=queue)
         self._stack.setCurrentWidget(self._practice_q_page)
 
     def _open_custom_exam(self) -> None:

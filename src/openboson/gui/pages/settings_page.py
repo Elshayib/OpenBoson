@@ -66,12 +66,15 @@ class SettingsPage(QWidget):
         self._remind_btn: QPushButton | None = None
         self._skip_btn: QPushButton | None = None
         self._check_now_btn: QPushButton | None = None
+        self._built = False
 
     def set_on_theme_change(self, cb) -> None:
         self._on_theme_change = cb
 
     def refresh(self) -> None:
-        self._rebuild()
+        if not self._built:
+            self._rebuild()
+            self._built = True
 
     def _rebuild(self) -> None:
         self._scroll.clear_content()
@@ -182,8 +185,8 @@ class SettingsPage(QWidget):
 
         if not updates_enabled():
             disabled = QLabel(
-                "Automatic update checks are disabled for development builds "
-                "(no packaged GitHub repository identity)."
+                "Automatic update checks are disabled "
+                "(set OPENBOSON_SKIP_UPDATE=1, or no repository identity)."
             )
             disabled.setWordWrap(True)
             disabled.setProperty("role", "muted")
@@ -276,7 +279,10 @@ class SettingsPage(QWidget):
             "Content refreshed",
             f"Accepted {diag.accepted_count} file(s), rejected {diag.rejected_count}.",
         )
+        # Force a full rebuild so content diagnostics stay accurate.
+        self._built = False
         self._rebuild()
+        self._built = True
 
     def _reset_cache(self) -> None:
         cache = settings.data_dir / "cache"

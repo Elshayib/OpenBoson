@@ -7,6 +7,7 @@ import pytest
 from openboson.exsim.objectives import (
     CCNA_200_301_V1_1,
     ENCOR_350_401_V1_2,
+    format_topic_label,
     get_allowed_objectives,
     invalid_topic_codes,
     objective_allowed,
@@ -58,3 +59,10 @@ def test_child_objective_allowed_under_leaf():
 def test_unknown_exam_raises_on_invalid_helper():
     with pytest.raises(KeyError):
         invalid_topic_codes(["1.1"], "999-999", "v1.0")
+
+
+def test_format_topic_label_uses_title_not_code_echo():
+    label = format_topic_label("1.1", cert="ccna", name="1.1")
+    assert label.startswith("1.1 — ")
+    assert "1.1 — 1.1" not in label
+    assert "network components" in label.lower()

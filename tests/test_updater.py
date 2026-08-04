@@ -77,9 +77,17 @@ def test_parse_checksum_contract():
 
 def test_updates_disabled_without_repo(monkeypatch, isolated_home):
     monkeypatch.setattr(upd._build_info, "GITHUB_REPOSITORY", None)
+    monkeypatch.setattr(upd, "DEFAULT_GITHUB_REPOSITORY", "")
     assert not upd.updates_enabled()
     result = upd.check_for_updates(force=True)
     assert result.status == upd.CheckStatus.DISABLED
+
+
+def test_updates_use_default_repo_when_unstamped(monkeypatch, isolated_home):
+    monkeypatch.setattr(upd._build_info, "GITHUB_REPOSITORY", None)
+    monkeypatch.delenv("OPENBOSON_SKIP_UPDATE", raising=False)
+    assert upd.updates_enabled()
+    assert upd.github_repository() == "Elshayib/OpenBoson"
 
 
 def test_updates_disabled_via_env(repo_enabled, monkeypatch):

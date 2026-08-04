@@ -1,6 +1,7 @@
 """Release/build metadata injected by CI for packaged builds.
 
-Development checkouts leave ``GITHUB_REPOSITORY`` unset so update checks stay disabled.
+Development checkouts leave ``GITHUB_REPOSITORY`` unset; the updater falls back
+to the public OpenBoson repository identity unless ``OPENBOSON_SKIP_UPDATE=1``.
 """
 
 from __future__ import annotations

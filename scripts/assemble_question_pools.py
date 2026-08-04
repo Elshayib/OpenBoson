@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from openboson.exsim.objectives import (  # noqa: E402
     get_allowed_objectives,
     invalid_topic_codes,
+    topic_title,
 )
 
 
@@ -45,7 +46,13 @@ def _topics_for(questions: list[dict], exam_code: str, version: str) -> list[dic
     allowed = set(get_allowed_objectives(exam_code, version) or [])
     used = sorted({q["topic_code"] for q in questions})
     # Keep declared topics even if the objective map is temporarily incomplete.
-    return [{"code": code, "name": code} for code in used if (not allowed) or code in allowed]
+    out: list[dict] = []
+    for code in used:
+        if allowed and code not in allowed:
+            continue
+        title = topic_title(code, cert=exam_code) or code
+        out.append({"code": code, "name": title})
+    return out
 
 
 def main() -> int:

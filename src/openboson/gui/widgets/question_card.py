@@ -37,6 +37,7 @@ from PySide6.QtWidgets import (
 )
 
 from openboson.bank_schema import Question, QuestionType
+from openboson.exsim.objectives import format_topic_label
 from openboson.exsim.session import QuestionPresentation, build_question_presentation
 
 _MIME_MATCH = "application/x-openboson-match"
@@ -454,7 +455,12 @@ class QuestionCard(QFrame):
 
         # Topic + difficulty header
         header = QHBoxLayout()
-        topic_lbl = QLabel(f"Topic {question.topic_code}")
+        topic_lbl = QLabel(
+            format_topic_label(
+                question.topic_code,
+                cert=question.cert_tags[0] if question.cert_tags else None,
+            )
+        )
         topic_lbl.setProperty("role", "muted")
         header.addWidget(topic_lbl)
         tags = ", ".join(t.upper() for t in question.cert_tags)

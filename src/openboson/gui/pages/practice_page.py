@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (
 
 from openboson.bank_schema import Question, QuestionType
 from openboson.exsim.blueprint import InsufficientPoolError, list_blueprints
+from openboson.exsim.objectives import format_topic_label
 from openboson.gui import engine
 from openboson.stats_service import QuestionStat, question_stats_map
 
@@ -291,26 +292,37 @@ class PracticePage(QWidget):
 
         self._apply_filters()
 
-    def refresh(self) -> None:
+    def refresh(self, *, force: bool = False, refresh_list: bool | None = None) -> None:
+        """Reload library data.
+
+        Soft tab revisits skip pool reload and list rebuild when the registry pool
+        object is unchanged. Pass ``refresh_list=True`` after practice attempts so
+        Seen/Missed badges update.
+        """
         self._deep_question_ids = None
         self._deep_topic_prefix = None
         pool = engine.load_pool()
-        self._all_questions = list(pool.questions)
-        # Prefer exact topic names; also keep domain rollups from every bank file
-        # so CCNA vs ENCOR domain titles both remain available.
-        self._topic_names = {t.code: t.name for t in pool.topics}
-        for bank in engine.load_available_banks():
-            for t in bank.topics:
-                # Keep first name per code from merge; still record alternates by bank code.
-                self._topic_names.setdefault(t.code, t.name)
-                self._topic_names[f"{bank.code}:{t.code}"] = t.name
+        need_pool = force or pool is not getattr(self, "_pool_ref", None)
+        if need_pool:
+            self._pool_ref = pool
+            self._all_questions = list(pool.questions)
+            # Prefer exact topic names; also keep domain rollups from every bank file
+            # so CCNA vs ENCOR domain titles both remain available.
+            self._topic_names = {t.code: t.name for t in pool.topics}
+            for bank in engine.load_available_banks():
+                for t in bank.topics:
+                    # Keep first name per code from merge; still record alternates by bank code.
+                    self._topic_names.setdefault(t.code, t.name)
+                    self._topic_names[f"{bank.code}:{t.code}"] = t.name
+            self._rebuild_topic_combo()
         try:
             self._stats = question_stats_map()
         except Exception:
             self._stats = {}
-
-        self._rebuild_topic_combo()
-        self._apply_filters()
+        if refresh_list is None:
+            refresh_list = need_pool or not self._filtered
+        if refresh_list:
+            self._apply_filters()
 
     def _rebuild_topic_combo(self) -> None:
         current = self._topic.currentData()
@@ -319,14 +331,16 @@ class PracticePage(QWidget):
         self._topic.clear()
         self._topic.addItem("All topics", "all")
         codes = {q.topic_code for q in self._all_questions if cert == "all" or cert in q.cert_tags}
-        for code in sorted(codes):
+        for code in sorted(
+            codes, key=lambda c: [int(p) if p.isdigit() else p for p in c.split(".")]
+        ):
             self._topic.addItem(self._topic_label(code, cert), code)
         idx = max(0, self._topic.findData(current))
         self._topic.setCurrentIndex(idx)
         self._topic.blockSignals(False)
 
     def _topic_label(self, code: str, cert: str | None = None) -> str:
-        """Return ``code — name`` for the filter, using domain rollup if needed."""
+        """Return ``code — title`` for the filter (never ``1.1 — 1.1``)."""
         names = getattr(self, "_topic_names", {}) or {}
         cert = (
             cert
@@ -334,21 +348,7 @@ class PracticePage(QWidget):
             else (self._cert.currentData() if hasattr(self, "_cert") else "all")
         )
         name = names.get(code)
-        prefix = code.split(".", 1)[0]
-        rollup = f"{prefix}.0"
-        if not name:
-            # Prefer cert-specific domain title when pools share numeric codes.
-            if cert == "ccna":
-                name = names.get("pool-ccna:" + rollup) or names.get(rollup)
-            elif cert == "ccnp":
-                name = names.get("pool-encor:" + rollup) or names.get(rollup)
-            else:
-                name = names.get(rollup) or names.get(prefix)
-        if not name:
-            name = names.get(rollup) or names.get(prefix)
-        if name:
-            return f"{code} — {name}"
-        return code
+        return format_topic_label(code, cert=cert, name=name)
 
     def _start_exam(self, blueprint_id: str) -> None:
         if self._on_start_exam is None:
@@ -498,7 +498,7 @@ class PracticePage(QWidget):
 
     def _open(self, q: Question) -> None:
         if self._on_practice_question:
-            self._on_practice_question(q)
+            self._on_practice_question(q, queue=list(self._filtered))
 
     @staticmethod
     def _muted(text: str) -> QLabel:

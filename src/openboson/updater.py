@@ -33,6 +33,9 @@ from openboson.settings_store import UpdateChannel, load_settings, update_settin
 
 logger = logging.getLogger(__name__)
 
+# Fallback when CI did not stamp ``_build_info`` (pip / editable / older installers).
+DEFAULT_GITHUB_REPOSITORY = "Elshayib/OpenBoson"
+
 # Protocol version advertised by this updater implementation (manifest gate).
 UPDATER_VERSION = "1.0.0"
 
@@ -192,14 +195,14 @@ def updates_dir() -> Path:
 
 
 def updates_enabled() -> bool:
-    """False when skipped via env or when build metadata has no repository."""
+    """False when skipped via env; otherwise True when a repository identity is known."""
     if os.environ.get("OPENBOSON_SKIP_UPDATE", "").strip() == "1":
         return False
-    return bool(_build_info.GITHUB_REPOSITORY)
+    return github_repository() is not None
 
 
 def github_repository() -> str | None:
-    repo = _build_info.GITHUB_REPOSITORY
+    repo = _build_info.GITHUB_REPOSITORY or DEFAULT_GITHUB_REPOSITORY
     if not repo or "/" not in repo:
         return None
     return repo.strip()

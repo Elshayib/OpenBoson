@@ -25,6 +25,7 @@ from PySide6.QtWidgets import (
 
 from openboson.exsim.blueprint import InsufficientPoolError
 from openboson.exsim.custom_exam import CustomExamSpec
+from openboson.exsim.objectives import format_topic_label
 from openboson.exsim.session import ExamSession
 from openboson.gui import engine
 
@@ -180,9 +181,12 @@ class CustomExamPage(QWidget):
         self._topic.addItem("All topics", "all")
         try:
             pool = engine.load_pool()
-            codes = sorted({q.topic_code for q in pool.questions if cert in q.cert_tags})
+            codes = sorted(
+                {q.topic_code for q in pool.questions if cert in q.cert_tags},
+                key=lambda c: [int(p) if p.isdigit() else p for p in c.split(".")],
+            )
             for code in codes:
-                self._topic.addItem(code, code)
+                self._topic.addItem(format_topic_label(code, cert=cert), code)
         except Exception:
             pass
         idx = max(0, self._topic.findData(current))

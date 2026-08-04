@@ -22,12 +22,28 @@ def _version_from_pyproject() -> str:
 
 
 def _resolve_version() -> str:
+    # Packaged builds stamp the release version explicitly.
+    try:
+        from openboson import _build_info
+
+        packaged = getattr(_build_info, "PACKAGED_VERSION", None)
+        if packaged:
+            return str(packaged)
+    except Exception:
+        pass
+
+    # Prefer pyproject when running from a source/editable tree so the UI
+    # matches the checkout instead of stale dist-info (e.g. an old pip install).
+    file_ver = _version_from_pyproject()
+    if file_ver != "0.0.0":
+        return file_ver
+
     try:
         from importlib.metadata import version
 
         return version("openboson")
     except Exception:
-        return _version_from_pyproject()
+        return "0.0.0"
 
 
 __version__ = _resolve_version()

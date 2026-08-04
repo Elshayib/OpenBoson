@@ -13,6 +13,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from openboson.exsim.objectives import format_topic_label
 from openboson.gui.engine import load_available_labs
 from openboson.gui.widgets.scroll_host import ScrollHost
 from openboson.netsim.lab_catalog import filter_labs
@@ -28,6 +29,7 @@ class LabListPage(QWidget):
         super().__init__()
         self._lab_selected_callback = None
         self._all_labs: list[LabBank] = []
+        self._built = False
 
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
@@ -39,9 +41,15 @@ class LabListPage(QWidget):
     def set_on_lab_selected(self, callback) -> None:
         self._lab_selected_callback = callback
 
-    def refresh(self) -> None:
-        self._all_labs = list(load_available_labs())
+    def refresh(self, *, force: bool = False) -> None:
+        labs = list(load_available_labs())
+        fingerprint = tuple((lab.lab_id, lab.topic_code, lab.title) for lab in labs)
+        if self._built and not force and fingerprint == getattr(self, "_labs_fp", None):
+            return
+        self._all_labs = labs
+        self._labs_fp = fingerprint
         self._rebuild()
+        self._built = True
 
     def _rebuild(self) -> None:
         # Preserve filter widget values across rebuilds when possible.
@@ -61,9 +69,12 @@ class LabListPage(QWidget):
         filters = QHBoxLayout()
         self._topic = QComboBox()
         self._topic.addItem("All topics", "all")
-        codes = sorted({lab.topic_code for lab in self._all_labs if lab.topic_code})
+        codes = sorted(
+            {lab.topic_code for lab in self._all_labs if lab.topic_code},
+            key=lambda c: [int(p) if p.isdigit() else p for p in c.split(".")],
+        )
         for code in codes:
-            self._topic.addItem(code, code)
+            self._topic.addItem(format_topic_label(code), code)
         tidx = max(0, self._topic.findData(prev_topic))
         self._topic.setCurrentIndex(tidx)
         self._topic.currentIndexChanged.connect(self._apply_filters)
