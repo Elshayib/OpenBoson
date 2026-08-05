@@ -245,9 +245,20 @@ class MainWindow(QMainWindow):
         if idx is not None:
             # Switch first so the tab feels instant; refresh after the paint.
             self._stack.setCurrentIndex(idx)
+            QTimer.singleShot(0, lambda lbl=label: self._refresh_static_page(lbl))
+
+    def _refresh_static_page(self, label: str) -> None:
+        """Refresh a sidebar page only if it is still the visible stack page."""
+        try:
             page = self._static_pages.get(label)
-            if page is not None and hasattr(page, "refresh"):
-                QTimer.singleShot(0, page.refresh)
+            if page is None or not hasattr(page, "refresh"):
+                return
+            if self._stack.currentWidget() is not page:
+                return
+            page.refresh()
+        except RuntimeError:
+            # Window/page already destroyed (common in short-lived GUI tests).
+            return
 
     def _enter_exam(self) -> None:
         self._exam_active = True
@@ -290,7 +301,7 @@ class MainWindow(QMainWindow):
                 cert=cert, topic_code=topic_code, question_ids=question_ids
             )
         else:
-            self._practice_page.refresh()
+            self._practice_page.refresh(clear_deep_link=True, refresh_list=True)
 
     def navigate_practice_weakest_domain(self, cert: str | None = None) -> None:
         from openboson import stats_service as svc

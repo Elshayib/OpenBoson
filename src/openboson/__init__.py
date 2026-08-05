@@ -6,19 +6,25 @@ from pathlib import Path
 
 
 def _version_from_pyproject() -> str:
-    """Fallback for editable/source trees where metadata may be unavailable."""
+    """Read version from repo ``pyproject.toml`` when running a classic src layout."""
     try:
         import tomllib
     except ModuleNotFoundError:  # pragma: no cover
         return "0.0.0"
 
-    # src/openboson/__init__.py -> repo root
-    root = Path(__file__).resolve().parents[2]
+    # Only trust pyproject for ``<root>/src/openboson/__init__.py`` checkouts.
+    pkg = Path(__file__).resolve().parent
+    if pkg.name != "openboson" or pkg.parent.name != "src":
+        return "0.0.0"
+    root = pkg.parent.parent
     pyproject = root / "pyproject.toml"
     if not pyproject.is_file():
         return "0.0.0"
     data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
-    return str(data.get("project", {}).get("version", "0.0.0"))
+    project = data.get("project")
+    if not isinstance(project, dict) or project.get("name") != "openboson":
+        return "0.0.0"
+    return str(project.get("version", "0.0.0"))
 
 
 def _resolve_version() -> str:
@@ -32,8 +38,8 @@ def _resolve_version() -> str:
     except Exception:
         pass
 
-    # Prefer pyproject when running from a source/editable tree so the UI
-    # matches the checkout instead of stale dist-info (e.g. an old pip install).
+    # Prefer pyproject in a verified src checkout so the UI matches the tree
+    # instead of stale dist-info from an older pip install.
     file_ver = _version_from_pyproject()
     if file_ver != "0.0.0":
         return file_ver

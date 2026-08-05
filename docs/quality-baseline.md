@@ -12,7 +12,7 @@ OpenBoson enables Ruff and MyPy in CI on **governed paths**. Historical debt out
 ## Known debt (grow-down over time)
 
 - Full-package `mypy src/openboson` is not yet green; expand the typed-core list module-by-module.
-- Generated `_build_info.py` is rewritten at packaging time; keep the repo stub safe for development (update checks disabled without repository identity).
+- Generated `_build_info.py` is rewritten at packaging time. Unstamped trees may use a default repo for *manual* Settings checks; automatic startup update probes require a stamped repository identity (or `OPENBOSON_SKIP_UPDATE=1`).
 - Content coverage for v0.5 (per-leaf floors, volume gates) must stay green when editing shards; assemble before committing pool YAML.
 
 

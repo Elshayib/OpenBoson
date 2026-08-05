@@ -138,6 +138,49 @@ def test_practice_question_check_shows_feedback(window, qtbot):
     assert not any("Your answer:" in t for t in labels)
 
 
+def test_practice_question_next_advances_queue(window, qtbot):
+    bank = load_exam_bank(FIXTURE)
+    singles = [qq for qq in bank.questions if qq.type.value == "single_choice"]
+    assert len(singles) >= 2
+    first, second = singles[0], singles[1]
+    window._on_practice_question(first, queue=[first, second])
+    qtbot.wait(50)
+    page = window._practice_q_page
+    assert page._question is first
+    page._card.set_answer({"answer": first.correct_answer_model.answer})
+    page._check_answer()
+    qtbot.wait(50)
+    assert not page._next.isHidden()
+    assert "Next" in page._next.text()
+    page._go_next()
+    qtbot.wait(50)
+    assert page._question is second
+    assert not page._check.isHidden()
+    page._card.set_answer({"answer": second.correct_answer_model.answer})
+    page._check_answer()
+    qtbot.wait(50)
+    assert "Back" in page._next.text()
+    page._go_next()
+    qtbot.wait(50)
+    assert window.visible_page_label() == "Practice"
+
+
+def test_practice_soft_refresh_preserves_deep_link(window, qtbot):
+    page = window._practice_page
+    page.refresh(force=True, refresh_list=True)
+    qtbot.wait(50)
+    assert page._filtered
+    qid = page._filtered[0].id
+    window.navigate_practice(question_ids=[qid])
+    qtbot.wait(50)
+    assert page._deep_question_ids == {qid}
+    before = [q.id for q in page._filtered]
+    assert before == [qid]
+    page.refresh()
+    assert page._deep_question_ids == {qid}
+    assert [q.id for q in page._filtered] == before
+
+
 def test_question_card_emits_answer_on_radio(qtbot):
     bank = load_exam_bank(FIXTURE)
     q = next(qq for qq in bank.questions if qq.type.value == "single_choice")
