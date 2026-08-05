@@ -296,44 +296,54 @@ def _normalize_cert_key(cert: str | None) -> str | None:
 
 
 def topic_title(topic_code: str, *, cert: str | None = None) -> str | None:
-    """Return a human leaf title (or domain branch title) for ``topic_code``."""
+    """Return a human leaf title (or domain branch title) for ``topic_code``.
+
+    When ``cert`` is unset and CCNA/ENCOR disagree on the leaf title, return
+    ``None`` so callers can fall back to an explicit dual label.
+    """
     code = (topic_code or "").strip()
     if not code:
         return None
     cert_key = _normalize_cert_key(cert)
-    leaf_maps: list[dict[str, str]] = []
-    domain_maps: list[dict[str, str]] = []
     if cert_key == "ccna":
-        leaf_maps = [CCNA_TOPIC_TITLES]
-        domain_maps = [CCNA_DOMAIN_TITLES]
-    elif cert_key == "ccnp":
-        leaf_maps = [ENCOR_TOPIC_TITLES]
-        domain_maps = [ENCOR_DOMAIN_TITLES]
-    else:
-        leaf_maps = [CCNA_TOPIC_TITLES, ENCOR_TOPIC_TITLES]
-        domain_maps = [CCNA_DOMAIN_TITLES, ENCOR_DOMAIN_TITLES]
+        return CCNA_TOPIC_TITLES.get(code) or CCNA_DOMAIN_TITLES.get(code.split(".", 1)[0])
+    if cert_key == "ccnp":
+        return ENCOR_TOPIC_TITLES.get(code) or ENCOR_DOMAIN_TITLES.get(code.split(".", 1)[0])
 
-    for mapping in leaf_maps:
-        title = mapping.get(code)
-        if title:
-            return title
+    ccna_leaf = CCNA_TOPIC_TITLES.get(code)
+    encor_leaf = ENCOR_TOPIC_TITLES.get(code)
+    if ccna_leaf and encor_leaf:
+        return ccna_leaf if ccna_leaf == encor_leaf else None
+    if ccna_leaf or encor_leaf:
+        return ccna_leaf or encor_leaf
 
     prefix = code.split(".", 1)[0]
-    for mapping in domain_maps:
-        title = mapping.get(prefix)
-        if title:
-            return title
-    return None
+    ccna_dom = CCNA_DOMAIN_TITLES.get(prefix)
+    encor_dom = ENCOR_DOMAIN_TITLES.get(prefix)
+    if ccna_dom and encor_dom:
+        return ccna_dom if ccna_dom == encor_dom else None
+    return ccna_dom or encor_dom
 
 
 def format_topic_label(topic_code: str, *, cert: str | None = None, name: str | None = None) -> str:
-    """Return ``code — title`` for filters; never ``1.1 — 1.1``."""
+    """Return ``code — title`` for filters; never ``1.1 — 1.1``.
+
+    With cert unset and conflicting CCNA/ENCOR titles, returns a dual label.
+    """
     code = (topic_code or "").strip()
     if not code:
         return ""
     candidate = (name or "").strip()
     if candidate and candidate != code:
         return f"{code} — {candidate}"
+
+    cert_key = _normalize_cert_key(cert)
+    if cert_key is None:
+        ccna_leaf = CCNA_TOPIC_TITLES.get(code)
+        encor_leaf = ENCOR_TOPIC_TITLES.get(code)
+        if ccna_leaf and encor_leaf and ccna_leaf != encor_leaf:
+            return f"{code} — CCNA: {ccna_leaf} · ENCOR: {encor_leaf}"
+
     title = topic_title(code, cert=cert)
     if title:
         return f"{code} — {title}"

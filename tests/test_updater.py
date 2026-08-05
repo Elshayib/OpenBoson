@@ -88,6 +88,15 @@ def test_updates_use_default_repo_when_unstamped(monkeypatch, isolated_home):
     monkeypatch.delenv("OPENBOSON_SKIP_UPDATE", raising=False)
     assert upd.updates_enabled()
     assert upd.github_repository() == "Elshayib/OpenBoson"
+    assert not upd.has_packaged_repository()
+
+
+def test_startup_check_skipped_when_unstamped(monkeypatch, isolated_home):
+    monkeypatch.setattr(upd._build_info, "GITHUB_REPOSITORY", None)
+    monkeypatch.delenv("OPENBOSON_SKIP_UPDATE", raising=False)
+    update_settings(check_updates_on_startup=True, last_update_check=None)
+    assert upd.updates_enabled()
+    assert not upd.should_run_startup_check()
 
 
 def test_updates_disabled_via_env(repo_enabled, monkeypatch):

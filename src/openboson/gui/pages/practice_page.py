@@ -232,7 +232,7 @@ class PracticePage(QWidget):
         question_ids: list[str] | None = None,
     ) -> None:
         """Apply a programmatic Practice filter (cert / topic / id list)."""
-        self.refresh()
+        self.refresh(clear_deep_link=True)
         self._deep_question_ids = set(question_ids) if question_ids is not None else None
         self._deep_topic_prefix = None
 
@@ -292,15 +292,23 @@ class PracticePage(QWidget):
 
         self._apply_filters()
 
-    def refresh(self, *, force: bool = False, refresh_list: bool | None = None) -> None:
+    def refresh(
+        self,
+        *,
+        force: bool = False,
+        refresh_list: bool | None = None,
+        clear_deep_link: bool = False,
+    ) -> None:
         """Reload library data.
 
         Soft tab revisits skip pool reload and list rebuild when the registry pool
         object is unchanged. Pass ``refresh_list=True`` after practice attempts so
-        Seen/Missed badges update.
+        Seen/Missed badges update. Deep-link constraints are preserved unless
+        ``clear_deep_link=True``.
         """
-        self._deep_question_ids = None
-        self._deep_topic_prefix = None
+        if clear_deep_link:
+            self._deep_question_ids = None
+            self._deep_topic_prefix = None
         pool = engine.load_pool()
         need_pool = force or pool is not getattr(self, "_pool_ref", None)
         if need_pool:

@@ -195,7 +195,11 @@ def updates_dir() -> Path:
 
 
 def updates_enabled() -> bool:
-    """False when skipped via env; otherwise True when a repository identity is known."""
+    """False when skipped via env; otherwise True when a repository identity is known.
+
+    Unstamped (editable) builds fall back to ``DEFAULT_GITHUB_REPOSITORY`` so Settings
+    can still offer a manual Check now. Automatic startup checks stay gated separately.
+    """
     if os.environ.get("OPENBOSON_SKIP_UPDATE", "").strip() == "1":
         return False
     return github_repository() is not None
@@ -206,6 +210,12 @@ def github_repository() -> str | None:
     if not repo or "/" not in repo:
         return None
     return repo.strip()
+
+
+def has_packaged_repository() -> bool:
+    """True only when CI stamped ``_build_info.GITHUB_REPOSITORY`` into this build."""
+    repo = _build_info.GITHUB_REPOSITORY
+    return bool(repo and "/" in repo)
 
 
 def installer_name(version: str) -> str:
@@ -314,8 +324,14 @@ def record_update_check_time(*, when: str | None = None) -> None:
 
 
 def should_run_startup_check() -> bool:
-    """True when startup checks are enabled, not env-disabled, and not throttled."""
+    """True for stamped builds when startup checks are enabled and not throttled.
+
+    Editable / unstamped trees keep Settings manual checks, but do not probe GitHub
+    on every launch (and avoid network during GUI tests).
+    """
     if not updates_enabled():
+        return False
+    if not has_packaged_repository():
         return False
     cfg = load_settings()
     if not cfg.check_updates_on_startup:
@@ -925,6 +941,7 @@ __all__ = [
     "compare_semver",
     "download_update",
     "github_repository",
+    "has_packaged_repository",
     "installer_name",
     "launch_installer",
     "manifest_name",

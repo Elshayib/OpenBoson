@@ -66,3 +66,10 @@ def test_format_topic_label_uses_title_not_code_echo():
     assert label.startswith("1.1 — ")
     assert "1.1 — 1.1" not in label
     assert "network components" in label.lower()
+
+
+def test_format_topic_label_dual_when_cert_all_conflicts():
+    label = format_topic_label("1.1", cert="all")
+    assert "CCNA:" in label and "ENCOR:" in label
+    assert format_topic_label("1.1", cert="ccna").startswith("1.1 — ")
+    assert "CCNA:" not in format_topic_label("1.1", cert="ccna")
