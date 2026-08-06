@@ -42,17 +42,37 @@ class PracticePage(QWidget):
         self._deep_topic_prefix: str | None = None
 
         root = QVBoxLayout(self)
-        root.setContentsMargins(24, 24, 24, 24)
-        root.setSpacing(16)
+        root.setContentsMargins(12, 12, 12, 12)
+        root.setSpacing(8)
 
         header = QLabel("Practice")
         header.setProperty("role", "h1")
         root.addWidget(header)
 
-        # Exam CTAs
+        # Exam-first hero — blueprint cards
+        exam_section = QLabel("Exams")
+        exam_section.setProperty("role", "h2")
+        root.addWidget(exam_section)
         exam_row = QHBoxLayout()
+        exam_row.setSpacing(8)
         for bp in list_blueprints():
+            card = QFrame()
+            card.setObjectName("Card")
+            cv = QVBoxLayout(card)
+            cv.setContentsMargins(12, 10, 12, 10)
+            cv.setSpacing(6)
+            title = QLabel(bp.title if bp.enabled else bp.code)
+            title.setProperty("role", "h2")
+            title.setWordWrap(True)
+            cv.addWidget(title)
             if bp.enabled:
+                meta = QLabel(
+                    f"{bp.code} {bp.version} · {bp.question_count} Q · "
+                    f"{bp.time_limit_minutes} min · pass {int(bp.pass_score * 100)}%"
+                )
+                meta.setProperty("role", "muted")
+                meta.setWordWrap(True)
+                cv.addWidget(meta)
                 btn = QPushButton(f"Start {bp.code} {bp.version} Exam")
                 btn.setObjectName("Primary")
                 btn.setToolTip(
@@ -61,32 +81,52 @@ class PracticePage(QWidget):
                 )
                 btn.clicked.connect(lambda _=False, bid=bp.id: self._start_exam(bid))
             else:
+                meta = QLabel(bp.coming_soon_label or "Coming soon")
+                meta.setProperty("role", "muted")
+                cv.addWidget(meta)
                 btn = QPushButton(
                     f"{bp.code} {bp.version} ({bp.coming_soon_label or 'Coming soon'})"
                 )
                 btn.setObjectName("Secondary")
                 btn.setEnabled(False)
-            exam_row.addWidget(btn)
+            cv.addWidget(btn)
+            exam_row.addWidget(card, 1)
+        custom_card = QFrame()
+        custom_card.setObjectName("Card")
+        ccv = QVBoxLayout(custom_card)
+        ccv.setContentsMargins(12, 10, 12, 10)
+        ccv.setSpacing(6)
+        ctitle = QLabel("Custom exam")
+        ctitle.setProperty("role", "h2")
+        ccv.addWidget(ctitle)
+        cmeta = QLabel("Build by cert, topic, difficulty, and history")
+        cmeta.setProperty("role", "muted")
+        cmeta.setWordWrap(True)
+        ccv.addWidget(cmeta)
         custom_btn = QPushButton("Custom exam…")
         custom_btn.setObjectName("Secondary")
         custom_btn.setToolTip("Build an exam by cert, topic, difficulty, and history")
         custom_btn.clicked.connect(self._open_custom_exam)
-        exam_row.addWidget(custom_btn)
-        exam_row.addStretch()
+        ccv.addWidget(custom_btn)
+        exam_row.addWidget(custom_card, 1)
         root.addLayout(exam_row)
 
+        browse = QLabel("Question library")
+        browse.setProperty("role", "h2")
+        root.addWidget(browse)
+
         body = QHBoxLayout()
-        body.setSpacing(16)
+        body.setSpacing(8)
 
         # Filters
         filters = QFrame()
         filters.setObjectName("Card")
-        filters.setMinimumWidth(200)
-        filters.setMaximumWidth(280)
+        filters.setMinimumWidth(180)
+        filters.setMaximumWidth(240)
         filters.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         fl = QVBoxLayout(filters)
-        fl.setContentsMargins(14, 14, 14, 14)
-        fl.setSpacing(8)
+        fl.setContentsMargins(10, 10, 10, 10)
+        fl.setSpacing(6)
         fl.addWidget(self._muted("Filters"))
 
         self._cert = QComboBox()
@@ -155,7 +195,7 @@ class PracticePage(QWidget):
         self._list_host.setAutoFillBackground(True)
         self._list_layout = QVBoxLayout(self._list_host)
         self._list_layout.setContentsMargins(0, 0, 0, 0)
-        self._list_layout.setSpacing(8)
+        self._list_layout.setSpacing(4)
         scroll.setWidget(self._list_host)
         right.addWidget(scroll, 1)
 
@@ -469,8 +509,8 @@ class PracticePage(QWidget):
         card.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         card.setAccessibleName(f"Practice question {q.id}")
         v = QVBoxLayout(card)
-        v.setContentsMargins(14, 12, 14, 12)
-        v.setSpacing(4)
+        v.setContentsMargins(10, 8, 10, 8)
+        v.setSpacing(2)
 
         top = QHBoxLayout()
         top.addWidget(QLabel(q.id))

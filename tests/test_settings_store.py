@@ -14,7 +14,7 @@ from openboson.settings_store import (
 def test_defaults_when_missing(isolated_home):
     assert not settings_path().exists()
     cfg = load_settings()
-    assert cfg.theme == "dark"
+    assert cfg.theme == "light"
     assert cfg.check_updates_on_startup is True
     assert cfg.update_channel == "stable"
 
@@ -31,4 +31,4 @@ def test_round_trip_atomic(isolated_home):
 def test_update_settings_patch(isolated_home):
     update_settings(skipped_version="0.2.0")
     assert load_settings().skipped_version == "0.2.0"
-    assert load_settings().theme == "dark"
+    assert load_settings().theme == "light"

@@ -1,4 +1,4 @@
-"""OpenBoson main window — sidebar navigation + stacked content pages.
+"""OpenBoson main window — top command bar + stacked content pages.
 
 The window hosts the static pages (Dashboard, Practice, Labs, Stats, Settings)
 and transient exam/practice pages that are pushed onto the stack when the user
@@ -7,11 +7,14 @@ starts studying or taking an exam.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from PySide6.QtCore import Qt, QTimer
-from PySide6.QtGui import QCloseEvent
+from PySide6.QtGui import QCloseEvent, QIcon, QPixmap
 from PySide6.QtWidgets import (
     QButtonGroup,
     QHBoxLayout,
+    QLabel,
     QMainWindow,
     QMessageBox,
     QPushButton,
@@ -41,8 +44,25 @@ from openboson.gui.pages.stats_page import StatsPage
 from openboson.netsim.session import LabResult, LabSession
 
 
+def _resources_dir() -> Path:
+    return Path(__file__).resolve().parent / "resources"
+
+
+def load_app_icon() -> QIcon:
+    """Load the OB monogram window / taskbar icon from packaged resources."""
+    icon = QIcon()
+    res = _resources_dir()
+    ico = res / "app_icon.ico"
+    png = res / "app_icon.png"
+    if ico.is_file():
+        icon.addFile(str(ico))
+    elif png.is_file():
+        icon.addFile(str(png))
+    return icon
+
+
 class MainWindow(QMainWindow):
-    """Primary application window with a sidebar and stacked content area."""
+    """Primary application window with a top command bar and stacked content."""
 
     STATIC_PAGES: list[tuple[str, type]] = [
         ("Dashboard", DashboardPage),
@@ -57,27 +77,49 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("OpenBoson")
         self.resize(1280, 800)
         self.setMinimumSize(960, 640)
+        app_icon = load_app_icon()
+        if not app_icon.isNull():
+            self.setWindowIcon(app_icon)
 
         central = QWidget()
         central.setObjectName("Content")
-        root = QHBoxLayout(central)
+        root = QVBoxLayout(central)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
 
-        # Sidebar
-        sidebar = QWidget()
-        sidebar.setObjectName("Sidebar")
-        sidebar.setFixedWidth(220)
-        side_layout = QVBoxLayout(sidebar)
-        side_layout.setContentsMargins(0, 0, 0, 0)
-        side_layout.setSpacing(0)
+        # Top command bar — floating pill nav
+        topbar = QWidget()
+        topbar.setObjectName("TopBar")
+        topbar.setFixedHeight(44)
+        bar = QHBoxLayout(topbar)
+        bar.setContentsMargins(10, 4, 10, 4)
+        bar.setSpacing(6)
+
+        brand_icon = QLabel()
+        brand_icon.setObjectName("BrandIcon")
+        brand_icon.setFixedSize(24, 24)
+        brand_png = _resources_dir() / "app_icon.png"
+        if brand_png.is_file():
+            pix = QPixmap(str(brand_png)).scaled(
+                24,
+                24,
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation,
+            )
+            brand_icon.setPixmap(pix)
+        bar.addWidget(brand_icon)
 
         brand = QPushButton("OpenBoson")
         brand.setObjectName("Brand")
         brand.setEnabled(False)
-        brand.setFixedHeight(56)
-        side_layout.addWidget(brand)
-        side_layout.addSpacing(8)
+        brand.setFlat(True)
+        bar.addWidget(brand)
+
+        nav_host = QWidget()
+        nav_host.setObjectName("NavPills")
+        nav_row = QHBoxLayout(nav_host)
+        nav_row.setContentsMargins(4, 0, 4, 0)
+        nav_row.setSpacing(2)
 
         self._nav_group = QButtonGroup(self)
         self._nav_group.setExclusive(True)
@@ -85,9 +127,10 @@ class MainWindow(QMainWindow):
             btn = QPushButton(label)
             btn.setCheckable(True)
             btn.setCursor(Qt.CursorShape.PointingHandCursor)
-            side_layout.addWidget(btn)
+            nav_row.addWidget(btn)
             self._nav_group.addButton(btn)
-        side_layout.addStretch()
+        bar.addWidget(nav_host)
+        bar.addStretch(1)
 
         # Page stack
         self._stack = QStackedWidget()
@@ -147,7 +190,7 @@ class MainWindow(QMainWindow):
         self._stack.setCurrentIndex(0)
         self._static_pages[self.STATIC_PAGES[0][0]].refresh()
 
-        root.addWidget(sidebar)
+        root.addWidget(topbar)
         root.addWidget(self._stack, 1)
         self.setCentralWidget(central)
 
@@ -159,7 +202,7 @@ class MainWindow(QMainWindow):
 
             self.apply_theme(load_settings().theme)
         except Exception:
-            self.apply_theme("dark")
+            self.apply_theme("light")
         self._exam_active = False
         self._nav_before_exam: QPushButton | None = None
         self._update_thread = None
@@ -168,7 +211,7 @@ class MainWindow(QMainWindow):
         # Defer startup update check until the window is shown and interactive.
         QTimer.singleShot(750, self._maybe_startup_update_check)
 
-    def apply_theme(self, theme: str = "dark") -> None:
+    def apply_theme(self, theme: str = "light") -> None:
         from pathlib import Path
 
         from PySide6.QtGui import QColor, QPalette
@@ -190,11 +233,11 @@ class MainWindow(QMainWindow):
         if app is not None:
             pal = QPalette()
             if theme == "light":
-                window = QColor("#f5f7fb")
+                window = QColor("#f7f6f3")
                 base = QColor("#ffffff")
-                text = QColor("#1f2328")
-                muted = QColor("#656d76")
-                highlight = QColor("#0969da")
+                text = QColor("#222018")
+                muted = QColor("#6f6a60")
+                highlight = QColor("#0f766e")
                 button = QColor("#ffffff")
             else:
                 window = QColor("#0f1420")
@@ -248,7 +291,7 @@ class MainWindow(QMainWindow):
             QTimer.singleShot(0, lambda lbl=label: self._refresh_static_page(lbl))
 
     def _refresh_static_page(self, label: str) -> None:
-        """Refresh a sidebar page only if it is still the visible stack page."""
+        """Refresh a nav page only if it is still the visible stack page."""
         try:
             page = self._static_pages.get(label)
             if page is None or not hasattr(page, "refresh"):

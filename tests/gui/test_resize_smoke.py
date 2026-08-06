@@ -27,7 +27,7 @@ def test_window_resize_keeps_nav_visible(main_window, qtbot, size):
     qtbot.wait(50)
     assert main_window.width() >= 960
     assert main_window.height() >= 640
-    # Sidebar nav buttons remain findable
+    # Top-bar nav buttons remain findable
     nav = [
         b
         for b in main_window.findChildren(QPushButton)

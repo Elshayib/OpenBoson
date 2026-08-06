@@ -28,6 +28,7 @@ OutputBaseFilename=OpenBoson-Setup-{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+SetupIconFile=..\src\openboson\gui\resources\app_icon.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 CloseApplications=yes
 CloseApplicationsFilter=OpenBoson.exe

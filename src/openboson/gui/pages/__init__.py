@@ -7,6 +7,7 @@ their own module.
 from __future__ import annotations
 
 from collections.abc import Callable
+from datetime import UTC, datetime
 
 from PySide6.QtWidgets import QFrame, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 
@@ -23,7 +24,7 @@ class _Page(QWidget):
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
-        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=12)
+        self._scroll = ScrollHost(margins=(12, 12, 12, 12), spacing=8)
         root.addWidget(self._scroll, 1)
         self._layout = self._scroll.content_layout
 
@@ -59,13 +60,9 @@ class DashboardPage(_Page):
     def _rebuild_static(self) -> None:
         self._scroll.clear_content()
 
-        header = QLabel("OpenBoson")
+        header = QLabel("Welcome back")
         header.setProperty("role", "h1")
-        sub = QLabel(
-            "Local practice questions and blueprint exams for CCNA 200-301 v1.1 and "
-            "CCNP ENCOR 350-401 v1.2, plus NetSim guided labs. Open Practice to browse "
-            "the library or start an exam."
-        )
+        sub = QLabel("Recent activity and a quick path back into practice or labs.")
         sub.setProperty("role", "muted")
         sub.setWordWrap(True)
 
@@ -74,8 +71,8 @@ class DashboardPage(_Page):
 
         self._cta_host = QWidget()
         self._cta_layout = QVBoxLayout(self._cta_host)
-        self._cta_layout.setContentsMargins(0, 8, 0, 0)
-        self._cta_layout.setSpacing(12)
+        self._cta_layout.setContentsMargins(0, 4, 0, 0)
+        self._cta_layout.setSpacing(8)
         self._layout.addWidget(self._cta_host)
         self._layout.addStretch()
 
@@ -97,6 +94,8 @@ class DashboardPage(_Page):
             activity = svc.latest_activity()
             summary = svc.exam_summary()
             resumable = gui_engine.get_resumable_exam_info()
+            exams = svc.exam_history(limit=5)
+            labs = svc.lab_history(limit=5)
         except Exception as exc:
             err = QLabel(f"Could not load dashboard: {exc}")
             err.setProperty("role", "muted")
@@ -119,12 +118,26 @@ class DashboardPage(_Page):
                     ),
                     enabled=True,
                     on_click=self._on_resume_exam,
+                    button_label="Resume exam",
                 )
             )
 
-        self._cta_layout.addWidget(self._section("Study next"))
+        # Activity feed first
+        self._cta_layout.addWidget(self._section("Recent"))
+        feed = self._activity_feed(exams, labs)
+        if feed:
+            for row in feed:
+                self._cta_layout.addWidget(row)
+        else:
+            empty = QLabel("No attempts yet — start a practice exam or guided lab.")
+            empty.setProperty("role", "muted")
+            empty.setWordWrap(True)
+            self._cta_layout.addWidget(empty)
 
+        # Secondary hub CTAs
+        self._cta_layout.addWidget(self._section("Quick actions"))
         row = QHBoxLayout()
+        row.setSpacing(8)
         row.addWidget(
             self._cta_card(
                 "Practice weakest domain",
@@ -173,6 +186,57 @@ class DashboardPage(_Page):
         host.setLayout(row)
         self._cta_layout.addWidget(host)
 
+    def _activity_feed(self, exams, labs) -> list[QFrame]:
+        """Merge recent exams and labs into compact activity rows."""
+
+        def _ts(when: datetime | None) -> float:
+            if when is None:
+                return 0.0
+            if when.tzinfo is None:
+                return when.replace(tzinfo=UTC).timestamp()
+            return when.timestamp()
+
+        items: list[tuple[float, str, str]] = []
+        for e in exams:
+            when = e.finished_at
+            mark = "passed" if e.passed else "failed"
+            items.append(
+                (
+                    _ts(when),
+                    f"{e.exam_code} · {int(e.score * 100)}% · {mark}",
+                    when.strftime("%Y-%m-%d %H:%M") if when else "—",
+                )
+            )
+        for lab in labs:
+            when = lab.finished_at
+            mark = "passed" if lab.score >= 0.7 else "needs work"
+            items.append(
+                (
+                    _ts(when),
+                    f"{lab.lab_id} · {int(lab.score * 100)}% · {mark}",
+                    when.strftime("%Y-%m-%d %H:%M") if when else "—",
+                )
+            )
+        items.sort(key=lambda t: t[0], reverse=True)
+        rows: list[QFrame] = []
+        for _ts_val, title, when in items[:6]:
+            rows.append(self._activity_row(title, when))
+        return rows
+
+    def _activity_row(self, title: str, when: str) -> QFrame:
+        row = QFrame()
+        row.setObjectName("ActivityRow")
+        h = QHBoxLayout(row)
+        h.setContentsMargins(12, 8, 12, 8)
+        h.setSpacing(8)
+        t = QLabel(title)
+        t.setWordWrap(True)
+        h.addWidget(t, 1)
+        s = QLabel(when)
+        s.setProperty("role", "muted")
+        h.addWidget(s)
+        return row
+
     def _section(self, text: str) -> QLabel:
         lbl = QLabel(text)
         lbl.setProperty("role", "h2")
@@ -185,12 +249,13 @@ class DashboardPage(_Page):
         *,
         enabled: bool,
         on_click: Callable[[], None] | None,
+        button_label: str = "Go",
     ) -> QFrame:
         card = QFrame()
         card.setObjectName("Card")
         v = QVBoxLayout(card)
-        v.setContentsMargins(16, 14, 16, 14)
-        v.setSpacing(8)
+        v.setContentsMargins(12, 10, 12, 10)
+        v.setSpacing(6)
         t = QLabel(title)
         t.setProperty("role", "h2")
         t.setWordWrap(True)
@@ -199,7 +264,7 @@ class DashboardPage(_Page):
         s.setProperty("role", "muted")
         s.setWordWrap(True)
         v.addWidget(s)
-        btn = QPushButton("Go")
+        btn = QPushButton(button_label)
         btn.setObjectName("Primary" if enabled else "Secondary")
         btn.setEnabled(enabled and on_click is not None)
         if on_click is not None:

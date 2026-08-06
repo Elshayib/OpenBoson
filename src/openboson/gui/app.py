@@ -11,7 +11,7 @@ import sys
 from PySide6.QtWidgets import QApplication
 
 from openboson import __version__
-from openboson.gui.main_window import MainWindow
+from openboson.gui.main_window import MainWindow, load_app_icon
 from openboson.logging_setup import setup_logging
 
 
@@ -26,7 +26,10 @@ def make_app(argv: list[str] | None = None) -> QApplication:
     app.setApplicationDisplayName("OpenBoson")
     app.setApplicationVersion(__version__)
     app.setOrganizationName("OpenBoson")
-    # Dark palette is shipped via styles.qss on the main window.
+    icon = load_app_icon()
+    if not icon.isNull():
+        app.setWindowIcon(icon)
+    # Soft Daylight (light) / navy (dark) palettes ship via QSS on the main window.
     return app
 
 

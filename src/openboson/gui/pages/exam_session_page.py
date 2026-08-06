@@ -1,4 +1,4 @@
-"""Exam session page — silent blueprint exam taking UI."""
+"""Exam session page — proctor layout (sticky chrome, question stage, grid drawer)."""
 
 from __future__ import annotations
 
@@ -55,9 +55,11 @@ class ExamSessionPage(QWidget):
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
 
-        # Top bar — question number + timer only (actions live in bottom bar)
-        self._top = QHBoxLayout()
-        self._top.setContentsMargins(24, 16, 24, 16)
+        # Sticky proctor chrome — question number + timer
+        chrome = QFrame()
+        chrome.setObjectName("ExamChrome")
+        self._top = QHBoxLayout(chrome)
+        self._top.setContentsMargins(12, 8, 12, 8)
         self._qnum = QLabel("")
         self._qnum.setProperty("role", "h2")
         self._top.addWidget(self._qnum)
@@ -67,32 +69,9 @@ class ExamSessionPage(QWidget):
         self._timer.set_on_timeout(self._on_timeout)
         self._timer_host.addWidget(self._timer, 1)
         self._top.addLayout(self._timer_host, 1)
-        root.addLayout(self._top)
+        root.addWidget(chrome)
 
-        mid = QHBoxLayout()
-        mid.setContentsMargins(0, 0, 0, 0)
-        mid.setSpacing(0)
-
-        # Question grid sidebar
-        grid_wrap = QFrame()
-        grid_wrap.setObjectName("Sidebar")
-        grid_wrap.setMinimumWidth(160)
-        grid_wrap.setMaximumWidth(220)
-        gw = QVBoxLayout(grid_wrap)
-        gw.setContentsMargins(8, 8, 8, 8)
-        gw.addWidget(QLabel("Questions"))
-        self._grid_host = QWidget()
-        self._grid_layout = QGridLayout(self._grid_host)
-        self._grid_layout.setSpacing(4)
-        self._grid_layout.setContentsMargins(0, 0, 0, 0)
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-        scroll.setFrameShape(QFrame.Shape.NoFrame)
-        scroll.setWidget(self._grid_host)
-        gw.addWidget(scroll, 1)
-        mid.addWidget(grid_wrap)
-
-        # Question area — scroll so tall cards (drag-match / sim) never clip
+        # Question stage fills the center
         self._card_holder = QFrame()
         self._card_holder.setObjectName("CardHolder")
         card_outer = QVBoxLayout(self._card_holder)
@@ -105,16 +84,39 @@ class ExamSessionPage(QWidget):
         self._card_host.setObjectName("ScrollContent")
         self._card_host.setAutoFillBackground(True)
         self._card_layout = QVBoxLayout(self._card_host)
-        self._card_layout.setContentsMargins(24, 16, 24, 16)
-        self._card_layout.setSpacing(12)
+        self._card_layout.setContentsMargins(16, 12, 16, 12)
+        self._card_layout.setSpacing(8)
         card_scroll.setWidget(self._card_host)
         card_outer.addWidget(card_scroll, 1)
-        mid.addWidget(self._card_holder, 1)
-        root.addLayout(mid, 1)
+        root.addWidget(self._card_holder, 1)
 
-        # Bottom nav — prev/next, bookmark/mark, finish
-        self._bottom = QHBoxLayout()
-        self._bottom.setContentsMargins(24, 16, 24, 16)
+        # Question grid as bottom drawer
+        grid_wrap = QFrame()
+        grid_wrap.setObjectName("QuestionGrid")
+        grid_wrap.setMaximumHeight(140)
+        gw = QVBoxLayout(grid_wrap)
+        gw.setContentsMargins(8, 6, 8, 6)
+        gw.setSpacing(4)
+        grid_hdr = QLabel("Questions")
+        grid_hdr.setProperty("role", "muted")
+        gw.addWidget(grid_hdr)
+        self._grid_host = QWidget()
+        self._grid_layout = QGridLayout(self._grid_host)
+        self._grid_layout.setSpacing(4)
+        self._grid_layout.setContentsMargins(0, 0, 0, 0)
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setWidget(self._grid_host)
+        scroll.setMaximumHeight(100)
+        gw.addWidget(scroll, 1)
+        root.addWidget(grid_wrap)
+
+        # Bottom actions
+        actions = QFrame()
+        actions.setObjectName("ExamActions")
+        self._bottom = QHBoxLayout(actions)
+        self._bottom.setContentsMargins(12, 8, 12, 8)
         self._prev = QPushButton("‹ Previous")
         self._prev.setObjectName("Secondary")
         self._prev.clicked.connect(self._go_prev)
@@ -140,7 +142,7 @@ class ExamSessionPage(QWidget):
         self._bottom.addWidget(self._mark_btn)
         self._bottom.addWidget(self._pause)
         self._bottom.addWidget(self._finish)
-        root.addLayout(self._bottom)
+        root.addWidget(actions)
 
         self._grid_buttons: list[QPushButton] = []
         self._on_paused: Callable[..., Any] | None = None
@@ -245,10 +247,11 @@ class ExamSessionPage(QWidget):
         self._grid_buttons = []
         if self._session is None:
             return
-        cols = 5
+        # Wider drawer → more columns for dense scan
+        cols = 12
         for i in range(len(self._session.questions)):
             btn = QPushButton(str(i + 1))
-            btn.setFixedSize(32, 28)
+            btn.setFixedSize(28, 24)
             btn.setObjectName("Secondary")
             btn.clicked.connect(lambda _=False, idx=i: self._jump(idx))
             self._grid_layout.addWidget(btn, i // cols, i % cols)
@@ -310,13 +313,15 @@ class ExamSessionPage(QWidget):
             marked = q.id in self._session.marked_for_review
             current = i == self._session.current_index
             if current:
-                btn.setStyleSheet("background: #1f6feb; color: white;")
+                btn.setStyleSheet(
+                    "background: #0f766e; color: white; border-radius: 4px; font-weight: 700;"
+                )
             elif marked:
-                btn.setStyleSheet("background: #9e6a03; color: white;")
+                btn.setStyleSheet("background: #9e6a03; color: white; border-radius: 4px;")
             elif bookmarked:
-                btn.setStyleSheet("background: #388bfd33;")
+                btn.setStyleSheet("background: #0f766e33; border-radius: 4px;")
             elif answered:
-                btn.setStyleSheet("background: #238636;")
+                btn.setStyleSheet("background: #3f7d4e; color: white; border-radius: 4px;")
             else:
                 btn.setStyleSheet("")
 

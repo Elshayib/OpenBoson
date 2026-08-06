@@ -13,6 +13,7 @@ DATA = ROOT / "data"
 datas = [
     (str(SRC / "gui" / "styles.qss"), "openboson/gui"),
     (str(SRC / "gui" / "styles_light.qss"), "openboson/gui"),
+    (str(SRC / "gui" / "resources"), "openboson/gui/resources"),
     (str(DATA / "demo_banks"), "data/demo_banks"),
     (str(DATA / "demo_labs"), "data/demo_labs"),
     (str(ROOT / "LICENSE"), "."),
@@ -79,7 +80,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=None,
+    icon=str(SRC / "gui" / "resources" / "app_icon.ico"),
 )
 
 coll = COLLECT(

@@ -43,7 +43,7 @@ class LabSessionPage(QWidget):
         root.setSpacing(0)
 
         top = QHBoxLayout()
-        top.setContentsMargins(16, 12, 16, 8)
+        top.setContentsMargins(10, 6, 10, 4)
         self._title = QLabel("Lab")
         self._title.setProperty("role", "h2")
         top.addWidget(self._title)
@@ -56,19 +56,20 @@ class LabSessionPage(QWidget):
         split = QSplitter(Qt.Orientation.Horizontal)
         self._split = split
 
-        # LEFT: objectives
+        # LEFT: objectives (side pane chrome)
         left = QWidget()
+        left.setObjectName("LabSidePane")
         left.setMinimumWidth(0)
         left_l = QVBoxLayout(left)
-        left_l.setContentsMargins(16, 8, 8, 16)
-        left_l.setSpacing(10)
+        left_l.setContentsMargins(10, 6, 6, 10)
+        left_l.setSpacing(6)
 
         tasks_hdr = QLabel("Objectives")
         tasks_hdr.setProperty("role", "h2")
         left_l.addWidget(tasks_hdr)
 
         self._task_list = QVBoxLayout()
-        self._task_list.setSpacing(6)
+        self._task_list.setSpacing(4)
         left_l.addLayout(self._task_list)
 
         inst_hdr = QLabel("Current objective")
@@ -77,13 +78,13 @@ class LabSessionPage(QWidget):
         self._instructions = QTextBrowser()
         self._instructions.setOpenExternalLinks(False)
         self._instructions.setFrameShape(QFrame.Shape.NoFrame)
-        self._instructions.setMinimumHeight(120)
+        self._instructions.setMinimumHeight(100)
         left_l.addWidget(self._instructions, 1)
 
         self._feedback = QLabel("")
         self._feedback.setWordWrap(True)
         self._feedback.setProperty("role", "muted")
-        self._feedback.setMinimumHeight(48)
+        self._feedback.setMinimumHeight(40)
         left_l.addWidget(self._feedback)
 
         nav = QHBoxLayout()
@@ -119,12 +120,12 @@ class LabSessionPage(QWidget):
         left_l.addLayout(secondary)
         split.addWidget(left)
 
-        # CENTER: consoles
+        # CENTER: consoles (IDE focus — larger stretch)
         center = QWidget()
         center.setMinimumWidth(0)
         cl = QVBoxLayout(center)
-        cl.setContentsMargins(8, 8, 8, 16)
-        cl.setSpacing(6)
+        cl.setContentsMargins(4, 6, 4, 10)
+        cl.setSpacing(4)
         cons_row = QHBoxLayout()
         cons_hdr = QLabel("Console")
         cons_hdr.setProperty("role", "h2")
@@ -141,10 +142,11 @@ class LabSessionPage(QWidget):
 
         # RIGHT: topology
         right = QWidget()
+        right.setObjectName("LabSidePane")
         right.setMinimumWidth(0)
         rl = QVBoxLayout(right)
-        rl.setContentsMargins(8, 8, 16, 16)
-        rl.setSpacing(6)
+        rl.setContentsMargins(6, 6, 10, 10)
+        rl.setSpacing(4)
         topo_hdr = QLabel("Topology")
         topo_hdr.setProperty("role", "h2")
         rl.addWidget(topo_hdr)
@@ -154,11 +156,11 @@ class LabSessionPage(QWidget):
         split.addWidget(right)
 
         split.setStretchFactor(0, 2)
-        split.setStretchFactor(1, 5)
+        split.setStretchFactor(1, 6)
         split.setStretchFactor(2, 3)
         for i in range(3):
             split.setCollapsible(i, True)
-        split.setSizes([260, 520, 320])
+        split.setSizes([220, 580, 300])
         root.addWidget(split, 1)
 
     def start_lab(self, lab: LabBank) -> None:

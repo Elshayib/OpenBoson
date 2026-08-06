@@ -35,7 +35,7 @@ class ExamResultPage(QWidget):
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
-        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        self._scroll = ScrollHost(margins=(12, 12, 12, 12), spacing=8)
         root.addWidget(self._scroll, 1)
         self._layout = self._scroll.content_layout
         self._on_review = None

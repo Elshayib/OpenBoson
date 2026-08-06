@@ -43,7 +43,7 @@ src/openboson/
 └── gui/                # PySide6 desktop UI
     ├── app.py          # QApplication bootstrap
     ├── engine.py       # In-process bridge to engine modules
-    ├── main_window.py  # Sidebar + QStackedWidget shell
+    ├── main_window.py  # Top command bar + QStackedWidget shell
     ├── pages/          # Screen implementations
     └── widgets/        # Reusable UI components
 ```

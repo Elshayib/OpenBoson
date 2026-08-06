@@ -334,7 +334,7 @@ def test_pause_and_exit_allows_sidebar_and_resume(window, qtbot):
     assert window.visible_page_label() == "Dashboard"
     assert window._session_page._timer.is_paused()
 
-    # Sidebar works after pause.
+    # Nav works after pause.
     window.select_page("Practice")
     qtbot.wait(30)
     assert window.visible_page_label() == "Practice"

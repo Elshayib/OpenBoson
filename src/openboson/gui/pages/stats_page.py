@@ -1,4 +1,4 @@
-"""Stats page — exam/lab history, domain accuracy, heatmap, recent misses."""
+"""Stats page — KPI strip, score chart, domain bars, heatmap, history."""
 
 from __future__ import annotations
 
@@ -22,7 +22,6 @@ def _heat_color(percent: float) -> str:
     """Return a CSS background for accuracy 0..1 (red → yellow → green)."""
     p = max(0.0, min(1.0, percent))
     if p < 0.5:
-        # red → yellow
         t = p / 0.5
         r, g, b = 248, int(81 + (185 - 81) * t), int(73 + (15 - 73) * t)
     else:
@@ -39,7 +38,7 @@ class StatsPage(QWidget):
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
-        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        self._scroll = ScrollHost(margins=(12, 12, 12, 12), spacing=8)
         root.addWidget(self._scroll, 1)
         self._layout = self._scroll.content_layout
         self._cert_filter = "all"
@@ -80,6 +79,7 @@ class StatsPage(QWidget):
 
         # --- Filters ---
         filt = QHBoxLayout()
+        filt.setSpacing(6)
         cert_box = QComboBox()
         cert_box.addItem("All certs", "all")
         cert_box.addItem("CCNA", "ccna")
@@ -103,8 +103,9 @@ class StatsPage(QWidget):
         self._cert_box = cert_box
         self._ver_box = ver_box
 
-        # --- Summary cards ---
+        # --- KPI strip ---
         cards = QHBoxLayout()
+        cards.setSpacing(8)
         cards.addWidget(
             self._stat_card(
                 "Exams Taken",
@@ -128,22 +129,33 @@ class StatsPage(QWidget):
         )
         self._layout.addLayout(cards)
 
-        # --- Score trend ---
+        # --- Score trend chart ---
         self._layout.addWidget(self._section_label("Score Trend"))
         if not trend:
             self._layout.addWidget(self._muted("No exam scores yet."))
         else:
-            parts = [f"{int(p.score * 100)}%" for p in trend]
-            self._layout.addWidget(self._muted(" → ".join(parts)))
+            self._layout.addWidget(self._score_chart(trend))
 
-        # --- Domain × version heatmap ---
+        # --- Domain accuracy bars ---
+        self._layout.addWidget(self._section_label("Domain Accuracy"))
+        show = weak if weak else domains
+        if not show:
+            self._layout.addWidget(self._muted("No graded answers with topic codes yet."))
+        else:
+            rows = domains if len(domains) <= 8 else weak
+            for item in rows:
+                self._layout.addWidget(
+                    self._domain_row(item.domain_prefix, item.percent, item.total_questions)
+                )
+
+        # --- Domain × version heatmap (secondary) ---
         self._layout.addWidget(self._section_label("Domain × Version Heatmap"))
         if not heat_cells:
             self._layout.addWidget(self._muted("No graded answers yet."))
         else:
             self._layout.addWidget(self._heatmap(heat_cells))
 
-        # --- Domain trend (text) ---
+        # --- Domain trend (compact) ---
         if domain_series:
             self._layout.addWidget(self._section_label("Domain Trend (recent exams)"))
             lines = []
@@ -155,18 +167,6 @@ class StatsPage(QWidget):
                 label = pt.finished_at.strftime("%m-%d") if pt.finished_at else "?"
                 lines.append(f"{label} {pt.exam_version or pt.exam_code}: " + ", ".join(parts))
             self._layout.addWidget(self._muted("\n".join(lines)))
-
-        # --- Domain accuracy / weak domains ---
-        self._layout.addWidget(self._section_label("Domain Accuracy"))
-        show = weak if weak else domains
-        if not show:
-            self._layout.addWidget(self._muted("No graded answers with topic codes yet."))
-        else:
-            rows = domains if len(domains) <= 8 else weak
-            for item in rows:
-                self._layout.addWidget(
-                    self._domain_row(item.domain_prefix, item.percent, item.total_questions)
-                )
 
         # --- Recent misses ---
         self._layout.addWidget(self._section_label("Recent Misses"))
@@ -222,12 +222,44 @@ class StatsPage(QWidget):
         self._version_filter = box.currentData() or "all"
         self._rebuild()
 
+    def _score_chart(self, trend) -> QFrame:
+        """Simple bar chart for recent exam scores."""
+        card = QFrame()
+        card.setObjectName("Card")
+        outer = QVBoxLayout(card)
+        outer.setContentsMargins(12, 10, 12, 10)
+        outer.setSpacing(6)
+        bars = QHBoxLayout()
+        bars.setSpacing(4)
+        bars.setAlignment(Qt.AlignmentFlag.AlignBottom)
+        scores = [p.score for p in trend]
+        for i, score in enumerate(scores):
+            col = QVBoxLayout()
+            col.setSpacing(2)
+            col.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignBottom)
+            bar = QFrame()
+            bar.setObjectName("TrendBar")
+            if i == len(scores) - 1:
+                bar.setProperty("active", "true")
+            height = max(8, int(score * 72))
+            bar.setFixedSize(18, height)
+            col.addWidget(bar, 0, Qt.AlignmentFlag.AlignHCenter)
+            pct = QLabel(f"{int(score * 100)}")
+            pct.setProperty("role", "muted")
+            pct.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            col.addWidget(pct)
+            host = QWidget()
+            host.setLayout(col)
+            bars.addWidget(host, 1)
+        outer.addLayout(bars)
+        return card
+
     def _heatmap(self, cells) -> QFrame:
         frame = QFrame()
         frame.setObjectName("Card")
         grid = QGridLayout(frame)
-        grid.setContentsMargins(12, 12, 12, 12)
-        grid.setSpacing(4)
+        grid.setContentsMargins(10, 10, 10, 10)
+        grid.setSpacing(3)
         domains = sorted({c.domain_prefix for c in cells})
         versions = sorted({c.exam_version for c in cells})
         lookup = {(c.domain_prefix, c.exam_version): c for c in cells}
@@ -252,18 +284,18 @@ class StatsPage(QWidget):
                     lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
                     lbl.setStyleSheet(_heat_color(cell.percent))
                     lbl.setToolTip(f"{cell.correct}/{cell.total} correct")
-                lbl.setMinimumWidth(48)
-                lbl.setMinimumHeight(28)
+                lbl.setMinimumWidth(44)
+                lbl.setMinimumHeight(24)
                 grid.addWidget(lbl, row, col)
         return frame
 
     def _stat_card(self, label: str, value: str, sub: str) -> QFrame:
         card = QFrame()
-        card.setObjectName("Card")
+        card.setObjectName("KpiCard")
         card.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         v = QVBoxLayout(card)
-        v.setContentsMargins(18, 16, 18, 16)
-        v.setSpacing(4)
+        v.setContentsMargins(12, 10, 12, 10)
+        v.setSpacing(2)
         title = QLabel(label)
         title.setProperty("role", "muted")
         v.addWidget(title)
@@ -291,7 +323,7 @@ class StatsPage(QWidget):
         row = QFrame()
         row.setObjectName("Card")
         h = QHBoxLayout(row)
-        h.setContentsMargins(14, 10, 14, 10)
+        h.setContentsMargins(10, 6, 10, 6)
         name = QLabel(f"Domain {prefix.rstrip('.')}")
         name.setMinimumWidth(80)
         name.setWordWrap(True)
@@ -314,7 +346,7 @@ class StatsPage(QWidget):
         row = QFrame()
         row.setObjectName("Card")
         h = QHBoxLayout(row)
-        h.setContentsMargins(14, 10, 14, 10)
+        h.setContentsMargins(10, 6, 10, 6)
         mark = "✓" if passed else "✗"
         mark_lbl = QLabel(mark)
         mark_lbl.setStyleSheet("color: #3fb950;" if passed else "color: #f85149;")

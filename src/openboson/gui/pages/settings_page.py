@@ -1,4 +1,4 @@
-"""Settings page — data dir, theme, and software updates."""
+"""Settings page — two-column prefs (section nav + detail)."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import subprocess
 import sys
 from dataclasses import asdict
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QButtonGroup,
     QCheckBox,
@@ -15,6 +16,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QPushButton,
     QRadioButton,
+    QStackedWidget,
     QVBoxLayout,
     QWidget,
 )
@@ -47,12 +49,14 @@ def _open_path(path: str) -> None:
 class SettingsPage(QWidget):
     title = "Settings"
 
+    SECTIONS = ("Appearance", "Content", "Updates", "Advanced")
+
     def __init__(self) -> None:
         super().__init__()
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
-        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        self._scroll = ScrollHost(margins=(12, 12, 12, 12), spacing=8)
         root.addWidget(self._scroll, 1)
         self._layout = self._scroll.content_layout
         self._on_theme_change = None
@@ -66,6 +70,8 @@ class SettingsPage(QWidget):
         self._remind_btn: QPushButton | None = None
         self._skip_btn: QPushButton | None = None
         self._check_now_btn: QPushButton | None = None
+        self._section_stack: QStackedWidget | None = None
+        self._nav_group: QButtonGroup | None = None
         self._built = False
 
     def set_on_theme_change(self, cb) -> None:
@@ -85,50 +91,96 @@ class SettingsPage(QWidget):
 
         cfg = load_settings()
 
-        dir_card = QFrame()
-        dir_card.setObjectName("Card")
-        dl = QVBoxLayout(dir_card)
-        dl.setContentsMargins(18, 16, 18, 16)
-        dl.addWidget(self._label("Data Directory", "h2"))
-        path_lbl = QLabel(str(settings.data_dir))
-        path_lbl.setProperty("role", "muted")
-        path_lbl.setWordWrap(True)
-        dl.addWidget(path_lbl)
+        body = QHBoxLayout()
+        body.setSpacing(8)
 
-        btn_row = QHBoxLayout()
-        open_btn = QPushButton("Open data folder")
-        open_btn.setObjectName("Secondary")
-        open_btn.clicked.connect(lambda: _open_path(str(settings.data_dir)))
-        btn_row.addWidget(open_btn)
+        # Left section nav
+        nav = QFrame()
+        nav.setObjectName("SettingsNav")
+        nav.setFixedWidth(140)
+        nl = QVBoxLayout(nav)
+        nl.setContentsMargins(6, 8, 6, 8)
+        nl.setSpacing(2)
+        self._nav_group = QButtonGroup(self)
+        self._nav_group.setExclusive(True)
+        for i, name in enumerate(self.SECTIONS):
+            btn = QPushButton(name)
+            btn.setCheckable(True)
+            btn.setCursor(Qt.CursorShape.PointingHandCursor)
+            if i == 0:
+                btn.setChecked(True)
+            self._nav_group.addButton(btn, i)
+            nl.addWidget(btn)
+        nl.addStretch()
+        self._nav_group.idClicked.connect(self._on_section_changed)
+        body.addWidget(nav)
 
-        logs_btn = QPushButton("Open logs")
-        logs_btn.setObjectName("Secondary")
-        logs_btn.clicked.connect(lambda: _open_path(str(logs_dir())))
-        btn_row.addWidget(logs_btn)
+        # Right detail stack
+        self._section_stack = QStackedWidget()
+        self._section_stack.addWidget(self._build_appearance(cfg))
+        self._section_stack.addWidget(self._build_content())
+        self._section_stack.addWidget(self._build_updates(cfg))
+        self._section_stack.addWidget(self._build_advanced())
+        body.addWidget(self._section_stack, 1)
 
-        backups_btn = QPushButton("Open backups")
-        backups_btn.setObjectName("Secondary")
+        host = QWidget()
+        host.setLayout(body)
+        self._layout.addWidget(host, 1)
 
-        def _open_backups() -> None:
-            from openboson.db_backup import backups_dir
+        save_btn = QPushButton("Save Settings")
+        save_btn.setObjectName("Primary")
+        save_btn.clicked.connect(self._save)
+        self._layout.addWidget(save_btn)
 
-            _open_path(str(backups_dir()))
+    def _on_section_changed(self, index: int) -> None:
+        if self._section_stack is not None:
+            self._section_stack.setCurrentIndex(index)
 
-        backups_btn.clicked.connect(_open_backups)
-        btn_row.addWidget(backups_btn)
-        btn_row.addStretch()
-        dl.addLayout(btn_row)
+    def _build_appearance(self, cfg) -> QWidget:
+        wrap = QWidget()
+        layout = QVBoxLayout(wrap)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(8)
 
-        reset_btn = QPushButton("Reset cache")
-        reset_btn.setObjectName("Secondary")
-        reset_btn.clicked.connect(self._reset_cache)
-        dl.addWidget(reset_btn)
-        self._layout.addWidget(dir_card)
+        theme_card = QFrame()
+        theme_card.setObjectName("Card")
+        tl = QVBoxLayout(theme_card)
+        tl.setContentsMargins(12, 10, 12, 10)
+        tl.setSpacing(6)
+        tl.addWidget(self._label("Theme", "h2"))
+        hint = QLabel("Soft Daylight is the default study theme.")
+        hint.setProperty("role", "muted")
+        hint.setWordWrap(True)
+        tl.addWidget(hint)
+        self._theme_group = QButtonGroup(self)
+        self._dark_btn = QRadioButton("Dark")
+        self._light_btn = QRadioButton("Soft Daylight")
+        self._theme_group.addButton(self._dark_btn)
+        self._theme_group.addButton(self._light_btn)
+        if cfg.theme == "light":
+            self._light_btn.setChecked(True)
+        else:
+            self._dark_btn.setChecked(True)
+        row = QHBoxLayout()
+        row.addWidget(self._dark_btn)
+        row.addWidget(self._light_btn)
+        row.addStretch()
+        tl.addLayout(row)
+        layout.addWidget(theme_card)
+        layout.addStretch()
+        return wrap
+
+    def _build_content(self) -> QWidget:
+        wrap = QWidget()
+        layout = QVBoxLayout(wrap)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(8)
 
         content_card = QFrame()
         content_card.setObjectName("Card")
         cl = QVBoxLayout(content_card)
-        cl.setContentsMargins(18, 16, 18, 16)
+        cl.setContentsMargins(12, 10, 12, 10)
+        cl.setSpacing(6)
         cl.addWidget(self._label("Content", "h2"))
 
         from openboson.gui import engine as gui_engine
@@ -154,33 +206,21 @@ class SettingsPage(QWidget):
         refresh_btn.setObjectName("Secondary")
         refresh_btn.clicked.connect(self._refresh_content)
         cl.addWidget(refresh_btn)
-        self._layout.addWidget(content_card)
+        layout.addWidget(content_card)
+        layout.addStretch()
+        return wrap
 
-        theme_card = QFrame()
-        theme_card.setObjectName("Card")
-        tl = QVBoxLayout(theme_card)
-        tl.setContentsMargins(18, 16, 18, 16)
-        tl.addWidget(self._label("Theme", "h2"))
-        self._theme_group = QButtonGroup(self)
-        self._dark_btn = QRadioButton("Dark")
-        self._light_btn = QRadioButton("Light")
-        self._theme_group.addButton(self._dark_btn)
-        self._theme_group.addButton(self._light_btn)
-        if cfg.theme == "light":
-            self._light_btn.setChecked(True)
-        else:
-            self._dark_btn.setChecked(True)
-        row = QHBoxLayout()
-        row.addWidget(self._dark_btn)
-        row.addWidget(self._light_btn)
-        row.addStretch()
-        tl.addLayout(row)
-        self._layout.addWidget(theme_card)
+    def _build_updates(self, cfg) -> QWidget:
+        wrap = QWidget()
+        layout = QVBoxLayout(wrap)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(8)
 
         updates_card = QFrame()
         updates_card.setObjectName("Card")
         ul = QVBoxLayout(updates_card)
-        ul.setContentsMargins(18, 16, 18, 16)
+        ul.setContentsMargins(12, 10, 12, 10)
+        ul.setSpacing(6)
         ul.addWidget(self._label("Updates", "h2"))
 
         if not updates_enabled():
@@ -256,14 +296,58 @@ class SettingsPage(QWidget):
             update_actions.addStretch()
             ul.addLayout(update_actions)
 
-        self._layout.addWidget(updates_card)
+        layout.addWidget(updates_card)
+        layout.addStretch()
+        return wrap
 
-        save_btn = QPushButton("Save Settings")
-        save_btn.setObjectName("Primary")
-        save_btn.clicked.connect(self._save)
-        self._layout.addWidget(save_btn)
+    def _build_advanced(self) -> QWidget:
+        wrap = QWidget()
+        layout = QVBoxLayout(wrap)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(8)
 
-        self._layout.addStretch()
+        dir_card = QFrame()
+        dir_card.setObjectName("Card")
+        dl = QVBoxLayout(dir_card)
+        dl.setContentsMargins(12, 10, 12, 10)
+        dl.setSpacing(6)
+        dl.addWidget(self._label("Data Directory", "h2"))
+        path_lbl = QLabel(str(settings.data_dir))
+        path_lbl.setProperty("role", "muted")
+        path_lbl.setWordWrap(True)
+        dl.addWidget(path_lbl)
+
+        btn_row = QHBoxLayout()
+        open_btn = QPushButton("Open data folder")
+        open_btn.setObjectName("Secondary")
+        open_btn.clicked.connect(lambda: _open_path(str(settings.data_dir)))
+        btn_row.addWidget(open_btn)
+
+        logs_btn = QPushButton("Open logs")
+        logs_btn.setObjectName("Secondary")
+        logs_btn.clicked.connect(lambda: _open_path(str(logs_dir())))
+        btn_row.addWidget(logs_btn)
+
+        backups_btn = QPushButton("Open backups")
+        backups_btn.setObjectName("Secondary")
+
+        def _open_backups() -> None:
+            from openboson.db_backup import backups_dir
+
+            _open_path(str(backups_dir()))
+
+        backups_btn.clicked.connect(_open_backups)
+        btn_row.addWidget(backups_btn)
+        btn_row.addStretch()
+        dl.addLayout(btn_row)
+
+        reset_btn = QPushButton("Reset cache")
+        reset_btn.setObjectName("Secondary")
+        reset_btn.clicked.connect(self._reset_cache)
+        dl.addWidget(reset_btn)
+        layout.addWidget(dir_card)
+        layout.addStretch()
+        return wrap
 
     def _label(self, text: str, role: str = "muted") -> QLabel:
         label = QLabel(text)

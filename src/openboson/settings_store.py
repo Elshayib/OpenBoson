@@ -24,7 +24,7 @@ ThemeName = Literal["dark", "light"]
 class AppSettings:
     """Persisted application preferences."""
 
-    theme: ThemeName = "dark"
+    theme: ThemeName = "light"
     check_updates_on_startup: bool = True
     update_channel: UpdateChannel = "stable"
     last_update_check: str | None = None
@@ -43,9 +43,9 @@ def default_settings() -> AppSettings:
 def _coerce(raw: dict[str, Any]) -> AppSettings:
     base = asdict(default_settings())
     base.update({k: v for k, v in raw.items() if k in base})
-    theme = base.get("theme", "dark")
+    theme = base.get("theme", "light")
     if theme not in ("dark", "light"):
-        theme = "dark"
+        theme = "light"
     channel = base.get("update_channel", "stable")
     if channel not in ("stable", "beta"):
         channel = "stable"

@@ -1,4 +1,4 @@
-"""NetSim lab list page — catalog with topic / difficulty / text filters."""
+"""NetSim lab list page — compact catalog table with filters."""
 
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ class LabListPage(QWidget):
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
-        self._scroll = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        self._scroll = ScrollHost(margins=(12, 12, 12, 12), spacing=8)
         root.addWidget(self._scroll, 1)
         self._layout = self._scroll.content_layout
 
@@ -67,6 +67,7 @@ class LabListPage(QWidget):
         self._layout.addWidget(header)
 
         filters = QHBoxLayout()
+        filters.setSpacing(6)
         self._topic = QComboBox()
         self._topic.addItem("All topics", "all")
         codes = sorted(
@@ -102,7 +103,24 @@ class LabListPage(QWidget):
         self._count.setProperty("role", "muted")
         self._layout.addWidget(self._count)
 
+        # Compact table header
+        hdr = QFrame()
+        hdr.setObjectName("TableRow")
+        hh = QHBoxLayout(hdr)
+        hh.setContentsMargins(10, 6, 10, 6)
+        hh.setSpacing(8)
+        for text, stretch in (("Lab", 3), ("Topic", 2), ("Difficulty", 1), ("", 0)):
+            lbl = QLabel(text)
+            lbl.setProperty("role", "muted")
+            if stretch:
+                hh.addWidget(lbl, stretch)
+            else:
+                lbl.setFixedWidth(72)
+                hh.addWidget(lbl)
+        self._layout.addWidget(hdr)
+
         self._cards_host = QVBoxLayout()
+        self._cards_host.setSpacing(4)
         self._layout.addLayout(self._cards_host)
         self._layout.addStretch()
         self._apply_filters()
@@ -137,38 +155,35 @@ class LabListPage(QWidget):
             self._cards_host.addWidget(empty)
             return
         for lab in filtered:
-            self._cards_host.addWidget(self._lab_card(lab))
+            self._cards_host.addWidget(self._lab_row(lab))
 
-    def _lab_card(self, lab: LabBank) -> QFrame:
+    def _lab_row(self, lab: LabBank) -> QFrame:
+        """Dense table-style row (still a QFrame for existing tests)."""
         card = QFrame()
         card.setObjectName("Card")
-        v = QVBoxLayout(card)
-        v.setContentsMargins(18, 18, 18, 18)
-        v.setSpacing(8)
+        h = QHBoxLayout(card)
+        h.setContentsMargins(10, 6, 10, 6)
+        h.setSpacing(8)
 
         title = QLabel(lab.title)
-        title.setProperty("role", "h2")
         title.setWordWrap(True)
-        v.addWidget(title)
+        h.addWidget(title, 3)
 
-        meta = QLabel(
-            f"Topic {lab.topic_code} • {len(lab.tasks)} tasks • "
-            f"difficulty {'★' * lab.difficulty}{'☆' * (5 - lab.difficulty)}"
-        )
-        meta.setProperty("role", "muted")
-        meta.setWordWrap(True)
-        v.addWidget(meta)
+        topic = QLabel(format_topic_label(lab.topic_code) if lab.topic_code else "—")
+        topic.setProperty("role", "muted")
+        topic.setWordWrap(True)
+        h.addWidget(topic, 2)
 
-        if lab.description:
-            desc = QLabel(lab.description.strip())
-            desc.setProperty("role", "muted")
-            desc.setWordWrap(True)
-            v.addWidget(desc)
+        diff = QLabel("★" * lab.difficulty + "☆" * (5 - lab.difficulty))
+        diff.setProperty("role", "muted")
+        h.addWidget(diff, 1)
 
-        start = QPushButton("Start Lab")
+        start = QPushButton("Start")
         start.setObjectName("Primary")
+        start.setFixedWidth(72)
+        start.setToolTip(f"Start {lab.title}")
         start.clicked.connect(lambda _c=False, b=lab: self._start(b))
-        v.addWidget(start)
+        h.addWidget(start)
         return card
 
     def _start(self, lab: LabBank) -> None:

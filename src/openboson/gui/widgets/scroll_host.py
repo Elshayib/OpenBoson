@@ -21,7 +21,7 @@ class ScrollHost(QScrollArea):
 
     Typical use::
 
-        host = ScrollHost(margins=(24, 24, 24, 24), spacing=16)
+        host = ScrollHost(margins=(12, 12, 12, 12), spacing=8)
         root.addWidget(host, 1)
         host.content_layout.addWidget(header)
         # …rebuild into host.content_layout…
@@ -32,8 +32,8 @@ class ScrollHost(QScrollArea):
         self,
         parent: QWidget | None = None,
         *,
-        margins: tuple[int, int, int, int] = (24, 24, 24, 24),
-        spacing: int = 16,
+        margins: tuple[int, int, int, int] = (12, 12, 12, 12),
+        spacing: int = 8,
     ) -> None:
         super().__init__(parent)
         self.setWidgetResizable(True)

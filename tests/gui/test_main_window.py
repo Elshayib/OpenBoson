@@ -46,19 +46,20 @@ def test_unknown_page_raises(main_window):
 
 def test_style_sheet_is_applied(main_window):
     style = main_window.styleSheet()
-    assert "#0f1420" in style
-    assert "#Sidebar" in style
+    assert "#f7f6f3" in style
+    assert "#TopBar" in style
     assert "QPushButton#Primary" in style
 
 
 def test_light_theme_stylesheet_has_no_dark_chrome(main_window):
     main_window.apply_theme("light")
     style = main_window.styleSheet()
-    assert "#f5f7fb" in style
+    assert "#f7f6f3" in style
+    assert "#0f766e" in style
     assert "#0f1420" not in style
     assert "#MatchSlot" in style
     assert "background-color: #161b22" not in style
-    assert "#Sidebar" in style
+    assert "#TopBar" in style
     assert "QPushButton#Primary" in style
     # Match slots should follow theme QSS, not hardcoded dark inline styles
     from openboson.gui.widgets.question_card import _MatchSlot
@@ -71,5 +72,17 @@ def test_light_theme_stylesheet_has_no_dark_chrome(main_window):
     from PySide6.QtWidgets import QApplication
 
     pal = QApplication.instance().palette()
-    assert pal.color(QPalette.ColorRole.Window).name() == "#f5f7fb"
+    assert pal.color(QPalette.ColorRole.Window).name() == "#f7f6f3"
     assert pal.color(QPalette.ColorRole.Base).name() == "#ffffff"
+
+
+def test_dark_theme_stylesheet_still_available(main_window):
+    main_window.apply_theme("dark")
+    style = main_window.styleSheet()
+    assert "#0f1420" in style
+    assert "#TopBar" in style
+    assert "#f7f6f3" not in style
+
+
+def test_window_icon_is_ob_monogram(main_window):
+    assert not main_window.windowIcon().isNull()
