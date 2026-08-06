@@ -165,7 +165,10 @@ class LabSessionPage(QWidget):
 
     def start_lab(self, lab: LabBank) -> None:
         self._session = start_lab_session(lab)
-        self._title.setText(lab.title)
+        from openboson.netsim.lab_catalog import tier_badge
+
+        badge = tier_badge(lab)
+        self._title.setText(f"{lab.title}  ·  {badge}")
         self._canvas.set_topology(lab.topology)
         self._build_terminals()
         self._render_tasks()

@@ -1,0 +1,88 @@
+title: Multi-VLAN Users (ROAS-style)
+lab_id: ccna_multi_vlan_users
+topic_code: '3.3'
+difficulty: 4
+description: Serve two access VLANs from a router with per-VLAN gateways.
+objectives:
+- Two VLANs
+- Two gateway IPs
+- PC gateway pings
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+    - name: GigabitEthernet0/1
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+    - name: GigabitEthernet0/3
+    - name: GigabitEthernet0/4
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+  - name: PC2
+    type: pc
+    interfaces:
+    - name: eth0
+  links:
+  - a: R1/GigabitEthernet0/0
+    b: SW1/GigabitEthernet0/1
+  - a: R1/GigabitEthernet0/1
+    b: SW1/GigabitEthernet0/2
+  - a: SW1/GigabitEthernet0/3
+    b: PC1/eth0
+  - a: SW1/GigabitEthernet0/4
+    b: PC2/eth0
+tasks:
+- id: t1
+  instructions: On **R1**, set Gi0/0 to **10.10.10.1/24** and Gi0/1 to **10.10.20.1/24**,
+    both no shutdown.
+  grading_rules:
+    device: R1
+    require:
+    - ip address 10.10.10.1 255.255.255.0
+    - ip address 10.10.20.1 255.255.255.0
+    - no shutdown
+- id: t2
+  instructions: On **SW1**, create VLANs 10/20; access Gi0/1&Gi0/3 → VLAN 10; Gi0/2&Gi0/4
+    → VLAN 20.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 10
+    - vlan 20
+    - switchport access vlan 10
+    - switchport access vlan 20
+- id: t3
+  instructions: Address PC1 **10.10.10.10/24** and PC2 **10.10.20.20/24**; ping each
+    gateway.
+  grading_rules:
+    require:
+    - ip address 10.10.10.10 255.255.255.0
+    - ip address 10.10.20.20 255.255.255.0
+  verify:
+    ping:
+    - source: PC1
+      destination: 10.10.10.1
+      should_succeed: true
+    - source: PC2
+      destination: 10.10.20.1
+      should_succeed: true
+solution_config: "! --- R1 ---\ninterface GigabitEthernet0/0\n ip address 10.10.10.1\
+  \ 255.255.255.0\n no shutdown\ninterface GigabitEthernet0/1\n ip address 10.10.20.1\
+  \ 255.255.255.0\n no shutdown\n! --- SW1 ---\nvlan 10\nvlan 20\ninterface GigabitEthernet0/1\n\
+  \ switchport mode access\n switchport access vlan 10\ninterface GigabitEthernet0/2\n\
+  \ switchport mode access\n switchport access vlan 20\ninterface GigabitEthernet0/3\n\
+  \ switchport mode access\n switchport access vlan 10\ninterface GigabitEthernet0/4\n\
+  \ switchport mode access\n switchport access vlan 20\n! --- PCs ---\nip address\
+  \ 10.10.10.10 255.255.255.0\nip address 10.10.20.20 255.255.255.0\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0
+lab_tier: gold

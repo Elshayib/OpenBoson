@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (
 from openboson.exsim.objectives import format_topic_label
 from openboson.gui.engine import load_available_labs
 from openboson.gui.widgets.scroll_host import ScrollHost
-from openboson.netsim.lab_catalog import filter_labs
+from openboson.netsim.lab_catalog import filter_labs, tier_badge
 from openboson.netsim.lab_schema import LabBank
 
 
@@ -55,9 +55,11 @@ class LabListPage(QWidget):
         # Preserve filter widget values across rebuilds when possible.
         topic = getattr(self, "_topic", None)
         diff = getattr(self, "_difficulty", None)
+        tier = getattr(self, "_tier", None)
         search = getattr(self, "_search", None)
         prev_topic = topic.currentData() if topic is not None else "all"
         prev_diff = diff.currentData() if diff is not None else 0
+        prev_tier = tier.currentData() if tier is not None else "all"
         prev_q = search.text() if search is not None else ""
 
         self._scroll.clear_content()
@@ -65,6 +67,13 @@ class LabListPage(QWidget):
         header = QLabel("Network Labs")
         header.setProperty("role", "h1")
         self._layout.addWidget(header)
+        sub = QLabel(
+            "Scenario labs are multi-device NetSim stories with behavioral verify. "
+            "CLI drills are single-box practice."
+        )
+        sub.setProperty("role", "muted")
+        sub.setWordWrap(True)
+        self._layout.addWidget(sub)
 
         filters = QHBoxLayout()
         filters.setSpacing(6)
@@ -92,6 +101,17 @@ class LabListPage(QWidget):
         filters.addWidget(QLabel("Difficulty"))
         filters.addWidget(self._difficulty)
 
+        self._tier = QComboBox()
+        self._tier.addItem("All types", "all")
+        self._tier.addItem("Scenario", "gold")
+        self._tier.addItem("CLI drill", "drill")
+        self._tier.addItem("Scale", "scale")
+        xidx = max(0, self._tier.findData(prev_tier))
+        self._tier.setCurrentIndex(xidx)
+        self._tier.currentIndexChanged.connect(self._apply_filters)
+        filters.addWidget(QLabel("Type"))
+        filters.addWidget(self._tier)
+
         self._search = QLineEdit()
         self._search.setPlaceholderText("Search title, description, objectives…")
         self._search.setText(prev_q)
@@ -109,7 +129,13 @@ class LabListPage(QWidget):
         hh = QHBoxLayout(hdr)
         hh.setContentsMargins(10, 6, 10, 6)
         hh.setSpacing(8)
-        for text, stretch in (("Lab", 3), ("Topic", 2), ("Difficulty", 1), ("", 0)):
+        for text, stretch in (
+            ("Lab", 3),
+            ("Type", 1),
+            ("Topic", 2),
+            ("Difficulty", 1),
+            ("", 0),
+        ):
             lbl = QLabel(text)
             lbl.setProperty("role", "muted")
             if stretch:
@@ -136,14 +162,17 @@ class LabListPage(QWidget):
 
         topic = self._topic.currentData() if hasattr(self, "_topic") else "all"
         diff = self._difficulty.currentData() if hasattr(self, "_difficulty") else 0
+        tier = self._tier.currentData() if hasattr(self, "_tier") else "all"
         q = self._search.text() if hasattr(self, "_search") else ""
         filtered = filter_labs(
             self._all_labs,
             topic_code=None if topic in (None, "all") else str(topic),
             difficulty=None if not diff else int(diff),
+            lab_tier=None if tier in (None, "all") else str(tier),
             q=q or None,
         )
-        self._count.setText(f"{len(filtered)} lab(s)")
+        gold_n = sum(1 for lab in filtered if lab.lab_tier.value == "gold")
+        self._count.setText(f"{len(filtered)} lab(s) · {gold_n} scenario(s)")
         if not self._all_labs:
             empty = QLabel("No labs found in data/demo_labs.")
             empty.setProperty("role", "muted")
@@ -168,6 +197,10 @@ class LabListPage(QWidget):
         title = QLabel(lab.title)
         title.setWordWrap(True)
         h.addWidget(title, 3)
+
+        badge = QLabel(tier_badge(lab))
+        badge.setProperty("role", "muted")
+        h.addWidget(badge, 1)
 
         topic = QLabel(format_topic_label(lab.topic_code) if lab.topic_code else "—")
         topic.setProperty("role", "muted")

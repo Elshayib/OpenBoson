@@ -1,0 +1,28 @@
+title: 'CLI Drill: Create VLAN'
+lab_id: ccna_drill_vlan_create
+topic_code: '2.1'
+difficulty: 1
+lab_tier: drill
+description: Single-device CLI drill — create and name a VLAN.
+objectives:
+- vlan create
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: Create **VLAN 99** named **MGMT**.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 99
+    - name MGMT
+solution_config: "vlan 99\n name MGMT\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

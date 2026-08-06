@@ -1,11 +1,11 @@
-title: Dual-Router Static Route
-lab_id: ccna_dual_router_static
+title: Static Default Edge
+lab_id: ccna_static_default_edge
 topic_code: '3.1'
-description: Add a specific static route between two routers and verify reachability.
+description: Point a branch edge router at ISP with a default static route.
 objectives:
-- static route to remote LAN
-- ping via next-hop
-- address PC1
+- Default route
+- Return route
+- Ping ISP LAN
 topology:
   devices:
   - name: R1
@@ -18,70 +18,56 @@ topology:
     base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.1 255.255.255.0\n\
       \ no shutdown\ninterface GigabitEthernet0/1\n ip address 172.16.0.1 255.255.255.252\n\
       \ no shutdown\n"
-  - name: R2
+  - name: ISP
     type: router
     interfaces:
     - name: GigabitEthernet0/0
       ip: 172.16.0.2/30
     - name: GigabitEthernet0/1
-      ip: 192.168.2.1/24
+      ip: 8.8.8.1/24
     base_config: "interface GigabitEthernet0/0\n ip address 172.16.0.2 255.255.255.252\n\
-      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 192.168.2.1 255.255.255.0\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 8.8.8.1 255.255.255.0\n\
       \ no shutdown\n"
   - name: PC1
     type: pc
     interfaces:
     - name: eth0
-      ip: 192.168.2.10/24
-    base_config: 'ip address 192.168.2.10 255.255.255.0
+      ip: 10.0.0.10/24
+    base_config: 'ip address 10.0.0.10 255.255.255.0
 
       '
   links:
   - a: R1/GigabitEthernet0/1
-    b: R2/GigabitEthernet0/0
-  - a: R2/GigabitEthernet0/1
+    b: ISP/GigabitEthernet0/0
+  - a: R1/GigabitEthernet0/0
     b: PC1/eth0
 tasks:
 - id: t1
-  instructions: On R1, add a static route to **192.168.2.0/24** via **172.16.0.2**.
-    Verify R1 can ping **192.168.2.1**.
+  instructions: On **R1**, add a default route via **172.16.0.2**.
   grading_rules:
     device: R1
     require:
-    - ip route 192.168.2.0 255.255.255.0 172.16.0.2
-  verify:
-    ping:
-    - source: R1
-      destination: 192.168.2.1
-      should_succeed: true
+    - ip route 0.0.0.0 0.0.0.0 172.16.0.2
 - id: t2
-  instructions: On R2, add a return static route to **10.0.0.0/24** via **172.16.0.1**.
+  instructions: On **ISP**, add a route to **10.0.0.0/24** via **172.16.0.1**.
   grading_rules:
-    device: R2
+    device: ISP
     require:
     - ip route 10.0.0.0 255.255.255.0 172.16.0.1
 - id: t3
-  instructions: Confirm R1 can reach **PC1** at **192.168.2.10**.
+  instructions: Verify **R1** can ping **8.8.8.1**.
   grading_rules:
     device: R1
     require:
-    - ip route 192.168.2.0 255.255.255.0 172.16.0.2
+    - ip route 0.0.0.0 0.0.0.0 172.16.0.2
   verify:
     ping:
     - source: R1
-      destination: 192.168.2.10
+      destination: 8.8.8.1
       should_succeed: true
-solution_config: '! --- R1 ---
-
-  ip route 192.168.2.0 255.255.255.0 172.16.0.2
-
-  ! --- R2 ---
+solution_config: 'ip route 0.0.0.0 0.0.0.0 172.16.0.2
 
   ip route 10.0.0.0 255.255.255.0 172.16.0.1
-
-  ! --- PC1 ---
-
-  ip address 192.168.2.10 255.255.255.0
 
   '
 schema_version: 1

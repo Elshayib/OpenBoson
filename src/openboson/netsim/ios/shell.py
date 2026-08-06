@@ -719,6 +719,20 @@ class OpenIOSShell:
     def _cmd_ip_if(self, args: list[str], line: str) -> str:
         if not args:
             raise _CmdError("% Incomplete command.")
+        if _abbrev_match("access-group", args[0]):
+            iface = self._require_if()
+            if len(args) < 3:
+                raise _CmdError("% Incomplete command.")
+            acl_id = args[1]
+            direction = args[2].lower()
+            if direction not in {"in", "out"}:
+                raise _CmdError("% Incomplete command.")
+            # Replace prior access-group on this iface.
+            iface.extra_lines = [
+                x for x in iface.extra_lines if not x.lower().startswith("ip access-group ")
+            ]
+            iface.extra_lines.append(f"ip access-group {acl_id} {direction}")
+            return ""
         if not _abbrev_match("address", args[0]):
             raise _CmdError("% Incomplete command.")
         if len(args) < 3:

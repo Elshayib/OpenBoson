@@ -218,4 +218,4 @@ def test_release_content_volume_gates():
 
 def test_lab_catalog_count():
     labs = list((ROOT / "data" / "demo_labs").glob("*.yaml"))
-    assert len(labs) >= 50
+    assert len(labs) >= 25

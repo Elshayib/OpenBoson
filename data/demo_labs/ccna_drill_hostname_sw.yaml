@@ -1,0 +1,29 @@
+title: 'CLI Drill: Switch Hostname'
+lab_id: ccna_drill_hostname_sw
+topic_code: '1.1'
+difficulty: 1
+lab_tier: drill
+description: Single-device CLI drill — set a switch hostname.
+objectives:
+- hostname
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+  links: []
+tasks:
+- id: t1
+  instructions: Set the hostname to **DRILL-SW1**.
+  grading_rules:
+    device: SW1
+    require:
+    - hostname DRILL-SW1
+solution_config: 'hostname DRILL-SW1
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

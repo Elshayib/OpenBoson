@@ -20,6 +20,19 @@ class DeviceType(str, Enum):
     PC = "pc"
 
 
+class LabTier(str, Enum):
+    """Catalog presentation + authoring gate.
+
+    - ``gold``: multi-device scenario with behavioral verify (default new labs)
+    - ``drill``: CLI/config practice; may be single-device; never sold as NetSim
+    - ``scale``: topology/perf gate labs (e.g. 10-device campus)
+    """
+
+    GOLD = "gold"
+    DRILL = "drill"
+    SCALE = "scale"
+
+
 class Interface(BaseModel):
     """A named interface on a device."""
 
@@ -135,10 +148,15 @@ class LabBank(BaseModel):
     cert_tags: list[str] = Field(default_factory=lambda: ["ccna"])
     pass_threshold: float = Field(default=1.0, ge=0.0, le=1.0)
     session_seed: int | None = None
+    lab_tier: LabTier = LabTier.DRILL
 
     @property
     def device_names(self) -> list[str]:
         return [d.name for d in self.topology.devices]
+
+    @property
+    def is_gold(self) -> bool:
+        return self.lab_tier == LabTier.GOLD
 
     @model_validator(mode="after")
     def _validate_limits(self) -> LabBank:
@@ -150,4 +168,14 @@ class LabBank(BaseModel):
         names = [d.name for d in devices]
         if len(names) != len(set(names)):
             raise ValueError("Duplicate device names in topology")
+        if self.lab_tier == LabTier.GOLD:
+            if len(devices) < 3:
+                raise ValueError("Gold labs require at least 3 devices")
+            if len(self.tasks) < 3:
+                raise ValueError("Gold labs require at least 3 tasks")
+            has_verify = any(
+                t.verify is not None and (t.verify.ping or t.verify.show) for t in self.tasks
+            )
+            if not has_verify:
+                raise ValueError("Gold labs require verify.ping and/or verify.show")
         return self

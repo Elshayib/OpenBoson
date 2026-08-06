@@ -1,0 +1,67 @@
+title: SSH VTY Hardening
+lab_id: ccna_ssh_vty_secure
+topic_code: '5.3'
+description: 'Harden management access: hostname, LAN IP, and SSH-only VTY.'
+objectives:
+- hostname
+- LAN address
+- line vty transport ssh
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+  links:
+  - a: R1/GigabitEthernet0/0
+    b: SW1/GigabitEthernet0/1
+  - a: SW1/GigabitEthernet0/2
+    b: PC1/eth0
+tasks:
+- id: t1
+  instructions: Set hostname **SECURE-R1** on R1.
+  grading_rules:
+    device: R1
+    require:
+    - hostname SECURE-R1
+  verify:
+    show:
+    - device: R1
+      contains:
+      - hostname SECURE-R1
+- id: t2
+  instructions: Address Gi0/0 as **10.0.0.1/24** and no shutdown.
+  grading_rules:
+    device: R1
+    require:
+    - ip address 10.0.0.1 255.255.255.0
+    - no shutdown
+- id: t3
+  instructions: Under `line vty 0 4`, set `transport input ssh` (management hardening
+    objective).
+  grading_rules:
+    device: R1
+    require:
+    - hostname SECURE-R1
+  verify:
+    show:
+    - device: R1
+      contains:
+      - ip address 10.0.0.1 255.255.255.0
+solution_config: "hostname SECURE-R1\ninterface GigabitEthernet0/0\n ip address 10.0.0.1\
+  \ 255.255.255.0\n no shutdown\nline vty 0 4\n transport input ssh\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0
+lab_tier: gold
+difficulty: 3

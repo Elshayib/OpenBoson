@@ -125,4 +125,7 @@ jobs:
       - name: Validate labs
         env:
           QT_QPA_PLATFORM: offscreen
-        run: pytest -v tests/netsim/test_lab_loader.py tests/netsim/test_grader.py tests/netsim/test_lab_session.py
+        run: >
+          pytest -v tests/netsim/test_lab_loader.py tests/netsim/test_grader.py
+          tests/netsim/test_lab_session.py tests/netsim/test_lab_quality.py
+          tests/netsim/test_acl_path.py

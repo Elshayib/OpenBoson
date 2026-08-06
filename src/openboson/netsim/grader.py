@@ -153,9 +153,20 @@ def evaluate_verify(verify: VerifyBlock, world: LabWorld) -> list[str]:
             ok = False
         if ok != ping.should_succeed:
             if ping.should_succeed:
-                failures.append("Reachability check failed between required endpoints.")
+                hint = ""
+                try:
+                    hint = world.explain_unreachable(ping.source, ping.destination)
+                except Exception:
+                    hint = ""
+                msg = "Reachability check failed between required endpoints."
+                if hint:
+                    msg = f"{msg} {hint}"
+                failures.append(msg)
             else:
-                failures.append("Unexpected reachability between endpoints.")
+                failures.append(
+                    "Unexpected reachability between endpoints — "
+                    "isolation or filtering is not in place yet."
+                )
     for show in verify.show:
         device = world.devices.get(show.device)
         if device is None:
@@ -164,7 +175,10 @@ def evaluate_verify(verify: VerifyBlock, world: LabWorld) -> list[str]:
         text = device.running_config().lower()
         for needle in show.contains:
             if needle.lower() not in text:
-                failures.append("Show-state assertion failed for a required device.")
+                failures.append(
+                    f"Show-state assertion failed on {show.device} — "
+                    "required operational config is not present yet."
+                )
                 break
     return failures
 

@@ -1,0 +1,29 @@
+title: 'CLI Drill: Hostname'
+lab_id: ccna_drill_hostname
+topic_code: '1.1'
+difficulty: 1
+lab_tier: drill
+description: Single-device CLI drill — set a router hostname.
+objectives:
+- hostname
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+  links: []
+tasks:
+- id: t1
+  instructions: Set the hostname to **DRILL-R1**.
+  grading_rules:
+    device: R1
+    require:
+    - hostname DRILL-R1
+solution_config: 'hostname DRILL-R1
+
+  '
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0

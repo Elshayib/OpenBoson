@@ -181,6 +181,164 @@ class LabWorld:
             )
         return header + ".....\n" + "Success rate is 0 percent (0/5)"
 
+    def explain_unreachable(self, from_device: str, target_ip: str) -> str:
+        """Short coach hint for a failed ping (no solution commands)."""
+        try:
+            dst = IPv4Address(target_ip)
+        except ValueError:
+            return "Destination address is not a valid IPv4 host."
+        src = self.devices.get(from_device)
+        if src is None:
+            return "Source device is missing from the lab world."
+        if not any(i.admin_up and i.ip for i in src.interfaces.values()):
+            return f"{from_device} has no operational interface address yet."
+        owner = self._owner_of_ip(dst)
+        if owner is None:
+            return "No device in this lab owns that destination address."
+        if self._acl_blocks_icmp(from_device, dst):
+            return "An access list on the path is denying this ICMP traffic."
+        if (
+            owner != from_device
+            and not self._l2_adjacent_or_same(from_device, owner)
+            and not self._routed(from_device, dst)
+        ):
+            return (
+                "No L2 adjacency or route from the source toward that destination — "
+                "check VLANs, links, addressing, and routing."
+            )
+        return "Path check failed — verify addressing, VLANs, links, and filters."
+
+    def _acl_blocks_icmp(self, from_device: str, dst: IPv4Address) -> bool:
+        """Return True if a simplified ACL on the path denies ICMP to dst."""
+        src_ip = self._primary_ip(from_device)
+        if src_ip is None:
+            return False
+        for name, dev in self.devices.items():
+            if dev.role not in (DeviceRole.ROUTER, DeviceRole.FIREWALL):
+                continue
+            applied = self._applied_acl_ids(dev)
+            if not applied:
+                continue
+            owner = self._owner_of_ip(dst)
+            if name not in {from_device, owner} and not (
+                self._l2_adjacent_or_same(from_device, name)
+                or (owner is not None and self._l2_adjacent_or_same(name, owner))
+            ):
+                continue
+            for acl_id in applied:
+                decision = self._acl_decision(dev, acl_id, src_ip, dst)
+                if decision is False:
+                    return True
+        return False
+
+    def _primary_ip(self, device: str) -> IPv4Address | None:
+        dev = self.devices.get(device)
+        if not dev:
+            return None
+        for iface in dev.interfaces.values():
+            if iface.admin_up and iface.ip:
+                try:
+                    return IPv4Address(iface.ip)
+                except ValueError:
+                    continue
+        return None
+
+    def _applied_acl_ids(self, dev: DeviceRuntime) -> list[str]:
+        ids: list[str] = []
+        for iface in dev.interfaces.values():
+            for line in iface.extra_lines:
+                parts = line.split()
+                if (
+                    len(parts) >= 4
+                    and parts[0].lower() == "ip"
+                    and parts[1].lower() == "access-group"
+                ):
+                    ids.append(parts[2])
+        return ids
+
+    def _acl_decision(
+        self, dev: DeviceRuntime, acl_id: str, src: IPv4Address, dst: IPv4Address
+    ) -> bool | None:
+        """First-match ACL: True=permit, False=deny, None=no matching ACL lines."""
+        rules = self._acl_rules(dev, acl_id)
+        if not rules:
+            return None
+        for action, kind, src_tok, dst_tok in rules:
+            if not self._acl_token_match(kind, src_tok, dst_tok, src, dst):
+                continue
+            return action == "permit"
+        return False
+
+    def _acl_rules(self, dev: DeviceRuntime, acl_id: str) -> list[tuple[str, str, str, str]]:
+        out: list[tuple[str, str, str, str]] = []
+        for raw in dev.extra_global:
+            line = raw.strip()
+            low = line.lower()
+            if low.startswith("ip access-list") or not low.startswith("access-list "):
+                continue
+            parts = line.split()
+            if len(parts) < 3 or parts[1] != acl_id:
+                continue
+            action = parts[2].lower()
+            if action not in {"permit", "deny"}:
+                continue
+            rest = [p.lower() for p in parts[3:]]
+            if not rest:
+                continue
+            if rest[0] == "any" and len(rest) == 1:
+                out.append((action, "any", "any", "any"))
+                continue
+            if rest[0] == "host" and len(rest) >= 2:
+                out.append((action, "host", rest[1], rest[1]))
+                continue
+            proto = rest[0]
+            if proto in {"ip", "icmp", "tcp", "udp"}:
+                src_tok, dst_tok = "any", "any"
+                i = 1
+                if i < len(rest):
+                    if rest[i] == "any":
+                        src_tok = "any"
+                        i += 1
+                    elif rest[i] == "host" and i + 1 < len(rest):
+                        src_tok = rest[i + 1]
+                        i += 2
+                if i < len(rest):
+                    if rest[i] == "any":
+                        dst_tok = "any"
+                    elif rest[i] == "host" and i + 1 < len(rest):
+                        dst_tok = rest[i + 1]
+                out.append((action, proto, src_tok, dst_tok))
+                continue
+            out.append((action, "std", rest[0], rest[0]))
+        return out
+
+    def _acl_token_match(
+        self,
+        kind: str,
+        src_tok: str,
+        dst_tok: str,
+        src: IPv4Address,
+        dst: IPv4Address,
+    ) -> bool:
+        if kind == "any":
+            return True
+
+        def _one(tok: str, ip: IPv4Address) -> bool:
+            if tok == "any":
+                return True
+            try:
+                return IPv4Address(tok) == ip
+            except ValueError:
+                return False
+
+        if kind == "host":
+            return _one(dst_tok, dst)
+        if kind in {"ip", "icmp"}:
+            return _one(src_tok, src) and _one(dst_tok, dst)
+        if kind == "std":
+            return _one(dst_tok, dst) or _one(src_tok, dst)
+        return False
+
     def show_arp(self, device: str) -> str:
         """Render a compact ``show ip arp`` table for ``device``."""
         dev = self.devices.get(device)
@@ -260,6 +418,8 @@ class LabWorld:
     def _can_reach(self, from_device: str, dst: IPv4Address) -> bool:
         src = self.devices.get(from_device)
         if src is None:
+            return False
+        if self._acl_blocks_icmp(from_device, dst):
             return False
         for iface in src.interfaces.values():
             if iface.admin_up and iface.ip:

@@ -1,0 +1,67 @@
+title: Trunk Campus Pair
+lab_id: ccna_trunk_campus
+topic_code: '2.1'
+description: Trunk two access switches and place a PC in the user VLAN.
+objectives:
+- Create VLAN 10
+- Trunk SW1-SW2
+- Access port for PC1
+topology:
+  devices:
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  - name: SW2
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+      ip: 10.10.10.10/24
+    base_config: 'ip address 10.10.10.10 255.255.255.0
+
+      '
+  links:
+  - a: SW1/GigabitEthernet0/1
+    b: SW2/GigabitEthernet0/1
+  - a: SW2/GigabitEthernet0/2
+    b: PC1/eth0
+tasks:
+- id: t1
+  instructions: On **SW1** and **SW2**, create **VLAN 10** named **USERS**.
+  grading_rules:
+    require:
+    - vlan 10
+    - name USERS
+- id: t2
+  instructions: Trunk **Gi0/1** on both switches toward each other.
+  grading_rules:
+    require:
+    - switchport mode trunk
+  verify:
+    show:
+    - device: SW1
+      contains:
+      - switchport mode trunk
+- id: t3
+  instructions: On **SW2**, put **Gi0/2** in VLAN 10 as an access port.
+  grading_rules:
+    device: SW2
+    require:
+    - switchport mode access
+    - switchport access vlan 10
+solution_config: "! --- SW1 ---\nvlan 10\n name USERS\ninterface GigabitEthernet0/1\n\
+  \ switchport mode trunk\n! --- SW2 ---\nvlan 10\n name USERS\ninterface GigabitEthernet0/1\n\
+  \ switchport mode trunk\ninterface GigabitEthernet0/2\n switchport mode access\n\
+  \ switchport access vlan 10\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0
+lab_tier: gold
+difficulty: 3

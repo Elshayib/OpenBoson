@@ -90,13 +90,14 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Domain-sharded content pipeline; teaching-depth + per-leaf floors (v0.5); ≥50 labs
 
 
-**Next (v0.5 — see `docs/deferred-releases.md`):**
-- Full CCNA / ENCOR leaf coverage (≥12 / ≥15); pool volume floors
+**Next (Labs Quality primary; v0.5 pools parallel — see `docs/deferred-releases.md`):**
+- Gold multi-device scenarios (≥20) with behavioral verify; see `docs/lab-authoring.md`
+- Full CCNA / ENCOR leaf coverage (≥12 / ≥15); pool volume floors (thinner parallel track)
 - Practice Check remains correct / incorrect only (no explanation UI)
 - No in-app lab creation and no pack-store product track
 
 **Later:**
-- Further volume / ≥5% PBQ · v1.0 signed cross-platform
+- Further OpenIOS fidelity where gold labs need it · ≥5% PBQ · v1.0 signed cross-platform
 
 
 
@@ -116,9 +117,11 @@ When implementing features, work task-by-task, run relevant tests after each cha
 ## Key docs
 
 - `docs/status.md` — current handoff / what’s next
+- `docs/lab-authoring.md` — gold / drill / scale lab gates
+- `docs/lab-catalog-audit.md` — pre-rewrite inventory
 - `README.md` — user-facing overview and quick start
 - `CONTRIBUTING.md` / `SECURITY.md` / `PRIVACY.md` / `SUPPORT.md` — community and safety docs
-- `docs/deferred-releases.md` — post-v0.4 scope and gates
+- `docs/deferred-releases.md` — Labs Quality + post-v0.4 scope and gates
 
 - `docs/quality-baseline.md` — CI / quality gates
 - `docs/v020-beta-checklist.md` — optional Windows install verification

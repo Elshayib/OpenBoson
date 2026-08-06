@@ -1,79 +1,86 @@
 title: OSPF Two-Router Reachability
 lab_id: ccna_ospf_two_router
-topic_code: "3.2"
+topic_code: '3.2'
 difficulty: 4
 description: Enable OSPF on adjacent routers and verify remote LAN reachability.
 objectives:
-  - OSPFv2 adjacency (simplified)
-  - network statements
-  - ping remote LAN via OSPF
+- OSPFv2 adjacency
+- network statements
+- ping remote LAN via OSPF
 topology:
   devices:
-    - name: R1
-      type: router
-      interfaces:
-        - name: GigabitEthernet0/0
-          ip: 10.0.0.1/30
-        - name: GigabitEthernet0/1
-          ip: 192.168.1.1/24
-      base_config: |
-        interface GigabitEthernet0/0
-         ip address 10.0.0.1 255.255.255.252
-         no shutdown
-        interface GigabitEthernet0/1
-         ip address 192.168.1.1 255.255.255.0
-         no shutdown
-    - name: R2
-      type: router
-      interfaces:
-        - name: GigabitEthernet0/0
-          ip: 10.0.0.2/30
-        - name: GigabitEthernet0/1
-          ip: 192.168.2.1/24
-      base_config: |
-        interface GigabitEthernet0/0
-         ip address 10.0.0.2 255.255.255.252
-         no shutdown
-        interface GigabitEthernet0/1
-         ip address 192.168.2.1 255.255.255.0
-         no shutdown
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 10.0.0.1/30
+    - name: GigabitEthernet0/1
+      ip: 192.168.1.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.1 255.255.255.252\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 192.168.1.1 255.255.255.0\n\
+      \ no shutdown\n"
+  - name: R2
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 10.0.0.2/30
+    - name: GigabitEthernet0/1
+      ip: 192.168.2.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.2 255.255.255.252\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 192.168.2.1 255.255.255.0\n\
+      \ no shutdown\n"
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+      ip: 192.168.2.10/24
+    base_config: 'ip address 192.168.2.10 255.255.255.0
+
+      '
   links:
-    - a: R1/GigabitEthernet0/0
-      b: R2/GigabitEthernet0/0
+  - a: R1/GigabitEthernet0/0
+    b: R2/GigabitEthernet0/0
+  - a: R2/GigabitEthernet0/1
+    b: PC1/eth0
 tasks:
-  - id: t1
-    instructions: |
-      On **R1** and **R2**, start OSPF process 1 and advertise both local networks
-      in area 0 (link `10.0.0.0/30` and each LAN). Then verify R1 can ping
-      **192.168.2.1**.
-    expected_config: |
-      router ospf 1
-       network 10.0.0.0 0.0.0.3 area 0
-       network 192.168.1.0 0.0.0.255 area 0
-      router ospf 1
-       network 10.0.0.0 0.0.0.3 area 0
-       network 192.168.2.0 0.0.0.255 area 0
-    grading_rules:
-      require:
-        - router ospf 1
-        - network 10.0.0.0 0.0.0.3 area 0
-        - network 192.168.1.0 0.0.0.255 area 0
-        - network 192.168.2.0 0.0.0.255 area 0
-    verify:
-      ping:
-        - source: R1
-          destination: "192.168.2.1"
-          should_succeed: true
-solution_config: |
-  ! --- R1 ---
-  router ospf 1
-   network 10.0.0.0 0.0.0.3 area 0
-   network 192.168.1.0 0.0.0.255 area 0
-  ! --- R2 ---
-  router ospf 1
-   network 10.0.0.0 0.0.0.3 area 0
-   network 192.168.2.0 0.0.0.255 area 0
+- id: t1
+  instructions: On **R1** and **R2**, start OSPF process 1 and advertise both local
+    networks in area 0 (link `10.0.0.0/30` and each LAN). Then verify R1 can ping
+    **192.168.2.1**.
+  grading_rules:
+    require:
+    - router ospf 1
+    - network 10.0.0.0 0.0.0.3 area 0
+    - network 192.168.1.0 0.0.0.255 area 0
+    - network 192.168.2.0 0.0.0.255 area 0
+  verify:
+    ping:
+    - source: R1
+      destination: 192.168.2.1
+      should_succeed: true
+- id: t2
+  instructions: Set hostname **OSPF-R1** on R1 and **OSPF-R2** on R2.
+  grading_rules:
+    require:
+    - hostname OSPF-R1
+    - hostname OSPF-R2
+- id: t3
+  instructions: Confirm R1 can reach **PC1** at **192.168.2.10** via OSPF.
+  grading_rules:
+    require:
+    - router ospf 1
+    - network 192.168.2.0 0.0.0.255 area 0
+  verify:
+    ping:
+    - source: R1
+      destination: 192.168.2.10
+      should_succeed: true
+solution_config: "! --- R1 ---\nhostname OSPF-R1\nrouter ospf 1\n network 10.0.0.0\
+  \ 0.0.0.3 area 0\n network 192.168.1.0 0.0.0.255 area 0\n! --- R2 ---\nhostname\
+  \ OSPF-R2\nrouter ospf 1\n network 10.0.0.0 0.0.0.3 area 0\n network 192.168.2.0\
+  \ 0.0.0.255 area 0\n! --- PC1 ---\nip address 192.168.2.10 255.255.255.0\n"
 schema_version: 1
 cert_tags:
-  - ccna
+- ccna
 pass_threshold: 1.0
+lab_tier: gold

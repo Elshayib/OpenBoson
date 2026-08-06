@@ -1,0 +1,96 @@
+title: OSPF Three-Router Ring
+lab_id: ccna_ospf_three_router
+topic_code: '3.2'
+difficulty: 4
+description: Form a three-router OSPF area and reach a PC on R3.
+objectives:
+- OSPF on three routers
+- Advertise LANs
+- Ping PC1
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 10.0.0.1/30
+    - name: GigabitEthernet0/1
+      ip: 192.168.1.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.1 255.255.255.252\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 192.168.1.1 255.255.255.0\n\
+      \ no shutdown\n"
+  - name: R2
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 10.0.0.2/30
+    - name: GigabitEthernet0/1
+      ip: 10.0.0.5/30
+    base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.2 255.255.255.252\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 10.0.0.5 255.255.255.252\n\
+      \ no shutdown\n"
+  - name: R3
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 10.0.0.6/30
+    - name: GigabitEthernet0/1
+      ip: 192.168.3.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 10.0.0.6 255.255.255.252\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 192.168.3.1 255.255.255.0\n\
+      \ no shutdown\n"
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+      ip: 192.168.3.10/24
+    base_config: 'ip address 192.168.3.10 255.255.255.0
+
+      '
+  links:
+  - a: R1/GigabitEthernet0/0
+    b: R2/GigabitEthernet0/0
+  - a: R2/GigabitEthernet0/1
+    b: R3/GigabitEthernet0/0
+  - a: R3/GigabitEthernet0/1
+    b: PC1/eth0
+tasks:
+- id: t1
+  instructions: Enable **router ospf 1** on R1/R2/R3 and advertise the transit links
+    plus R1/R3 LANs in area 0.
+  grading_rules:
+    require:
+    - router ospf 1
+    - network 10.0.0.0 0.0.0.3 area 0
+    - network 10.0.0.4 0.0.0.3 area 0
+    - network 192.168.1.0 0.0.0.255 area 0
+    - network 192.168.3.0 0.0.0.255 area 0
+- id: t2
+  instructions: Confirm R1 can ping R3's LAN gateway **192.168.3.1**.
+  grading_rules:
+    require:
+    - router ospf 1
+  verify:
+    ping:
+    - source: R1
+      destination: 192.168.3.1
+      should_succeed: true
+- id: t3
+  instructions: Confirm R1 can ping **PC1** at **192.168.3.10**.
+  grading_rules:
+    require:
+    - network 192.168.3.0 0.0.0.255 area 0
+  verify:
+    ping:
+    - source: R1
+      destination: 192.168.3.10
+      should_succeed: true
+solution_config: "! --- R1 ---\nrouter ospf 1\n network 10.0.0.0 0.0.0.3 area 0\n\
+  \ network 192.168.1.0 0.0.0.255 area 0\n! --- R2 ---\nrouter ospf 1\n network 10.0.0.0\
+  \ 0.0.0.3 area 0\n network 10.0.0.4 0.0.0.3 area 0\n! --- R3 ---\nrouter ospf 1\n\
+  \ network 10.0.0.4 0.0.0.3 area 0\n network 192.168.3.0 0.0.0.255 area 0\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0
+lab_tier: gold

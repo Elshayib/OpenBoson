@@ -1,28 +1,70 @@
-title: Inter-VLAN Router-on-a-Stick
+title: ROAS Inter-VLAN Gateway
 lab_id: ccna_intervlan_roas
 topic_code: '3.3'
 difficulty: 4
-description: Create subinterfaces for VLAN 10 and 20.
+description: Address ROAS subinterfaces and prove a PC can reach its gateway.
 objectives:
-- encapsulation dot1Q
+- Subinterface addressing
+- Trunk uplink
+- PC gateway ping
 topology:
   devices:
   - name: R1
     type: router
     interfaces:
     - name: GigabitEthernet0/0
-  links: []
+    - name: GigabitEthernet0/0.10
+    - name: GigabitEthernet0/0.20
+  - name: SW1
+    type: switch
+    interfaces:
+    - name: GigabitEthernet0/1
+    - name: GigabitEthernet0/2
+    - name: GigabitEthernet0/3
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+  links:
+  - a: R1/GigabitEthernet0/0
+    b: SW1/GigabitEthernet0/1
+  - a: SW1/GigabitEthernet0/2
+    b: PC1/eth0
 tasks:
 - id: t1
-  instructions: Configure Gi0/0.10 for VLAN 10 with 10.10.10.1/24.
+  instructions: On **R1**, address **Gi0/0.10** as **10.10.10.1/24** and bring it
+    up. Also no-shut the parent **Gi0/0**.
   grading_rules:
     device: R1
     require:
-    - encapsulation dot1Q 10
     - ip address 10.10.10.1 255.255.255.0
-solution_config: "interface GigabitEthernet0/0.10\n encapsulation dot1Q 10\n ip address\
-  \ 10.10.10.1 255.255.255.0\n"
+    - no shutdown
+- id: t2
+  instructions: On **SW1**, create VLAN 10, trunk **Gi0/1**, and put **Gi0/2** in
+    VLAN 10.
+  grading_rules:
+    device: SW1
+    require:
+    - vlan 10
+    - switchport mode trunk
+    - switchport access vlan 10
+- id: t3
+  instructions: Address **PC1** as **10.10.10.10/24** and ping the gateway **10.10.10.1**.
+  grading_rules:
+    require:
+    - ip address 10.10.10.10 255.255.255.0
+  verify:
+    ping:
+    - source: PC1
+      destination: 10.10.10.1
+      should_succeed: true
+solution_config: "! --- R1 ---\ninterface GigabitEthernet0/0\n no shutdown\ninterface\
+  \ GigabitEthernet0/0.10\n ip address 10.10.10.1 255.255.255.0\n no shutdown\n! ---\
+  \ SW1 ---\nvlan 10\ninterface GigabitEthernet0/1\n switchport mode trunk\ninterface\
+  \ GigabitEthernet0/2\n switchport mode access\n switchport access vlan 10\n! ---\
+  \ PC1 ---\nip address 10.10.10.10 255.255.255.0\n"
 schema_version: 1
 cert_tags:
 - ccna
 pass_threshold: 1.0
+lab_tier: gold

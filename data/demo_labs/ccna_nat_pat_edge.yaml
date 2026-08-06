@@ -1,0 +1,78 @@
+title: NAT PAT Edge
+lab_id: ccna_nat_pat_edge
+topic_code: '4.1'
+description: Mark inside/outside interfaces and configure PAT overload.
+objectives:
+- ip nat inside/outside
+- overload
+- verify.show
+topology:
+  devices:
+  - name: R1
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 192.168.1.1/24
+    - name: GigabitEthernet0/1
+      ip: 203.0.113.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 192.168.1.1 255.255.255.0\n\
+      \ no shutdown\ninterface GigabitEthernet0/1\n ip address 203.0.113.1 255.255.255.0\n\
+      \ no shutdown\n"
+  - name: PC1
+    type: pc
+    interfaces:
+    - name: eth0
+      ip: 192.168.1.10/24
+    base_config: 'ip address 192.168.1.10 255.255.255.0
+
+      '
+  - name: ISP
+    type: router
+    interfaces:
+    - name: GigabitEthernet0/0
+      ip: 203.0.113.2/24
+    base_config: "interface GigabitEthernet0/0\n ip address 203.0.113.2 255.255.255.0\n\
+      \ no shutdown\n"
+  links:
+  - a: R1/GigabitEthernet0/0
+    b: PC1/eth0
+  - a: R1/GigabitEthernet0/1
+    b: ISP/GigabitEthernet0/0
+tasks:
+- id: t1
+  instructions: Mark **Gi0/0** as **ip nat inside** and **Gi0/1** as **ip nat outside**.
+  grading_rules:
+    device: R1
+    require:
+    - ip nat inside
+    - ip nat outside
+- id: t2
+  instructions: 'Add PAT: `ip nat inside source list 1 interface GigabitEthernet0/1
+    overload`.'
+  grading_rules:
+    device: R1
+    require:
+    - ip nat inside source list 1 interface GigabitEthernet0/1 overload
+  verify:
+    show:
+    - device: R1
+      contains:
+      - ip nat
+- id: t3
+  instructions: Confirm R1 can still ping the ISP peer **203.0.113.2**.
+  grading_rules:
+    require:
+    - ip nat outside
+  verify:
+    ping:
+    - source: R1
+      destination: 203.0.113.2
+      should_succeed: true
+solution_config: "interface GigabitEthernet0/0\n ip nat inside\ninterface GigabitEthernet0/1\n\
+  \ ip nat outside\nip nat inside source list 1 interface GigabitEthernet0/1 overload\n"
+schema_version: 1
+cert_tags:
+- ccna
+pass_threshold: 1.0
+lab_tier: gold
+difficulty: 3

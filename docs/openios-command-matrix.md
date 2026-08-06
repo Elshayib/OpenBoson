@@ -12,7 +12,7 @@ Each shipped lab must map to parser/state/running-config/show behavior that Open
 | EtherChannel | `channel-group … mode on/active` | EtherChannel labs |
 | Static routing | `ip route`, `ip default-gateway` | static route labs |
 | OSPFv2 | `router ospf`, `network … area`, `router-id` | OSPF labs |
-| ACL | `access-list` | ACL labs |
+| ACL | `access-list`, `ip access-group … in/out` | ACL labs (ICMP path filtering) |
 | NAT | `ip nat inside/outside`, overload | NAT labs |
 | DHCP | `ip dhcp pool`, `network`, `default-router`, excluded-address | DHCP labs |
 | VTY/SSH | `line vty`, `transport input ssh`, `banner motd` | SSH / banner labs |
@@ -23,8 +23,10 @@ Each shipped lab must map to parser/state/running-config/show behavior that Open
 ## Grading notes
 
 - Prefer **per-device** `grading_rules.device` so correct commands on the wrong device fail.
-- Use `verify.ping` when reachability must be proven beyond config text (including `should_succeed: false` for isolation).
+- Use `verify.ping` when reachability must be proven beyond config text (including `should_succeed: false` for isolation / ACL deny).
+- Applied numbered ACLs (`access-list` + `ip access-group`) can deny ICMP on the path (simplified first-match; implicit deny).
 - Lab `base_config` is applied in privileged config mode (`enable` / `configure terminal`) so interface `no shutdown` and addressing stick.
 - Adjacent OSPF speakers with matching `network … area` statements install simplified `O` routes used by ping/traceroute.
 - `Reset Lab` restores topology + `base_config` and clears grades.
 - `Reset & Replay` rebuilds the world then re-feeds the session command log.
+- Catalog tiers: `gold` (Scenario), `drill` (CLI drill), `scale` — see [`lab-authoring.md`](lab-authoring.md).
