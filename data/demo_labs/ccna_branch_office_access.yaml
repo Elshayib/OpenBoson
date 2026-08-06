@@ -79,6 +79,7 @@ tasks:
 
     PC1 must be **10.10.10.10/24**. PC2 must be **10.10.10.20/24**. Both hosts share
     gateway **10.10.10.1**.'
+  expected_config: "! --- PC1 ---\nip address 10.10.10.10 255.255.255.0\n! --- PC2 ---\nip address 10.10.10.20 255.255.255.0\n"
   grading_rules:
     require:
     - ip address 10.10.10.10 255.255.255.0
@@ -89,6 +90,7 @@ tasks:
 
     From **PC1**, the gateway **10.10.10.1** and **PC2** (**10.10.10.20**) must be
     reachable.'
+  expected_config: "ip address 10.10.10.1 255.255.255.0\nvlan 10\nip address 10.10.10.10 255.255.255.0\nip address 10.10.10.20 255.255.255.0\n"
   grading_rules:
     require:
     - ip address 10.10.10.1 255.255.255.0

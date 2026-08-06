@@ -117,10 +117,10 @@ class LabSession:
             self.check_current_task()
         return self.grades
 
-    def submit_task(self, config: str) -> TaskGrade:
+    def submit_task(self, config: str | None) -> TaskGrade:
         """Legacy API: grade current task against an explicit config blob."""
         task = self.current_task
-        grade = grade_task(task, config, world=self.world)
+        grade = grade_task(task, config or "", world=self.world)
         self.grades[task.id] = grade
         return grade
 

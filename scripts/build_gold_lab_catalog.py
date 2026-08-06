@@ -172,6 +172,12 @@ def lab_branch_office() -> dict:
                     "ip address 10.10.10.10 255.255.255.0",
                     "ip address 10.10.10.20 255.255.255.0",
                 ],
+                expected_config=(
+                    "! --- PC1 ---\n"
+                    "ip address 10.10.10.10 255.255.255.0\n"
+                    "! --- PC2 ---\n"
+                    "ip address 10.10.10.20 255.255.255.0\n"
+                ),
             ),
             _task(
                 "t4",
@@ -184,6 +190,12 @@ def lab_branch_office() -> dict:
                     "ip address 10.10.10.10 255.255.255.0",
                     "ip address 10.10.10.20 255.255.255.0",
                 ],
+                expected_config=(
+                    "ip address 10.10.10.1 255.255.255.0\n"
+                    "vlan 10\n"
+                    "ip address 10.10.10.10 255.255.255.0\n"
+                    "ip address 10.10.10.20 255.255.255.0\n"
+                ),
                 verify_ping=[
                     _ping("PC1", "10.10.10.1"),
                     _ping("PC1", "10.10.10.20"),
