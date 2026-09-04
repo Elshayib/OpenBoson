@@ -225,6 +225,15 @@ _TEMPLATE_PHRASES = (
     "does not describe the intended use",
     "does not meet the requirement stated in the stem",
     "this is the correct answer for the stem",
+    "is a different protocol, command, or value than",
+    "is a mismatch:",
+    "is not the right selection",
+    "points at",
+    "this matters for",
+    "the keyed answer is",
+    "the stem is asking about",
+    "the stem is solved by",
+    "this performance item is graded against",
 )
 
 
