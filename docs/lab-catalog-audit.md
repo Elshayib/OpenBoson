@@ -41,3 +41,20 @@ Topic skew before rewrite: heavy `1.1` / `2.1`; thin security/services and no EN
 ## Post-rewrite gate
 
 See [`lab-authoring.md`](lab-authoring.md): ≥20 `gold` labs (≥3 devices, ≥3 tasks, behavioral verify), drills clearly badged, scale lab retained for perf CI.
+
+## Post-rewrite note (2026-09-03)
+
+Feature labs were rewritten as tickets so live `verify.ping` fails before the
+feature exists and passes after:
+
+| lab_id | Fail-before | Pass-after |
+|--------|-------------|------------|
+| `ccna_nat_pat_edge` | PC1→ISP without PAT overload | PAT overload |
+| `ccna_dhcp_pool_lan` | PC1 has no lease | `ipconfig /renew` then ping gateway |
+| `ccna_stp_portfast_edge` | VLAN 10 access without PortFast | PortFast both access ports |
+| `ccna_etherchannel_campus` | Unbundled, shut lowest member | `channel-group 1 mode on`, ping survives |
+| `encor_pat_edge` | Inside PC→outside without PAT | PAT overload |
+| `encor_dhcp_campus` | PC1 has no lease | renew then ping gateway |
+
+Source of truth remains `scripts/build_gold_lab_catalog.py`. Live-grade tests
+apply CLI (never `submit_task(expected_config)`). ENCOR gold is now ≥5.

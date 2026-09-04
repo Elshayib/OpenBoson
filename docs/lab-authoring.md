@@ -31,9 +31,10 @@ Catalog UI badges **Scenario** (gold), **CLI drill**, and **Scale**.
 2. **Tasks:** ≥3 ordered objectives (build → verify → extend/break-fix).
 3. **Verify:** at least one behavioral check (`verify.ping` / `verify.show`). Config `require` alone is not enough to pass the lab.
 4. **Narrative:** instructions say *who* must reach *whom* and what fails before the fix.
-5. **Topics:** CCNA 200-301 v1.1 codes (`exsim/objectives.py`); ENCOR labs use `cert_tags: [ccnp]` and ENCOR topic codes.
-6. **Solutions:** `solution_config` must apply cleanly on OpenIOS for golden CI.
-7. **No dump content:** original wording only.
+5. **Honest feature labs:** gold labs that teach NAT, DHCP, STP PortFast, or EtherChannel **must** include a `verify.ping` that fails without the feature and passes after live CLI (never grade those labs on `require:` / `submit_task(expected_config)` alone).
+6. **Topics:** CCNA 200-301 v1.1 codes (`exsim/objectives.py`); ENCOR labs use `cert_tags: [ccnp]` and ENCOR topic codes.
+7. **Solutions:** `solution_config` must apply cleanly on OpenIOS for golden CI.
+8. **No dump content:** original wording only.
 
 ## Commands
 
