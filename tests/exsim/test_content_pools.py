@@ -241,6 +241,8 @@ _TEMPLATE_PHRASES = (
     "implemented by verifying with show/ping",
     "does not do that job",
     "is answered by",
+    "keep a baseline of",
+    "written rollback",
 )
 
 
