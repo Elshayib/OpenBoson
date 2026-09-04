@@ -185,11 +185,11 @@ def evaluate_verify(verify: VerifyBlock, world: LabWorld) -> list[str]:
 
 def grade_task(
     task: LabTask,
-    submitted_config: str | None,
+    submitted_config: str,
     *,
     world: LabWorld | None = None,
 ) -> TaskGrade:
-    """Grade a lab task against grading rules and optional live verify blocks."""
+    """Grade a lab task against an explicit config blob and optional live verify."""
     weight = float(task.weight)
     if task.grading_rules is None and task.verify is None:
         return TaskGrade(
@@ -204,22 +204,10 @@ def grade_task(
     forbidden_found: list[str] = []
     order_violations: list[str] = []
     score = 1.0
-    submitted = submitted_config or ""
-    config = submitted
+    config = submitted_config
 
     if task.grading_rules is not None:
         rules = task.grading_rules
-        # Honor an explicit submitted blob (legacy submit API / tests). Only fall
-        # back to the live device running-config when nothing was submitted.
-        if (
-            not submitted.strip()
-            and rules.device
-            and world is not None
-            and rules.device in world.devices
-        ):
-            config = world.devices[rules.device].running_config()
-        else:
-            config = submitted
         missing, forbidden_found, order_violations, score = _grade_rules(rules, config)
         weight = float(rules.weight if rules.weight is not None else task.weight)
 

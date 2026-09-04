@@ -10,6 +10,7 @@ from openboson.exsim.scoring import score_exam
 from openboson.exsim.session import ExamMode, ExamSession
 from openboson.netsim.lab_loader import load_lab
 from openboson.netsim.session import LabSession, score_lab
+from tests.netsim.branch_office import apply_branch_solution
 
 
 @pytest.fixture
@@ -77,23 +78,27 @@ def test_practice_attempt_stats(fake_engine):
     assert "q3" not in m
 
 
-def test_save_lab_result(fake_engine, lab):
+def _complete_branch_lab(lab) -> LabSession:
     sess = LabSession.create(lab)
-    for t in lab.tasks:
-        sess.submit_task(t.expected_config)
-        sess.next_task()
+    apply_branch_solution(sess)
+    sess.check_all_tasks()
+    return sess
+
+
+def test_save_lab_result(fake_engine, lab):
+    sess = _complete_branch_lab(lab)
     result = score_lab(sess)
+    assert result.score == 1.0
+    assert result.passed_tasks == result.total_tasks
     row_id = stats_service.save_lab_result(sess, result)
     assert row_id > 0
     assert stats_service.lab_summary()["total_labs"] == 1
 
 
 def test_lab_history(fake_engine, lab):
-    sess = LabSession.create(lab)
-    for t in lab.tasks:
-        sess.submit_task(t.expected_config)
-        sess.next_task()
+    sess = _complete_branch_lab(lab)
     result = score_lab(sess)
+    assert result.score == 1.0
     stats_service.save_lab_result(sess, result)
     history = stats_service.lab_history()
     assert len(history) == 1

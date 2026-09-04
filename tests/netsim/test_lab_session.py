@@ -9,6 +9,7 @@ from openboson.netsim.lab_loader import load_lab
 from openboson.netsim.router import _LABS, _SESSIONS
 from openboson.netsim.session import LabSession, score_lab
 from openboson.server import app
+from tests.netsim.branch_office import apply_branch_solution
 
 LAB_ID = "ccna_branch_office_access"
 LAB_PATH = Path(__file__).resolve().parents[2] / "data" / "demo_labs" / f"{LAB_ID}.yaml"
@@ -33,39 +34,8 @@ def lab():
     return load_lab(LAB_PATH)
 
 
-def _apply_branch_solution(session: LabSession) -> None:
-    """Feed the branch-office golden solution into the live OpenIOS world."""
-    for line in (
-        "enable",
-        "configure terminal",
-        "hostname R1",
-        "interface GigabitEthernet0/0",
-        "ip address 10.10.10.1 255.255.255.0",
-        "no shutdown",
-        "end",
-    ):
-        session.world.shell("R1").feed(line)
-    for line in (
-        "enable",
-        "configure terminal",
-        "hostname SW1",
-        "vlan 10",
-        "name USERS",
-        "exit",
-        "interface GigabitEthernet0/1",
-        "switchport trunk encapsulation dot1q",
-        "switchport mode trunk",
-        "interface GigabitEthernet0/2",
-        "switchport mode access",
-        "switchport access vlan 10",
-        "interface GigabitEthernet0/3",
-        "switchport mode access",
-        "switchport access vlan 10",
-        "end",
-    ):
-        session.world.shell("SW1").feed(line)
-    session.world.shell("PC1").feed("ip address 10.10.10.10 255.255.255.0")
-    session.world.shell("PC2").feed("ip address 10.10.10.20 255.255.255.0")
+def test_submit_task_requires_str_config():
+    assert LabSession.submit_task.__annotations__["config"] == "str"
 
 
 def test_session_create_and_grade(lab):
@@ -85,7 +55,7 @@ def test_session_navigation(lab):
 
 def test_score_lab_all_correct(lab):
     s = LabSession.create(lab)
-    _apply_branch_solution(s)
+    apply_branch_solution(s)
     for _t in lab.tasks:
         s.check_current_task()
         s.next_task()
@@ -159,7 +129,7 @@ def test_finish_lab_returns_result(client):
     sid = sess["session_id"]
     lab = _LABS[LAB_ID]
     session = _SESSIONS[sid]
-    _apply_branch_solution(session)
+    apply_branch_solution(session)
     for _t in lab.tasks:
         session.check_current_task()
         session.next_task()

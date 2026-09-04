@@ -5,6 +5,7 @@ from pathlib import Path
 from openboson.netsim.grader import grade_task
 from openboson.netsim.lab_loader import load_lab
 from openboson.netsim.lab_schema import GradingRule, LabTask
+from openboson.netsim.session import LabSession
 
 DEMO_LAB_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "demo_labs" / "ccna_branch_office_access.yaml"
@@ -112,8 +113,38 @@ def test_grade_task_no_rules_is_pass():
 def test_grade_demo_lab_t1_correct():
     lab = load_lab(DEMO_LAB_PATH)
     t1 = next(t for t in lab.tasks if t.id == "t1")
-    g = grade_task(t1, t1.expected_config or "")
+    assert t1.expected_config is not None
+    g = grade_task(t1, t1.expected_config)
     assert g.is_correct is True
+
+
+def test_grade_task_requires_str_submitted_config():
+    assert grade_task.__annotations__["submitted_config"] == "str"
+
+
+def test_branch_office_multi_device_tasks_omit_expected_config():
+    lab = load_lab(DEMO_LAB_PATH)
+    by_id = {t.id: t for t in lab.tasks}
+    assert by_id["t3"].expected_config is None
+    assert by_id["t4"].expected_config is None
+
+
+def test_grade_task_empty_blob_does_not_use_live_running_config():
+    lab = load_lab(DEMO_LAB_PATH)
+    session = LabSession.create(lab)
+    r1 = session.world.shell("R1")
+    for line in (
+        "enable",
+        "configure terminal",
+        "interface GigabitEthernet0/0",
+        "ip address 10.10.10.1 255.255.255.0",
+        "no shutdown",
+        "end",
+    ):
+        r1.feed(line)
+    t1 = next(t for t in lab.tasks if t.id == "t1")
+    g = grade_task(t1, "", world=session.world)
+    assert g.is_correct is False
 
 
 def test_grade_demo_lab_t2_partial():
