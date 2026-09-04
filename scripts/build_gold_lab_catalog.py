@@ -994,8 +994,15 @@ def lab_etherchannel_campus() -> dict:
         title="EtherChannel Campus Bundle",
         lab_id="ccna_etherchannel_campus",
         topic_code="2.4",
-        description="Bundle two links between switches and attach a PC.",
-        objectives=["channel-group mode on", "Access VLAN for PC", "verify.show"],
+        description=(
+            "Two switches share dual links. Shutting the forwarding unbundled "
+            "member isolates the PCs unless those links are one EtherChannel."
+        ),
+        objectives=[
+            "VLAN 10 access with PortFast",
+            "channel-group 1 mode on both members",
+            "PC ping survives shutting one member",
+        ],
         topology={
             "devices": [
                 _dev(
@@ -1022,46 +1029,82 @@ def lab_etherchannel_campus() -> dict:
                     [{"name": "eth0", "ip": "10.10.10.10/24"}],
                     base_config="ip address 10.10.10.10 255.255.255.0\n",
                 ),
+                _dev(
+                    "PC2",
+                    "pc",
+                    [{"name": "eth0", "ip": "10.10.10.20/24"}],
+                    base_config="ip address 10.10.10.20 255.255.255.0\n",
+                ),
             ],
             "links": [
                 _link("SW1/GigabitEthernet0/1", "SW2/GigabitEthernet0/1"),
                 _link("SW1/GigabitEthernet0/2", "SW2/GigabitEthernet0/2"),
-                _link("SW2/GigabitEthernet0/3", "PC1/eth0"),
+                _link("SW1/GigabitEthernet0/3", "PC1/eth0"),
+                _link("SW2/GigabitEthernet0/3", "PC2/eth0"),
             ],
         },
         tasks=[
             _task(
                 "t1",
-                "On **SW1**, place Gi0/1 and Gi0/2 into **channel-group 1 mode on**.",
-                device="SW1",
-                require=["channel-group 1 mode on"],
-                verify_show=[_show("SW1", "channel-group 1 mode on")],
+                "**Access VLAN and inter-switch trunks**\n\n"
+                "Create **VLAN 10** on both switches. Put each PC-facing Gi0/3 in "
+                "VLAN 10 as access with **spanning-tree portfast**. Trunk Gi0/1 and "
+                "Gi0/2 toward the peer. Unbundled, only the lowest interface name "
+                "forwards — a second parallel link is not a backup yet.",
+                require=[
+                    "vlan 10",
+                    "switchport mode trunk",
+                    "switchport access vlan 10",
+                    "spanning-tree portfast",
+                ],
             ),
             _task(
                 "t2",
-                "On **SW2**, place Gi0/1 and Gi0/2 into **channel-group 1 mode on**.",
-                device="SW2",
+                "**Bundle the dual links**\n\n"
+                "On **SW1** and **SW2**, place Gi0/1 and Gi0/2 into "
+                "**channel-group 1 mode on** so the two links become one logical "
+                "path.",
                 require=["channel-group 1 mode on"],
-                verify_show=[_show("SW2", "channel-group")],
+                verify_show=[_show("SW1", "channel-group 1")],
             ),
             _task(
                 "t3",
-                "Create VLAN 10 on SW2 and put Gi0/3 in VLAN 10 as access.",
-                device="SW2",
-                require=["vlan 10", "switchport access vlan 10"],
+                "**Prove the bundle**\n\n"
+                "Shut **SW1 GigabitEthernet0/1** (the forwarding unbundled member). "
+                "From **PC1**, **PC2** at **10.10.10.20** must still reply — that "
+                "survives only if the remaining member is in the same channel-group.",
+                device="SW1",
+                require=["shutdown", "channel-group 1 mode on"],
+                verify_ping=[_ping("PC1", "10.10.10.20")],
+                verify_show=[_show("SW1", "channel-group 1")],
             ),
         ],
         solution_config=(
             "! --- SW1 ---\n"
-            "interface GigabitEthernet0/1\n channel-group 1 mode on\n"
-            "interface GigabitEthernet0/2\n channel-group 1 mode on\n"
-            "! --- SW2 ---\n"
             "vlan 10\n"
-            "interface GigabitEthernet0/1\n channel-group 1 mode on\n"
-            "interface GigabitEthernet0/2\n channel-group 1 mode on\n"
+            "interface GigabitEthernet0/1\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
+            " shutdown\n"
+            "interface GigabitEthernet0/2\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
             "interface GigabitEthernet0/3\n"
             " switchport mode access\n"
             " switchport access vlan 10\n"
+            " spanning-tree portfast\n"
+            "! --- SW2 ---\n"
+            "vlan 10\n"
+            "interface GigabitEthernet0/1\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
+            "interface GigabitEthernet0/2\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
+            "interface GigabitEthernet0/3\n"
+            " switchport mode access\n"
+            " switchport access vlan 10\n"
+            " spanning-tree portfast\n"
         ),
     )
 
@@ -1071,8 +1114,15 @@ def lab_stp_portfast() -> dict:
         title="STP PortFast Edge Ports",
         lab_id="ccna_stp_portfast_edge",
         topic_code="2.5",
-        description="Enable PortFast on access ports facing two PCs.",
-        objectives=["Access VLANs", "spanning-tree portfast", "verify.show"],
+        description=(
+            "Two PCs in VLAN 10 cannot reach each other until both access ports "
+            "have PortFast and start forwarding."
+        ),
+        objectives=[
+            "VLAN 10 access ports",
+            "PortFast on both edge ports",
+            "PC1 ping of PC2",
+        ],
         topology={
             "devices": [
                 _dev(
@@ -1104,21 +1154,26 @@ def lab_stp_portfast() -> dict:
         tasks=[
             _task(
                 "t1",
-                "Create **VLAN 10** and put both access ports into it.",
+                "**SW1 — user VLAN**\n\n"
+                "Create **VLAN 10** and put Gi0/1 and Gi0/2 in it as access ports. "
+                "PC1 still cannot reach PC2 — those edge ports are not forwarding yet.",
                 device="SW1",
                 require=["vlan 10", "switchport access vlan 10"],
             ),
             _task(
                 "t2",
-                "Enable **spanning-tree portfast** on Gi0/1 and Gi0/2.",
+                "**SW1 — PortFast**\n\n"
+                "Enable **spanning-tree portfast** on Gi0/1 and Gi0/2 so both "
+                "access ports start forwarding toward the PCs.",
                 device="SW1",
                 require=["spanning-tree portfast"],
                 verify_show=[_show("SW1", "spanning-tree portfast")],
             ),
             _task(
                 "t3",
-                "Confirm same-VLAN ping from PC1 to PC2 still works.",
-                require=["switchport access vlan 10"],
+                "**PC1 — prove the edge**\n\n"
+                "From **PC1**, **PC2** at **10.10.10.20** must reply. That ping "
+                "fails until PortFast is on both access ports.",
                 verify_ping=[_ping("PC1", "10.10.10.20")],
             ),
         ],
@@ -1141,8 +1196,15 @@ def lab_dhcp_pool() -> dict:
         title="DHCP Pool on LAN Gateway",
         lab_id="ccna_dhcp_pool_lan",
         topic_code="4.3",
-        description="Configure an IOS DHCP pool on R1 for a switched LAN.",
-        objectives=["Address Gi0/0", "ip dhcp pool", "verify.show"],
+        description=(
+            "PC1 has no address. It cannot ping the LAN gateway until R1 leases "
+            "an address from pool LAN and the PC renews."
+        ),
+        objectives=[
+            "Address the LAN gateway",
+            "DHCP pool with network and default-router",
+            "Renew on PC1 and ping the gateway",
+        ],
         topology={
             "devices": [
                 _dev("R1", "router", [{"name": "GigabitEthernet0/0"}]),
@@ -1161,22 +1223,41 @@ def lab_dhcp_pool() -> dict:
         tasks=[
             _task(
                 "t1",
-                "On **R1**, set Gi0/0 to **192.168.10.1/24** and no shutdown.",
+                "**R1 — LAN gateway**\n\n"
+                "PC1 has no IP of its own. On **R1**, set Gi0/0 to "
+                "**192.168.10.1/24** and no shutdown so it can serve the LAN.",
                 device="R1",
                 require=["ip address 192.168.10.1 255.255.255.0", "no shutdown"],
             ),
             _task(
                 "t2",
-                "Create DHCP pool **LAN** (`ip dhcp pool LAN`).",
+                "**R1 — DHCP pool**\n\n"
+                "Create pool **LAN** with `ip dhcp pool LAN`, "
+                "`network 192.168.10.0 255.255.255.0`, and "
+                "`default-router 192.168.10.1`.",
                 device="R1",
-                require=["ip dhcp pool LAN"],
+                require=[
+                    "ip dhcp pool LAN",
+                    "network 192.168.10.0 255.255.255.0",
+                    "default-router 192.168.10.1",
+                ],
                 verify_show=[_show("R1", "ip dhcp pool LAN")],
             ),
             _task(
                 "t3",
-                "On **SW1**, trunk Gi0/1 and put Gi0/2 in VLAN 10.",
+                "**SW1 and PC1 — adjacent lease**\n\n"
+                "On **SW1**, create VLAN 10, trunk Gi0/1 toward R1, and put Gi0/2 "
+                "in VLAN 10 as access with **spanning-tree portfast** so the PC "
+                "is L2-adjacent. On **PC1** run `ipconfig /renew`. From PC1 the "
+                "gateway **192.168.10.1** must reply.",
                 device="SW1",
-                require=["switchport mode trunk", "switchport access vlan 10"],
+                require=[
+                    "vlan 10",
+                    "switchport mode trunk",
+                    "switchport access vlan 10",
+                    "spanning-tree portfast",
+                ],
+                verify_ping=[_ping("PC1", "192.168.10.1")],
             ),
         ],
         solution_config=(
@@ -1185,31 +1266,46 @@ def lab_dhcp_pool() -> dict:
             " ip address 192.168.10.1 255.255.255.0\n"
             " no shutdown\n"
             "ip dhcp pool LAN\n"
+            " network 192.168.10.0 255.255.255.0\n"
+            " default-router 192.168.10.1\n"
             "! --- SW1 ---\n"
             "vlan 10\n"
             "interface GigabitEthernet0/1\n switchport mode trunk\n"
             "interface GigabitEthernet0/2\n"
             " switchport mode access\n"
             " switchport access vlan 10\n"
+            " spanning-tree portfast\n"
+            "! --- PC1 ---\n"
+            "ipconfig /renew\n"
         ),
     )
 
 
 def lab_nat_pat() -> dict:
+    # Inside/outside are in base so PC→ISP already fails until PAT overload.
     r1_base = (
         "interface GigabitEthernet0/0\n"
         " ip address 192.168.1.1 255.255.255.0\n"
+        " ip nat inside\n"
         " no shutdown\n"
         "interface GigabitEthernet0/1\n"
         " ip address 203.0.113.1 255.255.255.0\n"
+        " ip nat outside\n"
         " no shutdown\n"
     )
     return _lab(
         title="NAT PAT Edge",
         lab_id="ccna_nat_pat_edge",
         topic_code="4.1",
-        description="Mark inside/outside interfaces and configure PAT overload.",
-        objectives=["ip nat inside/outside", "overload", "verify.show"],
+        description=(
+            "PC1 on the inside LAN cannot reach the ISP until R1 overloads PAT "
+            "out the WAN interface."
+        ),
+        objectives=[
+            "Mark inside and outside on the NAT border",
+            "ACL 1 plus PAT overload",
+            "PC1 ping of the ISP host",
+        ],
         topology={
             "devices": [
                 _dev(
@@ -1246,27 +1342,37 @@ def lab_nat_pat() -> dict:
         tasks=[
             _task(
                 "t1",
-                "Mark **Gi0/0** as **ip nat inside** and **Gi0/1** as **ip nat outside**.",
+                "**R1 — NAT border**\n\n"
+                "PC1 sits on Gi0/0 (192.168.1.0/24). The ISP is on Gi0/1 "
+                "(203.0.113.0/24). Mark **Gi0/0** `ip nat inside` and **Gi0/1** "
+                "`ip nat outside`. Until PAT exists, PC1 cannot reach the ISP.",
                 device="R1",
                 require=["ip nat inside", "ip nat outside"],
             ),
             _task(
                 "t2",
-                "Add PAT: `ip nat inside source list 1 interface GigabitEthernet0/1 overload`.",
+                "**R1 — PAT overload**\n\n"
+                "Create **ACL 1** that permits any, then "
+                "`ip nat inside source list 1 interface GigabitEthernet0/1 overload`.",
                 device="R1",
-                require=["ip nat inside source list 1 interface GigabitEthernet0/1 overload"],
-                verify_show=[_show("R1", "ip nat")],
+                require=[
+                    "access-list 1 permit any",
+                    "ip nat inside source list 1 interface GigabitEthernet0/1 overload",
+                ],
+                verify_show=[_show("R1", "ip nat inside source")],
             ),
             _task(
                 "t3",
-                "Confirm R1 can still ping the ISP peer **203.0.113.2**.",
-                require=["ip nat outside"],
-                verify_ping=[_ping("R1", "203.0.113.2")],
+                "**PC1 — prove PAT**\n\n"
+                "PC1 (192.168.1.10) cannot reach the ISP at **203.0.113.2** until "
+                "PAT is in place. From **PC1**, that ISP address must reply.",
+                verify_ping=[_ping("PC1", "203.0.113.2")],
             ),
         ],
         solution_config=(
             "interface GigabitEthernet0/0\n ip nat inside\n"
             "interface GigabitEthernet0/1\n ip nat outside\n"
+            "access-list 1 permit any\n"
             "ip nat inside source list 1 interface GigabitEthernet0/1 overload\n"
         ),
     )
@@ -1872,6 +1978,197 @@ def lab_encor_edge_acl() -> dict:
     )
 
 
+def lab_encor_pat_edge() -> dict:
+    """ENCOR L3 ticket: inside host cannot reach the outside peer until PAT."""
+    r1_base = (
+        "interface GigabitEthernet0/0\n"
+        " ip address 10.8.8.1 255.255.255.0\n"
+        " ip nat inside\n"
+        " no shutdown\n"
+        "interface GigabitEthernet0/1\n"
+        " ip address 198.51.100.1 255.255.255.0\n"
+        " ip nat outside\n"
+        " no shutdown\n"
+    )
+    return _lab(
+        title="ENCOR PAT Edge Translation",
+        lab_id="encor_pat_edge",
+        topic_code="3.2",
+        difficulty=4,
+        cert_tags=["ccnp"],
+        description=(
+            "A campus host on 10.8.8.0/24 cannot reach the outside peer until the "
+            "edge router overloads PAT on the WAN interface."
+        ),
+        objectives=[
+            "Mark inside and outside",
+            "ACL plus PAT overload",
+            "Inside PC ping of the outside peer",
+        ],
+        topology={
+            "devices": [
+                _dev(
+                    "R1",
+                    "router",
+                    [
+                        {"name": "GigabitEthernet0/0", "ip": "10.8.8.1/24"},
+                        {"name": "GigabitEthernet0/1", "ip": "198.51.100.1/24"},
+                    ],
+                    base_config=r1_base,
+                ),
+                _dev(
+                    "PC1",
+                    "pc",
+                    [{"name": "eth0", "ip": "10.8.8.10/24"}],
+                    base_config="ip address 10.8.8.10 255.255.255.0\n",
+                ),
+                _dev(
+                    "ISP",
+                    "router",
+                    [{"name": "GigabitEthernet0/0", "ip": "198.51.100.2/24"}],
+                    base_config=(
+                        "interface GigabitEthernet0/0\n"
+                        " ip address 198.51.100.2 255.255.255.0\n"
+                        " no shutdown\n"
+                    ),
+                ),
+            ],
+            "links": [
+                _link("R1/GigabitEthernet0/0", "PC1/eth0"),
+                _link("R1/GigabitEthernet0/1", "ISP/GigabitEthernet0/0"),
+            ],
+        },
+        tasks=[
+            _task(
+                "t1",
+                "**R1 — translation border**\n\n"
+                "Gi0/0 faces the campus LAN; Gi0/1 faces the provider. Mark "
+                "**Gi0/0** `ip nat inside` and **Gi0/1** `ip nat outside`. "
+                "PC1 cannot reach 198.51.100.2 until PAT exists.",
+                device="R1",
+                require=["ip nat inside", "ip nat outside"],
+            ),
+            _task(
+                "t2",
+                "**R1 — overload**\n\n"
+                "Create **ACL 1** that permits any, then "
+                "`ip nat inside source list 1 interface GigabitEthernet0/1 overload`.",
+                device="R1",
+                require=[
+                    "access-list 1 permit any",
+                    "ip nat inside source list 1 interface GigabitEthernet0/1 overload",
+                ],
+                verify_show=[_show("R1", "ip nat inside source")],
+            ),
+            _task(
+                "t3",
+                "**PC1 — outside reachability**\n\n"
+                "From **PC1**, the outside peer **198.51.100.2** must reply. "
+                "That path stays dark until PAT overload is in place.",
+                verify_ping=[_ping("PC1", "198.51.100.2")],
+            ),
+        ],
+        solution_config=(
+            "interface GigabitEthernet0/0\n ip nat inside\n"
+            "interface GigabitEthernet0/1\n ip nat outside\n"
+            "access-list 1 permit any\n"
+            "ip nat inside source list 1 interface GigabitEthernet0/1 overload\n"
+        ),
+    )
+
+
+def lab_encor_dhcp_campus() -> dict:
+    """ENCOR L3 ticket: campus PC has no address until it renews from the pool."""
+    return _lab(
+        title="ENCOR DHCP Campus Lease",
+        lab_id="encor_dhcp_campus",
+        topic_code="3.2",
+        difficulty=4,
+        cert_tags=["ccnp"],
+        description=(
+            "A campus PC has no IPv4 address. It cannot ping the distribution "
+            "gateway until it renews a lease from the local pool."
+        ),
+        objectives=[
+            "Address the distribution gateway",
+            "DHCP pool with network and default-router",
+            "Renew on PC1 and ping the gateway",
+        ],
+        topology={
+            "devices": [
+                _dev("R1", "router", [{"name": "GigabitEthernet0/0"}]),
+                _dev(
+                    "SW1",
+                    "switch",
+                    [{"name": "GigabitEthernet0/1"}, {"name": "GigabitEthernet0/2"}],
+                ),
+                _dev("PC1", "pc", [{"name": "eth0"}]),
+            ],
+            "links": [
+                _link("R1/GigabitEthernet0/0", "SW1/GigabitEthernet0/1"),
+                _link("SW1/GigabitEthernet0/2", "PC1/eth0"),
+            ],
+        },
+        tasks=[
+            _task(
+                "t1",
+                "**R1 — distribution gateway**\n\n"
+                "PC1 has no address. On **R1**, set Gi0/0 to **10.30.30.1/24** "
+                "and no shutdown.",
+                device="R1",
+                require=["ip address 10.30.30.1 255.255.255.0", "no shutdown"],
+            ),
+            _task(
+                "t2",
+                "**R1 — campus pool**\n\n"
+                "Create pool **CAMPUS** with `ip dhcp pool CAMPUS`, "
+                "`network 10.30.30.0 255.255.255.0`, and "
+                "`default-router 10.30.30.1`.",
+                device="R1",
+                require=[
+                    "ip dhcp pool CAMPUS",
+                    "network 10.30.30.0 255.255.255.0",
+                    "default-router 10.30.30.1",
+                ],
+                verify_show=[_show("R1", "ip dhcp pool CAMPUS")],
+            ),
+            _task(
+                "t3",
+                "**SW1 and PC1 — lease then ping**\n\n"
+                "On **SW1**, create VLAN 30, trunk Gi0/1, and put Gi0/2 in VLAN 30 "
+                "as access with **spanning-tree portfast**. On **PC1** run "
+                "`ipconfig /renew`. From PC1 the gateway **10.30.30.1** must reply.",
+                device="SW1",
+                require=[
+                    "vlan 30",
+                    "switchport mode trunk",
+                    "switchport access vlan 30",
+                    "spanning-tree portfast",
+                ],
+                verify_ping=[_ping("PC1", "10.30.30.1")],
+            ),
+        ],
+        solution_config=(
+            "! --- R1 ---\n"
+            "interface GigabitEthernet0/0\n"
+            " ip address 10.30.30.1 255.255.255.0\n"
+            " no shutdown\n"
+            "ip dhcp pool CAMPUS\n"
+            " network 10.30.30.0 255.255.255.0\n"
+            " default-router 10.30.30.1\n"
+            "! --- SW1 ---\n"
+            "vlan 30\n"
+            "interface GigabitEthernet0/1\n switchport mode trunk\n"
+            "interface GigabitEthernet0/2\n"
+            " switchport mode access\n"
+            " switchport access vlan 30\n"
+            " spanning-tree portfast\n"
+            "! --- PC1 ---\n"
+            "ipconfig /renew\n"
+        ),
+    )
+
+
 # ---------------------------------------------------------------------------
 # Drill + scale
 # ---------------------------------------------------------------------------
@@ -2097,6 +2394,8 @@ def build_labs() -> list[dict]:
         lab_encor_ospf(),
         lab_encor_vlan_core(),
         lab_encor_edge_acl(),
+        lab_encor_pat_edge(),
+        lab_encor_dhcp_campus(),
         # Drill + scale
         lab_drill_hostname(),
         lab_drill_vlan(),
@@ -2105,22 +2404,45 @@ def build_labs() -> list[dict]:
     ]
 
 
-def main() -> None:
-    OUT.mkdir(parents=True, exist_ok=True)
-    for path in OUT.glob("*.yaml"):
-        path.unlink()
+def _write_lab(lab: dict) -> Path:
+    path = OUT / f"{lab['lab_id']}.yaml"
+    with path.open("w", encoding="utf-8") as fh:
+        yaml.dump(
+            lab,
+            fh,
+            default_flow_style=False,
+            sort_keys=False,
+            allow_unicode=True,
+        )
+    return path
 
+
+def main() -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Write gold-lab YAML from this catalog.")
+    parser.add_argument(
+        "--only",
+        nargs="+",
+        metavar="LAB_ID",
+        help="Rewrite only these lab_id files (does not delete the rest of the catalog).",
+    )
+    args = parser.parse_args()
+
+    OUT.mkdir(parents=True, exist_ok=True)
     labs = build_labs()
+    if args.only:
+        wanted = set(args.only)
+        labs = [lab for lab in labs if lab["lab_id"] in wanted]
+        missing = wanted - {lab["lab_id"] for lab in labs}
+        if missing:
+            raise SystemExit(f"Unknown lab_id(s): {', '.join(sorted(missing))}")
+    else:
+        for path in OUT.glob("*.yaml"):
+            path.unlink()
+
     for lab in labs:
-        path = OUT / f"{lab['lab_id']}.yaml"
-        with path.open("w", encoding="utf-8") as fh:
-            yaml.dump(
-                lab,
-                fh,
-                default_flow_style=False,
-                sort_keys=False,
-                allow_unicode=True,
-            )
+        _write_lab(lab)
 
     gold = sum(1 for lab in labs if lab.get("lab_tier") == "gold")
     drill = sum(1 for lab in labs if lab.get("lab_tier") == "drill")

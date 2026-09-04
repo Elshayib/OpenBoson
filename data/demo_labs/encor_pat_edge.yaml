@@ -1,38 +1,41 @@
-title: NAT PAT Edge
-lab_id: ccna_nat_pat_edge
-topic_code: '4.1'
-description: PC1 on the inside LAN cannot reach the ISP until R1 overloads PAT out
-  the WAN interface.
+title: ENCOR PAT Edge Translation
+lab_id: encor_pat_edge
+topic_code: '3.2'
+difficulty: 4
+cert_tags:
+- ccnp
+description: A campus host on 10.8.8.0/24 cannot reach the outside peer until the
+  edge router overloads PAT on the WAN interface.
 objectives:
-- Mark inside and outside on the NAT border
-- ACL 1 plus PAT overload
-- PC1 ping of the ISP host
+- Mark inside and outside
+- ACL plus PAT overload
+- Inside PC ping of the outside peer
 topology:
   devices:
   - name: R1
     type: router
     interfaces:
     - name: GigabitEthernet0/0
-      ip: 192.168.1.1/24
+      ip: 10.8.8.1/24
     - name: GigabitEthernet0/1
-      ip: 203.0.113.1/24
-    base_config: "interface GigabitEthernet0/0\n ip address 192.168.1.1 255.255.255.0\n\
-      \ ip nat inside\n no shutdown\ninterface GigabitEthernet0/1\n ip address 203.0.113.1\
+      ip: 198.51.100.1/24
+    base_config: "interface GigabitEthernet0/0\n ip address 10.8.8.1 255.255.255.0\n\
+      \ ip nat inside\n no shutdown\ninterface GigabitEthernet0/1\n ip address 198.51.100.1\
       \ 255.255.255.0\n ip nat outside\n no shutdown\n"
   - name: PC1
     type: pc
     interfaces:
     - name: eth0
-      ip: 192.168.1.10/24
-    base_config: 'ip address 192.168.1.10 255.255.255.0
+      ip: 10.8.8.10/24
+    base_config: 'ip address 10.8.8.10 255.255.255.0
 
       '
   - name: ISP
     type: router
     interfaces:
     - name: GigabitEthernet0/0
-      ip: 203.0.113.2/24
-    base_config: "interface GigabitEthernet0/0\n ip address 203.0.113.2 255.255.255.0\n\
+      ip: 198.51.100.2/24
+    base_config: "interface GigabitEthernet0/0\n ip address 198.51.100.2 255.255.255.0\n\
       \ no shutdown\n"
   links:
   - a: R1/GigabitEthernet0/0
@@ -41,19 +44,18 @@ topology:
     b: ISP/GigabitEthernet0/0
 tasks:
 - id: t1
-  instructions: '**R1 — NAT border**
+  instructions: '**R1 — translation border**
 
 
-    PC1 sits on Gi0/0 (192.168.1.0/24). The ISP is on Gi0/1 (203.0.113.0/24). Mark
-    **Gi0/0** `ip nat inside` and **Gi0/1** `ip nat outside`. Until PAT exists, PC1
-    cannot reach the ISP.'
+    Gi0/0 faces the campus LAN; Gi0/1 faces the provider. Mark **Gi0/0** `ip nat inside`
+    and **Gi0/1** `ip nat outside`. PC1 cannot reach 198.51.100.2 until PAT exists.'
   grading_rules:
     device: R1
     require:
     - ip nat inside
     - ip nat outside
 - id: t2
-  instructions: '**R1 — PAT overload**
+  instructions: '**R1 — overload**
 
 
     Create **ACL 1** that permits any, then `ip nat inside source list 1 interface
@@ -69,22 +71,19 @@ tasks:
       contains:
       - ip nat inside source
 - id: t3
-  instructions: '**PC1 — prove PAT**
+  instructions: '**PC1 — outside reachability**
 
 
-    PC1 (192.168.1.10) cannot reach the ISP at **203.0.113.2** until PAT is in place.
-    From **PC1**, that ISP address must reply.'
+    From **PC1**, the outside peer **198.51.100.2** must reply. That path stays dark
+    until PAT overload is in place.'
   verify:
     ping:
     - source: PC1
-      destination: 203.0.113.2
+      destination: 198.51.100.2
       should_succeed: true
 solution_config: "interface GigabitEthernet0/0\n ip nat inside\ninterface GigabitEthernet0/1\n\
   \ ip nat outside\naccess-list 1 permit any\nip nat inside source list 1 interface\
   \ GigabitEthernet0/1 overload\n"
 schema_version: 1
-cert_tags:
-- ccna
 pass_threshold: 1.0
 lab_tier: gold
-difficulty: 3
