@@ -26,21 +26,10 @@ questions:
     - Exchange
     - Loading
     - Full
-  explanation: 'The correct sequence for this item is: Down → Init → 2-Way → ExStart
-    → Exchange → Loading → Full. Each step must appear in this order; rearranging
-    any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading → Full. Each
-    step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way
-    → ExStart → Exchange → Loading → Full. Each step must appear in this order; rearranging
-    any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading → Full. Each
-    step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way
-    → ExStart → Exchange → Loading → Full. The stem requires the operational or protocol
-    order implied by: Place OSPF adjacency states in order from Down to Full.. Each
-    listed step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior.'
+  explanation: OSPF neighbors move **Down → Init → 2-Way → ExStart → Exchange → Loading
+    → Full**. Down is no Hellos. Init is a Hello heard. 2-Way is bidirectional (DR
+    election can finish here on a LAN). ExStart/Exchange/Loading master the DD and
+    flood LSAs. Full means the LSDBs match.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -306,19 +295,26 @@ questions:
     text: Random ECMP only
   correct:
     answer: a
-  explanation: 'More-specific prefixes win longest-match forwarding.
+  explanation: 'Cisco IOS does **longest prefix match** first. `10.1.1.5` matches
+    both `10.1.1.0/28` (28 bits) and `10.1.0.0/16` (16 bits); the /28 is installed
+    even if the /16 has a better administrative distance or metric.
 
 
-    **10.1.1.0/28 over 10.1.0.0/16**: More-specific prefixes win longest-match forwarding.
+    **10.1.1.0/28 over 10.1.0.0/16** wins because 28 matching bits beat 16.
 
 
-    **Always AD only**: Always AD is not **10.1.1.0/28 over 10.1.0.0/16**.
+    **Always AD only** is consulted only among routes to the **same prefix** from
+    different sources (for example OSPF AD 110 vs EIGRP AD 90). AD does not override
+    a longer match.
 
 
-    **Always metric only**: Always metric is not **10.1.1.0/28 over 10.1.0.0/16**.
+    **Always metric only** (OSPF cost, EIGRP composite) ranks paths **inside one protocol**
+    after the prefix length is already chosen. A /16 with cost 1 still loses to a
+    /28 with cost 100.
 
 
-    **Random ECMP only**: ECMP installs multiple equal-cost next hops (OSPF `maximum-paths`).'
+    **Random ECMP only** appears when prefix length, AD, and metric are all equal
+    (`maximum-paths`). It never beats a longer prefix.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -342,22 +338,25 @@ questions:
     text: Connected
   correct:
     answer: a
-  explanation: 'S* marks a candidate default static route.
+  explanation: 'Cisco `show ip route` codes: **C** connected, **L** local, **S** static,
+    **S*** candidate default static (gateway of last resort), **O** OSPF, **B** BGP,
+    **D** EIGRP, **R** RIP.
 
 
-    **Candidate default static**: S* marks a candidate default static route.
+    **Candidate default static** is **S*** — typically `ip route 0.0.0.0 0.0.0.0 nh`
+    marked as the gateway of last resort.
 
 
-    **OSPF summary**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
-    110, multicast 224.0.0.5/6).
+    **OSPF summary** shows as **O IA** (inter-area Type-3) or **O** for an intra-area
+    prefix, never S*.
 
 
-    **BGP aggregate**: BGP is the Internet path-vector protocol (TCP 179; eBGP AD
-    20, iBGP AD 200).
+    **BGP aggregate** lives in the BGP table (`aggregate-address`) and installs as
+    **B** or **B***>, not S*.
 
 
-    **Connected**: Candidate default static is the matching value or command; Connected
-    is not.'
+    **Connected** is code **C** — a prefix on an up/up interface. It is a directly
+    attached network, not a static default.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -430,12 +429,12 @@ questions:
     **Limit LSA flooding scope**: Areas hierarchicalize LSA flooding.
 
 
-    **Replace IP addresses**: Limit LSA flooding scope is the matching value or command;
-    Replace IP addresses is not.
+    **Replace IP addresses**: OSPF areas **limit LSA flooding** and shrink the LSDB/SPF.
+    They do not NAT or replace host IPs.
 
 
-    **Encrypt all payloads**: Limit LSA flooding scope is the matching value or command;
-    Encrypt all payloads is not.
+    **Encrypt all payloads**: OSPF areas bound LSA flooding (Type-1/2 stay intra-area).
+    Encryption is IPsec or OSPF auth, not the reason areas exist.
 
 
     **Terminate VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
@@ -585,11 +584,12 @@ questions:
     **Metric (and eligible for install)**: ECMP installs equal-metric paths.
 
 
-    **Only interface bandwidth randomly**: `interface bandwidth randomly` enters that
-    interface''s configuration context.
+    **Only interface bandwidth randomly**: ECMP needs **equal** metrics, not random
+    bandwidth values.
 
 
-    **Only AD different**: AD different is not **Metric (and eligible for install)**.
+    **Only AD different**: ECMP requires **equal metric** (and same prefix/AD). Different
+    ADs mean only the better AD is installed.
 
 
     **Only AS path length for OSPF**: OSPF is a link-state IGP (RID, areas, LSAs,
@@ -659,15 +659,15 @@ questions:
     to the backbone.
 
 
-    **Only two autonomous systems**: two autonomous systems is not **Area 0 and non-backbone
-    areas (typically)**.
+    **Only two autonomous systems**: An ABR borders **OSPF areas** (area 0 + N), not
+    BGP ASNs. You can have many areas.
 
 
     **Only VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only wireless controllers**: wireless controllers is not **Area 0 and non-backbone
-    areas (typically)**.'
+    **Only wireless controllers**: An ABR is an OSPF router with links in two areas.
+    A WLC terminates CAPWAP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -702,12 +702,14 @@ questions:
     path attributes.
 
 
-    **Delay by default like IGRP classic**: Reference bandwidth / interface bandwidth
-    is the matching value or command; Delay by default like IGRP classic is not.
+    **Delay by default like IGRP classic**: Classic IGRP/EIGRP used bandwidth and
+    delay in a composite metric. Cisco OSPF cost defaults to reference-bandwidth /
+    interface bandwidth.
 
 
-    **Administrative distance**: Reference bandwidth / interface bandwidth is the
-    matching value or command; Administrative distance is not.'
+    **Administrative distance**: AD prefers one routing source over another (e.g.
+    EIGRP 90 vs OSPF 110). OSPF cost is interface bandwidth (reference-bw / bw), not
+    AD.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -734,13 +736,14 @@ questions:
   explanation: 'Connected routes use code C.
 
 
-    **S**: C is the matching value or command; S is not.
+    **S**: Code **S** is a static route. Connected is **C**. S* specifically marks
+    a candidate default.
 
 
-    **O**: C is the matching value or command; O is not.
+    **O**: Code **O** is intra-area OSPF. A connected prefix is **C**.
 
 
-    **R**: C is the matching value or command; R is not.'
+    **R**: Code **R** is RIP. Connected is **C**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -770,11 +773,13 @@ questions:
     **Per-host load balancing across gateways**: GLBP can load-share first-hop traffic.
 
 
-    **Only active/standby with no sharing**: active/standby with no sharing is not
-    **Per-host load balancing across gateways**.
+    **Only active/standby with no sharing**: That is classic HSRP/VRRP. **GLBP** elects
+    an AVG and multiple AVFs so hosts share different virtual MACs (per-host load-share).
 
 
-    **Only IPv6 RA exclusive**: IPv6 RA is not **Per-host load balancing across gateways**.
+    **Only IPv6 RA exclusive**: IPv6 RA (NDP) auths a link gateway. GLBP is an IPv4/IPv6
+    FHRP that **load-shares** via AVG/AVF virtual MACs, unlike HSRP’s single active
+    forwarder.
 
 
     **Only STP root election**: Spanning Tree elects a root bridge and blocks redundant
@@ -847,16 +852,16 @@ questions:
     the network without forming neighbors.
 
 
-    **Disable the interface IP**: Suppress Hellos / no adjacency on that interface
-    is the matching value or command; Disable the interface IP is not.
+    **Disable the interface IP**: Passive-interface does not remove the interface
+    address. The subnet is still advertised; neighbors simply never form.
 
 
-    **Force DR forever**: Force DR is not **Suppress Hellos / no adjacency on that
-    interface**.
+    **Force DR forever**: Passive-interface prevents an adjacency, so there is no
+    DR election on that link. It does not pin a DR.
 
 
-    **Clear the RID**: Suppress Hellos / no adjacency on that interface is the matching
-    value or command; Clear the RID is not.'
+    **Clear the RID**: Clearing the OSPF router ID is `clear ip ospf process` after
+    `router-id`. `ip ospf passive-interface` only stops Hellos; it keeps the RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -924,8 +929,8 @@ questions:
     **Route maps / match criteria**: PBR can override destination-based forwarding.
 
 
-    **Only longest prefix always alone**: longest prefix always alone is not **Route
-    maps / match criteria**.
+    **Only longest prefix always alone**: PBR can override longest-match with a route-map
+    (`set ip next-hop`). Longest match is the default RIB behavior PBR bypasses.
 
 
     **Only STP cost**: Spanning Tree elects a root bridge and blocks redundant Ethernet
@@ -964,12 +969,12 @@ questions:
     ranges.
 
 
-    **Only removes virtual MAC**: removes virtual MAC is not **IPv6 and larger group
-    ID space**.
+    **Only removes virtual MAC**: HSRPv2 changes the virtual MAC format and group
+    range; it does not simply delete the virtual MAC.
 
 
-    **Only disables preempt**: disables preempt is not **IPv6 and larger group ID
-    space**.
+    **Only disables preempt**: HSRPv2 adds a 256-group space and a new virtual MAC
+    (`0000.0C9F.Fxxx`). It does not disable preempt (that is a separate command).
 
 
     **Only forces VRRP**: VRRP is the standards-based FHRP (virtual IP, one master).'
@@ -1003,8 +1008,8 @@ questions:
     for summaries.
 
 
-    **Preferred transit path always**: Preferred transit path is not **Discard / blackhole
-    aggregation safety**.
+    **Preferred transit path always**: A Null0 static on an aggregate **discards**
+    unmatched more-specifics (loop prevention). It is not a preferred transit path.
 
 
     **Only NAT pools**: NAT/PAT rewrites IP addresses (and ports with overload) across
@@ -1038,13 +1043,14 @@ questions:
   explanation: 'O IA indicates OSPF inter-area routes.
 
 
-    **O E2 only**: O E2 is not **O IA**.
+    **O E2 only**: **O E2** is an OSPF external Type-2 (ASBR). Inter-area prefixes
+    are **O IA**.
 
 
-    **S***: O IA is the matching value or command; S* is not.
+    S* is a candidate **default static**. Inter-area OSPF is O IA.
 
 
-    **B**: O IA is the matching value or command; B is not.'
+    **B**: Code **B** is BGP. Inter-area OSPF is **O IA**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1115,10 +1121,11 @@ questions:
     **/24 only**: /24 is 256 addresses (mask 255.255.255.0), 254 usable hosts.
 
 
-    **/0 only**: /0 is not **/32**.
+    **/0 only**: A /0 prefix is the IPv4 default route (0.0.0.0/0), not a host route.
 
 
-    **/16 only**: /16 is not **/32**.'
+    **/16 only**: A /16 is 65,536 addresses (mask 255.255.0.0), far larger than a
+    host route.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3

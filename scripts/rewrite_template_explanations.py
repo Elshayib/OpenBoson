@@ -21,6 +21,9 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "content" / "questions"
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from choice_facts import CHOICE_FACTS, HAND_EXPL  # noqa: E402
 
 from openboson.exsim.objectives import topic_title  # noqa: E402
 
@@ -37,6 +40,9 @@ BANNED = (
     "the stem is asking about",
     "the stem is solved by",
     "this performance item is graded against",
+    "is the matching value or command",
+    "the stem requires the operational or protocol order",
+    "the correct sequence for this item is",
 )
 FILLER = BANNED + (
     "it is the selection that meets the requirement stated in the stem",
@@ -1309,44 +1315,41 @@ def _bullet(text: str, body: str) -> str:
     return f"**{label}**: {body}"
 
 
+def _lookup_fact(text: str, *, correct: bool, fact: str | None, orig_rat: str | None) -> str | None:
+    if orig_rat and not _has_filler(orig_rat):
+        return orig_rat
+    if fact and fact in FACT_TEACH and text in FACT_TEACH[fact]:
+        return FACT_TEACH[fact][text]
+    ops = _ops_blurb(text, good=correct)
+    if ops:
+        return ops
+    if text in CHOICE_FACTS:
+        return CHOICE_FACTS[text]
+    stripped = _strip_qualifiers(text)
+    if stripped in CHOICE_FACTS:
+        return CHOICE_FACTS[stripped]
+    term = describe_term(text)
+    if term:
+        return term
+    if stripped != _norm(text):
+        return describe_term(stripped)
+    return None
+
+
 def _why_for_choice(
     text: str,
     *,
+    qid: str,
     correct: bool,
     fact: str | None,
     orig_rat: str | None,
-    correct_texts: list[str],
 ) -> str:
-    if orig_rat and not _has_filler(orig_rat):
-        return _bullet(text, orig_rat)
-    if fact and fact in FACT_TEACH and text in FACT_TEACH[fact]:
-        return _bullet(text, FACT_TEACH[fact][text])
-    ops = _ops_blurb(text, good=correct)
-    if ops:
-        return _bullet(text, ops)
-    term = describe_term(text)
-    if term:
-        return _bullet(text, term)
-    stripped = _strip_qualifiers(text)
-    if stripped != _norm(text):
-        term2 = describe_term(stripped)
-        if term2:
-            return _bullet(text, term2)
-        return _bullet(
-            text,
-            f"{stripped} is not **{'; '.join(correct_texts)}**.",
-        )
-    corr = "; ".join(correct_texts)
-    corr_fact = describe_term(correct_texts[0]) if correct_texts else ""
-    if corr_fact:
-        return _bullet(
-            text,
-            f"{corr} is required here ({corr_fact.rstrip('.')}); {_norm(text)} is not.",
-        )
-    return _bullet(
-        text,
-        f"{corr} is the matching value or command; {_norm(text)} is not.",
-    )
+    body = _lookup_fact(text, correct=correct, fact=fact, orig_rat=orig_rat)
+    if not body:
+        if correct:
+            return ""
+        raise SystemExit(f"no authored fact for {qid} choice {text!r}")
+    return _bullet(text, body)
 
 
 def _lead(
@@ -1399,11 +1402,13 @@ def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
     for c in right + wrong:
         para = _why_for_choice(
             c["text"],
+            qid=q["id"],
             correct=c["id"] in cids,
             fact=fact,
             orig_rat=orig_rats.get(c["id"]) or orig_rats.get(c["text"]),
-            correct_texts=correct_texts,
         )
+        if not para:
+            continue
         snippet = re.sub(r"\s+", " ", para).lower()[:90]
         if snippet in lead_l and c["id"] in cids:
             continue
@@ -1449,15 +1454,23 @@ def rewrite_other(q: dict) -> str:
     return rewrite_choice_question(q, None, "ccna")
 
 
+def _is_stamped(blob: str) -> bool:
+    low = (blob or "").lower()
+    return any(p in low for p in BANNED) or " is not **" in (blob or "")
+
+
 def _rewrite_question(q: dict, orig: dict | None, cert: str) -> None:
+    if q["id"] in HAND_EXPL:
+        q["explanation"] = HAND_EXPL[q["id"]]
+        return
     if q["id"] in FLAGSHIP_IDS:
+        return
+    if not _is_stamped(q.get("explanation") or ""):
         return
     if q.get("choices"):
         q["explanation"] = rewrite_choice_question(q, orig, cert)
         return
-    blob = (q.get("explanation") or "").lower()
-    if any(p in blob for p in BANNED) or _has_filler(q.get("explanation") or ""):
-        q["explanation"] = rewrite_other(q)
+    q["explanation"] = rewrite_other(q)
 
 
 def _assert_clean(questions: list[dict], label: str) -> None:
@@ -1469,7 +1482,7 @@ def _assert_clean(questions: list[dict], label: str) -> None:
                 *(c.get("rationale") or "" for c in (q.get("choices") or [])),
             ]
         ).lower()
-        if any(p in blob for p in BANNED):
+        if any(p in blob for p in BANNED) or " is not **" in blob:
             bad.append(q["id"])
     if bad:
         raise SystemExit(f"{label} still has template copy: {bad[:20]}")

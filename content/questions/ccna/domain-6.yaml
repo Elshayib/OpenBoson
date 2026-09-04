@@ -208,13 +208,12 @@ questions:
     consistency and speed of changes.
 
 
-    **Eliminating all need for routing protocols**: Reducing manual repetitive changes
-    / increasing consistency is the matching value or command; Eliminating all need
-    for routing protocols is not.
+    **Eliminating all need for routing protocols**: Automation configures and verifies
+    IGPs/BGP; it does not replace the need for a routing protocol in the underlay.
 
 
-    **Removing switching entirely**: Reducing manual repetitive changes / increasing
-    consistency is the matching value or command; Removing switching entirely is not.
+    **Removing switching entirely**: Automation does not replace Ethernet switching.
+    Access switches still switch.
 
 
     **Forcing Telnet only**: Telnet (TCP 23) is cleartext remote CLI.'
@@ -248,16 +247,16 @@ questions:
     policy/control while devices forward.
 
 
-    **Removing all data planes**: Centralizing control-plane decisions via a controller
-    is the matching value or command; Removing all data planes is not.
+    **Removing all data planes**: A controller programs data planes; it does not delete
+    them. Packets still forward on the devices.
 
 
-    **Using only hubs**: Centralizing control-plane decisions via a controller is
-    the matching value or command; Using only hubs is not.
+    **Using only hubs**: Hubs are a single collision domain. Controller-based networking
+    still uses switches; it centralizes **control**, not the media.
 
 
-    **Disabling APIs**: Centralizing control-plane decisions via a controller is the
-    matching value or command; Disabling APIs is not.'
+    **Disabling APIs**: Controller-based fabrics expose northbound/southbound APIs;
+    disabling them returns you to hop-by-hop CLI, the opposite of SDN.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -327,15 +326,16 @@ questions:
     **true (lowercase)**: JSON boolean literals are lowercase true/false.
 
 
-    **True (Python style only)**: true (lowercase) is the matching value or command;
-    True (Python style only) is not.
+    **True (Python style only)**: Python `True` is not valid JSON. JSON requires lowercase
+    `true`.
 
 
-    true (lowercase) is the matching value or command; TRUE is not.
+    **TRUE**: JSON booleans are lowercase `true`. `TRUE` is a YAML/Python-ish token,
+    invalid JSON.
 
 
-    **1 as only legal form**: true (lowercase) is the matching value or command; 1
-    as only legal form is not.'
+    **1 as only legal form**: JSON numbers may be `1`, but a boolean must be lowercase
+    `true`, not the integer 1.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -445,15 +445,15 @@ questions:
     from forwarding.
 
 
-    **Only single-process routers forever**: single-process routers is not **Central
-    policy with distributed forwarding**.
+    **Only single-process routers forever**: Control/data-plane split (SDN or modular
+    IOS) is the opposite of “one process forever.”.
 
 
     **Only disabling CEF**: CEF is IOS forwarding from the FIB, not process switching.
 
 
-    **Only removing FIBs**: removing FIBs is not **Central policy with distributed
-    forwarding**.'
+    **Only removing FIBs**: Control/data-plane separation lets a controller program
+    forwarding. It does not mean “delete the FIB.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -484,8 +484,8 @@ questions:
     cases in operations.
 
 
-    **Only manually typing ACLs faster without models**: manually typing ACLs faster
-    without models is not **Anomaly detection / predictive insights**.
+    **Only manually typing ACLs faster without models**: ML in ops is anomaly detection
+    and prediction from telemetry, not “type ACLs faster.”.
 
 
     **Only increasing STP diameter**: Spanning Tree elects a root bridge and blocks
@@ -523,16 +523,16 @@ questions:
     **Repeatable, auditable changes**: Automation improves repeatability and auditability.
 
 
-    **Guaranteed zero outages forever**: Guaranteed zero outages is not **Repeatable,
-    auditable changes**.
+    **Guaranteed zero outages forever**: Automation makes changes repeatable and auditable.
+    It does not promise zero outages.
 
 
-    **Removal of all security**: Repeatable, auditable changes is the matching value
-    or command; Removal of all security is not.
+    **Removal of all security**: Automation should **enforce** security (SSH, AAA,
+    consistent ACLs), not remove it.
 
 
-    **Mandatory cleartext protocols**: Repeatable, auditable changes is the matching
-    value or command; Mandatory cleartext protocols is not.'
+    **Mandatory cleartext protocols**: Automation should push SSH, TLS, and type 8/9
+    secrets — not mandate Telnet or cleartext.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -562,14 +562,16 @@ questions:
     **Network devices**: Southbound interfaces program the network devices.
 
 
-    **Only business apps exclusive**: business apps is not **Network devices**.
+    **Only business apps exclusive**: Southbound APIs (NETCONF, gNMI, CLI) talk to
+    **network devices**, not only business applications (those are northbound).
 
 
     **Only DNS roots**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on
     UDP/TCP 53.
 
 
-    **Only end-user browsers exclusive**: end-user browsers is not **Network devices**.'
+    **Only end-user browsers exclusive**: Southbound APIs target **network elements**,
+    not only browsers (browsers consume northbound REST).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -639,10 +641,12 @@ questions:
     `<tag>`.
 
 
-    **Only parentheses**: parentheses is not **Curly braces {}**.
+    **Only parentheses**: Parentheses group expressions. JSON arrays use `[ ]`; objects
+    use `{ }`.
 
 
-    **Only spaces**: spaces is not **Curly braces {}**.'
+    **Only spaces**: JSON allows insignificant whitespace. Arrays still need `[` `]`
+    and commas between elements.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -680,7 +684,8 @@ questions:
     110, multicast 224.0.0.5/6).
 
 
-    **Only Server: nginx required**: Server: nginx is not **Authorization**.'
+    **Only Server: nginx required**: HTTP 200/201 success does not require an `Server:
+    nginx` header. That header is optional product identity.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -719,7 +724,8 @@ questions:
     Ethernet.
 
 
-    **Only analog modems**: analog modems is not **Overlay services on an underlay**.'
+    **Only analog modems**: Spine-leaf is 10/25/40/100G Ethernet, not analog dial-up
+    modems.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3

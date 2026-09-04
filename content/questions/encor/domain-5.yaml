@@ -68,7 +68,8 @@ questions:
     for VPNs.
 
 
-    **Only TLS to websites**: TLS to websites is not **Hop-by-hop L2 encryption**.
+    **Only TLS to websites**: MACsec (802.1AE) is **hop-by-hop Layer-2** encryption
+    on Ethernet links, not HTTPS to a web server.
 
 
     **Only WEP**: WEP is a broken RC4 WLAN cipher; WPA2/WPA3 replaced it.'
@@ -107,7 +108,8 @@ questions:
     **Only PoE**: PoE delivers DC power on Ethernet (802.3af/at/bt).
 
 
-    **Only fans**: fans is not **The control plane CPU**.'
+    **Only fans**: CoPP polices traffic **to the control-plane CPU**, not chassis
+    fans.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -175,15 +177,16 @@ questions:
     **Authentication and authorization services**: AAA controls device access.
 
 
-    **Only routing metrics**: routing metrics is not **Authentication and authorization
-    services**.
+    **Only routing metrics**: AAA is identity and permission, not OSPF cost or EIGRP
+    delay.
 
 
-    **Only switching ASICs**: switching ASICs is not **Authentication and authorization
-    services**.
+    **Only switching ASICs**: AAA runs on the control/management plane (RADIUS/TACACS+),
+    not in the forwarding ASIC as a substitute for identity.
 
 
-    **Only optics**: optics is not **Authentication and authorization services**.'
+    **Only optics**: AAA authenticates users/devices. Optics are transceivers, not
+    an AAA service.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -290,16 +293,16 @@ questions:
     **ACLs protecting the device/control plane path**: Infra ACLs harden device access.
 
 
-    **Only user web ACL unrelated**: user web ACL unrelated is not **ACLs protecting
-    the device/control plane path**.
+    **Only user web ACL unrelated**: An iACL/rACL protects **this router’s** management/control
+    traffic, not a random user web ACL on another box.
 
 
     **Only NAT pool**: NAT/PAT rewrites IP addresses (and ports with overload) across
     inside/outside.
 
 
-    **Only PBR set exclusive**: PBR set is not **ACLs protecting the device/control
-    plane path**.'
+    **Only PBR set exclusive**: Infrastructure ACLs (iACLs) protect the **device/control
+    plane** (filter to the RP). PBR `set` changes forwarding of transit packets.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -372,8 +375,8 @@ questions:
     Ethernet paths so the LAN does not loop.
 
 
-    **Only cable categories**: cable categories is not **AuthN/AuthZ, tokens, and
-    least privilege**.
+    **Only cable categories**: REST API security is tokens, TLS, and authZ scopes
+    — not Cat5e vs Cat6.
 
 
     **Only PoE classes**: PoE delivers DC power on Ethernet (802.3af/at/bt).'
@@ -406,7 +409,8 @@ questions:
     **IP-SGT bindings**: SGT Exchange Protocol.
 
 
-    **Only MAC tables**: MAC tables is not **IP-SGT bindings**.
+    **Only MAC tables**: SXP advertises **IP-to-SGT** bindings. The MAC table is CAM,
+    not TrustSec SXP.
 
 
     **Only LLDP alone**: LLDP (802.1AB) is standards-based L2 neighbor discovery.
@@ -443,7 +447,8 @@ questions:
     **Identity proof vs permission grant**: AuthN identifies; AuthZ permits actions.
 
 
-    **Only identical forever**: identical is not **Identity proof vs permission grant**.
+    **Only identical forever**: Authentication proves identity; authorization grants
+    permissions. They are different AAA steps, not “identical.”.
 
 
     **Only syslog facilities**: Syslog exports device logs (UDP 514) with severity
@@ -518,16 +523,16 @@ questions:
     **Layered controls against attacks**: Threat defense is a design component.
 
 
-    **Only single ACL deny any as sole design**: single ACL deny any as sole design
-    is not **Layered controls against attacks**.
+    **Only single ACL deny any as sole design**: Defense-in-depth layers AAA, segmentation,
+    firewalls, and monitoring — not a single `deny any`.
 
 
-    **Only disabling logging**: disabling logging is not **Layered controls against
-    attacks**.
+    **Only disabling logging**: Defense-in-depth keeps logging, AAA, and segmentation
+    **on**. Disabling logs removes evidence.
 
 
-    **Only open management planes**: open management planes is not **Layered controls
-    against attacks**.'
+    **Only open management planes**: Threat defense **closes** and authenticates the
+    management plane (SSH, AAA, CoPP).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -557,8 +562,8 @@ questions:
     **Permit/deny per command**: Command authz.
 
 
-    **Only authenticate without authz**: authenticate without authz is not **Permit/deny
-    per command**.
+    **Only authenticate without authz**: TACACS+ can authorize **each IOS command**.
+    Auth-without-authz would log you in and then allow everything.
 
 
     **Only encrypt STP**: Spanning Tree elects a root bridge and blocks redundant
@@ -595,15 +600,16 @@ questions:
     **Downloadable group policy on data plane**: Security group ACLs.
 
 
-    **Only VTY passwords**: VTY passwords is not **Downloadable group policy on data
-    plane**.
+    **Only VTY passwords**: A line password authenticates CLI. An **SGACL** enforces
+    TrustSec data-plane policy by SGT.
 
 
-    **Only enable secret**: enable secret is not **Downloadable group policy on data
-    plane**.
+    **Only enable secret**: enable secret protects privileged EXEC. SGACL is TrustSec
+    **data-plane** policy.
 
 
-    **Only banner motd**: banner motd is not **Downloadable group policy on data plane**.'
+    **Only banner motd**: A MOTD is a legal banner. SGACLs enforce SGT-based data-plane
+    permits/denies.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -634,12 +640,12 @@ questions:
     handling.
 
 
-    **Committed to public repos freely**: Protected, rotated, and least-privileged
-    is the matching value or command; Committed to public repos freely is not.
+    **Committed to public repos freely**: API keys are secrets. They belong in a vault
+    or environment, not a public git repo.
 
 
-    **Shared in banners**: Protected, rotated, and least-privileged is the matching
-    value or command; Shared in banners is not.
+    **Shared in banners**: Banners are shown pre-login. API keys in a banner would
+    leak credentials.
 
 
     **Used as OSPF passwords only**: OSPF is a link-state IGP (RID, areas, LSAs, cost,
@@ -674,11 +680,12 @@ questions:
     extended ACLs.
 
 
-    **Only source IP like standard always**: source IP like standard is not **L3/L4
-    fields (src/dst/ports/protocol)**.
+    **Only source IP like standard always**: Extended ACLs match protocol, src **and
+    dst** IP, and L4 ports — not source IP only (that is a standard ACL).
 
 
-    **Only MAC OUI exclusive**: MAC OUI is not **L3/L4 fields (src/dst/ports/protocol)**.
+    **Only MAC OUI exclusive**: Extended ACLs match protocol, src/dst IP, and L4 ports.
+    MAC OUI is a Layer-2 MAC ACL.
 
 
     **Only STP roles**: Spanning Tree elects a root bridge and blocks redundant Ethernet
@@ -712,7 +719,8 @@ questions:
     **ISE authorization results**: AAA-driven SGT.
 
 
-    **Only static route**: static route is not **ISE authorization results**.
+    **Only static route**: Dynamic SGT assignment comes from **ISE authorization**
+    (or SXP). A static route does not assign an SGT.
 
 
     **Only OSPF**: OSPF is a link-state IGP (areas, RID, LSAs, cost = ref-bw/interface
@@ -750,8 +758,8 @@ questions:
     **Availability vs security tradeoff**: Design decision for access control.
 
 
-    **Only spanning-tree choice**: spanning-tree choice is not **Availability vs security
-    tradeoff**.
+    **Only spanning-tree choice**: Fail-open vs fail-closed is an **access-control**
+    posture (e.g. 802.1X). It is not an STP mode knob.
 
 
     **Only EtherChannel hash**: EtherChannel bundles physical links into one logical
@@ -790,8 +798,8 @@ questions:
     security design components.
 
 
-    **Only identical protocols**: identical protocols is not **MACsec can encrypt;
-    TrustSec provides group policy context**.
+    **Only identical protocols**: MACsec can encrypt Ethernet hops; TrustSec/SGT is
+    group policy. They can coexist and are not the same protocol.
 
 
     **Only replace OSPF**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
@@ -829,8 +837,8 @@ questions:
     plane.
 
 
-    **Only switching CAM**: switching CAM is not **Protecting traffic to the device/control
-    plane**.
+    **Only switching CAM**: A control-plane ACL (CoPP/rACL) filters traffic **to the
+    RP**. CAM is the MAC table for L2 forwarding.
 
 
     **Only VTP sync**: VTP floods VLAN advertisements among switches using a revision
@@ -872,7 +880,8 @@ questions:
     paths so the LAN does not loop.
 
 
-    **Only multicast RPF**: multicast RPF is not **REST API security practice**.
+    **Only multicast RPF**: OAuth/tokens are REST API authorization. Multicast RPF
+    is a forwarding check for PIM.
 
 
     **Only HSRP preempt**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby

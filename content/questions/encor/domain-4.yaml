@@ -103,8 +103,8 @@ questions:
     provides traditional and AI-powered workflows.
 
 
-    **Only replace underlay routing forever**: replace underlay routing is not **Apply
-    configuration, monitoring, and management workflows**.
+    **Only replace underlay routing forever**: Catalyst Center **manages and assures**
+    the fabric; it does not delete OSPF/IS-IS from the underlay.
 
 
     **Only terminate PPPoE**: PPPoE is a broadband access encapsulation, not CAPWAP.
@@ -141,10 +141,12 @@ questions:
     **IP/GRE-like encapsulation**: Encapsulated RSPAN.
 
 
-    **Only L1 copper always**: L1 copper is not **IP/GRE-like encapsulation**.
+    **Only L1 copper always**: ERSPAN encapsulates mirrored frames in **GRE** and
+    routes them. It is not limited to a copper cable on the same switch.
 
 
-    **Only console**: console is not **IP/GRE-like encapsulation**.
+    **Only console**: ERSPAN is GRE-encapsulated SPAN that **routes** to a remote
+    analyzer, not a console cable.
 
 
     **Only USB**: USB is a host peripheral bus, not an Ethernet access medium.'
@@ -177,14 +179,15 @@ questions:
     **Latency/jitter/loss probes**: Synthetic probes.
 
 
-    **Only CPU temperature exclusive**: CPU temperature is not **Latency/jitter/loss
-    probes**.
+    **Only CPU temperature exclusive**: IP SLA probes latency, jitter, and loss (icmp-echo,
+    udp-jitter). CPU temperature is environmental SNMP, not IP SLA.
 
 
     **Only PoE draw exclusive**: PoE delivers DC power on Ethernet (802.3af/at/bt).
 
 
-    **Only fan RPM exclusive**: fan RPM is not **Latency/jitter/loss probes**.'
+    **Only fan RPM exclusive**: Fan RPM is chassis environmental. IP SLA measures
+    network SLA (delay/jitter/loss).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -214,10 +217,12 @@ questions:
     **User-defined flow keys/fields**: FNF customization.
 
 
-    **Only fixed v5 forever**: fixed v5 is not **User-defined flow keys/fields**.
+    **Only fixed v5 forever**: Flexible NetFlow replaced original NetFlow v5’s fixed
+    5-tuple with user-defined keys.
 
 
-    **Only disables export**: disables export is not **User-defined flow keys/fields**.
+    **Only disables export**: Flexible NetFlow lets you define **keys and non-key
+    fields**. It does not mean “turn export off.”.
 
 
     **Only STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
@@ -289,8 +294,8 @@ questions:
     while diagnosing.
 
 
-    **Disabling all logging forever**: Disabling all logging is not **Limiting debug
-    output to matching traffic**.
+    **Disabling all logging forever**: Conditional debugs (`debug condition`) **narrow**
+    what is printed. They do not disable logging.
 
 
     **Clearing the RIB**: The RIB is the routing table (`show ip route`) before CEF
@@ -331,7 +336,8 @@ questions:
     **Only VLAN creation**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only ACL lines**: ACL lines is not **Voice/video path quality assessment**.
+    **Only ACL lines**: IP SLA jitter (UDP-jitter) measures delay/jitter/loss for
+    voice/video. It is not an ACL.
 
 
     **Only VTP password**: VTP floods VLAN advertisements among switches using a revision
@@ -368,10 +374,10 @@ questions:
     **Only Telnet 23**: Telnet (TCP 23) is cleartext remote CLI.
 
 
-    **Only UDP 161**: UDP 161 is not **SSH (TCP 830)**.
+    **Only UDP 161**: UDP 161 is SNMP. NETCONF default transport is SSH TCP 830.
 
 
-    **Only TCP 179**: TCP 179 is not **SSH (TCP 830)**.'
+    **Only TCP 179**: TCP 179 is BGP. NETCONF on IOS-XE uses SSH (TCP 830) by default.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -401,14 +407,15 @@ questions:
     **Diagnose reachability and path issues**: Classic diagnostic tools.
 
 
-    **Only configure VRFs**: configure VRFs is not **Diagnose reachability and path
-    issues**.
+    **Only configure VRFs**: Ping/traceroute test **reachability and path**. Configuring
+    VRFs is unrelated to those diagnostic tools.
 
 
     **Only elect MST root**: MST (802.1s) maps VLANs onto a few STP instances.
 
 
-    **Only create SGTs**: create SGTs is not **Diagnose reachability and path issues**.'
+    **Only create SGTs**: Ping/traceroute do not create TrustSec tags. They test IP
+    reachability.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -516,8 +523,9 @@ questions:
     Center workflows.
 
 
-    **Only manually cabling racks**: manually cabling racks is not **Assurance insights
-    and guided operations**.
+    **Only manually cabling racks**: Catalyst Center assurance uses telemetry/AI for
+    insights. It does not replace the need for structured cabling, and that is not
+    its workflow.
 
 
     **Only disabling telemetry**: Model-driven telemetry streams YANG counters; disabling
@@ -593,10 +601,12 @@ questions:
     **Same switch typically**: Classic SPAN locality.
 
 
-    **Only cross-continent mandatory**: cross-continent is not **Same switch typically**.
+    **Only cross-continent mandatory**: Local SPAN source and destination are on the
+    **same switch**. It is not a cross-continent requirement.
 
 
-    **Only wireless exclusive**: wireless is not **Same switch typically**.
+    **Only wireless exclusive**: Local SPAN is a **wired** switch feature (and can
+    include wireless if the WLC is integrated), but it is not “wireless exclusive.”.
 
 
     **Only MPLS exclusive**: MPLS forwards on labels in a provider core, not on a

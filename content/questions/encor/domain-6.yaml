@@ -26,13 +26,16 @@ questions:
     **YANG data models**: YANG.
 
 
-    **Only TCL exclusive**: TCL is not **YANG data models**.
+    **Only TCL exclusive**: Tcl is one IOS scripting tool. Model-driven programmability
+    is **YANG** plus NETCONF/RESTCONF/gNMI.
 
 
-    **Only expect scripts exclusive**: expect scripts is not **YANG data models**.
+    **Only expect scripts exclusive**: Expect/Tcl scrape CLI. Model-driven ops use
+    YANG datastores instead of screen-scraping.
 
 
-    **Only macros exclusive**: macros is not **YANG data models**.'
+    **Only macros exclusive**: IOS macros are static CLI snippets. Model-driven programmability
+    is YANG/NETCONF.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -104,11 +107,12 @@ questions:
     management; Ansible is typically agentless.
 
 
-    **Only a routing protocol**: a routing protocol is not **Agentless orchestration**.
+    **Only a routing protocol**: Ansible is **agentless automation** (SSH + playbooks).
+    It is not OSPF/BGP.
 
 
     **Only a wireless cipher**: A wireless cipher (TKIP/CCMP/GCMP) encrypts 802.11
-    frames; it is not AAA or overlay.'
+    frames; it is not AAA or an overlay identifier.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -138,14 +142,16 @@ questions:
     **Libraries to call APIs or parse text**: ENCOR expects basic Python literacy.
 
 
-    **Only to replace ASICs**: to replace ASICs is not **Libraries to call APIs or
-    parse text**.
+    **Only to replace ASICs**: Automation does not rip out switching silicon. It configures
+    and verifies it.
 
 
-    **Only to elect DR**: to elect DR is not **Libraries to call APIs or parse text**.
+    **Only to elect DR**: Script libraries do not elect OSPF DRs; the OSPF process
+    on the box does.
 
 
-    **Only to age CAM**: to age CAM is not **Libraries to call APIs or parse text**.'
+    **Only to age CAM**: Python network scripts call APIs or drive CLI. Aging CAM
+    is a switch timer.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -176,12 +182,12 @@ questions:
     files.
 
 
-    **Only Python True literals**: Python True literals is not **Well-formed objects/arrays
-    with quoted keys**.
+    **Only Python True literals**: JSON booleans are lowercase `true`/`false`. Python
+    `True` is illegal in JSON.
 
 
-    **Only trailing commas required**: trailing commas is not **Well-formed objects/arrays
-    with quoted keys**.
+    **Only trailing commas required**: JSON **forbids** trailing commas. A trailing
+    comma after the last element is a syntax error.
 
 
     **Only XML tags**: XML uses angle-bracket tags (`<rpc>`); NETCONF uses it, JSON
@@ -215,14 +221,16 @@ questions:
     **Programmatic inventory/policy/operations**: Controller APIs automate platforms.
 
 
-    **Only console cabling**: console cabling is not **Programmatic inventory/policy/operations**.
+    **Only console cabling**: Catalyst Center / vManage APIs are HTTPS REST for inventory
+    and policy, not RJ-45 console pinouts.
 
 
-    **Only optical dBm reads exclusive**: optical dBm reads is not **Programmatic
-    inventory/policy/operations**.
+    **Only optical dBm reads exclusive**: Controller APIs push policy/inventory. Optical
+    dBm is `show interface transceiver`.
 
 
-    **Only punch-down maps**: punch-down maps is not **Programmatic inventory/policy/operations**.'
+    **Only punch-down maps**: Punch-down maps are 110-block craft. Controller APIs
+    are software, not wiring diagrams.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -330,16 +338,14 @@ questions:
     **Configuration and operational data structure**: YANG is a data modeling language.
 
 
-    **Only Ethernet PHY voltages**: Ethernet PHY voltages is not **Configuration and
-    operational data structure**.
+    **Only Ethernet PHY voltages**: YANG describes configuration and operational state
+    of features (interfaces, BGP, ACL), not analog PHY voltages.
 
 
-    **Only cable colors**: cable colors is not **Configuration and operational data
-    structure**.
+    **Only cable colors**: YANG does not model jacket colors; it models device configuration/state.
 
 
-    **Only rack U heights**: rack U heights is not **Configuration and operational
-    data structure**.'
+    **Only rack U heights**: YANG does not model rack units; DCIM tools do.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -372,12 +378,12 @@ questions:
     **Unauthorized**: HTTP 401 — missing or invalid authentication.
 
 
-    **Server error**: Successful resource creation is the matching value or command;
-    Server error is not.
+    **Server error**: HTTP 5xx is a server failure. 201 Created is success on create
+    (POST).
 
 
-    **Not found**: Successful resource creation is the matching value or command;
-    Not found is not.'
+    **Not found**: HTTP 404 means the URI does not exist. 201 Created means a resource
+    was created.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -407,15 +413,16 @@ questions:
     **Square brackets**: Basic Python components include lists/dicts.
 
 
-    **Only curly braces exclusive**: curly braces is not **Square brackets**.
+    **Only curly braces exclusive**: A Python **list** uses `[ ]`. `{ }` is a dict/set;
+    lists are not written with only braces.
 
 
     **Only angle brackets**: Angle brackets are XML tags. JSON uses `{}` / `[]`, not
     `<tag>`.
 
 
-    **Only parentheses exclusive forever**: parentheses exclusive is not **Square
-    brackets**.'
+    **Only parentheses exclusive forever**: Python tuples use `( )`. A list is `[
+    ]`.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -449,7 +456,7 @@ questions:
     lowercase true/false/null.
 
 
-    null is the matching value or command; NULL is not.
+    **NULL**: SQL/C `NULL` is not JSON. JSON’s null token is lowercase `null`.
 
 
     **undefined (JS only as JSON)**: JSON encodes objects `{}` and arrays `[]` with
@@ -521,12 +528,12 @@ questions:
     **Syslog patterns / timers / events**: Event-driven automation on box.
 
 
-    **Only manual cable moves**: manual cable moves is not **Syslog patterns / timers
-    / events**.
+    **Only manual cable moves**: EEM applets fire on syslog patterns, timers, or interface
+    events — not on a human moving a cable.
 
 
-    **Only optical cleaning**: optical cleaning is not **Syslog patterns / timers
-    / events**.
+    **Only optical cleaning**: EEM does not trigger on cleaning an LC connector. It
+    triggers on IOS events.
 
 
     **Only DNS TTL expiry exclusive**: DNS maps names to addresses (A/AAAA) and reverse
@@ -600,7 +607,8 @@ questions:
     **Only VLANs to VNIs exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only AS paths**: AS paths is not **Keys to values**.
+    **Only AS paths**: A Python dict maps **keys to values**. BGP AS-path is a path-vector
+    attribute, not a dict.
 
 
     **Only STP costs exclusive**: Spanning Tree elects a root bridge and blocks redundant
@@ -674,16 +682,16 @@ questions:
     management.
 
 
-    **Only free-form CLI forever without models**: free-form CLI forever without models
-    is not **Structured, machine-readable device data contracts**.
+    **Only free-form CLI forever without models**: YANG replaces free-form CLI as
+    the contract. Devices still have CLI, but the API is the model.
 
 
-    **Only binary IOS images as models**: binary IOS images as models is not **Structured,
-    machine-readable device data contracts**.
+    **Only binary IOS images as models**: YANG models are text contracts (`.yang`),
+    not `.bin` IOS images.
 
 
-    **Only CSV exclusive**: CSV is not **Structured, machine-readable device data
-    contracts**.'
+    **Only CSV exclusive**: CSV is a spreadsheet export. YANG gives structured, typed
+    device data models for NETCONF/RESTCONF.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -713,14 +721,16 @@ questions:
     **Square brackets []**: Arrays use [].
 
 
-    **Only curly braces**: curly braces is not **Square brackets []**.
+    **Only curly braces**: Curly braces `{}` delimit a JSON **object**. Arrays use
+    square brackets `[]`.
 
 
-    **Only quotes**: quotes is not **Square brackets []**.
+    **Only quotes**: Quotes delimit JSON **strings**. Arrays are bounded by `[` and
+    `]`.
 
 
-    **Only commas without brackets**: commas without brackets is not **Square brackets
-    []**.'
+    **Only commas without brackets**: A JSON array is `[ ... ]`. Commas separate elements
+    **inside** those brackets.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -753,11 +763,11 @@ questions:
     **Only ASIC TCAMs exclusive**: TCAM stores hardware ACL/QoS/FIB entries.
 
 
-    **Only copper PHYs**: copper PHYs is not **Applications / orchestration systems**.
+    **Only copper PHYs**: Northbound APIs are software contracts, not copper PHY silicon.
 
 
-    **Only console servers exclusive**: console servers is not **Applications / orchestration
-    systems**.'
+    **Only console servers exclusive**: Northbound APIs face **applications and orchestrators**.
+    Console servers are serial OOB.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4

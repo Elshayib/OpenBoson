@@ -358,25 +358,14 @@ questions:
     - Sort requirements descending
     - Assign largest subnets first
     - Document remaining address space
-  explanation: 'The correct sequence for this item is: List required host counts →
-    Sort requirements descending → Assign largest subnets first → Document remaining
-    address space. Each step must appear in this order; rearranging any step breaks
-    the required procedure or protocol behavior. The correct sequence for this item
-    is: List required host counts → Sort requirements descending → Assign largest
-    subnets first → Document remaining address space. Each step must appear in this
-    order; rearranging any step breaks the required procedure or protocol behavior.
-    The correct sequence for this item is: List required host counts → Sort requirements
-    descending → Assign largest subnets first → Document remaining address space.
-    Each step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior. The correct sequence for this item is: List required
-    host counts → Sort requirements descending → Assign largest subnets first → Document
-    remaining address space. Each step must appear in this order; rearranging any
-    step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: List required host counts → Sort requirements descending → Assign
-    largest subnets first → Document remaining address space. The stem requires the
-    operational or protocol order implied by: Order the steps to design a VLSM plan
-    for a site.. Each listed step must appear in this order; rearranging any step
-    breaks the required procedure or protocol behavior.'
+  explanation: 'VLSM allocates the **largest** blocks first so leftover space stays
+    contiguous. Order: list each subnet’s host requirement, sort those counts descending,
+    assign the biggest prefixes first, then document what address space remains.
+
+
+    Listing hosts first tells you the required prefix lengths. Sorting descending
+    is what makes “largest first” well-defined. Documenting leftover space last is
+    how the next VLAN or site gets a free block.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.6
@@ -441,15 +430,15 @@ questions:
     **172.16.5.32**: /28 block size is 16; 33 falls in 32–47.
 
 
-    **172.16.5.33**: 172.16.5.32 is the matching value or command; 172.16.5.33 is
-    not.
+    172.16.5.33 is a usable host in 172.16.5.32/28, not the subnet identifier itself.
 
 
-    **172.16.5.0**: 172.16.5.32 is the matching value or command; 172.16.5.0 is not.
+    172.16.5.0 is the /24 network. For 172.16.5.33/28 the block size is 16, so the
+    network is 172.16.5.32 (range 32–47).
 
 
-    **172.16.5.48**: 172.16.5.32 is the matching value or command; 172.16.5.48 is
-    not.'
+    172.16.5.48 is the next /28 (48–63). 172.16.5.33 falls in 32–47, so the network
+    is .32.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.6
@@ -630,12 +619,12 @@ questions:
     via spine.
 
 
-    **Leaves connect only to other leaves**: Every leaf connects to every spine is
-    the matching value or command; Leaves connect only to other leaves is not.
+    **Leaves connect only to other leaves**: In a Clos fabric each leaf has uplinks
+    to **every spine**, not only to other leaves (that would be a looped L2 mesh).
 
 
-    **Spines connect servers directly**: Every leaf connects to every spine is the
-    matching value or command; Spines connect servers directly is not.
+    **Spines connect servers directly**: Servers dual-home to **leaves**. Spines only
+    connect to leaves (no endpoints).
 
 
     **It requires Token Ring**: Token Ring is a legacy LAN (IEEE 802.5), not modern
@@ -713,8 +702,8 @@ questions:
     **USB only**: USB is a host peripheral bus, not an Ethernet access medium.
 
 
-    **Coax center conductor**: Data pairs (1-2 and 3-6) is the matching value or command;
-    Coax center conductor is not.'
+    **Coax center conductor**: RG-59/RG-6 coax is not 802.3af. Alternative A puts
+    DC on the 10/100 data pairs (1-2 and 3-6).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.1
@@ -893,12 +882,12 @@ questions:
     default AD 110, multicast 224.0.0.5/6).
 
 
-    **Automatic trunking**: Late collisions / poor performance is the matching value
-    or command; Automatic trunking is not.
+    **Automatic trunking**: DTP may form a trunk, but a duplex mismatch causes late
+    collisions and CRC errors on the half-duplex side, not DTP.
 
 
-    **Mandatory encryption**: Late collisions / poor performance is the matching value
-    or command; Mandatory encryption is not.'
+    **Mandatory encryption**: A duplex mismatch does not enable encryption. You get
+    collisions, CRC errors, and terrible throughput.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.4
@@ -1002,13 +991,16 @@ questions:
     **1, 6, and 11**: 1/6/11 are the classic nonoverlapping 2.4 GHz set.
 
 
-    **1, 2, and 3 only**: 1, 2, and 3 is not **1, 6, and 11**.
+    **1, 2, and 3 only**: Channels 1, 2, and 3 overlap in 2.4 GHz (22 MHz DSSS). The
+    non-overlapping US set is 1, 6, 11.
 
 
-    **Only channel 14 everywhere**: channel 14 everywhere is not **1, 6, and 11**.
+    **Only channel 14 everywhere**: Channel 14 is Japan-only 2.4 GHz. US indoor non-overlapping
+    channels are 1, 6, 11.
 
 
-    **Channels 36 and 40 only**: Channels 36 and 40 is not **1, 6, and 11**.'
+    **Channels 36 and 40 only**: 36 and 40 are 5 GHz UNII-1 channels, not the 2.4
+    GHz non-overlapping set (1, 6, 11).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.11
@@ -1039,8 +1031,8 @@ questions:
     reaches.
 
 
-    **Only connector color mandatory**: connector color is not **Core size / distance
-    capability**.
+    **Only connector color mandatory**: SMF vs MMF differs in **core diameter** (~9
+    µm vs 50/62.5 µm) and reach, not in a mandatory connector color.
 
 
     **Only PoE support**: PoE delivers DC power on Ethernet (802.3af/at/bt).
@@ -1077,16 +1069,16 @@ questions:
     topology changes relearn cleanly.
 
 
-    **Encrypts the MAC table**: Removes unused CAM entries after a timer is the matching
-    value or command; Encrypts the MAC table is not.
+    **Encrypts the MAC table**: The CAM/MAC table is not encrypted. Aging simply times
+    out unused source MACs.
 
 
-    **Converts MAC to IPv6**: Removes unused CAM entries after a timer is the matching
-    value or command; Converts MAC to IPv6 is not.
+    **Converts MAC to IPv6**: NDP/SLAAC may derive an IPv6 IID from a MAC (EUI-64).
+    MAC aging only deletes stale CAM entries after the aging timer.
 
 
-    **Disables flooding forever**: Disables flooding is not **Removes unused CAM entries
-    after a timer**.'
+    **Disables flooding forever**: MAC aging deletes stale CAM rows so unknown unicasts
+    can flood again and relearn. It does not permanently disable flooding.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.13
@@ -1116,15 +1108,16 @@ questions:
     **UNII 5 GHz bands**: Enterprise Wi-Fi commonly uses UNII 5 GHz bands.
 
 
-    **Only 900 MHz ISM**: 900 MHz ISM is not **UNII 5 GHz bands**.
+    **Only 900 MHz ISM**: 900 MHz is a separate ISM/IoT band (802.11ah-ish). Enterprise
+    WLANs use 5 GHz UNII (and 2.4/6 GHz), not 900 MHz.
 
 
     **60 GHz only**: 60 GHz is 802.11ad/ay WiGig, not the common 2.4/5 GHz campus
     bands.
 
 
-    **HF shortwave**: UNII 5 GHz bands is the matching value or command; HF shortwave
-    is not.'
+    HF shortwave is a long-haul radio band, not the 5 GHz UNII bands used by enterprise
+    802.11a/n/ac/ax.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.11
@@ -1155,8 +1148,8 @@ questions:
     to.
 
 
-    **AP serial number**: Wireless network name is the matching value or command;
-    AP serial number is not.
+    **AP serial number**: An AP serial number identifies hardware inventory. An SSID
+    is the broadcast network name clients select.
 
 
     **WLC HA VIP only**: A WLC terminates CAPWAP and pushes WLAN policy to lightweight

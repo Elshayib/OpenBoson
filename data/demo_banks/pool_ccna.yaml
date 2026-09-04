@@ -469,25 +469,14 @@ questions:
     - Sort requirements descending
     - Assign largest subnets first
     - Document remaining address space
-  explanation: 'The correct sequence for this item is: List required host counts →
-    Sort requirements descending → Assign largest subnets first → Document remaining
-    address space. Each step must appear in this order; rearranging any step breaks
-    the required procedure or protocol behavior. The correct sequence for this item
-    is: List required host counts → Sort requirements descending → Assign largest
-    subnets first → Document remaining address space. Each step must appear in this
-    order; rearranging any step breaks the required procedure or protocol behavior.
-    The correct sequence for this item is: List required host counts → Sort requirements
-    descending → Assign largest subnets first → Document remaining address space.
-    Each step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior. The correct sequence for this item is: List required
-    host counts → Sort requirements descending → Assign largest subnets first → Document
-    remaining address space. Each step must appear in this order; rearranging any
-    step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: List required host counts → Sort requirements descending → Assign
-    largest subnets first → Document remaining address space. The stem requires the
-    operational or protocol order implied by: Order the steps to design a VLSM plan
-    for a site.. Each listed step must appear in this order; rearranging any step
-    breaks the required procedure or protocol behavior.'
+  explanation: 'VLSM allocates the **largest** blocks first so leftover space stays
+    contiguous. Order: list each subnet’s host requirement, sort those counts descending,
+    assign the biggest prefixes first, then document what address space remains.
+
+
+    Listing hosts first tells you the required prefix lengths. Sorting descending
+    is what makes “largest first” well-defined. Documenting leftover space last is
+    how the next VLAN or site gets a free block.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.6
@@ -552,15 +541,15 @@ questions:
     **172.16.5.32**: /28 block size is 16; 33 falls in 32–47.
 
 
-    **172.16.5.33**: 172.16.5.32 is the matching value or command; 172.16.5.33 is
-    not.
+    172.16.5.33 is a usable host in 172.16.5.32/28, not the subnet identifier itself.
 
 
-    **172.16.5.0**: 172.16.5.32 is the matching value or command; 172.16.5.0 is not.
+    172.16.5.0 is the /24 network. For 172.16.5.33/28 the block size is 16, so the
+    network is 172.16.5.32 (range 32–47).
 
 
-    **172.16.5.48**: 172.16.5.32 is the matching value or command; 172.16.5.48 is
-    not.'
+    172.16.5.48 is the next /28 (48–63). 172.16.5.33 falls in 32–47, so the network
+    is .32.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.6
@@ -741,12 +730,12 @@ questions:
     via spine.
 
 
-    **Leaves connect only to other leaves**: Every leaf connects to every spine is
-    the matching value or command; Leaves connect only to other leaves is not.
+    **Leaves connect only to other leaves**: In a Clos fabric each leaf has uplinks
+    to **every spine**, not only to other leaves (that would be a looped L2 mesh).
 
 
-    **Spines connect servers directly**: Every leaf connects to every spine is the
-    matching value or command; Spines connect servers directly is not.
+    **Spines connect servers directly**: Servers dual-home to **leaves**. Spines only
+    connect to leaves (no endpoints).
 
 
     **It requires Token Ring**: Token Ring is a legacy LAN (IEEE 802.5), not modern
@@ -824,8 +813,8 @@ questions:
     **USB only**: USB is a host peripheral bus, not an Ethernet access medium.
 
 
-    **Coax center conductor**: Data pairs (1-2 and 3-6) is the matching value or command;
-    Coax center conductor is not.'
+    **Coax center conductor**: RG-59/RG-6 coax is not 802.3af. Alternative A puts
+    DC on the 10/100 data pairs (1-2 and 3-6).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.1
@@ -1004,12 +993,12 @@ questions:
     default AD 110, multicast 224.0.0.5/6).
 
 
-    **Automatic trunking**: Late collisions / poor performance is the matching value
-    or command; Automatic trunking is not.
+    **Automatic trunking**: DTP may form a trunk, but a duplex mismatch causes late
+    collisions and CRC errors on the half-duplex side, not DTP.
 
 
-    **Mandatory encryption**: Late collisions / poor performance is the matching value
-    or command; Mandatory encryption is not.'
+    **Mandatory encryption**: A duplex mismatch does not enable encryption. You get
+    collisions, CRC errors, and terrible throughput.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.4
@@ -1113,13 +1102,16 @@ questions:
     **1, 6, and 11**: 1/6/11 are the classic nonoverlapping 2.4 GHz set.
 
 
-    **1, 2, and 3 only**: 1, 2, and 3 is not **1, 6, and 11**.
+    **1, 2, and 3 only**: Channels 1, 2, and 3 overlap in 2.4 GHz (22 MHz DSSS). The
+    non-overlapping US set is 1, 6, 11.
 
 
-    **Only channel 14 everywhere**: channel 14 everywhere is not **1, 6, and 11**.
+    **Only channel 14 everywhere**: Channel 14 is Japan-only 2.4 GHz. US indoor non-overlapping
+    channels are 1, 6, 11.
 
 
-    **Channels 36 and 40 only**: Channels 36 and 40 is not **1, 6, and 11**.'
+    **Channels 36 and 40 only**: 36 and 40 are 5 GHz UNII-1 channels, not the 2.4
+    GHz non-overlapping set (1, 6, 11).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.11
@@ -1150,8 +1142,8 @@ questions:
     reaches.
 
 
-    **Only connector color mandatory**: connector color is not **Core size / distance
-    capability**.
+    **Only connector color mandatory**: SMF vs MMF differs in **core diameter** (~9
+    µm vs 50/62.5 µm) and reach, not in a mandatory connector color.
 
 
     **Only PoE support**: PoE delivers DC power on Ethernet (802.3af/at/bt).
@@ -1188,16 +1180,16 @@ questions:
     topology changes relearn cleanly.
 
 
-    **Encrypts the MAC table**: Removes unused CAM entries after a timer is the matching
-    value or command; Encrypts the MAC table is not.
+    **Encrypts the MAC table**: The CAM/MAC table is not encrypted. Aging simply times
+    out unused source MACs.
 
 
-    **Converts MAC to IPv6**: Removes unused CAM entries after a timer is the matching
-    value or command; Converts MAC to IPv6 is not.
+    **Converts MAC to IPv6**: NDP/SLAAC may derive an IPv6 IID from a MAC (EUI-64).
+    MAC aging only deletes stale CAM entries after the aging timer.
 
 
-    **Disables flooding forever**: Disables flooding is not **Removes unused CAM entries
-    after a timer**.'
+    **Disables flooding forever**: MAC aging deletes stale CAM rows so unknown unicasts
+    can flood again and relearn. It does not permanently disable flooding.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.13
@@ -1227,15 +1219,16 @@ questions:
     **UNII 5 GHz bands**: Enterprise Wi-Fi commonly uses UNII 5 GHz bands.
 
 
-    **Only 900 MHz ISM**: 900 MHz ISM is not **UNII 5 GHz bands**.
+    **Only 900 MHz ISM**: 900 MHz is a separate ISM/IoT band (802.11ah-ish). Enterprise
+    WLANs use 5 GHz UNII (and 2.4/6 GHz), not 900 MHz.
 
 
     **60 GHz only**: 60 GHz is 802.11ad/ay WiGig, not the common 2.4/5 GHz campus
     bands.
 
 
-    **HF shortwave**: UNII 5 GHz bands is the matching value or command; HF shortwave
-    is not.'
+    HF shortwave is a long-haul radio band, not the 5 GHz UNII bands used by enterprise
+    802.11a/n/ac/ax.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.11
@@ -1266,8 +1259,8 @@ questions:
     to.
 
 
-    **AP serial number**: Wireless network name is the matching value or command;
-    AP serial number is not.
+    **AP serial number**: An AP serial number identifies hardware inventory. An SSID
+    is the broadcast network name clients select.
 
 
     **WLC HA VIP only**: A WLC terminates CAPWAP and pushes WLAN policy to lightweight
@@ -7119,21 +7112,11 @@ questions:
     - Listening
     - Learning
     - Forwarding
-  explanation: 'The correct sequence for this item is: Blocking → Listening → Learning
-    → Forwarding. Each step must appear in this order; rearranging any step breaks
-    the required procedure or protocol behavior. The correct sequence for this item
-    is: Blocking → Listening → Learning → Forwarding. Each step must appear in this
-    order; rearranging any step breaks the required procedure or protocol behavior.
-    The correct sequence for this item is: Blocking → Listening → Learning → Forwarding.
-    Each step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior. The correct sequence for this item is: Blocking
-    → Listening → Learning → Forwarding. Each step must appear in this order; rearranging
-    any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Blocking → Listening → Learning → Forwarding. The stem requires
-    the operational or protocol order implied by: Order classic STP port states from
-    blocking toward forwarding (802.1D teaching order).. Each listed step must appear
-    in this order; rearranging any step breaks the required procedure or protocol
-    behavior.'
+  explanation: 'Classic 802.1D port states in order: **Blocking** (no user frames,
+    BPDUs listened) → **Listening** (BPDUs, still no learning/forwarding) → **Learning**
+    (source MACs learned, still no forwarding) → **Forwarding** (user frames). RSTP
+    collapses blocking/listening into discarding, but this item is the 802.1D teaching
+    sequence.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -7210,7 +7193,7 @@ questions:
     AD 110, multicast 224.0.0.5/6).
 
 
-    **A VPN**: A trunk is the matching value or command; A VPN is not.'
+    A VPN is an overlay (IPsec/GRE/SSL). DTP negotiates 802.1Q trunks, not VPNs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -7240,14 +7223,16 @@ questions:
     **Priority then MAC**: Lowest bridge ID wins the root election.
 
 
-    **Highest MAC always**: Highest MAC is not **Priority then MAC**.
+    **Highest MAC always**: STP root election uses **lowest** Bridge ID (priority
+    then MAC). Highest MAC loses unless priority is lower.
 
 
-    **Highest priority**: Priority then MAC is the matching value or command; Highest
-    priority is not.
+    **Highest priority**: Lower priority wins (default 32768; 0 is best). Highest
+    priority is the worst BID component.
 
 
-    **Serial number only**: Serial number is not **Priority then MAC**.'
+    **Serial number only**: STP Bridge ID is **priority + MAC** (plus extended system
+    ID). A chassis serial is inventory, not the BID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -7358,10 +7343,12 @@ questions:
     **Cisco proprietary**: PAgP is Cisco proprietary; LACP is standards-based.
 
 
-    **IETF standard only**: IETF standard is not **Cisco proprietary**.
+    **IETF standard only**: PAgP is **Cisco-proprietary**. The IETF/IEEE EtherChannel
+    protocol is LACP (802.3ad/802.1AX).
 
 
-    **ITU SS7**: Cisco proprietary is the matching value or command; ITU SS7 is not.
+    **ITU SS7**: SS7 is the telephony signaling system. PAgP is Cisco LAN EtherChannel,
+    unrelated to SS7.
 
 
     **Bluetooth SIG**: Bluetooth is a WPAN radio, not CAPWAP or 802.11 infrastructure.'
@@ -7394,10 +7381,12 @@ questions:
     **Local mode CAPWAP**: Local-mode APs tunnel client traffic to the WLC via CAPWAP.
 
 
-    **Only autonomous IOS AP**: autonomous IOS AP is not **Local mode CAPWAP**.
+    **Only autonomous IOS AP**: Autonomous APs do not build CAPWAP to a WLC. Local-mode
+    lightweight APs do.
 
 
-    **Only mesh satellite RF**: mesh satellite RF is not **Local mode CAPWAP**.
+    **Only mesh satellite RF**: Mesh APs have a RAP/MAP radio backhaul. A WLC in local
+    mode terminates **CAPWAP** from local-mode APs, not satellite mesh RF.
 
 
     **Only Bluetooth beacons**: Bluetooth is a WPAN radio, not CAPWAP or 802.11 infrastructure.'
@@ -7511,13 +7500,16 @@ questions:
     **Blocking and listening**: RSTP collapses blocking/listening into discarding.
 
 
-    **Only forwarding**: forwarding is not **Blocking and listening**.
+    **Only forwarding**: 802.1D forwarding is the final state. RSTP discarding replaced
+    blocking/listening.
 
 
-    **Only disabled**: disabled is not **Blocking and listening**.
+    **Only disabled**: Disabled is administratively down. RSTP discarding is the state
+    that replaced 802.1D blocking/listening on a live port.
 
 
-    **Learning only**: Learning is not **Blocking and listening**.'
+    **Learning only**: 802.1D Learning still does not forward user frames. RSTP **discarding**
+    replaces blocking **and** listening, not learning alone.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -7554,8 +7546,8 @@ questions:
     **Different native VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Random MTUs**: Speed/duplex and compatible configs is the matching value or
-    command; Random MTUs is not.'
+    **Random MTUs**: EtherChannel members must match speed, duplex, and mode. Random
+    MTUs would break the bundle or cause PMTUD pain; they are not a requirement.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -7623,8 +7615,8 @@ questions:
   explanation: 'Root guard protects the root role from unexpected superior BPDUs.
 
 
-    **Port security sticky**: Root guard is the matching value or command; Port security
-    sticky is not.
+    **Port security sticky**: Sticky MAC learns allowed addresses on a port. **Root
+    Guard** blocks superior BPDUs so a downstream switch cannot become root.
 
 
     **DHCP snooping**: DHCP assigns IPv4 address, mask, gateway, and DNS (DORA, UDP
@@ -7667,12 +7659,12 @@ questions:
     discovery (`show cdp neighbors`).
 
 
-    **A routing protocol**: IEEE neighbor discovery protocol is the matching value
-    or command; A routing protocol is not.
+    A routing protocol (OSPF/EIGRP/BGP) exchanges Layer-3 reachability. LLDP only
+    advertises Layer-2 neighbor identity.
 
 
     **A wireless encryption cipher**: A wireless cipher (TKIP/CCMP/GCMP) encrypts
-    802.11 frames; it is not AAA or overlay.'
+    802.11 frames; it is not AAA or an overlay identifier.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -7702,10 +7694,12 @@ questions:
     **Bundled uplink capacity/redundancy**: LAG aggregates WLC-to-switch connections.
 
 
-    **Only SSID encryption**: SSID encryption is not **Bundled uplink capacity/redundancy**.
+    **Only SSID encryption**: LAG is a wired bundle. WLAN encryption (WPA2/WPA3) is
+    a radio cipher, not LAG.
 
 
-    **Only RF channel planning**: RF channel planning is not **Bundled uplink capacity/redundancy**.
+    **Only RF channel planning**: LAG (EtherChannel) between WLC and switch **bundles**
+    CAPWAP uplinks for bandwidth/redundancy. It does not pick RF channels.
 
 
     **Only CAPWAP DTLS keys**: CAPWAP tunnels AP control/data to a WLC in centralized
@@ -11618,21 +11612,10 @@ questions:
     - Exchange
     - Loading
     - Full
-  explanation: 'The correct sequence for this item is: Down → Init → 2-Way → ExStart
-    → Exchange → Loading → Full. Each step must appear in this order; rearranging
-    any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading → Full. Each
-    step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way
-    → ExStart → Exchange → Loading → Full. Each step must appear in this order; rearranging
-    any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading → Full. Each
-    step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way
-    → ExStart → Exchange → Loading → Full. The stem requires the operational or protocol
-    order implied by: Place OSPF adjacency states in order from Down to Full.. Each
-    listed step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior.'
+  explanation: OSPF neighbors move **Down → Init → 2-Way → ExStart → Exchange → Loading
+    → Full**. Down is no Hellos. Init is a Hello heard. 2-Way is bidirectional (DR
+    election can finish here on a LAN). ExStart/Exchange/Loading master the DD and
+    flood LSAs. Full means the LSDBs match.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -11898,19 +11881,26 @@ questions:
     text: Random ECMP only
   correct:
     answer: a
-  explanation: 'More-specific prefixes win longest-match forwarding.
+  explanation: 'Cisco IOS does **longest prefix match** first. `10.1.1.5` matches
+    both `10.1.1.0/28` (28 bits) and `10.1.0.0/16` (16 bits); the /28 is installed
+    even if the /16 has a better administrative distance or metric.
 
 
-    **10.1.1.0/28 over 10.1.0.0/16**: More-specific prefixes win longest-match forwarding.
+    **10.1.1.0/28 over 10.1.0.0/16** wins because 28 matching bits beat 16.
 
 
-    **Always AD only**: Always AD is not **10.1.1.0/28 over 10.1.0.0/16**.
+    **Always AD only** is consulted only among routes to the **same prefix** from
+    different sources (for example OSPF AD 110 vs EIGRP AD 90). AD does not override
+    a longer match.
 
 
-    **Always metric only**: Always metric is not **10.1.1.0/28 over 10.1.0.0/16**.
+    **Always metric only** (OSPF cost, EIGRP composite) ranks paths **inside one protocol**
+    after the prefix length is already chosen. A /16 with cost 1 still loses to a
+    /28 with cost 100.
 
 
-    **Random ECMP only**: ECMP installs multiple equal-cost next hops (OSPF `maximum-paths`).'
+    **Random ECMP only** appears when prefix length, AD, and metric are all equal
+    (`maximum-paths`). It never beats a longer prefix.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -11934,22 +11924,25 @@ questions:
     text: Connected
   correct:
     answer: a
-  explanation: 'S* marks a candidate default static route.
+  explanation: 'Cisco `show ip route` codes: **C** connected, **L** local, **S** static,
+    **S*** candidate default static (gateway of last resort), **O** OSPF, **B** BGP,
+    **D** EIGRP, **R** RIP.
 
 
-    **Candidate default static**: S* marks a candidate default static route.
+    **Candidate default static** is **S*** — typically `ip route 0.0.0.0 0.0.0.0 nh`
+    marked as the gateway of last resort.
 
 
-    **OSPF summary**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
-    110, multicast 224.0.0.5/6).
+    **OSPF summary** shows as **O IA** (inter-area Type-3) or **O** for an intra-area
+    prefix, never S*.
 
 
-    **BGP aggregate**: BGP is the Internet path-vector protocol (TCP 179; eBGP AD
-    20, iBGP AD 200).
+    **BGP aggregate** lives in the BGP table (`aggregate-address`) and installs as
+    **B** or **B***>, not S*.
 
 
-    **Connected**: Candidate default static is the matching value or command; Connected
-    is not.'
+    **Connected** is code **C** — a prefix on an up/up interface. It is a directly
+    attached network, not a static default.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -12022,12 +12015,12 @@ questions:
     **Limit LSA flooding scope**: Areas hierarchicalize LSA flooding.
 
 
-    **Replace IP addresses**: Limit LSA flooding scope is the matching value or command;
-    Replace IP addresses is not.
+    **Replace IP addresses**: OSPF areas **limit LSA flooding** and shrink the LSDB/SPF.
+    They do not NAT or replace host IPs.
 
 
-    **Encrypt all payloads**: Limit LSA flooding scope is the matching value or command;
-    Encrypt all payloads is not.
+    **Encrypt all payloads**: OSPF areas bound LSA flooding (Type-1/2 stay intra-area).
+    Encryption is IPsec or OSPF auth, not the reason areas exist.
 
 
     **Terminate VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
@@ -12177,11 +12170,12 @@ questions:
     **Metric (and eligible for install)**: ECMP installs equal-metric paths.
 
 
-    **Only interface bandwidth randomly**: `interface bandwidth randomly` enters that
-    interface''s configuration context.
+    **Only interface bandwidth randomly**: ECMP needs **equal** metrics, not random
+    bandwidth values.
 
 
-    **Only AD different**: AD different is not **Metric (and eligible for install)**.
+    **Only AD different**: ECMP requires **equal metric** (and same prefix/AD). Different
+    ADs mean only the better AD is installed.
 
 
     **Only AS path length for OSPF**: OSPF is a link-state IGP (RID, areas, LSAs,
@@ -12251,15 +12245,15 @@ questions:
     to the backbone.
 
 
-    **Only two autonomous systems**: two autonomous systems is not **Area 0 and non-backbone
-    areas (typically)**.
+    **Only two autonomous systems**: An ABR borders **OSPF areas** (area 0 + N), not
+    BGP ASNs. You can have many areas.
 
 
     **Only VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only wireless controllers**: wireless controllers is not **Area 0 and non-backbone
-    areas (typically)**.'
+    **Only wireless controllers**: An ABR is an OSPF router with links in two areas.
+    A WLC terminates CAPWAP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -12294,12 +12288,14 @@ questions:
     path attributes.
 
 
-    **Delay by default like IGRP classic**: Reference bandwidth / interface bandwidth
-    is the matching value or command; Delay by default like IGRP classic is not.
+    **Delay by default like IGRP classic**: Classic IGRP/EIGRP used bandwidth and
+    delay in a composite metric. Cisco OSPF cost defaults to reference-bandwidth /
+    interface bandwidth.
 
 
-    **Administrative distance**: Reference bandwidth / interface bandwidth is the
-    matching value or command; Administrative distance is not.'
+    **Administrative distance**: AD prefers one routing source over another (e.g.
+    EIGRP 90 vs OSPF 110). OSPF cost is interface bandwidth (reference-bw / bw), not
+    AD.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -12326,13 +12322,14 @@ questions:
   explanation: 'Connected routes use code C.
 
 
-    **S**: C is the matching value or command; S is not.
+    **S**: Code **S** is a static route. Connected is **C**. S* specifically marks
+    a candidate default.
 
 
-    **O**: C is the matching value or command; O is not.
+    **O**: Code **O** is intra-area OSPF. A connected prefix is **C**.
 
 
-    **R**: C is the matching value or command; R is not.'
+    **R**: Code **R** is RIP. Connected is **C**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -12362,11 +12359,13 @@ questions:
     **Per-host load balancing across gateways**: GLBP can load-share first-hop traffic.
 
 
-    **Only active/standby with no sharing**: active/standby with no sharing is not
-    **Per-host load balancing across gateways**.
+    **Only active/standby with no sharing**: That is classic HSRP/VRRP. **GLBP** elects
+    an AVG and multiple AVFs so hosts share different virtual MACs (per-host load-share).
 
 
-    **Only IPv6 RA exclusive**: IPv6 RA is not **Per-host load balancing across gateways**.
+    **Only IPv6 RA exclusive**: IPv6 RA (NDP) auths a link gateway. GLBP is an IPv4/IPv6
+    FHRP that **load-shares** via AVG/AVF virtual MACs, unlike HSRP’s single active
+    forwarder.
 
 
     **Only STP root election**: Spanning Tree elects a root bridge and blocks redundant
@@ -12439,16 +12438,16 @@ questions:
     the network without forming neighbors.
 
 
-    **Disable the interface IP**: Suppress Hellos / no adjacency on that interface
-    is the matching value or command; Disable the interface IP is not.
+    **Disable the interface IP**: Passive-interface does not remove the interface
+    address. The subnet is still advertised; neighbors simply never form.
 
 
-    **Force DR forever**: Force DR is not **Suppress Hellos / no adjacency on that
-    interface**.
+    **Force DR forever**: Passive-interface prevents an adjacency, so there is no
+    DR election on that link. It does not pin a DR.
 
 
-    **Clear the RID**: Suppress Hellos / no adjacency on that interface is the matching
-    value or command; Clear the RID is not.'
+    **Clear the RID**: Clearing the OSPF router ID is `clear ip ospf process` after
+    `router-id`. `ip ospf passive-interface` only stops Hellos; it keeps the RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -12516,8 +12515,8 @@ questions:
     **Route maps / match criteria**: PBR can override destination-based forwarding.
 
 
-    **Only longest prefix always alone**: longest prefix always alone is not **Route
-    maps / match criteria**.
+    **Only longest prefix always alone**: PBR can override longest-match with a route-map
+    (`set ip next-hop`). Longest match is the default RIB behavior PBR bypasses.
 
 
     **Only STP cost**: Spanning Tree elects a root bridge and blocks redundant Ethernet
@@ -12556,12 +12555,12 @@ questions:
     ranges.
 
 
-    **Only removes virtual MAC**: removes virtual MAC is not **IPv6 and larger group
-    ID space**.
+    **Only removes virtual MAC**: HSRPv2 changes the virtual MAC format and group
+    range; it does not simply delete the virtual MAC.
 
 
-    **Only disables preempt**: disables preempt is not **IPv6 and larger group ID
-    space**.
+    **Only disables preempt**: HSRPv2 adds a 256-group space and a new virtual MAC
+    (`0000.0C9F.Fxxx`). It does not disable preempt (that is a separate command).
 
 
     **Only forces VRRP**: VRRP is the standards-based FHRP (virtual IP, one master).'
@@ -12595,8 +12594,8 @@ questions:
     for summaries.
 
 
-    **Preferred transit path always**: Preferred transit path is not **Discard / blackhole
-    aggregation safety**.
+    **Preferred transit path always**: A Null0 static on an aggregate **discards**
+    unmatched more-specifics (loop prevention). It is not a preferred transit path.
 
 
     **Only NAT pools**: NAT/PAT rewrites IP addresses (and ports with overload) across
@@ -12630,13 +12629,14 @@ questions:
   explanation: 'O IA indicates OSPF inter-area routes.
 
 
-    **O E2 only**: O E2 is not **O IA**.
+    **O E2 only**: **O E2** is an OSPF external Type-2 (ASBR). Inter-area prefixes
+    are **O IA**.
 
 
-    **S***: O IA is the matching value or command; S* is not.
+    S* is a candidate **default static**. Inter-area OSPF is O IA.
 
 
-    **B**: O IA is the matching value or command; B is not.'
+    **B**: Code **B** is BGP. Inter-area OSPF is **O IA**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -12707,10 +12707,11 @@ questions:
     **/24 only**: /24 is 256 addresses (mask 255.255.255.0), 254 usable hosts.
 
 
-    **/0 only**: /0 is not **/32**.
+    **/0 only**: A /0 prefix is the IPv4 default route (0.0.0.0/0), not a host route.
 
 
-    **/16 only**: /16 is not **/32**.'
+    **/16 only**: A /16 is 65,536 addresses (mask 255.255.0.0), far larger than a
+    host route.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -14232,12 +14233,12 @@ questions:
     **MAC to VLAN**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **AS numbers to communities**: Names to IP addresses is the matching value or
-    command; AS numbers to communities is not.
+    **AS numbers to communities**: BGP maps AS numbers and optional communities on
+    prefixes. DNS maps names to addresses (A/AAAA) and mail exchangers (MX).
 
 
-    **SPIDs to DLCI**: Names to IP addresses is the matching value or command; SPIDs
-    to DLCI is not.'
+    **SPIDs to DLCI**: SPIDs were ISDN; DLCI is Frame Relay. DNS maps names to IPs,
+    not WAN circuit IDs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -14464,10 +14465,12 @@ questions:
     server.
 
 
-    **Only CHADDR to zero**: CHADDR to zero is not **GIADDR (gateway address)**.
+    **Only CHADDR to zero**: A relay leaves the client MAC (chaddr) intact and sets
+    **giaddr** to its own interface IP so the server knows the subnet.
 
 
-    **Only UDP sport 179**: UDP sport 179 is not **GIADDR (gateway address)**.
+    **Only UDP sport 179**: UDP 179 is not a DHCP field. A relay sets **giaddr** (and
+    uses UDP 67) so the server can scope the pool.
 
 
     **Only DSCP EF**: DSCP is the 6-bit IP marking (EF=46 for voice).'
@@ -14583,7 +14586,9 @@ questions:
     network.
 
 
-    **Only outside global**: outside global is not **Inside NAT interface**.
+    **Only outside global**: `ip nat inside` marks the **inside** interface (local
+    realm). Outside-global is the translated public address, configured on the outside
+    interface / pool.
 
 
     **Only VRF**: A VRF is a separate routing table/FIB instance on one device, used
@@ -14624,7 +14629,8 @@ questions:
     **Only HTTPS forever**: HTTPS is HTTP over TLS, default TCP 443.
 
 
-    **Only console cables**: console cables is not **Cleartext Telnet for device management**.
+    **Only console cables**: SSH (TCP 22) replaces **Telnet** for remote CLI. A console
+    cable is out-of-band serial, not what SSH replaces.
 
 
     **Only SNMP traps**: SNMP reads/writes MIB objects (UDP 161) and sends traps (162).'
@@ -14657,8 +14663,8 @@ questions:
     **Transfer IOS/config files simply**: TFTP is a lightweight file transfer protocol.
 
 
-    **Encrypt site-to-site VPNs**: Transfer IOS/config files simply is the matching
-    value or command; Encrypt site-to-site VPNs is not.
+    **Encrypt site-to-site VPNs**: Site-to-site encryption is IPsec. TFTP (UDP 69)
+    copies IOS/config files with no confidentiality.
 
 
     **Elect HSRP active**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
@@ -14695,7 +14701,8 @@ questions:
     **Name to IP**: Forward DNS resolves names to addresses.
 
 
-    **IP to MAC only**: IP to MAC is not **Name to IP**.
+    **IP to MAC only**: IPv4→MAC is ARP. DNS forward lookup maps a **name** to an
+    IP (A or AAAA).
 
 
     **AS to community**: A community cloud is shared by several organizations. Private
@@ -14733,8 +14740,8 @@ questions:
     ports.
 
 
-    **All access ports always**: All access ports is not **Legitimate DHCP servers
-    / uplinks**.
+    **All access ports always**: Access ports face PCs. DHCP snooping **trusted**
+    ports face the DHCP server or uplink, not every access port.
 
 
     **Only SPAN destinations**: SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE
@@ -14815,8 +14822,8 @@ questions:
     AD 110, multicast 224.0.0.5/6).
 
 
-    **Disabling MIBs**: Acknowledged delivery is the matching value or command; Disabling
-    MIBs is not.'
+    **Disabling MIBs**: SNMP informs wait for an ACK from the NMS; traps are unacknowledged.
+    Neither behavior is “turning MIBs off.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -14854,8 +14861,8 @@ questions:
     neighbor AS.
 
 
-    **Elect DR**: Classify message sources/categories is the matching value or command;
-    Elect DR is not.'
+    **Elect DR**: DR/BDR election is OSPF on multiaccess links. Syslog **facilities**
+    classify messages (local0–7, kern, …) for filtering.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -14886,16 +14893,16 @@ questions:
     port multiplexing.
 
 
-    **Only 1:1 static always**: 1:1 static is not **Translating many insides to one/few
-    globals with ports**.
+    **Only 1:1 static always**: Static NAT is 1:1. PAT/overload maps many inside-local
+    hosts to one global using source ports.
 
 
-    **Only disabling TCP**: disabling TCP is not **Translating many insides to one/few
-    globals with ports**.
+    **Only disabling TCP**: PAT still uses TCP/UDP ports; it does not disable TCP.
+    It multiplexes many inside hosts onto one global IP.
 
 
-    **Only using IPv6 exclusively**: using IPv6 is not **Translating many insides
-    to one/few globals with ports**.'
+    **Only using IPv6 exclusively**: PAT is an IPv4 conservation tool. NPTv6/NAT66
+    is a different discussion; PAT does not mean “IPv6 only.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -14925,13 +14932,13 @@ questions:
     **TCP 22**: SSH listens on TCP 22 by default.
 
 
-    **UDP 161**: TCP 22 is the matching value or command; UDP 161 is not.
+    UDP 161 is SNMP. SSH is TCP 22.
 
 
-    **UDP 69**: TCP 22 is the matching value or command; UDP 69 is not.
+    UDP 69 is TFTP. SSH is TCP 22.
 
 
-    **TCP 23**: TCP 22 is the matching value or command; TCP 23 is not.'
+    TCP 23 is Telnet. SSH uses TCP 22.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -18744,8 +18751,8 @@ questions:
   explanation: 'Port security limits learned MAC addresses per port.
 
 
-    **UplinkFast**: Port security is the matching value or command; UplinkFast is
-    not.
+    UplinkFast (classic PVST) speeds uplink recovery. **Port security** limits how
+    many MACs a port may learn.
 
 
     **VTP pruning**: VTP floods VLAN advertisements among switches using a revision
@@ -19096,8 +19103,8 @@ questions:
     **Only longer Telnet banners**: Telnet (TCP 23) is cleartext remote CLI.
 
 
-    **Only VTY ACL deny any**: VTY ACL deny any is not **Additional factors beyond
-    a password**.
+    **Only VTY ACL deny any**: MFA adds a second factor (token/push). A VTY `deny
+    any` just blocks management access; it is not MFA.
 
 
     **Only disabling SSH**: SSH (TCP 22) is encrypted remote CLI.'
@@ -19135,12 +19142,13 @@ questions:
     1–4094).
 
 
-    **Only line vty without ACL**: line vty without ACL is not **ip access-list standard/extended
-    NAME**.
+    **Only line vty without ACL**: Named ACLs are `ip access-list standard|extended
+    NAME`. Line VTY is where you **apply** an access-class, not where you create the
+    ACL.
 
 
-    **Only spanning-tree mode**: spanning-tree mode is not **ip access-list standard/extended
-    NAME**.'
+    **Only spanning-tree mode**: `spanning-tree mode` picks PVST+/MST. Named ACLs
+    are configured with `ip access-list`.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -19248,7 +19256,8 @@ questions:
     **A method that takes advantage of a vulnerability**: Exploits weaponize vulnerabilities.
 
 
-    **Only a firewall**: a firewall is not **A method that takes advantage of a vulnerability**.
+    **Only a firewall**: A firewall is a control. An **exploit** is the method that
+    takes advantage of a vulnerability.
 
 
     **Only a syslog facility**: Syslog exports device logs (UDP 514) with severity
@@ -19286,15 +19295,16 @@ questions:
     payloads.
 
 
-    **Only routing updates**: routing updates is not **Confidentiality and optionally
-    integrity/auth**.
+    **Only routing updates**: IPsec ESP encrypts (and may authenticate) **user packets**.
+    Routing updates may ride inside, but ESP is not “routing-only.”.
 
 
     **Only STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
     redundant Layer 2 paths so Ethernet does not loop.
 
 
-    **Only DNSSEC**: DNSSEC is not **Confidentiality and optionally integrity/auth**.'
+    **Only DNSSEC**: DNSSEC signs DNS records. IPsec **ESP** encrypts (and optionally
+    authenticates) IP payloads.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -19324,15 +19334,13 @@ questions:
     **UDP 1812/1813 (or legacy 1645/1646)**: RADIUS auth/accounting use UDP 1812/1813.
 
 
-    **TCP 22**: UDP 1812/1813 (or legacy 1645/1646) is the matching value or command;
-    TCP 22 is not.
+    TCP 22 is SSH. RADIUS is UDP 1812 (auth) and 1813 (accounting), or 1645/1646 legacy.
 
 
-    **UDP 53**: UDP 1812/1813 (or legacy 1645/1646) is the matching value or command;
-    UDP 53 is not.
+    UDP 53 is DNS. RADIUS uses UDP 1812/1813.
 
 
-    **TCP 443 only**: TCP 443 is not **UDP 1812/1813 (or legacy 1645/1646)**.'
+    **TCP 443 only**: TCP 443 is HTTPS. RADIUS is UDP 1812/1813, not 443.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -19363,14 +19371,16 @@ questions:
     password was weaker/clearer.
 
 
-    **Cleartext always**: Cleartext is not **Hashed (MD5/type 5 or stronger modern
-    types)**.
+    **Cleartext always**: Classic `enable secret` stores an MD5 (type 5) hash, not
+    a cleartext password (that was `enable password`).
 
 
-    **Only ROT13**: ROT13 is not **Hashed (MD5/type 5 or stronger modern types)**.
+    **Only ROT13**: ROT13 is a Caesar cipher, not a password hash. `enable secret`
+    used MD5 (type 5).
 
 
-    **Only Base64**: Base64 is not **Hashed (MD5/type 5 or stronger modern types)**.'
+    **Only Base64**: Base64 is an encoding, not a password hash. Classic `enable secret`
+    is MD5 (type 5), later type 8/9.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -19400,8 +19410,8 @@ questions:
     **The switch/AP**: The authenticator enforces port access pending AAA.
 
 
-    **The end-user laptop alone**: The switch/AP is the matching value or command;
-    The end-user laptop alone is not.
+    **The end-user laptop alone**: In 802.1X the **supplicant** is the laptop. The
+    **authenticator** is the switch (or AP) that relays EAPoL to the RADIUS server.
 
 
     **Only the root DNS**: DNS maps names to addresses (A/AAAA) and reverse (PTR)
@@ -19439,13 +19449,15 @@ questions:
     **deny any**: ACLs end with an implicit deny any.
 
 
-    **permit any**: deny any is the matching value or command; permit any is not.
+    **permit any**: There is no implicit permit at the end of an IOS ACL. Unmatched
+    traffic hits **deny any**.
 
 
     **permit icmp**: ICMP/ICMPv6 carries echo, unreachable, and TTL-expired messages.
 
 
-    **deny tcp only**: deny tcp is not **deny any**.'
+    **deny tcp only**: The implicit ACL tail is **deny any** (all protocols), not
+    “deny TCP only.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -19479,8 +19491,8 @@ questions:
     paths so the LAN does not loop.
 
 
-    **WLAN roaming**: IP spoofing on a port is the matching value or command; WLAN
-    roaming is not.
+    **WLAN roaming**: IP Source Guard drops IP packets whose src IP/MAC is not in
+    the DHCP snooping binding. Roaming is a wireless mobility feature.
 
 
     **BGP hijacks alone**: BGP is the Internet path-vector protocol (TCP 179; eBGP
@@ -19514,11 +19526,12 @@ questions:
     **Length/character diversity rules**: Complexity raises guessing difficulty.
 
 
-    **Only identical passwords forever**: identical passwords is not **Length/character
-    diversity rules**.
+    **Only identical passwords forever**: Complexity forbids reuse/sameness. Policies
+    require rotation and mixed character classes.
 
 
-    **Only blank enable**: blank enable is not **Length/character diversity rules**.
+    **Only blank enable**: Complexity policies require length, classes of characters,
+    and aging — not a blank enable secret.
 
 
     **Only Telnet without AAA**: Telnet (TCP 23) is cleartext remote CLI.'
@@ -19588,13 +19601,15 @@ questions:
     **PSK**: WPA2-PSK is personal/pre-shared key mode.
 
 
-    **Only open auth mandatory**: open auth is not **PSK**.
+    **Only open auth mandatory**: Open authentication is no crypto. WPA2-Personal
+    uses a **PSK** with CCMP/AES.
 
 
     **Only WEP-40**: WEP is a broken RC4 WLAN cipher; WPA2/WPA3 replaced it.
 
 
-    **Only TKIP exclusive forever**: TKIP exclusive is not **PSK**.'
+    **Only TKIP exclusive forever**: WPA2-Personal uses **CCMP/AES** (802.11i). TKIP
+    was a WPA/WEP-era crutch, not the WPA2 mandate.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -23965,13 +23980,12 @@ questions:
     consistency and speed of changes.
 
 
-    **Eliminating all need for routing protocols**: Reducing manual repetitive changes
-    / increasing consistency is the matching value or command; Eliminating all need
-    for routing protocols is not.
+    **Eliminating all need for routing protocols**: Automation configures and verifies
+    IGPs/BGP; it does not replace the need for a routing protocol in the underlay.
 
 
-    **Removing switching entirely**: Reducing manual repetitive changes / increasing
-    consistency is the matching value or command; Removing switching entirely is not.
+    **Removing switching entirely**: Automation does not replace Ethernet switching.
+    Access switches still switch.
 
 
     **Forcing Telnet only**: Telnet (TCP 23) is cleartext remote CLI.'
@@ -24005,16 +24019,16 @@ questions:
     policy/control while devices forward.
 
 
-    **Removing all data planes**: Centralizing control-plane decisions via a controller
-    is the matching value or command; Removing all data planes is not.
+    **Removing all data planes**: A controller programs data planes; it does not delete
+    them. Packets still forward on the devices.
 
 
-    **Using only hubs**: Centralizing control-plane decisions via a controller is
-    the matching value or command; Using only hubs is not.
+    **Using only hubs**: Hubs are a single collision domain. Controller-based networking
+    still uses switches; it centralizes **control**, not the media.
 
 
-    **Disabling APIs**: Centralizing control-plane decisions via a controller is the
-    matching value or command; Disabling APIs is not.'
+    **Disabling APIs**: Controller-based fabrics expose northbound/southbound APIs;
+    disabling them returns you to hop-by-hop CLI, the opposite of SDN.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -24084,15 +24098,16 @@ questions:
     **true (lowercase)**: JSON boolean literals are lowercase true/false.
 
 
-    **True (Python style only)**: true (lowercase) is the matching value or command;
-    True (Python style only) is not.
+    **True (Python style only)**: Python `True` is not valid JSON. JSON requires lowercase
+    `true`.
 
 
-    true (lowercase) is the matching value or command; TRUE is not.
+    **TRUE**: JSON booleans are lowercase `true`. `TRUE` is a YAML/Python-ish token,
+    invalid JSON.
 
 
-    **1 as only legal form**: true (lowercase) is the matching value or command; 1
-    as only legal form is not.'
+    **1 as only legal form**: JSON numbers may be `1`, but a boolean must be lowercase
+    `true`, not the integer 1.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -24202,15 +24217,15 @@ questions:
     from forwarding.
 
 
-    **Only single-process routers forever**: single-process routers is not **Central
-    policy with distributed forwarding**.
+    **Only single-process routers forever**: Control/data-plane split (SDN or modular
+    IOS) is the opposite of “one process forever.”.
 
 
     **Only disabling CEF**: CEF is IOS forwarding from the FIB, not process switching.
 
 
-    **Only removing FIBs**: removing FIBs is not **Central policy with distributed
-    forwarding**.'
+    **Only removing FIBs**: Control/data-plane separation lets a controller program
+    forwarding. It does not mean “delete the FIB.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -24241,8 +24256,8 @@ questions:
     cases in operations.
 
 
-    **Only manually typing ACLs faster without models**: manually typing ACLs faster
-    without models is not **Anomaly detection / predictive insights**.
+    **Only manually typing ACLs faster without models**: ML in ops is anomaly detection
+    and prediction from telemetry, not “type ACLs faster.”.
 
 
     **Only increasing STP diameter**: Spanning Tree elects a root bridge and blocks
@@ -24280,16 +24295,16 @@ questions:
     **Repeatable, auditable changes**: Automation improves repeatability and auditability.
 
 
-    **Guaranteed zero outages forever**: Guaranteed zero outages is not **Repeatable,
-    auditable changes**.
+    **Guaranteed zero outages forever**: Automation makes changes repeatable and auditable.
+    It does not promise zero outages.
 
 
-    **Removal of all security**: Repeatable, auditable changes is the matching value
-    or command; Removal of all security is not.
+    **Removal of all security**: Automation should **enforce** security (SSH, AAA,
+    consistent ACLs), not remove it.
 
 
-    **Mandatory cleartext protocols**: Repeatable, auditable changes is the matching
-    value or command; Mandatory cleartext protocols is not.'
+    **Mandatory cleartext protocols**: Automation should push SSH, TLS, and type 8/9
+    secrets — not mandate Telnet or cleartext.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -24319,14 +24334,16 @@ questions:
     **Network devices**: Southbound interfaces program the network devices.
 
 
-    **Only business apps exclusive**: business apps is not **Network devices**.
+    **Only business apps exclusive**: Southbound APIs (NETCONF, gNMI, CLI) talk to
+    **network devices**, not only business applications (those are northbound).
 
 
     **Only DNS roots**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on
     UDP/TCP 53.
 
 
-    **Only end-user browsers exclusive**: end-user browsers is not **Network devices**.'
+    **Only end-user browsers exclusive**: Southbound APIs target **network elements**,
+    not only browsers (browsers consume northbound REST).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -24396,10 +24413,12 @@ questions:
     `<tag>`.
 
 
-    **Only parentheses**: parentheses is not **Curly braces {}**.
+    **Only parentheses**: Parentheses group expressions. JSON arrays use `[ ]`; objects
+    use `{ }`.
 
 
-    **Only spaces**: spaces is not **Curly braces {}**.'
+    **Only spaces**: JSON allows insignificant whitespace. Arrays still need `[` `]`
+    and commas between elements.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -24437,7 +24456,8 @@ questions:
     110, multicast 224.0.0.5/6).
 
 
-    **Only Server: nginx required**: Server: nginx is not **Authorization**.'
+    **Only Server: nginx required**: HTTP 200/201 success does not require an `Server:
+    nginx` header. That header is optional product identity.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -24476,7 +24496,8 @@ questions:
     Ethernet.
 
 
-    **Only analog modems**: analog modems is not **Overlay services on an underlay**.'
+    **Only analog modems**: Spine-leaf is 10/25/40/100G Ethernet, not analog dial-up
+    modems.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3

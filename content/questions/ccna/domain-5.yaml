@@ -23,8 +23,8 @@ questions:
   explanation: 'Port security limits learned MAC addresses per port.
 
 
-    **UplinkFast**: Port security is the matching value or command; UplinkFast is
-    not.
+    UplinkFast (classic PVST) speeds uplink recovery. **Port security** limits how
+    many MACs a port may learn.
 
 
     **VTP pruning**: VTP floods VLAN advertisements among switches using a revision
@@ -375,8 +375,8 @@ questions:
     **Only longer Telnet banners**: Telnet (TCP 23) is cleartext remote CLI.
 
 
-    **Only VTY ACL deny any**: VTY ACL deny any is not **Additional factors beyond
-    a password**.
+    **Only VTY ACL deny any**: MFA adds a second factor (token/push). A VTY `deny
+    any` just blocks management access; it is not MFA.
 
 
     **Only disabling SSH**: SSH (TCP 22) is encrypted remote CLI.'
@@ -414,12 +414,13 @@ questions:
     1–4094).
 
 
-    **Only line vty without ACL**: line vty without ACL is not **ip access-list standard/extended
-    NAME**.
+    **Only line vty without ACL**: Named ACLs are `ip access-list standard|extended
+    NAME`. Line VTY is where you **apply** an access-class, not where you create the
+    ACL.
 
 
-    **Only spanning-tree mode**: spanning-tree mode is not **ip access-list standard/extended
-    NAME**.'
+    **Only spanning-tree mode**: `spanning-tree mode` picks PVST+/MST. Named ACLs
+    are configured with `ip access-list`.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -527,7 +528,8 @@ questions:
     **A method that takes advantage of a vulnerability**: Exploits weaponize vulnerabilities.
 
 
-    **Only a firewall**: a firewall is not **A method that takes advantage of a vulnerability**.
+    **Only a firewall**: A firewall is a control. An **exploit** is the method that
+    takes advantage of a vulnerability.
 
 
     **Only a syslog facility**: Syslog exports device logs (UDP 514) with severity
@@ -565,15 +567,16 @@ questions:
     payloads.
 
 
-    **Only routing updates**: routing updates is not **Confidentiality and optionally
-    integrity/auth**.
+    **Only routing updates**: IPsec ESP encrypts (and may authenticate) **user packets**.
+    Routing updates may ride inside, but ESP is not “routing-only.”.
 
 
     **Only STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
     redundant Layer 2 paths so Ethernet does not loop.
 
 
-    **Only DNSSEC**: DNSSEC is not **Confidentiality and optionally integrity/auth**.'
+    **Only DNSSEC**: DNSSEC signs DNS records. IPsec **ESP** encrypts (and optionally
+    authenticates) IP payloads.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -603,15 +606,13 @@ questions:
     **UDP 1812/1813 (or legacy 1645/1646)**: RADIUS auth/accounting use UDP 1812/1813.
 
 
-    **TCP 22**: UDP 1812/1813 (or legacy 1645/1646) is the matching value or command;
-    TCP 22 is not.
+    TCP 22 is SSH. RADIUS is UDP 1812 (auth) and 1813 (accounting), or 1645/1646 legacy.
 
 
-    **UDP 53**: UDP 1812/1813 (or legacy 1645/1646) is the matching value or command;
-    UDP 53 is not.
+    UDP 53 is DNS. RADIUS uses UDP 1812/1813.
 
 
-    **TCP 443 only**: TCP 443 is not **UDP 1812/1813 (or legacy 1645/1646)**.'
+    **TCP 443 only**: TCP 443 is HTTPS. RADIUS is UDP 1812/1813, not 443.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -642,14 +643,16 @@ questions:
     password was weaker/clearer.
 
 
-    **Cleartext always**: Cleartext is not **Hashed (MD5/type 5 or stronger modern
-    types)**.
+    **Cleartext always**: Classic `enable secret` stores an MD5 (type 5) hash, not
+    a cleartext password (that was `enable password`).
 
 
-    **Only ROT13**: ROT13 is not **Hashed (MD5/type 5 or stronger modern types)**.
+    **Only ROT13**: ROT13 is a Caesar cipher, not a password hash. `enable secret`
+    used MD5 (type 5).
 
 
-    **Only Base64**: Base64 is not **Hashed (MD5/type 5 or stronger modern types)**.'
+    **Only Base64**: Base64 is an encoding, not a password hash. Classic `enable secret`
+    is MD5 (type 5), later type 8/9.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -679,8 +682,8 @@ questions:
     **The switch/AP**: The authenticator enforces port access pending AAA.
 
 
-    **The end-user laptop alone**: The switch/AP is the matching value or command;
-    The end-user laptop alone is not.
+    **The end-user laptop alone**: In 802.1X the **supplicant** is the laptop. The
+    **authenticator** is the switch (or AP) that relays EAPoL to the RADIUS server.
 
 
     **Only the root DNS**: DNS maps names to addresses (A/AAAA) and reverse (PTR)
@@ -718,13 +721,15 @@ questions:
     **deny any**: ACLs end with an implicit deny any.
 
 
-    **permit any**: deny any is the matching value or command; permit any is not.
+    **permit any**: There is no implicit permit at the end of an IOS ACL. Unmatched
+    traffic hits **deny any**.
 
 
     **permit icmp**: ICMP/ICMPv6 carries echo, unreachable, and TTL-expired messages.
 
 
-    **deny tcp only**: deny tcp is not **deny any**.'
+    **deny tcp only**: The implicit ACL tail is **deny any** (all protocols), not
+    “deny TCP only.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -758,8 +763,8 @@ questions:
     paths so the LAN does not loop.
 
 
-    **WLAN roaming**: IP spoofing on a port is the matching value or command; WLAN
-    roaming is not.
+    **WLAN roaming**: IP Source Guard drops IP packets whose src IP/MAC is not in
+    the DHCP snooping binding. Roaming is a wireless mobility feature.
 
 
     **BGP hijacks alone**: BGP is the Internet path-vector protocol (TCP 179; eBGP
@@ -793,11 +798,12 @@ questions:
     **Length/character diversity rules**: Complexity raises guessing difficulty.
 
 
-    **Only identical passwords forever**: identical passwords is not **Length/character
-    diversity rules**.
+    **Only identical passwords forever**: Complexity forbids reuse/sameness. Policies
+    require rotation and mixed character classes.
 
 
-    **Only blank enable**: blank enable is not **Length/character diversity rules**.
+    **Only blank enable**: Complexity policies require length, classes of characters,
+    and aging — not a blank enable secret.
 
 
     **Only Telnet without AAA**: Telnet (TCP 23) is cleartext remote CLI.'
@@ -867,13 +873,15 @@ questions:
     **PSK**: WPA2-PSK is personal/pre-shared key mode.
 
 
-    **Only open auth mandatory**: open auth is not **PSK**.
+    **Only open auth mandatory**: Open authentication is no crypto. WPA2-Personal
+    uses a **PSK** with CCMP/AES.
 
 
     **Only WEP-40**: WEP is a broken RC4 WLAN cipher; WPA2/WPA3 replaced it.
 
 
-    **Only TKIP exclusive forever**: TKIP exclusive is not **PSK**.'
+    **Only TKIP exclusive forever**: WPA2-Personal uses **CCMP/AES** (802.11i). TKIP
+    was a WPA/WEP-era crutch, not the WPA2 mandate.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9

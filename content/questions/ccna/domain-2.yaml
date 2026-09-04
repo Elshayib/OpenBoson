@@ -209,21 +209,11 @@ questions:
     - Listening
     - Learning
     - Forwarding
-  explanation: 'The correct sequence for this item is: Blocking → Listening → Learning
-    → Forwarding. Each step must appear in this order; rearranging any step breaks
-    the required procedure or protocol behavior. The correct sequence for this item
-    is: Blocking → Listening → Learning → Forwarding. Each step must appear in this
-    order; rearranging any step breaks the required procedure or protocol behavior.
-    The correct sequence for this item is: Blocking → Listening → Learning → Forwarding.
-    Each step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior. The correct sequence for this item is: Blocking
-    → Listening → Learning → Forwarding. Each step must appear in this order; rearranging
-    any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Blocking → Listening → Learning → Forwarding. The stem requires
-    the operational or protocol order implied by: Order classic STP port states from
-    blocking toward forwarding (802.1D teaching order).. Each listed step must appear
-    in this order; rearranging any step breaks the required procedure or protocol
-    behavior.'
+  explanation: 'Classic 802.1D port states in order: **Blocking** (no user frames,
+    BPDUs listened) → **Listening** (BPDUs, still no learning/forwarding) → **Learning**
+    (source MACs learned, still no forwarding) → **Forwarding** (user frames). RSTP
+    collapses blocking/listening into discarding, but this item is the 802.1D teaching
+    sequence.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -300,7 +290,7 @@ questions:
     AD 110, multicast 224.0.0.5/6).
 
 
-    **A VPN**: A trunk is the matching value or command; A VPN is not.'
+    A VPN is an overlay (IPsec/GRE/SSL). DTP negotiates 802.1Q trunks, not VPNs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -330,14 +320,16 @@ questions:
     **Priority then MAC**: Lowest bridge ID wins the root election.
 
 
-    **Highest MAC always**: Highest MAC is not **Priority then MAC**.
+    **Highest MAC always**: STP root election uses **lowest** Bridge ID (priority
+    then MAC). Highest MAC loses unless priority is lower.
 
 
-    **Highest priority**: Priority then MAC is the matching value or command; Highest
-    priority is not.
+    **Highest priority**: Lower priority wins (default 32768; 0 is best). Highest
+    priority is the worst BID component.
 
 
-    **Serial number only**: Serial number is not **Priority then MAC**.'
+    **Serial number only**: STP Bridge ID is **priority + MAC** (plus extended system
+    ID). A chassis serial is inventory, not the BID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -448,10 +440,12 @@ questions:
     **Cisco proprietary**: PAgP is Cisco proprietary; LACP is standards-based.
 
 
-    **IETF standard only**: IETF standard is not **Cisco proprietary**.
+    **IETF standard only**: PAgP is **Cisco-proprietary**. The IETF/IEEE EtherChannel
+    protocol is LACP (802.3ad/802.1AX).
 
 
-    **ITU SS7**: Cisco proprietary is the matching value or command; ITU SS7 is not.
+    **ITU SS7**: SS7 is the telephony signaling system. PAgP is Cisco LAN EtherChannel,
+    unrelated to SS7.
 
 
     **Bluetooth SIG**: Bluetooth is a WPAN radio, not CAPWAP or 802.11 infrastructure.'
@@ -484,10 +478,12 @@ questions:
     **Local mode CAPWAP**: Local-mode APs tunnel client traffic to the WLC via CAPWAP.
 
 
-    **Only autonomous IOS AP**: autonomous IOS AP is not **Local mode CAPWAP**.
+    **Only autonomous IOS AP**: Autonomous APs do not build CAPWAP to a WLC. Local-mode
+    lightweight APs do.
 
 
-    **Only mesh satellite RF**: mesh satellite RF is not **Local mode CAPWAP**.
+    **Only mesh satellite RF**: Mesh APs have a RAP/MAP radio backhaul. A WLC in local
+    mode terminates **CAPWAP** from local-mode APs, not satellite mesh RF.
 
 
     **Only Bluetooth beacons**: Bluetooth is a WPAN radio, not CAPWAP or 802.11 infrastructure.'
@@ -601,13 +597,16 @@ questions:
     **Blocking and listening**: RSTP collapses blocking/listening into discarding.
 
 
-    **Only forwarding**: forwarding is not **Blocking and listening**.
+    **Only forwarding**: 802.1D forwarding is the final state. RSTP discarding replaced
+    blocking/listening.
 
 
-    **Only disabled**: disabled is not **Blocking and listening**.
+    **Only disabled**: Disabled is administratively down. RSTP discarding is the state
+    that replaced 802.1D blocking/listening on a live port.
 
 
-    **Learning only**: Learning is not **Blocking and listening**.'
+    **Learning only**: 802.1D Learning still does not forward user frames. RSTP **discarding**
+    replaces blocking **and** listening, not learning alone.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -644,8 +643,8 @@ questions:
     **Different native VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Random MTUs**: Speed/duplex and compatible configs is the matching value or
-    command; Random MTUs is not.'
+    **Random MTUs**: EtherChannel members must match speed, duplex, and mode. Random
+    MTUs would break the bundle or cause PMTUD pain; they are not a requirement.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -713,8 +712,8 @@ questions:
   explanation: 'Root guard protects the root role from unexpected superior BPDUs.
 
 
-    **Port security sticky**: Root guard is the matching value or command; Port security
-    sticky is not.
+    **Port security sticky**: Sticky MAC learns allowed addresses on a port. **Root
+    Guard** blocks superior BPDUs so a downstream switch cannot become root.
 
 
     **DHCP snooping**: DHCP assigns IPv4 address, mask, gateway, and DNS (DORA, UDP
@@ -757,12 +756,12 @@ questions:
     discovery (`show cdp neighbors`).
 
 
-    **A routing protocol**: IEEE neighbor discovery protocol is the matching value
-    or command; A routing protocol is not.
+    A routing protocol (OSPF/EIGRP/BGP) exchanges Layer-3 reachability. LLDP only
+    advertises Layer-2 neighbor identity.
 
 
     **A wireless encryption cipher**: A wireless cipher (TKIP/CCMP/GCMP) encrypts
-    802.11 frames; it is not AAA or overlay.'
+    802.11 frames; it is not AAA or an overlay identifier.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -792,10 +791,12 @@ questions:
     **Bundled uplink capacity/redundancy**: LAG aggregates WLC-to-switch connections.
 
 
-    **Only SSID encryption**: SSID encryption is not **Bundled uplink capacity/redundancy**.
+    **Only SSID encryption**: LAG is a wired bundle. WLAN encryption (WPA2/WPA3) is
+    a radio cipher, not LAG.
 
 
-    **Only RF channel planning**: RF channel planning is not **Bundled uplink capacity/redundancy**.
+    **Only RF channel planning**: LAG (EtherChannel) between WLC and switch **bundles**
+    CAPWAP uplinks for bandwidth/redundancy. It does not pick RF channels.
 
 
     **Only CAPWAP DTLS keys**: CAPWAP tunnels AP control/data to a WLC in centralized

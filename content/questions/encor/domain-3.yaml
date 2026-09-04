@@ -30,7 +30,8 @@ questions:
     path attributes.
 
 
-    **Only AS path**: AS path is not **Bandwidth and delay (by default K values)**.
+    **Only AS path**: EIGRP’s classic composite uses bandwidth and delay (plus load/reliability
+    if Ks enable them). AS-path is BGP.
 
 
     **Only STP cost**: Spanning Tree elects a root bridge and blocks redundant Ethernet
@@ -58,19 +59,25 @@ questions:
     text: Only AppleTalk
   correct:
     answer: a
-  explanation: 'OSPFv3 for IPv6.
+  explanation: 'OSPFv3 (RFC 5340) was designed to route **IPv6**. On IOS-XE it also
+    supports address-families (`router ospfv3` / `address-family ipv6` or `ipv4`),
+    but it is the IPv6-era OSPF, not a classful IPv4, IPX, or AppleTalk protocol.
 
 
-    **IPv6 (address-family designs)**: OSPFv3 for IPv6.
+    **IPv6 (address-family designs)** is what OSPFv3 carries (IPv6 LSAs, optional
+    IPv4 AF on modern images).
 
 
-    **Only IPv4 classful**: IPv4 classful is not **IPv6 (address-family designs)**.
+    **Only IPv4 classful** is RIPv1/IGRP behavior (Class A/B/C masks). OSPF has been
+    classless since OSPFv2; OSPFv3 is not classful IPv4.
 
 
-    **Only IPX**: IPX is not **IPv6 (address-family designs)**.
+    **Only IPX** is Novell NetWare’s IPX/SPX stack. Cisco removed IPX routing; OSPFv3
+    does not encapsulate or advertise IPX.
 
 
-    **Only AppleTalk**: AppleTalk is not **IPv6 (address-family designs)**.'
+    **Only AppleTalk** is Apple’s legacy Phase-2 network (RTMP / EIGRP for AppleTalk).
+    It was never carried in OSPFv3 LSAs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -104,13 +111,12 @@ questions:
     traffic from a neighbor AS.
 
 
-    **Always random**: Local Preference (among early steps) is required here (Local
-    Preference prefers an exit path inside one AS (higher wins)); Always random is
-    not.
+    **Always random**: BGP best-path is deterministic (weight, local pref, AS-path,
+    origin, MED, …). It does not pick a path at random.
 
 
-    **Always IGP metric only**: Always IGP metric is not **Local Preference (among
-    early steps)**.'
+    **Always IGP metric only**: IGP metric (OSPF cost, EIGRP FD) is a later BGP step
+    and is not “higher Local Preference,” which is compared much earlier.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -180,7 +186,8 @@ questions:
     **RP for shared trees**: ASM with Rendezvous Point.
 
 
-    **Only dense flood always**: dense flood is not **RP for shared trees**.
+    **Only dense flood always**: PIM Sparse Mode uses an **RP** and builds shared/source
+    trees on demand. Dense mode floods-and-prunes.
 
 
     **Only STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
@@ -218,7 +225,8 @@ questions:
     **Best metric to destination**: FD is best known metric.
 
 
-    **Only AD**: AD is not **Best metric to destination**.
+    **Only AD**: EIGRP Feasible Distance is the **reported distance + local metric**
+    to a prefix, not administrative distance (which is 90/170).
 
 
     **Only hop count**: Hop count is RIP’s metric (max 15). OSPF uses cost; BGP uses
@@ -410,13 +418,16 @@ questions:
     **Query scope**: Stubs reduce SIA risk.
 
 
-    **Only hello timers to zero**: hello timers to zero is not **Query scope**.
+    **Only hello timers to zero**: EIGRP stub does not zero Hello timers. Hellos still
+    flow; queries for missing prefixes are not sent to the stub.
 
 
-    **Only bandwidth to 0**: bandwidth to 0 is not **Query scope**.
+    **Only bandwidth to 0**: An EIGRP stub still has bandwidth. Stub **limits queries
+    and advertised routes** (connected/static/summary), not K-values.
 
 
-    **Only delay infinite always**: delay infinite is not **Query scope**.'
+    **Only delay infinite always**: EIGRP stub does not set delay to infinity. It
+    suppresses query handling and limits advertised route types.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -490,8 +501,8 @@ questions:
     routers.
 
 
-    **Only age MAC tables**: age MAC tables is not **Override destination-based forwarding
-    with policy**.
+    **Only age MAC tables**: PBR (`ip policy route-map`) overrides the RIB per-packet.
+    It does not age CAM.
 
 
     **Only negotiate LACP**: LACP (802.3ad/802.1AX) negotiates EtherChannel with active/passive
@@ -599,15 +610,17 @@ questions:
     **Address-families under eigrp NAME**: Named mode AF.
 
 
-    **Only process numbers forever**: process numbers is not **Address-families under
-    eigrp NAME**.
+    **Only process numbers forever**: Named EIGRP (`router eigrp NAME` / address-family)
+    still has an AS number; it is not “process IDs forever” like OSPF’s locally significant
+    process ID.
 
 
     **Only RIP**: RIP is a hop-count IGP (max 15), default AD 120, multicast 224.0.0.9
     for v2.
 
 
-    **Only static**: static is not **Address-families under eigrp NAME**.'
+    **Only static**: Named EIGRP configures EIGRP (AS, AF, topology). Static routes
+    are `ip route`.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -643,7 +656,8 @@ questions:
     **Only DSCP**: DSCP is the 6-bit IP marking (EF=46 for voice).
 
 
-    **Only ASN**: ASN is not **Multiple instances on a link**.'
+    **Only ASN**: An OSPFv3 **instance ID** distinguishes multiple OSPFv3 processes
+    on one link. An ASN is BGP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -673,9 +687,8 @@ questions:
     **From same neighboring AS (default)**: MED multi-exit discriminator.
 
 
-    **Always across all AS freely without knob**: From same neighboring AS (default)
-    is the matching value or command; Always across all AS freely without knob is
-    not.
+    **Always across all AS freely without knob**: MED is typically compared only for
+    paths from the **same neighboring AS** unless `bgp always-compare-med` is set.
 
 
     **Only for OSPF**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
@@ -717,7 +730,8 @@ questions:
     interface; members must match speed, duplex, and mode.
 
 
-    **Only elect DR**: elect DR is not **Translate inside addresses for outside reachability**.
+    **Only elect DR**: Python `netmiko`/`ncclient` libraries talk to APIs or parse
+    CLI. Electing an OSPF DR is not their purpose.
 
 
     **Only set STP priority**: Spanning Tree elects a root bridge and blocks redundant
@@ -751,13 +765,16 @@ questions:
     **RP redundancy**: Anycast RP.
 
 
-    **Only unique RP mandatory single**: unique RP mandatory single is not **RP redundancy**.
+    **Only unique RP mandatory single**: Anycast RP **shares** one RP address across
+    several routers. A single unique RP is a single point of failure.
 
 
-    **Only disables multicast**: disables multicast is not **RP redundancy**.
+    **Only disables multicast**: Anycast RP keeps multicast **up** with multiple RPs
+    sharing source info via MSDP.
 
 
-    **Only L2 flooding**: L2 flooding is not **RP redundancy**.'
+    **Only L2 flooding**: Anycast RP with MSDP shares multicast source information
+    among RPs. It is not plain L2 flooding.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -787,7 +804,8 @@ questions:
     **Higher interface speeds accurately**: Wide metrics.
 
 
-    **Only 10 Mbps max**: 10 Mbps max is not **Higher interface speeds accurately**.
+    **Only 10 Mbps max**: Classic EIGRP scaled to 10 Gbps-ish with default K values;
+    **wide metrics** (named mode) support much higher bandwidth, not a 10 Mbps cap.
 
 
     **Only Token Ring**: Token Ring is a legacy LAN (IEEE 802.5), not modern campus
@@ -824,8 +842,9 @@ questions:
     **Preserve forwarding during restart**: NSF/GR.
 
 
-    **Flush all routes immediately always**: Flush all routes immediately is not **Preserve
-    forwarding during restart**.
+    **Flush all routes immediately always**: OSPF Graceful Restart (RFC 3623) keeps
+    **forwarding** during a control-plane restart so neighbors do not flush routes
+    immediately.
 
 
     **Disable BFD**: BFD detects forwarding-path failures in milliseconds.
@@ -977,7 +996,8 @@ questions:
     **ABRs (and ASBRs for externals)**: ABRs summarize between areas.
 
 
-    **Only access ports**: access ports is not **ABRs (and ASBRs for externals)**.
+    **Only access ports**: OSPF summarization is done on an **ABR** (inter-area) or
+    **ASBR** (external), not on access ports.
 
 
     **Only WLC LAG**: A WLC terminates CAPWAP and pushes WLAN policy to lightweight
@@ -1015,8 +1035,8 @@ questions:
     concepts.
 
 
-    **Only link state for both identical**: link state for both identical is not **Advanced
-    distance vector; OSPF is link state**.
+    **Only link state for both identical**: OSPF is link-state. EIGRP is advanced
+    **distance-vector** (DUAL), not “the same as OSPF.”.
 
 
     **Only path-vector like BGP for both**: BGP is the Internet path-vector protocol
@@ -1054,8 +1074,9 @@ questions:
     path to source.
 
 
-    **Only TCP SYN floods exclusive**: TCP SYN floods is not **Accepting multicast
-    on the wrong reverse path**.
+    **Only TCP SYN floods exclusive**: Multicast RPF drops a multicast packet whose
+    incoming interface is not the unicast route back to the **source**. It is not
+    a SYN-flood defense.
 
 
     **Only VLAN hopping exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
@@ -1133,15 +1154,15 @@ questions:
     Hellos.
 
 
-    **Disable the IP address**: Advertise a network without forming Hellos/adjacency
-    is the matching value or command; Disable the IP address is not.
+    **Disable the IP address**: `ip ospf passive-interface` keeps the IP and advertises
+    the prefix; it only stops Hellos (no adjacency on that link).
 
 
     **Force Type 5 everywhere**: OSPF Type-5 external LSAs are originated by an ASBR.
 
 
-    **Clear the RID automatically**: Advertise a network without forming Hellos/adjacency
-    is the matching value or command; Clear the RID automatically is not.'
+    **Clear the RID automatically**: Passive-interface does not reset the RID. The
+    RID stays until you change `router-id` and restart the process.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1171,8 +1192,8 @@ questions:
     **Source-specific multicast joins**: IGMPv3 supports SSM source filters.
 
 
-    **Only dense-mode flood forever**: dense-mode flood is not **Source-specific multicast
-    joins**.
+    **Only dense-mode flood forever**: IGMPv3 adds source INCLUDE/EXCLUDE lists (needed
+    for SSM). It does not force dense-mode flooding.
 
 
     **Only STP Fast Hellos**: Spanning Tree elects a root bridge and blocks redundant
@@ -1210,8 +1231,8 @@ questions:
     considered early.
 
 
-    **Transitive across the AS always**: Transitive across the AS is not **Local to
-    the router and highest preferred first**.
+    **Transitive across the AS always**: Cisco **weight** is local to the router and
+    **non-transitive**. Local Preference is transitive inside the AS.
 
 
     **Only an OSPF metric**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
@@ -1248,8 +1269,8 @@ questions:
     **Err-disables the port**: BPDU guard protects edge ports.
 
 
-    **Becomes root immediately always**: Becomes root immediately is not **Err-disables
-    the port**.
+    **Becomes root immediately always**: Receiving a superior BPDU does not make an
+    edge port the root. With BPDU Guard the port **err-disables**.
 
 
     **Negotiates LACP**: LACP (802.3ad/802.1AX) negotiates EtherChannel with active/passive
@@ -1288,12 +1309,12 @@ questions:
     trees.
 
 
-    **Only dense flood**: dense flood is not **Source trees without a shared-tree
-    RP dependency**.
+    **Only dense flood**: PIM SSM does not flood densely. Receivers specify sources
+    via IGMPv3 INCLUDE.
 
 
-    **Only MSDP mandatory always**: MSDP mandatory is not **Source trees without a
-    shared-tree RP dependency**.
+    **Only MSDP mandatory always**: PIM SSM (typically 232/8) uses IGMPv3 source lists
+    and does **not** require an RP or MSDP.
 
 
     **Only IGMP v1 exclusive**: IGMP lets IPv4 hosts join multicast groups on a LAN.'
@@ -1327,16 +1348,17 @@ questions:
     through area 0.
 
 
-    **Only a single area forever**: a single area is not **Connectivity via backbone
-    area 0 (classic design)**.
+    **Only a single area forever**: Multiple OSPF normal areas require **area 0**
+    as the backbone; ABRs attach non-zero areas to it. You are not stuck with one
+    area.
 
 
     **Only EIGRP redistribution mandatory**: EIGRP is Cisco’s DUAL IGP (default AD
     90 internal / 170 external).
 
 
-    **Only static defaults exclusive**: static defaults is not **Connectivity via
-    backbone area 0 (classic design)**.'
+    **Only static defaults exclusive**: Multi-area OSPF uses ABRs and area 0, not
+    only static defaults (though a stub area may inject a default).'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1400,24 +1422,10 @@ questions:
     - Highest Local Preference
     - Lowest MED (same AS)
     - Prefer eBGP over iBGP
-  explanation: 'The correct sequence for this item is: Weight (Cisco highest) → Highest
-    Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step must
-    appear in this order; rearranging any step breaks the required procedure or protocol
-    behavior. The correct sequence for this item is: Weight (Cisco highest) → Highest
-    Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step must
-    appear in this order; rearranging any step breaks the required procedure or protocol
-    behavior. The correct sequence for this item is: Weight (Cisco highest) → Highest
-    Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step must
-    appear in this order; rearranging any step breaks the required procedure or protocol
-    behavior. The correct sequence for this item is: Weight (Cisco highest) → Highest
-    Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. Each step must
-    appear in this order; rearranging any step breaks the required procedure or protocol
-    behavior. The correct sequence for this item is: Weight (Cisco highest) → Highest
-    Local Preference → Lowest MED (same AS) → Prefer eBGP over iBGP. The stem requires
-    the operational or protocol order implied by: Order early BGP best-path decision
-    steps among these attributes (Cisco teaching order for the listed steps).. Each
-    listed step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior.'
+  explanation: 'Cisco BGP best-path among the listed attributes: highest **Weight**
+    (local to the router) → highest **Local Preference** (inside the AS) → lowest
+    **MED** (compared for the same neighboring AS) → prefer **eBGP** over iBGP. Weight
+    is Cisco-proprietary and is considered first of these.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2

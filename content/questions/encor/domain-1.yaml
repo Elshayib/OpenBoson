@@ -178,14 +178,16 @@ questions:
     endpoints/services.
 
 
-    **Only flat L2 everywhere**: flat L2 everywhere is not **Fabric overlay/underlay**.
+    **Only flat L2 everywhere**: A fabric **separates** underlay IP from overlay (VXLAN/LISP).
+    Flat L2 everywhere is the design it replaces.
 
 
     **Only hub-spoke Frame Relay**: Frame Relay identifies virtual circuits with DLCIs
     on an NBMA WAN, not an SD-Access or VXLAN overlay ID.
 
 
-    **Only static default only**: static default is not **Fabric overlay/underlay**.'
+    **Only static default only**: A collapsed core still runs IGP/BGP as designed.
+    It is not “static default only.”.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -223,8 +225,8 @@ questions:
     **Disable CEF**: CEF is IOS forwarding from the FIB, not process switching.
 
 
-    **Force process switching**: Minimize disruption on switchover is the matching
-    value or command; Force process switching is not.'
+    **Force process switching**: SSO/NSF keeps CEF forwarding during RP failover.
+    Process switching would slow the box; NSF does the opposite.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -294,10 +296,12 @@ questions:
     **Core and distribution**: Collapsed core combines core+distribution functions.
 
 
-    **Only access and WAN**: access and WAN is not **Core and distribution**.
+    **Only access and WAN**: Collapsed core merges **core + distribution**. Access
+    and WAN stay separate layers.
 
 
-    **Only wireless and firewall**: wireless and firewall is not **Core and distribution**.
+    **Only wireless and firewall**: Collapsed core merges campus core and distribution,
+    not WLC + firewall.
 
 
     **Only DNS and DHCP**: DHCP assigns IPv4 address, mask, gateway, and DNS (DORA,
@@ -332,13 +336,16 @@ questions:
     metrics.
 
 
-    **Only single best path always**: single best path is not **Equal-cost paths installed**.
+    **Only single best path always**: BGP can install ECMP with `maximum-paths`. “Single
+    best path always” is the default, not a hard law.
 
 
-    **Only policy routing**: policy routing is not **Equal-cost paths installed**.
+    **Only policy routing**: PBR is one tool. NAT/PAT on the edge translates addresses;
+    it is not PBR.
 
 
-    **Only spanning tree**: spanning tree is not **Equal-cost paths installed**.'
+    **Only spanning tree**: STP prevents L2 loops. It is not a substitute for the
+    feature the stem names.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -407,10 +414,12 @@ questions:
     **Leaf**: Top-of-rack leaves connect servers to spines.
 
 
-    **Spine only**: Spine is not **Leaf**.
+    **Spine only**: A leaf-spine fabric uses **both** roles: leaves attach endpoints,
+    spines are the backbone. “Spine only” is not a Clos.
 
 
-    **Route reflector only**: Route reflector is not **Leaf**.
+    **Route reflector only**: A route reflector is an iBGP scaling tool. The stem’s
+    feature is a different plane (underlay/overlay/campus layer).
 
 
     **WAN edge only**: The WAN edge connects the site to providers (often NAT, VPN,
@@ -444,7 +453,8 @@ questions:
     **Access edge / IP phone**: Trust and classify near the edge.
 
 
-    **Only ISP core**: ISP core is not **Access edge / IP phone**.
+    **Only ISP core**: A collapsed core merges campus **core + distribution**. It
+    is not an ISP backbone.
 
 
     **Only DNS root**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on UDP/TCP
@@ -483,8 +493,8 @@ questions:
     multiple chassis as one logical switch.
 
 
-    **Only wireless mesh**: wireless mesh is not **Control-plane and forwarding abstraction
-    across members**.
+    **Only wireless mesh**: A 3-tier campus is wired access/distribution/core. Mesh
+    is an AP backhaul option.
 
 
     **Only MPLS TE**: MPLS forwards on labels in a provider core, not on a campus
@@ -522,8 +532,8 @@ questions:
     **First-hop gateway redundancy**: HSRP/VRRP keep default gateway available.
 
 
-    **Only underlay multicast RP**: underlay multicast RP is not **First-hop gateway
-    redundancy**.
+    **Only underlay multicast RP**: VXLAN/EVPN often uses ingress replication or multicast
+    in the underlay. The VNI still identifies the overlay, not the RP address.
 
 
     **Only VXLAN VNI allocation**: VXLAN encapsulates Ethernet in UDP 4789 with a
@@ -562,8 +572,8 @@ questions:
     data plane edges.
 
 
-    **Only access switches as RR mandatory**: access switches as RR is not **vSmart
-    / orchestration components**.
+    **Only access switches as RR mandatory**: BGP route reflectors sit in the iBGP
+    core (often spines/PEs). Access switches are not mandatory RRs.
 
 
     **Only STP root**: Spanning Tree elects a root bridge and blocks redundant Ethernet
@@ -601,8 +611,8 @@ questions:
     domains.
 
 
-    **Only disabling all routing**: disabling all routing is not **Border/fusion design
-    considerations**.
+    **Only disabling all routing**: SSO/NSF preserves routing during supervisor failover;
+    it does not disable routing.
 
 
     **Only removing VLANs forever**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
@@ -678,16 +688,16 @@ questions:
     across transports.
 
 
-    **Mandatory single underlay protocol only forever**: Mandatory single underlay
-    protocol only is not **Centralized policy with transport independence**.
+    **Mandatory single underlay protocol only forever**: An underlay can run OSPF,
+    IS-IS, or BGP. VXLAN/SD-Access does not freeze you to one protocol forever.
 
 
-    **Removal of encryption options**: Centralized policy with transport independence
-    is the matching value or command; Removal of encryption options is not.
+    **Removal of encryption options**: SD-WAN adds IPsec on overlays; it does not
+    remove encryption options.
 
 
-    **Only L2 loops required**: L2 loops is not **Centralized policy with transport
-    independence**.'
+    **Only L2 loops required**: SD-WAN’s benefit is centralized policy, app-aware
+    routing, and encryption — not requiring Layer-2 loops.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -718,15 +728,16 @@ questions:
     and HA for fabrics/cloud.
 
 
-    **Only cable color standards**: cable color standards is not **Scale and resiliency
-    of tiers/fabrics**.
+    **Only cable color standards**: TIA color codes are cabling craft. Capacity planning
+    is bandwidth and scale.
 
 
-    **Only console baud rates**: console baud rates is not **Scale and resiliency
-    of tiers/fabrics**.
+    **Only console baud rates**: 9600/115200 baud is serial CLI. Capacity planning
+    is traffic engineering.
 
 
-    **Only banner motd text**: banner motd text is not **Scale and resiliency of tiers/fabrics**.'
+    **Only banner motd text**: Capacity planning sizes uplinks, oversubscription,
+    and cloud regions — not the MOTD string.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1

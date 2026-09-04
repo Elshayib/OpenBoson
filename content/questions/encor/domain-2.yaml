@@ -26,11 +26,12 @@ questions:
     **On bare metal**: Bare-metal hypervisors sit on hardware.
 
 
-    **Only inside a guest OS as Type 2 exclusive**: inside a guest OS as Type 2 is
-    not **On bare metal**.
+    **Only inside a guest OS as Type 2 exclusive**: A Type-1 (bare-metal) hypervisor
+    runs on the hardware (ESXi, Hyper-V Server). Type-2 runs on a host OS (Workstation/Fusion).
 
 
-    **Only on printers**: on printers is not **On bare metal**.
+    **Only on printers**: Type-1 hypervisors run on servers (and some desktops), not
+    “only printers.”.
 
 
     **Only in STP**: Spanning Tree elects a root bridge and blocks redundant Ethernet
@@ -103,14 +104,16 @@ questions:
     **Overlay segment**: VNI separates overlay networks.
 
 
-    **Only physical port**: physical port is not **Overlay segment**.
+    **Only physical port**: A VXLAN VNI is a **logical overlay segment**, independent
+    of a single physical switch port.
 
 
     **Only BGP ASN**: BGP is the Internet path-vector protocol (TCP 179; eBGP AD 20,
     iBGP AD 200).
 
 
-    **Only CoS bit**: CoS bit is not **Overlay segment**.'
+    **Only CoS bit**: 802.1Q CoS is 3 PCP bits in a VLAN tag. A VXLAN **VNI** is a
+    24-bit overlay segment ID.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -178,10 +181,12 @@ questions:
     **Kernel**: Containers share the host kernel.
 
 
-    **Only entire guest kernel always**: entire guest kernel is not **Kernel**.
+    **Only entire guest kernel always**: Containers share the **host** kernel. A full
+    guest kernel is a VM, not a container.
 
 
-    **Only BIOS**: BIOS is not **Kernel**.
+    **Only BIOS**: Containers share the host **kernel** (namespaces/cgroups). They
+    do not each boot a BIOS/firmware.
 
 
     **Only ASIC TCAM exclusively**: TCAM stores hardware ACL/QoS/FIB entries.'
@@ -291,7 +296,8 @@ questions:
     **VM/vNIC traffic on a hypervisor host**: vSwitches bridge VM interfaces.
 
 
-    **Only ISP PEs exclusive**: ISP PEs is not **VM/vNIC traffic on a hypervisor host**.
+    **Only ISP PEs exclusive**: A virtual switch (vSwitch/Nexus 1000v/AVS) connects
+    **VM NICs** on a hypervisor, not only ISP PE routers.
 
 
     **Only DNS roots**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on
@@ -371,10 +377,12 @@ questions:
     interface; members must match speed, duplex, and mode.
 
 
-    **Only elect DR**: elect DR is not **Encrypt tunneled overlays**.
+    **Only elect DR**: Python `netmiko`/`ncclient` libraries talk to APIs or parse
+    CLI. Electing an OSPF DR is not their purpose.
 
 
-    **Only age CAM**: age CAM is not **Encrypt tunneled overlays**.'
+    **Only age CAM**: IPsec+GRE protects and tunnels **routed** packets. Aging the
+    MAC table is a switch CAM timer, unrelated.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -405,15 +413,16 @@ questions:
     systems.
 
 
-    **Only a bare-metal Type 1 host exclusive**: a bare-metal Type 1 host is not **Guest
-    OS + virtualized hardware abstraction**.
+    **Only a bare-metal Type 1 host exclusive**: A VM includes virtual hardware plus
+    a **guest OS**. Type-1 is the hypervisor placement, not the VM contents.
 
 
-    **Only a physical ASIC**: a physical ASIC is not **Guest OS + virtualized hardware
-    abstraction**.
+    **Only a physical ASIC**: An ASIC is switching silicon. A VM is software isolation
+    (guest OS + virt hardware) on a hypervisor.
 
 
-    **Only a copper SFP**: a copper SFP is not **Guest OS + virtualized hardware abstraction**.'
+    **Only a copper SFP**: An SFP is a transceiver. A VM is a virtual machine (vCPU,
+    vNIC, guest OS), not an optic.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -488,12 +497,12 @@ questions:
     redundant Ethernet paths so the LAN does not loop.
 
 
-    **Only disabling IP**: disabling IP is not **Shared storage / network reachability
-    design**.
+    **Only disabling IP**: Live VM migration needs shared storage and L2 adjacency
+    for the vNIC. It does not disable the VM’s IP.
 
 
-    **Only removing default route**: removing default route is not **Shared storage
-    / network reachability design**.'
+    **Only removing default route**: vMotion/live migration does not require deleting
+    the default route. It needs consistent L2/L3 for the VM’s address.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -527,10 +536,12 @@ questions:
     a link; it is not an AD or overlay ID.
 
 
-    **Only IPv4 options mandatory**: IPv4 options is not **Encapsulation overhead**.
+    **Only IPv4 options mandatory**: VXLAN adds ~50 bytes (UDP+VXLAN). Underlay MTU
+    must grow or use jumbo; IPv4 options are unrelated.
 
 
-    **Only disabling jumbo**: disabling jumbo is not **Encapsulation overhead**.'
+    **Only disabling jumbo**: VXLAN underlay usually **enables** jumbo or raises MTU
+    to absorb the VXLAN header.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -599,8 +610,8 @@ questions:
     **Security risk class**: Guest breakout to host is a critical risk.
 
 
-    **Routing metric**: Security risk class is the matching value or command; Routing
-    metric is not.
+    **Routing metric**: A hypervisor escape is a **security vulnerability** (guest
+    breaks into the host). Metric is an IGP cost.
 
 
     **STP state**: Spanning Tree elects a root bridge and blocks redundant Ethernet

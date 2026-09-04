@@ -29,12 +29,12 @@ questions:
     **MAC to VLAN**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **AS numbers to communities**: Names to IP addresses is the matching value or
-    command; AS numbers to communities is not.
+    **AS numbers to communities**: BGP maps AS numbers and optional communities on
+    prefixes. DNS maps names to addresses (A/AAAA) and mail exchangers (MX).
 
 
-    **SPIDs to DLCI**: Names to IP addresses is the matching value or command; SPIDs
-    to DLCI is not.'
+    **SPIDs to DLCI**: SPIDs were ISDN; DLCI is Frame Relay. DNS maps names to IPs,
+    not WAN circuit IDs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -261,10 +261,12 @@ questions:
     server.
 
 
-    **Only CHADDR to zero**: CHADDR to zero is not **GIADDR (gateway address)**.
+    **Only CHADDR to zero**: A relay leaves the client MAC (chaddr) intact and sets
+    **giaddr** to its own interface IP so the server knows the subnet.
 
 
-    **Only UDP sport 179**: UDP sport 179 is not **GIADDR (gateway address)**.
+    **Only UDP sport 179**: UDP 179 is not a DHCP field. A relay sets **giaddr** (and
+    uses UDP 67) so the server can scope the pool.
 
 
     **Only DSCP EF**: DSCP is the 6-bit IP marking (EF=46 for voice).'
@@ -380,7 +382,9 @@ questions:
     network.
 
 
-    **Only outside global**: outside global is not **Inside NAT interface**.
+    **Only outside global**: `ip nat inside` marks the **inside** interface (local
+    realm). Outside-global is the translated public address, configured on the outside
+    interface / pool.
 
 
     **Only VRF**: A VRF is a separate routing table/FIB instance on one device, used
@@ -421,7 +425,8 @@ questions:
     **Only HTTPS forever**: HTTPS is HTTP over TLS, default TCP 443.
 
 
-    **Only console cables**: console cables is not **Cleartext Telnet for device management**.
+    **Only console cables**: SSH (TCP 22) replaces **Telnet** for remote CLI. A console
+    cable is out-of-band serial, not what SSH replaces.
 
 
     **Only SNMP traps**: SNMP reads/writes MIB objects (UDP 161) and sends traps (162).'
@@ -454,8 +459,8 @@ questions:
     **Transfer IOS/config files simply**: TFTP is a lightweight file transfer protocol.
 
 
-    **Encrypt site-to-site VPNs**: Transfer IOS/config files simply is the matching
-    value or command; Encrypt site-to-site VPNs is not.
+    **Encrypt site-to-site VPNs**: Site-to-site encryption is IPsec. TFTP (UDP 69)
+    copies IOS/config files with no confidentiality.
 
 
     **Elect HSRP active**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
@@ -492,7 +497,8 @@ questions:
     **Name to IP**: Forward DNS resolves names to addresses.
 
 
-    **IP to MAC only**: IP to MAC is not **Name to IP**.
+    **IP to MAC only**: IPv4→MAC is ARP. DNS forward lookup maps a **name** to an
+    IP (A or AAAA).
 
 
     **AS to community**: A community cloud is shared by several organizations. Private
@@ -530,8 +536,8 @@ questions:
     ports.
 
 
-    **All access ports always**: All access ports is not **Legitimate DHCP servers
-    / uplinks**.
+    **All access ports always**: Access ports face PCs. DHCP snooping **trusted**
+    ports face the DHCP server or uplink, not every access port.
 
 
     **Only SPAN destinations**: SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE
@@ -612,8 +618,8 @@ questions:
     AD 110, multicast 224.0.0.5/6).
 
 
-    **Disabling MIBs**: Acknowledged delivery is the matching value or command; Disabling
-    MIBs is not.'
+    **Disabling MIBs**: SNMP informs wait for an ACK from the NMS; traps are unacknowledged.
+    Neither behavior is “turning MIBs off.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -651,8 +657,8 @@ questions:
     neighbor AS.
 
 
-    **Elect DR**: Classify message sources/categories is the matching value or command;
-    Elect DR is not.'
+    **Elect DR**: DR/BDR election is OSPF on multiaccess links. Syslog **facilities**
+    classify messages (local0–7, kern, …) for filtering.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -683,16 +689,16 @@ questions:
     port multiplexing.
 
 
-    **Only 1:1 static always**: 1:1 static is not **Translating many insides to one/few
-    globals with ports**.
+    **Only 1:1 static always**: Static NAT is 1:1. PAT/overload maps many inside-local
+    hosts to one global using source ports.
 
 
-    **Only disabling TCP**: disabling TCP is not **Translating many insides to one/few
-    globals with ports**.
+    **Only disabling TCP**: PAT still uses TCP/UDP ports; it does not disable TCP.
+    It multiplexes many inside hosts onto one global IP.
 
 
-    **Only using IPv6 exclusively**: using IPv6 is not **Translating many insides
-    to one/few globals with ports**.'
+    **Only using IPv6 exclusively**: PAT is an IPv4 conservation tool. NPTv6/NAT66
+    is a different discussion; PAT does not mean “IPv6 only.”.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -722,13 +728,13 @@ questions:
     **TCP 22**: SSH listens on TCP 22 by default.
 
 
-    **UDP 161**: TCP 22 is the matching value or command; UDP 161 is not.
+    UDP 161 is SNMP. SSH is TCP 22.
 
 
-    **UDP 69**: TCP 22 is the matching value or command; UDP 69 is not.
+    UDP 69 is TFTP. SSH is TCP 22.
 
 
-    **TCP 23**: TCP 22 is the matching value or command; TCP 23 is not.'
+    TCP 23 is Telnet. SSH uses TCP 22.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
