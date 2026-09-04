@@ -23,17 +23,16 @@ questions:
   explanation: 'YANG.
 
 
-    **Only TCL exclusive** points at TCL, which is not how 6.3 (Data modeling language
-    principles) solves this stem. The keyed answer is **YANG data models**.
+    **YANG data models**: YANG.
 
 
-    **Only expect scripts exclusive** points at expect scripts, which is not how 6.3
-    (Data modeling language principles) solves this stem. The keyed answer is **YANG
-    data models**.
+    **Only TCL exclusive**: TCL is not **YANG data models**.
 
 
-    **Only macros exclusive** points at macros, which is not how 6.3 (Data modeling
-    language principles) solves this stem. The keyed answer is **YANG data models**.'
+    **Only expect scripts exclusive**: expect scripts is not **YANG data models**.
+
+
+    **Only macros exclusive**: macros is not **YANG data models**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -60,19 +59,18 @@ questions:
   explanation: 'REST API results include codes and payloads.
 
 
-    **Only STP BPDUs** points at STP BPDUs, which is not how 6.5 (REST API response
-    codes and results) solves this stem. The keyed answer is **JSON/XML response bodies
-    and status codes**.
+    **JSON/XML response bodies and status codes**: REST API results include codes
+    and payloads.
 
 
-    **Only CDP version** points at CDP version, which is not how 6.5 (REST API response
-    codes and results) solves this stem. The keyed answer is **JSON/XML response bodies
-    and status codes**.
+    **Only STP BPDUs**: BPDUs are STP control frames used to elect a root and assign
+    port roles.
 
 
-    **Only PoE class** points at PoE class, which is not how 6.5 (REST API response
-    codes and results) solves this stem. The keyed answer is **JSON/XML response bodies
-    and status codes**.'
+    **Only CDP version**: CDP is Cisco’s L2 neighbor discovery (`show cdp neighbors`).
+
+
+    **Only PoE class**: PoE delivers DC power on Ethernet (802.3af/at/bt).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -99,17 +97,18 @@ questions:
   explanation: 'Ansible is commonly agentless.
 
 
-    **Only agent-required Puppet exclusive forever** points at agent-required Puppet
-    exclusive, which is not how 6.7 (Orchestration tools) solves this stem. The keyed
-    answer is **Agentless orchestration**.
+    **Agentless orchestration**: Ansible is commonly agentless.
 
 
-    **Only a routing protocol** points at a routing protocol, which is not how 6.7
-    (Orchestration tools) solves this stem. The keyed answer is **Agentless orchestration**.
+    **Only agent-required Puppet exclusive forever**: Puppet is agent-based config
+    management; Ansible is typically agentless.
 
 
-    **Only a wireless cipher** points at a wireless cipher, which is not how 6.7 (Orchestration
-    tools) solves this stem. The keyed answer is **Agentless orchestration**.'
+    **Only a routing protocol**: a routing protocol is not **Agentless orchestration**.
+
+
+    **Only a wireless cipher**: A wireless cipher (TKIP/CCMP/GCMP) encrypts 802.11
+    frames; it is not AAA or overlay.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -136,19 +135,17 @@ questions:
   explanation: 'ENCOR expects basic Python literacy.
 
 
-    **Only to replace ASICs** points at to replace ASICs, which is not how 6.1 (Python
-    components and scripts) solves this stem. The keyed answer is **Libraries to call
-    APIs or parse text**.
+    **Libraries to call APIs or parse text**: ENCOR expects basic Python literacy.
 
 
-    **Only to elect DR** points at to elect DR, which is not how 6.1 (Python components
-    and scripts) solves this stem. The keyed answer is **Libraries to call APIs or
+    **Only to replace ASICs**: to replace ASICs is not **Libraries to call APIs or
     parse text**.
 
 
-    **Only to age CAM** points at to age CAM, which is not how 6.1 (Python components
-    and scripts) solves this stem. The keyed answer is **Libraries to call APIs or
-    parse text**.'
+    **Only to elect DR**: to elect DR is not **Libraries to call APIs or parse text**.
+
+
+    **Only to age CAM**: to age CAM is not **Libraries to call APIs or parse text**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -175,19 +172,20 @@ questions:
   explanation: 'Construct valid JSON-encoded files.
 
 
-    **Only Python True literals** points at Python True literals, which is not how
-    6.2 (Construct valid JSON-encoded files) solves this stem. The keyed answer is
-    **Well-formed objects/arrays with quoted keys**.
+    **Well-formed objects/arrays with quoted keys**: Construct valid JSON-encoded
+    files.
 
 
-    **Only trailing commas required** points at trailing commas, which is not how
-    6.2 (Construct valid JSON-encoded files) solves this stem. The keyed answer is
-    **Well-formed objects/arrays with quoted keys**.
+    **Only Python True literals**: Python True literals is not **Well-formed objects/arrays
+    with quoted keys**.
 
 
-    **Only XML tags** points at XML tags, which is not how 6.2 (Construct valid JSON-encoded
-    files) solves this stem. The keyed answer is **Well-formed objects/arrays with
-    quoted keys**.'
+    **Only trailing commas required**: trailing commas is not **Well-formed objects/arrays
+    with quoted keys**.
+
+
+    **Only XML tags**: XML uses angle-bracket tags (`<rpc>`); NETCONF uses it, JSON
+    does not.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -214,19 +212,17 @@ questions:
   explanation: 'Controller APIs automate platforms.
 
 
-    **Only console cabling** points at console cabling, which is not how 6.4 (Cisco
-    DNA Center and vManage APIs) solves this stem. The keyed answer is **Programmatic
+    **Programmatic inventory/policy/operations**: Controller APIs automate platforms.
+
+
+    **Only console cabling**: console cabling is not **Programmatic inventory/policy/operations**.
+
+
+    **Only optical dBm reads exclusive**: optical dBm reads is not **Programmatic
     inventory/policy/operations**.
 
 
-    **Only optical dBm reads exclusive** points at optical dBm reads, which is not
-    how 6.4 (Cisco DNA Center and vManage APIs) solves this stem. The keyed answer
-    is **Programmatic inventory/policy/operations**.
-
-
-    **Only punch-down maps** points at punch-down maps, which is not how 6.4 (Cisco
-    DNA Center and vManage APIs) solves this stem. The keyed answer is **Programmatic
-    inventory/policy/operations**.'
+    **Only punch-down maps**: punch-down maps is not **Programmatic inventory/policy/operations**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -253,19 +249,20 @@ questions:
   explanation: 'EEM reacts to events with actions.
 
 
-    **Only underlay ECMP math exclusive** points at underlay ECMP math, which is not
-    how 6.6 (EEM applet) solves this stem. The keyed answer is **Configuration, troubleshooting,
-    or data collection reactions**.
+    **Configuration, troubleshooting, or data collection reactions**: EEM reacts to
+    events with actions.
 
 
-    **Only VTP sync** points at VTP sync, which is not how 6.6 (EEM applet) solves
-    this stem. The keyed answer is **Configuration, troubleshooting, or data collection
-    reactions**.
+    **Only underlay ECMP math exclusive**: ECMP installs multiple equal-cost next
+    hops (OSPF `maximum-paths`).
 
 
-    **Only LACP hashing exclusive** points at LACP hashing, which is not how 6.6 (EEM
-    applet) solves this stem. The keyed answer is **Configuration, troubleshooting,
-    or data collection reactions**.'
+    **Only VTP sync**: VTP floods VLAN advertisements among switches using a revision
+    number; it does not route, NAT, or identify an overlay.
+
+
+    **Only LACP hashing exclusive**: LACP (802.3ad/802.1AX) negotiates EtherChannel
+    with active/passive modes.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -292,19 +289,18 @@ questions:
   explanation: 'Compare agent vs agentless tools.
 
 
-    **Only STP modes** points at STP modes, which is not how 6.7 (Orchestration tools)
-    solves this stem. The keyed answer is **Whether managed nodes run a persistent
-    agent**.
+    **Whether managed nodes run a persistent agent**: Compare agent vs agentless tools.
 
 
-    **Only NAT types** points at NAT types, which is not how 6.7 (Orchestration tools)
-    solves this stem. The keyed answer is **Whether managed nodes run a persistent
-    agent**.
+    **Only STP modes**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.
 
 
-    **Only syslog severity** is a mismatch: Syslog exports device logs (UDP 514 by
-    default) with severity 0–7. The stem is asking about **Whether managed nodes run
-    a persistent agent**.'
+    **Only NAT types**: NAT/PAT rewrites IP addresses (and ports with overload) across
+    inside/outside.
+
+
+    **Only syslog severity**: Syslog exports device logs (UDP 514) with severity 0–7.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -331,19 +327,19 @@ questions:
   explanation: 'YANG is a data modeling language.
 
 
-    **Only Ethernet PHY voltages** points at Ethernet PHY voltages, which is not how
-    6.3 (Data modeling language principles) solves this stem. The keyed answer is
-    **Configuration and operational data structure**.
+    **Configuration and operational data structure**: YANG is a data modeling language.
 
 
-    **Only cable colors** points at cable colors, which is not how 6.3 (Data modeling
-    language principles) solves this stem. The keyed answer is **Configuration and
+    **Only Ethernet PHY voltages**: Ethernet PHY voltages is not **Configuration and
     operational data structure**.
 
 
-    **Only rack U heights** points at rack U heights, which is not how 6.3 (Data modeling
-    language principles) solves this stem. The keyed answer is **Configuration and
-    operational data structure**.'
+    **Only cable colors**: cable colors is not **Configuration and operational data
+    structure**.
+
+
+    **Only rack U heights**: rack U heights is not **Configuration and operational
+    data structure**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -370,16 +366,18 @@ questions:
   explanation: 'Interpret REST status codes.
 
 
-    **Unauthorized** is a mismatch: HTTP 401 — missing or invalid authentication.
-    The stem is asking about **Successful resource creation**.
+    **Successful resource creation**: Interpret REST status codes.
 
 
-    **Server error** is a mismatch: HTTP 5xx — server-side failure (typically 500).
-    The stem is asking about **Successful resource creation**.
+    **Unauthorized**: HTTP 401 — missing or invalid authentication.
 
 
-    **Not found** is a mismatch: HTTP 404 — the URI does not exist. The stem is asking
-    about **Successful resource creation**.'
+    **Server error**: Successful resource creation is the matching value or command;
+    Server error is not.
+
+
+    **Not found**: Successful resource creation is the matching value or command;
+    Not found is not.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -406,17 +404,18 @@ questions:
   explanation: 'Basic Python components include lists/dicts.
 
 
-    **Only curly braces exclusive** points at curly braces, which is not how 6.1 (Python
-    components and scripts) solves this stem. The keyed answer is **Square brackets**.
+    **Square brackets**: Basic Python components include lists/dicts.
 
 
-    **Only angle brackets** points at angle brackets, which is not how 6.1 (Python
-    components and scripts) solves this stem. The keyed answer is **Square brackets**.
+    **Only curly braces exclusive**: curly braces is not **Square brackets**.
 
 
-    **Only parentheses exclusive forever** points at parentheses exclusive, which
-    is not how 6.1 (Python components and scripts) solves this stem. The keyed answer
-    is **Square brackets**.'
+    **Only angle brackets**: Angle brackets are XML tags. JSON uses `{}` / `[]`, not
+    `<tag>`.
+
+
+    **Only parentheses exclusive forever**: parentheses exclusive is not **Square
+    brackets**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -443,18 +442,18 @@ questions:
   explanation: 'JSON uses null.
 
 
-    **None (Python only as JSON)** is a different protocol, command, or value than
-    **null**. For 6.2 (Construct valid JSON-encoded files), the stem is solved by
-    **null**, not by None (Python only as JSON).
+    **null**: JSON uses null.
 
 
-    **NULL** is a different protocol, command, or value than **null**. For 6.2 (Construct
-    valid JSON-encoded files), the stem is solved by **null**, not by NULL.
+    **None (Python only as JSON)**: JSON encodes objects `{}` and arrays `[]` with
+    lowercase true/false/null.
 
 
-    **undefined (JS only as JSON)** is a different protocol, command, or value than
-    **null**. For 6.2 (Construct valid JSON-encoded files), the stem is solved by
-    **null**, not by undefined (JS only as JSON).'
+    null is the matching value or command; NULL is not.
+
+
+    **undefined (JS only as JSON)**: JSON encodes objects `{}` and arrays `[]` with
+    lowercase true/false/null.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -481,18 +480,18 @@ questions:
   explanation: 'Controller APIs cover SD-WAN Manager.
 
 
-    **Only set STP priority** points at set STP priority, which is not how 6.4 (Cisco
-    DNA Center and vManage APIs) solves this stem. The keyed answer is **Automate
-    WAN fabric operations/policy**.
+    **Automate WAN fabric operations/policy**: Controller APIs cover SD-WAN Manager.
 
 
-    **Only create VLANs on access** is a mismatch: The campus access layer attaches
-    endpoints (PCs, phones, APs). The stem is asking about **Automate WAN fabric operations/policy**.
+    **Only set STP priority**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.
 
 
-    **Only configure PortFast** points at configure PortFast, which is not how 6.4
-    (Cisco DNA Center and vManage APIs) solves this stem. The keyed answer is **Automate
-    WAN fabric operations/policy**.'
+    **Only create VLANs on access**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+
+
+    **Only configure PortFast**: PortFast skips STP listening/learning on edge ports
+    so hosts get DHCP immediately.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -519,18 +518,19 @@ questions:
   explanation: 'Event-driven automation on box.
 
 
-    **Only manual cable moves** points at manual cable moves, which is not how 6.6
-    (EEM applet) solves this stem. The keyed answer is **Syslog patterns / timers
+    **Syslog patterns / timers / events**: Event-driven automation on box.
+
+
+    **Only manual cable moves**: manual cable moves is not **Syslog patterns / timers
     / events**.
 
 
-    **Only optical cleaning** points at optical cleaning, which is not how 6.6 (EEM
-    applet) solves this stem. The keyed answer is **Syslog patterns / timers / events**.
+    **Only optical cleaning**: optical cleaning is not **Syslog patterns / timers
+    / events**.
 
 
-    **Only DNS TTL expiry exclusive** points at DNS TTL expiry, which is not how 6.6
-    (EEM applet) solves this stem. The keyed answer is **Syslog patterns / timers
-    / events**.'
+    **Only DNS TTL expiry exclusive**: DNS maps names to addresses (A/AAAA) and reverse
+    (PTR) on UDP/TCP 53.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -557,17 +557,17 @@ questions:
   explanation: 'Agent-based orchestration contrast.
 
 
-    **Only Ansible SSH exclusive always** points at Ansible SSH exclusive, which is
-    not how 6.7 (Orchestration tools) solves this stem. The keyed answer is **Agents
-    on managed nodes**.
+    **Agents on managed nodes**: Agent-based orchestration contrast.
 
 
-    **Only SNMP GET** points at SNMP GET, which is not how 6.7 (Orchestration tools)
-    solves this stem. The keyed answer is **Agents on managed nodes**.
+    **Only Ansible SSH exclusive always**: Ansible is agentless automation over SSH
+    (playbooks/inventory).
 
 
-    **Only SPAN** points at SPAN, which is not how 6.7 (Orchestration tools) solves
-    this stem. The keyed answer is **Agents on managed nodes**.'
+    **Only SNMP GET**: SNMP reads/writes MIB objects (UDP 161) and sends traps (162).
+
+
+    **Only SPAN**: SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE destination.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -594,17 +594,17 @@ questions:
   explanation: 'Dicts are core Python structures.
 
 
-    **Only VLANs to VNIs exclusive** points at VLANs to VNIs, which is not how 6.1
-    (Python components and scripts) solves this stem. The keyed answer is **Keys to
-    values**.
+    **Keys to values**: Dicts are core Python structures.
 
 
-    **Only AS paths** points at AS paths, which is not how 6.1 (Python components
-    and scripts) solves this stem. The keyed answer is **Keys to values**.
+    **Only VLANs to VNIs exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only STP costs exclusive** points at STP costs, which is not how 6.1 (Python
-    components and scripts) solves this stem. The keyed answer is **Keys to values**.'
+    **Only AS paths**: AS paths is not **Keys to values**.
+
+
+    **Only STP costs exclusive**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -631,19 +631,19 @@ questions:
   explanation: 'Interpret controller API results.
 
 
-    **Only BPDUs** points at BPDUs, which is not how 6.5 (REST API response codes
-    and results) solves this stem. The keyed answer is **JSON payloads with status
-    metadata**.
+    **JSON payloads with status metadata**: Interpret controller API results.
 
 
-    **Only HSRP hellos** points at HSRP hellos, which is not how 6.5 (REST API response
-    codes and results) solves this stem. The keyed answer is **JSON payloads with
-    status metadata**.
+    **Only BPDUs**: BPDUs are STP control frames used to elect a root and assign port
+    roles.
 
 
-    **Only LACP PDUs** points at LACP PDUs, which is not how 6.5 (REST API response
-    codes and results) solves this stem. The keyed answer is **JSON payloads with
-    status metadata**.'
+    **Only HSRP hellos**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
+    routers.
+
+
+    **Only LACP PDUs**: LACP (802.3ad/802.1AX) negotiates EtherChannel with active/passive
+    modes.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -670,19 +670,20 @@ questions:
   explanation: 'YANG enables model-driven management.
 
 
-    **Only free-form CLI forever without models** points at free-form CLI forever
-    without models, which is not how 6.3 (Data modeling language principles) solves
-    this stem. The keyed answer is **Structured, machine-readable device data contracts**.
+    **Structured, machine-readable device data contracts**: YANG enables model-driven
+    management.
 
 
-    **Only binary IOS images as models** points at binary IOS images as models, which
-    is not how 6.3 (Data modeling language principles) solves this stem. The keyed
-    answer is **Structured, machine-readable device data contracts**.
+    **Only free-form CLI forever without models**: free-form CLI forever without models
+    is not **Structured, machine-readable device data contracts**.
 
 
-    **Only CSV exclusive** points at CSV, which is not how 6.3 (Data modeling language
-    principles) solves this stem. The keyed answer is **Structured, machine-readable
-    device data contracts**.'
+    **Only binary IOS images as models**: binary IOS images as models is not **Structured,
+    machine-readable device data contracts**.
+
+
+    **Only CSV exclusive**: CSV is not **Structured, machine-readable device data
+    contracts**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -709,18 +710,17 @@ questions:
   explanation: 'Arrays use [].
 
 
-    **Only curly braces** points at curly braces, which is not how 6.2 (Construct
-    valid JSON-encoded files) solves this stem. The keyed answer is **Square brackets
-    []**.
+    **Square brackets []**: Arrays use [].
 
 
-    **Only quotes** points at quotes, which is not how 6.2 (Construct valid JSON-encoded
-    files) solves this stem. The keyed answer is **Square brackets []**.
+    **Only curly braces**: curly braces is not **Square brackets []**.
 
 
-    **Only commas without brackets** points at commas without brackets, which is not
-    how 6.2 (Construct valid JSON-encoded files) solves this stem. The keyed answer
-    is **Square brackets []**.'
+    **Only quotes**: quotes is not **Square brackets []**.
+
+
+    **Only commas without brackets**: commas without brackets is not **Square brackets
+    []**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -747,19 +747,17 @@ questions:
   explanation: 'Apps consume controller northbound APIs.
 
 
-    **Only ASIC TCAMs exclusive** points at ASIC TCAMs, which is not how 6.4 (Cisco
-    DNA Center and vManage APIs) solves this stem. The keyed answer is **Applications
-    / orchestration systems**.
+    **Applications / orchestration systems**: Apps consume controller northbound APIs.
 
 
-    **Only copper PHYs** points at copper PHYs, which is not how 6.4 (Cisco DNA Center
-    and vManage APIs) solves this stem. The keyed answer is **Applications / orchestration
-    systems**.
+    **Only ASIC TCAMs exclusive**: TCAM stores hardware ACL/QoS/FIB entries.
 
 
-    **Only console servers exclusive** points at console servers, which is not how
-    6.4 (Cisco DNA Center and vManage APIs) solves this stem. The keyed answer is
-    **Applications / orchestration systems**.'
+    **Only copper PHYs**: copper PHYs is not **Applications / orchestration systems**.
+
+
+    **Only console servers exclusive**: console servers is not **Applications / orchestration
+    systems**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -789,16 +787,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -824,6 +827,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -861,16 +868,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -899,16 +911,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -939,10 +956,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.5 (REST API response codes
-    and results).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -977,16 +997,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1015,16 +1040,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1053,16 +1083,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1093,10 +1128,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
-    files).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1131,16 +1169,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1169,16 +1212,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1204,6 +1252,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -1241,16 +1293,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1279,16 +1336,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1317,16 +1379,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1352,6 +1419,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -1389,16 +1460,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1427,16 +1503,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1467,10 +1548,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.5 (REST API response codes
-    and results).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1505,16 +1589,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1543,16 +1632,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1581,16 +1675,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1621,10 +1720,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
-    files).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1659,16 +1761,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1697,16 +1804,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1732,6 +1844,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1769,16 +1885,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1807,16 +1928,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1845,16 +1971,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1880,6 +2011,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1917,16 +2052,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1955,16 +2095,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1995,10 +2140,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.5 (REST API response codes
-    and results).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2033,16 +2181,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2071,16 +2224,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2109,16 +2267,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2149,10 +2312,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
-    files).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2187,16 +2353,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2225,16 +2396,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -2260,6 +2436,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -2297,16 +2477,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2335,16 +2520,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2373,16 +2563,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2408,6 +2603,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -2445,16 +2644,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2483,16 +2687,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -2523,10 +2732,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.5 (REST API response codes
-    and results).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2561,16 +2773,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2599,16 +2816,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2637,16 +2859,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2677,10 +2904,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
-    files).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2715,16 +2945,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2753,16 +2988,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -2788,6 +3028,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2825,16 +3069,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2863,16 +3112,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2901,16 +3155,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2936,6 +3195,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2973,16 +3236,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3011,16 +3279,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3051,10 +3324,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.5 (REST API response codes
-    and results).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -3089,16 +3365,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3127,16 +3408,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -3165,16 +3451,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -3205,10 +3496,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
-    files).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -3239,31 +3533,29 @@ questions:
     text: Ignore verification and assume 6.1 always works
   correct:
     answer: a
-  explanation: 'For 6.1 (Python components and scripts), the keyed answer is **Apply
-    the verified behavior required by objective 6.1**. Stem: Select the correct association
-    for exam topic 6.1..
+  explanation: '6.1 (Python components and scripts) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Apply the verified behavior the
+    exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.1** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.1 (Python components and scripts).
+    **Apply the verified behavior required by objective 6.1**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 6.1 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.1 (Python components
-    and scripts).
+    **Skip documentation for 6.1 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.1 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.1 (Python components
-    and scripts).
+    **Treat 6.1 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.1 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.1 (Python components and scripts).'
+    **Ignore verification and assume 6.1 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -3287,31 +3579,27 @@ questions:
     text: Validate with show/verify steps before relying on 6.1 changes
   correct:
     answer: a
-  explanation: 'For 6.1 (Python components and scripts), the keyed answer is **Validate
-    with show/verify steps before relying on 6.1 changes**. Stem: Which option correctly
-    describes a key idea under 6.1?.
+  explanation: '6.1 (Python components and scripts) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
+    ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.1 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.1 (Python components and scripts).
+    **Validate with show/verify steps before relying on 6.1 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Treat 6.1 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.1 (Python components
-    and scripts).
+    **Treat 6.1 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.1 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.1 (Python components and scripts).
+    **Ignore verification and assume 6.1 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 6.1 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.1 (Python components
-    and scripts).'
+    **Confuse 6.1 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -3335,33 +3623,29 @@ questions:
     text: Ignore verification and assume 6.2 always works
   correct:
     answer: a
-  explanation: 'For 6.2 (Construct valid JSON-encoded files), the keyed answer is
-    **Use the standard model for 6.2 rather than a look-alike concept**. Stem: For
-    ENCOR objective 6.2, which statement best matches production best practice?.
+  explanation: '6.2 (Construct valid JSON-encoded files) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Stay with the standard model
+    for this objective instead of a look-alike protocol that shares a buzzword but
+    not the behavior.
 
 
-    **Use the standard model for 6.2 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.2 (Construct valid
-    JSON-encoded files).
+    **Use the standard model for 6.2 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.2 (Construct valid
-    JSON-encoded files).
+    **Confuse 6.2 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.2** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.2 (Construct valid JSON-encoded
-    files).
+    **Disable logging permanently while testing 6.2**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Ignore verification and assume 6.2 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.2 (Construct valid JSON-encoded
-    files).'
+    **Ignore verification and assume 6.2 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -3385,33 +3669,30 @@ questions:
     text: Disable logging permanently while testing 6.2
   correct:
     answer: a
-  explanation: 'For 6.2 (Construct valid JSON-encoded files), the keyed answer is
-    **Prefer the documented 6.2 approach used in enterprise designs**. Stem: Regarding
-    ENCOR topic 6.2. Which reply is accurate?.
+  explanation: '6.2 (Construct valid JSON-encoded files) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
+    design for this objective (Cisco validated design / local standard) rather than
+    an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.2 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.2 (Construct
-    valid JSON-encoded files).
+    **Prefer the documented 6.2 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Use clear-text shared secrets as the only control for 6.2** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.2 (Construct
-    valid JSON-encoded files).
+    **Use clear-text shared secrets as the only control for 6.2**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.2 (Construct valid
-    JSON-encoded files).
+    **Confuse 6.2 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.2** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.2 (Construct valid JSON-encoded
-    files).'
+    **Disable logging permanently while testing 6.2**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -3439,31 +3720,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.3 (Data modeling language principles), the keyed answer is **Verify
-    expected state for 6.3 with show/ping evidence; Document the 6.3 design intent
-    and rollback plan**. Stem: [ENCOR 6.3] Select ALL actions that support a correct
-    implementation or verification for this objective..
+  explanation: '6.3 (Data modeling language principles) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
+    confirm the objective actually converged — not just that the command was typed.
+    Document design intent and the rollback commands. The next engineer (or you at
+    03:00) needs that, not tribal memory.
 
 
-    **Verify expected state for 6.3 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.3 (Data modeling language principles).
+    **Verify expected state for 6.3 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.3 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.3 (Data modeling language principles).
+    **Document the 6.3 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.3 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.3 (Data modeling
-    language principles).
+    **Skip change control because 6.3 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.3** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.3 (Data modeling language principles).'
+    **Disable all monitoring related to 6.3**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3487,32 +3766,28 @@ questions:
     text: Validate with show/verify steps before relying on 6.3 changes
   correct:
     answer: a
-  explanation: 'For 6.3 (Data modeling language principles), the keyed answer is **Validate
-    with show/verify steps before relying on 6.3 changes**. Stem: Which configuration
-    intent aligns with ENCOR objective 6.3?.
+  explanation: '6.3 (Data modeling language principles) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Validate with show/verify
+    (and ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.3 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.3 (Data modeling language principles).
+    **Validate with show/verify steps before relying on 6.3 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Use clear-text shared secrets as the only control for 6.3** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.3 (Data
-    modeling language principles).
+    **Use clear-text shared secrets as the only control for 6.3**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.3 (Data modeling
-    language principles).
+    **Skip documentation for 6.3 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.3 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.3 (Data modeling
-    language principles).'
+    **Treat 6.3 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3536,32 +3811,29 @@ questions:
     text: Skip documentation for 6.3 changes in production
   correct:
     answer: a
-  explanation: 'For 6.3 (Data modeling language principles), the keyed answer is **Use
-    the standard model for 6.3 rather than a look-alike concept**. Stem: Select the
-    correct association for exam topic 6.3..
+  explanation: '6.3 (Data modeling language principles) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Stay with the standard model
+    for this objective instead of a look-alike protocol that shares a buzzword but
+    not the behavior.
 
 
-    **Use the standard model for 6.3 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.3 (Data modeling
-    language principles).
+    **Use the standard model for 6.3 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Treat 6.3 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.3 (Data modeling
-    language principles).
+    **Treat 6.3 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.3 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.3 (Data modeling language principles).
+    **Ignore verification and assume 6.3 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Skip documentation for 6.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.3 (Data modeling
-    language principles).'
+    **Skip documentation for 6.3 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3585,33 +3857,29 @@ questions:
     text: Ignore verification and assume 6.4 always works
   correct:
     answer: a
-  explanation: 'For 6.4 (Cisco DNA Center and vManage APIs), the keyed answer is **Prefer
-    the documented 6.4 approach used in enterprise designs**. Stem: Which option correctly
-    describes a key idea under 6.4?.
+  explanation: '6.4 (Cisco DNA Center and vManage APIs) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
+    design for this objective (Cisco validated design / local standard) rather than
+    an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.4 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.4 (Cisco
-    DNA Center and vManage APIs).
+    **Prefer the documented 6.4 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.4 (Cisco DNA Center
-    and vManage APIs).
+    **Confuse 6.4 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Treat 6.4 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.4 (Cisco DNA
-    Center and vManage APIs).
+    **Treat 6.4 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.4 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.4 (Cisco DNA Center and vManage
-    APIs).'
+    **Ignore verification and assume 6.4 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3635,33 +3903,29 @@ questions:
     text: Disable logging permanently while testing 6.4
   correct:
     answer: a
-  explanation: 'For 6.4 (Cisco DNA Center and vManage APIs), the keyed answer is **Apply
-    the verified behavior required by objective 6.4**. Stem: For ENCOR objective 6.4,
-    which statement best matches production best practice?.
+  explanation: '6.4 (Cisco DNA Center and vManage APIs) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
+    the exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.4** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.4 (Cisco DNA Center and vManage
-    APIs).
+    **Apply the verified behavior required by objective 6.4**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Ignore verification and assume 6.4 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.4 (Cisco DNA Center and vManage
-    APIs).
+    **Ignore verification and assume 6.4 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.4 (Cisco DNA Center
-    and vManage APIs).
+    **Confuse 6.4 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.4** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.4 (Cisco DNA Center and
-    vManage APIs).'
+    **Disable logging permanently while testing 6.4**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3689,31 +3953,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.4 (Cisco DNA Center and vManage APIs), the keyed answer is **Verify
-    expected state for 6.4 with show/ping evidence; Document the 6.4 design intent
-    and rollback plan**. Stem: [ENCOR 6.4] Select ALL actions that support a correct
-    implementation or verification for this objective..
+  explanation: '6.4 (Cisco DNA Center and vManage APIs) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
+    confirm the objective actually converged — not just that the command was typed.
+    Document design intent and the rollback commands. The next engineer (or you at
+    03:00) needs that, not tribal memory.
 
 
-    **Verify expected state for 6.4 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.4 (Cisco DNA Center and vManage APIs).
+    **Verify expected state for 6.4 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.4 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.4 (Cisco DNA Center and vManage APIs).
+    **Document the 6.4 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.4 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.4 (Cisco DNA
-    Center and vManage APIs).
+    **Skip change control because 6.4 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.4** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.4 (Cisco DNA Center and vManage APIs).'
+    **Disable all monitoring related to 6.4**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3737,33 +3999,30 @@ questions:
     text: Disable logging permanently while testing 6.5
   correct:
     answer: a
-  explanation: 'For 6.5 (REST API response codes and results), the keyed answer is
-    **Use the standard model for 6.5 rather than a look-alike concept**. Stem: During
-    troubleshooting related to 6.5, which observation is most relevant?.
+  explanation: '6.5 (REST API response codes and results) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Stay with the standard model
+    for this objective instead of a look-alike protocol that shares a buzzword but
+    not the behavior.
 
 
-    **Use the standard model for 6.5 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.5 (REST API response
-    codes and results).
+    **Use the standard model for 6.5 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Use clear-text shared secrets as the only control for 6.5** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.5 (REST
-    API response codes and results).
+    **Use clear-text shared secrets as the only control for 6.5**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.5 (REST API
-    response codes and results).
+    **Skip documentation for 6.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Disable logging permanently while testing 6.5** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.5 (REST API response
-    codes and results).'
+    **Disable logging permanently while testing 6.5**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3787,33 +4046,30 @@ questions:
     text: Skip documentation for 6.5 changes in production
   correct:
     answer: a
-  explanation: 'For 6.5 (REST API response codes and results), the keyed answer is
-    **Prefer the documented 6.5 approach used in enterprise designs**. Stem: Which
-    configuration intent aligns with ENCOR objective 6.5?.
+  explanation: '6.5 (REST API response codes and results) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
+    design for this objective (Cisco validated design / local standard) rather than
+    an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.5 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.5 (REST
-    API response codes and results).
+    **Prefer the documented 6.5 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Treat 6.5 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.5 (REST API
-    response codes and results).
+    **Treat 6.5 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Use clear-text shared secrets as the only control for 6.5** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.5 (REST
-    API response codes and results).
+    **Use clear-text shared secrets as the only control for 6.5**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.5 (REST API
-    response codes and results).'
+    **Skip documentation for 6.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3837,33 +4093,29 @@ questions:
     text: Ignore verification and assume 6.5 always works
   correct:
     answer: a
-  explanation: 'For 6.5 (REST API response codes and results), the keyed answer is
-    **Apply the verified behavior required by objective 6.5**. Stem: Select the correct
-    association for exam topic 6.5..
+  explanation: '6.5 (REST API response codes and results) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
+    the exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.5** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.5 (REST API response codes and
-    results).
+    **Apply the verified behavior required by objective 6.5**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 6.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.5 (REST API
-    response codes and results).
+    **Skip documentation for 6.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.5 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.5 (REST API
-    response codes and results).
+    **Treat 6.5 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.5 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.5 (REST API response codes and
-    results).'
+    **Ignore verification and assume 6.5 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3887,29 +4139,27 @@ questions:
     text: Validate with show/verify steps before relying on 6.6 changes
   correct:
     answer: a
-  explanation: 'For 6.6 (EEM applet), the keyed answer is **Validate with show/verify
-    steps before relying on 6.6 changes**. Stem: Which option correctly describes
-    a key idea under 6.6?.
+  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Validate with show/verify (and ping where relevant)
+    before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.6 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.6 (EEM applet).
+    **Validate with show/verify steps before relying on 6.6 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Treat 6.6 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.6 (EEM applet).
+    **Treat 6.6 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.6 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.6 (EEM applet).
+    **Ignore verification and assume 6.6 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.6 (EEM applet).'
+    **Confuse 6.6 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3937,30 +4187,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.6 (EEM applet), the keyed answer is **Verify expected state
-    for 6.6 with show/ping evidence; Document the 6.6 design intent and rollback plan**.
-    Stem: [ENCOR 6.6] Select ALL actions that support a correct implementation or
-    verification for this objective..
+  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Use show/ping evidence to confirm the objective actually
+    converged — not just that the command was typed. Document design intent and the
+    rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Verify expected state for 6.6 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.6 (EEM applet).
+    **Verify expected state for 6.6 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.6 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.6 (EEM applet).
+    **Document the 6.6 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.6 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.6 (EEM applet).
+    **Skip change control because 6.6 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.6** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.6 (EEM applet).'
+    **Disable all monitoring related to 6.6**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3984,31 +4233,29 @@ questions:
     text: Disable logging permanently while testing 6.6
   correct:
     answer: a
-  explanation: 'For 6.6 (EEM applet), the keyed answer is **Prefer the documented
-    6.6 approach used in enterprise designs**. Stem: Regarding ENCOR topic 6.6. Which
-    reply is accurate?.
+  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Use the documented enterprise design for this objective
+    (Cisco validated design / local standard) rather than an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.6 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.6 (EEM
-    applet).
+    **Prefer the documented 6.6 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Use clear-text shared secrets as the only control for 6.6** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.6 (EEM
-    applet).
+    **Use clear-text shared secrets as the only control for 6.6**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.6 (EEM applet).
+    **Confuse 6.6 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.6 (EEM applet).'
+    **Disable logging permanently while testing 6.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -4032,30 +4279,29 @@ questions:
     text: Skip documentation for 6.6 changes in production
   correct:
     answer: a
-  explanation: 'For 6.6 (EEM applet), the keyed answer is **Apply the verified behavior
-    required by objective 6.6**. Stem: During troubleshooting related to 6.6, which
-    observation is most relevant?.
+  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Apply the verified behavior the exam topic actually
+    names, then confirm it with show/ping — not a neighboring feature.
 
 
-    **Apply the verified behavior required by objective 6.6** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.6 (EEM applet).
+    **Apply the verified behavior required by objective 6.6**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Disable logging permanently while testing 6.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.6 (EEM applet).
+    **Disable logging permanently while testing 6.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 6.6** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.6 (EEM
-    applet).
+    **Use clear-text shared secrets as the only control for 6.6**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.6 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.6 (EEM applet).'
+    **Skip documentation for 6.6 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -4079,32 +4325,28 @@ questions:
     text: Validate with show/verify steps before relying on 6.7 changes
   correct:
     answer: a
-  explanation: 'For 6.7 (Orchestration tools), the keyed answer is **Validate with
-    show/verify steps before relying on 6.7 changes**. Stem: Which configuration intent
-    aligns with ENCOR objective 6.7?.
+  explanation: '6.7 (Orchestration tools) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Validate with show/verify (and ping where
+    relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.7 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.7 (Orchestration tools).
+    **Validate with show/verify steps before relying on 6.7 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Use clear-text shared secrets as the only control for 6.7** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.7 (Orchestration
-    tools).
+    **Use clear-text shared secrets as the only control for 6.7**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.7 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.7 (Orchestration
-    tools).
+    **Skip documentation for 6.7 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.7 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.7 (Orchestration
-    tools).'
+    **Treat 6.7 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -4128,32 +4370,28 @@ questions:
     text: Skip documentation for 6.7 changes in production
   correct:
     answer: a
-  explanation: 'For 6.7 (Orchestration tools), the keyed answer is **Use the standard
-    model for 6.7 rather than a look-alike concept**. Stem: Select the correct association
-    for exam topic 6.7..
+  explanation: '6.7 (Orchestration tools) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Stay with the standard model for this objective
+    instead of a look-alike protocol that shares a buzzword but not the behavior.
 
 
-    **Use the standard model for 6.7 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.7 (Orchestration
-    tools).
+    **Use the standard model for 6.7 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Treat 6.7 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.7 (Orchestration
-    tools).
+    **Treat 6.7 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.7 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.7 (Orchestration tools).
+    **Ignore verification and assume 6.7 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Skip documentation for 6.7 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.7 (Orchestration
-    tools).'
+    **Skip documentation for 6.7 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -4181,31 +4419,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.7 (Orchestration tools), the keyed answer is **Verify expected
-    state for 6.7 with show/ping evidence; Document the 6.7 design intent and rollback
-    plan**. Stem: [ENCOR 6.7] Select ALL actions that support a correct implementation
-    or verification for this objective..
+  explanation: '6.7 (Orchestration tools) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
+    actually converged — not just that the command was typed. Document design intent
+    and the rollback commands. The next engineer (or you at 03:00) needs that, not
+    tribal memory.
 
 
-    **Verify expected state for 6.7 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.7 (Orchestration tools).
+    **Verify expected state for 6.7 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.7 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.7 (Orchestration tools).
+    **Document the 6.7 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.7 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.7 (Orchestration
-    tools).
+    **Skip change control because 6.7 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.7** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.7 (Orchestration tools).'
+    **Disable all monitoring related to 6.7**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7

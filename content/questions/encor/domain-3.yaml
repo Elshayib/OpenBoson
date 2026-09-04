@@ -23,16 +23,18 @@ questions:
   explanation: 'Classic EIGRP metric.
 
 
-    **Only hop count** points at hop count, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Bandwidth and delay (by default K values)**.
+    **Bandwidth and delay (by default K values)**: Classic EIGRP metric.
 
 
-    **Only AS path** points at AS path, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Bandwidth and delay (by default K values)**.
+    **Only hop count**: Hop count is RIP’s metric (max 15). OSPF uses cost; BGP uses
+    path attributes.
 
 
-    **Only STP cost** points at STP cost, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Bandwidth and delay (by default K values)**.'
+    **Only AS path**: AS path is not **Bandwidth and delay (by default K values)**.
+
+
+    **Only STP cost**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -59,16 +61,16 @@ questions:
   explanation: 'OSPFv3 for IPv6.
 
 
-    **Only IPv4 classful** points at IPv4 classful, which is not how 3.2 (Layer 3
-    technologies) solves this stem. The keyed answer is **IPv6 (address-family designs)**.
+    **IPv6 (address-family designs)**: OSPFv3 for IPv6.
 
 
-    **Only IPX** points at IPX, which is not how 3.2 (Layer 3 technologies) solves
-    this stem. The keyed answer is **IPv6 (address-family designs)**.
+    **Only IPv4 classful**: IPv4 classful is not **IPv6 (address-family designs)**.
 
 
-    **Only AppleTalk** points at AppleTalk, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **IPv6 (address-family designs)**.'
+    **Only IPX**: IPX is not **IPv6 (address-family designs)**.
+
+
+    **Only AppleTalk**: AppleTalk is not **IPv6 (address-family designs)**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -95,18 +97,19 @@ questions:
   explanation: 'LOC_PREF is a key enterprise knob.
 
 
-    **Always lowest MED first exclusively** points at Always lowest MED first, which
-    is not how 3.2 (Layer 3 technologies) solves this stem. The keyed answer is **Local
-    Preference (among early steps)**.
+    **Local Preference (among early steps)**: LOC_PREF is a key enterprise knob.
 
 
-    **Always random** is a different protocol, command, or value than **Local Preference
-    (among early steps)**. For 3.2 (Layer 3 technologies), the stem is solved by **Local
-    Preference (among early steps)**, not by Always random.
+    **Always lowest MED first exclusively**: MED is a BGP attribute to influence inbound
+    traffic from a neighbor AS.
 
 
-    **Always IGP metric only** points at Always IGP metric, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Local Preference (among
+    **Always random**: Local Preference (among early steps) is required here (Local
+    Preference prefers an exit path inside one AS (higher wins)); Always random is
+    not.
+
+
+    **Always IGP metric only**: Always IGP metric is not **Local Preference (among
     early steps)**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
@@ -134,16 +137,20 @@ questions:
   explanation: 'Trunk troubleshooting focuses on tagging/DTP/native VLAN.
 
 
-    **Only OSPF RID** points at OSPF RID, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **DTP/native VLAN mismatches**.
+    **DTP/native VLAN mismatches**: Trunk troubleshooting focuses on tagging/DTP/native
+    VLAN.
 
 
-    **Only BGP AS path** points at BGP AS path, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **DTP/native VLAN mismatches**.
+    **Only OSPF RID**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
+    110, multicast 224.0.0.5/6).
 
 
-    **Only NTP stratum** points at NTP stratum, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **DTP/native VLAN mismatches**.'
+    **Only BGP AS path**: BGP is the Internet path-vector protocol (TCP 179; eBGP
+    AD 20, iBGP AD 200).
+
+
+    **Only NTP stratum**: NTP synchronizes clocks (UDP 123); stratum is distance from
+    a reference.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -170,18 +177,18 @@ questions:
   explanation: 'ASM with Rendezvous Point.
 
 
-    **Only dense flood always** points at dense flood, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **RP for shared trees**.
+    **RP for shared trees**: ASM with Rendezvous Point.
 
 
-    **Only STP** is a mismatch: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects
-    a root and blocks redundant Layer 2 paths so Ethernet does not loop. The stem
-    is asking about **RP for shared trees**.
+    **Only dense flood always**: dense flood is not **RP for shared trees**.
 
 
-    **Only HSRP** is a mismatch: HSRP is Cisco’s FHRP: a virtual IP and virtual MAC
-    (`0000.0c07.acXX` v1) with active/standby routers. The stem is asking about **RP
-    for shared trees**.'
+    **Only STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
+    redundant Layer 2 paths so Ethernet does not loop.
+
+
+    **Only HSRP**: HSRP is Cisco’s FHRP: a virtual IP and virtual MAC (`0000.0c07.acXX`
+    v1) with active/standby routers.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -208,16 +215,18 @@ questions:
   explanation: 'FD is best known metric.
 
 
-    **Only AD** points at AD, which is not how 3.2 (Layer 3 technologies) solves this
-    stem. The keyed answer is **Best metric to destination**.
+    **Best metric to destination**: FD is best known metric.
 
 
-    **Only hop count** points at hop count, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Best metric to destination**.
+    **Only AD**: AD is not **Best metric to destination**.
 
 
-    **Only MTU** points at MTU, which is not how 3.2 (Layer 3 technologies) solves
-    this stem. The keyed answer is **Best metric to destination**.'
+    **Only hop count**: Hop count is RIP’s metric (max 15). OSPF uses cost; BGP uses
+    path attributes.
+
+
+    **Only MTU**: MTU is the maximum frame/packet size on a link; it is not an AD
+    or overlay ID.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -244,19 +253,19 @@ questions:
   explanation: 'No DR on p2p.
 
 
-    **All Hellos** is a mismatch: OSPF still sends Hellos on point-to-point links
-    (default 10/40 s). P2P skips DR/BDR election, not Hellos. The stem is asking about
-    **DR/BDR election**.
+    **DR/BDR election**: No DR on p2p.
 
 
-    **All LSAs** is a mismatch: P2P neighbors still exchange the LSDB. Network type
-    point-to-point skips the DR/BDR election, not LSA flooding. The stem is asking
-    about **DR/BDR election**.
+    **All Hellos**: OSPF still sends Hellos on point-to-point links (default 10/40
+    s). P2P skips DR/BDR election, not Hellos.
 
 
-    **Authentication always** is a mismatch: OSPF authentication is optional (null/MD5/SHA
-    key-chain). Setting network type point-to-point does not enable it. The stem is
-    asking about **DR/BDR election**.'
+    **All LSAs**: P2P neighbors still exchange the LSDB. Network type point-to-point
+    skips the DR/BDR election, not LSA flooding.
+
+
+    **Authentication always**: OSPF authentication is optional (null/MD5/SHA key-chain).
+    Setting network type point-to-point does not enable it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -283,17 +292,19 @@ questions:
   explanation: 'ENCOR emphasizes eBGP peering and best path.
 
 
-    **Only STP root guard** points at STP root guard, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Neighbor relationships
-    and best-path selection**.
+    **Neighbor relationships and best-path selection**: ENCOR emphasizes eBGP peering
+    and best path.
 
 
-    **Only VTP pruning** points at VTP pruning, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Neighbor relationships and best-path selection**.
+    **Only STP root guard**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.
 
 
-    **Only PoE** points at PoE, which is not how 3.2 (Layer 3 technologies) solves
-    this stem. The keyed answer is **Neighbor relationships and best-path selection**.'
+    **Only VTP pruning**: VTP floods VLAN advertisements among switches using a revision
+    number; it does not route, NAT, or identify an overlay.
+
+
+    **Only PoE**: PoE delivers DC power on Ethernet (802.3af/at/bt).'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -320,18 +331,18 @@ questions:
   explanation: 'Inconsistent members suspend channels.
 
 
-    **Only BGP communities** points at BGP communities, which is not how 3.1 (Layer
-    2 technologies) solves this stem. The keyed answer is **Member speed/duplex/mode
-    consistency**.
+    **Member speed/duplex/mode consistency**: Inconsistent members suspend channels.
 
 
-    **Only DNS TTL** points at DNS TTL, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Member speed/duplex/mode consistency**.
+    **Only BGP communities**: BGP is the Internet path-vector protocol (TCP 179; eBGP
+    AD 20, iBGP AD 200).
 
 
-    **Only syslog facility** is a mismatch: Syslog exports device logs (UDP 514 by
-    default) with severity 0–7. The stem is asking about **Member speed/duplex/mode
-    consistency**.'
+    **Only DNS TTL**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on UDP/TCP
+    53.
+
+
+    **Only syslog facility**: Syslog exports device logs (UDP 514) with severity 0–7.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -358,18 +369,18 @@ questions:
   explanation: 'Switch learns multicast receivers.
 
 
-    **Unicast ARP** is a different protocol, command, or value than **Multicast flooding
-    on L2**. For 3.3 (Wireless technologies), the stem is solved by **Multicast flooding
-    on L2**, not by Unicast ARP.
+    **Multicast flooding on L2**: Switch learns multicast receivers.
 
 
-    **STP** is a mismatch: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root
-    and blocks redundant Layer 2 paths so Ethernet does not loop. The stem is asking
-    about **Multicast flooding on L2**.
+    **Unicast ARP**: ARP maps IPv4 addresses to MACs on the local Ethernet; IPv6 uses
+    NDP.
 
 
-    **NTP** is a mismatch: NTP synchronizes clocks (UDP 123). Stratum is distance
-    from a reference clock. The stem is asking about **Multicast flooding on L2**.'
+    **STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
+    redundant Layer 2 paths so Ethernet does not loop.
+
+
+    NTP synchronizes clocks (UDP 123). Stratum is distance from a reference clock.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -396,16 +407,16 @@ questions:
   explanation: 'Stubs reduce SIA risk.
 
 
-    **Only hello timers to zero** points at hello timers to zero, which is not how
-    3.2 (Layer 3 technologies) solves this stem. The keyed answer is **Query scope**.
+    **Query scope**: Stubs reduce SIA risk.
 
 
-    **Only bandwidth to 0** points at bandwidth to 0, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Query scope**.
+    **Only hello timers to zero**: hello timers to zero is not **Query scope**.
 
 
-    **Only delay infinite always** points at delay infinite, which is not how 3.2
-    (Layer 3 technologies) solves this stem. The keyed answer is **Query scope**.'
+    **Only bandwidth to 0**: bandwidth to 0 is not **Query scope**.
+
+
+    **Only delay infinite always**: delay infinite is not **Query scope**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -432,19 +443,19 @@ questions:
   explanation: 'NSSA Type 7.
 
 
-    **Only Type 5 flood everywhere** points at Type 5 flood everywhere, which is not
-    how 3.2 (Layer 3 technologies) solves this stem. The keyed answer is **Limited
-    external injection into stub-like area**.
+    **Limited external injection into stub-like area**: NSSA Type 7.
 
 
-    **Only disabling ABR** points at disabling ABR, which is not how 3.2 (Layer 3
-    technologies) solves this stem. The keyed answer is **Limited external injection
-    into stub-like area**.
+    **Only Type 5 flood everywhere**: OSPF Type-5 external LSAs are originated by
+    an ASBR.
 
 
-    **Only RIP** is a mismatch: RIP is a hop-count IGP (max 15), default AD 120, multicast
-    224.0.0.9 for v2. The stem is asking about **Limited external injection into stub-like
-    area**.'
+    **Only disabling ABR**: An ABR sits in area 0 plus another area and originates
+    Type-3 LSAs.
+
+
+    **Only RIP**: RIP is a hop-count IGP (max 15), default AD 120, multicast 224.0.0.9
+    for v2.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -471,19 +482,20 @@ questions:
   explanation: 'PBR steers traffic by match criteria.
 
 
-    **Only elect HSRP active** points at elect HSRP active, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Override destination-based
-    forwarding with policy**.
+    **Override destination-based forwarding with policy**: PBR steers traffic by match
+    criteria.
 
 
-    **Only age MAC tables** points at age MAC tables, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Override destination-based
-    forwarding with policy**.
+    **Only elect HSRP active**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
+    routers.
 
 
-    **Only negotiate LACP** points at negotiate LACP, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Override destination-based
-    forwarding with policy**.'
+    **Only age MAC tables**: age MAC tables is not **Override destination-based forwarding
+    with policy**.
+
+
+    **Only negotiate LACP**: LACP (802.3ad/802.1AX) negotiates EtherChannel with active/passive
+    modes.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -510,16 +522,18 @@ questions:
   explanation: 'STP enhancements protect topology stability.
 
 
-    **Only NAT pools** points at NAT pools, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Root guard and BPDU guard**.
+    **Root guard and BPDU guard**: STP enhancements protect topology stability.
 
 
-    **Only NetFlow keys** points at NetFlow keys, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Root guard and BPDU guard**.
+    **Only NAT pools**: NAT/PAT rewrites IP addresses (and ports with overload) across
+    inside/outside.
 
 
-    **Only EEM applets** points at EEM applets, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Root guard and BPDU guard**.'
+    **Only NetFlow keys**: NetFlow exports traffic caches for accounting and anomaly
+    detection.
+
+
+    **Only EEM applets**: EEM applets react to IOS events with CLI actions.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -546,16 +560,16 @@ questions:
   explanation: 'Multicast Source Discovery.
 
 
-    **Only VLANs** points at VLANs, which is not how 3.3 (Wireless technologies) solves
-    this stem. The keyed answer is **PIM domains’ RPs**.
+    **PIM domains’ RPs**: Multicast Source Discovery.
 
 
-    **Only AAA servers** points at AAA servers, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **PIM domains’ RPs**.
+    **Only VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only syslog** is a mismatch: Syslog exports device logs (UDP 514 by default)
-    with severity 0–7. The stem is asking about **PIM domains’ RPs**.'
+    **Only AAA servers**: AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).
+
+
+    **Only syslog**: Syslog exports device logs (UDP 514) with severity 0–7.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -582,17 +596,18 @@ questions:
   explanation: 'Named mode AF.
 
 
-    **Only process numbers forever** points at process numbers, which is not how 3.2
-    (Layer 3 technologies) solves this stem. The keyed answer is **Address-families
-    under eigrp NAME**.
+    **Address-families under eigrp NAME**: Named mode AF.
 
 
-    **Only RIP** is a mismatch: RIP is a hop-count IGP (max 15), default AD 120, multicast
-    224.0.0.9 for v2. The stem is asking about **Address-families under eigrp NAME**.
+    **Only process numbers forever**: process numbers is not **Address-families under
+    eigrp NAME**.
 
 
-    **Only static** points at static, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Address-families under eigrp NAME**.'
+    **Only RIP**: RIP is a hop-count IGP (max 15), default AD 120, multicast 224.0.0.9
+    for v2.
+
+
+    **Only static**: static is not **Address-families under eigrp NAME**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -619,16 +634,16 @@ questions:
   explanation: 'Instance ID.
 
 
-    **Only VLAN IDs** points at VLAN IDs, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Multiple instances on a link**.
+    **Multiple instances on a link**: Instance ID.
 
 
-    **Only DSCP** points at DSCP, which is not how 3.2 (Layer 3 technologies) solves
-    this stem. The keyed answer is **Multiple instances on a link**.
+    **Only VLAN IDs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only ASN** points at ASN, which is not how 3.2 (Layer 3 technologies) solves
-    this stem. The keyed answer is **Multiple instances on a link**.'
+    **Only DSCP**: DSCP is the 6-bit IP marking (EF=46 for voice).
+
+
+    **Only ASN**: ASN is not **Multiple instances on a link**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -655,18 +670,19 @@ questions:
   explanation: 'MED multi-exit discriminator.
 
 
-    **Always across all AS freely without knob** is a different protocol, command,
-    or value than **From same neighboring AS (default)**. For 3.2 (Layer 3 technologies),
-    the stem is solved by **From same neighboring AS (default)**, not by Always across
-    all AS freely without knob.
+    **From same neighboring AS (default)**: MED multi-exit discriminator.
 
 
-    **Only for OSPF** points at for OSPF, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **From same neighboring AS (default)**.
+    **Always across all AS freely without knob**: From same neighboring AS (default)
+    is the matching value or command; Always across all AS freely without knob is
+    not.
 
 
-    **Only for EIGRP** points at for EIGRP, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **From same neighboring AS (default)**.'
+    **Only for OSPF**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
+    110, multicast 224.0.0.5/6).
+
+
+    **Only for EIGRP**: EIGRP is Cisco’s DUAL IGP (default AD 90 internal / 170 external).'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -693,19 +709,19 @@ questions:
   explanation: 'NAT/PAT conserves/publicizes addressing.
 
 
-    **Only hash EtherChannels** points at hash EtherChannels, which is not how 3.3
-    (Wireless technologies) solves this stem. The keyed answer is **Translate inside
-    addresses for outside reachability**.
+    **Translate inside addresses for outside reachability**: NAT/PAT conserves/publicizes
+    addressing.
 
 
-    **Only elect DR** points at elect DR, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **Translate inside addresses for outside
-    reachability**.
+    **Only hash EtherChannels**: EtherChannel bundles physical links into one logical
+    interface; members must match speed, duplex, and mode.
 
 
-    **Only set STP priority** points at set STP priority, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **Translate inside addresses
-    for outside reachability**.'
+    **Only elect DR**: elect DR is not **Translate inside addresses for outside reachability**.
+
+
+    **Only set STP priority**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -732,18 +748,16 @@ questions:
   explanation: 'Anycast RP.
 
 
-    **Only unique RP mandatory single** points at unique RP mandatory single, which
-    is not how 3.3 (Wireless technologies) solves this stem. The keyed answer is **RP
-    redundancy**.
+    **RP redundancy**: Anycast RP.
 
 
-    **Only disables multicast** is a mismatch: Multicast is one-to-many (IPv4 224/4,
-    IPv6 ff00::/8). IPv6 replaces broadcast with multicast. The stem is asking about
-    **RP redundancy**.
+    **Only unique RP mandatory single**: unique RP mandatory single is not **RP redundancy**.
 
 
-    **Only L2 flooding** points at L2 flooding, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **RP redundancy**.'
+    **Only disables multicast**: disables multicast is not **RP redundancy**.
+
+
+    **Only L2 flooding**: L2 flooding is not **RP redundancy**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -770,16 +784,17 @@ questions:
   explanation: 'Wide metrics.
 
 
-    **Only 10 Mbps max** points at 10 Mbps max, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Higher interface speeds accurately**.
+    **Higher interface speeds accurately**: Wide metrics.
 
 
-    **Only Token Ring** points at Token Ring, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Higher interface speeds accurately**.
+    **Only 10 Mbps max**: 10 Mbps max is not **Higher interface speeds accurately**.
 
 
-    **Only ISDN** points at ISDN, which is not how 3.2 (Layer 3 technologies) solves
-    this stem. The keyed answer is **Higher interface speeds accurately**.'
+    **Only Token Ring**: Token Ring is a legacy LAN (IEEE 802.5), not modern campus
+    Ethernet.
+
+
+    **Only ISDN**: ISDN is a legacy switched digital WAN.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -806,19 +821,18 @@ questions:
   explanation: 'NSF/GR.
 
 
-    **Flush all routes immediately always** points at Flush all routes immediately,
-    which is not how 3.2 (Layer 3 technologies) solves this stem. The keyed answer
-    is **Preserve forwarding during restart**.
+    **Preserve forwarding during restart**: NSF/GR.
 
 
-    **Disable BFD** is a different protocol, command, or value than **Preserve forwarding
-    during restart**. For 3.2 (Layer 3 technologies), the stem is solved by **Preserve
-    forwarding during restart**, not by Disable BFD.
+    **Flush all routes immediately always**: Flush all routes immediately is not **Preserve
+    forwarding during restart**.
 
 
-    **Clear ARP** is a different protocol, command, or value than **Preserve forwarding
-    during restart**. For 3.2 (Layer 3 technologies), the stem is solved by **Preserve
-    forwarding during restart**, not by Clear ARP.'
+    **Disable BFD**: BFD detects forwarding-path failures in milliseconds.
+
+
+    **Clear ARP**: ARP maps IPv4 addresses to MACs on the local Ethernet; IPv6 uses
+    NDP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -845,17 +859,16 @@ questions:
   explanation: 'FHRPs keep default gateways available.
 
 
-    **Only VXLAN VNIs** points at VXLAN VNIs, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **First-hop gateway redundancy**.
+    **First-hop gateway redundancy**: FHRPs keep default gateways available.
 
 
-    **Only NETCONF datastores** points at NETCONF datastores, which is not how 3.3
-    (Wireless technologies) solves this stem. The keyed answer is **First-hop gateway
-    redundancy**.
+    **Only VXLAN VNIs**: VXLAN encapsulates Ethernet in UDP 4789 with a 24-bit VNI.
 
 
-    **Only gRPC dial-out** points at gRPC dial-out, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **First-hop gateway redundancy**.'
+    **Only NETCONF datastores**: NETCONF is XML/SSH datastore configuration (RFC 6241).
+
+
+    **Only gRPC dial-out**: gRPC is an HTTP/2 RPC transport used for dial-out telemetry.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -882,19 +895,20 @@ questions:
   explanation: 'ENCOR covers NTP and PTP timing configs.
 
 
-    **Only STP timers** points at STP timers, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **PTP offers higher precision use cases;
-    NTP is ubiquitous sync**.
+    **PTP offers higher precision use cases; NTP is ubiquitous sync**: ENCOR covers
+    NTP and PTP timing configs.
 
 
-    **Only VTP revisions** points at VTP revisions, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **PTP offers higher precision
-    use cases; NTP is ubiquitous sync**.
+    **Only STP timers**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.
 
 
-    **Only LACP priorities** points at LACP priorities, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **PTP offers higher precision
-    use cases; NTP is ubiquitous sync**.'
+    **Only VTP revisions**: VTP floods VLAN advertisements among switches using a
+    revision number; it does not route, NAT, or identify an overlay.
+
+
+    **Only LACP priorities**: LACP (802.3ad/802.1AX) negotiates EtherChannel with
+    active/passive modes.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -921,17 +935,19 @@ questions:
   explanation: 'MST groups VLANs into instances.
 
 
-    **Only OSPF areas** points at OSPF areas, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Instances to reduce STP scale**.
+    **Instances to reduce STP scale**: MST groups VLANs into instances.
 
 
-    **Only BGP confederations** points at BGP confederations, which is not how 3.1
-    (Layer 2 technologies) solves this stem. The keyed answer is **Instances to reduce
-    STP scale**.
+    **Only OSPF areas**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).
 
 
-    **Only VRF tables** points at VRF tables, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Instances to reduce STP scale**.'
+    **Only BGP confederations**: BGP is the Internet path-vector protocol (TCP 179;
+    eBGP AD 20, iBGP AD 200).
+
+
+    **Only VRF tables**: A VRF is a separate routing table/FIB instance used to isolate
+    tenants.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -958,16 +974,17 @@ questions:
   explanation: 'ABRs summarize between areas.
 
 
-    **Only access ports** is a mismatch: The campus access layer attaches endpoints
-    (PCs, phones, APs). The stem is asking about **ABRs (and ASBRs for externals)**.
+    **ABRs (and ASBRs for externals)**: ABRs summarize between areas.
 
 
-    **Only WLC LAG** points at WLC LAG, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **ABRs (and ASBRs for externals)**.
+    **Only access ports**: access ports is not **ABRs (and ASBRs for externals)**.
 
 
-    **Only syslog hosts** is a mismatch: Syslog exports device logs (UDP 514 by default)
-    with severity 0–7. The stem is asking about **ABRs (and ASBRs for externals)**.'
+    **Only WLC LAG**: A WLC terminates CAPWAP and pushes WLAN policy to lightweight
+    APs.
+
+
+    **Only syslog hosts**: Syslog exports device logs (UDP 514) with severity 0–7.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -994,19 +1011,19 @@ questions:
   explanation: 'ENCOR compares EIGRP and OSPF concepts.
 
 
-    **Only link state for both identical** points at link state for both identical,
-    which is not how 3.2 (Layer 3 technologies) solves this stem. The keyed answer
-    is **Advanced distance vector; OSPF is link state**.
+    **Advanced distance vector; OSPF is link state**: ENCOR compares EIGRP and OSPF
+    concepts.
 
 
-    **Only path-vector like BGP for both** points at path-vector like BGP for both,
-    which is not how 3.2 (Layer 3 technologies) solves this stem. The keyed answer
-    is **Advanced distance vector; OSPF is link state**.
+    **Only link state for both identical**: link state for both identical is not **Advanced
+    distance vector; OSPF is link state**.
 
 
-    **Only RIP clones** points at RIP clones, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Advanced distance vector; OSPF is link
-    state**.'
+    **Only path-vector like BGP for both**: BGP is the Internet path-vector protocol
+    (TCP 179; eBGP AD 20, iBGP AD 200).
+
+
+    **Only RIP clones**: RIP is a hop-count IGP (max 15 hops, default AD 120).'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1033,19 +1050,19 @@ questions:
   explanation: 'RPF validates expected reverse path to source.
 
 
-    **Only TCP SYN floods exclusive** points at TCP SYN floods, which is not how 3.3
-    (Wireless technologies) solves this stem. The keyed answer is **Accepting multicast
+    **Accepting multicast on the wrong reverse path**: RPF validates expected reverse
+    path to source.
+
+
+    **Only TCP SYN floods exclusive**: TCP SYN floods is not **Accepting multicast
     on the wrong reverse path**.
 
 
-    **Only VLAN hopping exclusive** points at VLAN hopping, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **Accepting multicast on the
-    wrong reverse path**.
+    **Only VLAN hopping exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **Only DNS amplification exclusive** points at DNS amplification, which is not
-    how 3.3 (Wireless technologies) solves this stem. The keyed answer is **Accepting
-    multicast on the wrong reverse path**.'
+    **Only DNS amplification exclusive**: DNS maps names to addresses (A/AAAA) and
+    reverse (PTR) on UDP/TCP 53.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1072,17 +1089,20 @@ questions:
   explanation: 'On-mode channels still need consistent members.
 
 
-    **Only BGP sessions** points at BGP sessions, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Matching member configurations on-mode**.
+    **Matching member configurations on-mode**: On-mode channels still need consistent
+    members.
 
 
-    **Only IPsec profiles** points at IPsec profiles, which is not how 3.1 (Layer
-    2 technologies) solves this stem. The keyed answer is **Matching member configurations
-    on-mode**.
+    **Only BGP sessions**: BGP is the Internet path-vector protocol (TCP 179; eBGP
+    AD 20, iBGP AD 200).
 
 
-    **Only YANG models** points at YANG models, which is not how 3.1 (Layer 2 technologies)
-    solves this stem. The keyed answer is **Matching member configurations on-mode**.'
+    **Only IPsec profiles**: IPsec (AH/ESP) encrypts/authenticates IP packets for
+    VPNs.
+
+
+    **Only YANG models**: YANG models configuration/state; it is not a wire encoding
+    by itself.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -1109,22 +1129,19 @@ questions:
   explanation: 'Passive interfaces suppress Hellos.
 
 
-    **Disable the IP address** is a different protocol, command, or value than **Advertise
-    a network without forming Hellos/adjacency**. For 3.2 (Layer 3 technologies),
-    the stem is solved by **Advertise a network without forming Hellos/adjacency**,
-    not by Disable the IP address.
+    **Advertise a network without forming Hellos/adjacency**: Passive interfaces suppress
+    Hellos.
 
 
-    **Force Type 5 everywhere** is a different protocol, command, or value than **Advertise
-    a network without forming Hellos/adjacency**. For 3.2 (Layer 3 technologies),
-    the stem is solved by **Advertise a network without forming Hellos/adjacency**,
-    not by Force Type 5 everywhere.
+    **Disable the IP address**: Advertise a network without forming Hellos/adjacency
+    is the matching value or command; Disable the IP address is not.
 
 
-    **Clear the RID automatically** is a different protocol, command, or value than
-    **Advertise a network without forming Hellos/adjacency**. For 3.2 (Layer 3 technologies),
-    the stem is solved by **Advertise a network without forming Hellos/adjacency**,
-    not by Clear the RID automatically.'
+    **Force Type 5 everywhere**: OSPF Type-5 external LSAs are originated by an ASBR.
+
+
+    **Clear the RID automatically**: Advertise a network without forming Hellos/adjacency
+    is the matching value or command; Clear the RID automatically is not.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1151,18 +1168,18 @@ questions:
   explanation: 'IGMPv3 supports SSM source filters.
 
 
-    **Only dense-mode flood forever** points at dense-mode flood, which is not how
-    3.3 (Wireless technologies) solves this stem. The keyed answer is **Source-specific
-    multicast joins**.
+    **Source-specific multicast joins**: IGMPv3 supports SSM source filters.
 
 
-    **Only STP Fast Hellos** points at STP Fast Hellos, which is not how 3.3 (Wireless
-    technologies) solves this stem. The keyed answer is **Source-specific multicast
+    **Only dense-mode flood forever**: dense-mode flood is not **Source-specific multicast
     joins**.
 
 
-    **Only AAA CoA** points at AAA CoA, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **Source-specific multicast joins**.'
+    **Only STP Fast Hellos**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.
+
+
+    **Only AAA CoA**: AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1189,19 +1206,19 @@ questions:
   explanation: 'Cisco weight is local and considered early.
 
 
-    **Transitive across the AS always** points at Transitive across the AS, which
-    is not how 3.2 (Layer 3 technologies) solves this stem. The keyed answer is **Local
-    to the router and highest preferred first**.
+    **Local to the router and highest preferred first**: Cisco weight is local and
+    considered early.
 
 
-    **Only an OSPF metric** points at an OSPF metric, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Local to the router and
-    highest preferred first**.
+    **Transitive across the AS always**: Transitive across the AS is not **Local to
+    the router and highest preferred first**.
 
 
-    **Only a VLAN ID** points at a VLAN ID, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Local to the router and highest preferred
-    first**.'
+    **Only an OSPF metric**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).
+
+
+    **Only a VLAN ID**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1228,19 +1245,19 @@ questions:
   explanation: 'BPDU guard protects edge ports.
 
 
-    **Becomes root immediately always** points at Becomes root immediately, which
-    is not how 3.1 (Layer 2 technologies) solves this stem. The keyed answer is **Err-disables
+    **Err-disables the port**: BPDU guard protects edge ports.
+
+
+    **Becomes root immediately always**: Becomes root immediately is not **Err-disables
     the port**.
 
 
-    **Negotiates LACP** is a different protocol, command, or value than **Err-disables
-    the port**. For 3.1 (Layer 2 technologies), the stem is solved by **Err-disables
-    the port**, not by Negotiates LACP.
+    **Negotiates LACP**: LACP (802.3ad/802.1AX) negotiates EtherChannel with active/passive
+    modes.
 
 
-    **Creates a VRF** is a different protocol, command, or value than **Err-disables
-    the port**. For 3.1 (Layer 2 technologies), the stem is solved by **Err-disables
-    the port**, not by Creates a VRF.'
+    **Creates a VRF**: A VRF is a separate routing table/FIB instance used to isolate
+    tenants.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -1267,19 +1284,19 @@ questions:
   explanation: 'SSM builds source-specific trees.
 
 
-    **Only dense flood** points at dense flood, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **Source trees without a shared-tree RP
-    dependency**.
+    **Source trees without a shared-tree RP dependency**: SSM builds source-specific
+    trees.
 
 
-    **Only MSDP mandatory always** points at MSDP mandatory, which is not how 3.3
-    (Wireless technologies) solves this stem. The keyed answer is **Source trees without
-    a shared-tree RP dependency**.
+    **Only dense flood**: dense flood is not **Source trees without a shared-tree
+    RP dependency**.
 
 
-    **Only IGMP v1 exclusive** points at IGMP v1, which is not how 3.3 (Wireless technologies)
-    solves this stem. The keyed answer is **Source trees without a shared-tree RP
-    dependency**.'
+    **Only MSDP mandatory always**: MSDP mandatory is not **Source trees without a
+    shared-tree RP dependency**.
+
+
+    **Only IGMP v1 exclusive**: IGMP lets IPv4 hosts join multicast groups on a LAN.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1306,19 +1323,20 @@ questions:
   explanation: 'Non-backbone areas attach through area 0.
 
 
-    **Only a single area forever** points at a single area, which is not how 3.2 (Layer
-    3 technologies) solves this stem. The keyed answer is **Connectivity via backbone
+    **Connectivity via backbone area 0 (classic design)**: Non-backbone areas attach
+    through area 0.
+
+
+    **Only a single area forever**: a single area is not **Connectivity via backbone
     area 0 (classic design)**.
 
 
-    **Only EIGRP redistribution mandatory** points at EIGRP redistribution, which
-    is not how 3.2 (Layer 3 technologies) solves this stem. The keyed answer is **Connectivity
-    via backbone area 0 (classic design)**.
+    **Only EIGRP redistribution mandatory**: EIGRP is Cisco’s DUAL IGP (default AD
+    90 internal / 170 external).
 
 
-    **Only static defaults exclusive** points at static defaults, which is not how
-    3.2 (Layer 3 technologies) solves this stem. The keyed answer is **Connectivity
-    via backbone area 0 (classic design)**.'
+    **Only static defaults exclusive**: static defaults is not **Connectivity via
+    backbone area 0 (classic design)**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1345,17 +1363,19 @@ questions:
   explanation: 'ABRs can filter/summarize inter-area prefixes.
 
 
-    **Only VTP passwords** points at VTP passwords, which is not how 3.2 (Layer 3
-    technologies) solves this stem. The keyed answer is **Area filter-lists / summarization
-    controls**.
+    **Area filter-lists / summarization controls**: ABRs can filter/summarize inter-area
+    prefixes.
 
 
-    **Only PortFast** points at PortFast, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Area filter-lists / summarization controls**.
+    **Only VTP passwords**: VTP floods VLAN advertisements among switches using a
+    revision number; it does not route, NAT, or identify an overlay.
 
 
-    **Only CAPWAP DTLS** points at CAPWAP DTLS, which is not how 3.2 (Layer 3 technologies)
-    solves this stem. The keyed answer is **Area filter-lists / summarization controls**.'
+    **Only PortFast**: PortFast skips STP listening/learning on edge ports so hosts
+    get DHCP immediately.
+
+
+    **Only CAPWAP DTLS**: CAPWAP tunnels AP control/data to a WLC in centralized mode.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1426,6 +1446,10 @@ questions:
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
     120 is **RIP**, not eBGP.
 
 
@@ -1460,17 +1484,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1498,17 +1525,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.'
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.
+
+
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1534,6 +1565,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     110 is **OSPF**, not eBGP.
@@ -1570,17 +1605,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.'
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
+
+
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1612,18 +1650,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (Wireless technologies).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1649,6 +1691,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -1685,17 +1731,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.'
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
+
+
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1723,17 +1772,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1759,6 +1812,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -1795,17 +1852,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1837,18 +1897,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (Wireless technologies).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1874,6 +1938,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     120 is **RIP**, not eBGP.
@@ -1910,17 +1978,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1948,17 +2019,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.'
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.
+
+
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1984,6 +2059,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     110 is **OSPF**, not eBGP.
@@ -2020,17 +2099,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.'
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
+
+
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2062,18 +2144,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (Wireless technologies).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -2099,6 +2185,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -2135,17 +2225,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.'
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
+
+
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2173,17 +2266,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -2209,6 +2306,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -2245,17 +2346,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2287,18 +2391,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (Wireless technologies).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -2324,6 +2432,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     120 is **RIP**, not eBGP.
@@ -2360,17 +2472,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2398,17 +2513,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.'
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.
+
+
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -2434,6 +2553,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     110 is **OSPF**, not eBGP.
@@ -2470,17 +2593,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.'
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
+
+
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2512,18 +2638,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (Wireless technologies).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -2551,29 +2681,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 3.1 (Layer 2 technologies), the keyed answer is **Verify before
-    change windows; Capture show/verify outputs**. Stem: Multiple-select check for
-    3.1: which items are operationally sound?.
+  explanation: '3.1 (Layer 2 technologies) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
+    traceroute) before the window so you can compare after the change. Save `show
+    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
+    — that is how you prove the objective.
 
 
-    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
-    ping, traceroute) before the window so you can compare after the change. This
-    matters for 3.1 (Layer 2 technologies).
+    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
+    traceroute) before the window so you can compare after the change.
 
 
-    **Capture show/verify outputs** is correct: Save `show running-config`, `show
-    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
-    prove the objective. This matters for 3.1 (Layer 2 technologies).
+    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
+    `show vlan`, and similar evidence with the ticket — that is how you prove the
+    objective.
 
 
-    **Skip documentation** is not the right selection: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record. This matters for 3.1 (Layer 2 technologies).
+    **Skip documentation**: Skipping documentation leaves no rollback and no audit
+    trail. Production changes for this objective still need a written record.
 
 
-    **Disable logging permanently** is not the right selection: Disabling logging
-    permanently hides faults and is a finding on any security review. Keep syslog/buffered
-    logging enabled. This matters for 3.1 (Layer 2 technologies).'
+    **Disable logging permanently**: Disabling logging permanently hides faults and
+    is a finding on any security review. Keep syslog/buffered logging enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -2600,29 +2729,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 3.2 (Layer 3 technologies), the keyed answer is **Verify before
-    change windows; Capture show/verify outputs**. Stem: Multiple-select check for
-    3.2: which items are operationally sound?.
+  explanation: '3.2 (Layer 3 technologies) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
+    traceroute) before the window so you can compare after the change. Save `show
+    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
+    — that is how you prove the objective.
 
 
-    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
-    ping, traceroute) before the window so you can compare after the change. This
-    matters for 3.2 (Layer 3 technologies).
+    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
+    traceroute) before the window so you can compare after the change.
 
 
-    **Capture show/verify outputs** is correct: Save `show running-config`, `show
-    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
-    prove the objective. This matters for 3.2 (Layer 3 technologies).
+    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
+    `show vlan`, and similar evidence with the ticket — that is how you prove the
+    objective.
 
 
-    **Skip documentation** is not the right selection: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record. This matters for 3.2 (Layer 3 technologies).
+    **Skip documentation**: Skipping documentation leaves no rollback and no audit
+    trail. Production changes for this objective still need a written record.
 
 
-    **Disable logging permanently** is not the right selection: Disabling logging
-    permanently hides faults and is a finding on any security review. Keep syslog/buffered
-    logging enabled. This matters for 3.2 (Layer 3 technologies).'
+    **Disable logging permanently**: Disabling logging permanently hides faults and
+    is a finding on any security review. Keep syslog/buffered logging enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2649,29 +2777,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 3.3 (Wireless technologies), the keyed answer is **Verify before
-    change windows; Capture show/verify outputs**. Stem: Multiple-select check for
-    3.3: which items are operationally sound?.
+  explanation: '3.3 (Wireless technologies) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
+    traceroute) before the window so you can compare after the change. Save `show
+    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
+    — that is how you prove the objective.
 
 
-    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
-    ping, traceroute) before the window so you can compare after the change. This
-    matters for 3.3 (Wireless technologies).
+    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
+    traceroute) before the window so you can compare after the change.
 
 
-    **Capture show/verify outputs** is correct: Save `show running-config`, `show
-    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
-    prove the objective. This matters for 3.3 (Wireless technologies).
+    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
+    `show vlan`, and similar evidence with the ticket — that is how you prove the
+    objective.
 
 
-    **Skip documentation** is not the right selection: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record. This matters for 3.3 (Wireless technologies).
+    **Skip documentation**: Skipping documentation leaves no rollback and no audit
+    trail. Production changes for this objective still need a written record.
 
 
-    **Disable logging permanently** is not the right selection: Disabling logging
-    permanently hides faults and is a finding on any security review. Keep syslog/buffered
-    logging enabled. This matters for 3.3 (Wireless technologies).'
+    **Disable logging permanently**: Disabling logging permanently hides faults and
+    is a finding on any security review. Keep syslog/buffered logging enabled.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3

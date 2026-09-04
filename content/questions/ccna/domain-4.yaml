@@ -23,19 +23,18 @@ questions:
   explanation: 'DNS resolves names to addresses (and reverse lookups).
 
 
-    **MAC to VLAN** is a different protocol, command, or value than **Names to IP
-    addresses**. For 4.3 (DHCP and DNS roles), the stem is solved by **Names to IP
-    addresses**, not by MAC to VLAN.
+    **Names to IP addresses**: DNS resolves names to addresses (and reverse lookups).
 
 
-    **AS numbers to communities** is a different protocol, command, or value than
-    **Names to IP addresses**. For 4.3 (DHCP and DNS roles), the stem is solved by
-    **Names to IP addresses**, not by AS numbers to communities.
+    **MAC to VLAN**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
 
 
-    **SPIDs to DLCI** is a different protocol, command, or value than **Names to IP
-    addresses**. For 4.3 (DHCP and DNS roles), the stem is solved by **Names to IP
-    addresses**, not by SPIDs to DLCI.'
+    **AS numbers to communities**: Names to IP addresses is the matching value or
+    command; AS numbers to communities is not.
+
+
+    **SPIDs to DLCI**: Names to IP addresses is the matching value or command; SPIDs
+    to DLCI is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -105,16 +104,16 @@ questions:
   explanation: 'NTP clients sync to configured servers.
 
 
-    **An NTP server / higher stratum source** is correct: Client mode.
+    **An NTP server / higher stratum source**: Client mode.
 
 
-    **Only STP root** is not the right selection: L2.
+    **Only STP root**: L2.
 
 
-    **Only DHCP option 150 exclusive** is not the right selection: TFTP for phones.
+    **Only DHCP option 150 exclusive**: TFTP for phones.
 
 
-    **Only RADIUS** is not the right selection: AAA.'
+    **Only RADIUS**: AAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -141,16 +140,16 @@ questions:
   explanation: 'DHCP assigns addresses, mask, gateway, DNS, and related options.
 
 
-    **Dynamically assign IP addressing parameters** is correct: DHCP.
+    **Dynamically assign IP addressing parameters**: DHCP.
 
 
-    **Encrypt all trunks** is not the right selection: No.
+    **Encrypt all trunks**: No.
 
 
-    **Elect OSPF DR** is not the right selection: OSPF.
+    **Elect OSPF DR**: OSPF.
 
 
-    **Hash EtherChannels** is not the right selection: L2.'
+    **Hash EtherChannels**: L2.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -258,16 +257,17 @@ questions:
   explanation: 'GIADDR identifies the client subnet to the DHCP server.
 
 
-    **Only CHADDR to zero** points at CHADDR to zero, which is not how 4.6 (DHCP client
-    and relay) solves this stem. The keyed answer is **GIADDR (gateway address)**.
+    **GIADDR (gateway address)**: GIADDR identifies the client subnet to the DHCP
+    server.
 
 
-    **Only UDP sport 179** points at UDP sport 179, which is not how 4.6 (DHCP client
-    and relay) solves this stem. The keyed answer is **GIADDR (gateway address)**.
+    **Only CHADDR to zero**: CHADDR to zero is not **GIADDR (gateway address)**.
 
 
-    **Only DSCP EF** points at DSCP EF, which is not how 4.6 (DHCP client and relay)
-    solves this stem. The keyed answer is **GIADDR (gateway address)**.'
+    **Only UDP sport 179**: UDP sport 179 is not **GIADDR (gateway address)**.
+
+
+    **Only DSCP EF**: DSCP is the 6-bit IP marking (EF=46 for voice).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -337,18 +337,19 @@ questions:
   explanation: 'GET retrieves management information from agents.
 
 
-    **Encrypt STP BPDUs** is a different protocol, command, or value than **Retrieve
-    MIB object values**. For 4.4 (SNMP in network operations), the stem is solved
-    by **Retrieve MIB object values**, not by Encrypt STP BPDUs.
+    **Retrieve MIB object values**: GET retrieves management information from agents.
 
 
-    **Assign VLANs** is a mismatch: Access/trunk VLAN assignment is switchport configuration,
-    not a VTY ACL. The stem is asking about **Retrieve MIB object values**.
+    **Encrypt STP BPDUs**: BPDUs are STP control frames used to elect a root and assign
+    port roles.
 
 
-    **Form OSPF adjacencies** is a different protocol, command, or value than **Retrieve
-    MIB object values**. For 4.4 (SNMP in network operations), the stem is solved
-    by **Retrieve MIB object values**, not by Form OSPF adjacencies.'
+    **Assign VLANs**: Access/trunk VLAN assignment is switchport configuration, not
+    a VTY ACL.
+
+
+    **Form OSPF adjacencies**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -375,17 +376,18 @@ questions:
   explanation: 'Inside interfaces face the private/translated inside network.
 
 
-    **Only outside global** points at outside global, which is not how 4.1 (Configure
-    and verify NAT) solves this stem. The keyed answer is **Inside NAT interface**.
+    **Inside NAT interface**: Inside interfaces face the private/translated inside
+    network.
 
 
-    **Only VRF** is a mismatch: A VRF is a separate routing table/FIB instance on
-    one device, used to isolate tenants or VPNs. The stem is asking about **Inside
-    NAT interface**.
+    **Only outside global**: outside global is not **Inside NAT interface**.
 
 
-    **Only SPAN source** points at SPAN source, which is not how 4.1 (Configure and
-    verify NAT) solves this stem. The keyed answer is **Inside NAT interface**.'
+    **Only VRF**: A VRF is a separate routing table/FIB instance on one device, used
+    to isolate tenants or VPNs.
+
+
+    **Only SPAN source**: SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE destination.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -412,18 +414,17 @@ questions:
   explanation: 'SSH encrypts management sessions unlike Telnet.
 
 
-    **Only HTTPS forever** is a mismatch: HTTPS is HTTP over TLS, default TCP 443.
-    The stem is asking about **Cleartext Telnet for device management**.
+    **Cleartext Telnet for device management**: SSH encrypts management sessions unlike
+    Telnet.
 
 
-    **Only console cables** points at console cables, which is not how 4.8 (Remote
-    access using SSH) solves this stem. The keyed answer is **Cleartext Telnet for
-    device management**.
+    **Only HTTPS forever**: HTTPS is HTTP over TLS, default TCP 443.
 
 
-    **Only SNMP traps** points at SNMP traps, which is not how 4.8 (Remote access
-    using SSH) solves this stem. The keyed answer is **Cleartext Telnet for device
-    management**.'
+    **Only console cables**: console cables is not **Cleartext Telnet for device management**.
+
+
+    **Only SNMP traps**: SNMP reads/writes MIB objects (UDP 161) and sends traps (162).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -450,19 +451,18 @@ questions:
   explanation: 'TFTP is a lightweight file transfer protocol.
 
 
-    **Encrypt site-to-site VPNs** is a different protocol, command, or value than
-    **Transfer IOS/config files simply**. For 4.9 (TFTP/FTP capabilities), the stem
-    is solved by **Transfer IOS/config files simply**, not by Encrypt site-to-site
-    VPNs.
+    **Transfer IOS/config files simply**: TFTP is a lightweight file transfer protocol.
 
 
-    **Elect HSRP active** is a different protocol, command, or value than **Transfer
-    IOS/config files simply**. For 4.9 (TFTP/FTP capabilities), the stem is solved
-    by **Transfer IOS/config files simply**, not by Elect HSRP active.
+    **Encrypt site-to-site VPNs**: Transfer IOS/config files simply is the matching
+    value or command; Encrypt site-to-site VPNs is not.
 
 
-    **Tag 802.1Q** is a mismatch: 802.1Q is VLAN tagging, not LACP and not 802.1X.
-    The stem is asking about **Transfer IOS/config files simply**.'
+    **Elect HSRP active**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
+    routers.
+
+
+    **Tag 802.1Q**: 802.1Q is VLAN tagging on trunks (native VLAN untagged).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -489,18 +489,17 @@ questions:
   explanation: 'Forward DNS resolves names to addresses.
 
 
-    **IP to MAC only** points at IP to MAC, which is not how 4.3 (DHCP and DNS roles)
-    solves this stem. The keyed answer is **Name to IP**.
+    **Name to IP**: Forward DNS resolves names to addresses.
 
 
-    **AS to community** is a different protocol, command, or value than **Name to
-    IP**. For 4.3 (DHCP and DNS roles), the stem is solved by **Name to IP**, not
-    by AS to community.
+    **IP to MAC only**: IP to MAC is not **Name to IP**.
 
 
-    **VLAN to VNI** is a different protocol, command, or value than **Name to IP**.
-    For 4.3 (DHCP and DNS roles), the stem is solved by **Name to IP**, not by VLAN
-    to VNI.'
+    **AS to community**: A community cloud is shared by several organizations. Private
+    cloud is single-tenant for one org.
+
+
+    **VLAN to VNI**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -527,17 +526,19 @@ questions:
   explanation: 'Trust server-facing ports; untrust access ports.
 
 
-    **All access ports always** is a mismatch: The campus access layer attaches endpoints
-    (PCs, phones, APs). The stem is asking about **Legitimate DHCP servers / uplinks**.
+    **Legitimate DHCP servers / uplinks**: Trust server-facing ports; untrust access
+    ports.
 
 
-    **Only SPAN destinations** points at SPAN destinations, which is not how 4.6 (DHCP
-    client and relay) solves this stem. The keyed answer is **Legitimate DHCP servers
+    **All access ports always**: All access ports is not **Legitimate DHCP servers
     / uplinks**.
 
 
-    **Only Null0** points at Null0, which is not how 4.6 (DHCP client and relay) solves
-    this stem. The keyed answer is **Legitimate DHCP servers / uplinks**.'
+    **Only SPAN destinations**: SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE
+    destination.
+
+
+    **Only Null0**: Null0 is a discard next-hop used for aggregates and loop prevention.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -564,19 +565,17 @@ questions:
   explanation: 'Policers enforce rates by drop/remark.
 
 
-    **Only increases STP diameter** points at increases STP diameter, which is not
-    how 4.7 (QoS per-hop behavior) solves this stem. The keyed answer is **Drops or
-    remarks excess over a rate**.
+    **Drops or remarks excess over a rate**: Policers enforce rates by drop/remark.
 
 
-    **Only creates VLANs** points at creates VLANs, which is not how 4.7 (QoS per-hop
-    behavior) solves this stem. The keyed answer is **Drops or remarks excess over
-    a rate**.
+    **Only increases STP diameter**: Spanning Tree elects a root bridge and blocks
+    redundant Ethernet paths so the LAN does not loop.
 
 
-    **Only disables CDP** points at disables CDP, which is not how 4.7 (QoS per-hop
-    behavior) solves this stem. The keyed answer is **Drops or remarks excess over
-    a rate**.'
+    **Only creates VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+
+
+    **Only disables CDP**: CDP is Cisco’s L2 neighbor discovery (`show cdp neighbors`).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -603,19 +602,18 @@ questions:
   explanation: 'Informs expect acknowledgment; traps are unacknowledged.
 
 
-    **Using only Telnet** is a mismatch: Telnet (TCP 23) is cleartext remote CLI and
-    should not be used on production VTYs. The stem is asking about **Acknowledged
-    delivery**.
+    **Acknowledged delivery**: Informs expect acknowledgment; traps are unacknowledged.
 
 
-    **Requiring OSPF** is a different protocol, command, or value than **Acknowledged
-    delivery**. For 4.4 (SNMP in network operations), the stem is solved by **Acknowledged
-    delivery**, not by Requiring OSPF.
+    **Using only Telnet**: Telnet (TCP 23) is cleartext remote CLI.
 
 
-    **Disabling MIBs** is a different protocol, command, or value than **Acknowledged
-    delivery**. For 4.4 (SNMP in network operations), the stem is solved by **Acknowledged
-    delivery**, not by Disabling MIBs.'
+    **Requiring OSPF**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).
+
+
+    **Disabling MIBs**: Acknowledged delivery is the matching value or command; Disabling
+    MIBs is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -642,19 +640,19 @@ questions:
   explanation: 'Facilities categorize log origins.
 
 
-    **Encrypt EtherChannels** is a different protocol, command, or value than **Classify
-    message sources/categories**. For 4.5 (Syslog features), the stem is solved by
-    **Classify message sources/categories**, not by Encrypt EtherChannels.
+    **Classify message sources/categories**: Facilities categorize log origins.
 
 
-    **Assign BGP MED** is a different protocol, command, or value than **Classify
-    message sources/categories**. For 4.5 (Syslog features), the stem is solved by
-    **Classify message sources/categories**, not by Assign BGP MED.
+    **Encrypt EtherChannels**: EtherChannel bundles physical links into one logical
+    interface; members must match speed, duplex, and mode.
 
 
-    **Elect DR** is a different protocol, command, or value than **Classify message
-    sources/categories**. For 4.5 (Syslog features), the stem is solved by **Classify
-    message sources/categories**, not by Elect DR.'
+    **Assign BGP MED**: MED is a BGP attribute to influence inbound traffic from a
+    neighbor AS.
+
+
+    **Elect DR**: Classify message sources/categories is the matching value or command;
+    Elect DR is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -681,18 +679,19 @@ questions:
   explanation: 'Overload NAT uses port multiplexing.
 
 
-    **Only 1:1 static always** points at 1:1 static, which is not how 4.1 (Configure
-    and verify NAT) solves this stem. The keyed answer is **Translating many insides
-    to one/few globals with ports**.
+    **Translating many insides to one/few globals with ports**: Overload NAT uses
+    port multiplexing.
 
 
-    **Only disabling TCP** points at disabling TCP, which is not how 4.1 (Configure
-    and verify NAT) solves this stem. The keyed answer is **Translating many insides
-    to one/few globals with ports**.
+    **Only 1:1 static always**: 1:1 static is not **Translating many insides to one/few
+    globals with ports**.
 
 
-    **Only using IPv6 exclusively** points at using IPv6, which is not how 4.1 (Configure
-    and verify NAT) solves this stem. The keyed answer is **Translating many insides
+    **Only disabling TCP**: disabling TCP is not **Translating many insides to one/few
+    globals with ports**.
+
+
+    **Only using IPv6 exclusively**: using IPv6 is not **Translating many insides
     to one/few globals with ports**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
@@ -720,16 +719,16 @@ questions:
   explanation: 'SSH listens on TCP 22 by default.
 
 
-    **UDP 161** is a different protocol, command, or value than **TCP 22**. For 4.8
-    (Remote access using SSH), the stem is solved by **TCP 22**, not by UDP 161.
+    **TCP 22**: SSH listens on TCP 22 by default.
 
 
-    **UDP 69** is a different protocol, command, or value than **TCP 22**. For 4.8
-    (Remote access using SSH), the stem is solved by **TCP 22**, not by UDP 69.
+    **UDP 161**: TCP 22 is the matching value or command; UDP 161 is not.
 
 
-    **TCP 23** is a different protocol, command, or value than **TCP 22**. For 4.8
-    (Remote access using SSH), the stem is solved by **TCP 22**, not by TCP 23.'
+    **UDP 69**: TCP 22 is the matching value or command; UDP 69 is not.
+
+
+    **TCP 23**: TCP 22 is the matching value or command; TCP 23 is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -756,17 +755,15 @@ questions:
   explanation: 'show ntp associations displays peer/server sync state.
 
 
-    **show vlan brief** is a mismatch: `show vlan brief` lists L2 VLANs on a switch,
-    not IPv6 addressing. The stem is asking about **show ntp associations**.
+    **show vlan brief**: `show vlan brief` lists L2 VLANs on a switch, not IPv6 addressing.
 
 
-    **show spanning-tree** is a mismatch: `show spanning-tree` shows STP roles/states,
-    not the feature in the stem. The stem is asking about **show ntp associations**.
+    **show spanning-tree**: `show spanning-tree` shows STP roles/states, not the feature
+    in the stem.
 
 
-    **show etherchannel summary** is a mismatch: `show etherchannel summary` shows
-    Port-Channel bundles, not the feature in the stem. The stem is asking about **show
-    ntp associations**.'
+    **show etherchannel summary**: `show etherchannel summary` shows Port-Channel
+    bundles, not the feature in the stem.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -796,16 +793,19 @@ questions:
     list ... interface ... overload`).
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -833,12 +833,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -870,14 +874,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -909,17 +917,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.4 (SNMP in network operations).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -947,6 +959,10 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
     not send it.
 
@@ -955,8 +971,8 @@ questions:
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.'
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -984,14 +1000,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -1020,16 +1040,19 @@ questions:
     list ... interface ... overload`).
 
 
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.'
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -1057,8 +1080,12 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1094,8 +1121,12 @@ questions:
     bits vs A = 32 bits).
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.
@@ -1129,14 +1160,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -1165,16 +1200,19 @@ questions:
     list ... interface ... overload`).
 
 
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.'
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -1202,8 +1240,12 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1239,8 +1281,12 @@ questions:
     bits vs A = 32 bits).
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.
@@ -1278,17 +1324,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.5 (Syslog features).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -1316,12 +1366,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1353,11 +1407,15 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.'
@@ -1389,16 +1447,19 @@ questions:
     list ... interface ... overload`).
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -1426,12 +1487,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1463,12 +1528,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1500,11 +1569,15 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.'
@@ -1536,16 +1609,19 @@ questions:
     list ... interface ... overload`).
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -1573,12 +1649,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1610,14 +1690,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -1649,17 +1733,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.6 (DHCP client and relay).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -1687,6 +1775,10 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
     not send it.
 
@@ -1695,8 +1787,8 @@ questions:
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.'
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -1724,14 +1816,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -1760,16 +1856,19 @@ questions:
     list ... interface ... overload`).
 
 
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.'
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -1801,18 +1900,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.1 (Configure and verify
-    NAT).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -1840,6 +1942,10 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
     not send it.
 
@@ -1848,8 +1954,8 @@ questions:
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.'
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -1877,14 +1983,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -1913,16 +2023,19 @@ questions:
     list ... interface ... overload`).
 
 
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.'
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -1950,8 +2063,12 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -1987,8 +2104,12 @@ questions:
     bits vs A = 32 bits).
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.
@@ -2026,17 +2147,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.7 (QoS per-hop behavior).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -2064,12 +2189,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -2101,11 +2230,15 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.'
@@ -2136,8 +2269,12 @@ questions:
     bits vs A = 32 bits).
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.
@@ -2175,18 +2312,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.2 (Configure and verify
-    NTP).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -2214,12 +2354,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -2251,11 +2395,15 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.'
@@ -2287,16 +2435,19 @@ questions:
     list ... interface ... overload`).
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -2324,12 +2475,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -2361,14 +2516,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -2400,17 +2559,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.8 (Remote access using SSH).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -2438,6 +2601,10 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
     not send it.
 
@@ -2446,8 +2613,8 @@ questions:
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.'
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -2475,12 +2642,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -2512,14 +2683,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -2551,17 +2726,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.3 (DHCP and DNS roles).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -2589,6 +2768,10 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
     not send it.
 
@@ -2597,8 +2780,8 @@ questions:
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.'
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -2626,14 +2809,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -2662,16 +2849,19 @@ questions:
     list ... interface ... overload`).
 
 
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.'
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -2699,8 +2889,12 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -2736,8 +2930,12 @@ questions:
     bits vs A = 32 bits).
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.
@@ -2775,17 +2973,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.9 (TFTP/FTP capabilities).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -2814,16 +3016,19 @@ questions:
     list ... interface ... overload`).
 
 
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.'
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -2851,8 +3056,12 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -2888,8 +3097,12 @@ questions:
     bits vs A = 32 bits).
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.
@@ -2927,17 +3140,21 @@ questions:
     list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 4.4 (SNMP in network operations).
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -2965,12 +3182,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -3002,11 +3223,15 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.
 
 
     An **A** record maps a name to an **IPv4** address, not IPv6.'
@@ -3038,16 +3263,19 @@ questions:
     list ... interface ... overload`).
 
 
-    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
-    6296). It is not IPv4 PAT.
+    **PAT/overload**: PAT / NAT overload maps many inside-local addresses onto one
+    (or a few) inside-global address by translating **source ports** (`ip nat inside
+    source list ... interface ... overload`).
+
+
+    **NPTv6 only**: NPTv6 is IPv6 prefix translation (RFC 6296). It is not IPv4 PAT.
 
 
     Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
-    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
-    many-to-one PAT.'
+    **One-to-one dynamic only**: Dynamic NAT without overload still uses a pool 1:1.
+    When the pool is exhausted, new flows fail — that is not many-to-one PAT.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -3075,12 +3303,16 @@ questions:
     255.255.255.255) to find servers — the first message in DORA.
 
 
+    **DHCPDISCOVER**: A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68,
+    destination 255.255.255.255) to find servers — the first message in DORA.
+
+
     DHCPACK is the **server’s** final confirmation of the lease, not the client’s
     discovery broadcast.
 
 
-    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
-    DORA step (accepting an offer, or renewing). Discovery comes first.
+    **Only DHCPREQUEST**: DHCPREQUEST is the client’s **third** DORA step (accepting
+    an offer, or renewing). Discovery comes first.
 
 
     DHCPOFFER is the **server** offering an address after DISCOVER. The client does
@@ -3112,14 +3344,18 @@ questions:
     bits vs A = 32 bits).
 
 
+    **AAAA**: An **AAAA** record maps a name to an IPv6 address (four A’s = 128 bits
+    vs A = 32 bits).
+
+
     An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
     MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
-    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
+    **PTR only**: PTR is reverse DNS (IP → name) under `ip6.arpa` or `in-addr.arpa`.
+    The forward IPv6 record is AAAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -3144,31 +3380,27 @@ questions:
     text: Validate with show/verify steps before relying on 4.1 changes
   correct:
     answer: a
-  explanation: 'For 4.1 (Configure and verify NAT), the keyed answer is **Validate
-    with show/verify steps before relying on 4.1 changes**. Stem: Which option correctly
-    describes a key idea under 4.1?.
+  explanation: '4.1 (Configure and verify NAT) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Validate with show/verify (and ping where
+    relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 4.1 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 4.1 (Configure and verify NAT).
+    **Validate with show/verify steps before relying on 4.1 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Treat 4.1 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.1 (Configure
-    and verify NAT).
+    **Treat 4.1 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.1 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.1 (Configure and verify NAT).
+    **Ignore verification and assume 4.1 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 4.1 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.1 (Configure and verify
-    NAT).'
+    **Confuse 4.1 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -3192,32 +3424,28 @@ questions:
     text: Ignore verification and assume 4.1 always works
   correct:
     answer: a
-  explanation: 'For 4.1 (Configure and verify NAT), the keyed answer is **Use the
-    standard model for 4.1 rather than a look-alike concept**. Stem: For CCNA objective
-    4.1, which statement best matches production best practice?.
+  explanation: '4.1 (Configure and verify NAT) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Stay with the standard model for this objective
+    instead of a look-alike protocol that shares a buzzword but not the behavior.
 
 
-    **Use the standard model for 4.1 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 4.1 (Configure and
-    verify NAT).
+    **Use the standard model for 4.1 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Confuse 4.1 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.1 (Configure and verify
-    NAT).
+    **Confuse 4.1 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 4.1** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.1 (Configure and verify
-    NAT).
+    **Disable logging permanently while testing 4.1**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Ignore verification and assume 4.1 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.1 (Configure and verify NAT).'
+    **Ignore verification and assume 4.1 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -3245,31 +3473,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 4.2 (Configure and verify NTP), the keyed answer is **Verify expected
-    state for 4.2 with show/ping evidence; Document the 4.2 design intent and rollback
-    plan**. Stem: [CCNA 4.2] Select ALL actions that support a correct implementation
-    or verification for this objective..
+  explanation: '4.2 (Configure and verify NTP) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
+    actually converged — not just that the command was typed. Document design intent
+    and the rollback commands. The next engineer (or you at 03:00) needs that, not
+    tribal memory.
 
 
-    **Verify expected state for 4.2 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 4.2 (Configure and verify NTP).
+    **Verify expected state for 4.2 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 4.2 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 4.2 (Configure and verify NTP).
+    **Document the 4.2 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 4.2 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 4.2 (Configure
-    and verify NTP).
+    **Skip change control because 4.2 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 4.2** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 4.2 (Configure and verify NTP).'
+    **Disable all monitoring related to 4.2**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -3293,32 +3519,29 @@ questions:
     text: Skip documentation for 4.2 changes in production
   correct:
     answer: a
-  explanation: 'For 4.2 (Configure and verify NTP), the keyed answer is **Apply the
-    verified behavior required by objective 4.2**. Stem: During troubleshooting related
-    to 4.2, which observation is most relevant?.
+  explanation: '4.2 (Configure and verify NTP) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
+    actually names, then confirm it with show/ping — not a neighboring feature.
 
 
-    **Apply the verified behavior required by objective 4.2** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 4.2 (Configure and verify NTP).
+    **Apply the verified behavior required by objective 4.2**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Disable logging permanently while testing 4.2** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.2 (Configure and verify
-    NTP).
+    **Disable logging permanently while testing 4.2**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 4.2** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.2 (Configure
-    and verify NTP).
+    **Use clear-text shared secrets as the only control for 4.2**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.2 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.2 (Configure
-    and verify NTP).'
+    **Skip documentation for 4.2 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -3342,32 +3565,28 @@ questions:
     text: Validate with show/verify steps before relying on 4.3 changes
   correct:
     answer: a
-  explanation: 'For 4.3 (DHCP and DNS roles), the keyed answer is **Validate with
-    show/verify steps before relying on 4.3 changes**. Stem: Which configuration intent
-    aligns with CCNA objective 4.3?.
+  explanation: '4.3 (DHCP and DNS roles) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Validate with show/verify (and ping where
+    relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 4.3 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 4.3 (DHCP and DNS roles).
+    **Validate with show/verify steps before relying on 4.3 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Use clear-text shared secrets as the only control for 4.3** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.3 (DHCP
-    and DNS roles).
+    **Use clear-text shared secrets as the only control for 4.3**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.3 (DHCP and
-    DNS roles).
+    **Skip documentation for 4.3 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 4.3 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.3 (DHCP and
-    DNS roles).'
+    **Treat 4.3 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -3391,32 +3610,28 @@ questions:
     text: Skip documentation for 4.3 changes in production
   correct:
     answer: a
-  explanation: 'For 4.3 (DHCP and DNS roles), the keyed answer is **Use the standard
-    model for 4.3 rather than a look-alike concept**. Stem: Select the correct association
-    for exam topic 4.3..
+  explanation: '4.3 (DHCP and DNS roles) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Stay with the standard model for this objective
+    instead of a look-alike protocol that shares a buzzword but not the behavior.
 
 
-    **Use the standard model for 4.3 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 4.3 (DHCP and DNS
-    roles).
+    **Use the standard model for 4.3 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Treat 4.3 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.3 (DHCP and
-    DNS roles).
+    **Treat 4.3 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.3 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.3 (DHCP and DNS roles).
+    **Ignore verification and assume 4.3 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Skip documentation for 4.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.3 (DHCP and
-    DNS roles).'
+    **Skip documentation for 4.3 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -3440,32 +3655,29 @@ questions:
     text: Ignore verification and assume 4.4 always works
   correct:
     answer: a
-  explanation: 'For 4.4 (SNMP in network operations), the keyed answer is **Prefer
-    the documented 4.4 approach used in enterprise designs**. Stem: Which option correctly
-    describes a key idea under 4.4?.
+  explanation: '4.4 (SNMP in network operations) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Use the documented enterprise
+    design for this objective (Cisco validated design / local standard) rather than
+    an ad-hoc look-alike.
 
 
-    **Prefer the documented 4.4 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 4.4 (SNMP
-    in network operations).
+    **Prefer the documented 4.4 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.4 (SNMP in network
-    operations).
+    **Confuse 4.4 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Treat 4.4 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.4 (SNMP in network
-    operations).
+    **Treat 4.4 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.4 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.4 (SNMP in network operations).'
+    **Ignore verification and assume 4.4 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -3493,31 +3705,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 4.4 (SNMP in network operations), the keyed answer is **Verify
-    expected state for 4.4 with show/ping evidence; Document the 4.4 design intent
-    and rollback plan**. Stem: [CCNA 4.4] Select ALL actions that support a correct
-    implementation or verification for this objective..
+  explanation: '4.4 (SNMP in network operations) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Use show/ping evidence to confirm
+    the objective actually converged — not just that the command was typed. Document
+    design intent and the rollback commands. The next engineer (or you at 03:00) needs
+    that, not tribal memory.
 
 
-    **Verify expected state for 4.4 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 4.4 (SNMP in network operations).
+    **Verify expected state for 4.4 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 4.4 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 4.4 (SNMP in network operations).
+    **Document the 4.4 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 4.4 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 4.4 (SNMP in network
-    operations).
+    **Skip change control because 4.4 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 4.4** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 4.4 (SNMP in network operations).'
+    **Disable all monitoring related to 4.4**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -3541,31 +3751,28 @@ questions:
     text: Validate with show/verify steps before relying on 4.4 changes
   correct:
     answer: a
-  explanation: 'For 4.4 (SNMP in network operations), the keyed answer is **Validate
-    with show/verify steps before relying on 4.4 changes**. Stem: Regarding CCNA topic
-    4.4. Which reply is accurate?.
+  explanation: '4.4 (SNMP in network operations) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
+    ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 4.4 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 4.4 (SNMP in network operations).
+    **Validate with show/verify steps before relying on 4.4 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.4 (SNMP in network
-    operations).
+    **Confuse 4.4 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 4.4** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.4 (SNMP in network operations).
+    **Disable logging permanently while testing 4.4**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 4.4** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.4 (SNMP
-    in network operations).'
+    **Use clear-text shared secrets as the only control for 4.4**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -3589,30 +3796,29 @@ questions:
     text: Disable logging permanently while testing 4.5
   correct:
     answer: a
-  explanation: 'For 4.5 (Syslog features), the keyed answer is **Use the standard
-    model for 4.5 rather than a look-alike concept**. Stem: During troubleshooting
-    related to 4.5, which observation is most relevant?.
+  explanation: '4.5 (Syslog features) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Stay with the standard model for this objective instead
+    of a look-alike protocol that shares a buzzword but not the behavior.
 
 
-    **Use the standard model for 4.5 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 4.5 (Syslog features).
+    **Use the standard model for 4.5 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Use clear-text shared secrets as the only control for 4.5** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.5 (Syslog
-    features).
+    **Use clear-text shared secrets as the only control for 4.5**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.5 (Syslog features).
+    **Skip documentation for 4.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Disable logging permanently while testing 4.5** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.5 (Syslog features).'
+    **Disable logging permanently while testing 4.5**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -3636,31 +3842,29 @@ questions:
     text: Skip documentation for 4.5 changes in production
   correct:
     answer: a
-  explanation: 'For 4.5 (Syslog features), the keyed answer is **Prefer the documented
-    4.5 approach used in enterprise designs**. Stem: Which configuration intent aligns
-    with CCNA objective 4.5?.
+  explanation: '4.5 (Syslog features) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Use the documented enterprise design for this objective
+    (Cisco validated design / local standard) rather than an ad-hoc look-alike.
 
 
-    **Prefer the documented 4.5 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 4.5 (Syslog
-    features).
+    **Prefer the documented 4.5 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Treat 4.5 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.5 (Syslog features).
+    **Treat 4.5 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Use clear-text shared secrets as the only control for 4.5** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.5 (Syslog
-    features).
+    **Use clear-text shared secrets as the only control for 4.5**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.5 (Syslog features).'
+    **Skip documentation for 4.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -3684,29 +3888,28 @@ questions:
     text: Ignore verification and assume 4.5 always works
   correct:
     answer: a
-  explanation: 'For 4.5 (Syslog features), the keyed answer is **Apply the verified
-    behavior required by objective 4.5**. Stem: Select the correct association for
-    exam topic 4.5..
+  explanation: '4.5 (Syslog features) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Apply the verified behavior the exam topic actually
+    names, then confirm it with show/ping — not a neighboring feature.
 
 
-    **Apply the verified behavior required by objective 4.5** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 4.5 (Syslog features).
+    **Apply the verified behavior required by objective 4.5**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 4.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.5 (Syslog features).
+    **Skip documentation for 4.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 4.5 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.5 (Syslog features).
+    **Treat 4.5 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.5 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.5 (Syslog features).'
+    **Ignore verification and assume 4.5 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -3734,31 +3937,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 4.6 (DHCP client and relay), the keyed answer is **Verify expected
-    state for 4.6 with show/ping evidence; Document the 4.6 design intent and rollback
-    plan**. Stem: [CCNA 4.6] Select ALL actions that support a correct implementation
-    or verification for this objective..
+  explanation: '4.6 (DHCP client and relay) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
+    actually converged — not just that the command was typed. Document design intent
+    and the rollback commands. The next engineer (or you at 03:00) needs that, not
+    tribal memory.
 
 
-    **Verify expected state for 4.6 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 4.6 (DHCP client and relay).
+    **Verify expected state for 4.6 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 4.6 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 4.6 (DHCP client and relay).
+    **Document the 4.6 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 4.6 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 4.6 (DHCP client
-    and relay).
+    **Skip change control because 4.6 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 4.6** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 4.6 (DHCP client and relay).'
+    **Disable all monitoring related to 4.6**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -3782,31 +3983,28 @@ questions:
     text: Ignore verification and assume 4.6 always works
   correct:
     answer: a
-  explanation: 'For 4.6 (DHCP client and relay), the keyed answer is **Use the standard
-    model for 4.6 rather than a look-alike concept**. Stem: For CCNA objective 4.6,
-    which statement best matches production best practice?.
+  explanation: '4.6 (DHCP client and relay) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Stay with the standard model for this objective
+    instead of a look-alike protocol that shares a buzzword but not the behavior.
 
 
-    **Use the standard model for 4.6 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 4.6 (DHCP client
-    and relay).
+    **Use the standard model for 4.6 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.6 (DHCP client and
-    relay).
+    **Confuse 4.6 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 4.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.6 (DHCP client and relay).
+    **Disable logging permanently while testing 4.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Ignore verification and assume 4.6 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.6 (DHCP client and relay).'
+    **Ignore verification and assume 4.6 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -3830,32 +4028,30 @@ questions:
     text: Disable logging permanently while testing 4.6
   correct:
     answer: a
-  explanation: 'For 4.6 (DHCP client and relay), the keyed answer is **Prefer the
-    documented 4.6 approach used in enterprise designs**. Stem: Regarding CCNA topic
-    4.6. Which reply is accurate?.
+  explanation: '4.6 (DHCP client and relay) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use the documented enterprise design for
+    this objective (Cisco validated design / local standard) rather than an ad-hoc
+    look-alike.
 
 
-    **Prefer the documented 4.6 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 4.6 (DHCP
-    client and relay).
+    **Prefer the documented 4.6 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Use clear-text shared secrets as the only control for 4.6** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.6 (DHCP
-    client and relay).
+    **Use clear-text shared secrets as the only control for 4.6**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.6 (DHCP client and
-    relay).
+    **Confuse 4.6 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 4.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.6 (DHCP client and relay).'
+    **Disable logging permanently while testing 4.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -3879,31 +4075,29 @@ questions:
     text: Skip documentation for 4.7 changes in production
   correct:
     answer: a
-  explanation: 'For 4.7 (QoS per-hop behavior), the keyed answer is **Apply the verified
-    behavior required by objective 4.7**. Stem: During troubleshooting related to
-    4.7, which observation is most relevant?.
+  explanation: '4.7 (QoS per-hop behavior) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
+    actually names, then confirm it with show/ping — not a neighboring feature.
 
 
-    **Apply the verified behavior required by objective 4.7** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 4.7 (QoS per-hop behavior).
+    **Apply the verified behavior required by objective 4.7**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Disable logging permanently while testing 4.7** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.7 (QoS per-hop behavior).
+    **Disable logging permanently while testing 4.7**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 4.7** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.7 (QoS
-    per-hop behavior).
+    **Use clear-text shared secrets as the only control for 4.7**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.7 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.7 (QoS per-hop
-    behavior).'
+    **Skip documentation for 4.7 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -3927,32 +4121,28 @@ questions:
     text: Validate with show/verify steps before relying on 4.7 changes
   correct:
     answer: a
-  explanation: 'For 4.7 (QoS per-hop behavior), the keyed answer is **Validate with
-    show/verify steps before relying on 4.7 changes**. Stem: Which configuration intent
-    aligns with CCNA objective 4.7?.
+  explanation: '4.7 (QoS per-hop behavior) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Validate with show/verify (and ping where
+    relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 4.7 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 4.7 (QoS per-hop behavior).
+    **Validate with show/verify steps before relying on 4.7 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Use clear-text shared secrets as the only control for 4.7** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.7 (QoS
-    per-hop behavior).
+    **Use clear-text shared secrets as the only control for 4.7**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.7 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.7 (QoS per-hop
-    behavior).
+    **Skip documentation for 4.7 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 4.7 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.7 (QoS per-hop
-    behavior).'
+    **Treat 4.7 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -3980,31 +4170,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 4.7 (QoS per-hop behavior), the keyed answer is **Verify expected
-    state for 4.7 with show/ping evidence; Document the 4.7 design intent and rollback
-    plan**. Stem: [CCNA 4.7] Select ALL actions that support a correct implementation
-    or verification for this objective..
+  explanation: '4.7 (QoS per-hop behavior) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
+    actually converged — not just that the command was typed. Document design intent
+    and the rollback commands. The next engineer (or you at 03:00) needs that, not
+    tribal memory.
 
 
-    **Verify expected state for 4.7 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 4.7 (QoS per-hop behavior).
+    **Verify expected state for 4.7 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 4.7 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 4.7 (QoS per-hop behavior).
+    **Document the 4.7 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 4.7 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 4.7 (QoS per-hop
-    behavior).
+    **Skip change control because 4.7 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 4.7** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 4.7 (QoS per-hop behavior).'
+    **Disable all monitoring related to 4.7**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -4028,32 +4216,29 @@ questions:
     text: Ignore verification and assume 4.8 always works
   correct:
     answer: a
-  explanation: 'For 4.8 (Remote access using SSH), the keyed answer is **Prefer the
-    documented 4.8 approach used in enterprise designs**. Stem: Which option correctly
-    describes a key idea under 4.8?.
+  explanation: '4.8 (Remote access using SSH) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use the documented enterprise design for
+    this objective (Cisco validated design / local standard) rather than an ad-hoc
+    look-alike.
 
 
-    **Prefer the documented 4.8 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 4.8 (Remote
-    access using SSH).
+    **Prefer the documented 4.8 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Confuse 4.8 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.8 (Remote access using
-    SSH).
+    **Confuse 4.8 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Treat 4.8 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.8 (Remote access
-    using SSH).
+    **Treat 4.8 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.8 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.8 (Remote access using SSH).'
+    **Ignore verification and assume 4.8 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -4077,31 +4262,28 @@ questions:
     text: Disable logging permanently while testing 4.8
   correct:
     answer: a
-  explanation: 'For 4.8 (Remote access using SSH), the keyed answer is **Apply the
-    verified behavior required by objective 4.8**. Stem: For CCNA objective 4.8, which
-    statement best matches production best practice?.
+  explanation: '4.8 (Remote access using SSH) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
+    actually names, then confirm it with show/ping — not a neighboring feature.
 
 
-    **Apply the verified behavior required by objective 4.8** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 4.8 (Remote access using SSH).
+    **Apply the verified behavior required by objective 4.8**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Ignore verification and assume 4.8 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.8 (Remote access using SSH).
+    **Ignore verification and assume 4.8 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 4.8 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.8 (Remote access using
-    SSH).
+    **Confuse 4.8 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 4.8** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.8 (Remote access using
-    SSH).'
+    **Disable logging permanently while testing 4.8**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -4125,32 +4307,28 @@ questions:
     text: Validate with show/verify steps before relying on 4.8 changes
   correct:
     answer: a
-  explanation: 'For 4.8 (Remote access using SSH), the keyed answer is **Validate
-    with show/verify steps before relying on 4.8 changes**. Stem: Regarding CCNA topic
-    4.8. Which reply is accurate?.
+  explanation: '4.8 (Remote access using SSH) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Validate with show/verify (and ping where
+    relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 4.8 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 4.8 (Remote access using SSH).
+    **Validate with show/verify steps before relying on 4.8 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Confuse 4.8 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.8 (Remote access using
-    SSH).
+    **Confuse 4.8 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 4.8** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.8 (Remote access using
-    SSH).
+    **Disable logging permanently while testing 4.8**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 4.8** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.8 (Remote
-    access using SSH).'
+    **Use clear-text shared secrets as the only control for 4.8**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -4174,31 +4352,29 @@ questions:
     text: Disable logging permanently while testing 4.9
   correct:
     answer: a
-  explanation: 'For 4.9 (TFTP/FTP capabilities), the keyed answer is **Use the standard
-    model for 4.9 rather than a look-alike concept**. Stem: During troubleshooting
-    related to 4.9, which observation is most relevant?.
+  explanation: '4.9 (TFTP/FTP capabilities) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Stay with the standard model for this objective
+    instead of a look-alike protocol that shares a buzzword but not the behavior.
 
 
-    **Use the standard model for 4.9 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 4.9 (TFTP/FTP capabilities).
+    **Use the standard model for 4.9 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Use clear-text shared secrets as the only control for 4.9** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.9 (TFTP/FTP
-    capabilities).
+    **Use clear-text shared secrets as the only control for 4.9**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 4.9 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.9 (TFTP/FTP
-    capabilities).
+    **Skip documentation for 4.9 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Disable logging permanently while testing 4.9** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 4.9 (TFTP/FTP capabilities).'
+    **Disable logging permanently while testing 4.9**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -4226,30 +4402,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 4.9 (TFTP/FTP capabilities), the keyed answer is **Verify expected
-    state for 4.9 with show/ping evidence; Document the 4.9 design intent and rollback
-    plan**. Stem: [CCNA 4.9] Select ALL actions that support a correct implementation
-    or verification for this objective..
+  explanation: '4.9 (TFTP/FTP capabilities) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
+    actually converged — not just that the command was typed. Document design intent
+    and the rollback commands. The next engineer (or you at 03:00) needs that, not
+    tribal memory.
 
 
-    **Verify expected state for 4.9 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 4.9 (TFTP/FTP capabilities).
+    **Verify expected state for 4.9 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 4.9 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 4.9 (TFTP/FTP capabilities).
+    **Document the 4.9 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 4.9 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 4.9 (TFTP/FTP capabilities).
+    **Skip change control because 4.9 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 4.9** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 4.9 (TFTP/FTP capabilities).'
+    **Disable all monitoring related to 4.9**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -4273,31 +4448,28 @@ questions:
     text: Ignore verification and assume 4.9 always works
   correct:
     answer: a
-  explanation: 'For 4.9 (TFTP/FTP capabilities), the keyed answer is **Apply the verified
-    behavior required by objective 4.9**. Stem: Select the correct association for
-    exam topic 4.9..
+  explanation: '4.9 (TFTP/FTP capabilities) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
+    actually names, then confirm it with show/ping — not a neighboring feature.
 
 
-    **Apply the verified behavior required by objective 4.9** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 4.9 (TFTP/FTP capabilities).
+    **Apply the verified behavior required by objective 4.9**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 4.9 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 4.9 (TFTP/FTP
-    capabilities).
+    **Skip documentation for 4.9 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 4.9 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.9 (TFTP/FTP
-    capabilities).
+    **Treat 4.9 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.9 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.9 (TFTP/FTP capabilities).'
+    **Ignore verification and assume 4.9 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -4321,30 +4493,27 @@ questions:
     text: Validate with show/verify steps before relying on 4.9 changes
   correct:
     answer: a
-  explanation: 'For 4.9 (TFTP/FTP capabilities), the keyed answer is **Validate with
-    show/verify steps before relying on 4.9 changes**. Stem: Which option correctly
-    describes a key idea under 4.9?.
+  explanation: '4.9 (TFTP/FTP capabilities) is implemented by verifying with show/ping
+    evidence and keeping a rollback plan. Validate with show/verify (and ping where
+    relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 4.9 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 4.9 (TFTP/FTP capabilities).
+    **Validate with show/verify steps before relying on 4.9 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Treat 4.9 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 4.9 (TFTP/FTP
-    capabilities).
+    **Treat 4.9 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 4.9 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 4.9 (TFTP/FTP capabilities).
+    **Ignore verification and assume 4.9 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 4.9 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 4.9 (TFTP/FTP capabilities).'
+    **Confuse 4.9 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9

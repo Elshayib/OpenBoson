@@ -68,16 +68,16 @@ questions:
     120, iBGP 200.
 
 
-    **110** is correct: OSPF AD.
+    **110**: OSPF AD.
 
 
-    **90** is not the right selection: EIGRP internal.
+    **90**: EIGRP internal.
 
 
-    **120** is not the right selection: RIP.
+    **120**: RIP.
 
 
-    **1** is not the right selection: Static.'
+    **1**: Static.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -104,16 +104,16 @@ questions:
   explanation: '0.0.0.0/0 matches all destinations as last resort.
 
 
-    **0.0.0.0/0** is correct: Default.
+    **0.0.0.0/0**: Default.
 
 
-    **255.255.255.255/32** is not the right selection: Host broadcast-ish.
+    **255.255.255.255/32**: Host broadcast-ish.
 
 
-    **127.0.0.0/8** is not the right selection: Loopback net.
+    **127.0.0.0/8**: Loopback net.
 
 
-    **224.0.0.0/4** is not the right selection: Multicast.'
+    **224.0.0.0/4**: Multicast.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -198,14 +198,10 @@ questions:
   correct:
     expected_commands:
     - ip route 0.0.0.0 0.0.0.0 203.0.113.1
-  explanation: 'This performance item is graded against the expected configuration
-    or command set for the stated objective. This performance item is graded against
-    the expected configuration or command set for the stated objective. This performance
-    item is graded against the expected configuration or command set for the stated
-    objective. This performance item is graded against the expected configuration
-    or command set for the stated objective. This performance item is graded against
-    the expected configuration or command set for: Configure a static default route
-    on R1 via next hop 203.0.113.1..'
+  explanation: A default static uses destination/mask `0.0.0.0 0.0.0.0` and a next
+    hop. Configure `ip route 0.0.0.0 0.0.0.0 203.0.113.1` on R1. That prefix matches
+    every IPv4 destination and is used only when no more-specific route exists. Do
+    not substitute an interface-only form unless the stem names it.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -313,16 +309,16 @@ questions:
   explanation: 'More-specific prefixes win longest-match forwarding.
 
 
-    **Always AD only** points at Always AD, which is not how 3.2 (Router forwarding
-    decisions) solves this stem. The keyed answer is **10.1.1.0/28 over 10.1.0.0/16**.
+    **10.1.1.0/28 over 10.1.0.0/16**: More-specific prefixes win longest-match forwarding.
 
 
-    **Always metric only** points at Always metric, which is not how 3.2 (Router forwarding
-    decisions) solves this stem. The keyed answer is **10.1.1.0/28 over 10.1.0.0/16**.
+    **Always AD only**: Always AD is not **10.1.1.0/28 over 10.1.0.0/16**.
 
 
-    **Random ECMP only** points at Random ECMP, which is not how 3.2 (Router forwarding
-    decisions) solves this stem. The keyed answer is **10.1.1.0/28 over 10.1.0.0/16**.'
+    **Always metric only**: Always metric is not **10.1.1.0/28 over 10.1.0.0/16**.
+
+
+    **Random ECMP only**: ECMP installs multiple equal-cost next hops (OSPF `maximum-paths`).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -349,19 +345,19 @@ questions:
   explanation: 'S* marks a candidate default static route.
 
 
-    **OSPF summary** is a different protocol, command, or value than **Candidate default
-    static**. For 3.1 (Routing table components), the stem is solved by **Candidate
-    default static**, not by OSPF summary.
+    **Candidate default static**: S* marks a candidate default static route.
 
 
-    **BGP aggregate** is a different protocol, command, or value than **Candidate
-    default static**. For 3.1 (Routing table components), the stem is solved by **Candidate
-    default static**, not by BGP aggregate.
+    **OSPF summary**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
+    110, multicast 224.0.0.5/6).
 
 
-    **Connected** is a different protocol, command, or value than **Candidate default
-    static**. For 3.1 (Routing table components), the stem is solved by **Candidate
-    default static**, not by Connected.'
+    **BGP aggregate**: BGP is the Internet path-vector protocol (TCP 179; eBGP AD
+    20, iBGP AD 200).
+
+
+    **Connected**: Candidate default static is the matching value or command; Connected
+    is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -431,19 +427,18 @@ questions:
   explanation: 'Areas hierarchicalize LSA flooding.
 
 
-    **Replace IP addresses** is a different protocol, command, or value than **Limit
-    LSA flooding scope**. For 3.4 (Single-area OSPFv2), the stem is solved by **Limit
-    LSA flooding scope**, not by Replace IP addresses.
+    **Limit LSA flooding scope**: Areas hierarchicalize LSA flooding.
 
 
-    **Encrypt all payloads** is a different protocol, command, or value than **Limit
-    LSA flooding scope**. For 3.4 (Single-area OSPFv2), the stem is solved by **Limit
-    LSA flooding scope**, not by Encrypt all payloads.
+    **Replace IP addresses**: Limit LSA flooding scope is the matching value or command;
+    Replace IP addresses is not.
 
 
-    **Terminate VLANs** is a different protocol, command, or value than **Limit LSA
-    flooding scope**. For 3.4 (Single-area OSPFv2), the stem is solved by **Limit
-    LSA flooding scope**, not by Terminate VLANs.'
+    **Encrypt all payloads**: Limit LSA flooding scope is the matching value or command;
+    Encrypt all payloads is not.
+
+
+    **Terminate VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -470,19 +465,19 @@ questions:
   explanation: 'HSRP presents a virtual IP/MAC to hosts.
 
 
-    **Only anycast DNS** is a mismatch: Anycast assigns the same unicast address to
-    many nodes; routers deliver to the nearest. The stem is asking about **Virtual
-    IP and virtual MAC**.
+    **Virtual IP and virtual MAC**: HSRP presents a virtual IP/MAC to hosts.
 
 
-    **Only VRRP exclusive** is a mismatch: VRRP (RFC 5798) is the standards-based
-    FHRP with a virtual IP/MAC and a master router. The stem is asking about **Virtual
-    IP and virtual MAC**.
+    **Only anycast DNS**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on
+    UDP/TCP 53.
 
 
-    **Only GLBP without VIP** points at GLBP without VIP, which is not how 3.5 (First
-    hop redundancy protocol) solves this stem. The keyed answer is **Virtual IP and
-    virtual MAC**.'
+    **Only VRRP exclusive**: VRRP (RFC 5798) is the standards-based FHRP with a virtual
+    IP/MAC and a master router.
+
+
+    **Only GLBP without VIP**: GLBP load-shares first-hop gateways using AVG/AVF virtual
+    MACs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -509,19 +504,20 @@ questions:
   explanation: 'VRRP is the standards-based first-hop redundancy protocol.
 
 
-    **Cisco-only proprietary** is a different protocol, command, or value than **Standards-based
-    FHRP**. For 3.5 (First hop redundancy protocol), the stem is solved by **Standards-based
-    FHRP**, not by Cisco-only proprietary.
+    **Standards-based FHRP**: VRRP is the standards-based first-hop redundancy protocol.
 
 
-    **A link-state IGP** is a different protocol, command, or value than **Standards-based
-    FHRP**. For 3.5 (First hop redundancy protocol), the stem is solved by **Standards-based
-    FHRP**, not by A link-state IGP.
+    **Cisco-only proprietary**: Standards-based FHRP is required here (First-hop redundancy
+    (HSRP/VRRP/GLBP) shares a default-gateway IP); Cisco-only proprietary is not.
 
 
-    **A wireless roaming protocol** is a different protocol, command, or value than
-    **Standards-based FHRP**. For 3.5 (First hop redundancy protocol), the stem is
-    solved by **Standards-based FHRP**, not by A wireless roaming protocol.'
+    **A link-state IGP**: Standards-based FHRP is required here (First-hop redundancy
+    (HSRP/VRRP/GLBP) shares a default-gateway IP); A link-state IGP is not.
+
+
+    **A wireless roaming protocol**: Standards-based FHRP is required here (First-hop
+    redundancy (HSRP/VRRP/GLBP) shares a default-gateway IP); A wireless roaming protocol
+    is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -548,18 +544,18 @@ questions:
   explanation: 'Type 1 LSAs describe a router''s links.
 
 
-    **Type 5 External** is a different protocol, command, or value than **Type 1 Router
-    LSA**. For 3.4 (Single-area OSPFv2), the stem is solved by **Type 1 Router LSA**,
-    not by Type 5 External.
+    **Type 1 Router LSA**: Type 1 LSAs describe a router''s links.
 
 
-    **Type 4 ASBR summary** is a different protocol, command, or value than **Type
-    1 Router LSA**. For 3.4 (Single-area OSPFv2), the stem is solved by **Type 1 Router
-    LSA**, not by Type 4 ASBR summary.
+    **Type 5 External**: OSPF Type-5 external LSAs are originated by an ASBR.
 
 
-    **Type 3 Network summary only** is a mismatch: OSI Layer 3 (IP) — packets forwarded
-    by the routing table. The stem is asking about **Type 1 Router LSA**.'
+    **Type 4 ASBR summary**: An ASBR redistributes external routes into OSPF (Type-5/7
+    LSAs).
+
+
+    **Type 3 Network summary only**: OSPF Type-3 summary LSAs are originated by an
+    ABR for inter-area prefixes — not the OSI Network layer as a concept.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -586,19 +582,18 @@ questions:
   explanation: 'ECMP installs equal-metric paths.
 
 
-    **Only interface bandwidth randomly** names interface bandwidth randomly, which
-    is a different feature: `interface bandwidth randomly` enters that interface (or
-    SVI) context. It does not perform the action named in the stem. The stem wants
-    **Metric (and eligible for install)**.
+    **Metric (and eligible for install)**: ECMP installs equal-metric paths.
 
 
-    **Only AD different** points at AD different, which is not how 3.2 (Router forwarding
-    decisions) solves this stem. The keyed answer is **Metric (and eligible for install)**.
+    **Only interface bandwidth randomly**: `interface bandwidth randomly` enters that
+    interface''s configuration context.
 
 
-    **Only AS path length for OSPF** points at AS path length for OSPF, which is not
-    how 3.2 (Router forwarding decisions) solves this stem. The keyed answer is **Metric
-    (and eligible for install)**.'
+    **Only AD different**: AD different is not **Metric (and eligible for install)**.
+
+
+    **Only AS path length for OSPF**: OSPF is a link-state IGP (RID, areas, LSAs,
+    cost, default AD 110, multicast 224.0.0.5/6).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -625,16 +620,15 @@ questions:
   explanation: 'show ip route displays the RIB.
 
 
-    **show vlan brief** is a mismatch: `show vlan brief` lists L2 VLANs on a switch,
-    not IPv6 addressing. The stem is asking about **show ip route**.
+    **show vlan brief**: `show vlan brief` lists L2 VLANs on a switch, not IPv6 addressing.
 
 
-    **show cdp neighbors** is a mismatch: `show cdp neighbors` lists Cisco L2 neighbors,
-    not IPv6 addresses. The stem is asking about **show ip route**.
+    **show cdp neighbors**: `show cdp neighbors` lists Cisco L2 neighbors, not IPv6
+    addresses.
 
 
-    **show spanning-tree** is a mismatch: `show spanning-tree` shows STP roles/states,
-    not the feature in the stem. The stem is asking about **show ip route**.'
+    **show spanning-tree**: `show spanning-tree` shows STP roles/states, not the feature
+    in the stem.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -661,17 +655,18 @@ questions:
   explanation: 'ABRs connect non-backbone areas to the backbone.
 
 
-    **Only two autonomous systems** points at two autonomous systems, which is not
-    how 3.4 (Single-area OSPFv2) solves this stem. The keyed answer is **Area 0 and
-    non-backbone areas (typically)**.
+    **Area 0 and non-backbone areas (typically)**: ABRs connect non-backbone areas
+    to the backbone.
 
 
-    **Only VLANs** points at VLANs, which is not how 3.4 (Single-area OSPFv2) solves
-    this stem. The keyed answer is **Area 0 and non-backbone areas (typically)**.
+    **Only two autonomous systems**: two autonomous systems is not **Area 0 and non-backbone
+    areas (typically)**.
 
 
-    **Only wireless controllers** points at wireless controllers, which is not how
-    3.4 (Single-area OSPFv2) solves this stem. The keyed answer is **Area 0 and non-backbone
+    **Only VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+
+
+    **Only wireless controllers**: wireless controllers is not **Area 0 and non-backbone
     areas (typically)**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
@@ -699,19 +694,20 @@ questions:
   explanation: 'Cisco OSPF cost uses reference BW / interface BW.
 
 
-    **Hop count only** points at Hop count, which is not how 3.4 (Single-area OSPFv2)
-    solves this stem. The keyed answer is **Reference bandwidth / interface bandwidth**.
+    **Reference bandwidth / interface bandwidth**: Cisco OSPF cost uses reference
+    BW / interface BW.
 
 
-    **Delay by default like IGRP classic** is a different protocol, command, or value
-    than **Reference bandwidth / interface bandwidth**. For 3.4 (Single-area OSPFv2),
-    the stem is solved by **Reference bandwidth / interface bandwidth**, not by Delay
-    by default like IGRP classic.
+    **Hop count only**: Hop count is RIP’s metric (max 15). OSPF uses cost; BGP uses
+    path attributes.
 
 
-    **Administrative distance** is a different protocol, command, or value than **Reference
-    bandwidth / interface bandwidth**. For 3.4 (Single-area OSPFv2), the stem is solved
-    by **Reference bandwidth / interface bandwidth**, not by Administrative distance.'
+    **Delay by default like IGRP classic**: Reference bandwidth / interface bandwidth
+    is the matching value or command; Delay by default like IGRP classic is not.
+
+
+    **Administrative distance**: Reference bandwidth / interface bandwidth is the
+    matching value or command; Administrative distance is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -738,16 +734,13 @@ questions:
   explanation: 'Connected routes use code C.
 
 
-    **S** is a different protocol, command, or value than **C**. For 3.1 (Routing
-    table components), the stem is solved by **C**, not by S.
+    **S**: C is the matching value or command; S is not.
 
 
-    **O** is a different protocol, command, or value than **C**. For 3.1 (Routing
-    table components), the stem is solved by **C**, not by O.
+    **O**: C is the matching value or command; O is not.
 
 
-    **R** is a different protocol, command, or value than **C**. For 3.1 (Routing
-    table components), the stem is solved by **C**, not by R.'
+    **R**: C is the matching value or command; R is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -774,19 +767,18 @@ questions:
   explanation: 'GLBP can load-share first-hop traffic.
 
 
-    **Only active/standby with no sharing** points at active/standby with no sharing,
-    which is not how 3.5 (First hop redundancy protocol) solves this stem. The keyed
-    answer is **Per-host load balancing across gateways**.
+    **Per-host load balancing across gateways**: GLBP can load-share first-hop traffic.
 
 
-    **Only IPv6 RA exclusive** points at IPv6 RA, which is not how 3.5 (First hop
-    redundancy protocol) solves this stem. The keyed answer is **Per-host load balancing
-    across gateways**.
+    **Only active/standby with no sharing**: active/standby with no sharing is not
+    **Per-host load balancing across gateways**.
 
 
-    **Only STP root election** points at STP root election, which is not how 3.5 (First
-    hop redundancy protocol) solves this stem. The keyed answer is **Per-host load
-    balancing across gateways**.'
+    **Only IPv6 RA exclusive**: IPv6 RA is not **Per-host load balancing across gateways**.
+
+
+    **Only STP root election**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -813,17 +805,18 @@ questions:
   explanation: 'Recursive lookup finds how to reach the next hop.
 
 
-    **Only ARP without routing** points at ARP without routing, which is not how 3.3
-    (IPv4 and IPv6 static routing) solves this stem. The keyed answer is **Another
-    route in the RIB**.
+    **Another route in the RIB**: Recursive lookup finds how to reach the next hop.
 
 
-    **Only CDP** is a mismatch: CDP is Cisco’s Layer 2 neighbor discovery protocol
-    (`show cdp neighbors`). The stem is asking about **Another route in the RIB**.
+    **Only ARP without routing**: ARP maps IPv4 addresses to MACs on the local Ethernet;
+    IPv6 uses NDP.
 
 
-    **Only VTP** points at VTP, which is not how 3.3 (IPv4 and IPv6 static routing)
-    solves this stem. The keyed answer is **Another route in the RIB**.'
+    **Only CDP**: CDP is Cisco’s Layer 2 neighbor discovery protocol (`show cdp neighbors`).
+
+
+    **Only VTP**: VTP floods VLAN advertisements among switches using a revision number;
+    it does not route, NAT, or identify an overlay.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -850,21 +843,20 @@ questions:
   explanation: 'Passive interfaces advertise the network without forming neighbors.
 
 
-    **Disable the interface IP** is a different protocol, command, or value than **Suppress
-    Hellos / no adjacency on that interface**. For 3.4 (Single-area OSPFv2), the stem
-    is solved by **Suppress Hellos / no adjacency on that interface**, not by Disable
-    the interface IP.
+    **Suppress Hellos / no adjacency on that interface**: Passive interfaces advertise
+    the network without forming neighbors.
 
 
-    **Force DR forever** points at Force DR, which is not how 3.4 (Single-area OSPFv2)
-    solves this stem. The keyed answer is **Suppress Hellos / no adjacency on that
+    **Disable the interface IP**: Suppress Hellos / no adjacency on that interface
+    is the matching value or command; Disable the interface IP is not.
+
+
+    **Force DR forever**: Force DR is not **Suppress Hellos / no adjacency on that
     interface**.
 
 
-    **Clear the RID** is a different protocol, command, or value than **Suppress Hellos
-    / no adjacency on that interface**. For 3.4 (Single-area OSPFv2), the stem is
-    solved by **Suppress Hellos / no adjacency on that interface**, not by Clear the
-    RID.'
+    **Clear the RID**: Suppress Hellos / no adjacency on that interface is the matching
+    value or command; Clear the RID is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -891,16 +883,18 @@ questions:
   explanation: 'OSPF Hellos discover and maintain neighbors.
 
 
-    **LSA Type 5 only** points at LSA Type 5, which is not how 3.4 (Single-area OSPFv2)
-    solves this stem. The keyed answer is **Hello**.
+    **Hello**: OSPF Hellos discover and maintain neighbors.
 
 
-    **BGP OPEN** is a different protocol, command, or value than **Hello**. For 3.4
-    (Single-area OSPFv2), the stem is solved by **Hello**, not by BGP OPEN.
+    **LSA Type 5 only**: OSPF Type-5 external LSAs are originated by an ASBR.
 
 
-    **DHCP Discover** is a different protocol, command, or value than **Hello**. For
-    3.4 (Single-area OSPFv2), the stem is solved by **Hello**, not by DHCP Discover.'
+    **BGP OPEN**: BGP is the Internet path-vector protocol (TCP 179; eBGP AD 20, iBGP
+    AD 200).
+
+
+    **DHCP Discover**: DHCP assigns IPv4 address, mask, gateway, and DNS (DORA, UDP
+    67/68).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -927,17 +921,19 @@ questions:
   explanation: 'PBR can override destination-based forwarding.
 
 
-    **Only longest prefix always alone** points at longest prefix always alone, which
-    is not how 3.2 (Router forwarding decisions) solves this stem. The keyed answer
-    is **Route maps / match criteria**.
+    **Route maps / match criteria**: PBR can override destination-based forwarding.
 
 
-    **Only STP cost** points at STP cost, which is not how 3.2 (Router forwarding
-    decisions) solves this stem. The keyed answer is **Route maps / match criteria**.
+    **Only longest prefix always alone**: longest prefix always alone is not **Route
+    maps / match criteria**.
 
 
-    **Only VTP revision** points at VTP revision, which is not how 3.2 (Router forwarding
-    decisions) solves this stem. The keyed answer is **Route maps / match criteria**.'
+    **Only STP cost**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.
+
+
+    **Only VTP revision**: VTP floods VLAN advertisements among switches using a revision
+    number; it does not route, NAT, or identify an overlay.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -964,18 +960,19 @@ questions:
   explanation: 'HSRPv2 adds IPv6 support and broader group ranges.
 
 
-    **Only removes virtual MAC** points at removes virtual MAC, which is not how 3.5
-    (First hop redundancy protocol) solves this stem. The keyed answer is **IPv6 and
-    larger group ID space**.
+    **IPv6 and larger group ID space**: HSRPv2 adds IPv6 support and broader group
+    ranges.
 
 
-    **Only disables preempt** points at disables preempt, which is not how 3.5 (First
-    hop redundancy protocol) solves this stem. The keyed answer is **IPv6 and larger
-    group ID space**.
+    **Only removes virtual MAC**: removes virtual MAC is not **IPv6 and larger group
+    ID space**.
 
 
-    **Only forces VRRP** points at forces VRRP, which is not how 3.5 (First hop redundancy
-    protocol) solves this stem. The keyed answer is **IPv6 and larger group ID space**.'
+    **Only disables preempt**: disables preempt is not **IPv6 and larger group ID
+    space**.
+
+
+    **Only forces VRRP**: VRRP is the standards-based FHRP (virtual IP, one master).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1002,18 +999,19 @@ questions:
   explanation: 'Null0 statics discard unmatched traffic for summaries.
 
 
-    **Preferred transit path always** points at Preferred transit path, which is not
-    how 3.3 (IPv4 and IPv6 static routing) solves this stem. The keyed answer is **Discard
-    / blackhole aggregation safety**.
+    **Discard / blackhole aggregation safety**: Null0 statics discard unmatched traffic
+    for summaries.
 
 
-    **Only NAT pools** points at NAT pools, which is not how 3.3 (IPv4 and IPv6 static
-    routing) solves this stem. The keyed answer is **Discard / blackhole aggregation
-    safety**.
+    **Preferred transit path always**: Preferred transit path is not **Discard / blackhole
+    aggregation safety**.
 
 
-    **Only AAA** points at AAA, which is not how 3.3 (IPv4 and IPv6 static routing)
-    solves this stem. The keyed answer is **Discard / blackhole aggregation safety**.'
+    **Only NAT pools**: NAT/PAT rewrites IP addresses (and ports with overload) across
+    inside/outside.
+
+
+    **Only AAA**: AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1040,16 +1038,13 @@ questions:
   explanation: 'O IA indicates OSPF inter-area routes.
 
 
-    **O E2 only** points at O E2, which is not how 3.1 (Routing table components)
-    solves this stem. The keyed answer is **O IA**.
+    **O E2 only**: O E2 is not **O IA**.
 
 
-    **S*** is a different protocol, command, or value than **O IA**. For 3.1 (Routing
-    table components), the stem is solved by **O IA**, not by S*.
+    **S***: O IA is the matching value or command; S* is not.
 
 
-    **B** is a different protocol, command, or value than **O IA**. For 3.1 (Routing
-    table components), the stem is solved by **O IA**, not by B.'
+    **B**: O IA is the matching value or command; B is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1076,18 +1071,18 @@ questions:
   explanation: 'Gateway of last resort is the default route.
 
 
-    **Only the STP root** points at the STP root, which is not how 3.1 (Routing table
-    components) solves this stem. The keyed answer is **The default route next hop**.
+    **The default route next hop**: Gateway of last resort is the default route.
 
 
-    **Only the VTP server** points at the VTP server, which is not how 3.1 (Routing
-    table components) solves this stem. The keyed answer is **The default route next
-    hop**.
+    **Only the STP root**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.
 
 
-    **Only the RADIUS host** points at the RADIUS host, which is not how 3.1 (Routing
-    table components) solves this stem. The keyed answer is **The default route next
-    hop**.'
+    **Only the VTP server**: VTP floods VLAN advertisements among switches using a
+    revision number; it does not route, NAT, or identify an overlay.
+
+
+    **Only the RADIUS host**: RADIUS (UDP 1812/1813) is a common 802.1X/AAA protocol.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1114,16 +1109,16 @@ questions:
   explanation: 'Host routes use /32.
 
 
-    **/24 only** is a mismatch: /24 is 256 addresses (mask 255.255.255.0), 254 usable
-    hosts. The stem is asking about **/32**.
+    **/32**: Host routes use /32.
 
 
-    **/0 only** points at /0, which is not how 3.3 (IPv4 and IPv6 static routing)
-    solves this stem. The keyed answer is **/32**.
+    **/24 only**: /24 is 256 addresses (mask 255.255.255.0), 254 usable hosts.
 
 
-    **/16 only** points at /16, which is not how 3.3 (IPv4 and IPv6 static routing)
-    solves this stem. The keyed answer is **/32**.'
+    **/0 only**: /0 is not **/32**.
+
+
+    **/16 only**: /16 is not **/32**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1150,6 +1145,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     110 is **OSPF**, not eBGP.
@@ -1186,17 +1185,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.'
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
+
+
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1228,19 +1230,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (IPv4 and IPv6 static
-    routing).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1266,6 +1271,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -1302,17 +1311,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.'
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
+
+
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1340,17 +1352,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1376,6 +1392,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -1412,17 +1432,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1454,18 +1477,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.4 (Single-area OSPFv2).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1491,6 +1518,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     120 is **RIP**, not eBGP.
@@ -1527,17 +1558,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1565,17 +1599,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.'
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.
+
+
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1601,6 +1639,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     110 is **OSPF**, not eBGP.
@@ -1637,17 +1679,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.'
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
+
+
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1679,19 +1724,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.5 (First hop redundancy
-    protocol).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1717,6 +1765,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -1753,17 +1805,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.'
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
+
+
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1791,17 +1846,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1827,6 +1886,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -1863,17 +1926,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1905,18 +1971,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.1 (Routing table components).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1942,6 +2012,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     120 is **RIP**, not eBGP.
@@ -1978,17 +2052,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -2016,17 +2093,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.'
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.
+
+
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -2052,6 +2133,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     110 is **OSPF**, not eBGP.
@@ -2088,17 +2173,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.'
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
+
+
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -2130,18 +2218,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.2 (Router forwarding decisions).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -2167,6 +2259,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -2203,17 +2299,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.'
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.
+
+
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -2241,17 +2340,21 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
-    link. Area membership is unrelated.
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **BDR**: The Backup DR waits on that same multiaccess link. Area membership is
+    unrelated.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -2277,6 +2380,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     90 is internal **EIGRP**, not eBGP.
@@ -2313,17 +2420,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -2355,19 +2465,22 @@ questions:
     area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 3.3 (IPv4 and IPv6 static
-    routing).
+    **ABR**: An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is not the right selection: An ASBR redistributes **external** routes
-    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
-    LSAs. Connecting two OSPF areas is the ABR job.
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
-    **DR** is not the right selection: The Designated Router is elected on a multiaccess
-    **link**. It is not the router that joins two areas.'
+    **ASBR**: An ASBR redistributes **external** routes (another protocol or static)
+    into OSPF and originates Type-5 (or Type-7 in NSSA) LSAs. Connecting two OSPF
+    areas is the ABR job.
+
+
+    **DR**: The Designated Router is elected on a multiaccess **link**. It is not
+    the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -2393,6 +2506,10 @@ questions:
     answer: a
   explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
     is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
+
+
+    **20**: Cisco default administrative distance for **eBGP** is **20**, which is
+    why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
     120 is **RIP**, not eBGP.
@@ -2429,17 +2546,20 @@ questions:
     both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
-    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
-    RID.
+    **Install both (ECMP)**: If two OSPF paths to the same prefix have equal cost,
+    IOS installs both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
-    (3600 s), not for picking one of two equal-cost next hops.
+    **Prefer higher RID**: RID breaks OSPF **adjacency/DR** ties, not equal-cost forwarding.
+    Equal costs are used together, not ranked by RID.
 
 
-    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
-    routes. They are installed and hashed across.'
+    **Prefer older LSA**: LSA age is for flooding/refresh (3600 s), not for picking
+    one of two equal-cost next hops.
+
+
+    **Drop randomly**: OSPF does not randomly drop equal-cost routes. They are installed
+    and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -2464,31 +2584,29 @@ questions:
     text: Ignore verification and assume 3.5 always works
   correct:
     answer: a
-  explanation: 'For 3.5 (First hop redundancy protocol), the keyed answer is **Apply
-    the verified behavior required by objective 3.5**. Stem: Select the correct association
-    for exam topic 3.5..
+  explanation: '3.5 (First hop redundancy protocol) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Apply the verified behavior the
+    exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 3.5** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 3.5 (First hop redundancy protocol).
+    **Apply the verified behavior required by objective 3.5**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 3.5 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 3.5 (First hop
-    redundancy protocol).
+    **Skip documentation for 3.5 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 3.5 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 3.5 (First hop
-    redundancy protocol).
+    **Treat 3.5 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 3.5 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 3.5 (First hop redundancy protocol).'
+    **Ignore verification and assume 3.5 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5

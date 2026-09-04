@@ -63,16 +63,16 @@ questions:
   explanation: 'Ansible automates configuration with playbooks, often without agents.
 
 
-    **Agentless automation using SSH/APIs and YAML playbooks** is correct: Ansible.
+    **Agentless automation using SSH/APIs and YAML playbooks**: Ansible.
 
 
-    **A link-state routing protocol** is not the right selection: OSPF/IS-IS.
+    **A link-state routing protocol**: OSPF/IS-IS.
 
 
-    **A Layer 2 loop prevention protocol** is not the right selection: STP.
+    **A Layer 2 loop prevention protocol**: STP.
 
 
-    **A wireless encryption cipher** is not the right selection: CCMP etc.'
+    **A wireless encryption cipher**: CCMP etc.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -141,17 +141,16 @@ questions:
     and ML in ops.
 
 
-    **Models that create content/suggestions from learned patterns** is correct: Generative
-    AI.
+    **Models that create content/suggestions from learned patterns**: Generative AI.
 
 
-    **Only OSPF SPF calculation** is not the right selection: Routing.
+    **Only OSPF SPF calculation**: Routing.
 
 
-    **Only CAM aging** is not the right selection: Switching.
+    **Only CAM aging**: Switching.
 
 
-    **Only PoE budgeting** is not the right selection: Power.'
+    **Only PoE budgeting**: Power.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -205,22 +204,20 @@ questions:
   explanation: 'Automation improves consistency and speed of changes.
 
 
-    **Eliminating all need for routing protocols** is a different protocol, command,
-    or value than **Reducing manual repetitive changes / increasing consistency**.
-    For 6.1 (Automation impact on network management), the stem is solved by **Reducing
-    manual repetitive changes / increasing consistency**, not by Eliminating all need
-    for routing protocols.
+    **Reducing manual repetitive changes / increasing consistency**: Automation improves
+    consistency and speed of changes.
 
 
-    **Removing switching entirely** is a different protocol, command, or value than
-    **Reducing manual repetitive changes / increasing consistency**. For 6.1 (Automation
-    impact on network management), the stem is solved by **Reducing manual repetitive
-    changes / increasing consistency**, not by Removing switching entirely.
+    **Eliminating all need for routing protocols**: Reducing manual repetitive changes
+    / increasing consistency is the matching value or command; Eliminating all need
+    for routing protocols is not.
 
 
-    **Forcing Telnet only** is a mismatch: Telnet is cleartext TCP 23 — the opposite
-    of a hardened management plane. The stem is asking about **Reducing manual repetitive
-    changes / increasing consistency**.'
+    **Removing switching entirely**: Reducing manual repetitive changes / increasing
+    consistency is the matching value or command; Removing switching entirely is not.
+
+
+    **Forcing Telnet only**: Telnet (TCP 23) is cleartext remote CLI.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -247,22 +244,20 @@ questions:
   explanation: 'Controllers centralize policy/control while devices forward.
 
 
-    **Removing all data planes** is a different protocol, command, or value than **Centralizing
-    control-plane decisions via a controller**. For 6.2 (Traditional vs controller-based
-    networking), the stem is solved by **Centralizing control-plane decisions via
-    a controller**, not by Removing all data planes.
+    **Centralizing control-plane decisions via a controller**: Controllers centralize
+    policy/control while devices forward.
 
 
-    **Using only hubs** is a different protocol, command, or value than **Centralizing
-    control-plane decisions via a controller**. For 6.2 (Traditional vs controller-based
-    networking), the stem is solved by **Centralizing control-plane decisions via
-    a controller**, not by Using only hubs.
+    **Removing all data planes**: Centralizing control-plane decisions via a controller
+    is the matching value or command; Removing all data planes is not.
 
 
-    **Disabling APIs** is a different protocol, command, or value than **Centralizing
-    control-plane decisions via a controller**. For 6.2 (Traditional vs controller-based
-    networking), the stem is solved by **Centralizing control-plane decisions via
-    a controller**, not by Disabling APIs.'
+    **Using only hubs**: Centralizing control-plane decisions via a controller is
+    the matching value or command; Using only hubs is not.
+
+
+    **Disabling APIs**: Centralizing control-plane decisions via a controller is the
+    matching value or command; Disabling APIs is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -329,19 +324,18 @@ questions:
   explanation: 'JSON boolean literals are lowercase true/false.
 
 
-    **True (Python style only)** is a different protocol, command, or value than **true
-    (lowercase)**. For 6.7 (Interpret JSON encoded data), the stem is solved by **true
-    (lowercase)**, not by True (Python style only).
+    **true (lowercase)**: JSON boolean literals are lowercase true/false.
 
 
-    **TRUE** is a different protocol, command, or value than **true (lowercase)**.
-    For 6.7 (Interpret JSON encoded data), the stem is solved by **true (lowercase)**,
-    not by TRUE.
+    **True (Python style only)**: true (lowercase) is the matching value or command;
+    True (Python style only) is not.
 
 
-    **1 as only legal form** is a different protocol, command, or value than **true
-    (lowercase)**. For 6.7 (Interpret JSON encoded data), the stem is solved by **true
-    (lowercase)**, not by 1 as only legal form.'
+    true (lowercase) is the matching value or command; TRUE is not.
+
+
+    **1 as only legal form**: true (lowercase) is the matching value or command; 1
+    as only legal form is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -368,19 +362,20 @@ questions:
   explanation: 'Terraform declares desired infrastructure state.
 
 
-    **Only STP tuning** points at STP tuning, which is not how 6.6 (Configuration
-    management mechanisms) solves this stem. The keyed answer is **Declarative infrastructure
-    as code**.
+    **Declarative infrastructure as code**: Terraform declares desired infrastructure
+    state.
 
 
-    **Only EtherChannel hashing** points at EtherChannel hashing, which is not how
-    6.6 (Configuration management mechanisms) solves this stem. The keyed answer is
-    **Declarative infrastructure as code**.
+    **Only STP tuning**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.
 
 
-    **Only syslog facilities** is a mismatch: Syslog exports device logs (UDP 514
-    by default) with severity 0–7. The stem is asking about **Declarative infrastructure
-    as code**.'
+    **Only EtherChannel hashing**: EtherChannel bundles physical links into one logical
+    interface; members must match speed, duplex, and mode.
+
+
+    **Only syslog facilities**: Syslog exports device logs (UDP 514) with severity
+    0–7.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -446,19 +441,19 @@ questions:
   explanation: 'SDN/controller designs split control from forwarding.
 
 
-    **Only single-process routers forever** points at single-process routers, which
-    is not how 6.3 (Controller-based and software-defined architectures) solves this
-    stem. The keyed answer is **Central policy with distributed forwarding**.
+    **Central policy with distributed forwarding**: SDN/controller designs split control
+    from forwarding.
 
 
-    **Only disabling CEF** points at disabling CEF, which is not how 6.3 (Controller-based
-    and software-defined architectures) solves this stem. The keyed answer is **Central
+    **Only single-process routers forever**: single-process routers is not **Central
     policy with distributed forwarding**.
 
 
-    **Only removing FIBs** points at removing FIBs, which is not how 6.3 (Controller-based
-    and software-defined architectures) solves this stem. The keyed answer is **Central
-    policy with distributed forwarding**.'
+    **Only disabling CEF**: CEF is IOS forwarding from the FIB, not process switching.
+
+
+    **Only removing FIBs**: removing FIBs is not **Central policy with distributed
+    forwarding**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -485,20 +480,20 @@ questions:
   explanation: 'ML supports predictive/anomaly use cases in operations.
 
 
-    **Only manually typing ACLs faster without models** points at manually typing
-    ACLs faster without models, which is not how 6.4 (Campus management vs Cisco DNA
-    Center) solves this stem. The keyed answer is **Anomaly detection / predictive
-    insights**.
+    **Anomaly detection / predictive insights**: ML supports predictive/anomaly use
+    cases in operations.
 
 
-    **Only increasing STP diameter** points at increasing STP diameter, which is not
-    how 6.4 (Campus management vs Cisco DNA Center) solves this stem. The keyed answer
-    is **Anomaly detection / predictive insights**.
+    **Only manually typing ACLs faster without models**: manually typing ACLs faster
+    without models is not **Anomaly detection / predictive insights**.
 
 
-    **Only disabling telemetry** points at disabling telemetry, which is not how 6.4
-    (Campus management vs Cisco DNA Center) solves this stem. The keyed answer is
-    **Anomaly detection / predictive insights**.'
+    **Only increasing STP diameter**: Spanning Tree elects a root bridge and blocks
+    redundant Ethernet paths so the LAN does not loop.
+
+
+    **Only disabling telemetry**: Model-driven telemetry streams YANG counters; disabling
+    it removes visibility, it does not implement the feature in the objective.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -525,20 +520,19 @@ questions:
   explanation: 'Automation improves repeatability and auditability.
 
 
-    **Guaranteed zero outages forever** points at Guaranteed zero outages, which is
-    not how 6.1 (Automation impact on network management) solves this stem. The keyed
-    answer is **Repeatable, auditable changes**.
+    **Repeatable, auditable changes**: Automation improves repeatability and auditability.
 
 
-    **Removal of all security** is a different protocol, command, or value than **Repeatable,
-    auditable changes**. For 6.1 (Automation impact on network management), the stem
-    is solved by **Repeatable, auditable changes**, not by Removal of all security.
+    **Guaranteed zero outages forever**: Guaranteed zero outages is not **Repeatable,
+    auditable changes**.
 
 
-    **Mandatory cleartext protocols** is a different protocol, command, or value than
-    **Repeatable, auditable changes**. For 6.1 (Automation impact on network management),
-    the stem is solved by **Repeatable, auditable changes**, not by Mandatory cleartext
-    protocols.'
+    **Removal of all security**: Repeatable, auditable changes is the matching value
+    or command; Removal of all security is not.
+
+
+    **Mandatory cleartext protocols**: Repeatable, auditable changes is the matching
+    value or command; Mandatory cleartext protocols is not.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -565,18 +559,17 @@ questions:
   explanation: 'Southbound interfaces program the network devices.
 
 
-    **Only business apps exclusive** points at business apps, which is not how 6.2
-    (Traditional vs controller-based networking) solves this stem. The keyed answer
-    is **Network devices**.
+    **Network devices**: Southbound interfaces program the network devices.
 
 
-    **Only DNS roots** points at DNS roots, which is not how 6.2 (Traditional vs controller-based
-    networking) solves this stem. The keyed answer is **Network devices**.
+    **Only business apps exclusive**: business apps is not **Network devices**.
 
 
-    **Only end-user browsers exclusive** points at end-user browsers, which is not
-    how 6.2 (Traditional vs controller-based networking) solves this stem. The keyed
-    answer is **Network devices**.'
+    **Only DNS roots**: DNS maps names to addresses (A/AAAA) and reverse (PTR) on
+    UDP/TCP 53.
+
+
+    **Only end-user browsers exclusive**: end-user browsers is not **Network devices**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -603,16 +596,16 @@ questions:
   explanation: 'Inventory lists managed hosts and group vars.
 
 
-    **Only TCAM** points at TCAM, which is not how 6.6 (Configuration management mechanisms)
-    solves this stem. The keyed answer is **Hosts/groups and variables**.
+    **Hosts/groups and variables**: Inventory lists managed hosts and group vars.
 
 
-    **Only FIB** points at FIB, which is not how 6.6 (Configuration management mechanisms)
-    solves this stem. The keyed answer is **Hosts/groups and variables**.
+    **Only TCAM**: TCAM stores hardware ACL/QoS/FIB entries.
 
 
-    **Only RIB** points at RIB, which is not how 6.6 (Configuration management mechanisms)
-    solves this stem. The keyed answer is **Hosts/groups and variables**.'
+    **Only FIB**: The FIB is the forwarding table CEF programs from the RIB.
+
+
+    **Only RIB**: The RIB is the routing table (`show ip route`) before CEF install.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -639,16 +632,17 @@ questions:
   explanation: 'Objects use {}; arrays use [].
 
 
-    **Only angle brackets** points at angle brackets, which is not how 6.7 (Interpret
-    JSON encoded data) solves this stem. The keyed answer is **Curly braces {}**.
+    **Curly braces {}**: Objects use {}; arrays use [].
 
 
-    **Only parentheses** points at parentheses, which is not how 6.7 (Interpret JSON
-    encoded data) solves this stem. The keyed answer is **Curly braces {}**.
+    **Only angle brackets**: Angle brackets are XML tags. JSON uses `{}` / `[]`, not
+    `<tag>`.
 
 
-    **Only spaces** points at spaces, which is not how 6.7 (Interpret JSON encoded
-    data) solves this stem. The keyed answer is **Curly braces {}**.'
+    **Only parentheses**: parentheses is not **Curly braces {}**.
+
+
+    **Only spaces**: spaces is not **Curly braces {}**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -675,16 +669,18 @@ questions:
   explanation: 'Bearer tokens commonly travel in Authorization.
 
 
-    **Only X-STP-Root** points at X-STP-Root, which is not how 6.5 (REST-based APIs)
-    solves this stem. The keyed answer is **Authorization**.
+    **Authorization**: Bearer tokens commonly travel in Authorization.
 
 
-    **Only Via OSPF** points at Via OSPF, which is not how 6.5 (REST-based APIs) solves
-    this stem. The keyed answer is **Authorization**.
+    **Only X-STP-Root**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.
 
 
-    **Only Server: nginx required** points at Server: nginx, which is not how 6.5
-    (REST-based APIs) solves this stem. The keyed answer is **Authorization**.'
+    **Only Via OSPF**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD
+    110, multicast 224.0.0.5/6).
+
+
+    **Only Server: nginx required**: Server: nginx is not **Authorization**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -711,19 +707,19 @@ questions:
   explanation: 'Fabrics combine underlay reachability with overlay services.
 
 
-    **Only serial TDM** points at serial TDM, which is not how 6.3 (Controller-based
-    and software-defined architectures) solves this stem. The keyed answer is **Overlay
-    services on an underlay**.
+    **Overlay services on an underlay**: Fabrics combine underlay reachability with
+    overlay services.
 
 
-    **Only Token Ring** points at Token Ring, which is not how 6.3 (Controller-based
-    and software-defined architectures) solves this stem. The keyed answer is **Overlay
-    services on an underlay**.
+    **Only serial TDM**: TDM serial (T1/E1) is a legacy WAN multiplexing method, not
+    Clos fabric.
 
 
-    **Only analog modems** points at analog modems, which is not how 6.3 (Controller-based
-    and software-defined architectures) solves this stem. The keyed answer is **Overlay
-    services on an underlay**.'
+    **Only Token Ring**: Token Ring is a legacy LAN (IEEE 802.5), not modern campus
+    Ethernet.
+
+
+    **Only analog modems**: analog modems is not **Overlay services on an underlay**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -753,16 +749,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -791,16 +792,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -831,10 +837,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.3 (Controller-based and
-    software-defined architectures).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -869,16 +878,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -907,16 +921,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -942,6 +961,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -979,16 +1002,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -1014,6 +1042,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -1051,16 +1083,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -1089,16 +1126,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -1129,10 +1171,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.4 (Campus management vs
-    Cisco DNA Center).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1167,16 +1212,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -1205,16 +1255,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -1240,6 +1295,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1277,16 +1336,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -1312,6 +1376,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1349,16 +1417,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -1387,16 +1460,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -1427,9 +1505,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.5 (REST-based APIs).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1464,16 +1546,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -1502,16 +1589,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -1540,16 +1632,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -1578,16 +1675,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -1613,6 +1715,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -1650,16 +1756,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -1688,16 +1799,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -1728,10 +1844,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.6 (Configuration management
-    mechanisms).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1766,16 +1885,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -1806,10 +1930,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.1 (Automation impact on
-    network management).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1844,16 +1971,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.'
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
+
+
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -1882,16 +2014,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -1917,6 +2054,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -1954,16 +2095,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.'
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.
+
+
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -1992,16 +2138,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -2032,10 +2183,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.7 (Interpret JSON encoded
-    data).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2070,16 +2224,21 @@ questions:
     tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.'
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
+
+
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -2110,10 +2269,13 @@ questions:
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 6.2 (Traditional vs controller-based
-    networking).
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
@@ -2148,16 +2310,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -2186,16 +2353,21 @@ questions:
     tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.
+
+
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -2221,6 +2393,10 @@ questions:
     answer: a
   explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
     run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
+
+
+    **CDP**: Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp run`,
+    `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
     SMTP delivers email. Unrelated to LAN topology discovery.
@@ -2258,16 +2434,21 @@ questions:
     type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
-    legal notices, not password storage.
+    **Type 8/9 secrets**: Modern IOS `enable algorithm-type scrypt secret` / type
+    **8** (PBKDF2) and type **9** (scrypt) store password hashes that are far harder
+    to crack than type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Disable AAA** is not the right selection: Disabling AAA removes centralized
-    auth; it does not hash local secrets better.
+    **Banner plaintext**: Banners (`banner motd`) are plaintext legal notices, not
+    password storage.
 
 
-    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
-    It is worse storage/transport, not better.'
+    **Disable AAA**: Disabling AAA removes centralized auth; it does not hash local
+    secrets better.
+
+
+    **Telnet only**: Telnet sends credentials in cleartext. It is worse storage/transport,
+    not better.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -2296,16 +2477,21 @@ questions:
     tool.
 
 
-    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
-    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
+    **Restrict management access**: `access-class N in` on `line vty 0 4` filters
+    **who can open an SSH/Telnet session**. It is a management-plane ACL, not a data-plane
+    VLAN or EtherChannel tool.
 
 
-    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
-    A VTY ACL does not bundle ports.
+    **Encrypt OSPF**: OSPF authentication is `ip ospf authentication message-digest`
+    / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
-    vlan`. A VTY ACL does not assign VLANs.'
+    **Form Port-Channels**: EtherChannel is `channel-group`. A VTY ACL does not bundle
+    ports.
+
+
+    **Assign VLANs**: Access VLAN is `switchport access vlan`. A VTY ACL does not
+    assign VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -2334,31 +2520,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.1 (Automation impact on network management), the keyed answer
-    is **Verify expected state for 6.1 with show/ping evidence; Document the 6.1 design
-    intent and rollback plan**. Stem: [CCNA 6.1] Select ALL actions that support a
-    correct implementation or verification for this objective..
+  explanation: '6.1 (Automation impact on network management) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
+    confirm the objective actually converged — not just that the command was typed.
+    Document design intent and the rollback commands. The next engineer (or you at
+    03:00) needs that, not tribal memory.
 
 
-    **Verify expected state for 6.1 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.1 (Automation impact on network management).
+    **Verify expected state for 6.1 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.1 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.1 (Automation impact on network management).
+    **Document the 6.1 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.1 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.1 (Automation
-    impact on network management).
+    **Skip change control because 6.1 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.1** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.1 (Automation impact on network management).'
+    **Disable all monitoring related to 6.1**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -2382,33 +2566,30 @@ questions:
     text: Skip documentation for 6.1 changes in production
   correct:
     answer: a
-  explanation: 'For 6.1 (Automation impact on network management), the keyed answer
-    is **Apply the verified behavior required by objective 6.1**. Stem: During troubleshooting
-    related to 6.1, which observation is most relevant?.
+  explanation: '6.1 (Automation impact on network management) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
+    the exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.1** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.1 (Automation impact on network
-    management).
+    **Apply the verified behavior required by objective 6.1**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Disable logging permanently while testing 6.1** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.1 (Automation impact
-    on network management).
+    **Disable logging permanently while testing 6.1**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 6.1** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.1 (Automation
-    impact on network management).
+    **Use clear-text shared secrets as the only control for 6.1**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.1 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.1 (Automation
-    impact on network management).'
+    **Skip documentation for 6.1 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -2432,32 +2613,28 @@ questions:
     text: Validate with show/verify steps before relying on 6.1 changes
   correct:
     answer: a
-  explanation: 'For 6.1 (Automation impact on network management), the keyed answer
-    is **Validate with show/verify steps before relying on 6.1 changes**. Stem: Which
-    configuration intent aligns with CCNA objective 6.1?.
+  explanation: '6.1 (Automation impact on network management) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Validate with show/verify
+    (and ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.1 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.1 (Automation impact on network management).
+    **Validate with show/verify steps before relying on 6.1 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Use clear-text shared secrets as the only control for 6.1** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.1 (Automation
-    impact on network management).
+    **Use clear-text shared secrets as the only control for 6.1**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.1 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.1 (Automation
-    impact on network management).
+    **Skip documentation for 6.1 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.1 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.1 (Automation
-    impact on network management).'
+    **Treat 6.1 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -2481,33 +2658,29 @@ questions:
     text: Skip documentation for 6.1 changes in production
   correct:
     answer: a
-  explanation: 'For 6.1 (Automation impact on network management), the keyed answer
-    is **Use the standard model for 6.1 rather than a look-alike concept**. Stem:
-    Select the correct association for exam topic 6.1..
+  explanation: '6.1 (Automation impact on network management) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Stay with the standard model
+    for this objective instead of a look-alike protocol that shares a buzzword but
+    not the behavior.
 
 
-    **Use the standard model for 6.1 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.1 (Automation
-    impact on network management).
+    **Use the standard model for 6.1 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Treat 6.1 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.1 (Automation
-    impact on network management).
+    **Treat 6.1 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.1 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.1 (Automation impact on network
-    management).
+    **Ignore verification and assume 6.1 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Skip documentation for 6.1 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.1 (Automation
-    impact on network management).'
+    **Skip documentation for 6.1 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.1
@@ -2531,33 +2704,29 @@ questions:
     text: Ignore verification and assume 6.2 always works
   correct:
     answer: a
-  explanation: 'For 6.2 (Traditional vs controller-based networking), the keyed answer
-    is **Prefer the documented 6.2 approach used in enterprise designs**. Stem: Which
-    option correctly describes a key idea under 6.2?.
+  explanation: '6.2 (Traditional vs controller-based networking) is implemented by
+    verifying with show/ping evidence and keeping a rollback plan. Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.2 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.2 (Traditional
-    vs controller-based networking).
+    **Prefer the documented 6.2 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.2 (Traditional vs
-    controller-based networking).
+    **Confuse 6.2 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Treat 6.2 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.2 (Traditional
-    vs controller-based networking).
+    **Treat 6.2 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.2 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.2 (Traditional vs controller-based
-    networking).'
+    **Ignore verification and assume 6.2 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -2585,32 +2754,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.2 (Traditional vs controller-based networking), the keyed answer
-    is **Verify expected state for 6.2 with show/ping evidence; Document the 6.2 design
-    intent and rollback plan**. Stem: [CCNA 6.2] Select ALL actions that support a
-    correct implementation or verification for this objective..
+  explanation: '6.2 (Traditional vs controller-based networking) is implemented by
+    verifying with show/ping evidence and keeping a rollback plan. Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
+    Document design intent and the rollback commands. The next engineer (or you at
+    03:00) needs that, not tribal memory.
 
 
-    **Verify expected state for 6.2 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.2 (Traditional vs controller-based networking).
+    **Verify expected state for 6.2 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.2 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.2 (Traditional vs controller-based networking).
+    **Document the 6.2 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.2 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.2 (Traditional
-    vs controller-based networking).
+    **Skip change control because 6.2 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.2** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.2 (Traditional vs controller-based
-    networking).'
+    **Disable all monitoring related to 6.2**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -2634,32 +2800,28 @@ questions:
     text: Validate with show/verify steps before relying on 6.2 changes
   correct:
     answer: a
-  explanation: 'For 6.2 (Traditional vs controller-based networking), the keyed answer
-    is **Validate with show/verify steps before relying on 6.2 changes**. Stem: Regarding
-    CCNA topic 6.2. Which reply is accurate?.
+  explanation: '6.2 (Traditional vs controller-based networking) is implemented by
+    verifying with show/ping evidence and keeping a rollback plan. Validate with show/verify
+    (and ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.2 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.2 (Traditional vs controller-based networking).
+    **Validate with show/verify steps before relying on 6.2 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.2 (Traditional vs
-    controller-based networking).
+    **Confuse 6.2 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.2** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.2 (Traditional vs controller-based
-    networking).
+    **Disable logging permanently while testing 6.2**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 6.2** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.2 (Traditional
-    vs controller-based networking).'
+    **Use clear-text shared secrets as the only control for 6.2**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -2683,33 +2845,30 @@ questions:
     text: Disable logging permanently while testing 6.2
   correct:
     answer: a
-  explanation: 'For 6.2 (Traditional vs controller-based networking), the keyed answer
-    is **Use the standard model for 6.2 rather than a look-alike concept**. Stem:
-    During troubleshooting related to 6.2, which observation is most relevant?.
+  explanation: '6.2 (Traditional vs controller-based networking) is implemented by
+    verifying with show/ping evidence and keeping a rollback plan. Stay with the standard
+    model for this objective instead of a look-alike protocol that shares a buzzword
+    but not the behavior.
 
 
-    **Use the standard model for 6.2 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.2 (Traditional
-    vs controller-based networking).
+    **Use the standard model for 6.2 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Use clear-text shared secrets as the only control for 6.2** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.2 (Traditional
-    vs controller-based networking).
+    **Use clear-text shared secrets as the only control for 6.2**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.2 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.2 (Traditional
-    vs controller-based networking).
+    **Skip documentation for 6.2 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Disable logging permanently while testing 6.2** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.2 (Traditional vs controller-based
-    networking).'
+    **Disable logging permanently while testing 6.2**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.2
@@ -2733,33 +2892,30 @@ questions:
     text: Skip documentation for 6.3 changes in production
   correct:
     answer: a
-  explanation: 'For 6.3 (Controller-based and software-defined architectures), the
-    keyed answer is **Prefer the documented 6.3 approach used in enterprise designs**.
-    Stem: Which configuration intent aligns with CCNA objective 6.3?.
+  explanation: '6.3 (Controller-based and software-defined architectures) is implemented
+    by verifying with show/ping evidence and keeping a rollback plan. Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.3 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.3 (Controller-based
-    and software-defined architectures).
+    **Prefer the documented 6.3 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Treat 6.3 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.3 (Controller-based
-    and software-defined architectures).
+    **Treat 6.3 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Use clear-text shared secrets as the only control for 6.3** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.3 (Controller-based
-    and software-defined architectures).
+    **Use clear-text shared secrets as the only control for 6.3**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.3 (Controller-based
-    and software-defined architectures).'
+    **Skip documentation for 6.3 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -2783,33 +2939,29 @@ questions:
     text: Ignore verification and assume 6.3 always works
   correct:
     answer: a
-  explanation: 'For 6.3 (Controller-based and software-defined architectures), the
-    keyed answer is **Apply the verified behavior required by objective 6.3**. Stem:
-    Select the correct association for exam topic 6.3..
+  explanation: '6.3 (Controller-based and software-defined architectures) is implemented
+    by verifying with show/ping evidence and keeping a rollback plan. Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Apply the verified behavior required by objective 6.3** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.3 (Controller-based and software-defined
-    architectures).
+    **Apply the verified behavior required by objective 6.3**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 6.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.3 (Controller-based
-    and software-defined architectures).
+    **Skip documentation for 6.3 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.3 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.3 (Controller-based
-    and software-defined architectures).
+    **Treat 6.3 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.3 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.3 (Controller-based and software-defined
-    architectures).'
+    **Ignore verification and assume 6.3 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -2837,33 +2989,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.3 (Controller-based and software-defined architectures), the
-    keyed answer is **Verify expected state for 6.3 with show/ping evidence; Document
-    the 6.3 design intent and rollback plan**. Stem: [CCNA 6.3] Select ALL actions
-    that support a correct implementation or verification for this objective..
-
-
-    **Verify expected state for 6.3 with show/ping evidence** is correct: Use show/ping
+  explanation: '6.3 (Controller-based and software-defined architectures) is implemented
+    by verifying with show/ping evidence and keeping a rollback plan. Use show/ping
     evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.3 (Controller-based and software-defined architectures).
+    was typed. Document design intent and the rollback commands. The next engineer
+    (or you at 03:00) needs that, not tribal memory.
 
 
-    **Document the 6.3 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.3 (Controller-based and software-defined
-    architectures).
+    **Verify expected state for 6.3 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Skip change control because 6.3 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.3 (Controller-based
-    and software-defined architectures).
+    **Document the 6.3 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Disable all monitoring related to 6.3** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.3 (Controller-based and software-defined
-    architectures).'
+    **Skip change control because 6.3 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
+
+
+    **Disable all monitoring related to 6.3**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.3
@@ -2887,33 +3035,29 @@ questions:
     text: Ignore verification and assume 6.4 always works
   correct:
     answer: a
-  explanation: 'For 6.4 (Campus management vs Cisco DNA Center), the keyed answer
-    is **Use the standard model for 6.4 rather than a look-alike concept**. Stem:
-    For CCNA objective 6.4, which statement best matches production best practice?.
+  explanation: '6.4 (Campus management vs Cisco DNA Center) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Stay with the standard model
+    for this objective instead of a look-alike protocol that shares a buzzword but
+    not the behavior.
 
 
-    **Use the standard model for 6.4 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).
+    **Use the standard model for 6.4 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.4 (Campus management
-    vs Cisco DNA Center).
+    **Confuse 6.4 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.4** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).
+    **Disable logging permanently while testing 6.4**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Ignore verification and assume 6.4 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.4 (Campus management vs Cisco DNA
-    Center).'
+    **Ignore verification and assume 6.4 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -2937,33 +3081,30 @@ questions:
     text: Disable logging permanently while testing 6.4
   correct:
     answer: a
-  explanation: 'For 6.4 (Campus management vs Cisco DNA Center), the keyed answer
-    is **Prefer the documented 6.4 approach used in enterprise designs**. Stem: Regarding
-    CCNA topic 6.4. Which reply is accurate?.
+  explanation: '6.4 (Campus management vs Cisco DNA Center) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
+    design for this objective (Cisco validated design / local standard) rather than
+    an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.4 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.4 (Campus
-    management vs Cisco DNA Center).
+    **Prefer the documented 6.4 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Use clear-text shared secrets as the only control for 6.4** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.4 (Campus
-    management vs Cisco DNA Center).
+    **Use clear-text shared secrets as the only control for 6.4**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.4 (Campus management
-    vs Cisco DNA Center).
+    **Confuse 6.4 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.4** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).'
+    **Disable logging permanently while testing 6.4**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -2987,33 +3128,30 @@ questions:
     text: Skip documentation for 6.4 changes in production
   correct:
     answer: a
-  explanation: 'For 6.4 (Campus management vs Cisco DNA Center), the keyed answer
-    is **Apply the verified behavior required by objective 6.4**. Stem: During troubleshooting
-    related to 6.4, which observation is most relevant?.
+  explanation: '6.4 (Campus management vs Cisco DNA Center) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
+    the exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.4** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.4 (Campus management vs Cisco
-    DNA Center).
+    **Apply the verified behavior required by objective 6.4**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Disable logging permanently while testing 6.4** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).
+    **Disable logging permanently while testing 6.4**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 6.4** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.4 (Campus
-    management vs Cisco DNA Center).
+    **Use clear-text shared secrets as the only control for 6.4**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.4 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).'
+    **Skip documentation for 6.4 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -3037,32 +3175,28 @@ questions:
     text: Validate with show/verify steps before relying on 6.4 changes
   correct:
     answer: a
-  explanation: 'For 6.4 (Campus management vs Cisco DNA Center), the keyed answer
-    is **Validate with show/verify steps before relying on 6.4 changes**. Stem: Which
-    configuration intent aligns with CCNA objective 6.4?.
+  explanation: '6.4 (Campus management vs Cisco DNA Center) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Validate with show/verify
+    (and ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.4 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.4 (Campus management vs Cisco DNA Center).
+    **Validate with show/verify steps before relying on 6.4 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Use clear-text shared secrets as the only control for 6.4** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.4 (Campus
-    management vs Cisco DNA Center).
+    **Use clear-text shared secrets as the only control for 6.4**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.4 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).
+    **Skip documentation for 6.4 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.4 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.4 (Campus management
-    vs Cisco DNA Center).'
+    **Treat 6.4 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.4
@@ -3090,31 +3224,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.5 (REST-based APIs), the keyed answer is **Verify expected state
-    for 6.5 with show/ping evidence; Document the 6.5 design intent and rollback plan**.
-    Stem: [CCNA 6.5] Select ALL actions that support a correct implementation or verification
-    for this objective..
+  explanation: '6.5 (REST-based APIs) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Use show/ping evidence to confirm the objective actually
+    converged — not just that the command was typed. Document design intent and the
+    rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Verify expected state for 6.5 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.5 (REST-based APIs).
+    **Verify expected state for 6.5 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.5 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.5 (REST-based APIs).
+    **Document the 6.5 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.5 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.5 (REST-based
-    APIs).
+    **Skip change control because 6.5 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.5** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.5 (REST-based APIs).'
+    **Disable all monitoring related to 6.5**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -3138,31 +3270,28 @@ questions:
     text: Ignore verification and assume 6.5 always works
   correct:
     answer: a
-  explanation: 'For 6.5 (REST-based APIs), the keyed answer is **Prefer the documented
-    6.5 approach used in enterprise designs**. Stem: Which option correctly describes
-    a key idea under 6.5?.
+  explanation: '6.5 (REST-based APIs) is implemented by verifying with show/ping evidence
+    and keeping a rollback plan. Use the documented enterprise design for this objective
+    (Cisco validated design / local standard) rather than an ad-hoc look-alike.
 
 
-    **Prefer the documented 6.5 approach used in enterprise designs** is correct:
-    Use the documented enterprise design for this objective (Cisco validated design
-    / local standard) rather than an ad-hoc look-alike. This matters for 6.5 (REST-based
-    APIs).
+    **Prefer the documented 6.5 approach used in enterprise designs**: Use the documented
+    enterprise design for this objective (Cisco validated design / local standard)
+    rather than an ad-hoc look-alike.
 
 
-    **Confuse 6.5 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.5 (REST-based APIs).
+    **Confuse 6.5 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Treat 6.5 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.5 (REST-based
-    APIs).
+    **Treat 6.5 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.5 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.5 (REST-based APIs).'
+    **Ignore verification and assume 6.5 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.5
@@ -3186,31 +3315,29 @@ questions:
     text: Disable logging permanently while testing 6.6
   correct:
     answer: a
-  explanation: 'For 6.6 (Configuration management mechanisms), the keyed answer is
-    **Apply the verified behavior required by objective 6.6**. Stem: For CCNA objective
-    6.6, which statement best matches production best practice?.
+  explanation: '6.6 (Configuration management mechanisms) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
+    the exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.6** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.6 (Configuration management mechanisms).
+    **Apply the verified behavior required by objective 6.6**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Ignore verification and assume 6.6 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.6 (Configuration management mechanisms).
+    **Ignore verification and assume 6.6 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.6 (Configuration management
-    mechanisms).
+    **Confuse 6.6 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.6 (Configuration management
-    mechanisms).'
+    **Disable logging permanently while testing 6.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -3234,32 +3361,28 @@ questions:
     text: Validate with show/verify steps before relying on 6.6 changes
   correct:
     answer: a
-  explanation: 'For 6.6 (Configuration management mechanisms), the keyed answer is
-    **Validate with show/verify steps before relying on 6.6 changes**. Stem: Regarding
-    CCNA topic 6.6. Which reply is accurate?.
+  explanation: '6.6 (Configuration management mechanisms) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Validate with show/verify
+    (and ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.6 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.6 (Configuration management mechanisms).
+    **Validate with show/verify steps before relying on 6.6 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.6 (Configuration management
-    mechanisms).
+    **Confuse 6.6 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).
 
 
-    **Disable logging permanently while testing 6.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.6 (Configuration management
-    mechanisms).
+    **Disable logging permanently while testing 6.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.
 
 
-    **Use clear-text shared secrets as the only control for 6.6** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.6 (Configuration
-    management mechanisms).'
+    **Use clear-text shared secrets as the only control for 6.6**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -3283,33 +3406,30 @@ questions:
     text: Disable logging permanently while testing 6.6
   correct:
     answer: a
-  explanation: 'For 6.6 (Configuration management mechanisms), the keyed answer is
-    **Use the standard model for 6.6 rather than a look-alike concept**. Stem: During
-    troubleshooting related to 6.6, which observation is most relevant?.
+  explanation: '6.6 (Configuration management mechanisms) is implemented by verifying
+    with show/ping evidence and keeping a rollback plan. Stay with the standard model
+    for this objective instead of a look-alike protocol that shares a buzzword but
+    not the behavior.
 
 
-    **Use the standard model for 6.6 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 6.6 (Configuration
-    management mechanisms).
+    **Use the standard model for 6.6 rather than a look-alike concept**: Stay with
+    the standard model for this objective instead of a look-alike protocol that shares
+    a buzzword but not the behavior.
 
 
-    **Use clear-text shared secrets as the only control for 6.6** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.6 (Configuration
-    management mechanisms).
+    **Use clear-text shared secrets as the only control for 6.6**: Clear-text shared
+    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
+    type 8/9 secrets, and SNMPv3.
 
 
-    **Skip documentation for 6.6 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.6 (Configuration
-    management mechanisms).
+    **Skip documentation for 6.6 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Disable logging permanently while testing 6.6** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 6.6 (Configuration management
-    mechanisms).'
+    **Disable logging permanently while testing 6.6**: Disabling logging permanently
+    hides faults and is a finding on any security review. Keep syslog/buffered logging
+    enabled.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.6
@@ -3337,31 +3457,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 6.7 (Interpret JSON encoded data), the keyed answer is **Verify
-    expected state for 6.7 with show/ping evidence; Document the 6.7 design intent
-    and rollback plan**. Stem: [CCNA 6.7] Select ALL actions that support a correct
-    implementation or verification for this objective..
+  explanation: '6.7 (Interpret JSON encoded data) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Use show/ping evidence to confirm
+    the objective actually converged — not just that the command was typed. Document
+    design intent and the rollback commands. The next engineer (or you at 03:00) needs
+    that, not tribal memory.
 
 
-    **Verify expected state for 6.7 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 6.7 (Interpret JSON encoded data).
+    **Verify expected state for 6.7 with show/ping evidence**: Use show/ping evidence
+    to confirm the objective actually converged — not just that the command was typed.
 
 
-    **Document the 6.7 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 6.7 (Interpret JSON encoded data).
+    **Document the 6.7 design intent and rollback plan**: Document design intent and
+    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
+    memory.
 
 
-    **Skip change control because 6.7 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 6.7 (Interpret
-    JSON encoded data).
+    **Skip change control because 6.7 is low risk**: Skipping change control because
+    a topic ‘looks low risk’ is how untracked outages happen. This objective still
+    goes through the window.
 
 
-    **Disable all monitoring related to 6.7** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 6.7 (Interpret JSON encoded data).'
+    **Disable all monitoring related to 6.7**: Disabling monitoring removes the only
+    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -3385,31 +3503,29 @@ questions:
     text: Ignore verification and assume 6.7 always works
   correct:
     answer: a
-  explanation: 'For 6.7 (Interpret JSON encoded data), the keyed answer is **Apply
-    the verified behavior required by objective 6.7**. Stem: Select the correct association
-    for exam topic 6.7..
+  explanation: '6.7 (Interpret JSON encoded data) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Apply the verified behavior the
+    exam topic actually names, then confirm it with show/ping — not a neighboring
+    feature.
 
 
-    **Apply the verified behavior required by objective 6.7** is correct: Apply the
-    verified behavior the exam topic actually names, then confirm it with show/ping
-    — not a neighboring feature. This matters for 6.7 (Interpret JSON encoded data).
+    **Apply the verified behavior required by objective 6.7**: Apply the verified
+    behavior the exam topic actually names, then confirm it with show/ping — not a
+    neighboring feature.
 
 
-    **Skip documentation for 6.7 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 6.7 (Interpret
-    JSON encoded data).
+    **Skip documentation for 6.7 changes in production**: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record.
 
 
-    **Treat 6.7 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.7 (Interpret
-    JSON encoded data).
+    **Treat 6.7 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.7 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.7 (Interpret JSON encoded data).'
+    **Ignore verification and assume 6.7 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
@@ -3433,31 +3549,27 @@ questions:
     text: Validate with show/verify steps before relying on 6.7 changes
   correct:
     answer: a
-  explanation: 'For 6.7 (Interpret JSON encoded data), the keyed answer is **Validate
-    with show/verify steps before relying on 6.7 changes**. Stem: Which option correctly
-    describes a key idea under 6.7?.
+  explanation: '6.7 (Interpret JSON encoded data) is implemented by verifying with
+    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
+    ping where relevant) before you trust the change in production.
 
 
-    **Validate with show/verify steps before relying on 6.7 changes** is correct:
-    Validate with show/verify (and ping where relevant) before you trust the change
-    in production. This matters for 6.7 (Interpret JSON encoded data).
+    **Validate with show/verify steps before relying on 6.7 changes**: Validate with
+    show/verify (and ping where relevant) before you trust the change in production.
 
 
-    **Treat 6.7 as optional when the blueprint lists it** is not the right selection:
-    Blueprint-listed objectives are not optional in production just because a lab
-    skipped them. Implement and verify this topic. This matters for 6.7 (Interpret
-    JSON encoded data).
+    **Treat 6.7 as optional when the blueprint lists it**: Blueprint-listed objectives
+    are not optional in production just because a lab skipped them. Implement and
+    verify this topic.
 
 
-    **Ignore verification and assume 6.7 always works** is not the right selection:
-    Assuming it ‘always works’ without verification is how silent misconfigurations
-    ship. Show/ping the result. This matters for 6.7 (Interpret JSON encoded data).
+    **Ignore verification and assume 6.7 always works**: Assuming it ‘always works’
+    without verification is how silent misconfigurations ship. Show/ping the result.
 
 
-    **Confuse 6.7 with an unrelated Layer mismatch** is not the right selection: Confusing
-    this objective with an unrelated OSI layer is how you apply the wrong feature
-    (for example STP for a routing problem). This matters for 6.7 (Interpret JSON
-    encoded data).'
+    **Confuse 6.7 with an unrelated Layer mismatch**: Confusing this objective with
+    an unrelated OSI layer is how you apply the wrong feature (for example STP for
+    a routing problem).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Automation and Programmability
   - CCNA exam topic 6.7
