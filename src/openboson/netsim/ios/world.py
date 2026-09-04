@@ -475,13 +475,6 @@ class LabWorld:
             return False
         inside_ifaces = [i for i in dev.interfaces.values() if i.nat_role == "inside"]
         outside_ifaces = [i for i in dev.interfaces.values() if i.nat_role == "outside"]
-        if not inside_ifaces and not outside_ifaces and dev.nat_overload is None:
-            src_ip = self._primary_ip(original_src)
-            if src_ip is None or not src_ip.is_private:
-                return False
-            if self._l2_adjacent_or_same(original_src, owner):
-                return False
-            return owner != router
         src_on_inside = any(
             self._iface_faces_device(router, i.name, original_src) for i in inside_ifaces
         )

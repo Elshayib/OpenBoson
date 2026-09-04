@@ -89,10 +89,34 @@ def _apply_base(world: LabWorld, lab: LabBank) -> None:
             shell.feed("end")
 
 
+def _apply_inside_outside(world: LabWorld) -> None:
+    r1 = world.shell("R1")
+    for line in (
+        "enable",
+        "configure terminal",
+        "interface GigabitEthernet0/0",
+        "ip nat inside",
+        "interface GigabitEthernet0/1",
+        "ip nat outside",
+        "end",
+    ):
+        r1.feed(line)
+
+
 def test_inside_host_cannot_ping_outside_without_pat():
     lab = _nat_lab()
     world = LabWorld.from_lab(lab)
     _apply_base(world, lab)
+    _apply_inside_outside(world)
+    result = world.ping("PC1", "203.0.113.2")
+    assert "Success rate is 0 percent" in result
+
+
+def test_inside_outside_without_overload_blocks_pat_path():
+    lab = _nat_lab()
+    world = LabWorld.from_lab(lab)
+    _apply_base(world, lab)
+    _apply_inside_outside(world)
     result = world.ping("PC1", "203.0.113.2")
     assert "Success rate is 0 percent" in result
 
@@ -119,15 +143,11 @@ def test_pc_off_subnet_uses_default_gateway():
 
 
 def _apply_pat(world: LabWorld) -> None:
+    _apply_inside_outside(world)
     r1 = world.shell("R1")
     for line in (
         "enable",
         "configure terminal",
-        "interface GigabitEthernet0/0",
-        "ip nat inside",
-        "interface GigabitEthernet0/1",
-        "ip nat outside",
-        "exit",
         "access-list 1 permit any",
         "ip nat inside source list 1 interface GigabitEthernet0/1 overload",
         "end",
@@ -159,5 +179,60 @@ def test_nat_unreachable_hint_without_pat():
     lab = _nat_lab()
     world = LabWorld.from_lab(lab)
     _apply_base(world, lab)
+    _apply_inside_outside(world)
     hint = world.explain_unreachable("PC1", "203.0.113.2")
-    assert "PAT" in hint or "nat" in hint.lower()
+    assert "needs PAT on the border router" in hint
+
+
+def _inter_vlan_lab() -> LabBank:
+    return LabBank(
+        title="Inter-VLAN path",
+        lab_id="test_inter_vlan_nat_gate",
+        topic_code="3.3",
+        lab_tier=LabTier.DRILL,
+        topology=Topology(
+            devices=[
+                Device(
+                    name="R1",
+                    type=DeviceType.ROUTER,
+                    interfaces=[
+                        Interface(name="GigabitEthernet0/0", ip="10.0.0.1/24"),
+                        Interface(name="GigabitEthernet0/1", ip="10.0.1.1/24"),
+                    ],
+                    base_config=(
+                        "interface GigabitEthernet0/0\n"
+                        " ip address 10.0.0.1 255.255.255.0\n"
+                        " no shutdown\n"
+                        "interface GigabitEthernet0/1\n"
+                        " ip address 10.0.1.1 255.255.255.0\n"
+                        " no shutdown\n"
+                    ),
+                ),
+                Device(
+                    name="PC1",
+                    type=DeviceType.PC,
+                    interfaces=[Interface(name="eth0", ip="10.0.0.10/24")],
+                    base_config="ip address 10.0.0.10 255.255.255.0\n",
+                ),
+                Device(
+                    name="PC2",
+                    type=DeviceType.PC,
+                    interfaces=[Interface(name="eth0", ip="10.0.1.10/24")],
+                    base_config="ip address 10.0.1.10 255.255.255.0\n",
+                ),
+            ],
+            links=[
+                Link(a="R1/GigabitEthernet0/0", b="PC1/eth0"),
+                Link(a="R1/GigabitEthernet0/1", b="PC2/eth0"),
+            ],
+        ),
+        tasks=[LabTask(id="t1", instructions="inter-vlan")],
+    )
+
+
+def test_inter_vlan_pc_ping_does_not_require_pat():
+    lab = _inter_vlan_lab()
+    world = LabWorld.from_lab(lab)
+    _apply_base(world, lab)
+    result = world.ping("PC1", "10.0.1.10")
+    assert "100 percent" in result
