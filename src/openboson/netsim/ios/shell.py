@@ -10,6 +10,7 @@ from enum import Enum
 from openboson.netsim.ios.device import (
     DeviceRole,
     DeviceRuntime,
+    DhcpPool,
     NatOverload,
     StaticRoute,
     expand_interface_name,
@@ -25,6 +26,7 @@ class Mode(str, Enum):
     CONFIG_VLAN = "config-vlan"  # (config-vlan)#
     CONFIG_LINE = "config-line"  # (config-line)#
     CONFIG_ROUTER = "config-router"  # (config-router)#
+    CONFIG_DHCP = "config-dhcp"  # (config-dhcp)#
 
 
 @dataclass
@@ -54,6 +56,7 @@ class OpenIOSShell:
         self._vlan_ctx: int | None = None
         self._line_ctx: str | None = None
         self._router_ctx: str | None = None
+        self._dhcp_pool_ctx: str | None = None
         self.history: list[str] = []
         self._paging = False
         self._term_length = 24  # 0 = disable paging
@@ -76,6 +79,8 @@ class OpenIOSShell:
             return f"{h}(config-line)#"
         if self.mode == Mode.CONFIG_ROUTER:
             return f"{h}(config-router)#"
+        if self.mode == Mode.CONFIG_DHCP:
+            return f"{h}(config-dhcp)#"
         return f"{h}>"
 
     def banner(self) -> str:
@@ -320,6 +325,16 @@ class OpenIOSShell:
                 "do": self._cmd_do,
                 "help": self._cmd_help_cmd,
             }
+        elif m == Mode.CONFIG_DHCP:
+            base = {
+                "network": self._cmd_dhcp_network,
+                "default-router": self._cmd_dhcp_default_router,
+                "dns-server": self._cmd_noop_ok,
+                "exit": self._cmd_exit_dhcp,
+                "end": self._cmd_end,
+                "do": self._cmd_do,
+                "help": self._cmd_help_cmd,
+            }
         return base
 
     # -----/ Helpers /-----
@@ -378,6 +393,7 @@ class OpenIOSShell:
         self._vlan_ctx = None
         self._line_ctx = None
         self._router_ctx = None
+        self._dhcp_pool_ctx = None
         return ""
 
     def _cmd_configure(self, args: list[str], line: str) -> str:
@@ -661,8 +677,7 @@ class OpenIOSShell:
             self.device.extra_global.append("ip " + " ".join(args))
             return ""
         if args[0].lower() == "dhcp":
-            self.device.extra_global.append("ip " + " ".join(args))
-            return ""
+            return self._cmd_ip_dhcp(args[1:], line)
         if _abbrev_match("default-gateway", args[0]):
             if len(args) < 2:
                 raise _CmdError("% Incomplete command.")
@@ -925,6 +940,57 @@ class OpenIOSShell:
     def _cmd_exit_router(self, args: list[str], line: str) -> str:
         self.mode = Mode.CONFIG
         self._router_ctx = None
+        return ""
+
+    def _cmd_ip_dhcp(self, args: list[str], line: str) -> str:
+        if not args:
+            raise _CmdError("% Incomplete command.")
+        if _abbrev_match("pool", args[0]):
+            if len(args) < 2:
+                raise _CmdError("% Incomplete command.")
+            name = args[1]
+            if name not in self.device.dhcp_pools:
+                self.device.dhcp_pools[name] = DhcpPool(name=name)
+            self._dhcp_pool_ctx = name
+            self.mode = Mode.CONFIG_DHCP
+            return ""
+        if args[0].lower() == "excluded-address" or _abbrev_match("excluded-address", args[0]):
+            if len(args) < 2:
+                raise _CmdError("% Incomplete command.")
+            start = args[1]
+            end = args[2] if len(args) >= 3 else args[1]
+            pair = (start, end)
+            for pool in self.device.dhcp_pools.values():
+                if pair not in pool.excluded:
+                    pool.excluded.append(pair)
+            return ""
+        self.device.extra_global.append("ip dhcp " + " ".join(args))
+        return ""
+
+    def _require_dhcp_pool(self) -> DhcpPool:
+        name = self._dhcp_pool_ctx
+        if not name or name not in self.device.dhcp_pools:
+            raise _CmdError("% No DHCP pool context.")
+        return self.device.dhcp_pools[name]
+
+    def _cmd_dhcp_network(self, args: list[str], line: str) -> str:
+        pool = self._require_dhcp_pool()
+        if len(args) < 2:
+            raise _CmdError("% Incomplete command.")
+        pool.network = args[0]
+        pool.mask = args[1]
+        return ""
+
+    def _cmd_dhcp_default_router(self, args: list[str], line: str) -> str:
+        pool = self._require_dhcp_pool()
+        if not args:
+            raise _CmdError("% Incomplete command.")
+        pool.default_router = args[0]
+        return ""
+
+    def _cmd_exit_dhcp(self, args: list[str], line: str) -> str:
+        self.mode = Mode.CONFIG
+        self._dhcp_pool_ctx = None
         return ""
 
     def _cmd_router_network(self, args: list[str], line: str) -> str:

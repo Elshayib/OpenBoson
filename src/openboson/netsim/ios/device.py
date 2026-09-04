@@ -27,6 +27,7 @@ class InterfaceState:
     access_vlan: int | None = None
     connected_to: str | None = None  # "SW1/GigabitEthernet0/1"
     nat_role: str | None = None  # "inside" | "outside"
+    dhcp_leased: bool = False
     # Extra interface lines (STP, EtherChannel, IPv6, …) rendered under the iface.
     extra_lines: list[str] = field(default_factory=list)
 
@@ -73,6 +74,15 @@ class NatOverload:
 
 
 @dataclass
+class DhcpPool:
+    name: str
+    network: str | None = None
+    mask: str | None = None
+    default_router: str | None = None
+    excluded: list[tuple[str, str]] = field(default_factory=list)
+
+
+@dataclass
 class DeviceRuntime:
     """Mutable runtime state for one simulated network device."""
 
@@ -91,6 +101,8 @@ class DeviceRuntime:
     extra_global: list[str] = field(default_factory=list)
     default_gateway: str | None = None
     nat_overload: NatOverload | None = None
+    dhcp_pools: dict[str, DhcpPool] = field(default_factory=dict)
+    dhcp_leases: dict[str, str] = field(default_factory=dict)  # client -> IP
 
     def __post_init__(self) -> None:
         if not self.hostname:
@@ -122,6 +134,25 @@ class DeviceRuntime:
     def resolve_if_name(self, name: str) -> str | None:
         iface = self.get_iface(name)
         return iface.name if iface else None
+
+    def _dhcp_running_config_lines(self) -> list[str]:
+        """Render structured DHCP excluded-address + pool blocks."""
+        lines: list[str] = []
+        seen_excluded: set[tuple[str, str]] = set()
+        for pool in self.dhcp_pools.values():
+            for start, end in pool.excluded:
+                pair = (start, end)
+                if pair in seen_excluded:
+                    continue
+                seen_excluded.add(pair)
+                lines.append(f"ip dhcp excluded-address {start} {end}")
+        for pool in self.dhcp_pools.values():
+            lines.append(f"ip dhcp pool {pool.name}")
+            if pool.network and pool.mask:
+                lines.append(f" network {pool.network} {pool.mask}")
+            if pool.default_router:
+                lines.append(f" default-router {pool.default_router}")
+        return lines
 
     def running_config(self) -> str:
         """Render an IOS-like running-config text dump."""
@@ -163,6 +194,8 @@ class DeviceRuntime:
             lines.append("!")
         for r in self.static_routes:
             lines.append(f"ip route {r.network} {r.mask} {r.next_hop}")
+        dhcp_lines = self._dhcp_running_config_lines()
+        lines.extend(dhcp_lines)
         nat_overload_line = None
         if self.nat_overload:
             nat_overload_line = (
@@ -170,8 +203,12 @@ class DeviceRuntime:
                 f"interface {self.nat_overload.outside_iface} overload"
             )
             lines.append(nat_overload_line)
+        dhcp_skip = {line.lower() for line in dhcp_lines}
         for extra in self.extra_global:
-            if nat_overload_line and extra.lower() == nat_overload_line.lower():
+            low = extra.lower()
+            if nat_overload_line and low == nat_overload_line.lower():
+                continue
+            if low in dhcp_skip or low.startswith("ip dhcp "):
                 continue
             lines.append(extra)
         lines.append("end")
