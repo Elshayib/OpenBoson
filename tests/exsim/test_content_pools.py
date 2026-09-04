@@ -219,3 +219,24 @@ def test_release_content_volume_gates():
 def test_lab_catalog_count():
     labs = list((ROOT / "data" / "demo_labs").glob("*.yaml"))
     assert len(labs) >= 25
+
+
+_TEMPLATE_PHRASES = (
+    "does not describe the intended use",
+    "does not meet the requirement stated in the stem",
+    "this is the correct answer for the stem",
+)
+
+
+def test_explanations_are_not_templates(ccna_bank, encor_bank):
+    bad: list[str] = []
+    for q in (*ccna_bank.questions, *encor_bank.questions):
+        blob = " ".join(
+            [
+                q.explanation or "",
+                *(c.rationale or "" for c in (q.choices or [])),
+            ]
+        ).lower()
+        if any(p in blob for p in _TEMPLATE_PHRASES):
+            bad.append(q.id)
+    assert bad == [], f"template explanations: {bad[:20]}"
