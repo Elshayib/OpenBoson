@@ -47,6 +47,8 @@ BANNED = (
     "implemented by verifying with show/ping",
     "does not do that job",
     "is answered by",
+    "keep a baseline of",
+    "written rollback",
 )
 FILLER = BANNED + (
     "it is the selection that meets the requirement stated in the stem",
@@ -1424,120 +1426,6 @@ def rewrite_other(q: dict) -> str:
             f"The grader compares the running config to those exact IOS commands."
         )
     return rewrite_choice_question(q, None, "ccna")
-
-
-_OPS_STEM = (
-    "operationally sound",
-    "implementation or verification",
-    "extra multi-select",
-    "which reply is accurate",
-    "configuration intent aligns",
-    "select the correct association for exam topic",
-    "which observation is most relevant",
-    "best matches production best practice",
-    "which option correctly describes a key idea",
-)
-
-
-def _is_stamped(blob: str) -> bool:
-    low = (blob or "").lower()
-    return any(p in low for p in BANNED) or " is not **" in (blob or "")
-
-
-def _is_ops_item(q: dict) -> bool:
-    qid = q.get("id") or ""
-    if "-nsc-" in qid or "-v05-" in qid:
-        return True
-    stem = (q.get("stem") or "").lower()
-    return any(p in stem for p in _OPS_STEM)
-
-
-def _wrong_topic_paste(q: dict) -> bool:
-    expl = (q.get("explanation") or "").lower()
-    stem = (q.get("stem") or "").lower()
-    if "netmiko" in expl or "ncclient" in expl:
-        return True
-    if "not ipv6 addressing" in expl and "ipv6" not in stem:
-        return True
-    return "a vlan is an 802.1q broadcast domain" in expl and "vlan" not in stem
-
-
-def _show_hint(code: str, title: str) -> str:
-    hints = {
-        "1.1": "`show ip interface brief` / `show cdp neighbors`",
-        "1.5": "`show ip interface brief` and a TCP/UDP capture or `show control-plane`",
-        "1.6": "`show ip interface brief` and the subnet math for the prefix",
-        "1.10": "`ipconfig` / `ifconfig` / `ip addr` on the client",
-        "1.13": "`show mac address-table` / `show arp`",
-        "2.1": "`show vlan brief`",
-        "2.2": "`show interfaces trunk`",
-        "2.4": "`show etherchannel summary`",
-        "2.5": "`show spanning-tree`",
-        "3.1": "`show ip route`",
-        "3.2": "`show ip route` longest-match / next-hop",
-        "3.3": "`show ip route` for the floating static",
-        "3.4": "`show ip ospf neighbor` / `show ip route ospf`",
-        "3.5": "`show standby` / `show vrrp` / `show glbp`",
-        "4.1": "`show ip nat translations`",
-        "4.2": "`show ntp status`",
-        "4.5": "`show logging`",
-        "5.6": "`show access-lists`",
-        "5.7": "`show ip dhcp snooping binding`",
-        "6.5": "an HTTP GET/PUT against the REST URI",
-        "6.6": "`show event manager policy registered`",
-        "6.7": "a JSON parse of the controller payload",
-    }
-    return hints.get(code, f"the show/verify output that proves {title}")
-
-
-def _ops_rewrite(q: dict, cert: str) -> str:
-    code = str(q.get("topic_code") or "")
-    title = topic_title(code, cert=cert) or code
-    hint = _show_hint(code, title)
-    cids = _correct_ids(q)
-    parts = [
-        f"For objective {code} ({title}), keep a baseline of {hint} and a written "
-        f"rollback. Skipping logs or treating {code} as optional leaves you unable "
-        f"to prove {title} still works."
-    ]
-    for c in q.get("choices") or []:
-        label = _norm(c.get("text") or "")
-        low = label.lower()
-        good = c["id"] in cids
-        if good:
-            if any(k in low for k in ("verify", "show", "capture", "ping", "validate")):
-                body = f"Confirm {title} with {hint} before you rely on the new config."
-            elif any(k in low for k in ("document", "rollback", "design intent")):
-                body = f"Write the {title} intent and the commands that restore the previous state."
-            elif "standard model" in low or "documented" in low or "prefer" in low:
-                body = f"Use the documented {title} design, then verify with {hint}."
-            else:
-                body = f"That is the production-safe action for {title}."
-        elif any(k in low for k in ("skip documentation", "skip all logs", "skip change")):
-            body = (
-                f"{title} still needs a change record and logs; skipping them "
-                f"removes rollback for {code}."
-            )
-        elif "logging" in low or "monitoring" in low:
-            body = (
-                f"You need logging/monitoring to see whether {title} actually "
-                f"converged after the window."
-            )
-        elif "aaa" in low or "clear-text" in low or "shared secret" in low:
-            body = f"Weak or disabled AAA does not implement {title}."
-        elif "optional" in low:
-            body = f"{code} ({title}) is on the blueprint; it is not skippable."
-        elif "confuse" in low or "layer mismatch" in low:
-            body = (
-                f"Apply {title}, not an unrelated OSI-layer look-alike (for example "
-                f"STP when the objective is routing)."
-            )
-        elif "ignore" in low or "assume" in low or "always works" in low:
-            body = f"Do not assume {title} works; check {hint}."
-        else:
-            body = f"That action does not verify or implement {title}."
-        parts.append(_bullet(label, body))
-    return "\n\n".join(parts)
 
 
 def _rewrite_question(q: dict, orig: dict | None, cert: str) -> None:

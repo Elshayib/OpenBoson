@@ -20,16 +20,23 @@ questions:
     text: SPIDs to DLCI
   correct:
     answer: a
-  explanation: |
-    **DNS** maps names to addresses: **A** (IPv4) and **AAAA** (IPv6) for forward lookup, **PTR** for reverse.
+  explanation: '**DNS** maps names to addresses: **A** (IPv4) and **AAAA** (IPv6)
+    for forward lookup, **PTR** for reverse.
+
 
     **Names to IP addresses** is that primary job (plus reverse).
 
-    **MAC to VLAN** is a switch CAM / access-VLAN assignment (`switchport access vlan`), not DNS.
+
+    **MAC to VLAN** is a switch CAM / access-VLAN assignment (`switchport access vlan`),
+    not DNS.
+
 
     **AS numbers to communities** is BGP policy (`set community`), not name resolution.
 
+
     **SPIDs to DLCI** are ISDN and Frame Relay identifiers — legacy WAN, not DNS.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -486,16 +493,22 @@ questions:
     text: VLAN to VNI
   correct:
     answer: a
-  explanation: |
-    A **forward lookup** asks “what address has this name?” and returns **A/AAAA**. Reverse (PTR) is the other direction.
+  explanation: 'A **forward lookup** asks “what address has this name?” and returns
+    **A/AAAA**. Reverse (PTR) is the other direction.
+
 
     **Name to IP** is forward DNS.
 
+
     **IP to MAC only** is **ARP** (or NDP for IPv6) on the local LAN, not DNS.
+
 
     **AS to community** is a BGP attribute mapping, not DNS.
 
+
     **VLAN to VNI** is a VXLAN/EVPN encapsulation mapping, not DNS.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -558,16 +571,25 @@ questions:
     text: Only disables CDP
   correct:
     answer: a
-  explanation: |
-    **Policing** meters a class and **drops** or **remarks** (for example to DSCP AF) packets over a committed rate (`police cir ... exceed-action drop`). It does not buffer/delay like shaping.
+  explanation: '**Policing** meters a class and **drops** or **remarks** (for example
+    to DSCP AF) packets over a committed rate (`police cir ... exceed-action drop`).
+    It does not buffer/delay like shaping.
+
 
     **Drops or remarks excess over a rate** is the policer action.
 
-    **Only increases STP diameter** would add switches/hops to spanning tree. A QoS police map does not change STP diameter.
 
-    **Only creates VLANs** is `vlan N`. Policers live in a policy-map, not the VLAN database.
+    **Only increases STP diameter** would add switches/hops to spanning tree. A QoS
+    police map does not change STP diameter.
+
+
+    **Only creates VLANs** is `vlan N`. Policers live in a policy-map, not the VLAN
+    database.
+
 
     **Only disables CDP** is `no cdp enable`. Unrelated to rate enforcement.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -744,16 +766,22 @@ questions:
     text: show etherchannel summary
   correct:
     answer: a
-  explanation: |
-    **`show ntp associations`** lists NTP peers, stratum, reach, delay, and which server is selected (`*`).
+  explanation: '**`show ntp associations`** lists NTP peers, stratum, reach, delay,
+    and which server is selected (`*`).
+
 
     **show ntp associations** is the IOS command for that table.
 
+
     **show vlan brief** lists L2 VLANs on a switch — no NTP.
+
 
     **show spanning-tree** shows STP root/roles/states — no NTP.
 
+
     **show etherchannel summary** shows Port-Channel members — no NTP.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -3370,25 +3398,18 @@ questions:
     text: Validate with show/verify steps before relying on 4.1 changes
   correct:
     answer: a
-  explanation: 'For objective 4.1 (Configure and verify NAT), keep a baseline of `show
-    ip nat translations` and a written rollback. Skipping logs or treating 4.1 as
-    optional leaves you unable to prove Configure and verify NAT still works.
+  explanation: 'Key idea: implement Configure and verify NAT as specified for 4.1.
 
 
-    **Treat 4.1 as optional when the blueprint lists it**: 4.1 (Configure and verify
-    NAT) is on the blueprint; it is not skippable.
+    Inside source NAT/PAT rewrites the inside-local source. `show ip nat translations`
+    is the table you capture around a change.
 
 
-    **Ignore verification and assume 4.1 always works**: Do not assume Configure and
-    verify NAT works; check `show ip nat translations`.
+    Correct on this item: Validate with show/verify steps before relying on 4.1 changes.
 
 
-    **Confuse 4.1 with an unrelated Layer mismatch**: Apply Configure and verify NAT,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
-
-
-    **Validate with show/verify steps before relying on 4.1 changes**: Confirm Configure
-    and verify NAT with `show ip nat translations` before you rely on the new config.'
+    **Treat 4.1 as optional when the blueprint lists it** is wrong: this exam topic
+    is on the blueprint.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -3412,25 +3433,19 @@ questions:
     text: Ignore verification and assume 4.1 always works
   correct:
     answer: a
-  explanation: 'For objective 4.1 (Configure and verify NAT), keep a baseline of `show
-    ip nat translations` and a written rollback. Skipping logs or treating 4.1 as
-    optional leaves you unable to prove Configure and verify NAT still works.
+  explanation: 'In production, Configure and verify NAT is confirmed — not assumed.
 
 
-    **Confuse 4.1 with an unrelated Layer mismatch**: Apply Configure and verify NAT,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
+    Inside source NAT/PAT rewrites the inside-local source. `show ip nat translations`
+    is the table you capture around a change.
 
 
-    **Disable logging permanently while testing 4.1**: You need logging/monitoring
-    to see whether Configure and verify NAT actually converged after the window.
+    Correct on this item: Use the standard model for 4.1 rather than a look-alike
+    concept.
 
 
-    **Use the standard model for 4.1 rather than a look-alike concept**: Use the documented
-    Configure and verify NAT design, then verify with `show ip nat translations`.
-
-
-    **Ignore verification and assume 4.1 always works**: Do not assume Configure and
-    verify NAT works; check `show ip nat translations`.'
+    **Confuse 4.1 with an unrelated Layer mismatch** applies a different OSI layer
+    than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.1
@@ -3458,25 +3473,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 4.2 (Configure and verify NTP), keep a baseline of `show
-    ntp status` and a written rollback. Skipping logs or treating 4.2 as optional
-    leaves you unable to prove Configure and verify NTP still works.
+  explanation: 'Pick every action that supports Configure and verify NTP on this objective.
 
 
-    **Verify expected state for 4.2 with show/ping evidence**: Confirm Configure and
-    verify NTP with `show ntp status` before you rely on the new config.
+    `show ntp status` reports stratum; 16 means unsynchronized. Fix NTP association,
+    not STP, when clocks drift.
 
 
-    **Skip change control because 4.2 is low risk**: Configure and verify NTP still
-    needs a change record and logs; skipping them removes rollback for 4.2.
+    Correct on this item: Verify expected state for 4.2 with show/ping evidence; Document
+    the 4.2 design intent and rollback plan.
 
 
-    **Document the 4.2 design intent and rollback plan**: Write the Configure and
-    verify NTP intent and the commands that restore the previous state.
-
-
-    **Disable all monitoring related to 4.2**: You need logging/monitoring to see
-    whether Configure and verify NTP actually converged after the window.'
+    **Skip change control because 4.2 is low risk** skips change control on a real
+    control-plane feature.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -3500,25 +3509,17 @@ questions:
     text: Skip documentation for 4.2 changes in production
   correct:
     answer: a
-  explanation: 'For objective 4.2 (Configure and verify NTP), keep a baseline of `show
-    ntp status` and a written rollback. Skipping logs or treating 4.2 as optional
-    leaves you unable to prove Configure and verify NTP still works.
+  explanation: 'During troubleshooting related to 4.2, which observation is most relevant?
+    The useful observation is the one that matches Configure and verify NTP.
 
 
-    **Apply the verified behavior required by objective 4.2**: That is the production-safe
-    action for Configure and verify NTP.
+    `show ntp status` reports stratum; 16 means unsynchronized. Fix NTP association,
+    not STP, when clocks drift.
 
 
-    **Disable logging permanently while testing 4.2**: You need logging/monitoring
-    to see whether Configure and verify NTP actually converged after the window.
-
-
-    **Use clear-text shared secrets as the only control for 4.2**: Weak or disabled
-    AAA does not implement Configure and verify NTP.
-
-
-    **Skip documentation for 4.2 changes in production**: Configure and verify NTP
-    still needs a change record and logs; skipping them removes rollback for 4.2.'
+    **Apply the verified behavior required by objective 4.2** is applying that behavior,
+    then confirming it. **Disable logging permanently while testing 4.2** blinds you
+    to the failure the show command would have caught.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -3542,26 +3543,19 @@ questions:
     text: Validate with show/verify steps before relying on 4.3 changes
   correct:
     answer: a
-  explanation: 'For objective 4.3 (DHCP and DNS roles), keep a baseline of the show/verify
-    output that proves DHCP and DNS roles and a written rollback. Skipping logs or
-    treating 4.3 as optional leaves you unable to prove DHCP and DNS roles still works.
+  explanation: 'Configuration intent for 4.3 is the documented DHCP and DNS roles
+    approach.
 
 
-    **Use clear-text shared secrets as the only control for 4.3**: Weak or disabled
-    AAA does not implement DHCP and DNS roles.
+    DHCP is DORA on UDP 67/68; DNS is A/AAAA on 53. `show ip dhcp binding` and a name
+    lookup prove each role.
 
 
-    **Skip documentation for 4.3 changes in production**: DHCP and DNS roles still
-    needs a change record and logs; skipping them removes rollback for 4.3.
-
-
-    **Treat 4.3 as optional when the blueprint lists it**: 4.3 (DHCP and DNS roles)
-    is on the blueprint; it is not skippable.
-
-
-    **Validate with show/verify steps before relying on 4.3 changes**: Confirm DHCP
-    and DNS roles with the show/verify output that proves DHCP and DNS roles before
-    you rely on the new config.'
+    **Validate with show/verify steps before relying on 4.3 changes** is the evidence
+    habit that matches that check. **Use clear-text shared secrets as the only control
+    for 4.3** weakens device access; it does not implement the feature above. **Skip
+    documentation for 4.3 changes in production** hides the very output you would
+    use for the check in the previous sentence.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -3585,26 +3579,17 @@ questions:
     text: Skip documentation for 4.3 changes in production
   correct:
     answer: a
-  explanation: 'For objective 4.3 (DHCP and DNS roles), keep a baseline of the show/verify
-    output that proves DHCP and DNS roles and a written rollback. Skipping logs or
-    treating 4.3 as optional leaves you unable to prove DHCP and DNS roles still works.
+  explanation: 'Select the correct association for exam topic 4.3. Associate 4.3 with
+    the real DHCP and DNS roles behavior.
 
 
-    **Treat 4.3 as optional when the blueprint lists it**: 4.3 (DHCP and DNS roles)
-    is on the blueprint; it is not skippable.
+    DHCP is DORA on UDP 67/68; DNS is A/AAAA on 53. `show ip dhcp binding` and a name
+    lookup prove each role.
 
 
-    **Ignore verification and assume 4.3 always works**: Do not assume DHCP and DNS
-    roles works; check the show/verify output that proves DHCP and DNS roles.
-
-
-    **Use the standard model for 4.3 rather than a look-alike concept**: Use the documented
-    DHCP and DNS roles design, then verify with the show/verify output that proves
-    DHCP and DNS roles.
-
-
-    **Skip documentation for 4.3 changes in production**: DHCP and DNS roles still
-    needs a change record and logs; skipping them removes rollback for 4.3.'
+    **Use the standard model for 4.3 rather than a look-alike concept** means use
+    the real protocol/design above, not a look-alike. **Treat 4.3 as optional when
+    the blueprint lists it** is wrong: this exam topic is on the blueprint.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -3628,26 +3613,17 @@ questions:
     text: Ignore verification and assume 4.4 always works
   correct:
     answer: a
-  explanation: 'For objective 4.4 (SNMP in network operations), keep a baseline of
-    the show/verify output that proves SNMP in network operations and a written rollback.
-    Skipping logs or treating 4.4 as optional leaves you unable to prove SNMP in network
-    operations still works.
+  explanation: 'Which option correctly describes a key idea under 4.4? The key idea
+    is SNMP in network operations.
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch**: Apply SNMP in network operations,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
+    SNMP GET is UDP 161; traps/informs are 162. `show snmp` / community or v3 group
+    config is the operations check.
 
 
-    **Prefer the documented 4.4 approach used in enterprise designs**: Write the SNMP
-    in network operations intent and the commands that restore the previous state.
-
-
-    **Treat 4.4 as optional when the blueprint lists it**: 4.4 (SNMP in network operations)
-    is on the blueprint; it is not skippable.
-
-
-    **Ignore verification and assume 4.4 always works**: Do not assume SNMP in network
-    operations works; check the show/verify output that proves SNMP in network operations.'
+    **Prefer the documented 4.4 approach used in enterprise designs** records what
+    you meant to configure so the next change is not guesswork. **Confuse 4.4 with
+    an unrelated Layer mismatch** applies a different OSI layer than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -3675,27 +3651,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 4.4 (SNMP in network operations), keep a baseline of
-    the show/verify output that proves SNMP in network operations and a written rollback.
-    Skipping logs or treating 4.4 as optional leaves you unable to prove SNMP in network
-    operations still works.
+  explanation: 'Pick every action that supports SNMP in network operations on this
+    objective.
 
 
-    **Verify expected state for 4.4 with show/ping evidence**: Confirm SNMP in network
-    operations with the show/verify output that proves SNMP in network operations
-    before you rely on the new config.
+    SNMP GET is UDP 161; traps/informs are 162. `show snmp` / community or v3 group
+    config is the operations check.
 
 
-    **Skip change control because 4.4 is low risk**: SNMP in network operations still
-    needs a change record and logs; skipping them removes rollback for 4.4.
+    Correct on this item: Verify expected state for 4.4 with show/ping evidence; Document
+    the 4.4 design intent and rollback plan.
 
 
-    **Document the 4.4 design intent and rollback plan**: Write the SNMP in network
-    operations intent and the commands that restore the previous state.
-
-
-    **Disable all monitoring related to 4.4**: You need logging/monitoring to see
-    whether SNMP in network operations actually converged after the window.'
+    **Skip change control because 4.4 is low risk** skips change control on a real
+    control-plane feature.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -3719,27 +3688,19 @@ questions:
     text: Validate with show/verify steps before relying on 4.4 changes
   correct:
     answer: a
-  explanation: 'For objective 4.4 (SNMP in network operations), keep a baseline of
-    the show/verify output that proves SNMP in network operations and a written rollback.
-    Skipping logs or treating 4.4 as optional leaves you unable to prove SNMP in network
-    operations still works.
+  explanation: 'Accuracy here means the documented SNMP in network operations behavior,
+    not a mix-up.
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch**: Apply SNMP in network operations,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
+    SNMP GET is UDP 161; traps/informs are 162. `show snmp` / community or v3 group
+    config is the operations check.
 
 
-    **Disable logging permanently while testing 4.4**: You need logging/monitoring
-    to see whether SNMP in network operations actually converged after the window.
+    Correct on this item: Validate with show/verify steps before relying on 4.4 changes.
 
 
-    **Use clear-text shared secrets as the only control for 4.4**: Weak or disabled
-    AAA does not implement SNMP in network operations.
-
-
-    **Validate with show/verify steps before relying on 4.4 changes**: Confirm SNMP
-    in network operations with the show/verify output that proves SNMP in network
-    operations before you rely on the new config.'
+    **Confuse 4.4 with an unrelated Layer mismatch** applies a different OSI layer
+    than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.4
@@ -3763,25 +3724,18 @@ questions:
     text: Disable logging permanently while testing 4.5
   correct:
     answer: a
-  explanation: 'For objective 4.5 (Syslog features), keep a baseline of `show logging`
-    and a written rollback. Skipping logs or treating 4.5 as optional leaves you unable
-    to prove Syslog features still works.
+  explanation: 'During troubleshooting related to 4.5, which observation is most relevant?
+    The useful observation is the one that matches Syslog features.
 
 
-    **Use clear-text shared secrets as the only control for 4.5**: Weak or disabled
-    AAA does not implement Syslog features.
+    Syslog severity 0 is Emergency and 7 is Debug. `show logging` and the trap level
+    tell you what the box will actually send.
 
 
-    **Skip documentation for 4.5 changes in production**: Syslog features still needs
-    a change record and logs; skipping them removes rollback for 4.5.
-
-
-    **Use the standard model for 4.5 rather than a look-alike concept**: Use the documented
-    Syslog features design, then verify with `show logging`.
-
-
-    **Disable logging permanently while testing 4.5**: You need logging/monitoring
-    to see whether Syslog features actually converged after the window.'
+    **Use the standard model for 4.5 rather than a look-alike concept** means use
+    the real protocol/design above, not a look-alike. **Use clear-text shared secrets
+    as the only control for 4.5** weakens device access; it does not implement the
+    feature above.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -3805,25 +3759,18 @@ questions:
     text: Skip documentation for 4.5 changes in production
   correct:
     answer: a
-  explanation: 'For objective 4.5 (Syslog features), keep a baseline of `show logging`
-    and a written rollback. Skipping logs or treating 4.5 as optional leaves you unable
-    to prove Syslog features still works.
+  explanation: 'Configuration intent for 4.5 is the documented Syslog features approach.
 
 
-    **Treat 4.5 as optional when the blueprint lists it**: 4.5 (Syslog features) is
-    on the blueprint; it is not skippable.
+    Syslog severity 0 is Emergency and 7 is Debug. `show logging` and the trap level
+    tell you what the box will actually send.
 
 
-    **Prefer the documented 4.5 approach used in enterprise designs**: Write the Syslog
-    features intent and the commands that restore the previous state.
-
-
-    **Use clear-text shared secrets as the only control for 4.5**: Weak or disabled
-    AAA does not implement Syslog features.
-
-
-    **Skip documentation for 4.5 changes in production**: Syslog features still needs
-    a change record and logs; skipping them removes rollback for 4.5.'
+    **Prefer the documented 4.5 approach used in enterprise designs** records what
+    you meant to configure so the next change is not guesswork. **Treat 4.5 as optional
+    when the blueprint lists it** is wrong: this exam topic is on the blueprint. **Use
+    clear-text shared secrets as the only control for 4.5** weakens device access;
+    it does not implement the feature above.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -3847,25 +3794,18 @@ questions:
     text: Ignore verification and assume 4.5 always works
   correct:
     answer: a
-  explanation: 'For objective 4.5 (Syslog features), keep a baseline of `show logging`
-    and a written rollback. Skipping logs or treating 4.5 as optional leaves you unable
-    to prove Syslog features still works.
+  explanation: 'Map exam topic 4.5 to Syslog features, then confirm it.
 
 
-    **Apply the verified behavior required by objective 4.5**: That is the production-safe
-    action for Syslog features.
+    Syslog severity 0 is Emergency and 7 is Debug. `show logging` and the trap level
+    tell you what the box will actually send.
 
 
-    **Skip documentation for 4.5 changes in production**: Syslog features still needs
-    a change record and logs; skipping them removes rollback for 4.5.
+    Correct on this item: Apply the verified behavior required by objective 4.5.
 
 
-    **Treat 4.5 as optional when the blueprint lists it**: 4.5 (Syslog features) is
-    on the blueprint; it is not skippable.
-
-
-    **Ignore verification and assume 4.5 always works**: Do not assume Syslog features
-    works; check `show logging`.'
+    **Skip documentation for 4.5 changes in production** hides the very output you
+    would use for the check in the previous sentence.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.5
@@ -3893,27 +3833,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 4.6 (DHCP client and relay), keep a baseline of the
-    show/verify output that proves DHCP client and relay and a written rollback. Skipping
-    logs or treating 4.6 as optional leaves you unable to prove DHCP client and relay
-    still works.
+  explanation: 'Every correct action for 4.6 is one that implements or checks DHCP
+    client and relay.
 
 
-    **Verify expected state for 4.6 with show/ping evidence**: Confirm DHCP client
-    and relay with the show/verify output that proves DHCP client and relay before
-    you rely on the new config.
+    A DHCP client uses `ip address dhcp`; relay is `ip helper-address` on the SVI.
+    The binding table, not OSPF, shows the lease.
 
 
-    **Skip change control because 4.6 is low risk**: DHCP client and relay still needs
-    a change record and logs; skipping them removes rollback for 4.6.
-
-
-    **Document the 4.6 design intent and rollback plan**: Write the DHCP client and
-    relay intent and the commands that restore the previous state.
-
-
-    **Disable all monitoring related to 4.6**: You need logging/monitoring to see
-    whether DHCP client and relay actually converged after the window.'
+    **Verify expected state for 4.6 with show/ping evidence** is the evidence habit
+    that matches that check. **Document the 4.6 design intent and rollback plan**
+    records what you meant to configure so the next change is not guesswork. **Skip
+    change control because 4.6 is low risk** skips change control on a real control-plane
+    feature. **Disable all monitoring related to 4.6** blinds you to the failure the
+    show command would have caught.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -3937,27 +3870,19 @@ questions:
     text: Ignore verification and assume 4.6 always works
   correct:
     answer: a
-  explanation: 'For objective 4.6 (DHCP client and relay), keep a baseline of the
-    show/verify output that proves DHCP client and relay and a written rollback. Skipping
-    logs or treating 4.6 as optional leaves you unable to prove DHCP client and relay
-    still works.
+  explanation: 'In production, DHCP client and relay is confirmed — not assumed.
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch**: Apply DHCP client and relay,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
+    A DHCP client uses `ip address dhcp`; relay is `ip helper-address` on the SVI.
+    The binding table, not OSPF, shows the lease.
 
 
-    **Disable logging permanently while testing 4.6**: You need logging/monitoring
-    to see whether DHCP client and relay actually converged after the window.
+    Correct on this item: Use the standard model for 4.6 rather than a look-alike
+    concept.
 
 
-    **Use the standard model for 4.6 rather than a look-alike concept**: Use the documented
-    DHCP client and relay design, then verify with the show/verify output that proves
-    DHCP client and relay.
-
-
-    **Ignore verification and assume 4.6 always works**: Do not assume DHCP client
-    and relay works; check the show/verify output that proves DHCP client and relay.'
+    **Confuse 4.6 with an unrelated Layer mismatch** applies a different OSI layer
+    than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -3981,26 +3906,18 @@ questions:
     text: Disable logging permanently while testing 4.6
   correct:
     answer: a
-  explanation: 'For objective 4.6 (DHCP client and relay), keep a baseline of the
-    show/verify output that proves DHCP client and relay and a written rollback. Skipping
-    logs or treating 4.6 as optional leaves you unable to prove DHCP client and relay
-    still works.
+  explanation: 'Regarding CCNA topic 4.6. Which reply is accurate? The accurate reply
+    is the one that matches DHCP client and relay.
 
 
-    **Use clear-text shared secrets as the only control for 4.6**: Weak or disabled
-    AAA does not implement DHCP client and relay.
+    A DHCP client uses `ip address dhcp`; relay is `ip helper-address` on the SVI.
+    The binding table, not OSPF, shows the lease.
 
 
-    **Prefer the documented 4.6 approach used in enterprise designs**: Write the DHCP
-    client and relay intent and the commands that restore the previous state.
-
-
-    **Confuse 4.6 with an unrelated Layer mismatch**: Apply DHCP client and relay,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
-
-
-    **Disable logging permanently while testing 4.6**: You need logging/monitoring
-    to see whether DHCP client and relay actually converged after the window.'
+    **Prefer the documented 4.6 approach used in enterprise designs** records what
+    you meant to configure so the next change is not guesswork. **Use clear-text shared
+    secrets as the only control for 4.6** weakens device access; it does not implement
+    the feature above.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.6
@@ -4024,26 +3941,17 @@ questions:
     text: Skip documentation for 4.7 changes in production
   correct:
     answer: a
-  explanation: 'For objective 4.7 (QoS per-hop behavior), keep a baseline of the show/verify
-    output that proves QoS per-hop behavior and a written rollback. Skipping logs
-    or treating 4.7 as optional leaves you unable to prove QoS per-hop behavior still
-    works.
+  explanation: 'During troubleshooting related to 4.7, which observation is most relevant?
+    The useful observation is the one that matches QoS per-hop behavior.
 
 
-    **Apply the verified behavior required by objective 4.7**: That is the production-safe
-    action for QoS per-hop behavior.
+    DSCP EF (46) is the voice PHB. `show policy-map interface` shows whether LLQ actually
+    matched EF.
 
 
-    **Disable logging permanently while testing 4.7**: You need logging/monitoring
-    to see whether QoS per-hop behavior actually converged after the window.
-
-
-    **Use clear-text shared secrets as the only control for 4.7**: Weak or disabled
-    AAA does not implement QoS per-hop behavior.
-
-
-    **Skip documentation for 4.7 changes in production**: QoS per-hop behavior still
-    needs a change record and logs; skipping them removes rollback for 4.7.'
+    **Apply the verified behavior required by objective 4.7** is applying that behavior,
+    then confirming it. **Disable logging permanently while testing 4.7** blinds you
+    to the failure the show command would have caught.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -4067,27 +3975,17 @@ questions:
     text: Validate with show/verify steps before relying on 4.7 changes
   correct:
     answer: a
-  explanation: 'For objective 4.7 (QoS per-hop behavior), keep a baseline of the show/verify
-    output that proves QoS per-hop behavior and a written rollback. Skipping logs
-    or treating 4.7 as optional leaves you unable to prove QoS per-hop behavior still
-    works.
+  explanation: 'Which configuration intent aligns with CCNA objective 4.7? Intent
+    should follow the QoS per-hop behavior design, not an ad-hoc substitute.
 
 
-    **Use clear-text shared secrets as the only control for 4.7**: Weak or disabled
-    AAA does not implement QoS per-hop behavior.
+    DSCP EF (46) is the voice PHB. `show policy-map interface` shows whether LLQ actually
+    matched EF.
 
 
-    **Skip documentation for 4.7 changes in production**: QoS per-hop behavior still
-    needs a change record and logs; skipping them removes rollback for 4.7.
-
-
-    **Treat 4.7 as optional when the blueprint lists it**: 4.7 (QoS per-hop behavior)
-    is on the blueprint; it is not skippable.
-
-
-    **Validate with show/verify steps before relying on 4.7 changes**: Confirm QoS
-    per-hop behavior with the show/verify output that proves QoS per-hop behavior
-    before you rely on the new config.'
+    **Validate with show/verify steps before relying on 4.7 changes** is the evidence
+    habit that matches that check. **Use clear-text shared secrets as the only control
+    for 4.7** weakens device access; it does not implement the feature above.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -4115,27 +4013,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 4.7 (QoS per-hop behavior), keep a baseline of the show/verify
-    output that proves QoS per-hop behavior and a written rollback. Skipping logs
-    or treating 4.7 as optional leaves you unable to prove QoS per-hop behavior still
-    works.
+  explanation: 'Pick every action that supports QoS per-hop behavior on this objective.
 
 
-    **Verify expected state for 4.7 with show/ping evidence**: Confirm QoS per-hop
-    behavior with the show/verify output that proves QoS per-hop behavior before you
-    rely on the new config.
+    DSCP EF (46) is the voice PHB. `show policy-map interface` shows whether LLQ actually
+    matched EF.
 
 
-    **Skip change control because 4.7 is low risk**: QoS per-hop behavior still needs
-    a change record and logs; skipping them removes rollback for 4.7.
+    Correct on this item: Verify expected state for 4.7 with show/ping evidence; Document
+    the 4.7 design intent and rollback plan.
 
 
-    **Document the 4.7 design intent and rollback plan**: Write the QoS per-hop behavior
-    intent and the commands that restore the previous state.
-
-
-    **Disable all monitoring related to 4.7**: You need logging/monitoring to see
-    whether QoS per-hop behavior actually converged after the window.'
+    **Skip change control because 4.7 is low risk** skips change control on a real
+    control-plane feature.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -4159,27 +4049,18 @@ questions:
     text: Ignore verification and assume 4.8 always works
   correct:
     answer: a
-  explanation: 'For objective 4.8 (Remote access using SSH), keep a baseline of the
-    show/verify output that proves Remote access using SSH and a written rollback.
-    Skipping logs or treating 4.8 as optional leaves you unable to prove Remote access
-    using SSH still works.
+  explanation: 'Key idea: implement Remote access using SSH as specified for 4.8.
 
 
-    **Confuse 4.8 with an unrelated Layer mismatch**: Apply Remote access using SSH,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
+    SSH (TCP 22) belongs on VTY; Telnet (23) is cleartext. `transport input ssh` and
+    `show ip ssh` are the proof.
 
 
-    **Prefer the documented 4.8 approach used in enterprise designs**: Write the Remote
-    access using SSH intent and the commands that restore the previous state.
+    Correct on this item: Prefer the documented 4.8 approach used in enterprise designs.
 
 
-    **Treat 4.8 as optional when the blueprint lists it**: 4.8 (Remote access using
-    SSH) is on the blueprint; it is not skippable.
-
-
-    **Ignore verification and assume 4.8 always works**: Do not assume Remote access
-    using SSH works; check the show/verify output that proves Remote access using
-    SSH.'
+    **Confuse 4.8 with an unrelated Layer mismatch** applies a different OSI layer
+    than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -4203,27 +4084,18 @@ questions:
     text: Disable logging permanently while testing 4.8
   correct:
     answer: a
-  explanation: 'For objective 4.8 (Remote access using SSH), keep a baseline of the
-    show/verify output that proves Remote access using SSH and a written rollback.
-    Skipping logs or treating 4.8 as optional leaves you unable to prove Remote access
-    using SSH still works.
+  explanation: 'Best practice on 4.8 is the standard Remote access using SSH model
+    plus evidence.
 
 
-    **Apply the verified behavior required by objective 4.8**: That is the production-safe
-    action for Remote access using SSH.
+    SSH (TCP 22) belongs on VTY; Telnet (23) is cleartext. `transport input ssh` and
+    `show ip ssh` are the proof.
 
 
-    **Ignore verification and assume 4.8 always works**: Do not assume Remote access
-    using SSH works; check the show/verify output that proves Remote access using
-    SSH.
-
-
-    **Confuse 4.8 with an unrelated Layer mismatch**: Apply Remote access using SSH,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
-
-
-    **Disable logging permanently while testing 4.8**: You need logging/monitoring
-    to see whether Remote access using SSH actually converged after the window.'
+    **Apply the verified behavior required by objective 4.8** is applying that behavior,
+    then confirming it. **Ignore verification and assume 4.8 always works** skips
+    the verification the stem is pointing at. **Confuse 4.8 with an unrelated Layer
+    mismatch** applies a different OSI layer than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -4247,27 +4119,19 @@ questions:
     text: Validate with show/verify steps before relying on 4.8 changes
   correct:
     answer: a
-  explanation: 'For objective 4.8 (Remote access using SSH), keep a baseline of the
-    show/verify output that proves Remote access using SSH and a written rollback.
-    Skipping logs or treating 4.8 as optional leaves you unable to prove Remote access
-    using SSH still works.
+  explanation: 'Accuracy here means the documented Remote access using SSH behavior,
+    not a mix-up.
 
 
-    **Confuse 4.8 with an unrelated Layer mismatch**: Apply Remote access using SSH,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
+    SSH (TCP 22) belongs on VTY; Telnet (23) is cleartext. `transport input ssh` and
+    `show ip ssh` are the proof.
 
 
-    **Disable logging permanently while testing 4.8**: You need logging/monitoring
-    to see whether Remote access using SSH actually converged after the window.
+    Correct on this item: Validate with show/verify steps before relying on 4.8 changes.
 
 
-    **Use clear-text shared secrets as the only control for 4.8**: Weak or disabled
-    AAA does not implement Remote access using SSH.
-
-
-    **Validate with show/verify steps before relying on 4.8 changes**: Confirm Remote
-    access using SSH with the show/verify output that proves Remote access using SSH
-    before you rely on the new config.'
+    **Confuse 4.8 with an unrelated Layer mismatch** applies a different OSI layer
+    than the fact describes.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.8
@@ -4291,27 +4155,20 @@ questions:
     text: Disable logging permanently while testing 4.9
   correct:
     answer: a
-  explanation: 'For objective 4.9 (TFTP/FTP capabilities), keep a baseline of the
-    show/verify output that proves TFTP/FTP capabilities and a written rollback. Skipping
-    logs or treating 4.9 as optional leaves you unable to prove TFTP/FTP capabilities
-    still works.
+  explanation: 'The relevant observation for TFTP/FTP capabilities is protocol state,
+    not a disabled log.
 
 
-    **Use clear-text shared secrets as the only control for 4.9**: Weak or disabled
-    AAA does not implement TFTP/FTP capabilities.
+    TFTP is UDP 69 (IOS/config); FTP is TCP 21/20. Use the file-transfer protocol
+    the stem named, not a routing protocol.
 
 
-    **Skip documentation for 4.9 changes in production**: TFTP/FTP capabilities still
-    needs a change record and logs; skipping them removes rollback for 4.9.
+    Correct on this item: Use the standard model for 4.9 rather than a look-alike
+    concept.
 
 
-    **Use the standard model for 4.9 rather than a look-alike concept**: Use the documented
-    TFTP/FTP capabilities design, then verify with the show/verify output that proves
-    TFTP/FTP capabilities.
-
-
-    **Disable logging permanently while testing 4.9**: You need logging/monitoring
-    to see whether TFTP/FTP capabilities actually converged after the window.'
+    **Use clear-text shared secrets as the only control for 4.9** weakens device access;
+    it does not implement the feature above.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -4339,27 +4196,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 4.9 (TFTP/FTP capabilities), keep a baseline of the
-    show/verify output that proves TFTP/FTP capabilities and a written rollback. Skipping
-    logs or treating 4.9 as optional leaves you unable to prove TFTP/FTP capabilities
-    still works.
+  explanation: 'Every correct action for 4.9 is one that implements or checks TFTP/FTP
+    capabilities.
 
 
-    **Verify expected state for 4.9 with show/ping evidence**: Confirm TFTP/FTP capabilities
-    with the show/verify output that proves TFTP/FTP capabilities before you rely
-    on the new config.
+    TFTP is UDP 69 (IOS/config); FTP is TCP 21/20. Use the file-transfer protocol
+    the stem named, not a routing protocol.
 
 
-    **Skip change control because 4.9 is low risk**: TFTP/FTP capabilities still needs
-    a change record and logs; skipping them removes rollback for 4.9.
-
-
-    **Document the 4.9 design intent and rollback plan**: Write the TFTP/FTP capabilities
-    intent and the commands that restore the previous state.
-
-
-    **Disable all monitoring related to 4.9**: You need logging/monitoring to see
-    whether TFTP/FTP capabilities actually converged after the window.'
+    **Verify expected state for 4.9 with show/ping evidence** is the evidence habit
+    that matches that check. **Document the 4.9 design intent and rollback plan**
+    records what you meant to configure so the next change is not guesswork. **Skip
+    change control because 4.9 is low risk** skips change control on a real control-plane
+    feature. **Disable all monitoring related to 4.9** blinds you to the failure the
+    show command would have caught.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -4383,26 +4233,17 @@ questions:
     text: Ignore verification and assume 4.9 always works
   correct:
     answer: a
-  explanation: 'For objective 4.9 (TFTP/FTP capabilities), keep a baseline of the
-    show/verify output that proves TFTP/FTP capabilities and a written rollback. Skipping
-    logs or treating 4.9 as optional leaves you unable to prove TFTP/FTP capabilities
-    still works.
+  explanation: 'Select the correct association for exam topic 4.9. Associate 4.9 with
+    the real TFTP/FTP capabilities behavior.
 
 
-    **Apply the verified behavior required by objective 4.9**: That is the production-safe
-    action for TFTP/FTP capabilities.
+    TFTP is UDP 69 (IOS/config); FTP is TCP 21/20. Use the file-transfer protocol
+    the stem named, not a routing protocol.
 
 
-    **Skip documentation for 4.9 changes in production**: TFTP/FTP capabilities still
-    needs a change record and logs; skipping them removes rollback for 4.9.
-
-
-    **Treat 4.9 as optional when the blueprint lists it**: 4.9 (TFTP/FTP capabilities)
-    is on the blueprint; it is not skippable.
-
-
-    **Ignore verification and assume 4.9 always works**: Do not assume TFTP/FTP capabilities
-    works; check the show/verify output that proves TFTP/FTP capabilities.'
+    **Apply the verified behavior required by objective 4.9** is applying that behavior,
+    then confirming it. **Skip documentation for 4.9 changes in production** hides
+    the very output you would use for the check in the previous sentence.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9
@@ -4426,27 +4267,17 @@ questions:
     text: Validate with show/verify steps before relying on 4.9 changes
   correct:
     answer: a
-  explanation: 'For objective 4.9 (TFTP/FTP capabilities), keep a baseline of the
-    show/verify output that proves TFTP/FTP capabilities and a written rollback. Skipping
-    logs or treating 4.9 as optional leaves you unable to prove TFTP/FTP capabilities
-    still works.
+  explanation: 'Which option correctly describes a key idea under 4.9? The key idea
+    is TFTP/FTP capabilities.
 
 
-    **Treat 4.9 as optional when the blueprint lists it**: 4.9 (TFTP/FTP capabilities)
-    is on the blueprint; it is not skippable.
+    TFTP is UDP 69 (IOS/config); FTP is TCP 21/20. Use the file-transfer protocol
+    the stem named, not a routing protocol.
 
 
-    **Ignore verification and assume 4.9 always works**: Do not assume TFTP/FTP capabilities
-    works; check the show/verify output that proves TFTP/FTP capabilities.
-
-
-    **Confuse 4.9 with an unrelated Layer mismatch**: Apply TFTP/FTP capabilities,
-    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
-
-
-    **Validate with show/verify steps before relying on 4.9 changes**: Confirm TFTP/FTP
-    capabilities with the show/verify output that proves TFTP/FTP capabilities before
-    you rely on the new config.'
+    **Validate with show/verify steps before relying on 4.9 changes** is the evidence
+    habit that matches that check. **Treat 4.9 as optional when the blueprint lists
+    it** is wrong: this exam topic is on the blueprint.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.9

@@ -649,16 +649,25 @@ questions:
     text: Only ASN
   correct:
     answer: a
-  explanation: |
-    OSPFv3 Hello includes an **Instance ID**. Routers on the same link form an adjacency only if Instance IDs match. That lets **multiple OSPFv3 instances** share a physical or VLAN interface (for example one instance per VRF or address-family) without merging LSDBs.
+  explanation: 'OSPFv3 Hello includes an **Instance ID**. Routers on the same link
+    form an adjacency only if Instance IDs match. That lets **multiple OSPFv3 instances**
+    share a physical or VLAN interface (for example one instance per VRF or address-family)
+    without merging LSDBs.
+
 
     **Multiple instances on a link** is what Instance ID distinguishes.
 
-    **Only VLAN IDs** are 802.1Q tags. You can run OSPFv3 on an SVI, but the Instance ID is **not** the VLAN ID — two instances can share one VLAN.
+
+    **Only VLAN IDs** are 802.1Q tags. You can run OSPFv3 on an SVI, but the Instance
+    ID is **not** the VLAN ID — two instances can share one VLAN.
+
 
     **Only DSCP** marks IP for QoS. DSCP does not select an OSPFv3 instance.
 
+
     **Only ASN** is BGP. OSPFv3 uses a process/instance ID here, not an AS number.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1069,16 +1078,26 @@ questions:
     text: Only DNS amplification exclusive
   correct:
     answer: a
-  explanation: |
-    Multicast **RPF** (Reverse Path Forwarding) accepts a (S,G) packet only on the interface the unicast RIB would use **toward S**. A packet arriving on the wrong interface is dropped. That stops loops and some spoofed sources.
+  explanation: 'Multicast **RPF** (Reverse Path Forwarding) accepts a (S,G) packet
+    only on the interface the unicast RIB would use **toward S**. A packet arriving
+    on the wrong interface is dropped. That stops loops and some spoofed sources.
+
 
     **Accepting multicast on the wrong reverse path** is what RPF prevents.
 
-    **Only TCP SYN floods exclusive** are a unicast DoS (CoPP, SYN cookies). RPF is a multicast forwarding check, not a SYN-flood mitigator.
 
-    **Only VLAN hopping exclusive** is an L2 attack (double-tag / native VLAN). RPF does not inspect 802.1Q.
+    **Only TCP SYN floods exclusive** are a unicast DoS (CoPP, SYN cookies). RPF is
+    a multicast forwarding check, not a SYN-flood mitigator.
 
-    **Only DNS amplification exclusive** is a reflection DDoS on UDP 53. Multicast RPF is specifically the (S,G) reverse-path check.
+
+    **Only VLAN hopping exclusive** is an L2 attack (double-tag / native VLAN). RPF
+    does not inspect 802.1Q.
+
+
+    **Only DNS amplification exclusive** is a reflection DDoS on UDP 53. Multicast
+    RPF is specifically the (S,G) reverse-path check.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1219,16 +1238,25 @@ questions:
     text: Only a VLAN ID
   correct:
     answer: a
-  explanation: |
-    Cisco **weight** is a 16-bit attribute **local to this router** (default 32768 for originated, 0 for learned). Highest weight wins **first** in the BGP best-path list. It is never advertised in UPDATE messages.
+  explanation: 'Cisco **weight** is a 16-bit attribute **local to this router** (default
+    32768 for originated, 0 for learned). Highest weight wins **first** in the BGP
+    best-path list. It is never advertised in UPDATE messages.
+
 
     **Local to the router and highest preferred first** is weight.
 
-    **Transitive across the AS always** describes attributes like **AS_PATH** or optional-transitive communities. Weight is non-transitive — neighbors never see it.
 
-    **Only an OSPF metric** is cost (reference-bw/bandwidth) inside OSPF. BGP weight is not OSPF cost.
+    **Transitive across the AS always** describes attributes like **AS_PATH** or optional-transitive
+    communities. Weight is non-transitive — neighbors never see it.
+
+
+    **Only an OSPF metric** is cost (reference-bw/bandwidth) inside OSPF. BGP weight
+    is not OSPF cost.
+
 
     **Only a VLAN ID** is 1–4094 on a trunk. Unrelated to BGP best-path.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2678,25 +2706,17 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 3.1 (Layer 2 technologies), keep a baseline of `show
-    ip route` and a written rollback. Skipping logs or treating 3.1 as optional leaves
-    you unable to prove Layer 2 technologies still works.
+  explanation: 'The stem asks which habits are operationally sound for 3.1 (Layer
+    2 technologies).
 
 
-    **Verify before change windows**: Confirm Layer 2 technologies with `show ip route`
-    before you rely on the new config.
+    ENCOR L2 is MST/Rapid PVST+, EtherChannel, and VLANs. `show spanning-tree` / `show
+    etherchannel summary` beat a routing guess.
 
 
-    **Skip documentation**: Layer 2 technologies still needs a change record and logs;
-    skipping them removes rollback for 3.1.
-
-
-    **Capture show/verify outputs**: Confirm Layer 2 technologies with `show ip route`
-    before you rely on the new config.
-
-
-    **Disable logging permanently**: You need logging/monitoring to see whether Layer
-    2 technologies actually converged after the window.'
+    **Verify before change windows** is the evidence habit that matches that check.
+    **Skip documentation** hides the very output you would use for the check in the
+    previous sentence.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -2723,25 +2743,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 3.2 (Layer 3 technologies), keep a baseline of `show
-    ip route` longest-match / next-hop and a written rollback. Skipping logs or treating
-    3.2 as optional leaves you unable to prove Layer 3 technologies still works.
+  explanation: 'This multiple-select is about how you operate Layer 3 technologies,
+    not a trivia fact.
 
 
-    **Verify before change windows**: Confirm Layer 3 technologies with `show ip route`
-    longest-match / next-hop before you rely on the new config.
+    ENCOR L3 is OSPF/EIGRP/BGP path selection. `show ip route` longest-match and AD
+    (eBGP 20, OSPF 110, iBGP 200) are the tools.
 
 
-    **Skip documentation**: Layer 3 technologies still needs a change record and logs;
-    skipping them removes rollback for 3.2.
+    Correct on this item: Verify before change windows; Capture show/verify outputs.
 
 
-    **Capture show/verify outputs**: Confirm Layer 3 technologies with `show ip route`
-    longest-match / next-hop before you rely on the new config.
-
-
-    **Disable logging permanently**: You need logging/monitoring to see whether Layer
-    3 technologies actually converged after the window.'
+    **Skip documentation** hides the very output you would use for the check in the
+    previous sentence.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2768,25 +2782,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 3.3 (Wireless technologies), keep a baseline of `show
-    ip route` for the floating static and a written rollback. Skipping logs or treating
-    3.3 as optional leaves you unable to prove Wireless technologies still works.
+  explanation: 'This multiple-select is about how you operate Wireless technologies,
+    not a trivia fact.
 
 
-    **Verify before change windows**: Confirm Wireless technologies with `show ip
-    route` for the floating static before you rely on the new config.
+    Wireless infrastructure is CAPWAP, RRM, and roaming. RF/WLC evidence is not an
+    OSPF LSA.
 
 
-    **Skip documentation**: Wireless technologies still needs a change record and
-    logs; skipping them removes rollback for 3.3.
+    Correct on this item: Verify before change windows; Capture show/verify outputs.
 
 
-    **Capture show/verify outputs**: Confirm Wireless technologies with `show ip route`
-    for the floating static before you rely on the new config.
-
-
-    **Disable logging permanently**: You need logging/monitoring to see whether Wireless
-    technologies actually converged after the window.'
+    **Skip documentation** hides the very output you would use for the check in the
+    previous sentence.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3

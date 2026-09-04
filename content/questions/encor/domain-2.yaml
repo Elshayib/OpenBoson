@@ -367,16 +367,24 @@ questions:
     text: Only age CAM
   correct:
     answer: a
-  explanation: |
-    **GRE** tunnels any payload (including multicast/IGP) but is cleartext. **IPsec** (tunnel, VTI, or IPsec protecting GRE) **encrypts** that overlay so site-to-site traffic is confidential.
+  explanation: '**GRE** tunnels any payload (including multicast/IGP) but is cleartext.
+    **IPsec** (tunnel, VTI, or IPsec protecting GRE) **encrypts** that overlay so
+    site-to-site traffic is confidential.
+
 
     **Encrypt tunneled overlays** is why GRE+IPsec (or an IPsec VTI) is used.
 
-    **Only hash EtherChannels** is `port-channel load-balance src-dst-ip`. That is CEF hashing on a bundle, not IPsec.
+
+    **Only hash EtherChannels** is `port-channel load-balance src-dst-ip`. That is
+    CEF hashing on a bundle, not IPsec.
+
 
     **Only elect DR** is OSPF on a multiaccess link. IPsec/GRE does not elect a DR.
 
+
     **Only age CAM** is MAC-table aging on a switch. Unrelated to overlay encryption.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1956,25 +1964,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 2.1 (Device virtualization technologies), keep a baseline
-    of `show vlan brief` and a written rollback. Skipping logs or treating 2.1 as
-    optional leaves you unable to prove Device virtualization technologies still works.
+  explanation: 'Operationally sound work on Device virtualization technologies still
+    means verify, then document.
 
 
-    **Verify before change windows**: Confirm Device virtualization technologies with
-    `show vlan brief` before you rely on the new config.
+    Device virtualization is VMs, containers, and VRFs on one box. A VRF is a RIB/FIB
+    instance — not an STP instance.
 
 
-    **Skip documentation**: Device virtualization technologies still needs a change
-    record and logs; skipping them removes rollback for 2.1.
-
-
-    **Capture show/verify outputs**: Confirm Device virtualization technologies with
-    `show vlan brief` before you rely on the new config.
-
-
-    **Disable logging permanently**: You need logging/monitoring to see whether Device
-    virtualization technologies actually converged after the window.'
+    **Verify before change windows** is the evidence habit that matches that check.
+    **Capture show/verify outputs** is the evidence habit that matches that check.
+    **Skip documentation** hides the very output you would use for the check in the
+    previous sentence. **Disable logging permanently** blinds you to the failure the
+    show command would have caught.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -2001,25 +2003,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 2.2 (Data path virtualization), keep a baseline of `show
-    interfaces trunk` and a written rollback. Skipping logs or treating 2.2 as optional
-    leaves you unable to prove Data path virtualization still works.
+  explanation: 'Operationally sound work on Data path virtualization still means verify,
+    then document.
 
 
-    **Verify before change windows**: Confirm Data path virtualization with `show
-    interfaces trunk` before you rely on the new config.
+    Data-path virtualization is VXLAN/GRE/IPsec tunnels carrying tenant traffic over
+    a shared underlay. Check the tunnel, not only the access VLAN.
 
 
-    **Skip documentation**: Data path virtualization still needs a change record and
-    logs; skipping them removes rollback for 2.2.
-
-
-    **Capture show/verify outputs**: Confirm Data path virtualization with `show interfaces
-    trunk` before you rely on the new config.
-
-
-    **Disable logging permanently**: You need logging/monitoring to see whether Data
-    path virtualization actually converged after the window.'
+    **Verify before change windows** is the evidence habit that matches that check.
+    **Capture show/verify outputs** is the evidence habit that matches that check.
+    **Skip documentation** hides the very output you would use for the check in the
+    previous sentence. **Disable logging permanently** blinds you to the failure the
+    show command would have caught.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -2046,28 +2042,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For objective 2.3 (Network virtualization concepts), keep a baseline
-    of the show/verify output that proves Network virtualization concepts and a written
-    rollback. Skipping logs or treating 2.3 as optional leaves you unable to prove
-    Network virtualization concepts still works.
+  explanation: 'Operationally sound work on Network virtualization concepts still
+    means verify, then document.
 
 
-    **Verify before change windows**: Confirm Network virtualization concepts with
-    the show/verify output that proves Network virtualization concepts before you
-    rely on the new config.
+    Network virtualization is LISP/VXLAN VNIs and VRFs mapping endpoints to overlay
+    IDs. A VNI is not a VLAN 1 native.
 
 
-    **Skip documentation**: Network virtualization concepts still needs a change record
-    and logs; skipping them removes rollback for 2.3.
-
-
-    **Capture show/verify outputs**: Confirm Network virtualization concepts with
-    the show/verify output that proves Network virtualization concepts before you
-    rely on the new config.
-
-
-    **Disable logging permanently**: You need logging/monitoring to see whether Network
-    virtualization concepts actually converged after the window.'
+    **Verify before change windows** is the evidence habit that matches that check.
+    **Capture show/verify outputs** is the evidence habit that matches that check.
+    **Skip documentation** hides the very output you would use for the check in the
+    previous sentence. **Disable logging permanently** blinds you to the failure the
+    show command would have caught.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
