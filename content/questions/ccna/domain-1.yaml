@@ -389,22 +389,16 @@ questions:
     text: Hybrid CDN
   correct:
     answer: a
-  explanation: 'Private cloud is single-tenant for one organization.
+  explanation: |
+    Private cloud keeps compute, storage, and network for **one organization** (on-prem or a dedicated hosted tenancy). That is the exclusive-use model.
 
+    **Private cloud** is single-tenant: the org controls who shares the infrastructure.
 
-    **Public cloud**: “Which cloud deployment model keeps infrastructure exclusively
-    for one organization” is answered by Private cloud. Public cloud does not do that
-    job.
+    **Public cloud** (AWS/Azure/GCP) is multi-tenant. Many customers share the provider’s fabric, so it is not exclusive to one org.
 
+    **Community only** is shared by several organizations with a common mission (for example a set of agencies). More than one tenant.
 
-    **Community only**: “Which cloud deployment model keeps infrastructure exclusively
-    for one organization” is answered by Private cloud. Community only does not do
-    that job.
-
-
-    **Hybrid CDN**: “Which cloud deployment model keeps infrastructure exclusively
-    for one organization” is answered by Private cloud. Hybrid CDN does not do that
-    job.'
+    **Hybrid CDN** mixes on-prem with a content-delivery overlay. A CDN caches content; it is not a single-tenant private cloud.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.2
@@ -800,19 +794,16 @@ questions:
     text: 198.51.100.0/24
   correct:
     answer: a
-  explanation: '10.0.0.0/8 is the Class A private range.
+  explanation: |
+    RFC 1918 private IPv4: **10.0.0.0/8** (Class A), **172.16.0.0/12** (Class B), **192.168.0.0/16** (Class C).
 
+    **10.0.0.0/8** is the Class A private block (10.0.0.0–10.255.255.255).
 
-    **172.32.0.0/12**: “Which RFC 1918 range is a Class A private block” is answered
-    by 10.0.0.0/8. 172.32.0.0/12 does not do that job.
+    **172.32.0.0/12** is not RFC 1918. The private Class B block is **172.16.0.0/12** (172.16.0.0–172.31.255.255). 172.32.0.0 is public.
 
+    **192.169.0.0/16** is public. The Class C private block is **192.168.0.0/16**.
 
-    **192.169.0.0/16**: “Which RFC 1918 range is a Class A private block” is answered
-    by 10.0.0.0/8. 192.169.0.0/16 does not do that job.
-
-
-    **198.51.100.0/24**: “Which RFC 1918 range is a Class A private block” is answered
-    by 10.0.0.0/8. 198.51.100.0/24 does not do that job.'
+    **198.51.100.0/24** is TEST-NET-2 (RFC 5737 documentation), not a private range.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.7
@@ -953,19 +944,16 @@ questions:
     text: route print only without IP
   correct:
     answer: a
-  explanation: 'ipconfig displays adapter addressing on Windows.
+  explanation: |
+    On Windows, **`ipconfig`** (and `ipconfig /all`) prints IPv4/IPv6, mask, and default gateway per adapter.
 
+    **ipconfig** is the Windows client command for that output.
 
-    **ifconfig only (Windows default)**: “On Windows, which command shows IP configuration”
-    is answered by ipconfig. ifconfig only (Windows default) does not do that job.
+    **ifconfig only (Windows default)** is a Unix/Linux command. Current Windows does not ship `ifconfig` as the default IP display tool.
 
+    **show ip route** is Cisco IOS — it dumps the router RIB, not a Windows NIC.
 
-    **show ip route**: “On Windows, which command shows IP configuration” is answered
-    by ipconfig. show ip route does not do that job.
-
-
-    **route print only without IP**: “On Windows, which command shows IP configuration”
-    is answered by ipconfig. route print only without IP does not do that job.'
+    **route print only without IP** shows the Windows routing table. It does not list the adapter address and mask the way `ipconfig` does.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.10
@@ -1028,26 +1016,16 @@ questions:
     text: Only VLAN tagging
   correct:
     answer: a
-  explanation: 'SMF has a smaller core and supports longer reaches.
+  explanation: |
+    **Single-mode fiber (SMF)** has a ~9 µm core and carries one mode for long reach (km). **Multimode (MMF)** has a 50/62.5 µm core for shorter building/campus runs.
 
+    **Core size / distance capability** is the primary physical difference.
 
-    **Core size / distance capability**: SMF has a smaller core and supports longer
-    reaches.
+    **Only connector color mandatory** (blue UPC vs green APC, beige vs aqua) is a convention, not what makes SMF go farther.
 
+    **Only PoE support** is a copper Ethernet feature (802.3af/at/bt). Fiber does not carry PoE.
 
-    **Only connector color mandatory**: “Single-mode fiber vs multimode primarily
-    differs in” is answered by Core size / distance capability. Only connector color
-    mandatory does not do that job.
-
-
-    **Only PoE support**: “Single-mode fiber vs multimode primarily differs in” is
-    answered by Core size / distance capability. Only PoE support does not do that
-    job.
-
-
-    **Only VLAN tagging**: “Single-mode fiber vs multimode primarily differs in” is
-    answered by Core size / distance capability. Only VLAN tagging does not do that
-    job.'
+    **Only VLAN tagging** is 802.1Q on frames. Both SMF and MMF carry tagged Ethernet; tagging is not an optical-mode property.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.3

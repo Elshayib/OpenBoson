@@ -309,24 +309,26 @@ questions:
     text: Only GLBP
   correct:
     answer: a
-  explanation: 'Anycast SVI provides local gateway on each leaf.
+  explanation: 'In a VXLAN/EVPN or SD-Access fabric, the **anycast gateway** is the
+    **same SVI IP (and often MAC)** configured on every leaf. Hosts ARP to a local
+    leaf instead of hairpinning to a distant HSRP pair.
 
 
-    **Same gateway IP on multiple leaves**: Anycast SVI provides local gateway on
-    each leaf.
+    **Same gateway IP on multiple leaves** is that anycast SVI.
 
 
-    **Unique gateway per VLAN only globally**: “An anycast gateway in fabric means”
-    is answered by Same gateway IP on multiple leaves. Unique gateway per VLAN only
-    globally does not do that job.
+    **Unique gateway per VLAN only globally** would force all traffic to one central
+    first-hop, which is the opposite of anycast.
 
 
-    **Only HSRP v1 required**: “An anycast gateway in fabric means” is answered by
-    Same gateway IP on multiple leaves. Only HSRP v1 required does not do that job.
+    **Only HSRP v1 required** is a campus FHRP (virtual IP/MAC, active/standby). Fabric
+    anycast does not require HSRPv1.
 
 
-    **Only GLBP**: “An anycast gateway in fabric means” is answered by Same gateway
-    IP on multiple leaves. Only GLBP does not do that job.'
+    **Only GLBP** is Cisco’s load-sharing FHRP with AVG/AVF. Fabric anycast is not
+    GLBP.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -664,26 +666,26 @@ questions:
     text: Only Token Ring bridges
   correct:
     answer: a
-  explanation: 'Borders connect fabric to non-fabric domains.
+  explanation: 'When a traditional campus must talk to **SD-Access**, traffic crosses
+    a **border/fusion** node: fabric VN to VRF-lite, SGT mapping, and often a fusion
+    router for shared services (DHCP/DNS/Internet).
 
 
-    **Border/fusion design considerations**: Borders connect fabric to non-fabric
-    domains.
+    **Border/fusion design considerations** is that interop.
 
 
-    **Only disabling all routing**: “Traditional campus interoperating with SD-Access
-    often needs” is answered by Border/fusion design considerations. Only disabling
-    all routing does not do that job.
+    **Only disabling all routing** would isolate the sites. You still need underlay
+    and fusion routing.
 
 
-    **Only removing VLANs forever**: “Traditional campus interoperating with SD-Access
-    often needs” is answered by Border/fusion design considerations. Only removing
-    VLANs forever does not do that job.
+    **Only removing VLANs forever** is unnecessary; the traditional side still uses
+    VLANs, mapped into fabric VNs at the border.
 
 
-    **Only Token Ring bridges**: “Traditional campus interoperating with SD-Access
-    often needs” is answered by Border/fusion design considerations. Only Token Ring
-    bridges does not do that job.'
+    **Only Token Ring bridges** are obsolete L2. SD-Access interop is IP/VXLAN/LISP,
+    not Token Ring.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -3388,22 +3390,24 @@ questions:
     text: Only age CAM
   correct:
     answer: a
-  explanation: 'IPsec protects GRE/IP overlays.
+  explanation: '**GRE** tunnels any payload (including multicast/IGP) but is cleartext.
+    **IPsec** (tunnel, VTI, or IPsec protecting GRE) **encrypts** that overlay so
+    site-to-site traffic is confidential.
 
 
-    **Encrypt tunneled overlays**: IPsec protects GRE/IP overlays.
+    **Encrypt tunneled overlays** is why GRE+IPsec (or an IPsec VTI) is used.
 
 
-    **Only hash EtherChannels**: “IPsec with GRE is often used to” is answered by
-    Encrypt tunneled overlays. Only hash EtherChannels does not do that job.
+    **Only hash EtherChannels** is `port-channel load-balance src-dst-ip`. That is
+    CEF hashing on a bundle, not IPsec.
 
 
-    **Only elect DR**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
-    overlays. Only elect DR does not do that job.
+    **Only elect DR** is OSPF on a multiaccess link. IPsec/GRE does not elect a DR.
 
 
-    **Only age CAM**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
-    overlays. Only age CAM does not do that job.'
+    **Only age CAM** is MAC-table aging on a switch. Unrelated to overlay encryption.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -5748,22 +5752,25 @@ questions:
     text: Only ASN
   correct:
     answer: a
-  explanation: 'Instance ID.
+  explanation: 'OSPFv3 Hello includes an **Instance ID**. Routers on the same link
+    form an adjacency only if Instance IDs match. That lets **multiple OSPFv3 instances**
+    share a physical or VLAN interface (for example one instance per VRF or address-family)
+    without merging LSDBs.
 
 
-    **Multiple instances on a link**: Instance ID.
+    **Multiple instances on a link** is what Instance ID distinguishes.
 
 
-    **Only VLAN IDs**: “OSPFv3 instance ID distinguishes” is answered by Multiple
-    instances on a link. Only VLAN IDs does not do that job.
+    **Only VLAN IDs** are 802.1Q tags. You can run OSPFv3 on an SVI, but the Instance
+    ID is **not** the VLAN ID — two instances can share one VLAN.
 
 
-    **Only DSCP**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
-    on a link. Only DSCP does not do that job.
+    **Only DSCP** marks IP for QoS. DSCP does not select an OSPFv3 instance.
 
 
-    **Only ASN**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
-    on a link. Only ASN does not do that job.'
+    **Only ASN** is BGP. OSPFv3 uses a process/instance ID here, not an AS number.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -6174,26 +6181,26 @@ questions:
     text: Only DNS amplification exclusive
   correct:
     answer: a
-  explanation: 'RPF validates expected reverse path to source.
+  explanation: 'Multicast **RPF** (Reverse Path Forwarding) accepts a (S,G) packet
+    only on the interface the unicast RIB would use **toward S**. A packet arriving
+    on the wrong interface is dropped. That stops loops and some spoofed sources.
 
 
-    **Accepting multicast on the wrong reverse path**: RPF validates expected reverse
-    path to source.
+    **Accepting multicast on the wrong reverse path** is what RPF prevents.
 
 
-    **Only TCP SYN floods exclusive**: “RPF check in multicast prevents” is answered
-    by Accepting multicast on the wrong reverse path. Only TCP SYN floods exclusive
-    does not do that job.
+    **Only TCP SYN floods exclusive** are a unicast DoS (CoPP, SYN cookies). RPF is
+    a multicast forwarding check, not a SYN-flood mitigator.
 
 
-    **Only VLAN hopping exclusive**: “RPF check in multicast prevents” is answered
-    by Accepting multicast on the wrong reverse path. Only VLAN hopping exclusive
-    does not do that job.
+    **Only VLAN hopping exclusive** is an L2 attack (double-tag / native VLAN). RPF
+    does not inspect 802.1Q.
 
 
-    **Only DNS amplification exclusive**: “RPF check in multicast prevents” is answered
-    by Accepting multicast on the wrong reverse path. Only DNS amplification exclusive
-    does not do that job.'
+    **Only DNS amplification exclusive** is a reflection DDoS on UDP 53. Multicast
+    RPF is specifically the (S,G) reverse-path check.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -6334,25 +6341,25 @@ questions:
     text: Only a VLAN ID
   correct:
     answer: a
-  explanation: 'Cisco weight is local and considered early.
+  explanation: 'Cisco **weight** is a 16-bit attribute **local to this router** (default
+    32768 for originated, 0 for learned). Highest weight wins **first** in the BGP
+    best-path list. It is never advertised in UPDATE messages.
 
 
-    **Local to the router and highest preferred first**: Cisco weight is local and
-    considered early.
+    **Local to the router and highest preferred first** is weight.
 
 
-    **Transitive across the AS always**: “eBGP best-path weight (Cisco) is” is answered
-    by Local to the router and highest preferred first. Transitive across the AS always
-    does not do that job.
+    **Transitive across the AS always** describes attributes like **AS_PATH** or optional-transitive
+    communities. Weight is non-transitive — neighbors never see it.
 
 
-    **Only an OSPF metric**: “eBGP best-path weight (Cisco) is” is answered by Local
-    to the router and highest preferred first. Only an OSPF metric does not do that
-    job.
+    **Only an OSPF metric** is cost (reference-bw/bandwidth) inside OSPF. BGP weight
+    is not OSPF cost.
 
 
-    **Only a VLAN ID**: “eBGP best-path weight (Cisco) is” is answered by Local to
-    the router and highest preferred first. Only a VLAN ID does not do that job.'
+    **Only a VLAN ID** is 1–4094 on a trunk. Unrelated to BGP best-path.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -8242,22 +8249,23 @@ questions:
     text: Only VTP password
   correct:
     answer: a
-  explanation: 'Jitter/latency probes.
+  explanation: '**IP SLA jitter** (`udp-jitter`) measures delay, jitter, and loss
+    toward a responder — the numbers used to judge **voice/video** path quality (and
+    to feed tracking/PfR).
 
 
-    **Voice/video path quality assessment**: Jitter/latency probes.
+    **Voice/video path quality assessment** is the use case.
 
 
-    **Only VLAN creation**: “IP SLA jitter tests help” is answered by Voice/video
-    path quality assessment. Only VLAN creation does not do that job.
+    **Only VLAN creation** is `vlan N`. SLA probes do not create VLANs.
 
 
-    **Only ACL lines**: “IP SLA jitter tests help” is answered by Voice/video path
-    quality assessment. Only ACL lines does not do that job.
+    **Only ACL lines** are `permit`/`deny` entries. SLA is `ip sla N` / `udp-jitter`.
 
 
-    **Only VTP password**: “IP SLA jitter tests help” is answered by Voice/video path
-    quality assessment. Only VTP password does not do that job.'
+    **Only VTP password** authenticates VTP. Unrelated to jitter probes.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -14749,24 +14757,26 @@ questions:
     text: Only configure PortFast
   correct:
     answer: a
-  explanation: 'Controller APIs cover SD-WAN Manager.
+  explanation: '**Cisco SD-WAN Manager** (vManage) exposes REST APIs to **push templates,
+    policies, and operational queries** against the WAN fabric — inventory, device
+    config, App-route/AAR policy — rather than clicking every vEdge/cEdge.
 
 
-    **Automate WAN fabric operations/policy**: Controller APIs cover SD-WAN Manager.
+    **Automate WAN fabric operations/policy** is that API role.
 
 
-    **Only set STP priority**: “SD-WAN Manager APIs are used to” is answered by Automate
-    WAN fabric operations/policy. Only set STP priority does not do that job.
+    **Only set STP priority** is `spanning-tree vlan N priority` on a campus switch.
+    vManage APIs are not an STP tool.
 
 
-    **Only create VLANs on access**: “SD-WAN Manager APIs are used to” is answered
-    by Automate WAN fabric operations/policy. Only create VLANs on access does not
-    do that job.
+    **Only create VLANs on access** is access-layer switching. SD-WAN Manager drives
+    WAN overlay and policy.
 
 
-    **Only configure PortFast**: “SD-WAN Manager APIs are used to” is answered by
-    Automate WAN fabric operations/policy. Only configure PortFast does not do that
-    job.'
+    **Only configure PortFast** is `spanning-tree portfast`. Not an SD-WAN Manager
+    function.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -14866,22 +14876,24 @@ questions:
     text: Only STP costs exclusive
   correct:
     answer: a
-  explanation: 'Dicts are core Python structures.
+  explanation: 'A Python **dict** maps **keys to values** (`d["rid"] = "1.1.1.1"`).
+    That is the core associative array used in NETCONF/REST payloads and scripts.
 
 
-    **Keys to values**: Dicts are core Python structures.
+    **Keys to values** is the definition.
 
 
-    **Only VLANs to VNIs exclusive**: “Python dictionaries map” is answered by Keys
-    to values. Only VLANs to VNIs exclusive does not do that job.
+    **Only VLANs to VNIs exclusive** might be *one* dict you write (`{10: 10010}`),
+    but dicts are a general type, not a VLAN/VNI structure.
 
 
-    **Only AS paths**: “Python dictionaries map” is answered by Keys to values. Only
-    AS paths does not do that job.
+    **Only AS paths** are BGP attributes (lists of ASNs), not Python’s dict type.
 
 
-    **Only STP costs exclusive**: “Python dictionaries map” is answered by Keys to
-    values. Only STP costs exclusive does not do that job.'
+    **Only STP costs exclusive** are integers on switch ports (`spanning-tree cost`).
+    Not what a dict is.
+
+    '
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1

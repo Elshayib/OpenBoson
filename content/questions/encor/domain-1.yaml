@@ -250,24 +250,16 @@ questions:
     text: Only GLBP
   correct:
     answer: a
-  explanation: 'Anycast SVI provides local gateway on each leaf.
+  explanation: |
+    In a VXLAN/EVPN or SD-Access fabric, the **anycast gateway** is the **same SVI IP (and often MAC)** configured on every leaf. Hosts ARP to a local leaf instead of hairpinning to a distant HSRP pair.
 
+    **Same gateway IP on multiple leaves** is that anycast SVI.
 
-    **Same gateway IP on multiple leaves**: Anycast SVI provides local gateway on
-    each leaf.
+    **Unique gateway per VLAN only globally** would force all traffic to one central first-hop, which is the opposite of anycast.
 
+    **Only HSRP v1 required** is a campus FHRP (virtual IP/MAC, active/standby). Fabric anycast does not require HSRPv1.
 
-    **Unique gateway per VLAN only globally**: “An anycast gateway in fabric means”
-    is answered by Same gateway IP on multiple leaves. Unique gateway per VLAN only
-    globally does not do that job.
-
-
-    **Only HSRP v1 required**: “An anycast gateway in fabric means” is answered by
-    Same gateway IP on multiple leaves. Only HSRP v1 required does not do that job.
-
-
-    **Only GLBP**: “An anycast gateway in fabric means” is answered by Same gateway
-    IP on multiple leaves. Only GLBP does not do that job.'
+    **Only GLBP** is Cisco’s load-sharing FHRP with AVG/AVF. Fabric anycast is not GLBP.
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -605,26 +597,16 @@ questions:
     text: Only Token Ring bridges
   correct:
     answer: a
-  explanation: 'Borders connect fabric to non-fabric domains.
+  explanation: |
+    When a traditional campus must talk to **SD-Access**, traffic crosses a **border/fusion** node: fabric VN to VRF-lite, SGT mapping, and often a fusion router for shared services (DHCP/DNS/Internet).
 
+    **Border/fusion design considerations** is that interop.
 
-    **Border/fusion design considerations**: Borders connect fabric to non-fabric
-    domains.
+    **Only disabling all routing** would isolate the sites. You still need underlay and fusion routing.
 
+    **Only removing VLANs forever** is unnecessary; the traditional side still uses VLANs, mapped into fabric VNs at the border.
 
-    **Only disabling all routing**: “Traditional campus interoperating with SD-Access
-    often needs” is answered by Border/fusion design considerations. Only disabling
-    all routing does not do that job.
-
-
-    **Only removing VLANs forever**: “Traditional campus interoperating with SD-Access
-    often needs” is answered by Border/fusion design considerations. Only removing
-    VLANs forever does not do that job.
-
-
-    **Only Token Ring bridges**: “Traditional campus interoperating with SD-Access
-    often needs” is answered by Border/fusion design considerations. Only Token Ring
-    bridges does not do that job.'
+    **Only Token Ring bridges** are obsolete L2. SD-Access interop is IP/VXLAN/LISP, not Token Ring.
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3

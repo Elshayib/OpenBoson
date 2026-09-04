@@ -20,23 +20,16 @@ questions:
     text: SPIDs to DLCI
   correct:
     answer: a
-  explanation: 'DNS resolves names to addresses (and reverse lookups).
+  explanation: |
+    **DNS** maps names to addresses: **A** (IPv4) and **AAAA** (IPv6) for forward lookup, **PTR** for reverse.
 
+    **Names to IP addresses** is that primary job (plus reverse).
 
-    **Names to IP addresses**: DNS resolves names to addresses (and reverse lookups).
+    **MAC to VLAN** is a switch CAM / access-VLAN assignment (`switchport access vlan`), not DNS.
 
+    **AS numbers to communities** is BGP policy (`set community`), not name resolution.
 
-    **MAC to VLAN**: “DNS primarily maps which of the following” is answered by Names
-    to IP addresses. MAC to VLAN does not do that job.
-
-
-    **AS numbers to communities**: “DNS primarily maps which of the following” is
-    answered by Names to IP addresses. AS numbers to communities does not do that
-    job.
-
-
-    **SPIDs to DLCI**: “DNS primarily maps which of the following” is answered by
-    Names to IP addresses. SPIDs to DLCI does not do that job.'
+    **SPIDs to DLCI** are ISDN and Frame Relay identifiers — legacy WAN, not DNS.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -493,22 +486,16 @@ questions:
     text: VLAN to VNI
   correct:
     answer: a
-  explanation: 'Forward DNS resolves names to addresses.
+  explanation: |
+    A **forward lookup** asks “what address has this name?” and returns **A/AAAA**. Reverse (PTR) is the other direction.
 
+    **Name to IP** is forward DNS.
 
-    **Name to IP**: Forward DNS resolves names to addresses.
+    **IP to MAC only** is **ARP** (or NDP for IPv6) on the local LAN, not DNS.
 
+    **AS to community** is a BGP attribute mapping, not DNS.
 
-    **IP to MAC only**: “DNS forward lookup maps” is answered by Name to IP. IP to
-    MAC only does not do that job.
-
-
-    **AS to community**: “DNS forward lookup maps” is answered by Name to IP. AS to
-    community does not do that job.
-
-
-    **VLAN to VNI**: “DNS forward lookup maps” is answered by Name to IP. VLAN to
-    VNI does not do that job.'
+    **VLAN to VNI** is a VXLAN/EVPN encapsulation mapping, not DNS.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -571,22 +558,16 @@ questions:
     text: Only disables CDP
   correct:
     answer: a
-  explanation: 'Policers enforce rates by drop/remark.
+  explanation: |
+    **Policing** meters a class and **drops** or **remarks** (for example to DSCP AF) packets over a committed rate (`police cir ... exceed-action drop`). It does not buffer/delay like shaping.
 
+    **Drops or remarks excess over a rate** is the policer action.
 
-    **Drops or remarks excess over a rate**: Policers enforce rates by drop/remark.
+    **Only increases STP diameter** would add switches/hops to spanning tree. A QoS police map does not change STP diameter.
 
+    **Only creates VLANs** is `vlan N`. Policers live in a policy-map, not the VLAN database.
 
-    **Only increases STP diameter**: “Traffic policing typically” is answered by Drops
-    or remarks excess over a rate. Only increases STP diameter does not do that job.
-
-
-    **Only creates VLANs**: “Traffic policing typically” is answered by Drops or remarks
-    excess over a rate. Only creates VLANs does not do that job.
-
-
-    **Only disables CDP**: “Traffic policing typically” is answered by Drops or remarks
-    excess over a rate. Only disables CDP does not do that job.'
+    **Only disables CDP** is `no cdp enable`. Unrelated to rate enforcement.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -763,20 +744,16 @@ questions:
     text: show etherchannel summary
   correct:
     answer: a
-  explanation: 'show ntp associations displays peer/server sync state.
+  explanation: |
+    **`show ntp associations`** lists NTP peers, stratum, reach, delay, and which server is selected (`*`).
 
+    **show ntp associations** is the IOS command for that table.
 
-    **show vlan brief**: “Which command shows NTP associations on IOS” is answered
-    by show ntp associations. show vlan brief does not do that job.
+    **show vlan brief** lists L2 VLANs on a switch — no NTP.
 
+    **show spanning-tree** shows STP root/roles/states — no NTP.
 
-    **show spanning-tree**: “Which command shows NTP associations on IOS” is answered
-    by show ntp associations. show spanning-tree does not do that job.
-
-
-    **show etherchannel summary**: “Which command shows NTP associations on IOS” is
-    answered by show ntp associations. show etherchannel summary does not do that
-    job.'
+    **show etherchannel summary** shows Port-Channel members — no NTP.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2

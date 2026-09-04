@@ -549,26 +549,16 @@ questions:
     text: Disable all trunks
   correct:
     answer: a
-  explanation: 'Transparent mode forwards VTP without syncing the VLAN database.
+  explanation: |
+    A **VTP transparent** switch does not originate or apply VTP updates to its own VLAN database. It **forwards** advertisements on trunks so a server/client domain can still pass through (`vtp mode transparent`).
 
+    **Forward them but do not sync VLAN DB from them** is transparent-mode behavior. VLANs are created locally on that switch.
 
-    **Forward them but do not sync VLAN DB from them**: Transparent mode forwards
-    VTP without syncing the VLAN database.
+    **Always overwrite clients** is **VTP server** behavior when a higher revision arrives. Transparent switches do not overwrite anyone’s VLAN DB from VTP.
 
+    **Drop all BPDUs** is STP (BPDU Guard/Filter). VTP messages are not STP BPDUs.
 
-    **Always overwrite clients**: “VTP transparent switches do what with VTP advertisements”
-    is answered by Forward them but do not sync VLAN DB from them. Always overwrite
-    clients does not do that job.
-
-
-    **Drop all BPDUs**: “VTP transparent switches do what with VTP advertisements”
-    is answered by Forward them but do not sync VLAN DB from them. Drop all BPDUs
-    does not do that job.
-
-
-    **Disable all trunks**: “VTP transparent switches do what with VTP advertisements”
-    is answered by Forward them but do not sync VLAN DB from them. Disable all trunks
-    does not do that job.'
+    **Disable all trunks** would isolate VLANs from neighbors. Transparent mode still trunks; it just ignores VTP for its own database.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -631,26 +621,16 @@ questions:
     text: Random MTUs
   correct:
     answer: a
-  explanation: 'Inconsistent member settings suspend the channel.
+  explanation: |
+    EtherChannel members must match **speed, duplex, switchport mode, native VLAN, allowed VLAN set, and LACP/PAgP mode**. A mismatch suspends the member (`show etherchannel summary` shows `(s)`).
 
+    **Speed/duplex and compatible configs** is that consistency rule.
 
-    **Speed/duplex and compatible configs**: Inconsistent member settings suspend
-    the channel.
+    **Unique VLANs only** is the opposite: members should carry the **same** allowed VLANs, not unique ones.
 
+    **Different native VLANs** on members leak untagged traffic and typically prevent a clean bundle. Natives must match.
 
-    **Unique VLANs only**: “On EtherChannel, member ports must match which attribute”
-    is answered by Speed/duplex and compatible configs. Unique VLANs only does not
-    do that job.
-
-
-    **Different native VLANs**: “On EtherChannel, member ports must match which attribute”
-    is answered by Speed/duplex and compatible configs. Different native VLANs does
-    not do that job.
-
-
-    **Random MTUs**: “On EtherChannel, member ports must match which attribute” is
-    answered by Speed/duplex and compatible configs. Random MTUs does not do that
-    job.'
+    **Random MTUs** (`system mtu` / per-interface MTU) must match; random MTUs drop or suspend members.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -674,26 +654,16 @@ questions:
     text: DHCP snooping disable
   correct:
     answer: a
-  explanation: 'Untagged frames disagree when native VLANs differ.
+  explanation: |
+    If two trunk ends use different **native VLANs**, untagged frames land in different VLANs — a VLAN leak. Cisco CDP reports `Native VLAN mismatch` and connectivity for the untagged VLAN breaks.
 
+    **CDP warnings and possible connectivity issues** is the typical symptom.
 
-    **CDP warnings and possible connectivity issues**: Untagged frames disagree when
-    native VLANs differ.
+    **Automatic OSPF adjacency** is a Layer 3 event (`show ip ospf neighbor`). A native-VLAN leak does not form OSPF.
 
+    **Mandatory encryption** is not triggered by a native mismatch. 802.1Q has no encryption requirement.
 
-    **Automatic OSPF adjacency**: “A native VLAN mismatch on a trunk typically causes
-    what” is answered by CDP warnings and possible connectivity issues. Automatic
-    OSPF adjacency does not do that job.
-
-
-    **Mandatory encryption**: “A native VLAN mismatch on a trunk typically causes
-    what” is answered by CDP warnings and possible connectivity issues. Mandatory
-    encryption does not do that job.
-
-
-    **DHCP snooping disable**: “A native VLAN mismatch on a trunk typically causes
-    what” is answered by CDP warnings and possible connectivity issues. DHCP snooping
-    disable does not do that job.'
+    **DHCP snooping disable** is a separate L2 security feature. A native mismatch does not turn snooping off.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2

@@ -327,22 +327,16 @@ questions:
     text: Only VTP password
   correct:
     answer: a
-  explanation: 'Jitter/latency probes.
+  explanation: |
+    **IP SLA jitter** (`udp-jitter`) measures delay, jitter, and loss toward a responder — the numbers used to judge **voice/video** path quality (and to feed tracking/PfR).
 
+    **Voice/video path quality assessment** is the use case.
 
-    **Voice/video path quality assessment**: Jitter/latency probes.
+    **Only VLAN creation** is `vlan N`. SLA probes do not create VLANs.
 
+    **Only ACL lines** are `permit`/`deny` entries. SLA is `ip sla N` / `udp-jitter`.
 
-    **Only VLAN creation**: “IP SLA jitter tests help” is answered by Voice/video
-    path quality assessment. Only VLAN creation does not do that job.
-
-
-    **Only ACL lines**: “IP SLA jitter tests help” is answered by Voice/video path
-    quality assessment. Only ACL lines does not do that job.
-
-
-    **Only VTP password**: “IP SLA jitter tests help” is answered by Voice/video path
-    quality assessment. Only VTP password does not do that job.'
+    **Only VTP password** authenticates VTP. Unrelated to jitter probes.
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4

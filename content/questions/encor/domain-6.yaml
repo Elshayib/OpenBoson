@@ -484,24 +484,16 @@ questions:
     text: Only configure PortFast
   correct:
     answer: a
-  explanation: 'Controller APIs cover SD-WAN Manager.
+  explanation: |
+    **Cisco SD-WAN Manager** (vManage) exposes REST APIs to **push templates, policies, and operational queries** against the WAN fabric — inventory, device config, App-route/AAR policy — rather than clicking every vEdge/cEdge.
 
+    **Automate WAN fabric operations/policy** is that API role.
 
-    **Automate WAN fabric operations/policy**: Controller APIs cover SD-WAN Manager.
+    **Only set STP priority** is `spanning-tree vlan N priority` on a campus switch. vManage APIs are not an STP tool.
 
+    **Only create VLANs on access** is access-layer switching. SD-WAN Manager drives WAN overlay and policy.
 
-    **Only set STP priority**: “SD-WAN Manager APIs are used to” is answered by Automate
-    WAN fabric operations/policy. Only set STP priority does not do that job.
-
-
-    **Only create VLANs on access**: “SD-WAN Manager APIs are used to” is answered
-    by Automate WAN fabric operations/policy. Only create VLANs on access does not
-    do that job.
-
-
-    **Only configure PortFast**: “SD-WAN Manager APIs are used to” is answered by
-    Automate WAN fabric operations/policy. Only configure PortFast does not do that
-    job.'
+    **Only configure PortFast** is `spanning-tree portfast`. Not an SD-WAN Manager function.
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -601,22 +593,16 @@ questions:
     text: Only STP costs exclusive
   correct:
     answer: a
-  explanation: 'Dicts are core Python structures.
+  explanation: |
+    A Python **dict** maps **keys to values** (`d["rid"] = "1.1.1.1"`). That is the core associative array used in NETCONF/REST payloads and scripts.
 
+    **Keys to values** is the definition.
 
-    **Keys to values**: Dicts are core Python structures.
+    **Only VLANs to VNIs exclusive** might be *one* dict you write (`{10: 10010}`), but dicts are a general type, not a VLAN/VNI structure.
 
+    **Only AS paths** are BGP attributes (lists of ASNs), not Python’s dict type.
 
-    **Only VLANs to VNIs exclusive**: “Python dictionaries map” is answered by Keys
-    to values. Only VLANs to VNIs exclusive does not do that job.
-
-
-    **Only AS paths**: “Python dictionaries map” is answered by Keys to values. Only
-    AS paths does not do that job.
-
-
-    **Only STP costs exclusive**: “Python dictionaries map” is answered by Keys to
-    values. Only STP costs exclusive does not do that job.'
+    **Only STP costs exclusive** are integers on switch ports (`spanning-tree cost`). Not what a dict is.
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1

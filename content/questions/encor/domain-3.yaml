@@ -649,22 +649,16 @@ questions:
     text: Only ASN
   correct:
     answer: a
-  explanation: 'Instance ID.
+  explanation: |
+    OSPFv3 Hello includes an **Instance ID**. Routers on the same link form an adjacency only if Instance IDs match. That lets **multiple OSPFv3 instances** share a physical or VLAN interface (for example one instance per VRF or address-family) without merging LSDBs.
 
+    **Multiple instances on a link** is what Instance ID distinguishes.
 
-    **Multiple instances on a link**: Instance ID.
+    **Only VLAN IDs** are 802.1Q tags. You can run OSPFv3 on an SVI, but the Instance ID is **not** the VLAN ID — two instances can share one VLAN.
 
+    **Only DSCP** marks IP for QoS. DSCP does not select an OSPFv3 instance.
 
-    **Only VLAN IDs**: “OSPFv3 instance ID distinguishes” is answered by Multiple
-    instances on a link. Only VLAN IDs does not do that job.
-
-
-    **Only DSCP**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
-    on a link. Only DSCP does not do that job.
-
-
-    **Only ASN**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
-    on a link. Only ASN does not do that job.'
+    **Only ASN** is BGP. OSPFv3 uses a process/instance ID here, not an AS number.
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -1075,26 +1069,16 @@ questions:
     text: Only DNS amplification exclusive
   correct:
     answer: a
-  explanation: 'RPF validates expected reverse path to source.
+  explanation: |
+    Multicast **RPF** (Reverse Path Forwarding) accepts a (S,G) packet only on the interface the unicast RIB would use **toward S**. A packet arriving on the wrong interface is dropped. That stops loops and some spoofed sources.
 
+    **Accepting multicast on the wrong reverse path** is what RPF prevents.
 
-    **Accepting multicast on the wrong reverse path**: RPF validates expected reverse
-    path to source.
+    **Only TCP SYN floods exclusive** are a unicast DoS (CoPP, SYN cookies). RPF is a multicast forwarding check, not a SYN-flood mitigator.
 
+    **Only VLAN hopping exclusive** is an L2 attack (double-tag / native VLAN). RPF does not inspect 802.1Q.
 
-    **Only TCP SYN floods exclusive**: “RPF check in multicast prevents” is answered
-    by Accepting multicast on the wrong reverse path. Only TCP SYN floods exclusive
-    does not do that job.
-
-
-    **Only VLAN hopping exclusive**: “RPF check in multicast prevents” is answered
-    by Accepting multicast on the wrong reverse path. Only VLAN hopping exclusive
-    does not do that job.
-
-
-    **Only DNS amplification exclusive**: “RPF check in multicast prevents” is answered
-    by Accepting multicast on the wrong reverse path. Only DNS amplification exclusive
-    does not do that job.'
+    **Only DNS amplification exclusive** is a reflection DDoS on UDP 53. Multicast RPF is specifically the (S,G) reverse-path check.
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1235,25 +1219,16 @@ questions:
     text: Only a VLAN ID
   correct:
     answer: a
-  explanation: 'Cisco weight is local and considered early.
+  explanation: |
+    Cisco **weight** is a 16-bit attribute **local to this router** (default 32768 for originated, 0 for learned). Highest weight wins **first** in the BGP best-path list. It is never advertised in UPDATE messages.
 
+    **Local to the router and highest preferred first** is weight.
 
-    **Local to the router and highest preferred first**: Cisco weight is local and
-    considered early.
+    **Transitive across the AS always** describes attributes like **AS_PATH** or optional-transitive communities. Weight is non-transitive — neighbors never see it.
 
+    **Only an OSPF metric** is cost (reference-bw/bandwidth) inside OSPF. BGP weight is not OSPF cost.
 
-    **Transitive across the AS always**: “eBGP best-path weight (Cisco) is” is answered
-    by Local to the router and highest preferred first. Transitive across the AS always
-    does not do that job.
-
-
-    **Only an OSPF metric**: “eBGP best-path weight (Cisco) is” is answered by Local
-    to the router and highest preferred first. Only an OSPF metric does not do that
-    job.
-
-
-    **Only a VLAN ID**: “eBGP best-path weight (Cisco) is” is answered by Local to
-    the router and highest preferred first. Only a VLAN ID does not do that job.'
+    **Only a VLAN ID** is 1–4094 on a trunk. Unrelated to BGP best-path.
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2

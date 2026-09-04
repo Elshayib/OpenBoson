@@ -403,26 +403,16 @@ questions:
     text: Only spanning-tree mode
   correct:
     answer: a
-  explanation: 'Named ACLs use ip access-list configuration mode.
+  explanation: |
+    Named ACLs are built in **`ip access-list standard NAME`** or **`ip access-list extended NAME`** mode, then `permit`/`deny` lines, then `ip access-group NAME in/out` on an interface.
 
+    **ip access-list standard/extended NAME** is that configuration mode.
 
-    **ip access-list standard/extended NAME**: Named ACLs use ip access-list configuration
-    mode.
+    **Only interface vlan exclusively** is SVI config (`interface vlan 10`). You may *apply* an ACL there, but you do not *create* a named ACL under the SVI.
 
+    **Only line vty without ACL** is `line vty 0 4`. VTY uses `access-class`, and you still define the ACL with `ip access-list` first.
 
-    **Only interface vlan exclusively**: “Named ACLs on IOS are configured under which
-    mode” is answered by ip access-list standard/extended NAME. Only interface vlan
-    exclusively does not do that job.
-
-
-    **Only line vty without ACL**: “Named ACLs on IOS are configured under which mode”
-    is answered by ip access-list standard/extended NAME. Only line vty without ACL
-    does not do that job.
-
-
-    **Only spanning-tree mode**: “Named ACLs on IOS are configured under which mode”
-    is answered by ip access-list standard/extended NAME. Only spanning-tree mode
-    does not do that job.'
+    **Only spanning-tree mode** is `spanning-tree mode rapid-pvst`. It has nothing to do with ACL syntax.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -524,22 +514,16 @@ questions:
     text: Only a VLAN
   correct:
     answer: a
-  explanation: 'Exploits weaponize vulnerabilities.
+  explanation: |
+    A **vulnerability** is a weakness. An **exploit** is a method or tool that **takes advantage** of that weakness to violate CIA. A **threat** is the actor who might use it.
 
+    **A method that takes advantage of a vulnerability** is the definition of an exploit.
 
-    **A method that takes advantage of a vulnerability**: Exploits weaponize vulnerabilities.
+    **Only a firewall** is a control that can *block* exploits; it is not itself an exploit.
 
+    **Only a syslog facility** is a log channel (`local0`…`local7`). Logging may *record* an exploit; it is not one.
 
-    **Only a firewall**: “An exploit is” is answered by A method that takes advantage
-    of a vulnerability. Only a firewall does not do that job.
-
-
-    **Only a syslog facility**: “An exploit is” is answered by A method that takes
-    advantage of a vulnerability. Only a syslog facility does not do that job.
-
-
-    **Only a VLAN**: “An exploit is” is answered by A method that takes advantage
-    of a vulnerability. Only a VLAN does not do that job.'
+    **Only a VLAN** is an L2 broadcast domain. Segmentation can reduce blast radius; a VLAN is not an exploit.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1

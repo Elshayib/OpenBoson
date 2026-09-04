@@ -45,6 +45,8 @@ BANNED = (
     "the correct sequence for this item is",
     "is required here",
     "implemented by verifying with show/ping",
+    "does not do that job",
+    "is answered by",
 )
 FILLER = BANNED + (
     "it is the selection that meets the requirement stated in the stem",
@@ -1326,51 +1328,16 @@ def _lookup_fact(text: str, *, fact: str | None, orig_rat: str | None) -> str | 
     return None
 
 
-def _stem_bound(
-    text: str,
-    *,
-    correct: bool,
-    stem: str,
-    correct_texts: list[str],
-    fact: str | None,
-    topic_label: str,
-) -> str:
-    """Short sentence tied to THIS stem — never a fact about a different topic."""
-    ask = _norm(stem).rstrip("?.")
-    corr = "; ".join(_norm(t) for t in correct_texts) or "the keyed choice"
-    label = _norm(text)
-    if correct:
-        if "document verification" in label.lower():
-            hook = fact or topic_label
-            return (
-                f"**{label}**: Write the verify/rollback steps for {hook} before "
-                f"you change the box."
-            )
-        return f"**{label}**: {ask}."
-    return f"**{label}**: “{ask}” is answered by {corr}. {label} does not do that job."
-
-
 def _why_for_choice(
     text: str,
     *,
-    correct: bool,
-    stem: str,
-    correct_texts: list[str],
     fact: str | None,
     orig_rat: str | None,
-    topic_label: str,
-) -> str:
+) -> str | None:
     body = _lookup_fact(text, fact=fact, orig_rat=orig_rat)
-    if body:
-        return _bullet(text, body)
-    return _stem_bound(
-        text,
-        correct=correct,
-        stem=stem,
-        correct_texts=correct_texts,
-        fact=fact,
-        topic_label=topic_label,
-    )
+    if not body:
+        return None
+    return _bullet(text, body)
 
 
 def _lead(
@@ -1386,9 +1353,7 @@ def _lead(
         blobs = [FACT_TEACH[fact][t] for t in correct_texts if t in FACT_TEACH[fact]]
         if blobs:
             return " ".join(_sentence(b) for b in blobs)
-    corr = "; ".join(correct_texts)
-    ask = _norm(q.get("stem") or "").rstrip("?.")
-    return f"For {topic_label}, “{ask}” is answered by **{corr}**."
+    return ""
 
 
 def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
@@ -1411,12 +1376,8 @@ def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
     for c in right + wrong:
         para = _why_for_choice(
             c["text"],
-            correct=c["id"] in cids,
-            stem=stem,
-            correct_texts=correct_texts,
             fact=fact,
             orig_rat=orig_rats.get(c["id"]) or orig_rats.get(c["text"]),
-            topic_label=topic_label,
         )
         if not para:
             continue
@@ -1476,6 +1437,7 @@ _OPS_STEM = (
     "best matches production best practice",
     "which option correctly describes a key idea",
 )
+
 
 def _is_stamped(blob: str) -> bool:
     low = (blob or "").lower()
@@ -1578,31 +1540,11 @@ def _ops_rewrite(q: dict, cert: str) -> str:
     return "\n\n".join(parts)
 
 
-def _needs_rewrite(q: dict) -> bool:
-    if q["id"] in FLAGSHIP_IDS:
-        return False
-    if q["id"] in HAND_EXPL:
-        return True
-    if _is_ops_item(q) or _wrong_topic_paste(q):
-        return True
-    return _is_stamped(q.get("explanation") or "")
-
-
 def _rewrite_question(q: dict, orig: dict | None, cert: str) -> None:
+    del orig, cert
     if q["id"] in HAND_EXPL:
         q["explanation"] = HAND_EXPL[q["id"]]
         return
-    if q["id"] in FLAGSHIP_IDS:
-        return
-    if not _needs_rewrite(q):
-        return
-    if _is_ops_item(q):
-        q["explanation"] = _ops_rewrite(q, cert)
-        return
-    if q.get("choices"):
-        q["explanation"] = rewrite_choice_question(q, orig, cert)
-        return
-    q["explanation"] = rewrite_other(q)
 
 
 def _assert_clean(questions: list[dict], label: str) -> None:
@@ -1628,13 +1570,17 @@ def main() -> int:
         for path in sorted(folder.glob("domain-*.yaml")):
             raw = yaml.safe_load(path.read_text(encoding="utf-8"))
             questions = raw["questions"] if isinstance(raw, dict) else raw
+            changed = False
             for q in questions:
                 before = q.get("explanation") or ""
                 _rewrite_question(q, originals.get(q["id"]), exam)
                 after = q.get("explanation") or ""
                 if after != before:
                     rewritten += 1
+                    changed = True
             _assert_clean(questions, path.name)
+            if not changed:
+                continue
             payload = (
                 {
                     "provider": raw.get("provider", "openboson"),

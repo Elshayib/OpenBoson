@@ -367,22 +367,16 @@ questions:
     text: Only age CAM
   correct:
     answer: a
-  explanation: 'IPsec protects GRE/IP overlays.
+  explanation: |
+    **GRE** tunnels any payload (including multicast/IGP) but is cleartext. **IPsec** (tunnel, VTI, or IPsec protecting GRE) **encrypts** that overlay so site-to-site traffic is confidential.
 
+    **Encrypt tunneled overlays** is why GRE+IPsec (or an IPsec VTI) is used.
 
-    **Encrypt tunneled overlays**: IPsec protects GRE/IP overlays.
+    **Only hash EtherChannels** is `port-channel load-balance src-dst-ip`. That is CEF hashing on a bundle, not IPsec.
 
+    **Only elect DR** is OSPF on a multiaccess link. IPsec/GRE does not elect a DR.
 
-    **Only hash EtherChannels**: “IPsec with GRE is often used to” is answered by
-    Encrypt tunneled overlays. Only hash EtherChannels does not do that job.
-
-
-    **Only elect DR**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
-    overlays. Only elect DR does not do that job.
-
-
-    **Only age CAM**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
-    overlays. Only age CAM does not do that job.'
+    **Only age CAM** is MAC-table aging on a switch. Unrelated to overlay encryption.
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2

@@ -500,22 +500,25 @@ questions:
     text: Hybrid CDN
   correct:
     answer: a
-  explanation: 'Private cloud is single-tenant for one organization.
+  explanation: 'Private cloud keeps compute, storage, and network for **one organization**
+    (on-prem or a dedicated hosted tenancy). That is the exclusive-use model.
 
 
-    **Public cloud**: “Which cloud deployment model keeps infrastructure exclusively
-    for one organization” is answered by Private cloud. Public cloud does not do that
-    job.
+    **Private cloud** is single-tenant: the org controls who shares the infrastructure.
 
 
-    **Community only**: “Which cloud deployment model keeps infrastructure exclusively
-    for one organization” is answered by Private cloud. Community only does not do
-    that job.
+    **Public cloud** (AWS/Azure/GCP) is multi-tenant. Many customers share the provider’s
+    fabric, so it is not exclusive to one org.
 
 
-    **Hybrid CDN**: “Which cloud deployment model keeps infrastructure exclusively
-    for one organization” is answered by Private cloud. Hybrid CDN does not do that
-    job.'
+    **Community only** is shared by several organizations with a common mission (for
+    example a set of agencies). More than one tenant.
+
+
+    **Hybrid CDN** mixes on-prem with a content-delivery overlay. A CDN caches content;
+    it is not a single-tenant private cloud.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.2
@@ -911,19 +914,23 @@ questions:
     text: 198.51.100.0/24
   correct:
     answer: a
-  explanation: '10.0.0.0/8 is the Class A private range.
+  explanation: 'RFC 1918 private IPv4: **10.0.0.0/8** (Class A), **172.16.0.0/12**
+    (Class B), **192.168.0.0/16** (Class C).
 
 
-    **172.32.0.0/12**: “Which RFC 1918 range is a Class A private block” is answered
-    by 10.0.0.0/8. 172.32.0.0/12 does not do that job.
+    **10.0.0.0/8** is the Class A private block (10.0.0.0–10.255.255.255).
 
 
-    **192.169.0.0/16**: “Which RFC 1918 range is a Class A private block” is answered
-    by 10.0.0.0/8. 192.169.0.0/16 does not do that job.
+    **172.32.0.0/12** is not RFC 1918. The private Class B block is **172.16.0.0/12**
+    (172.16.0.0–172.31.255.255). 172.32.0.0 is public.
 
 
-    **198.51.100.0/24**: “Which RFC 1918 range is a Class A private block” is answered
-    by 10.0.0.0/8. 198.51.100.0/24 does not do that job.'
+    **192.169.0.0/16** is public. The Class C private block is **192.168.0.0/16**.
+
+
+    **198.51.100.0/24** is TEST-NET-2 (RFC 5737 documentation), not a private range.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.7
@@ -1064,19 +1071,24 @@ questions:
     text: route print only without IP
   correct:
     answer: a
-  explanation: 'ipconfig displays adapter addressing on Windows.
+  explanation: 'On Windows, **`ipconfig`** (and `ipconfig /all`) prints IPv4/IPv6,
+    mask, and default gateway per adapter.
 
 
-    **ifconfig only (Windows default)**: “On Windows, which command shows IP configuration”
-    is answered by ipconfig. ifconfig only (Windows default) does not do that job.
+    **ipconfig** is the Windows client command for that output.
 
 
-    **show ip route**: “On Windows, which command shows IP configuration” is answered
-    by ipconfig. show ip route does not do that job.
+    **ifconfig only (Windows default)** is a Unix/Linux command. Current Windows does
+    not ship `ifconfig` as the default IP display tool.
 
 
-    **route print only without IP**: “On Windows, which command shows IP configuration”
-    is answered by ipconfig. route print only without IP does not do that job.'
+    **show ip route** is Cisco IOS — it dumps the router RIB, not a Windows NIC.
+
+
+    **route print only without IP** shows the Windows routing table. It does not list
+    the adapter address and mask the way `ipconfig` does.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.10
@@ -1139,26 +1151,26 @@ questions:
     text: Only VLAN tagging
   correct:
     answer: a
-  explanation: 'SMF has a smaller core and supports longer reaches.
+  explanation: '**Single-mode fiber (SMF)** has a ~9 µm core and carries one mode
+    for long reach (km). **Multimode (MMF)** has a 50/62.5 µm core for shorter building/campus
+    runs.
 
 
-    **Core size / distance capability**: SMF has a smaller core and supports longer
-    reaches.
+    **Core size / distance capability** is the primary physical difference.
 
 
-    **Only connector color mandatory**: “Single-mode fiber vs multimode primarily
-    differs in” is answered by Core size / distance capability. Only connector color
-    mandatory does not do that job.
+    **Only connector color mandatory** (blue UPC vs green APC, beige vs aqua) is a
+    convention, not what makes SMF go farther.
 
 
-    **Only PoE support**: “Single-mode fiber vs multimode primarily differs in” is
-    answered by Core size / distance capability. Only PoE support does not do that
-    job.
+    **Only PoE support** is a copper Ethernet feature (802.3af/at/bt). Fiber does
+    not carry PoE.
 
 
-    **Only VLAN tagging**: “Single-mode fiber vs multimode primarily differs in” is
-    answered by Core size / distance capability. Only VLAN tagging does not do that
-    job.'
+    **Only VLAN tagging** is 802.1Q on frames. Both SMF and MMF carry tagged Ethernet;
+    tagging is not an optical-mode property.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Fundamentals
   - CCNA exam topic 1.3
@@ -7412,26 +7424,26 @@ questions:
     text: Disable all trunks
   correct:
     answer: a
-  explanation: 'Transparent mode forwards VTP without syncing the VLAN database.
+  explanation: 'A **VTP transparent** switch does not originate or apply VTP updates
+    to its own VLAN database. It **forwards** advertisements on trunks so a server/client
+    domain can still pass through (`vtp mode transparent`).
 
 
-    **Forward them but do not sync VLAN DB from them**: Transparent mode forwards
-    VTP without syncing the VLAN database.
+    **Forward them but do not sync VLAN DB from them** is transparent-mode behavior.
+    VLANs are created locally on that switch.
 
 
-    **Always overwrite clients**: “VTP transparent switches do what with VTP advertisements”
-    is answered by Forward them but do not sync VLAN DB from them. Always overwrite
-    clients does not do that job.
+    **Always overwrite clients** is **VTP server** behavior when a higher revision
+    arrives. Transparent switches do not overwrite anyone’s VLAN DB from VTP.
 
 
-    **Drop all BPDUs**: “VTP transparent switches do what with VTP advertisements”
-    is answered by Forward them but do not sync VLAN DB from them. Drop all BPDUs
-    does not do that job.
+    **Drop all BPDUs** is STP (BPDU Guard/Filter). VTP messages are not STP BPDUs.
 
 
-    **Disable all trunks**: “VTP transparent switches do what with VTP advertisements”
-    is answered by Forward them but do not sync VLAN DB from them. Disable all trunks
-    does not do that job.'
+    **Disable all trunks** would isolate VLANs from neighbors. Transparent mode still
+    trunks; it just ignores VTP for its own database.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -7494,26 +7506,26 @@ questions:
     text: Random MTUs
   correct:
     answer: a
-  explanation: 'Inconsistent member settings suspend the channel.
+  explanation: 'EtherChannel members must match **speed, duplex, switchport mode,
+    native VLAN, allowed VLAN set, and LACP/PAgP mode**. A mismatch suspends the member
+    (`show etherchannel summary` shows `(s)`).
 
 
-    **Speed/duplex and compatible configs**: Inconsistent member settings suspend
-    the channel.
+    **Speed/duplex and compatible configs** is that consistency rule.
 
 
-    **Unique VLANs only**: “On EtherChannel, member ports must match which attribute”
-    is answered by Speed/duplex and compatible configs. Unique VLANs only does not
-    do that job.
+    **Unique VLANs only** is the opposite: members should carry the **same** allowed
+    VLANs, not unique ones.
 
 
-    **Different native VLANs**: “On EtherChannel, member ports must match which attribute”
-    is answered by Speed/duplex and compatible configs. Different native VLANs does
-    not do that job.
+    **Different native VLANs** on members leak untagged traffic and typically prevent
+    a clean bundle. Natives must match.
 
 
-    **Random MTUs**: “On EtherChannel, member ports must match which attribute” is
-    answered by Speed/duplex and compatible configs. Random MTUs does not do that
-    job.'
+    **Random MTUs** (`system mtu` / per-interface MTU) must match; random MTUs drop
+    or suspend members.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -7537,26 +7549,26 @@ questions:
     text: DHCP snooping disable
   correct:
     answer: a
-  explanation: 'Untagged frames disagree when native VLANs differ.
+  explanation: 'If two trunk ends use different **native VLANs**, untagged frames
+    land in different VLANs — a VLAN leak. Cisco CDP reports `Native VLAN mismatch`
+    and connectivity for the untagged VLAN breaks.
 
 
-    **CDP warnings and possible connectivity issues**: Untagged frames disagree when
-    native VLANs differ.
+    **CDP warnings and possible connectivity issues** is the typical symptom.
 
 
-    **Automatic OSPF adjacency**: “A native VLAN mismatch on a trunk typically causes
-    what” is answered by CDP warnings and possible connectivity issues. Automatic
-    OSPF adjacency does not do that job.
+    **Automatic OSPF adjacency** is a Layer 3 event (`show ip ospf neighbor`). A native-VLAN
+    leak does not form OSPF.
 
 
-    **Mandatory encryption**: “A native VLAN mismatch on a trunk typically causes
-    what” is answered by CDP warnings and possible connectivity issues. Mandatory
-    encryption does not do that job.
+    **Mandatory encryption** is not triggered by a native mismatch. 802.1Q has no
+    encryption requirement.
 
 
-    **DHCP snooping disable**: “A native VLAN mismatch on a trunk typically causes
-    what” is answered by CDP warnings and possible connectivity issues. DHCP snooping
-    disable does not do that job.'
+    **DHCP snooping disable** is a separate L2 security feature. A native mismatch
+    does not turn snooping off.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -11947,22 +11959,26 @@ questions:
     text: Terminate VLANs
   correct:
     answer: a
-  explanation: 'Areas hierarchicalize LSA flooding.
+  explanation: 'OSPF **areas** hierarchicalize the domain so Type-1/2 LSAs stay inside
+    an area. ABRs originate Type-3 summaries instead of flooding every intra-area
+    LSA everywhere. That **limits LSA flooding** and shrinks LSDBs/SPF.
 
 
-    **Limit LSA flooding scope**: Areas hierarchicalize LSA flooding.
+    **Limit LSA flooding scope** is why areas exist.
 
 
-    **Replace IP addresses**: “OSPF areas exist primarily to” is answered by Limit
-    LSA flooding scope. Replace IP addresses does not do that job.
+    **Replace IP addresses** is NAT (or an addressing redesign). Areas do not translate
+    prefixes.
 
 
-    **Encrypt all payloads**: “OSPF areas exist primarily to” is answered by Limit
-    LSA flooding scope. Encrypt all payloads does not do that job.
+    **Encrypt all payloads** is IPsec/TLS. OSPF can authenticate Hellos (`ip ospf
+    authentication`), but an area is not an encryption boundary.
 
 
-    **Terminate VLANs**: “OSPF areas exist primarily to” is answered by Limit LSA
-    flooding scope. Terminate VLANs does not do that job.'
+    **Terminate VLANs** is an SVI / ROAS / L3-switch job. Area 0 vs area 1 is an OSPF
+    LSDB boundary, not a VLAN terminator.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -12185,25 +12201,24 @@ questions:
     text: Only wireless controllers
   correct:
     answer: a
-  explanation: 'ABRs connect non-backbone areas to the backbone.
+  explanation: 'An **ABR** has at least one link in **area 0** and one link in a **non-backbone
+    area**. It originates Type-3 summary LSAs between those areas (`show ip ospf border-routers`).
 
 
-    **Area 0 and non-backbone areas (typically)**: ABRs connect non-backbone areas
-    to the backbone.
+    **Area 0 and non-backbone areas (typically)** is that ABR placement.
 
 
-    **Only two autonomous systems**: “An ABR sits on the border of” is answered by
-    Area 0 and non-backbone areas (typically). Only two autonomous systems does not
-    do that job.
+    **Only two autonomous systems** describes an **ASBR** (or eBGP) connecting OSPF
+    to another routing domain, not two OSPF areas.
 
 
-    **Only VLANs**: “An ABR sits on the border of” is answered by Area 0 and non-backbone
-    areas (typically). Only VLANs does not do that job.
+    **Only VLANs** are L2 broadcast domains. An ABR is an OSPF router role, not a
+    VLAN.
 
 
-    **Only wireless controllers**: “An ABR sits on the border of” is answered by Area
-    0 and non-backbone areas (typically). Only wireless controllers does not do that
-    job.'
+    **Only wireless controllers** terminate CAPWAP. They are not OSPF area borders.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -14171,23 +14186,23 @@ questions:
     text: SPIDs to DLCI
   correct:
     answer: a
-  explanation: 'DNS resolves names to addresses (and reverse lookups).
+  explanation: '**DNS** maps names to addresses: **A** (IPv4) and **AAAA** (IPv6)
+    for forward lookup, **PTR** for reverse.
 
 
-    **Names to IP addresses**: DNS resolves names to addresses (and reverse lookups).
+    **Names to IP addresses** is that primary job (plus reverse).
 
 
-    **MAC to VLAN**: “DNS primarily maps which of the following” is answered by Names
-    to IP addresses. MAC to VLAN does not do that job.
+    **MAC to VLAN** is a switch CAM / access-VLAN assignment (`switchport access vlan`),
+    not DNS.
 
 
-    **AS numbers to communities**: “DNS primarily maps which of the following” is
-    answered by Names to IP addresses. AS numbers to communities does not do that
-    job.
+    **AS numbers to communities** is BGP policy (`set community`), not name resolution.
 
 
-    **SPIDs to DLCI**: “DNS primarily maps which of the following” is answered by
-    Names to IP addresses. SPIDs to DLCI does not do that job.'
+    **SPIDs to DLCI** are ISDN and Frame Relay identifiers — legacy WAN, not DNS.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -14644,22 +14659,22 @@ questions:
     text: VLAN to VNI
   correct:
     answer: a
-  explanation: 'Forward DNS resolves names to addresses.
+  explanation: 'A **forward lookup** asks “what address has this name?” and returns
+    **A/AAAA**. Reverse (PTR) is the other direction.
 
 
-    **Name to IP**: Forward DNS resolves names to addresses.
+    **Name to IP** is forward DNS.
 
 
-    **IP to MAC only**: “DNS forward lookup maps” is answered by Name to IP. IP to
-    MAC only does not do that job.
+    **IP to MAC only** is **ARP** (or NDP for IPv6) on the local LAN, not DNS.
 
 
-    **AS to community**: “DNS forward lookup maps” is answered by Name to IP. AS to
-    community does not do that job.
+    **AS to community** is a BGP attribute mapping, not DNS.
 
 
-    **VLAN to VNI**: “DNS forward lookup maps” is answered by Name to IP. VLAN to
-    VNI does not do that job.'
+    **VLAN to VNI** is a VXLAN/EVPN encapsulation mapping, not DNS.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.3
@@ -14722,22 +14737,25 @@ questions:
     text: Only disables CDP
   correct:
     answer: a
-  explanation: 'Policers enforce rates by drop/remark.
+  explanation: '**Policing** meters a class and **drops** or **remarks** (for example
+    to DSCP AF) packets over a committed rate (`police cir ... exceed-action drop`).
+    It does not buffer/delay like shaping.
 
 
-    **Drops or remarks excess over a rate**: Policers enforce rates by drop/remark.
+    **Drops or remarks excess over a rate** is the policer action.
 
 
-    **Only increases STP diameter**: “Traffic policing typically” is answered by Drops
-    or remarks excess over a rate. Only increases STP diameter does not do that job.
+    **Only increases STP diameter** would add switches/hops to spanning tree. A QoS
+    police map does not change STP diameter.
 
 
-    **Only creates VLANs**: “Traffic policing typically” is answered by Drops or remarks
-    excess over a rate. Only creates VLANs does not do that job.
+    **Only creates VLANs** is `vlan N`. Policers live in a policy-map, not the VLAN
+    database.
 
 
-    **Only disables CDP**: “Traffic policing typically” is answered by Drops or remarks
-    excess over a rate. Only disables CDP does not do that job.'
+    **Only disables CDP** is `no cdp enable`. Unrelated to rate enforcement.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.7
@@ -14914,20 +14932,22 @@ questions:
     text: show etherchannel summary
   correct:
     answer: a
-  explanation: 'show ntp associations displays peer/server sync state.
+  explanation: '**`show ntp associations`** lists NTP peers, stratum, reach, delay,
+    and which server is selected (`*`).
 
 
-    **show vlan brief**: “Which command shows NTP associations on IOS” is answered
-    by show ntp associations. show vlan brief does not do that job.
+    **show ntp associations** is the IOS command for that table.
 
 
-    **show spanning-tree**: “Which command shows NTP associations on IOS” is answered
-    by show ntp associations. show spanning-tree does not do that job.
+    **show vlan brief** lists L2 VLANs on a switch — no NTP.
 
 
-    **show etherchannel summary**: “Which command shows NTP associations on IOS” is
-    answered by show ntp associations. show etherchannel summary does not do that
-    job.'
+    **show spanning-tree** shows STP root/roles/states — no NTP.
+
+
+    **show etherchannel summary** shows Port-Channel members — no NTP.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Services
   - CCNA exam topic 4.2
@@ -19028,26 +19048,26 @@ questions:
     text: Only spanning-tree mode
   correct:
     answer: a
-  explanation: 'Named ACLs use ip access-list configuration mode.
+  explanation: 'Named ACLs are built in **`ip access-list standard NAME`** or **`ip
+    access-list extended NAME`** mode, then `permit`/`deny` lines, then `ip access-group
+    NAME in/out` on an interface.
 
 
-    **ip access-list standard/extended NAME**: Named ACLs use ip access-list configuration
-    mode.
+    **ip access-list standard/extended NAME** is that configuration mode.
 
 
-    **Only interface vlan exclusively**: “Named ACLs on IOS are configured under which
-    mode” is answered by ip access-list standard/extended NAME. Only interface vlan
-    exclusively does not do that job.
+    **Only interface vlan exclusively** is SVI config (`interface vlan 10`). You may
+    *apply* an ACL there, but you do not *create* a named ACL under the SVI.
 
 
-    **Only line vty without ACL**: “Named ACLs on IOS are configured under which mode”
-    is answered by ip access-list standard/extended NAME. Only line vty without ACL
-    does not do that job.
+    **Only line vty without ACL** is `line vty 0 4`. VTY uses `access-class`, and
+    you still define the ACL with `ip access-list` first.
 
 
-    **Only spanning-tree mode**: “Named ACLs on IOS are configured under which mode”
-    is answered by ip access-list standard/extended NAME. Only spanning-tree mode
-    does not do that job.'
+    **Only spanning-tree mode** is `spanning-tree mode rapid-pvst`. It has nothing
+    to do with ACL syntax.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -19149,22 +19169,26 @@ questions:
     text: Only a VLAN
   correct:
     answer: a
-  explanation: 'Exploits weaponize vulnerabilities.
+  explanation: 'A **vulnerability** is a weakness. An **exploit** is a method or tool
+    that **takes advantage** of that weakness to violate CIA. A **threat** is the
+    actor who might use it.
 
 
-    **A method that takes advantage of a vulnerability**: Exploits weaponize vulnerabilities.
+    **A method that takes advantage of a vulnerability** is the definition of an exploit.
 
 
-    **Only a firewall**: “An exploit is” is answered by A method that takes advantage
-    of a vulnerability. Only a firewall does not do that job.
+    **Only a firewall** is a control that can *block* exploits; it is not itself an
+    exploit.
 
 
-    **Only a syslog facility**: “An exploit is” is answered by A method that takes
-    advantage of a vulnerability. Only a syslog facility does not do that job.
+    **Only a syslog facility** is a log channel (`local0`…`local7`). Logging may *record*
+    an exploit; it is not one.
 
 
-    **Only a VLAN**: “An exploit is” is answered by A method that takes advantage
-    of a vulnerability. Only a VLAN does not do that job.'
+    **Only a VLAN** is an L2 broadcast domain. Segmentation can reduce blast radius;
+    a VLAN is not an exploit.
+
+    '
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1

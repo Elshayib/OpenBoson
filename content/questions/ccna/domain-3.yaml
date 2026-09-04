@@ -423,22 +423,16 @@ questions:
     text: Terminate VLANs
   correct:
     answer: a
-  explanation: 'Areas hierarchicalize LSA flooding.
+  explanation: |
+    OSPF **areas** hierarchicalize the domain so Type-1/2 LSAs stay inside an area. ABRs originate Type-3 summaries instead of flooding every intra-area LSA everywhere. That **limits LSA flooding** and shrinks LSDBs/SPF.
 
+    **Limit LSA flooding scope** is why areas exist.
 
-    **Limit LSA flooding scope**: Areas hierarchicalize LSA flooding.
+    **Replace IP addresses** is NAT (or an addressing redesign). Areas do not translate prefixes.
 
+    **Encrypt all payloads** is IPsec/TLS. OSPF can authenticate Hellos (`ip ospf authentication`), but an area is not an encryption boundary.
 
-    **Replace IP addresses**: “OSPF areas exist primarily to” is answered by Limit
-    LSA flooding scope. Replace IP addresses does not do that job.
-
-
-    **Encrypt all payloads**: “OSPF areas exist primarily to” is answered by Limit
-    LSA flooding scope. Encrypt all payloads does not do that job.
-
-
-    **Terminate VLANs**: “OSPF areas exist primarily to” is answered by Limit LSA
-    flooding scope. Terminate VLANs does not do that job.'
+    **Terminate VLANs** is an SVI / ROAS / L3-switch job. Area 0 vs area 1 is an OSPF LSDB boundary, not a VLAN terminator.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -661,25 +655,16 @@ questions:
     text: Only wireless controllers
   correct:
     answer: a
-  explanation: 'ABRs connect non-backbone areas to the backbone.
+  explanation: |
+    An **ABR** has at least one link in **area 0** and one link in a **non-backbone area**. It originates Type-3 summary LSAs between those areas (`show ip ospf border-routers`).
 
+    **Area 0 and non-backbone areas (typically)** is that ABR placement.
 
-    **Area 0 and non-backbone areas (typically)**: ABRs connect non-backbone areas
-    to the backbone.
+    **Only two autonomous systems** describes an **ASBR** (or eBGP) connecting OSPF to another routing domain, not two OSPF areas.
 
+    **Only VLANs** are L2 broadcast domains. An ABR is an OSPF router role, not a VLAN.
 
-    **Only two autonomous systems**: “An ABR sits on the border of” is answered by
-    Area 0 and non-backbone areas (typically). Only two autonomous systems does not
-    do that job.
-
-
-    **Only VLANs**: “An ABR sits on the border of” is answered by Area 0 and non-backbone
-    areas (typically). Only VLANs does not do that job.
-
-
-    **Only wireless controllers**: “An ABR sits on the border of” is answered by Area
-    0 and non-backbone areas (typically). Only wireless controllers does not do that
-    job.'
+    **Only wireless controllers** terminate CAPWAP. They are not OSPF area borders.
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
