@@ -410,17 +410,19 @@ questions:
     mode.
 
 
-    **Only interface vlan exclusively**: A VLAN is an 802.1Q broadcast domain (IDs
-    1–4094).
+    **Only interface vlan exclusively**: “Named ACLs on IOS are configured under which
+    mode” is answered by ip access-list standard/extended NAME. Only interface vlan
+    exclusively does not do that job.
 
 
-    **Only line vty without ACL**: Named ACLs are `ip access-list standard|extended
-    NAME`. Line VTY is where you **apply** an access-class, not where you create the
-    ACL.
+    **Only line vty without ACL**: “Named ACLs on IOS are configured under which mode”
+    is answered by ip access-list standard/extended NAME. Only line vty without ACL
+    does not do that job.
 
 
-    **Only spanning-tree mode**: `spanning-tree mode` picks PVST+/MST. Named ACLs
-    are configured with `ip access-list`.'
+    **Only spanning-tree mode**: “Named ACLs on IOS are configured under which mode”
+    is answered by ip access-list standard/extended NAME. Only spanning-tree mode
+    does not do that job.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -528,15 +530,16 @@ questions:
     **A method that takes advantage of a vulnerability**: Exploits weaponize vulnerabilities.
 
 
-    **Only a firewall**: A firewall is a control. An **exploit** is the method that
-    takes advantage of a vulnerability.
+    **Only a firewall**: “An exploit is” is answered by A method that takes advantage
+    of a vulnerability. Only a firewall does not do that job.
 
 
-    **Only a syslog facility**: Syslog exports device logs (UDP 514) with severity
-    0–7.
+    **Only a syslog facility**: “An exploit is” is answered by A method that takes
+    advantage of a vulnerability. Only a syslog facility does not do that job.
 
 
-    **Only a VLAN**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
+    **Only a VLAN**: “An exploit is” is answered by A method that takes advantage
+    of a vulnerability. Only a VLAN does not do that job.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3337,28 +3340,27 @@ questions:
     text: Ignore verification and assume 5.1 always works
   correct:
     answer: a
-  explanation: '5.1 (Key security concepts) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Stay with the standard model for this objective
-    instead of a look-alike protocol that shares a buzzword but not the behavior.
+  explanation: 'For objective 5.1 (Key security concepts), keep a baseline of the
+    show/verify output that proves Key security concepts and a written rollback. Skipping
+    logs or treating 5.1 as optional leaves you unable to prove Key security concepts
+    still works.
 
 
-    **Use the standard model for 5.1 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Confuse 5.1 with an unrelated Layer mismatch**: Apply Key security concepts,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 5.1 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 5.1**: You need logging/monitoring
+    to see whether Key security concepts actually converged after the window.
 
 
-    **Disable logging permanently while testing 5.1**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use the standard model for 5.1 rather than a look-alike concept**: Use the documented
+    Key security concepts design, then verify with the show/verify output that proves
+    Key security concepts.
 
 
-    **Ignore verification and assume 5.1 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.1 always works**: Do not assume Key security
+    concepts works; check the show/verify output that proves Key security concepts.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3382,30 +3384,26 @@ questions:
     text: Disable logging permanently while testing 5.1
   correct:
     answer: a
-  explanation: '5.1 (Key security concepts) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use the documented enterprise design for
-    this objective (Cisco validated design / local standard) rather than an ad-hoc
-    look-alike.
+  explanation: 'For objective 5.1 (Key security concepts), keep a baseline of the
+    show/verify output that proves Key security concepts and a written rollback. Skipping
+    logs or treating 5.1 as optional leaves you unable to prove Key security concepts
+    still works.
 
 
-    **Prefer the documented 5.1 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Use clear-text shared secrets as the only control for 5.1**: Weak or disabled
+    AAA does not implement Key security concepts.
 
 
-    **Use clear-text shared secrets as the only control for 5.1**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Prefer the documented 5.1 approach used in enterprise designs**: Write the Key
+    security concepts intent and the commands that restore the previous state.
 
 
-    **Confuse 5.1 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 5.1 with an unrelated Layer mismatch**: Apply Key security concepts,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Disable logging permanently while testing 5.1**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.1**: You need logging/monitoring
+    to see whether Key security concepts actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3433,29 +3431,27 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.1 (Key security concepts) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
-    actually converged — not just that the command was typed. Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+  explanation: 'For objective 5.1 (Key security concepts), keep a baseline of the
+    show/verify output that proves Key security concepts and a written rollback. Skipping
+    logs or treating 5.1 as optional leaves you unable to prove Key security concepts
+    still works.
 
 
-    **Verify expected state for 5.1 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.1 with show/ping evidence**: Confirm Key security
+    concepts with the show/verify output that proves Key security concepts before
+    you rely on the new config.
 
 
-    **Document the 5.1 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.1 is low risk**: Key security concepts still needs
+    a change record and logs; skipping them removes rollback for 5.1.
 
 
-    **Skip change control because 5.1 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.1 design intent and rollback plan**: Write the Key security concepts
+    intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.1**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.1**: You need logging/monitoring to see
+    whether Key security concepts actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3479,28 +3475,27 @@ questions:
     text: Validate with show/verify steps before relying on 5.1 changes
   correct:
     answer: a
-  explanation: '5.1 (Key security concepts) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Validate with show/verify (and ping where
-    relevant) before you trust the change in production.
+  explanation: 'For objective 5.1 (Key security concepts), keep a baseline of the
+    show/verify output that proves Key security concepts and a written rollback. Skipping
+    logs or treating 5.1 as optional leaves you unable to prove Key security concepts
+    still works.
 
 
-    **Validate with show/verify steps before relying on 5.1 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Use clear-text shared secrets as the only control for 5.1**: Weak or disabled
+    AAA does not implement Key security concepts.
 
 
-    **Use clear-text shared secrets as the only control for 5.1**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 5.1 changes in production**: Key security concepts still
+    needs a change record and logs; skipping them removes rollback for 5.1.
 
 
-    **Skip documentation for 5.1 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Treat 5.1 as optional when the blueprint lists it**: 5.1 (Key security concepts)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 5.1 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.'
+    **Validate with show/verify steps before relying on 5.1 changes**: Confirm Key
+    security concepts with the show/verify output that proves Key security concepts
+    before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3524,29 +3519,29 @@ questions:
     text: Skip documentation for 5.10 changes in production
   correct:
     answer: a
-  explanation: '5.10 (Configure WLAN using WPA2 PSK (GUI)) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 5.10 (Configure WLAN using WPA2 PSK (GUI)), keep a baseline
+    of the show/verify output that proves Configure WLAN using WPA2 PSK (GUI) and
+    a written rollback. Skipping logs or treating 5.10 as optional leaves you unable
+    to prove Configure WLAN using WPA2 PSK (GUI) still works.
 
 
-    **Use the standard model for 5.10 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Treat 5.10 as optional when the blueprint lists it**: 5.10 (Configure WLAN using
+    WPA2 PSK (GUI)) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.10 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 5.10 always works**: Do not assume Configure
+    WLAN using WPA2 PSK (GUI) works; check the show/verify output that proves Configure
+    WLAN using WPA2 PSK (GUI).
 
 
-    **Ignore verification and assume 5.10 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Use the standard model for 5.10 rather than a look-alike concept**: Use the
+    documented Configure WLAN using WPA2 PSK (GUI) design, then verify with the show/verify
+    output that proves Configure WLAN using WPA2 PSK (GUI).
 
 
-    **Skip documentation for 5.10 changes in production**: Skipping documentation
-    leaves no rollback and no audit trail. Production changes for this objective still
-    need a written record.'
+    **Skip documentation for 5.10 changes in production**: Configure WLAN using WPA2
+    PSK (GUI) still needs a change record and logs; skipping them removes rollback
+    for 5.10.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3570,29 +3565,29 @@ questions:
     text: Ignore verification and assume 5.10 always works
   correct:
     answer: a
-  explanation: '5.10 (Configure WLAN using WPA2 PSK (GUI)) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 5.10 (Configure WLAN using WPA2 PSK (GUI)), keep a baseline
+    of the show/verify output that proves Configure WLAN using WPA2 PSK (GUI) and
+    a written rollback. Skipping logs or treating 5.10 as optional leaves you unable
+    to prove Configure WLAN using WPA2 PSK (GUI) still works.
 
 
-    **Prefer the documented 5.10 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Confuse 5.10 with an unrelated Layer mismatch**: Apply Configure WLAN using
+    WPA2 PSK (GUI), not an unrelated OSI-layer look-alike (for example STP when the
+    objective is routing).
 
 
-    **Confuse 5.10 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Prefer the documented 5.10 approach used in enterprise designs**: Write the
+    Configure WLAN using WPA2 PSK (GUI) intent and the commands that restore the previous
+    state.
 
 
-    **Treat 5.10 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 5.10 as optional when the blueprint lists it**: 5.10 (Configure WLAN using
+    WPA2 PSK (GUI)) is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 5.10 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.10 always works**: Do not assume Configure
+    WLAN using WPA2 PSK (GUI) works; check the show/verify output that proves Configure
+    WLAN using WPA2 PSK (GUI).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3616,29 +3611,29 @@ questions:
     text: Disable logging permanently while testing 5.10
   correct:
     answer: a
-  explanation: '5.10 (Configure WLAN using WPA2 PSK (GUI)) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
-    the exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 5.10 (Configure WLAN using WPA2 PSK (GUI)), keep a baseline
+    of the show/verify output that proves Configure WLAN using WPA2 PSK (GUI) and
+    a written rollback. Skipping logs or treating 5.10 as optional leaves you unable
+    to prove Configure WLAN using WPA2 PSK (GUI) still works.
 
 
-    **Apply the verified behavior required by objective 5.10**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.10**: That is the production-safe
+    action for Configure WLAN using WPA2 PSK (GUI).
 
 
-    **Ignore verification and assume 5.10 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Ignore verification and assume 5.10 always works**: Do not assume Configure
+    WLAN using WPA2 PSK (GUI) works; check the show/verify output that proves Configure
+    WLAN using WPA2 PSK (GUI).
 
 
-    **Confuse 5.10 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 5.10 with an unrelated Layer mismatch**: Apply Configure WLAN using
+    WPA2 PSK (GUI), not an unrelated OSI-layer look-alike (for example STP when the
+    objective is routing).
 
 
-    **Disable logging permanently while testing 5.10**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.10**: You need logging/monitoring
+    to see whether Configure WLAN using WPA2 PSK (GUI) actually converged after the
+    window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3666,29 +3661,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.10 (Configure WLAN using WPA2 PSK (GUI)) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 5.10 (Configure WLAN using WPA2 PSK (GUI)), keep a baseline
+    of the show/verify output that proves Configure WLAN using WPA2 PSK (GUI) and
+    a written rollback. Skipping logs or treating 5.10 as optional leaves you unable
+    to prove Configure WLAN using WPA2 PSK (GUI) still works.
 
 
-    **Verify expected state for 5.10 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.10 with show/ping evidence**: Confirm Configure
+    WLAN using WPA2 PSK (GUI) with the show/verify output that proves Configure WLAN
+    using WPA2 PSK (GUI) before you rely on the new config.
 
 
-    **Document the 5.10 design intent and rollback plan**: Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+    **Skip change control because 5.10 is low risk**: Configure WLAN using WPA2 PSK
+    (GUI) still needs a change record and logs; skipping them removes rollback for
+    5.10.
 
 
-    **Skip change control because 5.10 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.10 design intent and rollback plan**: Write the Configure WLAN
+    using WPA2 PSK (GUI) intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.10**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.10**: You need logging/monitoring to see
+    whether Configure WLAN using WPA2 PSK (GUI) actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3712,30 +3706,29 @@ questions:
     text: Disable logging permanently while testing 5.10
   correct:
     answer: a
-  explanation: '5.10 (Configure WLAN using WPA2 PSK (GUI)) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 5.10 (Configure WLAN using WPA2 PSK (GUI)), keep a baseline
+    of the show/verify output that proves Configure WLAN using WPA2 PSK (GUI) and
+    a written rollback. Skipping logs or treating 5.10 as optional leaves you unable
+    to prove Configure WLAN using WPA2 PSK (GUI) still works.
 
 
-    **Use the standard model for 5.10 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Use clear-text shared secrets as the only control for 5.10**: Weak or disabled
+    AAA does not implement Configure WLAN using WPA2 PSK (GUI).
 
 
-    **Use clear-text shared secrets as the only control for 5.10**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 5.10 changes in production**: Configure WLAN using WPA2
+    PSK (GUI) still needs a change record and logs; skipping them removes rollback
+    for 5.10.
 
 
-    **Skip documentation for 5.10 changes in production**: Skipping documentation
-    leaves no rollback and no audit trail. Production changes for this objective still
-    need a written record.
+    **Use the standard model for 5.10 rather than a look-alike concept**: Use the
+    documented Configure WLAN using WPA2 PSK (GUI) design, then verify with the show/verify
+    output that proves Configure WLAN using WPA2 PSK (GUI).
 
 
-    **Disable logging permanently while testing 5.10**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.10**: You need logging/monitoring
+    to see whether Configure WLAN using WPA2 PSK (GUI) actually converged after the
+    window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3759,30 +3752,26 @@ questions:
     text: Skip documentation for 5.2 changes in production
   correct:
     answer: a
-  explanation: '5.2 (Security program elements) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use the documented enterprise design for
-    this objective (Cisco validated design / local standard) rather than an ad-hoc
-    look-alike.
+  explanation: 'For objective 5.2 (Security program elements), keep a baseline of
+    the show/verify output that proves Security program elements and a written rollback.
+    Skipping logs or treating 5.2 as optional leaves you unable to prove Security
+    program elements still works.
 
 
-    **Prefer the documented 5.2 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Treat 5.2 as optional when the blueprint lists it**: 5.2 (Security program elements)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 5.2 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Prefer the documented 5.2 approach used in enterprise designs**: Write the Security
+    program elements intent and the commands that restore the previous state.
 
 
-    **Use clear-text shared secrets as the only control for 5.2**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 5.2**: Weak or disabled
+    AAA does not implement Security program elements.
 
 
-    **Skip documentation for 5.2 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.2 changes in production**: Security program elements
+    still needs a change record and logs; skipping them removes rollback for 5.2.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3806,28 +3795,26 @@ questions:
     text: Ignore verification and assume 5.2 always works
   correct:
     answer: a
-  explanation: '5.2 (Security program elements) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
-    actually names, then confirm it with show/ping — not a neighboring feature.
+  explanation: 'For objective 5.2 (Security program elements), keep a baseline of
+    the show/verify output that proves Security program elements and a written rollback.
+    Skipping logs or treating 5.2 as optional leaves you unable to prove Security
+    program elements still works.
 
 
-    **Apply the verified behavior required by objective 5.2**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.2**: That is the production-safe
+    action for Security program elements.
 
 
-    **Skip documentation for 5.2 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Skip documentation for 5.2 changes in production**: Security program elements
+    still needs a change record and logs; skipping them removes rollback for 5.2.
 
 
-    **Treat 5.2 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 5.2 as optional when the blueprint lists it**: 5.2 (Security program elements)
+    is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 5.2 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.2 always works**: Do not assume Security program
+    elements works; check the show/verify output that proves Security program elements.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3851,27 +3838,27 @@ questions:
     text: Validate with show/verify steps before relying on 5.2 changes
   correct:
     answer: a
-  explanation: '5.2 (Security program elements) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Validate with show/verify (and ping where
-    relevant) before you trust the change in production.
+  explanation: 'For objective 5.2 (Security program elements), keep a baseline of
+    the show/verify output that proves Security program elements and a written rollback.
+    Skipping logs or treating 5.2 as optional leaves you unable to prove Security
+    program elements still works.
 
 
-    **Validate with show/verify steps before relying on 5.2 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Treat 5.2 as optional when the blueprint lists it**: 5.2 (Security program elements)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 5.2 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 5.2 always works**: Do not assume Security program
+    elements works; check the show/verify output that proves Security program elements.
 
 
-    **Ignore verification and assume 5.2 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Confuse 5.2 with an unrelated Layer mismatch**: Apply Security program elements,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 5.2 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).'
+    **Validate with show/verify steps before relying on 5.2 changes**: Confirm Security
+    program elements with the show/verify output that proves Security program elements
+    before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3899,29 +3886,27 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.2 (Security program elements) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
-    actually converged — not just that the command was typed. Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+  explanation: 'For objective 5.2 (Security program elements), keep a baseline of
+    the show/verify output that proves Security program elements and a written rollback.
+    Skipping logs or treating 5.2 as optional leaves you unable to prove Security
+    program elements still works.
 
 
-    **Verify expected state for 5.2 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.2 with show/ping evidence**: Confirm Security program
+    elements with the show/verify output that proves Security program elements before
+    you rely on the new config.
 
 
-    **Document the 5.2 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.2 is low risk**: Security program elements still
+    needs a change record and logs; skipping them removes rollback for 5.2.
 
 
-    **Skip change control because 5.2 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.2 design intent and rollback plan**: Write the Security program
+    elements intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.2**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.2**: You need logging/monitoring to see
+    whether Security program elements actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3945,30 +3930,29 @@ questions:
     text: Disable logging permanently while testing 5.3
   correct:
     answer: a
-  explanation: '5.3 (Device access control using local passwords) is implemented by
-    verifying with show/ping evidence and keeping a rollback plan. Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+  explanation: 'For objective 5.3 (Device access control using local passwords), keep
+    a baseline of the show/verify output that proves Device access control using local
+    passwords and a written rollback. Skipping logs or treating 5.3 as optional leaves
+    you unable to prove Device access control using local passwords still works.
 
 
-    **Prefer the documented 5.3 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Use clear-text shared secrets as the only control for 5.3**: Weak or disabled
+    AAA does not implement Device access control using local passwords.
 
 
-    **Use clear-text shared secrets as the only control for 5.3**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Prefer the documented 5.3 approach used in enterprise designs**: Write the Device
+    access control using local passwords intent and the commands that restore the
+    previous state.
 
 
-    **Confuse 5.3 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 5.3 with an unrelated Layer mismatch**: Apply Device access control
+    using local passwords, not an unrelated OSI-layer look-alike (for example STP
+    when the objective is routing).
 
 
-    **Disable logging permanently while testing 5.3**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.3**: You need logging/monitoring
+    to see whether Device access control using local passwords actually converged
+    after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -3992,30 +3976,28 @@ questions:
     text: Skip documentation for 5.3 changes in production
   correct:
     answer: a
-  explanation: '5.3 (Device access control using local passwords) is implemented by
-    verifying with show/ping evidence and keeping a rollback plan. Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+  explanation: 'For objective 5.3 (Device access control using local passwords), keep
+    a baseline of the show/verify output that proves Device access control using local
+    passwords and a written rollback. Skipping logs or treating 5.3 as optional leaves
+    you unable to prove Device access control using local passwords still works.
 
 
-    **Apply the verified behavior required by objective 5.3**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.3**: That is the production-safe
+    action for Device access control using local passwords.
 
 
-    **Disable logging permanently while testing 5.3**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Disable logging permanently while testing 5.3**: You need logging/monitoring
+    to see whether Device access control using local passwords actually converged
+    after the window.
 
 
-    **Use clear-text shared secrets as the only control for 5.3**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 5.3**: Weak or disabled
+    AAA does not implement Device access control using local passwords.
 
 
-    **Skip documentation for 5.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.3 changes in production**: Device access control using
+    local passwords still needs a change record and logs; skipping them removes rollback
+    for 5.3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -4039,28 +4021,28 @@ questions:
     text: Validate with show/verify steps before relying on 5.3 changes
   correct:
     answer: a
-  explanation: '5.3 (Device access control using local passwords) is implemented by
-    verifying with show/ping evidence and keeping a rollback plan. Validate with show/verify
-    (and ping where relevant) before you trust the change in production.
+  explanation: 'For objective 5.3 (Device access control using local passwords), keep
+    a baseline of the show/verify output that proves Device access control using local
+    passwords and a written rollback. Skipping logs or treating 5.3 as optional leaves
+    you unable to prove Device access control using local passwords still works.
 
 
-    **Validate with show/verify steps before relying on 5.3 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Use clear-text shared secrets as the only control for 5.3**: Weak or disabled
+    AAA does not implement Device access control using local passwords.
 
 
-    **Use clear-text shared secrets as the only control for 5.3**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 5.3 changes in production**: Device access control using
+    local passwords still needs a change record and logs; skipping them removes rollback
+    for 5.3.
 
 
-    **Skip documentation for 5.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Treat 5.3 as optional when the blueprint lists it**: 5.3 (Device access control
+    using local passwords) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.3 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.'
+    **Validate with show/verify steps before relying on 5.3 changes**: Confirm Device
+    access control using local passwords with the show/verify output that proves Device
+    access control using local passwords before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -4084,29 +4066,29 @@ questions:
     text: Skip documentation for 5.3 changes in production
   correct:
     answer: a
-  explanation: '5.3 (Device access control using local passwords) is implemented by
-    verifying with show/ping evidence and keeping a rollback plan. Stay with the standard
-    model for this objective instead of a look-alike protocol that shares a buzzword
-    but not the behavior.
+  explanation: 'For objective 5.3 (Device access control using local passwords), keep
+    a baseline of the show/verify output that proves Device access control using local
+    passwords and a written rollback. Skipping logs or treating 5.3 as optional leaves
+    you unable to prove Device access control using local passwords still works.
 
 
-    **Use the standard model for 5.3 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Treat 5.3 as optional when the blueprint lists it**: 5.3 (Device access control
+    using local passwords) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.3 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 5.3 always works**: Do not assume Device access
+    control using local passwords works; check the show/verify output that proves
+    Device access control using local passwords.
 
 
-    **Ignore verification and assume 5.3 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Use the standard model for 5.3 rather than a look-alike concept**: Use the documented
+    Device access control using local passwords design, then verify with the show/verify
+    output that proves Device access control using local passwords.
 
 
-    **Skip documentation for 5.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.3 changes in production**: Device access control using
+    local passwords still needs a change record and logs; skipping them removes rollback
+    for 5.3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -4134,29 +4116,27 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.4 (Password policies and alternatives) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 5.4 (Password policies and alternatives), keep a baseline
+    of the show/verify output that proves Password policies and alternatives and a
+    written rollback. Skipping logs or treating 5.4 as optional leaves you unable
+    to prove Password policies and alternatives still works.
 
 
-    **Verify expected state for 5.4 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.4 with show/ping evidence**: Confirm Password policies
+    and alternatives with the show/verify output that proves Password policies and
+    alternatives before you rely on the new config.
 
 
-    **Document the 5.4 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.4 is low risk**: Password policies and alternatives
+    still needs a change record and logs; skipping them removes rollback for 5.4.
 
 
-    **Skip change control because 5.4 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.4 design intent and rollback plan**: Write the Password policies
+    and alternatives intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.4**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.4**: You need logging/monitoring to see
+    whether Password policies and alternatives actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -4180,29 +4160,29 @@ questions:
     text: Disable logging permanently while testing 5.4
   correct:
     answer: a
-  explanation: '5.4 (Password policies and alternatives) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
-    the exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 5.4 (Password policies and alternatives), keep a baseline
+    of the show/verify output that proves Password policies and alternatives and a
+    written rollback. Skipping logs or treating 5.4 as optional leaves you unable
+    to prove Password policies and alternatives still works.
 
 
-    **Apply the verified behavior required by objective 5.4**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.4**: That is the production-safe
+    action for Password policies and alternatives.
 
 
-    **Ignore verification and assume 5.4 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Ignore verification and assume 5.4 always works**: Do not assume Password policies
+    and alternatives works; check the show/verify output that proves Password policies
+    and alternatives.
 
 
-    **Confuse 5.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 5.4 with an unrelated Layer mismatch**: Apply Password policies and
+    alternatives, not an unrelated OSI-layer look-alike (for example STP when the
+    objective is routing).
 
 
-    **Disable logging permanently while testing 5.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.4**: You need logging/monitoring
+    to see whether Password policies and alternatives actually converged after the
+    window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -4226,28 +4206,29 @@ questions:
     text: Validate with show/verify steps before relying on 5.4 changes
   correct:
     answer: a
-  explanation: '5.4 (Password policies and alternatives) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Validate with show/verify
-    (and ping where relevant) before you trust the change in production.
+  explanation: 'For objective 5.4 (Password policies and alternatives), keep a baseline
+    of the show/verify output that proves Password policies and alternatives and a
+    written rollback. Skipping logs or treating 5.4 as optional leaves you unable
+    to prove Password policies and alternatives still works.
 
 
-    **Validate with show/verify steps before relying on 5.4 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Confuse 5.4 with an unrelated Layer mismatch**: Apply Password policies and
+    alternatives, not an unrelated OSI-layer look-alike (for example STP when the
+    objective is routing).
 
 
-    **Confuse 5.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 5.4**: You need logging/monitoring
+    to see whether Password policies and alternatives actually converged after the
+    window.
 
 
-    **Disable logging permanently while testing 5.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use clear-text shared secrets as the only control for 5.4**: Weak or disabled
+    AAA does not implement Password policies and alternatives.
 
 
-    **Use clear-text shared secrets as the only control for 5.4**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.'
+    **Validate with show/verify steps before relying on 5.4 changes**: Confirm Password
+    policies and alternatives with the show/verify output that proves Password policies
+    and alternatives before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -4271,30 +4252,28 @@ questions:
     text: Disable logging permanently while testing 5.4
   correct:
     answer: a
-  explanation: '5.4 (Password policies and alternatives) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 5.4 (Password policies and alternatives), keep a baseline
+    of the show/verify output that proves Password policies and alternatives and a
+    written rollback. Skipping logs or treating 5.4 as optional leaves you unable
+    to prove Password policies and alternatives still works.
 
 
-    **Use the standard model for 5.4 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Use clear-text shared secrets as the only control for 5.4**: Weak or disabled
+    AAA does not implement Password policies and alternatives.
 
 
-    **Use clear-text shared secrets as the only control for 5.4**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 5.4 changes in production**: Password policies and alternatives
+    still needs a change record and logs; skipping them removes rollback for 5.4.
 
 
-    **Skip documentation for 5.4 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Use the standard model for 5.4 rather than a look-alike concept**: Use the documented
+    Password policies and alternatives design, then verify with the show/verify output
+    that proves Password policies and alternatives.
 
 
-    **Disable logging permanently while testing 5.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.4**: You need logging/monitoring
+    to see whether Password policies and alternatives actually converged after the
+    window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -4318,30 +4297,28 @@ questions:
     text: Skip documentation for 5.5 changes in production
   correct:
     answer: a
-  explanation: '5.5 (Remote access and site-to-site VPNs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 5.5 (Remote access and site-to-site VPNs), keep a baseline
+    of the show/verify output that proves Remote access and site-to-site VPNs and
+    a written rollback. Skipping logs or treating 5.5 as optional leaves you unable
+    to prove Remote access and site-to-site VPNs still works.
 
 
-    **Prefer the documented 5.5 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Treat 5.5 as optional when the blueprint lists it**: 5.5 (Remote access and
+    site-to-site VPNs) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.5 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Prefer the documented 5.5 approach used in enterprise designs**: Write the Remote
+    access and site-to-site VPNs intent and the commands that restore the previous
+    state.
 
 
-    **Use clear-text shared secrets as the only control for 5.5**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 5.5**: Weak or disabled
+    AAA does not implement Remote access and site-to-site VPNs.
 
 
-    **Skip documentation for 5.5 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.5 changes in production**: Remote access and site-to-site
+    VPNs still needs a change record and logs; skipping them removes rollback for
+    5.5.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -4369,29 +4346,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.5 (Remote access and site-to-site VPNs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 5.5 (Remote access and site-to-site VPNs), keep a baseline
+    of the show/verify output that proves Remote access and site-to-site VPNs and
+    a written rollback. Skipping logs or treating 5.5 as optional leaves you unable
+    to prove Remote access and site-to-site VPNs still works.
 
 
-    **Verify expected state for 5.5 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.5 with show/ping evidence**: Confirm Remote access
+    and site-to-site VPNs with the show/verify output that proves Remote access and
+    site-to-site VPNs before you rely on the new config.
 
 
-    **Document the 5.5 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.5 is low risk**: Remote access and site-to-site
+    VPNs still needs a change record and logs; skipping them removes rollback for
+    5.5.
 
 
-    **Skip change control because 5.5 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.5 design intent and rollback plan**: Write the Remote access
+    and site-to-site VPNs intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.5**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.5**: You need logging/monitoring to see
+    whether Remote access and site-to-site VPNs actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -4415,27 +4391,29 @@ questions:
     text: Validate with show/verify steps before relying on 5.5 changes
   correct:
     answer: a
-  explanation: '5.5 (Remote access and site-to-site VPNs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Validate with show/verify
-    (and ping where relevant) before you trust the change in production.
+  explanation: 'For objective 5.5 (Remote access and site-to-site VPNs), keep a baseline
+    of the show/verify output that proves Remote access and site-to-site VPNs and
+    a written rollback. Skipping logs or treating 5.5 as optional leaves you unable
+    to prove Remote access and site-to-site VPNs still works.
 
 
-    **Validate with show/verify steps before relying on 5.5 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Treat 5.5 as optional when the blueprint lists it**: 5.5 (Remote access and
+    site-to-site VPNs) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.5 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 5.5 always works**: Do not assume Remote access
+    and site-to-site VPNs works; check the show/verify output that proves Remote access
+    and site-to-site VPNs.
 
 
-    **Ignore verification and assume 5.5 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Confuse 5.5 with an unrelated Layer mismatch**: Apply Remote access and site-to-site
+    VPNs, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Confuse 5.5 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).'
+    **Validate with show/verify steps before relying on 5.5 changes**: Confirm Remote
+    access and site-to-site VPNs with the show/verify output that proves Remote access
+    and site-to-site VPNs before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -4459,29 +4437,30 @@ questions:
     text: Ignore verification and assume 5.5 always works
   correct:
     answer: a
-  explanation: '5.5 (Remote access and site-to-site VPNs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 5.5 (Remote access and site-to-site VPNs), keep a baseline
+    of the show/verify output that proves Remote access and site-to-site VPNs and
+    a written rollback. Skipping logs or treating 5.5 as optional leaves you unable
+    to prove Remote access and site-to-site VPNs still works.
 
 
-    **Use the standard model for 5.5 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Confuse 5.5 with an unrelated Layer mismatch**: Apply Remote access and site-to-site
+    VPNs, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Confuse 5.5 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 5.5**: You need logging/monitoring
+    to see whether Remote access and site-to-site VPNs actually converged after the
+    window.
 
 
-    **Disable logging permanently while testing 5.5**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use the standard model for 5.5 rather than a look-alike concept**: Use the documented
+    Remote access and site-to-site VPNs design, then verify with the show/verify output
+    that proves Remote access and site-to-site VPNs.
 
 
-    **Ignore verification and assume 5.5 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.5 always works**: Do not assume Remote access
+    and site-to-site VPNs works; check the show/verify output that proves Remote access
+    and site-to-site VPNs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -4505,30 +4484,25 @@ questions:
     text: Disable logging permanently while testing 5.6
   correct:
     answer: a
-  explanation: '5.6 (Access control lists) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use the documented enterprise design for
-    this objective (Cisco validated design / local standard) rather than an ad-hoc
-    look-alike.
+  explanation: 'For objective 5.6 (Access control lists), keep a baseline of `show
+    access-lists` and a written rollback. Skipping logs or treating 5.6 as optional
+    leaves you unable to prove Access control lists still works.
 
 
-    **Prefer the documented 5.6 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Use clear-text shared secrets as the only control for 5.6**: Weak or disabled
+    AAA does not implement Access control lists.
 
 
-    **Use clear-text shared secrets as the only control for 5.6**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Prefer the documented 5.6 approach used in enterprise designs**: Write the Access
+    control lists intent and the commands that restore the previous state.
 
 
-    **Confuse 5.6 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 5.6 with an unrelated Layer mismatch**: Apply Access control lists,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Disable logging permanently while testing 5.6**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.6**: You need logging/monitoring
+    to see whether Access control lists actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -4552,29 +4526,25 @@ questions:
     text: Skip documentation for 5.6 changes in production
   correct:
     answer: a
-  explanation: '5.6 (Access control lists) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
-    actually names, then confirm it with show/ping — not a neighboring feature.
+  explanation: 'For objective 5.6 (Access control lists), keep a baseline of `show
+    access-lists` and a written rollback. Skipping logs or treating 5.6 as optional
+    leaves you unable to prove Access control lists still works.
 
 
-    **Apply the verified behavior required by objective 5.6**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.6**: That is the production-safe
+    action for Access control lists.
 
 
-    **Disable logging permanently while testing 5.6**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Disable logging permanently while testing 5.6**: You need logging/monitoring
+    to see whether Access control lists actually converged after the window.
 
 
-    **Use clear-text shared secrets as the only control for 5.6**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 5.6**: Weak or disabled
+    AAA does not implement Access control lists.
 
 
-    **Skip documentation for 5.6 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.6 changes in production**: Access control lists still
+    needs a change record and logs; skipping them removes rollback for 5.6.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -4602,29 +4572,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.6 (Access control lists) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
-    actually converged — not just that the command was typed. Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+  explanation: 'For objective 5.6 (Access control lists), keep a baseline of `show
+    access-lists` and a written rollback. Skipping logs or treating 5.6 as optional
+    leaves you unable to prove Access control lists still works.
 
 
-    **Verify expected state for 5.6 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.6 with show/ping evidence**: Confirm Access control
+    lists with `show access-lists` before you rely on the new config.
 
 
-    **Document the 5.6 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.6 is low risk**: Access control lists still needs
+    a change record and logs; skipping them removes rollback for 5.6.
 
 
-    **Skip change control because 5.6 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.6 design intent and rollback plan**: Write the Access control
+    lists intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.6**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.6**: You need logging/monitoring to see
+    whether Access control lists actually converged after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -4648,28 +4614,25 @@ questions:
     text: Skip documentation for 5.7 changes in production
   correct:
     answer: a
-  explanation: '5.7 (Layer 2 security features) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Stay with the standard model for this objective
-    instead of a look-alike protocol that shares a buzzword but not the behavior.
+  explanation: 'For objective 5.7 (Layer 2 security features), keep a baseline of
+    `show ip dhcp snooping binding` and a written rollback. Skipping logs or treating
+    5.7 as optional leaves you unable to prove Layer 2 security features still works.
 
 
-    **Use the standard model for 5.7 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Treat 5.7 as optional when the blueprint lists it**: 5.7 (Layer 2 security features)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 5.7 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 5.7 always works**: Do not assume Layer 2 security
+    features works; check `show ip dhcp snooping binding`.
 
 
-    **Ignore verification and assume 5.7 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Use the standard model for 5.7 rather than a look-alike concept**: Use the documented
+    Layer 2 security features design, then verify with `show ip dhcp snooping binding`.
 
 
-    **Skip documentation for 5.7 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.7 changes in production**: Layer 2 security features
+    still needs a change record and logs; skipping them removes rollback for 5.7.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -4693,29 +4656,25 @@ questions:
     text: Ignore verification and assume 5.7 always works
   correct:
     answer: a
-  explanation: '5.7 (Layer 2 security features) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use the documented enterprise design for
-    this objective (Cisco validated design / local standard) rather than an ad-hoc
-    look-alike.
+  explanation: 'For objective 5.7 (Layer 2 security features), keep a baseline of
+    `show ip dhcp snooping binding` and a written rollback. Skipping logs or treating
+    5.7 as optional leaves you unable to prove Layer 2 security features still works.
 
 
-    **Prefer the documented 5.7 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Confuse 5.7 with an unrelated Layer mismatch**: Apply Layer 2 security features,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 5.7 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Prefer the documented 5.7 approach used in enterprise designs**: Write the Layer
+    2 security features intent and the commands that restore the previous state.
 
 
-    **Treat 5.7 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 5.7 as optional when the blueprint lists it**: 5.7 (Layer 2 security features)
+    is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 5.7 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.7 always works**: Do not assume Layer 2 security
+    features works; check `show ip dhcp snooping binding`.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -4739,29 +4698,30 @@ questions:
     text: Disable logging permanently while testing 5.8
   correct:
     answer: a
-  explanation: '5.8 (Authentication, authorization, and accounting) is implemented
-    by verifying with show/ping evidence and keeping a rollback plan. Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+  explanation: 'For objective 5.8 (Authentication, authorization, and accounting),
+    keep a baseline of the show/verify output that proves Authentication, authorization,
+    and accounting and a written rollback. Skipping logs or treating 5.8 as optional
+    leaves you unable to prove Authentication, authorization, and accounting still
+    works.
 
 
-    **Apply the verified behavior required by objective 5.8**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.8**: That is the production-safe
+    action for Authentication, authorization, and accounting.
 
 
-    **Ignore verification and assume 5.8 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Ignore verification and assume 5.8 always works**: Do not assume Authentication,
+    authorization, and accounting works; check the show/verify output that proves
+    Authentication, authorization, and accounting.
 
 
-    **Confuse 5.8 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 5.8 with an unrelated Layer mismatch**: Apply Authentication, authorization,
+    and accounting, not an unrelated OSI-layer look-alike (for example STP when the
+    objective is routing).
 
 
-    **Disable logging permanently while testing 5.8**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.8**: You need logging/monitoring
+    to see whether Authentication, authorization, and accounting actually converged
+    after the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -4785,28 +4745,30 @@ questions:
     text: Validate with show/verify steps before relying on 5.8 changes
   correct:
     answer: a
-  explanation: '5.8 (Authentication, authorization, and accounting) is implemented
-    by verifying with show/ping evidence and keeping a rollback plan. Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+  explanation: 'For objective 5.8 (Authentication, authorization, and accounting),
+    keep a baseline of the show/verify output that proves Authentication, authorization,
+    and accounting and a written rollback. Skipping logs or treating 5.8 as optional
+    leaves you unable to prove Authentication, authorization, and accounting still
+    works.
 
 
-    **Validate with show/verify steps before relying on 5.8 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Confuse 5.8 with an unrelated Layer mismatch**: Apply Authentication, authorization,
+    and accounting, not an unrelated OSI-layer look-alike (for example STP when the
+    objective is routing).
 
 
-    **Confuse 5.8 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 5.8**: You need logging/monitoring
+    to see whether Authentication, authorization, and accounting actually converged
+    after the window.
 
 
-    **Disable logging permanently while testing 5.8**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use clear-text shared secrets as the only control for 5.8**: Weak or disabled
+    AAA does not implement Authentication, authorization, and accounting.
 
 
-    **Use clear-text shared secrets as the only control for 5.8**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.'
+    **Validate with show/verify steps before relying on 5.8 changes**: Confirm Authentication,
+    authorization, and accounting with the show/verify output that proves Authentication,
+    authorization, and accounting before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -4834,29 +4796,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.8 (Authentication, authorization, and accounting) is implemented
-    by verifying with show/ping evidence and keeping a rollback plan. Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. Document design intent and the rollback commands. The next engineer
-    (or you at 03:00) needs that, not tribal memory.
+  explanation: 'For objective 5.8 (Authentication, authorization, and accounting),
+    keep a baseline of the show/verify output that proves Authentication, authorization,
+    and accounting and a written rollback. Skipping logs or treating 5.8 as optional
+    leaves you unable to prove Authentication, authorization, and accounting still
+    works.
 
 
-    **Verify expected state for 5.8 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.8 with show/ping evidence**: Confirm Authentication,
+    authorization, and accounting with the show/verify output that proves Authentication,
+    authorization, and accounting before you rely on the new config.
 
 
-    **Document the 5.8 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.8 is low risk**: Authentication, authorization,
+    and accounting still needs a change record and logs; skipping them removes rollback
+    for 5.8.
 
 
-    **Skip change control because 5.8 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.8 design intent and rollback plan**: Write the Authentication,
+    authorization, and accounting intent and the commands that restore the previous
+    state.
 
 
-    **Disable all monitoring related to 5.8**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.8**: You need logging/monitoring to see
+    whether Authentication, authorization, and accounting actually converged after
+    the window.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -4880,30 +4844,26 @@ questions:
     text: Skip documentation for 5.9 changes in production
   correct:
     answer: a
-  explanation: '5.9 (Wireless security protocols) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 5.9 (Wireless security protocols), keep a baseline of
+    the show/verify output that proves Wireless security protocols and a written rollback.
+    Skipping logs or treating 5.9 as optional leaves you unable to prove Wireless
+    security protocols still works.
 
 
-    **Prefer the documented 5.9 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Treat 5.9 as optional when the blueprint lists it**: 5.9 (Wireless security
+    protocols) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.9 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Prefer the documented 5.9 approach used in enterprise designs**: Write the Wireless
+    security protocols intent and the commands that restore the previous state.
 
 
-    **Use clear-text shared secrets as the only control for 5.9**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 5.9**: Weak or disabled
+    AAA does not implement Wireless security protocols.
 
 
-    **Skip documentation for 5.9 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 5.9 changes in production**: Wireless security protocols
+    still needs a change record and logs; skipping them removes rollback for 5.9.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -4927,29 +4887,26 @@ questions:
     text: Ignore verification and assume 5.9 always works
   correct:
     answer: a
-  explanation: '5.9 (Wireless security protocols) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Apply the verified behavior the
-    exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 5.9 (Wireless security protocols), keep a baseline of
+    the show/verify output that proves Wireless security protocols and a written rollback.
+    Skipping logs or treating 5.9 as optional leaves you unable to prove Wireless
+    security protocols still works.
 
 
-    **Apply the verified behavior required by objective 5.9**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 5.9**: That is the production-safe
+    action for Wireless security protocols.
 
 
-    **Skip documentation for 5.9 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Skip documentation for 5.9 changes in production**: Wireless security protocols
+    still needs a change record and logs; skipping them removes rollback for 5.9.
 
 
-    **Treat 5.9 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 5.9 as optional when the blueprint lists it**: 5.9 (Wireless security
+    protocols) is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 5.9 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.9 always works**: Do not assume Wireless security
+    protocols works; check the show/verify output that proves Wireless security protocols.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -4973,27 +4930,27 @@ questions:
     text: Validate with show/verify steps before relying on 5.9 changes
   correct:
     answer: a
-  explanation: '5.9 (Wireless security protocols) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
-    ping where relevant) before you trust the change in production.
+  explanation: 'For objective 5.9 (Wireless security protocols), keep a baseline of
+    the show/verify output that proves Wireless security protocols and a written rollback.
+    Skipping logs or treating 5.9 as optional leaves you unable to prove Wireless
+    security protocols still works.
 
 
-    **Validate with show/verify steps before relying on 5.9 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Treat 5.9 as optional when the blueprint lists it**: 5.9 (Wireless security
+    protocols) is on the blueprint; it is not skippable.
 
 
-    **Treat 5.9 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 5.9 always works**: Do not assume Wireless security
+    protocols works; check the show/verify output that proves Wireless security protocols.
 
 
-    **Ignore verification and assume 5.9 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Confuse 5.9 with an unrelated Layer mismatch**: Apply Wireless security protocols,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 5.9 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).'
+    **Validate with show/verify steps before relying on 5.9 changes**: Confirm Wireless
+    security protocols with the show/verify output that proves Wireless security protocols
+    before you rely on the new config.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -5017,29 +4974,27 @@ questions:
     text: Ignore verification and assume 5.9 always works
   correct:
     answer: a
-  explanation: '5.9 (Wireless security protocols) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Stay with the standard model for
-    this objective instead of a look-alike protocol that shares a buzzword but not
-    the behavior.
+  explanation: 'For objective 5.9 (Wireless security protocols), keep a baseline of
+    the show/verify output that proves Wireless security protocols and a written rollback.
+    Skipping logs or treating 5.9 as optional leaves you unable to prove Wireless
+    security protocols still works.
 
 
-    **Use the standard model for 5.9 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Confuse 5.9 with an unrelated Layer mismatch**: Apply Wireless security protocols,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 5.9 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 5.9**: You need logging/monitoring
+    to see whether Wireless security protocols actually converged after the window.
 
 
-    **Disable logging permanently while testing 5.9**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use the standard model for 5.9 rather than a look-alike concept**: Use the documented
+    Wireless security protocols design, then verify with the show/verify output that
+    proves Wireless security protocols.
 
 
-    **Ignore verification and assume 5.9 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 5.9 always works**: Do not assume Wireless security
+    protocols works; check the show/verify output that proves Wireless security protocols.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9

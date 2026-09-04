@@ -23,7 +23,7 @@ SRC = ROOT / "content" / "questions"
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from choice_facts import CHOICE_FACTS, HAND_EXPL  # noqa: E402
+from choice_facts import HAND_EXPL  # noqa: E402
 
 from openboson.exsim.objectives import topic_title  # noqa: E402
 
@@ -43,6 +43,8 @@ BANNED = (
     "is the matching value or command",
     "the stem requires the operational or protocol order",
     "the correct sequence for this item is",
+    "is required here",
+    "implemented by verifying with show/ping",
 )
 FILLER = BANNED + (
     "it is the selection that meets the requirement stated in the stem",
@@ -1315,41 +1317,60 @@ def _bullet(text: str, body: str) -> str:
     return f"**{label}**: {body}"
 
 
-def _lookup_fact(text: str, *, correct: bool, fact: str | None, orig_rat: str | None) -> str | None:
+def _lookup_fact(text: str, *, fact: str | None, orig_rat: str | None) -> str | None:
+    """Only per-item authored copy: generator rationale or FACT_TEACH[stem][choice]."""
     if orig_rat and not _has_filler(orig_rat):
         return orig_rat
     if fact and fact in FACT_TEACH and text in FACT_TEACH[fact]:
         return FACT_TEACH[fact][text]
-    ops = _ops_blurb(text, good=correct)
-    if ops:
-        return ops
-    if text in CHOICE_FACTS:
-        return CHOICE_FACTS[text]
-    stripped = _strip_qualifiers(text)
-    if stripped in CHOICE_FACTS:
-        return CHOICE_FACTS[stripped]
-    term = describe_term(text)
-    if term:
-        return term
-    if stripped != _norm(text):
-        return describe_term(stripped)
     return None
+
+
+def _stem_bound(
+    text: str,
+    *,
+    correct: bool,
+    stem: str,
+    correct_texts: list[str],
+    fact: str | None,
+    topic_label: str,
+) -> str:
+    """Short sentence tied to THIS stem — never a fact about a different topic."""
+    ask = _norm(stem).rstrip("?.")
+    corr = "; ".join(_norm(t) for t in correct_texts) or "the keyed choice"
+    label = _norm(text)
+    if correct:
+        if "document verification" in label.lower():
+            hook = fact or topic_label
+            return (
+                f"**{label}**: Write the verify/rollback steps for {hook} before "
+                f"you change the box."
+            )
+        return f"**{label}**: {ask}."
+    return f"**{label}**: “{ask}” is answered by {corr}. {label} does not do that job."
 
 
 def _why_for_choice(
     text: str,
     *,
-    qid: str,
     correct: bool,
+    stem: str,
+    correct_texts: list[str],
     fact: str | None,
     orig_rat: str | None,
+    topic_label: str,
 ) -> str:
-    body = _lookup_fact(text, correct=correct, fact=fact, orig_rat=orig_rat)
-    if not body:
-        if correct:
-            return ""
-        raise SystemExit(f"no authored fact for {qid} choice {text!r}")
-    return _bullet(text, body)
+    body = _lookup_fact(text, fact=fact, orig_rat=orig_rat)
+    if body:
+        return _bullet(text, body)
+    return _stem_bound(
+        text,
+        correct=correct,
+        stem=stem,
+        correct_texts=correct_texts,
+        fact=fact,
+        topic_label=topic_label,
+    )
 
 
 def _lead(
@@ -1365,21 +1386,9 @@ def _lead(
         blobs = [FACT_TEACH[fact][t] for t in correct_texts if t in FACT_TEACH[fact]]
         if blobs:
             return " ".join(_sentence(b) for b in blobs)
-    ops = [_ops_blurb(t, good=True) for t in correct_texts]
-    ops = [o for o in ops if o]
-    if ops:
-        return (
-            f"{topic_label} is implemented by verifying with show/ping evidence "
-            f"and keeping a rollback plan. " + " ".join(_sentence(o) for o in ops)
-        )
-    terms = [describe_term(t) for t in correct_texts]
-    terms = [t for t in terms if t]
-    if terms:
-        return " ".join(_sentence(t) for t in terms)
     corr = "; ".join(correct_texts)
-    return (
-        f"{topic_label}: **{corr}** is the accurate association for {_norm(q.get('stem') or '')}."
-    )
+    ask = _norm(q.get("stem") or "").rstrip("?.")
+    return f"For {topic_label}, “{ask}” is answered by **{corr}**."
 
 
 def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
@@ -1402,10 +1411,12 @@ def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
     for c in right + wrong:
         para = _why_for_choice(
             c["text"],
-            qid=q["id"],
             correct=c["id"] in cids,
+            stem=stem,
+            correct_texts=correct_texts,
             fact=fact,
             orig_rat=orig_rats.get(c["id"]) or orig_rats.get(c["text"]),
+            topic_label=topic_label,
         )
         if not para:
             continue
@@ -1454,9 +1465,127 @@ def rewrite_other(q: dict) -> str:
     return rewrite_choice_question(q, None, "ccna")
 
 
+_OPS_STEM = (
+    "operationally sound",
+    "implementation or verification",
+    "extra multi-select",
+    "which reply is accurate",
+    "configuration intent aligns",
+    "select the correct association for exam topic",
+    "which observation is most relevant",
+    "best matches production best practice",
+    "which option correctly describes a key idea",
+)
+
 def _is_stamped(blob: str) -> bool:
     low = (blob or "").lower()
     return any(p in low for p in BANNED) or " is not **" in (blob or "")
+
+
+def _is_ops_item(q: dict) -> bool:
+    qid = q.get("id") or ""
+    if "-nsc-" in qid or "-v05-" in qid:
+        return True
+    stem = (q.get("stem") or "").lower()
+    return any(p in stem for p in _OPS_STEM)
+
+
+def _wrong_topic_paste(q: dict) -> bool:
+    expl = (q.get("explanation") or "").lower()
+    stem = (q.get("stem") or "").lower()
+    if "netmiko" in expl or "ncclient" in expl:
+        return True
+    if "not ipv6 addressing" in expl and "ipv6" not in stem:
+        return True
+    return "a vlan is an 802.1q broadcast domain" in expl and "vlan" not in stem
+
+
+def _show_hint(code: str, title: str) -> str:
+    hints = {
+        "1.1": "`show ip interface brief` / `show cdp neighbors`",
+        "1.5": "`show ip interface brief` and a TCP/UDP capture or `show control-plane`",
+        "1.6": "`show ip interface brief` and the subnet math for the prefix",
+        "1.10": "`ipconfig` / `ifconfig` / `ip addr` on the client",
+        "1.13": "`show mac address-table` / `show arp`",
+        "2.1": "`show vlan brief`",
+        "2.2": "`show interfaces trunk`",
+        "2.4": "`show etherchannel summary`",
+        "2.5": "`show spanning-tree`",
+        "3.1": "`show ip route`",
+        "3.2": "`show ip route` longest-match / next-hop",
+        "3.3": "`show ip route` for the floating static",
+        "3.4": "`show ip ospf neighbor` / `show ip route ospf`",
+        "3.5": "`show standby` / `show vrrp` / `show glbp`",
+        "4.1": "`show ip nat translations`",
+        "4.2": "`show ntp status`",
+        "4.5": "`show logging`",
+        "5.6": "`show access-lists`",
+        "5.7": "`show ip dhcp snooping binding`",
+        "6.5": "an HTTP GET/PUT against the REST URI",
+        "6.6": "`show event manager policy registered`",
+        "6.7": "a JSON parse of the controller payload",
+    }
+    return hints.get(code, f"the show/verify output that proves {title}")
+
+
+def _ops_rewrite(q: dict, cert: str) -> str:
+    code = str(q.get("topic_code") or "")
+    title = topic_title(code, cert=cert) or code
+    hint = _show_hint(code, title)
+    cids = _correct_ids(q)
+    parts = [
+        f"For objective {code} ({title}), keep a baseline of {hint} and a written "
+        f"rollback. Skipping logs or treating {code} as optional leaves you unable "
+        f"to prove {title} still works."
+    ]
+    for c in q.get("choices") or []:
+        label = _norm(c.get("text") or "")
+        low = label.lower()
+        good = c["id"] in cids
+        if good:
+            if any(k in low for k in ("verify", "show", "capture", "ping", "validate")):
+                body = f"Confirm {title} with {hint} before you rely on the new config."
+            elif any(k in low for k in ("document", "rollback", "design intent")):
+                body = f"Write the {title} intent and the commands that restore the previous state."
+            elif "standard model" in low or "documented" in low or "prefer" in low:
+                body = f"Use the documented {title} design, then verify with {hint}."
+            else:
+                body = f"That is the production-safe action for {title}."
+        elif any(k in low for k in ("skip documentation", "skip all logs", "skip change")):
+            body = (
+                f"{title} still needs a change record and logs; skipping them "
+                f"removes rollback for {code}."
+            )
+        elif "logging" in low or "monitoring" in low:
+            body = (
+                f"You need logging/monitoring to see whether {title} actually "
+                f"converged after the window."
+            )
+        elif "aaa" in low or "clear-text" in low or "shared secret" in low:
+            body = f"Weak or disabled AAA does not implement {title}."
+        elif "optional" in low:
+            body = f"{code} ({title}) is on the blueprint; it is not skippable."
+        elif "confuse" in low or "layer mismatch" in low:
+            body = (
+                f"Apply {title}, not an unrelated OSI-layer look-alike (for example "
+                f"STP when the objective is routing)."
+            )
+        elif "ignore" in low or "assume" in low or "always works" in low:
+            body = f"Do not assume {title} works; check {hint}."
+        else:
+            body = f"That action does not verify or implement {title}."
+        parts.append(_bullet(label, body))
+    return "\n\n".join(parts)
+
+
+def _needs_rewrite(q: dict) -> bool:
+    if q["id"] in FLAGSHIP_IDS:
+        return False
+    if q["id"] in HAND_EXPL:
+        return True
+    if _is_ops_item(q) or _wrong_topic_paste(q):
+        return True
+    return _is_stamped(q.get("explanation") or "")
 
 
 def _rewrite_question(q: dict, orig: dict | None, cert: str) -> None:
@@ -1465,7 +1594,10 @@ def _rewrite_question(q: dict, orig: dict | None, cert: str) -> None:
         return
     if q["id"] in FLAGSHIP_IDS:
         return
-    if not _is_stamped(q.get("explanation") or ""):
+    if not _needs_rewrite(q):
+        return
+    if _is_ops_item(q):
+        q["explanation"] = _ops_rewrite(q, cert)
         return
     if q.get("choices"):
         q["explanation"] = rewrite_choice_question(q, orig, cert)

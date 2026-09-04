@@ -568,19 +568,24 @@ questions:
     text: Only syslog
   correct:
     answer: a
-  explanation: 'Multicast Source Discovery.
+  explanation: 'MSDP (Multicast Source Discovery Protocol) peers **Rendezvous Points
+    in different PIM-SM domains** and exchanges Source-Active messages (typically
+    TCP 639) so each RP learns remote (S,G) sources — often with anycast RP.
 
 
-    **PIM domains’ RPs**: Multicast Source Discovery.
+    **PIM domains’ RPs** are exactly what MSDP interconnects.
 
 
-    **Only VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLANs** are 802.1Q Layer-2 broadcast domains. MSDP does not create, trunk,
+    or prune VLANs; it is an RP-to-RP multicast protocol.
 
 
-    **Only AAA servers**: AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).
+    **Only AAA servers** (RADIUS/TACACS+) authenticate operators or 802.1X users.
+    MSDP SA messages are not login traffic.
 
 
-    **Only syslog**: Syslog exports device logs (UDP 514) with severity 0–7.'
+    **Only syslog** exports device logs (UDP 514). An MSDP SA is a multicast source
+    advertisement, not a log message.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -650,14 +655,16 @@ questions:
     **Multiple instances on a link**: Instance ID.
 
 
-    **Only VLAN IDs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLAN IDs**: “OSPFv3 instance ID distinguishes” is answered by Multiple
+    instances on a link. Only VLAN IDs does not do that job.
 
 
-    **Only DSCP**: DSCP is the 6-bit IP marking (EF=46 for voice).
+    **Only DSCP**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
+    on a link. Only DSCP does not do that job.
 
 
-    **Only ASN**: An OSPFv3 **instance ID** distinguishes multiple OSPFv3 processes
-    on one link. An ASN is BGP.'
+    **Only ASN**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
+    on a link. Only ASN does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -719,23 +726,24 @@ questions:
     text: Only set STP priority
   correct:
     answer: a
-  explanation: 'NAT/PAT conserves/publicizes addressing.
+  explanation: 'On an edge router, NAT/PAT (`ip nat inside source list ... overload`)
+    translates inside-local addresses so private hosts can reach outside/public networks.
 
 
-    **Translate inside addresses for outside reachability**: NAT/PAT conserves/publicizes
-    addressing.
+    **Translate inside addresses for outside reachability** is that NAT/PAT job (and
+    PAT multiplexes via source ports).
 
 
-    **Only hash EtherChannels**: EtherChannel bundles physical links into one logical
-    interface; members must match speed, duplex, and mode.
+    **Only hash EtherChannels** (`port-channel load-balance src-dst-ip`) picks a member
+    link inside a bundle. Hashing does not translate IPs.
 
 
-    **Only elect DR**: Python `netmiko`/`ncclient` libraries talk to APIs or parse
-    CLI. Electing an OSPF DR is not their purpose.
+    **Only elect DR** is OSPF on a multiaccess link (`ip ospf priority`). NAT does
+    not run a DR/BDR election.
 
 
-    **Only set STP priority**: Spanning Tree elects a root bridge and blocks redundant
-    Ethernet paths so the LAN does not loop.'
+    **Only set STP priority** (`spanning-tree vlan N priority`) elects a Layer-2 root
+    bridge. That is switching, not address translation.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1074,16 +1082,19 @@ questions:
     path to source.
 
 
-    **Only TCP SYN floods exclusive**: Multicast RPF drops a multicast packet whose
-    incoming interface is not the unicast route back to the **source**. It is not
-    a SYN-flood defense.
+    **Only TCP SYN floods exclusive**: “RPF check in multicast prevents” is answered
+    by Accepting multicast on the wrong reverse path. Only TCP SYN floods exclusive
+    does not do that job.
 
 
-    **Only VLAN hopping exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLAN hopping exclusive**: “RPF check in multicast prevents” is answered
+    by Accepting multicast on the wrong reverse path. Only VLAN hopping exclusive
+    does not do that job.
 
 
-    **Only DNS amplification exclusive**: DNS maps names to addresses (A/AAAA) and
-    reverse (PTR) on UDP/TCP 53.'
+    **Only DNS amplification exclusive**: “RPF check in multicast prevents” is answered
+    by Accepting multicast on the wrong reverse path. Only DNS amplification exclusive
+    does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -1231,15 +1242,18 @@ questions:
     considered early.
 
 
-    **Transitive across the AS always**: Cisco **weight** is local to the router and
-    **non-transitive**. Local Preference is transitive inside the AS.
+    **Transitive across the AS always**: “eBGP best-path weight (Cisco) is” is answered
+    by Local to the router and highest preferred first. Transitive across the AS always
+    does not do that job.
 
 
-    **Only an OSPF metric**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
-    AD 110, multicast 224.0.0.5/6).
+    **Only an OSPF metric**: “eBGP best-path weight (Cisco) is” is answered by Local
+    to the router and highest preferred first. Only an OSPF metric does not do that
+    job.
 
 
-    **Only a VLAN ID**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
+    **Only a VLAN ID**: “eBGP best-path weight (Cisco) is” is answered by Local to
+    the router and highest preferred first. Only a VLAN ID does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2689,28 +2703,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '3.1 (Layer 2 technologies) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 3.1 (Layer 2 technologies), keep a baseline of `show
+    ip route` and a written rollback. Skipping logs or treating 3.1 as optional leaves
+    you unable to prove Layer 2 technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Layer 2 technologies with `show ip route`
+    before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Layer 2 technologies still needs a change record and logs;
+    skipping them removes rollback for 3.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Layer 2 technologies with `show ip route`
+    before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Layer
+    2 technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -2737,28 +2748,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '3.2 (Layer 3 technologies) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 3.2 (Layer 3 technologies), keep a baseline of `show
+    ip route` longest-match / next-hop and a written rollback. Skipping logs or treating
+    3.2 as optional leaves you unable to prove Layer 3 technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Layer 3 technologies with `show ip route`
+    longest-match / next-hop before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Layer 3 technologies still needs a change record and logs;
+    skipping them removes rollback for 3.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Layer 3 technologies with `show ip route`
+    longest-match / next-hop before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Layer
+    3 technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -2785,28 +2793,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '3.3 (Wireless technologies) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 3.3 (Wireless technologies), keep a baseline of `show
+    ip route` for the floating static and a written rollback. Skipping logs or treating
+    3.3 as optional leaves you unable to prove Wireless technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Wireless technologies with `show ip
+    route` for the floating static before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Wireless technologies still needs a change record and
+    logs; skipping them removes rollback for 3.3.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Wireless technologies with `show ip route`
+    for the floating static before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Wireless
+    technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3

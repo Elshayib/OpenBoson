@@ -373,16 +373,16 @@ questions:
     **Encrypt tunneled overlays**: IPsec protects GRE/IP overlays.
 
 
-    **Only hash EtherChannels**: EtherChannel bundles physical links into one logical
-    interface; members must match speed, duplex, and mode.
+    **Only hash EtherChannels**: “IPsec with GRE is often used to” is answered by
+    Encrypt tunneled overlays. Only hash EtherChannels does not do that job.
 
 
-    **Only elect DR**: Python `netmiko`/`ncclient` libraries talk to APIs or parse
-    CLI. Electing an OSPF DR is not their purpose.
+    **Only elect DR**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
+    overlays. Only elect DR does not do that job.
 
 
-    **Only age CAM**: IPsec+GRE protects and tunnels **routed** packets. Aging the
-    MAC table is a switch CAM timer, unrelated.'
+    **Only age CAM**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
+    overlays. Only age CAM does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1962,28 +1962,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '2.1 (Device virtualization technologies) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 2.1 (Device virtualization technologies), keep a baseline
+    of `show vlan brief` and a written rollback. Skipping logs or treating 2.1 as
+    optional leaves you unable to prove Device virtualization technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Device virtualization technologies with
+    `show vlan brief` before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Device virtualization technologies still needs a change
+    record and logs; skipping them removes rollback for 2.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Device virtualization technologies with
+    `show vlan brief` before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Device
+    virtualization technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -2010,28 +2007,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '2.2 (Data path virtualization) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 2.2 (Data path virtualization), keep a baseline of `show
+    interfaces trunk` and a written rollback. Skipping logs or treating 2.2 as optional
+    leaves you unable to prove Data path virtualization still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Data path virtualization with `show
+    interfaces trunk` before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Data path virtualization still needs a change record and
+    logs; skipping them removes rollback for 2.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Data path virtualization with `show interfaces
+    trunk` before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Data
+    path virtualization actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -2058,28 +2052,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '2.3 (Network virtualization concepts) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 2.3 (Network virtualization concepts), keep a baseline
+    of the show/verify output that proves Network virtualization concepts and a written
+    rollback. Skipping logs or treating 2.3 as optional leaves you unable to prove
+    Network virtualization concepts still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Network virtualization concepts with
+    the show/verify output that proves Network virtualization concepts before you
+    rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Network virtualization concepts still needs a change record
+    and logs; skipping them removes rollback for 2.3.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Network virtualization concepts with
+    the show/verify output that proves Network virtualization concepts before you
+    rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Network
+    virtualization concepts actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3

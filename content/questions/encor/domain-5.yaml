@@ -2582,29 +2582,26 @@ questions:
     text: Disable logging permanently while testing 5.3
   correct:
     answer: a
-  explanation: '5.3 (REST API security) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Stay with the standard model for this objective
-    instead of a look-alike protocol that shares a buzzword but not the behavior.
+  explanation: 'For objective 5.3 (REST API security), keep a baseline of the show/verify
+    output that proves REST API security and a written rollback. Skipping logs or
+    treating 5.3 as optional leaves you unable to prove REST API security still works.
 
 
-    **Use the standard model for 5.3 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Use clear-text shared secrets as the only control for 5.3**: Weak or disabled
+    AAA does not implement REST API security.
 
 
-    **Use clear-text shared secrets as the only control for 5.3**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 5.3 changes in production**: REST API security still
+    needs a change record and logs; skipping them removes rollback for 5.3.
 
 
-    **Skip documentation for 5.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Use the standard model for 5.3 rather than a look-alike concept**: Use the documented
+    REST API security design, then verify with the show/verify output that proves
+    REST API security.
 
 
-    **Disable logging permanently while testing 5.3**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.3**: You need logging/monitoring
+    to see whether REST API security actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -2632,29 +2629,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.3 (REST API security) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
-    actually converged — not just that the command was typed. Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+  explanation: 'For objective 5.3 (REST API security), keep a baseline of the show/verify
+    output that proves REST API security and a written rollback. Skipping logs or
+    treating 5.3 as optional leaves you unable to prove REST API security still works.
 
 
-    **Verify expected state for 5.3 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.3 with show/ping evidence**: Confirm REST API security
+    with the show/verify output that proves REST API security before you rely on the
+    new config.
 
 
-    **Document the 5.3 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.3 is low risk**: REST API security still needs
+    a change record and logs; skipping them removes rollback for 5.3.
 
 
-    **Skip change control because 5.3 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.3 design intent and rollback plan**: Write the REST API security
+    intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.3**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.3**: You need logging/monitoring to see
+    whether REST API security actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3

@@ -257,16 +257,17 @@ questions:
     each leaf.
 
 
-    **Unique gateway per VLAN only globally**: A VLAN is an 802.1Q broadcast domain
-    (IDs 1–4094).
+    **Unique gateway per VLAN only globally**: “An anycast gateway in fabric means”
+    is answered by Same gateway IP on multiple leaves. Unique gateway per VLAN only
+    globally does not do that job.
 
 
-    **Only HSRP v1 required**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
-    routers.
+    **Only HSRP v1 required**: “An anycast gateway in fabric means” is answered by
+    Same gateway IP on multiple leaves. Only HSRP v1 required does not do that job.
 
 
-    **Only GLBP**: GLBP is Cisco’s FHRP that load-shares by assigning different virtual
-    MACs to AVG/AVFs.'
+    **Only GLBP**: “An anycast gateway in fabric means” is answered by Same gateway
+    IP on multiple leaves. Only GLBP does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -611,15 +612,19 @@ questions:
     domains.
 
 
-    **Only disabling all routing**: SSO/NSF preserves routing during supervisor failover;
-    it does not disable routing.
+    **Only disabling all routing**: “Traditional campus interoperating with SD-Access
+    often needs” is answered by Border/fusion design considerations. Only disabling
+    all routing does not do that job.
 
 
-    **Only removing VLANs forever**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only removing VLANs forever**: “Traditional campus interoperating with SD-Access
+    often needs” is answered by Border/fusion design considerations. Only removing
+    VLANs forever does not do that job.
 
 
-    **Only Token Ring bridges**: Token Ring is a legacy LAN (IEEE 802.5), not modern
-    campus Ethernet.'
+    **Only Token Ring bridges**: “Traditional campus interoperating with SD-Access
+    often needs” is answered by Border/fusion design considerations. Only Token Ring
+    bridges does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2555,28 +2560,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Enterprise network design principles
+    with `show ip interface brief` / `show cdp neighbors` before you rely on the new
+    config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Enterprise network design principles still needs a change
+    record and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Enterprise network design principles
+    with `show ip interface brief` / `show cdp neighbors` before you rely on the new
+    config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Enterprise
+    network design principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2603,28 +2608,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.2 (WLAN deployment design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.2 (WLAN deployment design principles), keep a baseline
+    of the show/verify output that proves WLAN deployment design principles and a
+    written rollback. Skipping logs or treating 1.2 as optional leaves you unable
+    to prove WLAN deployment design principles still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm WLAN deployment design principles with
+    the show/verify output that proves WLAN deployment design principles before you
+    rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: WLAN deployment design principles still needs a change
+    record and logs; skipping them removes rollback for 1.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm WLAN deployment design principles with
+    the show/verify output that proves WLAN deployment design principles before you
+    rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether WLAN
+    deployment design principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2651,28 +2656,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.3 (On-premises and cloud infrastructure) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.3 (On-premises and cloud infrastructure), keep a baseline
+    of the show/verify output that proves On-premises and cloud infrastructure and
+    a written rollback. Skipping logs or treating 1.3 as optional leaves you unable
+    to prove On-premises and cloud infrastructure still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm On-premises and cloud infrastructure
+    with the show/verify output that proves On-premises and cloud infrastructure before
+    you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: On-premises and cloud infrastructure still needs a change
+    record and logs; skipping them removes rollback for 1.3.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm On-premises and cloud infrastructure
+    with the show/verify output that proves On-premises and cloud infrastructure before
+    you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether On-premises
+    and cloud infrastructure actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2699,28 +2704,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.4 (SD-WAN and SD-Access solutions) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.4 (SD-WAN and SD-Access solutions), keep a baseline
+    of the show/verify output that proves SD-WAN and SD-Access solutions and a written
+    rollback. Skipping logs or treating 1.4 as optional leaves you unable to prove
+    SD-WAN and SD-Access solutions still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm SD-WAN and SD-Access solutions with
+    the show/verify output that proves SD-WAN and SD-Access solutions before you rely
+    on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: SD-WAN and SD-Access solutions still needs a change record
+    and logs; skipping them removes rollback for 1.4.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm SD-WAN and SD-Access solutions with the
+    show/verify output that proves SD-WAN and SD-Access solutions before you rely
+    on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether SD-WAN
+    and SD-Access solutions actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -2748,27 +2753,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Verify current state before
-    touching the box so you do not troubleshoot a pre-existing fault as if you caused
-    it. Archive show output with the change record. Without it you cannot prove what
-    the device looked like.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before changes**: Verify current state before touching the box so you
-    do not troubleshoot a pre-existing fault as if you caused it.
+    **Verify before changes**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Capture show output**: Archive show output with the change record. Without it
-    you cannot prove what the device looked like.
+    **Skip all logs**: Enterprise network design principles still needs a change record
+    and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip all logs**: Skipping logs blinds you to the failure you are about to cause.
-    Leave logging on and raise the buffer/trap level during the window.
+    **Capture show output**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Disable AAA forever**: Disabling AAA forever drops the box back to local/none
-    auth and is not an implementation of the objective.'
+    **Disable AAA forever**: Weak or disabled AAA does not implement Enterprise network
+    design principles.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2795,27 +2799,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Verify current state before
-    touching the box so you do not troubleshoot a pre-existing fault as if you caused
-    it. Archive show output with the change record. Without it you cannot prove what
-    the device looked like.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before changes**: Verify current state before touching the box so you
-    do not troubleshoot a pre-existing fault as if you caused it.
+    **Verify before changes**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Capture show output**: Archive show output with the change record. Without it
-    you cannot prove what the device looked like.
+    **Skip all logs**: Enterprise network design principles still needs a change record
+    and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip all logs**: Skipping logs blinds you to the failure you are about to cause.
-    Leave logging on and raise the buffer/trap level during the window.
+    **Capture show output**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Disable AAA forever**: Disabling AAA forever drops the box back to local/none
-    auth and is not an implementation of the objective.'
+    **Disable AAA forever**: Weak or disabled AAA does not implement Enterprise network
+    design principles.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2842,27 +2845,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Verify current state before
-    touching the box so you do not troubleshoot a pre-existing fault as if you caused
-    it. Archive show output with the change record. Without it you cannot prove what
-    the device looked like.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before changes**: Verify current state before touching the box so you
-    do not troubleshoot a pre-existing fault as if you caused it.
+    **Verify before changes**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Capture show output**: Archive show output with the change record. Without it
-    you cannot prove what the device looked like.
+    **Skip all logs**: Enterprise network design principles still needs a change record
+    and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip all logs**: Skipping logs blinds you to the failure you are about to cause.
-    Leave logging on and raise the buffer/trap level during the window.
+    **Capture show output**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Disable AAA forever**: Disabling AAA forever drops the box back to local/none
-    auth and is not an implementation of the objective.'
+    **Disable AAA forever**: Weak or disabled AAA does not implement Enterprise network
+    design principles.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2891,29 +2893,27 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.2 (WLAN deployment design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 1.2 (WLAN deployment design principles), keep a baseline
+    of the show/verify output that proves WLAN deployment design principles and a
+    written rollback. Skipping logs or treating 1.2 as optional leaves you unable
+    to prove WLAN deployment design principles still works.
 
 
-    **Verify expected state for 1.2 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 1.2 with show/ping evidence**: Confirm WLAN deployment
+    design principles with the show/verify output that proves WLAN deployment design
+    principles before you rely on the new config.
 
 
-    **Document the 1.2 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 1.2 is low risk**: WLAN deployment design principles
+    still needs a change record and logs; skipping them removes rollback for 1.2.
 
 
-    **Skip change control because 1.2 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 1.2 design intent and rollback plan**: Write the WLAN deployment
+    design principles intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 1.2**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 1.2**: You need logging/monitoring to see
+    whether WLAN deployment design principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2937,28 +2937,27 @@ questions:
     text: Validate with show/verify steps before relying on 1.4 changes
   correct:
     answer: a
-  explanation: '1.4 (SD-WAN and SD-Access solutions) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
-    ping where relevant) before you trust the change in production.
+  explanation: 'For objective 1.4 (SD-WAN and SD-Access solutions), keep a baseline
+    of the show/verify output that proves SD-WAN and SD-Access solutions and a written
+    rollback. Skipping logs or treating 1.4 as optional leaves you unable to prove
+    SD-WAN and SD-Access solutions still works.
 
 
-    **Validate with show/verify steps before relying on 1.4 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Confuse 1.4 with an unrelated Layer mismatch**: Apply SD-WAN and SD-Access solutions,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 1.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 1.4**: You need logging/monitoring
+    to see whether SD-WAN and SD-Access solutions actually converged after the window.
 
 
-    **Disable logging permanently while testing 1.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use clear-text shared secrets as the only control for 1.4**: Weak or disabled
+    AAA does not implement SD-WAN and SD-Access solutions.
 
 
-    **Use clear-text shared secrets as the only control for 1.4**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.'
+    **Validate with show/verify steps before relying on 1.4 changes**: Confirm SD-WAN
+    and SD-Access solutions with the show/verify output that proves SD-WAN and SD-Access
+    solutions before you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4

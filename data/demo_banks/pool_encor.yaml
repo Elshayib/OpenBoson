@@ -316,16 +316,17 @@ questions:
     each leaf.
 
 
-    **Unique gateway per VLAN only globally**: A VLAN is an 802.1Q broadcast domain
-    (IDs 1–4094).
+    **Unique gateway per VLAN only globally**: “An anycast gateway in fabric means”
+    is answered by Same gateway IP on multiple leaves. Unique gateway per VLAN only
+    globally does not do that job.
 
 
-    **Only HSRP v1 required**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
-    routers.
+    **Only HSRP v1 required**: “An anycast gateway in fabric means” is answered by
+    Same gateway IP on multiple leaves. Only HSRP v1 required does not do that job.
 
 
-    **Only GLBP**: GLBP is Cisco’s FHRP that load-shares by assigning different virtual
-    MACs to AVG/AVFs.'
+    **Only GLBP**: “An anycast gateway in fabric means” is answered by Same gateway
+    IP on multiple leaves. Only GLBP does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -670,15 +671,19 @@ questions:
     domains.
 
 
-    **Only disabling all routing**: SSO/NSF preserves routing during supervisor failover;
-    it does not disable routing.
+    **Only disabling all routing**: “Traditional campus interoperating with SD-Access
+    often needs” is answered by Border/fusion design considerations. Only disabling
+    all routing does not do that job.
 
 
-    **Only removing VLANs forever**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only removing VLANs forever**: “Traditional campus interoperating with SD-Access
+    often needs” is answered by Border/fusion design considerations. Only removing
+    VLANs forever does not do that job.
 
 
-    **Only Token Ring bridges**: Token Ring is a legacy LAN (IEEE 802.5), not modern
-    campus Ethernet.'
+    **Only Token Ring bridges**: “Traditional campus interoperating with SD-Access
+    often needs” is answered by Border/fusion design considerations. Only Token Ring
+    bridges does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2614,28 +2619,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Enterprise network design principles
+    with `show ip interface brief` / `show cdp neighbors` before you rely on the new
+    config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Enterprise network design principles still needs a change
+    record and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Enterprise network design principles
+    with `show ip interface brief` / `show cdp neighbors` before you rely on the new
+    config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Enterprise
+    network design principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2662,28 +2667,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.2 (WLAN deployment design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.2 (WLAN deployment design principles), keep a baseline
+    of the show/verify output that proves WLAN deployment design principles and a
+    written rollback. Skipping logs or treating 1.2 as optional leaves you unable
+    to prove WLAN deployment design principles still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm WLAN deployment design principles with
+    the show/verify output that proves WLAN deployment design principles before you
+    rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: WLAN deployment design principles still needs a change
+    record and logs; skipping them removes rollback for 1.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm WLAN deployment design principles with
+    the show/verify output that proves WLAN deployment design principles before you
+    rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether WLAN
+    deployment design principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2710,28 +2715,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.3 (On-premises and cloud infrastructure) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.3 (On-premises and cloud infrastructure), keep a baseline
+    of the show/verify output that proves On-premises and cloud infrastructure and
+    a written rollback. Skipping logs or treating 1.3 as optional leaves you unable
+    to prove On-premises and cloud infrastructure still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm On-premises and cloud infrastructure
+    with the show/verify output that proves On-premises and cloud infrastructure before
+    you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: On-premises and cloud infrastructure still needs a change
+    record and logs; skipping them removes rollback for 1.3.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm On-premises and cloud infrastructure
+    with the show/verify output that proves On-premises and cloud infrastructure before
+    you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether On-premises
+    and cloud infrastructure actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2758,28 +2763,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.4 (SD-WAN and SD-Access solutions) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 1.4 (SD-WAN and SD-Access solutions), keep a baseline
+    of the show/verify output that proves SD-WAN and SD-Access solutions and a written
+    rollback. Skipping logs or treating 1.4 as optional leaves you unable to prove
+    SD-WAN and SD-Access solutions still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm SD-WAN and SD-Access solutions with
+    the show/verify output that proves SD-WAN and SD-Access solutions before you rely
+    on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: SD-WAN and SD-Access solutions still needs a change record
+    and logs; skipping them removes rollback for 1.4.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm SD-WAN and SD-Access solutions with the
+    show/verify output that proves SD-WAN and SD-Access solutions before you rely
+    on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether SD-WAN
+    and SD-Access solutions actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -2807,27 +2812,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Verify current state before
-    touching the box so you do not troubleshoot a pre-existing fault as if you caused
-    it. Archive show output with the change record. Without it you cannot prove what
-    the device looked like.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before changes**: Verify current state before touching the box so you
-    do not troubleshoot a pre-existing fault as if you caused it.
+    **Verify before changes**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Capture show output**: Archive show output with the change record. Without it
-    you cannot prove what the device looked like.
+    **Skip all logs**: Enterprise network design principles still needs a change record
+    and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip all logs**: Skipping logs blinds you to the failure you are about to cause.
-    Leave logging on and raise the buffer/trap level during the window.
+    **Capture show output**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Disable AAA forever**: Disabling AAA forever drops the box back to local/none
-    auth and is not an implementation of the objective.'
+    **Disable AAA forever**: Weak or disabled AAA does not implement Enterprise network
+    design principles.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2854,27 +2858,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Verify current state before
-    touching the box so you do not troubleshoot a pre-existing fault as if you caused
-    it. Archive show output with the change record. Without it you cannot prove what
-    the device looked like.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before changes**: Verify current state before touching the box so you
-    do not troubleshoot a pre-existing fault as if you caused it.
+    **Verify before changes**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Capture show output**: Archive show output with the change record. Without it
-    you cannot prove what the device looked like.
+    **Skip all logs**: Enterprise network design principles still needs a change record
+    and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip all logs**: Skipping logs blinds you to the failure you are about to cause.
-    Leave logging on and raise the buffer/trap level during the window.
+    **Capture show output**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Disable AAA forever**: Disabling AAA forever drops the box back to local/none
-    auth and is not an implementation of the objective.'
+    **Disable AAA forever**: Weak or disabled AAA does not implement Enterprise network
+    design principles.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2901,27 +2904,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.1 (Enterprise network design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Verify current state before
-    touching the box so you do not troubleshoot a pre-existing fault as if you caused
-    it. Archive show output with the change record. Without it you cannot prove what
-    the device looked like.
+  explanation: 'For objective 1.1 (Enterprise network design principles), keep a baseline
+    of `show ip interface brief` / `show cdp neighbors` and a written rollback. Skipping
+    logs or treating 1.1 as optional leaves you unable to prove Enterprise network
+    design principles still works.
 
 
-    **Verify before changes**: Verify current state before touching the box so you
-    do not troubleshoot a pre-existing fault as if you caused it.
+    **Verify before changes**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Capture show output**: Archive show output with the change record. Without it
-    you cannot prove what the device looked like.
+    **Skip all logs**: Enterprise network design principles still needs a change record
+    and logs; skipping them removes rollback for 1.1.
 
 
-    **Skip all logs**: Skipping logs blinds you to the failure you are about to cause.
-    Leave logging on and raise the buffer/trap level during the window.
+    **Capture show output**: Confirm Enterprise network design principles with `show
+    ip interface brief` / `show cdp neighbors` before you rely on the new config.
 
 
-    **Disable AAA forever**: Disabling AAA forever drops the box back to local/none
-    auth and is not an implementation of the objective.'
+    **Disable AAA forever**: Weak or disabled AAA does not implement Enterprise network
+    design principles.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2950,29 +2952,27 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '1.2 (WLAN deployment design principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 1.2 (WLAN deployment design principles), keep a baseline
+    of the show/verify output that proves WLAN deployment design principles and a
+    written rollback. Skipping logs or treating 1.2 as optional leaves you unable
+    to prove WLAN deployment design principles still works.
 
 
-    **Verify expected state for 1.2 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 1.2 with show/ping evidence**: Confirm WLAN deployment
+    design principles with the show/verify output that proves WLAN deployment design
+    principles before you rely on the new config.
 
 
-    **Document the 1.2 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 1.2 is low risk**: WLAN deployment design principles
+    still needs a change record and logs; skipping them removes rollback for 1.2.
 
 
-    **Skip change control because 1.2 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 1.2 design intent and rollback plan**: Write the WLAN deployment
+    design principles intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 1.2**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 1.2**: You need logging/monitoring to see
+    whether WLAN deployment design principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2996,28 +2996,27 @@ questions:
     text: Validate with show/verify steps before relying on 1.4 changes
   correct:
     answer: a
-  explanation: '1.4 (SD-WAN and SD-Access solutions) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
-    ping where relevant) before you trust the change in production.
+  explanation: 'For objective 1.4 (SD-WAN and SD-Access solutions), keep a baseline
+    of the show/verify output that proves SD-WAN and SD-Access solutions and a written
+    rollback. Skipping logs or treating 1.4 as optional leaves you unable to prove
+    SD-WAN and SD-Access solutions still works.
 
 
-    **Validate with show/verify steps before relying on 1.4 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Confuse 1.4 with an unrelated Layer mismatch**: Apply SD-WAN and SD-Access solutions,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 1.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 1.4**: You need logging/monitoring
+    to see whether SD-WAN and SD-Access solutions actually converged after the window.
 
 
-    **Disable logging permanently while testing 1.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use clear-text shared secrets as the only control for 1.4**: Weak or disabled
+    AAA does not implement SD-WAN and SD-Access solutions.
 
 
-    **Use clear-text shared secrets as the only control for 1.4**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.'
+    **Validate with show/verify steps before relying on 1.4 changes**: Confirm SD-WAN
+    and SD-Access solutions with the show/verify output that proves SD-WAN and SD-Access
+    solutions before you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -3395,16 +3394,16 @@ questions:
     **Encrypt tunneled overlays**: IPsec protects GRE/IP overlays.
 
 
-    **Only hash EtherChannels**: EtherChannel bundles physical links into one logical
-    interface; members must match speed, duplex, and mode.
+    **Only hash EtherChannels**: “IPsec with GRE is often used to” is answered by
+    Encrypt tunneled overlays. Only hash EtherChannels does not do that job.
 
 
-    **Only elect DR**: Python `netmiko`/`ncclient` libraries talk to APIs or parse
-    CLI. Electing an OSPF DR is not their purpose.
+    **Only elect DR**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
+    overlays. Only elect DR does not do that job.
 
 
-    **Only age CAM**: IPsec+GRE protects and tunnels **routed** packets. Aging the
-    MAC table is a switch CAM timer, unrelated.'
+    **Only age CAM**: “IPsec with GRE is often used to” is answered by Encrypt tunneled
+    overlays. Only age CAM does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -4984,28 +4983,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '2.1 (Device virtualization technologies) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 2.1 (Device virtualization technologies), keep a baseline
+    of `show vlan brief` and a written rollback. Skipping logs or treating 2.1 as
+    optional leaves you unable to prove Device virtualization technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Device virtualization technologies with
+    `show vlan brief` before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Device virtualization technologies still needs a change
+    record and logs; skipping them removes rollback for 2.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Device virtualization technologies with
+    `show vlan brief` before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Device
+    virtualization technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -5032,28 +5028,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '2.2 (Data path virtualization) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 2.2 (Data path virtualization), keep a baseline of `show
+    interfaces trunk` and a written rollback. Skipping logs or treating 2.2 as optional
+    leaves you unable to prove Data path virtualization still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Data path virtualization with `show
+    interfaces trunk` before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Data path virtualization still needs a change record and
+    logs; skipping them removes rollback for 2.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Data path virtualization with `show interfaces
+    trunk` before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Data
+    path virtualization actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -5080,28 +5073,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '2.3 (Network virtualization concepts) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 2.3 (Network virtualization concepts), keep a baseline
+    of the show/verify output that proves Network virtualization concepts and a written
+    rollback. Skipping logs or treating 2.3 as optional leaves you unable to prove
+    Network virtualization concepts still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Network virtualization concepts with
+    the show/verify output that proves Network virtualization concepts before you
+    rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Network virtualization concepts still needs a change record
+    and logs; skipping them removes rollback for 2.3.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Network virtualization concepts with
+    the show/verify output that proves Network virtualization concepts before you
+    rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Network
+    virtualization concepts actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -5674,19 +5667,24 @@ questions:
     text: Only syslog
   correct:
     answer: a
-  explanation: 'Multicast Source Discovery.
+  explanation: 'MSDP (Multicast Source Discovery Protocol) peers **Rendezvous Points
+    in different PIM-SM domains** and exchanges Source-Active messages (typically
+    TCP 639) so each RP learns remote (S,G) sources — often with anycast RP.
 
 
-    **PIM domains’ RPs**: Multicast Source Discovery.
+    **PIM domains’ RPs** are exactly what MSDP interconnects.
 
 
-    **Only VLANs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLANs** are 802.1Q Layer-2 broadcast domains. MSDP does not create, trunk,
+    or prune VLANs; it is an RP-to-RP multicast protocol.
 
 
-    **Only AAA servers**: AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).
+    **Only AAA servers** (RADIUS/TACACS+) authenticate operators or 802.1X users.
+    MSDP SA messages are not login traffic.
 
 
-    **Only syslog**: Syslog exports device logs (UDP 514) with severity 0–7.'
+    **Only syslog** exports device logs (UDP 514). An MSDP SA is a multicast source
+    advertisement, not a log message.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -5756,14 +5754,16 @@ questions:
     **Multiple instances on a link**: Instance ID.
 
 
-    **Only VLAN IDs**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLAN IDs**: “OSPFv3 instance ID distinguishes” is answered by Multiple
+    instances on a link. Only VLAN IDs does not do that job.
 
 
-    **Only DSCP**: DSCP is the 6-bit IP marking (EF=46 for voice).
+    **Only DSCP**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
+    on a link. Only DSCP does not do that job.
 
 
-    **Only ASN**: An OSPFv3 **instance ID** distinguishes multiple OSPFv3 processes
-    on one link. An ASN is BGP.'
+    **Only ASN**: “OSPFv3 instance ID distinguishes” is answered by Multiple instances
+    on a link. Only ASN does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -5825,23 +5825,24 @@ questions:
     text: Only set STP priority
   correct:
     answer: a
-  explanation: 'NAT/PAT conserves/publicizes addressing.
+  explanation: 'On an edge router, NAT/PAT (`ip nat inside source list ... overload`)
+    translates inside-local addresses so private hosts can reach outside/public networks.
 
 
-    **Translate inside addresses for outside reachability**: NAT/PAT conserves/publicizes
-    addressing.
+    **Translate inside addresses for outside reachability** is that NAT/PAT job (and
+    PAT multiplexes via source ports).
 
 
-    **Only hash EtherChannels**: EtherChannel bundles physical links into one logical
-    interface; members must match speed, duplex, and mode.
+    **Only hash EtherChannels** (`port-channel load-balance src-dst-ip`) picks a member
+    link inside a bundle. Hashing does not translate IPs.
 
 
-    **Only elect DR**: Python `netmiko`/`ncclient` libraries talk to APIs or parse
-    CLI. Electing an OSPF DR is not their purpose.
+    **Only elect DR** is OSPF on a multiaccess link (`ip ospf priority`). NAT does
+    not run a DR/BDR election.
 
 
-    **Only set STP priority**: Spanning Tree elects a root bridge and blocks redundant
-    Ethernet paths so the LAN does not loop.'
+    **Only set STP priority** (`spanning-tree vlan N priority`) elects a Layer-2 root
+    bridge. That is switching, not address translation.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -6180,16 +6181,19 @@ questions:
     path to source.
 
 
-    **Only TCP SYN floods exclusive**: Multicast RPF drops a multicast packet whose
-    incoming interface is not the unicast route back to the **source**. It is not
-    a SYN-flood defense.
+    **Only TCP SYN floods exclusive**: “RPF check in multicast prevents” is answered
+    by Accepting multicast on the wrong reverse path. Only TCP SYN floods exclusive
+    does not do that job.
 
 
-    **Only VLAN hopping exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLAN hopping exclusive**: “RPF check in multicast prevents” is answered
+    by Accepting multicast on the wrong reverse path. Only VLAN hopping exclusive
+    does not do that job.
 
 
-    **Only DNS amplification exclusive**: DNS maps names to addresses (A/AAAA) and
-    reverse (PTR) on UDP/TCP 53.'
+    **Only DNS amplification exclusive**: “RPF check in multicast prevents” is answered
+    by Accepting multicast on the wrong reverse path. Only DNS amplification exclusive
+    does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -6337,15 +6341,18 @@ questions:
     considered early.
 
 
-    **Transitive across the AS always**: Cisco **weight** is local to the router and
-    **non-transitive**. Local Preference is transitive inside the AS.
+    **Transitive across the AS always**: “eBGP best-path weight (Cisco) is” is answered
+    by Local to the router and highest preferred first. Transitive across the AS always
+    does not do that job.
 
 
-    **Only an OSPF metric**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
-    AD 110, multicast 224.0.0.5/6).
+    **Only an OSPF metric**: “eBGP best-path weight (Cisco) is” is answered by Local
+    to the router and highest preferred first. Only an OSPF metric does not do that
+    job.
 
 
-    **Only a VLAN ID**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).'
+    **Only a VLAN ID**: “eBGP best-path weight (Cisco) is” is answered by Local to
+    the router and highest preferred first. Only a VLAN ID does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -7795,28 +7802,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '3.1 (Layer 2 technologies) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 3.1 (Layer 2 technologies), keep a baseline of `show
+    ip route` and a written rollback. Skipping logs or treating 3.1 as optional leaves
+    you unable to prove Layer 2 technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Layer 2 technologies with `show ip route`
+    before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Layer 2 technologies still needs a change record and logs;
+    skipping them removes rollback for 3.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Layer 2 technologies with `show ip route`
+    before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Layer
+    2 technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.1
@@ -7843,28 +7847,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '3.2 (Layer 3 technologies) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 3.2 (Layer 3 technologies), keep a baseline of `show
+    ip route` longest-match / next-hop and a written rollback. Skipping logs or treating
+    3.2 as optional leaves you unable to prove Layer 3 technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Layer 3 technologies with `show ip route`
+    longest-match / next-hop before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Layer 3 technologies still needs a change record and logs;
+    skipping them removes rollback for 3.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Layer 3 technologies with `show ip route`
+    longest-match / next-hop before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Layer
+    3 technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.2
@@ -7891,28 +7892,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '3.3 (Wireless technologies) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change. Save `show
-    running-config`, `show ip route`, `show vlan`, and similar evidence with the ticket
-    — that is how you prove the objective.
+  explanation: 'For objective 3.3 (Wireless technologies), keep a baseline of `show
+    ip route` for the floating static and a written rollback. Skipping logs or treating
+    3.3 as optional leaves you unable to prove Wireless technologies still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Wireless technologies with `show ip
+    route` for the floating static before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Wireless technologies still needs a change record and
+    logs; skipping them removes rollback for 3.3.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Wireless technologies with `show ip route`
+    for the floating static before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Wireless
+    technologies actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Infrastructure
   - ENCOR exam topic 3.3
@@ -8250,15 +8248,16 @@ questions:
     **Voice/video path quality assessment**: Jitter/latency probes.
 
 
-    **Only VLAN creation**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLAN creation**: “IP SLA jitter tests help” is answered by Voice/video
+    path quality assessment. Only VLAN creation does not do that job.
 
 
-    **Only ACL lines**: IP SLA jitter (UDP-jitter) measures delay/jitter/loss for
-    voice/video. It is not an ACL.
+    **Only ACL lines**: “IP SLA jitter tests help” is answered by Voice/video path
+    quality assessment. Only ACL lines does not do that job.
 
 
-    **Only VTP password**: VTP floods VLAN advertisements among switches using a revision
-    number; it does not route, NAT, or identify an overlay.'
+    **Only VTP password**: “IP SLA jitter tests help” is answered by Voice/video path
+    quality assessment. Only VTP password does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -11026,28 +11025,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '4.1 (Diagnose network problems using tools) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 4.1 (Diagnose network problems using tools), keep a
+    baseline of `show ip nat translations` and a written rollback. Skipping logs or
+    treating 4.1 as optional leaves you unable to prove Diagnose network problems
+    using tools still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm Diagnose network problems using tools
+    with `show ip nat translations` before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: Diagnose network problems using tools still needs a change
+    record and logs; skipping them removes rollback for 4.1.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm Diagnose network problems using tools
+    with `show ip nat translations` before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether Diagnose
+    network problems using tools actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -11074,28 +11071,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '4.2 (NetFlow and Flexible NetFlow) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Capture a known-good baseline
-    (`show`, ping, traceroute) before the window so you can compare after the change.
-    Save `show running-config`, `show ip route`, `show vlan`, and similar evidence
-    with the ticket — that is how you prove the objective.
+  explanation: 'For objective 4.2 (NetFlow and Flexible NetFlow), keep a baseline
+    of `show ntp status` and a written rollback. Skipping logs or treating 4.2 as
+    optional leaves you unable to prove NetFlow and Flexible NetFlow still works.
 
 
-    **Verify before change windows**: Capture a known-good baseline (`show`, ping,
-    traceroute) before the window so you can compare after the change.
+    **Verify before change windows**: Confirm NetFlow and Flexible NetFlow with `show
+    ntp status` before you rely on the new config.
 
 
-    **Capture show/verify outputs**: Save `show running-config`, `show ip route`,
-    `show vlan`, and similar evidence with the ticket — that is how you prove the
-    objective.
+    **Skip documentation**: NetFlow and Flexible NetFlow still needs a change record
+    and logs; skipping them removes rollback for 4.2.
 
 
-    **Skip documentation**: Skipping documentation leaves no rollback and no audit
-    trail. Production changes for this objective still need a written record.
+    **Capture show/verify outputs**: Confirm NetFlow and Flexible NetFlow with `show
+    ntp status` before you rely on the new config.
 
 
-    **Disable logging permanently**: Disabling logging permanently hides faults and
-    is a finding on any security review. Keep syslog/buffered logging enabled.'
+    **Disable logging permanently**: You need logging/monitoring to see whether NetFlow
+    and Flexible NetFlow actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -11120,30 +11114,25 @@ questions:
     text: Disable logging permanently while testing 4.2
   correct:
     answer: a
-  explanation: '4.2 (NetFlow and Flexible NetFlow) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Stay with the standard model for
-    this objective instead of a look-alike protocol that shares a buzzword but not
-    the behavior.
+  explanation: 'For objective 4.2 (NetFlow and Flexible NetFlow), keep a baseline
+    of `show ntp status` and a written rollback. Skipping logs or treating 4.2 as
+    optional leaves you unable to prove NetFlow and Flexible NetFlow still works.
 
 
-    **Use the standard model for 4.2 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Use clear-text shared secrets as the only control for 4.2**: Weak or disabled
+    AAA does not implement NetFlow and Flexible NetFlow.
 
 
-    **Use clear-text shared secrets as the only control for 4.2**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 4.2 changes in production**: NetFlow and Flexible NetFlow
+    still needs a change record and logs; skipping them removes rollback for 4.2.
 
 
-    **Skip documentation for 4.2 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Use the standard model for 4.2 rather than a look-alike concept**: Use the documented
+    NetFlow and Flexible NetFlow design, then verify with `show ntp status`.
 
 
-    **Disable logging permanently while testing 4.2**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 4.2**: You need logging/monitoring
+    to see whether NetFlow and Flexible NetFlow actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -11167,30 +11156,25 @@ questions:
     text: Skip documentation for 4.2 changes in production
   correct:
     answer: a
-  explanation: '4.2 (NetFlow and Flexible NetFlow) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 4.2 (NetFlow and Flexible NetFlow), keep a baseline
+    of `show ntp status` and a written rollback. Skipping logs or treating 4.2 as
+    optional leaves you unable to prove NetFlow and Flexible NetFlow still works.
 
 
-    **Prefer the documented 4.2 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Treat 4.2 as optional when the blueprint lists it**: 4.2 (NetFlow and Flexible
+    NetFlow) is on the blueprint; it is not skippable.
 
 
-    **Treat 4.2 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Prefer the documented 4.2 approach used in enterprise designs**: Write the NetFlow
+    and Flexible NetFlow intent and the commands that restore the previous state.
 
 
-    **Use clear-text shared secrets as the only control for 4.2**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 4.2**: Weak or disabled
+    AAA does not implement NetFlow and Flexible NetFlow.
 
 
-    **Skip documentation for 4.2 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 4.2 changes in production**: NetFlow and Flexible NetFlow
+    still needs a change record and logs; skipping them removes rollback for 4.2.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -11214,28 +11198,26 @@ questions:
     text: Ignore verification and assume 4.3 always works
   correct:
     answer: a
-  explanation: '4.3 (SPAN / RSPAN / ERSPAN) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
-    actually names, then confirm it with show/ping — not a neighboring feature.
+  explanation: 'For objective 4.3 (SPAN / RSPAN / ERSPAN), keep a baseline of the
+    show/verify output that proves SPAN / RSPAN / ERSPAN and a written rollback. Skipping
+    logs or treating 4.3 as optional leaves you unable to prove SPAN / RSPAN / ERSPAN
+    still works.
 
 
-    **Apply the verified behavior required by objective 4.3**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 4.3**: That is the production-safe
+    action for SPAN / RSPAN / ERSPAN.
 
 
-    **Skip documentation for 4.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Skip documentation for 4.3 changes in production**: SPAN / RSPAN / ERSPAN still
+    needs a change record and logs; skipping them removes rollback for 4.3.
 
 
-    **Treat 4.3 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 4.3 as optional when the blueprint lists it**: 4.3 (SPAN / RSPAN / ERSPAN)
+    is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 4.3 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 4.3 always works**: Do not assume SPAN / RSPAN
+    / ERSPAN works; check the show/verify output that proves SPAN / RSPAN / ERSPAN.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -11263,29 +11245,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '4.4 (IP SLA) is implemented by verifying with show/ping evidence and
-    keeping a rollback plan. Use show/ping evidence to confirm the objective actually
-    converged — not just that the command was typed. Document design intent and the
-    rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+  explanation: 'For objective 4.4 (IP SLA), keep a baseline of the show/verify output
+    that proves IP SLA and a written rollback. Skipping logs or treating 4.4 as optional
+    leaves you unable to prove IP SLA still works.
 
 
-    **Verify expected state for 4.4 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 4.4 with show/ping evidence**: Confirm IP SLA with
+    the show/verify output that proves IP SLA before you rely on the new config.
 
 
-    **Document the 4.4 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 4.4 is low risk**: IP SLA still needs a change record
+    and logs; skipping them removes rollback for 4.4.
 
 
-    **Skip change control because 4.4 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 4.4 design intent and rollback plan**: Write the IP SLA intent
+    and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 4.4**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 4.4**: You need logging/monitoring to see
+    whether IP SLA actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -11309,28 +11287,25 @@ questions:
     text: Ignore verification and assume 4.4 always works
   correct:
     answer: a
-  explanation: '4.4 (IP SLA) is implemented by verifying with show/ping evidence and
-    keeping a rollback plan. Stay with the standard model for this objective instead
-    of a look-alike protocol that shares a buzzword but not the behavior.
+  explanation: 'For objective 4.4 (IP SLA), keep a baseline of the show/verify output
+    that proves IP SLA and a written rollback. Skipping logs or treating 4.4 as optional
+    leaves you unable to prove IP SLA still works.
 
 
-    **Use the standard model for 4.4 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Confuse 4.4 with an unrelated Layer mismatch**: Apply IP SLA, not an unrelated
+    OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 4.4**: You need logging/monitoring
+    to see whether IP SLA actually converged after the window.
 
 
-    **Disable logging permanently while testing 4.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use the standard model for 4.4 rather than a look-alike concept**: Use the documented
+    IP SLA design, then verify with the show/verify output that proves IP SLA.
 
 
-    **Ignore verification and assume 4.4 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 4.4 always works**: Do not assume IP SLA works;
+    check the show/verify output that proves IP SLA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -11354,29 +11329,25 @@ questions:
     text: Disable logging permanently while testing 4.4
   correct:
     answer: a
-  explanation: '4.4 (IP SLA) is implemented by verifying with show/ping evidence and
-    keeping a rollback plan. Use the documented enterprise design for this objective
-    (Cisco validated design / local standard) rather than an ad-hoc look-alike.
+  explanation: 'For objective 4.4 (IP SLA), keep a baseline of the show/verify output
+    that proves IP SLA and a written rollback. Skipping logs or treating 4.4 as optional
+    leaves you unable to prove IP SLA still works.
 
 
-    **Prefer the documented 4.4 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Use clear-text shared secrets as the only control for 4.4**: Weak or disabled
+    AAA does not implement IP SLA.
 
 
-    **Use clear-text shared secrets as the only control for 4.4**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Prefer the documented 4.4 approach used in enterprise designs**: Write the IP
+    SLA intent and the commands that restore the previous state.
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 4.4 with an unrelated Layer mismatch**: Apply IP SLA, not an unrelated
+    OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Disable logging permanently while testing 4.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 4.4**: You need logging/monitoring
+    to see whether IP SLA actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -11400,30 +11371,25 @@ questions:
     text: Skip documentation for 4.5 changes in production
   correct:
     answer: a
-  explanation: '4.5 (Cisco DNA Center workflows) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Apply the verified behavior the
-    exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 4.5 (Cisco DNA Center workflows), keep a baseline of
+    `show logging` and a written rollback. Skipping logs or treating 4.5 as optional
+    leaves you unable to prove Cisco DNA Center workflows still works.
 
 
-    **Apply the verified behavior required by objective 4.5**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 4.5**: That is the production-safe
+    action for Cisco DNA Center workflows.
 
 
-    **Disable logging permanently while testing 4.5**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Disable logging permanently while testing 4.5**: You need logging/monitoring
+    to see whether Cisco DNA Center workflows actually converged after the window.
 
 
-    **Use clear-text shared secrets as the only control for 4.5**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 4.5**: Weak or disabled
+    AAA does not implement Cisco DNA Center workflows.
 
 
-    **Skip documentation for 4.5 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 4.5 changes in production**: Cisco DNA Center workflows
+    still needs a change record and logs; skipping them removes rollback for 4.5.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -11447,28 +11413,25 @@ questions:
     text: Validate with show/verify steps before relying on 4.5 changes
   correct:
     answer: a
-  explanation: '4.5 (Cisco DNA Center workflows) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
-    ping where relevant) before you trust the change in production.
+  explanation: 'For objective 4.5 (Cisco DNA Center workflows), keep a baseline of
+    `show logging` and a written rollback. Skipping logs or treating 4.5 as optional
+    leaves you unable to prove Cisco DNA Center workflows still works.
 
 
-    **Validate with show/verify steps before relying on 4.5 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Use clear-text shared secrets as the only control for 4.5**: Weak or disabled
+    AAA does not implement Cisco DNA Center workflows.
 
 
-    **Use clear-text shared secrets as the only control for 4.5**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 4.5 changes in production**: Cisco DNA Center workflows
+    still needs a change record and logs; skipping them removes rollback for 4.5.
 
 
-    **Skip documentation for 4.5 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Treat 4.5 as optional when the blueprint lists it**: 4.5 (Cisco DNA Center workflows)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 4.5 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.'
+    **Validate with show/verify steps before relying on 4.5 changes**: Confirm Cisco
+    DNA Center workflows with `show logging` before you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -11496,29 +11459,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '4.5 (Cisco DNA Center workflows) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Use show/ping evidence to confirm
-    the objective actually converged — not just that the command was typed. Document
-    design intent and the rollback commands. The next engineer (or you at 03:00) needs
-    that, not tribal memory.
+  explanation: 'For objective 4.5 (Cisco DNA Center workflows), keep a baseline of
+    `show logging` and a written rollback. Skipping logs or treating 4.5 as optional
+    leaves you unable to prove Cisco DNA Center workflows still works.
 
 
-    **Verify expected state for 4.5 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 4.5 with show/ping evidence**: Confirm Cisco DNA Center
+    workflows with `show logging` before you rely on the new config.
 
 
-    **Document the 4.5 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 4.5 is low risk**: Cisco DNA Center workflows still
+    needs a change record and logs; skipping them removes rollback for 4.5.
 
 
-    **Skip change control because 4.5 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 4.5 design intent and rollback plan**: Write the Cisco DNA Center
+    workflows intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 4.5**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 4.5**: You need logging/monitoring to see
+    whether Cisco DNA Center workflows actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -11542,29 +11501,26 @@ questions:
     text: Ignore verification and assume 4.6 always works
   correct:
     answer: a
-  explanation: '4.6 (NETCONF and RESTCONF) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use the documented enterprise design for
-    this objective (Cisco validated design / local standard) rather than an ad-hoc
-    look-alike.
+  explanation: 'For objective 4.6 (NETCONF and RESTCONF), keep a baseline of the show/verify
+    output that proves NETCONF and RESTCONF and a written rollback. Skipping logs
+    or treating 4.6 as optional leaves you unable to prove NETCONF and RESTCONF still
+    works.
 
 
-    **Prefer the documented 4.6 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Confuse 4.6 with an unrelated Layer mismatch**: Apply NETCONF and RESTCONF,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Prefer the documented 4.6 approach used in enterprise designs**: Write the NETCONF
+    and RESTCONF intent and the commands that restore the previous state.
 
 
-    **Treat 4.6 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 4.6 as optional when the blueprint lists it**: 4.6 (NETCONF and RESTCONF)
+    is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 4.6 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 4.6 always works**: Do not assume NETCONF and
+    RESTCONF works; check the show/verify output that proves NETCONF and RESTCONF.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -11588,28 +11544,26 @@ questions:
     text: Disable logging permanently while testing 4.6
   correct:
     answer: a
-  explanation: '4.6 (NETCONF and RESTCONF) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Apply the verified behavior the exam topic
-    actually names, then confirm it with show/ping — not a neighboring feature.
+  explanation: 'For objective 4.6 (NETCONF and RESTCONF), keep a baseline of the show/verify
+    output that proves NETCONF and RESTCONF and a written rollback. Skipping logs
+    or treating 4.6 as optional leaves you unable to prove NETCONF and RESTCONF still
+    works.
 
 
-    **Apply the verified behavior required by objective 4.6**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 4.6**: That is the production-safe
+    action for NETCONF and RESTCONF.
 
 
-    **Ignore verification and assume 4.6 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Ignore verification and assume 4.6 always works**: Do not assume NETCONF and
+    RESTCONF works; check the show/verify output that proves NETCONF and RESTCONF.
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 4.6 with an unrelated Layer mismatch**: Apply NETCONF and RESTCONF,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Disable logging permanently while testing 4.6**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 4.6**: You need logging/monitoring
+    to see whether NETCONF and RESTCONF actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -11633,28 +11587,27 @@ questions:
     text: Validate with show/verify steps before relying on 4.6 changes
   correct:
     answer: a
-  explanation: '4.6 (NETCONF and RESTCONF) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Validate with show/verify (and ping where
-    relevant) before you trust the change in production.
+  explanation: 'For objective 4.6 (NETCONF and RESTCONF), keep a baseline of the show/verify
+    output that proves NETCONF and RESTCONF and a written rollback. Skipping logs
+    or treating 4.6 as optional leaves you unable to prove NETCONF and RESTCONF still
+    works.
 
 
-    **Validate with show/verify steps before relying on 4.6 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Confuse 4.6 with an unrelated Layer mismatch**: Apply NETCONF and RESTCONF,
+    not an unrelated OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 4.6**: You need logging/monitoring
+    to see whether NETCONF and RESTCONF actually converged after the window.
 
 
-    **Disable logging permanently while testing 4.6**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use clear-text shared secrets as the only control for 4.6**: Weak or disabled
+    AAA does not implement NETCONF and RESTCONF.
 
 
-    **Use clear-text shared secrets as the only control for 4.6**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.'
+    **Validate with show/verify steps before relying on 4.6 changes**: Confirm NETCONF
+    and RESTCONF with the show/verify output that proves NETCONF and RESTCONF before
+    you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -14241,29 +14194,26 @@ questions:
     text: Disable logging permanently while testing 5.3
   correct:
     answer: a
-  explanation: '5.3 (REST API security) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Stay with the standard model for this objective
-    instead of a look-alike protocol that shares a buzzword but not the behavior.
+  explanation: 'For objective 5.3 (REST API security), keep a baseline of the show/verify
+    output that proves REST API security and a written rollback. Skipping logs or
+    treating 5.3 as optional leaves you unable to prove REST API security still works.
 
 
-    **Use the standard model for 5.3 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Use clear-text shared secrets as the only control for 5.3**: Weak or disabled
+    AAA does not implement REST API security.
 
 
-    **Use clear-text shared secrets as the only control for 5.3**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 5.3 changes in production**: REST API security still
+    needs a change record and logs; skipping them removes rollback for 5.3.
 
 
-    **Skip documentation for 5.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Use the standard model for 5.3 rather than a look-alike concept**: Use the documented
+    REST API security design, then verify with the show/verify output that proves
+    REST API security.
 
 
-    **Disable logging permanently while testing 5.3**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 5.3**: You need logging/monitoring
+    to see whether REST API security actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -14291,29 +14241,26 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '5.3 (REST API security) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
-    actually converged — not just that the command was typed. Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+  explanation: 'For objective 5.3 (REST API security), keep a baseline of the show/verify
+    output that proves REST API security and a written rollback. Skipping logs or
+    treating 5.3 as optional leaves you unable to prove REST API security still works.
 
 
-    **Verify expected state for 5.3 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 5.3 with show/ping evidence**: Confirm REST API security
+    with the show/verify output that proves REST API security before you rely on the
+    new config.
 
 
-    **Document the 5.3 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 5.3 is low risk**: REST API security still needs
+    a change record and logs; skipping them removes rollback for 5.3.
 
 
-    **Skip change control because 5.3 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 5.3 design intent and rollback plan**: Write the REST API security
+    intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 5.3**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 5.3**: You need logging/monitoring to see
+    whether REST API security actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -14808,15 +14755,18 @@ questions:
     **Automate WAN fabric operations/policy**: Controller APIs cover SD-WAN Manager.
 
 
-    **Only set STP priority**: Spanning Tree elects a root bridge and blocks redundant
-    Ethernet paths so the LAN does not loop.
+    **Only set STP priority**: “SD-WAN Manager APIs are used to” is answered by Automate
+    WAN fabric operations/policy. Only set STP priority does not do that job.
 
 
-    **Only create VLANs on access**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only create VLANs on access**: “SD-WAN Manager APIs are used to” is answered
+    by Automate WAN fabric operations/policy. Only create VLANs on access does not
+    do that job.
 
 
-    **Only configure PortFast**: PortFast skips STP listening/learning on edge ports
-    so hosts get DHCP immediately.'
+    **Only configure PortFast**: “SD-WAN Manager APIs are used to” is answered by
+    Automate WAN fabric operations/policy. Only configure PortFast does not do that
+    job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -14922,15 +14872,16 @@ questions:
     **Keys to values**: Dicts are core Python structures.
 
 
-    **Only VLANs to VNIs exclusive**: A VLAN is an 802.1Q broadcast domain (IDs 1–4094).
+    **Only VLANs to VNIs exclusive**: “Python dictionaries map” is answered by Keys
+    to values. Only VLANs to VNIs exclusive does not do that job.
 
 
-    **Only AS paths**: A Python dict maps **keys to values**. BGP AS-path is a path-vector
-    attribute, not a dict.
+    **Only AS paths**: “Python dictionaries map” is answered by Keys to values. Only
+    AS paths does not do that job.
 
 
-    **Only STP costs exclusive**: Spanning Tree elects a root bridge and blocks redundant
-    Ethernet paths so the LAN does not loop.'
+    **Only STP costs exclusive**: “Python dictionaries map” is answered by Keys to
+    values. Only STP costs exclusive does not do that job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -17861,29 +17812,27 @@ questions:
     text: Ignore verification and assume 6.1 always works
   correct:
     answer: a
-  explanation: '6.1 (Python components and scripts) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Apply the verified behavior the
-    exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 6.1 (Python components and scripts), keep a baseline
+    of the show/verify output that proves Python components and scripts and a written
+    rollback. Skipping logs or treating 6.1 as optional leaves you unable to prove
+    Python components and scripts still works.
 
 
-    **Apply the verified behavior required by objective 6.1**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 6.1**: That is the production-safe
+    action for Python components and scripts.
 
 
-    **Skip documentation for 6.1 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Skip documentation for 6.1 changes in production**: Python components and scripts
+    still needs a change record and logs; skipping them removes rollback for 6.1.
 
 
-    **Treat 6.1 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 6.1 as optional when the blueprint lists it**: 6.1 (Python components
+    and scripts) is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 6.1 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 6.1 always works**: Do not assume Python components
+    and scripts works; check the show/verify output that proves Python components
+    and scripts.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -17907,27 +17856,29 @@ questions:
     text: Validate with show/verify steps before relying on 6.1 changes
   correct:
     answer: a
-  explanation: '6.1 (Python components and scripts) is implemented by verifying with
-    show/ping evidence and keeping a rollback plan. Validate with show/verify (and
-    ping where relevant) before you trust the change in production.
+  explanation: 'For objective 6.1 (Python components and scripts), keep a baseline
+    of the show/verify output that proves Python components and scripts and a written
+    rollback. Skipping logs or treating 6.1 as optional leaves you unable to prove
+    Python components and scripts still works.
 
 
-    **Validate with show/verify steps before relying on 6.1 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Treat 6.1 as optional when the blueprint lists it**: 6.1 (Python components
+    and scripts) is on the blueprint; it is not skippable.
 
 
-    **Treat 6.1 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 6.1 always works**: Do not assume Python components
+    and scripts works; check the show/verify output that proves Python components
+    and scripts.
 
 
-    **Ignore verification and assume 6.1 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Confuse 6.1 with an unrelated Layer mismatch**: Apply Python components and
+    scripts, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Confuse 6.1 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).'
+    **Validate with show/verify steps before relying on 6.1 changes**: Confirm Python
+    components and scripts with the show/verify output that proves Python components
+    and scripts before you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -17951,29 +17902,30 @@ questions:
     text: Ignore verification and assume 6.2 always works
   correct:
     answer: a
-  explanation: '6.2 (Construct valid JSON-encoded files) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 6.2 (Construct valid JSON-encoded files), keep a baseline
+    of the show/verify output that proves Construct valid JSON-encoded files and a
+    written rollback. Skipping logs or treating 6.2 as optional leaves you unable
+    to prove Construct valid JSON-encoded files still works.
 
 
-    **Use the standard model for 6.2 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Confuse 6.2 with an unrelated Layer mismatch**: Apply Construct valid JSON-encoded
+    files, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Disable logging permanently while testing 6.2**: You need logging/monitoring
+    to see whether Construct valid JSON-encoded files actually converged after the
+    window.
 
 
-    **Disable logging permanently while testing 6.2**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Use the standard model for 6.2 rather than a look-alike concept**: Use the documented
+    Construct valid JSON-encoded files design, then verify with the show/verify output
+    that proves Construct valid JSON-encoded files.
 
 
-    **Ignore verification and assume 6.2 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 6.2 always works**: Do not assume Construct valid
+    JSON-encoded files works; check the show/verify output that proves Construct valid
+    JSON-encoded files.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -17997,30 +17949,28 @@ questions:
     text: Disable logging permanently while testing 6.2
   correct:
     answer: a
-  explanation: '6.2 (Construct valid JSON-encoded files) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 6.2 (Construct valid JSON-encoded files), keep a baseline
+    of the show/verify output that proves Construct valid JSON-encoded files and a
+    written rollback. Skipping logs or treating 6.2 as optional leaves you unable
+    to prove Construct valid JSON-encoded files still works.
 
 
-    **Prefer the documented 6.2 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Use clear-text shared secrets as the only control for 6.2**: Weak or disabled
+    AAA does not implement Construct valid JSON-encoded files.
 
 
-    **Use clear-text shared secrets as the only control for 6.2**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Prefer the documented 6.2 approach used in enterprise designs**: Write the Construct
+    valid JSON-encoded files intent and the commands that restore the previous state.
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 6.2 with an unrelated Layer mismatch**: Apply Construct valid JSON-encoded
+    files, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Disable logging permanently while testing 6.2**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 6.2**: You need logging/monitoring
+    to see whether Construct valid JSON-encoded files actually converged after the
+    window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -18048,29 +17998,27 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '6.3 (Data modeling language principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 6.3 (Data modeling language principles), keep a baseline
+    of the show/verify output that proves Data modeling language principles and a
+    written rollback. Skipping logs or treating 6.3 as optional leaves you unable
+    to prove Data modeling language principles still works.
 
 
-    **Verify expected state for 6.3 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 6.3 with show/ping evidence**: Confirm Data modeling
+    language principles with the show/verify output that proves Data modeling language
+    principles before you rely on the new config.
 
 
-    **Document the 6.3 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 6.3 is low risk**: Data modeling language principles
+    still needs a change record and logs; skipping them removes rollback for 6.3.
 
 
-    **Skip change control because 6.3 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 6.3 design intent and rollback plan**: Write the Data modeling
+    language principles intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 6.3**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 6.3**: You need logging/monitoring to see
+    whether Data modeling language principles actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -18094,28 +18042,27 @@ questions:
     text: Validate with show/verify steps before relying on 6.3 changes
   correct:
     answer: a
-  explanation: '6.3 (Data modeling language principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Validate with show/verify
-    (and ping where relevant) before you trust the change in production.
+  explanation: 'For objective 6.3 (Data modeling language principles), keep a baseline
+    of the show/verify output that proves Data modeling language principles and a
+    written rollback. Skipping logs or treating 6.3 as optional leaves you unable
+    to prove Data modeling language principles still works.
 
 
-    **Validate with show/verify steps before relying on 6.3 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Use clear-text shared secrets as the only control for 6.3**: Weak or disabled
+    AAA does not implement Data modeling language principles.
 
 
-    **Use clear-text shared secrets as the only control for 6.3**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 6.3 changes in production**: Data modeling language principles
+    still needs a change record and logs; skipping them removes rollback for 6.3.
 
 
-    **Skip documentation for 6.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Treat 6.3 as optional when the blueprint lists it**: 6.3 (Data modeling language
+    principles) is on the blueprint; it is not skippable.
 
 
-    **Treat 6.3 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.'
+    **Validate with show/verify steps before relying on 6.3 changes**: Confirm Data
+    modeling language principles with the show/verify output that proves Data modeling
+    language principles before you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -18139,29 +18086,28 @@ questions:
     text: Skip documentation for 6.3 changes in production
   correct:
     answer: a
-  explanation: '6.3 (Data modeling language principles) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 6.3 (Data modeling language principles), keep a baseline
+    of the show/verify output that proves Data modeling language principles and a
+    written rollback. Skipping logs or treating 6.3 as optional leaves you unable
+    to prove Data modeling language principles still works.
 
 
-    **Use the standard model for 6.3 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Treat 6.3 as optional when the blueprint lists it**: 6.3 (Data modeling language
+    principles) is on the blueprint; it is not skippable.
 
 
-    **Treat 6.3 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 6.3 always works**: Do not assume Data modeling
+    language principles works; check the show/verify output that proves Data modeling
+    language principles.
 
 
-    **Ignore verification and assume 6.3 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Use the standard model for 6.3 rather than a look-alike concept**: Use the documented
+    Data modeling language principles design, then verify with the show/verify output
+    that proves Data modeling language principles.
 
 
-    **Skip documentation for 6.3 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 6.3 changes in production**: Data modeling language principles
+    still needs a change record and logs; skipping them removes rollback for 6.3.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -18185,29 +18131,29 @@ questions:
     text: Ignore verification and assume 6.4 always works
   correct:
     answer: a
-  explanation: '6.4 (Cisco DNA Center and vManage APIs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 6.4 (Cisco DNA Center and vManage APIs), keep a baseline
+    of the show/verify output that proves Cisco DNA Center and vManage APIs and a
+    written rollback. Skipping logs or treating 6.4 as optional leaves you unable
+    to prove Cisco DNA Center and vManage APIs still works.
 
 
-    **Prefer the documented 6.4 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Confuse 6.4 with an unrelated Layer mismatch**: Apply Cisco DNA Center and vManage
+    APIs, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Prefer the documented 6.4 approach used in enterprise designs**: Write the Cisco
+    DNA Center and vManage APIs intent and the commands that restore the previous
+    state.
 
 
-    **Treat 6.4 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 6.4 as optional when the blueprint lists it**: 6.4 (Cisco DNA Center and
+    vManage APIs) is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 6.4 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 6.4 always works**: Do not assume Cisco DNA Center
+    and vManage APIs works; check the show/verify output that proves Cisco DNA Center
+    and vManage APIs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -18231,29 +18177,29 @@ questions:
     text: Disable logging permanently while testing 6.4
   correct:
     answer: a
-  explanation: '6.4 (Cisco DNA Center and vManage APIs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
-    the exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 6.4 (Cisco DNA Center and vManage APIs), keep a baseline
+    of the show/verify output that proves Cisco DNA Center and vManage APIs and a
+    written rollback. Skipping logs or treating 6.4 as optional leaves you unable
+    to prove Cisco DNA Center and vManage APIs still works.
 
 
-    **Apply the verified behavior required by objective 6.4**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 6.4**: That is the production-safe
+    action for Cisco DNA Center and vManage APIs.
 
 
-    **Ignore verification and assume 6.4 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Ignore verification and assume 6.4 always works**: Do not assume Cisco DNA Center
+    and vManage APIs works; check the show/verify output that proves Cisco DNA Center
+    and vManage APIs.
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 6.4 with an unrelated Layer mismatch**: Apply Cisco DNA Center and vManage
+    APIs, not an unrelated OSI-layer look-alike (for example STP when the objective
+    is routing).
 
 
-    **Disable logging permanently while testing 6.4**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 6.4**: You need logging/monitoring
+    to see whether Cisco DNA Center and vManage APIs actually converged after the
+    window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -18281,29 +18227,28 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '6.4 (Cisco DNA Center and vManage APIs) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use show/ping evidence to
-    confirm the objective actually converged — not just that the command was typed.
-    Document design intent and the rollback commands. The next engineer (or you at
-    03:00) needs that, not tribal memory.
+  explanation: 'For objective 6.4 (Cisco DNA Center and vManage APIs), keep a baseline
+    of the show/verify output that proves Cisco DNA Center and vManage APIs and a
+    written rollback. Skipping logs or treating 6.4 as optional leaves you unable
+    to prove Cisco DNA Center and vManage APIs still works.
 
 
-    **Verify expected state for 6.4 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 6.4 with show/ping evidence**: Confirm Cisco DNA Center
+    and vManage APIs with the show/verify output that proves Cisco DNA Center and
+    vManage APIs before you rely on the new config.
 
 
-    **Document the 6.4 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 6.4 is low risk**: Cisco DNA Center and vManage
+    APIs still needs a change record and logs; skipping them removes rollback for
+    6.4.
 
 
-    **Skip change control because 6.4 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 6.4 design intent and rollback plan**: Write the Cisco DNA Center
+    and vManage APIs intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 6.4**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 6.4**: You need logging/monitoring to see
+    whether Cisco DNA Center and vManage APIs actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -18327,30 +18272,29 @@ questions:
     text: Disable logging permanently while testing 6.5
   correct:
     answer: a
-  explanation: '6.5 (REST API response codes and results) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Stay with the standard model
-    for this objective instead of a look-alike protocol that shares a buzzword but
-    not the behavior.
+  explanation: 'For objective 6.5 (REST API response codes and results), keep a baseline
+    of an HTTP GET/PUT against the REST URI and a written rollback. Skipping logs
+    or treating 6.5 as optional leaves you unable to prove REST API response codes
+    and results still works.
 
 
-    **Use the standard model for 6.5 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Use clear-text shared secrets as the only control for 6.5**: Weak or disabled
+    AAA does not implement REST API response codes and results.
 
 
-    **Use clear-text shared secrets as the only control for 6.5**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 6.5 changes in production**: REST API response codes
+    and results still needs a change record and logs; skipping them removes rollback
+    for 6.5.
 
 
-    **Skip documentation for 6.5 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Use the standard model for 6.5 rather than a look-alike concept**: Use the documented
+    REST API response codes and results design, then verify with an HTTP GET/PUT against
+    the REST URI.
 
 
-    **Disable logging permanently while testing 6.5**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 6.5**: You need logging/monitoring
+    to see whether REST API response codes and results actually converged after the
+    window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -18374,30 +18318,28 @@ questions:
     text: Skip documentation for 6.5 changes in production
   correct:
     answer: a
-  explanation: '6.5 (REST API response codes and results) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Use the documented enterprise
-    design for this objective (Cisco validated design / local standard) rather than
-    an ad-hoc look-alike.
+  explanation: 'For objective 6.5 (REST API response codes and results), keep a baseline
+    of an HTTP GET/PUT against the REST URI and a written rollback. Skipping logs
+    or treating 6.5 as optional leaves you unable to prove REST API response codes
+    and results still works.
 
 
-    **Prefer the documented 6.5 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Treat 6.5 as optional when the blueprint lists it**: 6.5 (REST API response
+    codes and results) is on the blueprint; it is not skippable.
 
 
-    **Treat 6.5 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Prefer the documented 6.5 approach used in enterprise designs**: Write the REST
+    API response codes and results intent and the commands that restore the previous
+    state.
 
 
-    **Use clear-text shared secrets as the only control for 6.5**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 6.5**: Weak or disabled
+    AAA does not implement REST API response codes and results.
 
 
-    **Skip documentation for 6.5 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 6.5 changes in production**: REST API response codes
+    and results still needs a change record and logs; skipping them removes rollback
+    for 6.5.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -18421,29 +18363,27 @@ questions:
     text: Ignore verification and assume 6.5 always works
   correct:
     answer: a
-  explanation: '6.5 (REST API response codes and results) is implemented by verifying
-    with show/ping evidence and keeping a rollback plan. Apply the verified behavior
-    the exam topic actually names, then confirm it with show/ping — not a neighboring
-    feature.
+  explanation: 'For objective 6.5 (REST API response codes and results), keep a baseline
+    of an HTTP GET/PUT against the REST URI and a written rollback. Skipping logs
+    or treating 6.5 as optional leaves you unable to prove REST API response codes
+    and results still works.
 
 
-    **Apply the verified behavior required by objective 6.5**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 6.5**: That is the production-safe
+    action for REST API response codes and results.
 
 
-    **Skip documentation for 6.5 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Skip documentation for 6.5 changes in production**: REST API response codes
+    and results still needs a change record and logs; skipping them removes rollback
+    for 6.5.
 
 
-    **Treat 6.5 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Treat 6.5 as optional when the blueprint lists it**: 6.5 (REST API response
+    codes and results) is on the blueprint; it is not skippable.
 
 
-    **Ignore verification and assume 6.5 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.'
+    **Ignore verification and assume 6.5 always works**: Do not assume REST API response
+    codes and results works; check an HTTP GET/PUT against the REST URI.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -18467,27 +18407,26 @@ questions:
     text: Validate with show/verify steps before relying on 6.6 changes
   correct:
     answer: a
-  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
-    and keeping a rollback plan. Validate with show/verify (and ping where relevant)
-    before you trust the change in production.
+  explanation: 'For objective 6.6 (EEM applet), keep a baseline of `show event manager
+    policy registered` and a written rollback. Skipping logs or treating 6.6 as optional
+    leaves you unable to prove EEM applet still works.
 
 
-    **Validate with show/verify steps before relying on 6.6 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Treat 6.6 as optional when the blueprint lists it**: 6.6 (EEM applet) is on
+    the blueprint; it is not skippable.
 
 
-    **Treat 6.6 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 6.6 always works**: Do not assume EEM applet
+    works; check `show event manager policy registered`.
 
 
-    **Ignore verification and assume 6.6 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Confuse 6.6 with an unrelated Layer mismatch**: Apply EEM applet, not an unrelated
+    OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).'
+    **Validate with show/verify steps before relying on 6.6 changes**: Confirm EEM
+    applet with `show event manager policy registered` before you rely on the new
+    config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -18515,29 +18454,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
-    and keeping a rollback plan. Use show/ping evidence to confirm the objective actually
-    converged — not just that the command was typed. Document design intent and the
-    rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+  explanation: 'For objective 6.6 (EEM applet), keep a baseline of `show event manager
+    policy registered` and a written rollback. Skipping logs or treating 6.6 as optional
+    leaves you unable to prove EEM applet still works.
 
 
-    **Verify expected state for 6.6 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 6.6 with show/ping evidence**: Confirm EEM applet
+    with `show event manager policy registered` before you rely on the new config.
 
 
-    **Document the 6.6 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 6.6 is low risk**: EEM applet still needs a change
+    record and logs; skipping them removes rollback for 6.6.
 
 
-    **Skip change control because 6.6 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 6.6 design intent and rollback plan**: Write the EEM applet intent
+    and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 6.6**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 6.6**: You need logging/monitoring to see
+    whether EEM applet actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -18561,29 +18496,25 @@ questions:
     text: Disable logging permanently while testing 6.6
   correct:
     answer: a
-  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
-    and keeping a rollback plan. Use the documented enterprise design for this objective
-    (Cisco validated design / local standard) rather than an ad-hoc look-alike.
+  explanation: 'For objective 6.6 (EEM applet), keep a baseline of `show event manager
+    policy registered` and a written rollback. Skipping logs or treating 6.6 as optional
+    leaves you unable to prove EEM applet still works.
 
 
-    **Prefer the documented 6.6 approach used in enterprise designs**: Use the documented
-    enterprise design for this objective (Cisco validated design / local standard)
-    rather than an ad-hoc look-alike.
+    **Use clear-text shared secrets as the only control for 6.6**: Weak or disabled
+    AAA does not implement EEM applet.
 
 
-    **Use clear-text shared secrets as the only control for 6.6**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Prefer the documented 6.6 approach used in enterprise designs**: Write the EEM
+    applet intent and the commands that restore the previous state.
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch**: Confusing this objective with
-    an unrelated OSI layer is how you apply the wrong feature (for example STP for
-    a routing problem).
+    **Confuse 6.6 with an unrelated Layer mismatch**: Apply EEM applet, not an unrelated
+    OSI-layer look-alike (for example STP when the objective is routing).
 
 
-    **Disable logging permanently while testing 6.6**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.'
+    **Disable logging permanently while testing 6.6**: You need logging/monitoring
+    to see whether EEM applet actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -18607,29 +18538,25 @@ questions:
     text: Skip documentation for 6.6 changes in production
   correct:
     answer: a
-  explanation: '6.6 (EEM applet) is implemented by verifying with show/ping evidence
-    and keeping a rollback plan. Apply the verified behavior the exam topic actually
-    names, then confirm it with show/ping — not a neighboring feature.
+  explanation: 'For objective 6.6 (EEM applet), keep a baseline of `show event manager
+    policy registered` and a written rollback. Skipping logs or treating 6.6 as optional
+    leaves you unable to prove EEM applet still works.
 
 
-    **Apply the verified behavior required by objective 6.6**: Apply the verified
-    behavior the exam topic actually names, then confirm it with show/ping — not a
-    neighboring feature.
+    **Apply the verified behavior required by objective 6.6**: That is the production-safe
+    action for EEM applet.
 
 
-    **Disable logging permanently while testing 6.6**: Disabling logging permanently
-    hides faults and is a finding on any security review. Keep syslog/buffered logging
-    enabled.
+    **Disable logging permanently while testing 6.6**: You need logging/monitoring
+    to see whether EEM applet actually converged after the window.
 
 
-    **Use clear-text shared secrets as the only control for 6.6**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Use clear-text shared secrets as the only control for 6.6**: Weak or disabled
+    AAA does not implement EEM applet.
 
 
-    **Skip documentation for 6.6 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 6.6 changes in production**: EEM applet still needs a
+    change record and logs; skipping them removes rollback for 6.6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -18653,28 +18580,25 @@ questions:
     text: Validate with show/verify steps before relying on 6.7 changes
   correct:
     answer: a
-  explanation: '6.7 (Orchestration tools) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Validate with show/verify (and ping where
-    relevant) before you trust the change in production.
+  explanation: 'For objective 6.7 (Orchestration tools), keep a baseline of a JSON
+    parse of the controller payload and a written rollback. Skipping logs or treating
+    6.7 as optional leaves you unable to prove Orchestration tools still works.
 
 
-    **Validate with show/verify steps before relying on 6.7 changes**: Validate with
-    show/verify (and ping where relevant) before you trust the change in production.
+    **Use clear-text shared secrets as the only control for 6.7**: Weak or disabled
+    AAA does not implement Orchestration tools.
 
 
-    **Use clear-text shared secrets as the only control for 6.7**: Clear-text shared
-    secrets (type 7, Telnet, open SNMP) are not an acceptable sole control. Use SSH,
-    type 8/9 secrets, and SNMPv3.
+    **Skip documentation for 6.7 changes in production**: Orchestration tools still
+    needs a change record and logs; skipping them removes rollback for 6.7.
 
 
-    **Skip documentation for 6.7 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.
+    **Treat 6.7 as optional when the blueprint lists it**: 6.7 (Orchestration tools)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 6.7 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.'
+    **Validate with show/verify steps before relying on 6.7 changes**: Confirm Orchestration
+    tools with a JSON parse of the controller payload before you rely on the new config.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -18698,28 +18622,25 @@ questions:
     text: Skip documentation for 6.7 changes in production
   correct:
     answer: a
-  explanation: '6.7 (Orchestration tools) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Stay with the standard model for this objective
-    instead of a look-alike protocol that shares a buzzword but not the behavior.
+  explanation: 'For objective 6.7 (Orchestration tools), keep a baseline of a JSON
+    parse of the controller payload and a written rollback. Skipping logs or treating
+    6.7 as optional leaves you unable to prove Orchestration tools still works.
 
 
-    **Use the standard model for 6.7 rather than a look-alike concept**: Stay with
-    the standard model for this objective instead of a look-alike protocol that shares
-    a buzzword but not the behavior.
+    **Treat 6.7 as optional when the blueprint lists it**: 6.7 (Orchestration tools)
+    is on the blueprint; it is not skippable.
 
 
-    **Treat 6.7 as optional when the blueprint lists it**: Blueprint-listed objectives
-    are not optional in production just because a lab skipped them. Implement and
-    verify this topic.
+    **Ignore verification and assume 6.7 always works**: Do not assume Orchestration
+    tools works; check a JSON parse of the controller payload.
 
 
-    **Ignore verification and assume 6.7 always works**: Assuming it ‘always works’
-    without verification is how silent misconfigurations ship. Show/ping the result.
+    **Use the standard model for 6.7 rather than a look-alike concept**: Use the documented
+    Orchestration tools design, then verify with a JSON parse of the controller payload.
 
 
-    **Skip documentation for 6.7 changes in production**: Skipping documentation leaves
-    no rollback and no audit trail. Production changes for this objective still need
-    a written record.'
+    **Skip documentation for 6.7 changes in production**: Orchestration tools still
+    needs a change record and logs; skipping them removes rollback for 6.7.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -18747,29 +18668,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '6.7 (Orchestration tools) is implemented by verifying with show/ping
-    evidence and keeping a rollback plan. Use show/ping evidence to confirm the objective
-    actually converged — not just that the command was typed. Document design intent
-    and the rollback commands. The next engineer (or you at 03:00) needs that, not
-    tribal memory.
+  explanation: 'For objective 6.7 (Orchestration tools), keep a baseline of a JSON
+    parse of the controller payload and a written rollback. Skipping logs or treating
+    6.7 as optional leaves you unable to prove Orchestration tools still works.
 
 
-    **Verify expected state for 6.7 with show/ping evidence**: Use show/ping evidence
-    to confirm the objective actually converged — not just that the command was typed.
+    **Verify expected state for 6.7 with show/ping evidence**: Confirm Orchestration
+    tools with a JSON parse of the controller payload before you rely on the new config.
 
 
-    **Document the 6.7 design intent and rollback plan**: Document design intent and
-    the rollback commands. The next engineer (or you at 03:00) needs that, not tribal
-    memory.
+    **Skip change control because 6.7 is low risk**: Orchestration tools still needs
+    a change record and logs; skipping them removes rollback for 6.7.
 
 
-    **Skip change control because 6.7 is low risk**: Skipping change control because
-    a topic ‘looks low risk’ is how untracked outages happen. This objective still
-    goes through the window.
+    **Document the 6.7 design intent and rollback plan**: Write the Orchestration
+    tools intent and the commands that restore the previous state.
 
 
-    **Disable all monitoring related to 6.7**: Disabling monitoring removes the only
-    proof the objective still works after you leave. Leave SNMP/telemetry/syslog up.'
+    **Disable all monitoring related to 6.7**: You need logging/monitoring to see
+    whether Orchestration tools actually converged after the window.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
