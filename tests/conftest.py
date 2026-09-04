@@ -26,6 +26,8 @@ def isolated_home(tmp_path, monkeypatch):
     monkeypatch.setenv("OPENBOSON_HOME", str(home))
     # Keep GUI/MainWindow tests from probing GitHub on startup.
     monkeypatch.setenv("OPENBOSON_SKIP_UPDATE", "1")
+    # First-run is a modal; GUI tests that show the window must not block.
+    monkeypatch.setenv("OPENBOSON_SKIP_ONBOARDING", "1")
 
     db_path = home / "openboson.db"
     engine = init_db(create_engine(f"sqlite:///{db_path}", future=True))

@@ -7,12 +7,14 @@ from PySide6.QtWidgets import QPushButton, QScrollArea
 
 from openboson.gui.main_window import MainWindow
 from openboson.gui.widgets.scroll_host import ScrollHost
+from openboson.settings_store import update_settings
 
 pytestmark = pytest.mark.usefixtures("isolated_home")
 
 
 @pytest.fixture
-def main_window(qtbot):
+def main_window(qtbot, isolated_home):
+    update_settings(onboarding_complete=True)
     mw = MainWindow()
     qtbot.addWidget(mw)
     mw.show()
