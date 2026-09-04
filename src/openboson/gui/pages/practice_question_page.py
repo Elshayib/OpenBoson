@@ -143,12 +143,12 @@ class PracticeQuestionPage(QWidget):
         self._card.set_locked(True)
         self._check.setEnabled(False)
         self._check.setVisible(False)
-        self._render_feedback(is_correct)
+        self._render_feedback(is_correct, answer)
         has_next = self._queue_index + 1 < len(self._queue)
         self._next.setVisible(True)
         self._next.setText("Next question ›" if has_next else "Back to library")
 
-    def _render_feedback(self, is_correct: bool) -> None:
+    def _render_feedback(self, is_correct: bool, answer=None) -> None:
         while self._feedback_holder.count():
             item = self._feedback_holder.takeAt(0)
             w = item.widget()
@@ -168,5 +168,11 @@ class PracticeQuestionPage(QWidget):
         )
         v.addWidget(banner)
         if self._question is not None:
-            v.addWidget(TeachingFeedback(self._question, is_correct=is_correct))
+            v.addWidget(
+                TeachingFeedback(
+                    self._question,
+                    is_correct=is_correct,
+                    selected=answer,
+                )
+            )
         self._feedback_holder.addWidget(panel)
