@@ -20,19 +20,21 @@ questions:
     text: CDP
   correct:
     answer: a
-  explanation: '**Port security**: A Layer 2 **switch** forwards Ethernet frames based on MAC address
-    tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'Port security limits learned MAC addresses per port.
 
 
-    **UplinkFast** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **UplinkFast** is a different protocol, command, or value than **Port security**.
+    For 5.7 (Layer 2 security features), the stem is solved by **Port security**,
+    not by UplinkFast.
 
 
-    **VTP pruning** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **VTP pruning** is a different protocol, command, or value than **Port security**.
+    For 5.7 (Layer 2 security features), the stem is solved by **Port security**,
+    not by VTP pruning.
 
 
-    **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and some provisioning
-    features. This does not satisfy the condition required by the stem. Configuration uses `cdp run` /
-    `show cdp neighbors`.'
+    **CDP** is a mismatch: CDP is Cisco’s Layer 2 neighbor discovery protocol (`show
+    cdp neighbors`). The stem is asking about **Port security**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -56,20 +58,19 @@ questions:
     text: Only an ACL line
   correct:
     answer: a
-  explanation: '**A weakness that can be exploited** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Threats exploit vulnerabilities; mitigations reduce risk.
 
 
-    **The attack itself** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **A weakness that can be exploited** is correct: Vulnerability.
 
 
-    **Only a firewall rule** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **The attack itself** is not the right selection: Exploit/threat action.
 
 
-    **Only an ACL line**: An **ACL** filters traffic by matching header fields and applying permit or
-    deny actions in sequential order. This does not satisfy the condition required by the stem.'
+    **Only a firewall rule** is not the right selection: Control.
+
+
+    **Only an ACL line** is not the right selection: Control.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -93,18 +94,25 @@ questions:
     text: Only MAC OUI
   correct:
     answer: a
-  explanation: '**Source IP address**: An **ACL** filters traffic by matching header fields and applying
-    permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: 'A **standard** numbered ACL (`access-list 1–99` or `1300–1999`, or
+    `ip access-list standard NAME`) matches **source IPv4 address only**. It cannot
+    match destination IP, protocol, or L4 ports. Place it as close to the **destination**
+    as practical because it is blunt.
 
 
-    **Only destination port** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Source IP address** is the only IPv4 criterion in a standard ACL.
 
 
-    **Only DSCP** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **Only destination port** requires an **extended** ACL (`access-list 100–199`
+    / `ip access-list extended`) matching `tcp/udp ... eq port`.
 
 
-    **Only MAC OUI** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Only DSCP** is a QoS match (`match dscp`) or an extended ACL `dscp` keyword
+    — not a standard ACL.
+
+
+    **Only MAC OUI** is a MAC ACL / port ACL at Layer 2 (`mac access-list extended`),
+    not an IPv4 standard ACL.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -128,22 +136,25 @@ questions:
     text: Only NetFlow
   correct:
     answer: a
-  explanation: '**DHCP snooping bindings (typically)** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: '**Dynamic ARP Inspection** intercepts ARP on untrusted ports and checks
+    each binding against the **DHCP snooping** table (IP–MAC–port–VLAN). Invalid ARPs
+    are dropped, which stops ARP poisoning.
 
 
-    **Only OSPF LSDB**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **DHCP snooping bindings (typically)** is the DAI validation source (`ip arp inspection
+    vlan N` plus snooping).
 
 
-    **Only CDP**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.
+    **Only OSPF LSDB** is the OSPF topology database. It has router LSAs, not host
+    ARP bindings, and is not consulted by DAI.
 
 
-    **Only NetFlow** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only CDP** is Cisco’s L2 neighbor protocol (`show cdp neighbors`). It does not
+    validate ARP.
+
+
+    **Only NetFlow** exports traffic caches for accounting. It does not build an ARP
+    allow-list.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -167,20 +178,19 @@ questions:
     text: Only DNS queries
   correct:
     answer: a
-  explanation: '**Gateways/networks** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Site-to-site VPNs encrypt traffic between network gateways.
 
 
-    **Only a single laptop user** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Gateways/networks** is correct: Lan-to-lan.
 
 
-    **Only Layer 2 loops** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only a single laptop user** is not the right selection: Remote access.
 
 
-    **Only DNS queries** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only Layer 2 loops** is not the right selection: STP.
+
+
+    **Only DNS queries** is not the right selection: App.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -204,20 +214,19 @@ questions:
     text: Only disabling AES
   correct:
     answer: a
-  explanation: '**Handshake / encryption practices** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'WPA3 strengthens authentication and cryptographic practices.
 
 
-    **Only open SSIDs mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Handshake / encryption practices** is correct: SAE etc.
 
 
-    **Only WEP reintroduction** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only open SSIDs mandatory** is not the right selection: Opposite.
 
 
-    **Only disabling AES** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only WEP reintroduction** is not the right selection: Worse.
+
+
+    **Only disabling AES** is not the right selection: Opposite.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -241,21 +250,22 @@ questions:
     text: Only VTP password as sole AAA
   correct:
     answer: a
-  explanation: '**Line/console/VTY passwords or local usernames** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'Local passwords protect device management access.
 
 
-    **Only BGP communities**: **BGP** exchanges reachability among autonomous systems and selects paths
-    using an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does
-    not satisfy the condition required by the stem. Configuration uses `router bgp <asn>`.
+    **Only BGP communities** points at BGP communities, which is not how 5.3 (Device
+    access control using local passwords) solves this stem. The keyed answer is **Line/console/VTY
+    passwords or local usernames**.
 
 
-    **Only STP priority** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP priority** points at STP priority, which is not how 5.3 (Device access
+    control using local passwords) solves this stem. The keyed answer is **Line/console/VTY
+    passwords or local usernames**.
 
 
-    **Only VTP password as sole AAA** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only VTP password as sole AAA** points at VTP password as sole AAA, which is
+    not how 5.3 (Device access control using local passwords) solves this stem. The
+    keyed answer is **Line/console/VTY passwords or local usernames**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -279,21 +289,24 @@ questions:
     text: AES, AH, ESP only
   correct:
     answer: a
-  explanation: '**Authentication, Authorization, Accounting** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: '**AAA** is Authentication (who you are), Authorization (what you may
+    do), and Accounting (what you did). On IOS: `aaa new-model` with RADIUS or TACACS+
+    groups for login, exec, and command authorization.
 
 
-    **Anycast, ACL, ARP**: **Anycast** assigns the same address to multiple nodes; routers forward to
-    the topologically nearest member. IPv6 does not use broadcast. This does not satisfy the condition
-    required by the stem.
+    **Authentication, Authorization, Accounting** is the expansion.
 
 
-    **AS, Area, ABR** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Anycast, ACL, ARP** are unrelated networking terms forced into the same letters
+    — not AAA.
 
 
-    **AES, AH, ESP only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **AS, Area, ABR** are **BGP/OSPF** terms (autonomous system, OSPF area, area border
+    router), not the access-control triad.
+
+
+    **AES, AH, ESP only** are **IPsec** algorithms/headers (encryption, Authentication
+    Header, Encapsulating Security Payload), not AAA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -317,21 +330,19 @@ questions:
     text: Only SPAN
   correct:
     answer: a
-  explanation: '**Security program element** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Awareness/training are security program elements.
 
 
-    **Only OSPF tuning**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **Only OSPF tuning** points at OSPF tuning, which is not how 5.2 (Security program
+    elements) solves this stem. The keyed answer is **Security program element**.
 
 
-    **Only EtherChannel** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only EtherChannel** points at EtherChannel, which is not how 5.2 (Security program
+    elements) solves this stem. The keyed answer is **Security program element**.
 
 
-    **Only SPAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only SPAN** points at SPAN, which is not how 5.2 (Security program elements)
+    solves this stem. The keyed answer is **Security program element**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -355,20 +366,22 @@ questions:
     text: Only disabling SSH
   correct:
     answer: a
-  explanation: '**Additional factors beyond a password** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'MFA combines something you know/have/are.
 
 
-    **Only longer Telnet banners** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only longer Telnet banners** is a mismatch: Telnet (TCP 23) is cleartext remote
+    CLI and should not be used on production VTYs. The stem is asking about **Additional
+    factors beyond a password**.
 
 
-    **Only VTY ACL deny any**: An **ACL** filters traffic by matching header fields and applying permit
-    or deny actions in sequential order. This does not satisfy the condition required by the stem.
+    **Only VTY ACL deny any** points at VTY ACL deny any, which is not how 5.4 (Password
+    policies and alternatives) solves this stem. The keyed answer is **Additional
+    factors beyond a password**.
 
 
-    **Only disabling SSH** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only disabling SSH** points at disabling SSH, which is not how 5.4 (Password
+    policies and alternatives) solves this stem. The keyed answer is **Additional
+    factors beyond a password**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -392,21 +405,23 @@ questions:
     text: Only spanning-tree mode
   correct:
     answer: a
-  explanation: '**ip access-list standard/extended NAME**: An **ACL** filters traffic by matching header
-    fields and applying permit or deny actions in sequential order. This is the correct answer for the
-    stem. Configuration uses `ip access-list extended <name>`.
+  explanation: 'Named ACLs use ip access-list configuration mode.
 
 
-    **Only interface vlan exclusively** is incorrect. It does not describe the intended use or behavior
-    required by the stem.
+    **Only interface vlan exclusively** names interface vlan, which is a different
+    feature: `interface vlan` enters that interface (or SVI) context. It does not
+    perform the action named in the stem. The stem wants **ip access-list standard/extended
+    NAME**.
 
 
-    **Only line vty without ACL**: An **ACL** filters traffic by matching header fields and applying permit
-    or deny actions in sequential order. This does not satisfy the condition required by the stem.
+    **Only line vty without ACL** points at line vty without ACL, which is not how
+    5.6 (Access control lists) solves this stem. The keyed answer is **ip access-list
+    standard/extended NAME**.
 
 
-    **Only spanning-tree mode** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **Only spanning-tree mode** points at spanning-tree mode, which is not how 5.6
+    (Access control lists) solves this stem. The keyed answer is **ip access-list
+    standard/extended NAME**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -430,22 +445,24 @@ questions:
     text: Only STP roots
   correct:
     answer: a
-  explanation: '**IP–MAC–port–VLAN mappings** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: '`ip dhcp snooping` builds a **binding table** of **IP address, MAC,
+    switch port, VLAN, and lease time** from DHCP ACKs seen on trusted ports. DAI,
+    IP Source Guard, and some 802.1X features consume that table (`show ip dhcp snooping
+    binding`).
 
 
-    **Only OSPF neighbors**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **IP–MAC–port–VLAN mappings** is exactly that binding.
 
 
-    **Only BGP paths**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.
+    **Only OSPF neighbors** live in `show ip ospf neighbor` (RID, state, dead timer).
+    DHCP snooping does not parse Hellos.
 
 
-    **Only STP roots** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only BGP paths** live in the BGP table (`show ip bgp`). Unrelated to DHCP leases.
+
+
+    **Only STP roots** are the root bridge per VLAN (`show spanning-tree`). Snooping
+    does not elect STP roots.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -469,20 +486,22 @@ questions:
     text: Only NetFlow exporters
   correct:
     answer: a
-  explanation: '**Wireless security for client SSIDs** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'GUI WLAN workflows apply WPA2-PSK to SSIDs.
 
 
-    **Only underlay ECMP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only underlay ECMP** points at underlay ECMP, which is not how 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)) solves this stem. The keyed answer is **Wireless security
+    for client SSIDs**.
 
 
-    **Only CoPP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only CoPP** points at CoPP, which is not how 5.10 (Configure WLAN using WPA2
+    PSK (GUI)) solves this stem. The keyed answer is **Wireless security for client
+    SSIDs**.
 
 
-    **Only NetFlow exporters** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only NetFlow exporters** points at NetFlow exporters, which is not how 5.10
+    (Configure WLAN using WPA2 PSK (GUI)) solves this stem. The keyed answer is **Wireless
+    security for client SSIDs**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -506,20 +525,21 @@ questions:
     text: Only a VLAN
   correct:
     answer: a
-  explanation: '**A method that takes advantage of a vulnerability** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'Exploits weaponize vulnerabilities.
 
 
-    **Only a firewall** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only a firewall** is a mismatch: A firewall enforces Layer 3/4 (and often 7)
+    policy between zones; it is not the classic LAN MAC forwarder. The stem is asking
+    about **A method that takes advantage of a vulnerability**.
 
 
-    **Only a syslog facility** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only a syslog facility** is a mismatch: Syslog exports device logs (UDP 514
+    by default) with severity 0–7. The stem is asking about **A method that takes
+    advantage of a vulnerability**.
 
 
-    **Only a VLAN** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only a VLAN** points at a VLAN, which is not how 5.1 (Key security concepts)
+    solves this stem. The keyed answer is **A method that takes advantage of a vulnerability**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -543,20 +563,21 @@ questions:
     text: Only DNSSEC
   correct:
     answer: a
-  explanation: '**Confidentiality and optionally integrity/auth** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'ESP encrypts (and may authenticate) payloads.
 
 
-    **Only routing updates** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only routing updates** points at routing updates, which is not how 5.5 (Remote
+    access and site-to-site VPNs) solves this stem. The keyed answer is **Confidentiality
+    and optionally integrity/auth**.
 
 
-    **Only STP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only STP** is a mismatch: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects
+    a root and blocks redundant Layer 2 paths so Ethernet does not loop. The stem
+    is asking about **Confidentiality and optionally integrity/auth**.
 
 
-    **Only DNSSEC** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only DNSSEC** points at DNSSEC, which is not how 5.5 (Remote access and site-to-site
+    VPNs) solves this stem. The keyed answer is **Confidentiality and optionally integrity/auth**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -580,21 +601,22 @@ questions:
     text: TCP 443 only
   correct:
     answer: a
-  explanation: '**UDP 1812/1813 (or legacy 1645/1646)**: **UDP** provides connectionless datagram delivery
-    without TCP’s reliability or ordering guarantees. This is the correct answer for the stem.
+  explanation: 'RADIUS auth/accounting use UDP 1812/1813.
 
 
-    **TCP 22**: **TCP** provides reliable, ordered, connection-oriented delivery using sequence and acknowledgment
-    numbers, among other mechanisms. This does not satisfy the condition required by the stem.
+    **TCP 22** is a different protocol, command, or value than **UDP 1812/1813 (or
+    legacy 1645/1646)**. For 5.8 (Authentication, authorization, and accounting),
+    the stem is solved by **UDP 1812/1813 (or legacy 1645/1646)**, not by TCP 22.
 
 
-    **UDP 53**: **UDP** provides connectionless datagram delivery without TCP’s reliability or ordering
-    guarantees. This does not satisfy the condition required by the stem.
+    **UDP 53** is a different protocol, command, or value than **UDP 1812/1813 (or
+    legacy 1645/1646)**. For 5.8 (Authentication, authorization, and accounting),
+    the stem is solved by **UDP 1812/1813 (or legacy 1645/1646)**, not by UDP 53.
 
 
-    **TCP 443 only**: **TCP** provides reliable, ordered, connection-oriented delivery using sequence
-    and acknowledgment numbers, among other mechanisms. This does not satisfy the condition required by
-    the stem.'
+    **TCP 443 only** points at TCP 443, which is not how 5.8 (Authentication, authorization,
+    and accounting) solves this stem. The keyed answer is **UDP 1812/1813 (or legacy
+    1645/1646)**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -618,20 +640,22 @@ questions:
     text: Only Base64
   correct:
     answer: a
-  explanation: '**Hashed (MD5/type 5 or stronger modern types)** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'enable secret uses a hash; enable password was weaker/clearer.
 
 
-    **Cleartext always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Cleartext always** points at Cleartext, which is not how 5.3 (Device access
+    control using local passwords) solves this stem. The keyed answer is **Hashed
+    (MD5/type 5 or stronger modern types)**.
 
 
-    **Only ROT13** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only ROT13** points at ROT13, which is not how 5.3 (Device access control using
+    local passwords) solves this stem. The keyed answer is **Hashed (MD5/type 5 or
+    stronger modern types)**.
 
 
-    **Only Base64** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only Base64** points at Base64, which is not how 5.3 (Device access control
+    using local passwords) solves this stem. The keyed answer is **Hashed (MD5/type
+    5 or stronger modern types)**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -655,20 +679,20 @@ questions:
     text: Only the STP root
   correct:
     answer: a
-  explanation: '**The switch/AP**: A Layer 2 **switch** forwards Ethernet frames based on MAC address
-    tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'The authenticator enforces port access pending AAA.
 
 
-    **The end-user laptop alone** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **The end-user laptop alone** is a different protocol, command, or value than
+    **The switch/AP**. For 5.8 (Authentication, authorization, and accounting), the
+    stem is solved by **The switch/AP**, not by The end-user laptop alone.
 
 
-    **Only the root DNS** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only the root DNS** points at the root DNS, which is not how 5.8 (Authentication,
+    authorization, and accounting) solves this stem. The keyed answer is **The switch/AP**.
 
 
-    **Only the STP root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only the STP root** points at the STP root, which is not how 5.8 (Authentication,
+    authorization, and accounting) solves this stem. The keyed answer is **The switch/AP**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -692,19 +716,21 @@ questions:
     text: deny tcp only
   correct:
     answer: a
-  explanation: '**deny any**: An **ACL** filters traffic by matching header fields and applying permit
-    or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: 'ACLs end with an implicit deny any.
 
 
-    **permit any** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **permit any** is a different protocol, command, or value than **deny any**. For
+    5.6 (Access control lists), the stem is solved by **deny any**, not by permit
+    any.
 
 
-    **permit icmp** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **permit icmp** is a different protocol, command, or value than **deny any**.
+    For 5.6 (Access control lists), the stem is solved by **deny any**, not by permit
+    icmp.
 
 
-    **deny tcp only**: **TCP** provides reliable, ordered, connection-oriented delivery using sequence
-    and acknowledgment numbers, among other mechanisms. This does not satisfy the condition required by
-    the stem.'
+    **deny tcp only** points at deny tcp, which is not how 5.6 (Access control lists)
+    solves this stem. The keyed answer is **deny any**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -728,21 +754,22 @@ questions:
     text: BGP hijacks alone
   correct:
     answer: a
-  explanation: '**IP spoofing on a port** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'IPSG drops traffic not matching bindings.
 
 
-    **STP loops** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **STP loops** is a different protocol, command, or value than **IP spoofing on
+    a port**. For 5.7 (Layer 2 security features), the stem is solved by **IP spoofing
+    on a port**, not by STP loops.
 
 
-    **WLAN roaming** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WLAN roaming** is a different protocol, command, or value than **IP spoofing
+    on a port**. For 5.7 (Layer 2 security features), the stem is solved by **IP spoofing
+    on a port**, not by WLAN roaming.
 
 
-    **BGP hijacks alone**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.'
+    **BGP hijacks alone** is a different protocol, command, or value than **IP spoofing
+    on a port**. For 5.7 (Layer 2 security features), the stem is solved by **IP spoofing
+    on a port**, not by BGP hijacks alone.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -766,20 +793,22 @@ questions:
     text: Only Telnet without AAA
   correct:
     answer: a
-  explanation: '**Length/character diversity rules** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Complexity raises guessing difficulty.
 
 
-    **Only identical passwords forever** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only identical passwords forever** points at identical passwords, which is not
+    how 5.4 (Password policies and alternatives) solves this stem. The keyed answer
+    is **Length/character diversity rules**.
 
 
-    **Only blank enable** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only blank enable** points at blank enable, which is not how 5.4 (Password policies
+    and alternatives) solves this stem. The keyed answer is **Length/character diversity
+    rules**.
 
 
-    **Only Telnet without AAA** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only Telnet without AAA** is a mismatch: Telnet (TCP 23) is cleartext remote
+    CLI and should not be used on production VTYs. The stem is asking about **Length/character
+    diversity rules**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -803,21 +832,19 @@ questions:
     text: Only LACP
   correct:
     answer: a
-  explanation: '**Security program elements** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Physical controls complement awareness and training.
 
 
-    **Only QoS PHB** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only QoS PHB** points at QoS PHB, which is not how 5.2 (Security program elements)
+    solves this stem. The keyed answer is **Security program elements**.
 
 
-    **Only ECMP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only ECMP** points at ECMP, which is not how 5.2 (Security program elements)
+    solves this stem. The keyed answer is **Security program elements**.
 
 
-    **Only LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
-    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
-    `channel-group <id> mode active|passive`.'
+    **Only LACP** is a mismatch: LACP (802.3ad/802.1AX) negotiates EtherChannel (`channel-group
+    mode active|passive`). The stem is asking about **Security program elements**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -841,19 +868,19 @@ questions:
     text: Only TKIP exclusive forever
   correct:
     answer: a
-  explanation: '**PSK** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'WPA2-PSK is personal/pre-shared key mode.
 
 
-    **Only open auth mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only open auth mandatory** points at open auth, which is not how 5.9 (Wireless
+    security protocols) solves this stem. The keyed answer is **PSK**.
 
 
-    **Only WEP-40** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only WEP-40** points at WEP-40, which is not how 5.9 (Wireless security protocols)
+    solves this stem. The keyed answer is **PSK**.
 
 
-    **Only TKIP exclusive forever** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only TKIP exclusive forever** points at TKIP exclusive, which is not how 5.9
+    (Wireless security protocols) solves this stem. The keyed answer is **PSK**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -881,19 +908,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.1 (Key security concepts).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -917,20 +944,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -954,20 +981,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -991,19 +1020,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -1027,20 +1054,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -1064,20 +1091,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -1104,19 +1133,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.6 (Access control lists).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -1140,20 +1169,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -1177,20 +1206,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -1214,19 +1245,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -1250,20 +1279,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -1290,19 +1321,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.10 (Configure WLAN using
+    WPA2 PSK (GUI)).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -1326,20 +1358,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -1363,20 +1395,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -1400,19 +1434,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -1436,20 +1468,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -1473,20 +1505,22 @@ questions:
     text: Clear-text PSK mandatory
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -1513,19 +1547,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.7 (Layer 2 security features).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -1549,20 +1583,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -1586,20 +1620,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -1623,20 +1659,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -1660,20 +1696,22 @@ questions:
     text: Clear-text PSK mandatory
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -1700,19 +1738,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.2 (Security program elements).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -1736,20 +1774,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -1773,20 +1811,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -1810,19 +1850,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -1846,20 +1884,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -1883,20 +1921,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -1923,19 +1963,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.8 (Authentication, authorization,
+    and accounting).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -1959,20 +2000,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -1996,19 +2037,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -2032,20 +2071,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -2069,20 +2108,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -2109,19 +2150,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.3 (Device access control
+    using local passwords).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -2145,20 +2187,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -2182,20 +2224,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -2219,19 +2263,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -2255,20 +2297,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -2292,20 +2334,22 @@ questions:
     text: Clear-text PSK mandatory
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -2332,19 +2376,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.9 (Wireless security protocols).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -2368,20 +2412,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -2405,19 +2451,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -2441,20 +2485,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -2478,20 +2522,22 @@ questions:
     text: Clear-text PSK mandatory
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -2518,19 +2564,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.4 (Password policies and
+    alternatives).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -2554,20 +2601,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -2591,20 +2638,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -2628,19 +2677,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -2664,20 +2711,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -2701,20 +2748,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -2738,20 +2787,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -2775,20 +2824,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -2812,19 +2863,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -2848,20 +2897,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -2885,20 +2934,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -2925,19 +2976,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.5 (Remote access and site-to-site
+    VPNs).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -2961,20 +3013,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -2998,20 +3050,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -3035,19 +3089,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -3071,20 +3123,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -3109,20 +3161,30 @@ questions:
     text: Ignore verification and assume 5.1 always works
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.1 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.1 (Key security concepts), the keyed answer is **Use the standard
+    model for 5.1 rather than a look-alike concept**. Stem: For CCNA objective 5.1,
+    which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 5.1 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.1 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.1 (Key security
+    concepts).
 
 
-    **Confuse 5.1 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Confuse 5.1 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.1 (Key security concepts).
 
 
-    **Disable logging permanently while testing 5.1** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 5.1** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.1 (Key security concepts).
+
+
+    **Ignore verification and assume 5.1 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.1 (Key security concepts).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3146,20 +3208,31 @@ questions:
     text: Disable logging permanently while testing 5.1
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.1 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.1 (Key security concepts), the keyed answer is **Prefer the
+    documented 5.1 approach used in enterprise designs**. Stem: Regarding CCNA topic
+    5.1. Which reply is accurate?.
 
 
-    **Confuse 5.1 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 5.1 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.1 (Key
+    security concepts).
 
 
-    **Disable logging permanently while testing 5.1** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.1** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.1 (Key
+    security concepts).
 
 
-    **Use clear-text shared secrets as the only control for 5.1** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 5.1 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.1 (Key security concepts).
+
+
+    **Disable logging permanently while testing 5.1** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.1 (Key security concepts).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3171,8 +3244,8 @@ questions:
   topic_code: '5.1'
   difficulty: 4
   cert_tags: *id003
-  stem: '[CCNA 5.1] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.1] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.1 with show/ping evidence
@@ -3187,20 +3260,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.1 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.1 (Key security concepts), the keyed answer is **Verify expected
+    state for 5.1 with show/ping evidence; Document the 5.1 design intent and rollback
+    plan**. Stem: [CCNA 5.1] Select ALL actions that support a correct implementation
+    or verification for this objective..
 
 
-    **Document the 5.1 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.1 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.1 (Key security concepts).
 
 
-    **Skip change control because 5.1 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.1 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.1 (Key security concepts).
 
 
-    **Disable all monitoring related to 5.1** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.1 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.1 (Key security
+    concepts).
+
+
+    **Disable all monitoring related to 5.1** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.1 (Key security concepts).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3224,20 +3308,32 @@ questions:
     text: Validate with show/verify steps before relying on 5.1 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.1 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.1 (Key security concepts), the keyed answer is **Validate with
+    show/verify steps before relying on 5.1 changes**. Stem: Which configuration intent
+    aligns with CCNA objective 5.1?.
 
 
-    **Use clear-text shared secrets as the only control for 5.1** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.1 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.1 (Key security concepts).
 
 
-    **Skip documentation for 5.1 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.1** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.1 (Key
+    security concepts).
 
 
-    **Treat 5.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 5.1 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.1 (Key security
+    concepts).
+
+
+    **Treat 5.1 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.1 (Key security
+    concepts).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.1
@@ -3261,20 +3357,33 @@ questions:
     text: Skip documentation for 5.10 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.10 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.10 (Configure WLAN using WPA2 PSK (GUI)), the keyed answer is
+    **Use the standard model for 5.10 rather than a look-alike concept**. Stem: Select
+    the correct association for exam topic 5.10..
 
 
-    **Skip documentation for 5.10 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.10 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
 
 
-    **Treat 5.10 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.10 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
 
 
-    **Ignore verification and assume 5.10 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 5.10 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.10 (Configure WLAN using WPA2 PSK
+    (GUI)).
+
+
+    **Skip documentation for 5.10 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3298,20 +3407,33 @@ questions:
     text: Ignore verification and assume 5.10 always works
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.10 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.10 (Configure WLAN using WPA2 PSK (GUI)), the keyed answer is
+    **Prefer the documented 5.10 approach used in enterprise designs**. Stem: Which
+    option correctly describes a key idea under 5.10?.
 
 
-    **Treat 5.10 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Prefer the documented 5.10 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
 
 
-    **Ignore verification and assume 5.10 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 5.10 with an unrelated Layer mismatch** is not the right selection:
+    Confusing this objective with an unrelated OSI layer is how you apply the wrong
+    feature (for example STP for a routing problem). This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
 
 
-    **Confuse 5.10 with an unrelated Layer mismatch** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 5.10 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
+
+
+    **Ignore verification and assume 5.10 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.10 (Configure WLAN using WPA2 PSK
+    (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3335,20 +3457,33 @@ questions:
     text: Disable logging permanently while testing 5.10
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.10** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.10 (Configure WLAN using WPA2 PSK (GUI)), the keyed answer is
+    **Apply the verified behavior required by objective 5.10**. Stem: For CCNA objective
+    5.10, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 5.10 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.10** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.10 (Configure WLAN using WPA2
+    PSK (GUI)).
 
 
-    **Confuse 5.10 with an unrelated Layer mismatch** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Ignore verification and assume 5.10 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.10 (Configure WLAN using WPA2 PSK
+    (GUI)).
 
 
-    **Disable logging permanently while testing 5.10** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 5.10 with an unrelated Layer mismatch** is not the right selection:
+    Confusing this objective with an unrelated OSI layer is how you apply the wrong
+    feature (for example STP for a routing problem). This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
+
+
+    **Disable logging permanently while testing 5.10** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.10 (Configure WLAN using
+    WPA2 PSK (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3360,8 +3495,8 @@ questions:
   topic_code: '5.10'
   difficulty: 3
   cert_tags: *id003
-  stem: '[CCNA 5.10] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.10] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.10 with show/ping evidence
@@ -3376,20 +3511,32 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.10 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.10 (Configure WLAN using WPA2 PSK (GUI)), the keyed answer is
+    **Verify expected state for 5.10 with show/ping evidence; Document the 5.10 design
+    intent and rollback plan**. Stem: [CCNA 5.10] Select ALL actions that support
+    a correct implementation or verification for this objective..
 
 
-    **Document the 5.10 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.10 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.10 (Configure WLAN using WPA2 PSK (GUI)).
 
 
-    **Skip change control because 5.10 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.10 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.10 (Configure WLAN using WPA2 PSK (GUI)).
 
 
-    **Disable all monitoring related to 5.10** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.10 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
+
+
+    **Disable all monitoring related to 5.10** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.10 (Configure WLAN using WPA2 PSK
+    (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3413,20 +3560,33 @@ questions:
     text: Disable logging permanently while testing 5.10
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.10 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.10 (Configure WLAN using WPA2 PSK (GUI)), the keyed answer is
+    **Use the standard model for 5.10 rather than a look-alike concept**. Stem: During
+    troubleshooting related to 5.10, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 5.10** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.10 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
 
 
-    **Use clear-text shared secrets as the only control for 5.10** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.10** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
 
 
-    **Skip documentation for 5.10 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 5.10 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.10 (Configure
+    WLAN using WPA2 PSK (GUI)).
+
+
+    **Disable logging permanently while testing 5.10** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.10 (Configure WLAN using
+    WPA2 PSK (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.10
@@ -3450,20 +3610,33 @@ questions:
     text: Skip documentation for 5.2 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.2 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.2 (Security program elements), the keyed answer is **Prefer
+    the documented 5.2 approach used in enterprise designs**. Stem: Which configuration
+    intent aligns with CCNA objective 5.2?.
 
 
-    **Use clear-text shared secrets as the only control for 5.2** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 5.2 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.2 (Security
+    program elements).
 
 
-    **Skip documentation for 5.2 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.2 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.2 (Security
+    program elements).
 
 
-    **Treat 5.2 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 5.2** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.2 (Security
+    program elements).
+
+
+    **Skip documentation for 5.2 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.2 (Security
+    program elements).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3487,20 +3660,31 @@ questions:
     text: Ignore verification and assume 5.2 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.2** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.2 (Security program elements), the keyed answer is **Apply the
+    verified behavior required by objective 5.2**. Stem: Select the correct association
+    for exam topic 5.2..
 
 
-    **Skip documentation for 5.2 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.2** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.2 (Security program elements).
 
 
-    **Treat 5.2 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 5.2 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.2 (Security
+    program elements).
 
 
-    **Ignore verification and assume 5.2 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 5.2 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.2 (Security
+    program elements).
+
+
+    **Ignore verification and assume 5.2 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.2 (Security program elements).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3524,20 +3708,31 @@ questions:
     text: Validate with show/verify steps before relying on 5.2 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.2 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.2 (Security program elements), the keyed answer is **Validate
+    with show/verify steps before relying on 5.2 changes**. Stem: Which option correctly
+    describes a key idea under 5.2?.
 
 
-    **Treat 5.2 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.2 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.2 (Security program elements).
 
 
-    **Ignore verification and assume 5.2 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.2 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.2 (Security
+    program elements).
 
 
-    **Confuse 5.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 5.2 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.2 (Security program elements).
+
+
+    **Confuse 5.2 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.2 (Security program
+    elements).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3549,8 +3744,8 @@ questions:
   topic_code: '5.2'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 5.2] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.2] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.2 with show/ping evidence
@@ -3565,20 +3760,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.2 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.2 (Security program elements), the keyed answer is **Verify
+    expected state for 5.2 with show/ping evidence; Document the 5.2 design intent
+    and rollback plan**. Stem: [CCNA 5.2] Select ALL actions that support a correct
+    implementation or verification for this objective..
 
 
-    **Document the 5.2 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.2 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.2 (Security program elements).
 
 
-    **Skip change control because 5.2 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.2 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.2 (Security program elements).
 
 
-    **Disable all monitoring related to 5.2** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.2 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.2 (Security program
+    elements).
+
+
+    **Disable all monitoring related to 5.2** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.2 (Security program elements).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.2
@@ -3602,20 +3808,33 @@ questions:
     text: Disable logging permanently while testing 5.3
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.3 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.3 (Device access control using local passwords), the keyed answer
+    is **Prefer the documented 5.3 approach used in enterprise designs**. Stem: Regarding
+    CCNA topic 5.3. Which reply is accurate?.
 
 
-    **Confuse 5.3 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 5.3 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.3 (Device
+    access control using local passwords).
 
 
-    **Disable logging permanently while testing 5.3** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.3 (Device
+    access control using local passwords).
 
 
-    **Use clear-text shared secrets as the only control for 5.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 5.3 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.3 (Device access control
+    using local passwords).
+
+
+    **Disable logging permanently while testing 5.3** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.3 (Device access control
+    using local passwords).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -3639,20 +3858,33 @@ questions:
     text: Skip documentation for 5.3 changes in production
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.3** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.3 (Device access control using local passwords), the keyed answer
+    is **Apply the verified behavior required by objective 5.3**. Stem: During troubleshooting
+    related to 5.3, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 5.3** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.3** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.3 (Device access control using
+    local passwords).
 
 
-    **Use clear-text shared secrets as the only control for 5.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Disable logging permanently while testing 5.3** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.3 (Device access control
+    using local passwords).
 
 
-    **Skip documentation for 5.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 5.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.3 (Device
+    access control using local passwords).
+
+
+    **Skip documentation for 5.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.3 (Device access
+    control using local passwords).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -3676,20 +3908,32 @@ questions:
     text: Validate with show/verify steps before relying on 5.3 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.3 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.3 (Device access control using local passwords), the keyed answer
+    is **Validate with show/verify steps before relying on 5.3 changes**. Stem: Which
+    configuration intent aligns with CCNA objective 5.3?.
 
 
-    **Use clear-text shared secrets as the only control for 5.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.3 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.3 (Device access control using local passwords).
 
 
-    **Skip documentation for 5.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.3 (Device
+    access control using local passwords).
 
 
-    **Treat 5.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 5.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.3 (Device access
+    control using local passwords).
+
+
+    **Treat 5.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.3 (Device access
+    control using local passwords).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -3713,20 +3957,33 @@ questions:
     text: Skip documentation for 5.3 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.3 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.3 (Device access control using local passwords), the keyed answer
+    is **Use the standard model for 5.3 rather than a look-alike concept**. Stem:
+    Select the correct association for exam topic 5.3..
 
 
-    **Skip documentation for 5.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.3 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.3 (Device access
+    control using local passwords).
 
 
-    **Treat 5.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.3 (Device access
+    control using local passwords).
 
 
-    **Ignore verification and assume 5.3 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 5.3 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.3 (Device access control using
+    local passwords).
+
+
+    **Skip documentation for 5.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.3 (Device access
+    control using local passwords).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.3
@@ -3738,8 +3995,8 @@ questions:
   topic_code: '5.4'
   difficulty: 4
   cert_tags: *id003
-  stem: '[CCNA 5.4] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.4] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.4 with show/ping evidence
@@ -3754,20 +4011,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.4 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.4 (Password policies and alternatives), the keyed answer is
+    **Verify expected state for 5.4 with show/ping evidence; Document the 5.4 design
+    intent and rollback plan**. Stem: [CCNA 5.4] Select ALL actions that support a
+    correct implementation or verification for this objective..
 
 
-    **Document the 5.4 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.4 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.4 (Password policies and alternatives).
 
 
-    **Skip change control because 5.4 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.4 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.4 (Password policies and alternatives).
 
 
-    **Disable all monitoring related to 5.4** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.4 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.4 (Password policies
+    and alternatives).
+
+
+    **Disable all monitoring related to 5.4** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.4 (Password policies and alternatives).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -3791,20 +4059,31 @@ questions:
     text: Disable logging permanently while testing 5.4
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.4** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.4 (Password policies and alternatives), the keyed answer is
+    **Apply the verified behavior required by objective 5.4**. Stem: For CCNA objective
+    5.4, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 5.4 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.4** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.4 (Password policies and alternatives).
 
 
-    **Confuse 5.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Ignore verification and assume 5.4 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.4 (Password policies and alternatives).
 
 
-    **Disable logging permanently while testing 5.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 5.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.4 (Password policies
+    and alternatives).
+
+
+    **Disable logging permanently while testing 5.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.4 (Password policies
+    and alternatives).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -3828,20 +4107,32 @@ questions:
     text: Validate with show/verify steps before relying on 5.4 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.4 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.4 (Password policies and alternatives), the keyed answer is
+    **Validate with show/verify steps before relying on 5.4 changes**. Stem: Regarding
+    CCNA topic 5.4. Which reply is accurate?.
 
 
-    **Confuse 5.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.4 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.4 (Password policies and alternatives).
 
 
-    **Disable logging permanently while testing 5.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 5.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.4 (Password policies
+    and alternatives).
 
 
-    **Use clear-text shared secrets as the only control for 5.4** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 5.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.4 (Password policies
+    and alternatives).
+
+
+    **Use clear-text shared secrets as the only control for 5.4** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.4 (Password
+    policies and alternatives).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -3865,20 +4156,33 @@ questions:
     text: Disable logging permanently while testing 5.4
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.4 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.4 (Password policies and alternatives), the keyed answer is
+    **Use the standard model for 5.4 rather than a look-alike concept**. Stem: During
+    troubleshooting related to 5.4, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 5.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.4 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.4 (Password policies
+    and alternatives).
 
 
-    **Use clear-text shared secrets as the only control for 5.4** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.4** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.4 (Password
+    policies and alternatives).
 
 
-    **Skip documentation for 5.4 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 5.4 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.4 (Password
+    policies and alternatives).
+
+
+    **Disable logging permanently while testing 5.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.4 (Password policies
+    and alternatives).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.4
@@ -3902,20 +4206,33 @@ questions:
     text: Skip documentation for 5.5 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.5 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.5 (Remote access and site-to-site VPNs), the keyed answer is
+    **Prefer the documented 5.5 approach used in enterprise designs**. Stem: Which
+    configuration intent aligns with CCNA objective 5.5?.
 
 
-    **Use clear-text shared secrets as the only control for 5.5** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 5.5 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.5 (Remote
+    access and site-to-site VPNs).
 
 
-    **Skip documentation for 5.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.5 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.5 (Remote access
+    and site-to-site VPNs).
 
 
-    **Treat 5.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 5.5** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.5 (Remote
+    access and site-to-site VPNs).
+
+
+    **Skip documentation for 5.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.5 (Remote access
+    and site-to-site VPNs).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -3927,8 +4244,8 @@ questions:
   topic_code: '5.5'
   difficulty: 3
   cert_tags: *id003
-  stem: '[CCNA 5.5] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.5] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.5 with show/ping evidence
@@ -3943,20 +4260,32 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.5 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.5 (Remote access and site-to-site VPNs), the keyed answer is
+    **Verify expected state for 5.5 with show/ping evidence; Document the 5.5 design
+    intent and rollback plan**. Stem: [CCNA 5.5] Select ALL actions that support a
+    correct implementation or verification for this objective..
 
 
-    **Document the 5.5 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.5 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.5 (Remote access and site-to-site VPNs).
 
 
-    **Skip change control because 5.5 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.5 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.5 (Remote access and site-to-site VPNs).
 
 
-    **Disable all monitoring related to 5.5** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.5 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.5 (Remote access
+    and site-to-site VPNs).
+
+
+    **Disable all monitoring related to 5.5** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.5 (Remote access and site-to-site
+    VPNs).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -3980,20 +4309,32 @@ questions:
     text: Validate with show/verify steps before relying on 5.5 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.5 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.5 (Remote access and site-to-site VPNs), the keyed answer is
+    **Validate with show/verify steps before relying on 5.5 changes**. Stem: Which
+    option correctly describes a key idea under 5.5?.
 
 
-    **Treat 5.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.5 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.5 (Remote access and site-to-site VPNs).
 
 
-    **Ignore verification and assume 5.5 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.5 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.5 (Remote access
+    and site-to-site VPNs).
 
 
-    **Confuse 5.5 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 5.5 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.5 (Remote access and site-to-site
+    VPNs).
+
+
+    **Confuse 5.5 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.5 (Remote access and
+    site-to-site VPNs).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -4017,20 +4358,33 @@ questions:
     text: Ignore verification and assume 5.5 always works
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.5 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.5 (Remote access and site-to-site VPNs), the keyed answer is
+    **Use the standard model for 5.5 rather than a look-alike concept**. Stem: For
+    CCNA objective 5.5, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 5.5 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.5 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.5 (Remote access
+    and site-to-site VPNs).
 
 
-    **Confuse 5.5 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Confuse 5.5 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.5 (Remote access and
+    site-to-site VPNs).
 
 
-    **Disable logging permanently while testing 5.5** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 5.5** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.5 (Remote access and
+    site-to-site VPNs).
+
+
+    **Ignore verification and assume 5.5 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.5 (Remote access and site-to-site
+    VPNs).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.5
@@ -4054,20 +4408,32 @@ questions:
     text: Disable logging permanently while testing 5.6
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.6 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.6 (Access control lists), the keyed answer is **Prefer the documented
+    5.6 approach used in enterprise designs**. Stem: Regarding CCNA topic 5.6. Which
+    reply is accurate?.
 
 
-    **Confuse 5.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 5.6 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.6 (Access
+    control lists).
 
 
-    **Disable logging permanently while testing 5.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.6 (Access
+    control lists).
 
 
-    **Use clear-text shared secrets as the only control for 5.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 5.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.6 (Access control
+    lists).
+
+
+    **Disable logging permanently while testing 5.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.6 (Access control lists).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -4091,20 +4457,31 @@ questions:
     text: Skip documentation for 5.6 changes in production
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.6** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.6 (Access control lists), the keyed answer is **Apply the verified
+    behavior required by objective 5.6**. Stem: During troubleshooting related to
+    5.6, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 5.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.6** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.6 (Access control lists).
 
 
-    **Use clear-text shared secrets as the only control for 5.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Disable logging permanently while testing 5.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.6 (Access control lists).
 
 
-    **Skip documentation for 5.6 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 5.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.6 (Access
+    control lists).
+
+
+    **Skip documentation for 5.6 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.6 (Access control
+    lists).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -4116,8 +4493,8 @@ questions:
   topic_code: '5.6'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 5.6] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.6] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.6 with show/ping evidence
@@ -4132,20 +4509,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.6 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.6 (Access control lists), the keyed answer is **Verify expected
+    state for 5.6 with show/ping evidence; Document the 5.6 design intent and rollback
+    plan**. Stem: [CCNA 5.6] Select ALL actions that support a correct implementation
+    or verification for this objective..
 
 
-    **Document the 5.6 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.6 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.6 (Access control lists).
 
 
-    **Skip change control because 5.6 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.6 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.6 (Access control lists).
 
 
-    **Disable all monitoring related to 5.6** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.6 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.6 (Access control
+    lists).
+
+
+    **Disable all monitoring related to 5.6** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.6 (Access control lists).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.6
@@ -4169,20 +4557,32 @@ questions:
     text: Skip documentation for 5.7 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.7 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.7 (Layer 2 security features), the keyed answer is **Use the
+    standard model for 5.7 rather than a look-alike concept**. Stem: Select the correct
+    association for exam topic 5.7..
 
 
-    **Skip documentation for 5.7 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.7 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.7 (Layer 2 security
+    features).
 
 
-    **Treat 5.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.7 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.7 (Layer 2 security
+    features).
 
 
-    **Ignore verification and assume 5.7 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 5.7 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.7 (Layer 2 security features).
+
+
+    **Skip documentation for 5.7 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.7 (Layer 2
+    security features).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -4206,20 +4606,32 @@ questions:
     text: Ignore verification and assume 5.7 always works
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.7 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.7 (Layer 2 security features), the keyed answer is **Prefer
+    the documented 5.7 approach used in enterprise designs**. Stem: Which option correctly
+    describes a key idea under 5.7?.
 
 
-    **Treat 5.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Prefer the documented 5.7 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.7 (Layer
+    2 security features).
 
 
-    **Ignore verification and assume 5.7 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 5.7 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.7 (Layer 2 security
+    features).
 
 
-    **Confuse 5.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Treat 5.7 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.7 (Layer 2 security
+    features).
+
+
+    **Ignore verification and assume 5.7 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.7 (Layer 2 security features).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.7
@@ -4243,20 +4655,33 @@ questions:
     text: Disable logging permanently while testing 5.8
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.8** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.8 (Authentication, authorization, and accounting), the keyed
+    answer is **Apply the verified behavior required by objective 5.8**. Stem: For
+    CCNA objective 5.8, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 5.8 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.8** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.8 (Authentication, authorization,
+    and accounting).
 
 
-    **Confuse 5.8 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Ignore verification and assume 5.8 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.8 (Authentication, authorization,
+    and accounting).
 
 
-    **Disable logging permanently while testing 5.8** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 5.8 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.8 (Authentication,
+    authorization, and accounting).
+
+
+    **Disable logging permanently while testing 5.8** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.8 (Authentication, authorization,
+    and accounting).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -4280,20 +4705,32 @@ questions:
     text: Validate with show/verify steps before relying on 5.8 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.8 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.8 (Authentication, authorization, and accounting), the keyed
+    answer is **Validate with show/verify steps before relying on 5.8 changes**. Stem:
+    Regarding CCNA topic 5.8. Which reply is accurate?.
 
 
-    **Confuse 5.8 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.8 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.8 (Authentication, authorization, and accounting).
 
 
-    **Disable logging permanently while testing 5.8** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 5.8 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.8 (Authentication,
+    authorization, and accounting).
 
 
-    **Use clear-text shared secrets as the only control for 5.8** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 5.8** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.8 (Authentication, authorization,
+    and accounting).
+
+
+    **Use clear-text shared secrets as the only control for 5.8** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.8 (Authentication,
+    authorization, and accounting).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -4305,8 +4742,8 @@ questions:
   topic_code: '5.8'
   difficulty: 4
   cert_tags: *id003
-  stem: '[CCNA 5.8] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 5.8] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.8 with show/ping evidence
@@ -4321,20 +4758,32 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.8 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.8 (Authentication, authorization, and accounting), the keyed
+    answer is **Verify expected state for 5.8 with show/ping evidence; Document the
+    5.8 design intent and rollback plan**. Stem: [CCNA 5.8] Select ALL actions that
+    support a correct implementation or verification for this objective..
 
 
-    **Document the 5.8 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.8 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.8 (Authentication, authorization, and accounting).
 
 
-    **Skip change control because 5.8 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.8 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.8 (Authentication, authorization, and accounting).
 
 
-    **Disable all monitoring related to 5.8** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.8 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.8 (Authentication,
+    authorization, and accounting).
+
+
+    **Disable all monitoring related to 5.8** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.8 (Authentication, authorization,
+    and accounting).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.8
@@ -4358,20 +4807,33 @@ questions:
     text: Skip documentation for 5.9 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 5.9 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.9 (Wireless security protocols), the keyed answer is **Prefer
+    the documented 5.9 approach used in enterprise designs**. Stem: Which configuration
+    intent aligns with CCNA objective 5.9?.
 
 
-    **Use clear-text shared secrets as the only control for 5.9** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 5.9 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 5.9 (Wireless
+    security protocols).
 
 
-    **Skip documentation for 5.9 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.9 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.9 (Wireless
+    security protocols).
 
 
-    **Treat 5.9 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 5.9** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.9 (Wireless
+    security protocols).
+
+
+    **Skip documentation for 5.9 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.9 (Wireless
+    security protocols).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -4395,20 +4857,31 @@ questions:
     text: Ignore verification and assume 5.9 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 5.9** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.9 (Wireless security protocols), the keyed answer is **Apply
+    the verified behavior required by objective 5.9**. Stem: Select the correct association
+    for exam topic 5.9..
 
 
-    **Skip documentation for 5.9 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 5.9** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 5.9 (Wireless security protocols).
 
 
-    **Treat 5.9 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 5.9 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.9 (Wireless
+    security protocols).
 
 
-    **Ignore verification and assume 5.9 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 5.9 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.9 (Wireless
+    security protocols).
+
+
+    **Ignore verification and assume 5.9 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.9 (Wireless security protocols).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -4432,20 +4905,31 @@ questions:
     text: Validate with show/verify steps before relying on 5.9 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 5.9 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 5.9 (Wireless security protocols), the keyed answer is **Validate
+    with show/verify steps before relying on 5.9 changes**. Stem: Which option correctly
+    describes a key idea under 5.9?.
 
 
-    **Treat 5.9 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 5.9 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 5.9 (Wireless security protocols).
 
 
-    **Ignore verification and assume 5.9 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 5.9 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 5.9 (Wireless
+    security protocols).
 
 
-    **Confuse 5.9 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 5.9 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.9 (Wireless security protocols).
+
+
+    **Confuse 5.9 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.9 (Wireless security
+    protocols).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9
@@ -4469,20 +4953,32 @@ questions:
     text: Ignore verification and assume 5.9 always works
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.9 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.9 (Wireless security protocols), the keyed answer is **Use the
+    standard model for 5.9 rather than a look-alike concept**. Stem: For CCNA objective
+    5.9, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 5.9 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.9 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.9 (Wireless security
+    protocols).
 
 
-    **Confuse 5.9 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Confuse 5.9 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 5.9 (Wireless security
+    protocols).
 
 
-    **Disable logging permanently while testing 5.9** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 5.9** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.9 (Wireless security
+    protocols).
+
+
+    **Ignore verification and assume 5.9 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 5.9 (Wireless security protocols).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — Security Fundamentals
   - CCNA exam topic 5.9

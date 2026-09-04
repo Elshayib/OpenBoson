@@ -20,20 +20,20 @@ questions:
     text: Only macros exclusive
   correct:
     answer: a
-  explanation: '**YANG data models** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'YANG.
 
 
-    **Only TCL exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only TCL exclusive** points at TCL, which is not how 6.3 (Data modeling language
+    principles) solves this stem. The keyed answer is **YANG data models**.
 
 
-    **Only expect scripts exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only expect scripts exclusive** points at expect scripts, which is not how 6.3
+    (Data modeling language principles) solves this stem. The keyed answer is **YANG
+    data models**.
 
 
-    **Only macros exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only macros exclusive** points at macros, which is not how 6.3 (Data modeling
+    language principles) solves this stem. The keyed answer is **YANG data models**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -57,21 +57,22 @@ questions:
     text: Only PoE class
   correct:
     answer: a
-  explanation: '**JSON/XML response bodies and status codes** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'REST API results include codes and payloads.
 
 
-    **Only STP BPDUs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP BPDUs** points at STP BPDUs, which is not how 6.5 (REST API response
+    codes and results) solves this stem. The keyed answer is **JSON/XML response bodies
+    and status codes**.
 
 
-    **Only CDP version**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.
+    **Only CDP version** points at CDP version, which is not how 6.5 (REST API response
+    codes and results) solves this stem. The keyed answer is **JSON/XML response bodies
+    and status codes**.
 
 
-    **Only PoE class** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only PoE class** points at PoE class, which is not how 6.5 (REST API response
+    codes and results) solves this stem. The keyed answer is **JSON/XML response bodies
+    and status codes**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -95,20 +96,20 @@ questions:
     text: Only a wireless cipher
   correct:
     answer: a
-  explanation: '**Agentless orchestration** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Ansible is commonly agentless.
 
 
-    **Only agent-required Puppet exclusive forever** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Only agent-required Puppet exclusive forever** points at agent-required Puppet
+    exclusive, which is not how 6.7 (Orchestration tools) solves this stem. The keyed
+    answer is **Agentless orchestration**.
 
 
-    **Only a routing protocol** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only a routing protocol** points at a routing protocol, which is not how 6.7
+    (Orchestration tools) solves this stem. The keyed answer is **Agentless orchestration**.
 
 
-    **Only a wireless cipher** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only a wireless cipher** points at a wireless cipher, which is not how 6.7 (Orchestration
+    tools) solves this stem. The keyed answer is **Agentless orchestration**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -132,20 +133,22 @@ questions:
     text: Only to age CAM
   correct:
     answer: a
-  explanation: '**Libraries to call APIs or parse text** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'ENCOR expects basic Python literacy.
 
 
-    **Only to replace ASICs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only to replace ASICs** points at to replace ASICs, which is not how 6.1 (Python
+    components and scripts) solves this stem. The keyed answer is **Libraries to call
+    APIs or parse text**.
 
 
-    **Only to elect DR** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only to elect DR** points at to elect DR, which is not how 6.1 (Python components
+    and scripts) solves this stem. The keyed answer is **Libraries to call APIs or
+    parse text**.
 
 
-    **Only to age CAM** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only to age CAM** points at to age CAM, which is not how 6.1 (Python components
+    and scripts) solves this stem. The keyed answer is **Libraries to call APIs or
+    parse text**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -169,20 +172,22 @@ questions:
     text: Only XML tags
   correct:
     answer: a
-  explanation: '**Well-formed objects/arrays with quoted keys** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Construct valid JSON-encoded files.
 
 
-    **Only Python True literals** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only Python True literals** points at Python True literals, which is not how
+    6.2 (Construct valid JSON-encoded files) solves this stem. The keyed answer is
+    **Well-formed objects/arrays with quoted keys**.
 
 
-    **Only trailing commas required** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only trailing commas required** points at trailing commas, which is not how
+    6.2 (Construct valid JSON-encoded files) solves this stem. The keyed answer is
+    **Well-formed objects/arrays with quoted keys**.
 
 
-    **Only XML tags** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only XML tags** points at XML tags, which is not how 6.2 (Construct valid JSON-encoded
+    files) solves this stem. The keyed answer is **Well-formed objects/arrays with
+    quoted keys**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -206,20 +211,22 @@ questions:
     text: Only punch-down maps
   correct:
     answer: a
-  explanation: '**Programmatic inventory/policy/operations** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Controller APIs automate platforms.
 
 
-    **Only console cabling** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only console cabling** points at console cabling, which is not how 6.4 (Cisco
+    DNA Center and vManage APIs) solves this stem. The keyed answer is **Programmatic
+    inventory/policy/operations**.
 
 
-    **Only optical dBm reads exclusive** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only optical dBm reads exclusive** points at optical dBm reads, which is not
+    how 6.4 (Cisco DNA Center and vManage APIs) solves this stem. The keyed answer
+    is **Programmatic inventory/policy/operations**.
 
 
-    **Only punch-down maps** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only punch-down maps** points at punch-down maps, which is not how 6.4 (Cisco
+    DNA Center and vManage APIs) solves this stem. The keyed answer is **Programmatic
+    inventory/policy/operations**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -243,21 +250,22 @@ questions:
     text: Only LACP hashing exclusive
   correct:
     answer: a
-  explanation: '**Configuration, troubleshooting, or data collection reactions** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'EEM reacts to events with actions.
 
 
-    **Only underlay ECMP math exclusive** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only underlay ECMP math exclusive** points at underlay ECMP math, which is not
+    how 6.6 (EEM applet) solves this stem. The keyed answer is **Configuration, troubleshooting,
+    or data collection reactions**.
 
 
-    **Only VTP sync** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VTP sync** points at VTP sync, which is not how 6.6 (EEM applet) solves
+    this stem. The keyed answer is **Configuration, troubleshooting, or data collection
+    reactions**.
 
 
-    **Only LACP hashing exclusive**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the
-    standards-based alternative to PAgP. This does not satisfy the condition required by the stem. Configuration
-    uses `channel-group <id> mode active|passive`.'
+    **Only LACP hashing exclusive** points at LACP hashing, which is not how 6.6 (EEM
+    applet) solves this stem. The keyed answer is **Configuration, troubleshooting,
+    or data collection reactions**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -281,20 +289,22 @@ questions:
     text: Only syslog severity
   correct:
     answer: a
-  explanation: '**Whether managed nodes run a persistent agent** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'Compare agent vs agentless tools.
 
 
-    **Only STP modes** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP modes** points at STP modes, which is not how 6.7 (Orchestration tools)
+    solves this stem. The keyed answer is **Whether managed nodes run a persistent
+    agent**.
 
 
-    **Only NAT types** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only NAT types** points at NAT types, which is not how 6.7 (Orchestration tools)
+    solves this stem. The keyed answer is **Whether managed nodes run a persistent
+    agent**.
 
 
-    **Only syslog severity** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only syslog severity** is a mismatch: Syslog exports device logs (UDP 514 by
+    default) with severity 0–7. The stem is asking about **Whether managed nodes run
+    a persistent agent**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -318,20 +328,22 @@ questions:
     text: Only rack U heights
   correct:
     answer: a
-  explanation: '**Configuration and operational data structure** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'YANG is a data modeling language.
 
 
-    **Only Ethernet PHY voltages** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only Ethernet PHY voltages** points at Ethernet PHY voltages, which is not how
+    6.3 (Data modeling language principles) solves this stem. The keyed answer is
+    **Configuration and operational data structure**.
 
 
-    **Only cable colors** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only cable colors** points at cable colors, which is not how 6.3 (Data modeling
+    language principles) solves this stem. The keyed answer is **Configuration and
+    operational data structure**.
 
 
-    **Only rack U heights** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only rack U heights** points at rack U heights, which is not how 6.3 (Data modeling
+    language principles) solves this stem. The keyed answer is **Configuration and
+    operational data structure**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -355,20 +367,19 @@ questions:
     text: Not found
   correct:
     answer: a
-  explanation: '**Successful resource creation** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Interpret REST status codes.
 
 
-    **Unauthorized** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Unauthorized** is a mismatch: HTTP 401 — missing or invalid authentication.
+    The stem is asking about **Successful resource creation**.
 
 
-    **Server error** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Server error** is a mismatch: HTTP 5xx — server-side failure (typically 500).
+    The stem is asking about **Successful resource creation**.
 
 
-    **Not found** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Not found** is a mismatch: HTTP 404 — the URI does not exist. The stem is asking
+    about **Successful resource creation**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -392,20 +403,20 @@ questions:
     text: Only parentheses exclusive forever
   correct:
     answer: a
-  explanation: '**Square brackets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Basic Python components include lists/dicts.
 
 
-    **Only curly braces exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only curly braces exclusive** points at curly braces, which is not how 6.1 (Python
+    components and scripts) solves this stem. The keyed answer is **Square brackets**.
 
 
-    **Only angle brackets** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only angle brackets** points at angle brackets, which is not how 6.1 (Python
+    components and scripts) solves this stem. The keyed answer is **Square brackets**.
 
 
-    **Only parentheses exclusive forever** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.'
+    **Only parentheses exclusive forever** points at parentheses exclusive, which
+    is not how 6.1 (Python components and scripts) solves this stem. The keyed answer
+    is **Square brackets**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -429,19 +440,21 @@ questions:
     text: undefined (JS only as JSON)
   correct:
     answer: a
-  explanation: '**null** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'JSON uses null.
 
 
-    **None (Python only as JSON)** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **None (Python only as JSON)** is a different protocol, command, or value than
+    **null**. For 6.2 (Construct valid JSON-encoded files), the stem is solved by
+    **null**, not by None (Python only as JSON).
 
 
-    **NULL** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NULL** is a different protocol, command, or value than **null**. For 6.2 (Construct
+    valid JSON-encoded files), the stem is solved by **null**, not by NULL.
 
 
-    **undefined (JS only as JSON)** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **undefined (JS only as JSON)** is a different protocol, command, or value than
+    **null**. For 6.2 (Construct valid JSON-encoded files), the stem is solved by
+    **null**, not by undefined (JS only as JSON).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -465,21 +478,21 @@ questions:
     text: Only configure PortFast
   correct:
     answer: a
-  explanation: '**Automate WAN fabric operations/policy** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'Controller APIs cover SD-WAN Manager.
 
 
-    **Only set STP priority** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only set STP priority** points at set STP priority, which is not how 6.4 (Cisco
+    DNA Center and vManage APIs) solves this stem. The keyed answer is **Automate
+    WAN fabric operations/policy**.
 
 
-    **Only create VLANs on access** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only create VLANs on access** is a mismatch: The campus access layer attaches
+    endpoints (PCs, phones, APs). The stem is asking about **Automate WAN fabric operations/policy**.
 
 
-    **Only configure PortFast**: **PortFast** places an edge port into the forwarding state immediately,
-    bypassing the listening and learning states and thereby reducing STP convergence time for end stations.
-    This does not satisfy the condition required by the stem. Configuration uses `spanning-tree portfast`.'
+    **Only configure PortFast** points at configure PortFast, which is not how 6.4
+    (Cisco DNA Center and vManage APIs) solves this stem. The keyed answer is **Automate
+    WAN fabric operations/policy**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -503,21 +516,21 @@ questions:
     text: Only DNS TTL expiry exclusive
   correct:
     answer: a
-  explanation: '**Syslog patterns / timers / events**: **PAT** (NAT overload) maps many inside addresses
-    to one outside address using unique transport port numbers. This is the correct answer for the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Event-driven automation on box.
 
 
-    **Only manual cable moves** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only manual cable moves** points at manual cable moves, which is not how 6.6
+    (EEM applet) solves this stem. The keyed answer is **Syslog patterns / timers
+    / events**.
 
 
-    **Only optical cleaning** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only optical cleaning** points at optical cleaning, which is not how 6.6 (EEM
+    applet) solves this stem. The keyed answer is **Syslog patterns / timers / events**.
 
 
-    **Only DNS TTL expiry exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only DNS TTL expiry exclusive** points at DNS TTL expiry, which is not how 6.6
+    (EEM applet) solves this stem. The keyed answer is **Syslog patterns / timers
+    / events**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -541,20 +554,20 @@ questions:
     text: Only SPAN
   correct:
     answer: a
-  explanation: '**Agents on managed nodes** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Agent-based orchestration contrast.
 
 
-    **Only Ansible SSH exclusive always** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only Ansible SSH exclusive always** points at Ansible SSH exclusive, which is
+    not how 6.7 (Orchestration tools) solves this stem. The keyed answer is **Agents
+    on managed nodes**.
 
 
-    **Only SNMP GET** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only SNMP GET** points at SNMP GET, which is not how 6.7 (Orchestration tools)
+    solves this stem. The keyed answer is **Agents on managed nodes**.
 
 
-    **Only SPAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only SPAN** points at SPAN, which is not how 6.7 (Orchestration tools) solves
+    this stem. The keyed answer is **Agents on managed nodes**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -578,21 +591,20 @@ questions:
     text: Only STP costs exclusive
   correct:
     answer: a
-  explanation: '**Keys to values** is correct. It is the selection that meets the requirement stated in
-    the stem.
+  explanation: 'Dicts are core Python structures.
 
 
-    **Only VLANs to VNIs exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only VLANs to VNIs exclusive** points at VLANs to VNIs, which is not how 6.1
+    (Python components and scripts) solves this stem. The keyed answer is **Keys to
+    values**.
 
 
-    **Only AS paths**: **PAT** (NAT overload) maps many inside addresses to one outside address using
-    unique transport port numbers. This does not satisfy the condition required by the stem. Configuration
-    uses `ip nat inside source list <acl> interface <if> overload`.
+    **Only AS paths** points at AS paths, which is not how 6.1 (Python components
+    and scripts) solves this stem. The keyed answer is **Keys to values**.
 
 
-    **Only STP costs exclusive** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only STP costs exclusive** points at STP costs, which is not how 6.1 (Python
+    components and scripts) solves this stem. The keyed answer is **Keys to values**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -616,21 +628,22 @@ questions:
     text: Only LACP PDUs
   correct:
     answer: a
-  explanation: '**JSON payloads with status metadata** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'Interpret controller API results.
 
 
-    **Only BPDUs** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only BPDUs** points at BPDUs, which is not how 6.5 (REST API response codes
+    and results) solves this stem. The keyed answer is **JSON payloads with status
+    metadata**.
 
 
-    **Only HSRP hellos** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only HSRP hellos** points at HSRP hellos, which is not how 6.5 (REST API response
+    codes and results) solves this stem. The keyed answer is **JSON payloads with
+    status metadata**.
 
 
-    **Only LACP PDUs**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
-    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
-    `channel-group <id> mode active|passive`.'
+    **Only LACP PDUs** points at LACP PDUs, which is not how 6.5 (REST API response
+    codes and results) solves this stem. The keyed answer is **JSON payloads with
+    status metadata**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -654,20 +667,22 @@ questions:
     text: Only CSV exclusive
   correct:
     answer: a
-  explanation: '**Structured, machine-readable device data contracts** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'YANG enables model-driven management.
 
 
-    **Only free-form CLI forever without models** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Only free-form CLI forever without models** points at free-form CLI forever
+    without models, which is not how 6.3 (Data modeling language principles) solves
+    this stem. The keyed answer is **Structured, machine-readable device data contracts**.
 
 
-    **Only binary IOS images as models** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only binary IOS images as models** points at binary IOS images as models, which
+    is not how 6.3 (Data modeling language principles) solves this stem. The keyed
+    answer is **Structured, machine-readable device data contracts**.
 
 
-    **Only CSV exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only CSV exclusive** points at CSV, which is not how 6.3 (Data modeling language
+    principles) solves this stem. The keyed answer is **Structured, machine-readable
+    device data contracts**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -691,20 +706,21 @@ questions:
     text: Only commas without brackets
   correct:
     answer: a
-  explanation: '**Square brackets []** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Arrays use [].
 
 
-    **Only curly braces** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only curly braces** points at curly braces, which is not how 6.2 (Construct
+    valid JSON-encoded files) solves this stem. The keyed answer is **Square brackets
+    []**.
 
 
-    **Only quotes** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only quotes** points at quotes, which is not how 6.2 (Construct valid JSON-encoded
+    files) solves this stem. The keyed answer is **Square brackets []**.
 
 
-    **Only commas without brackets** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only commas without brackets** points at commas without brackets, which is not
+    how 6.2 (Construct valid JSON-encoded files) solves this stem. The keyed answer
+    is **Square brackets []**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -728,20 +744,22 @@ questions:
     text: Only console servers exclusive
   correct:
     answer: a
-  explanation: '**Applications / orchestration systems** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'Apps consume controller northbound APIs.
 
 
-    **Only ASIC TCAMs exclusive** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only ASIC TCAMs exclusive** points at ASIC TCAMs, which is not how 6.4 (Cisco
+    DNA Center and vManage APIs) solves this stem. The keyed answer is **Applications
+    / orchestration systems**.
 
 
-    **Only copper PHYs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only copper PHYs** points at copper PHYs, which is not how 6.4 (Cisco DNA Center
+    and vManage APIs) solves this stem. The keyed answer is **Applications / orchestration
+    systems**.
 
 
-    **Only console servers exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only console servers exclusive** points at console servers, which is not how
+    6.4 (Cisco DNA Center and vManage APIs) solves this stem. The keyed answer is
+    **Applications / orchestration systems**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -766,20 +784,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -803,21 +822,17 @@ questions:
     text: CDP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP delivers email. Unrelated to LAN topology discovery.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -841,20 +856,21 @@ questions:
     text: Banner plaintext
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -878,20 +894,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -918,21 +935,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.5 (REST API response codes
+    and results).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -956,20 +972,21 @@ questions:
     text: Type 8/9 secrets
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -993,20 +1010,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1030,20 +1048,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1070,21 +1089,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
+    files).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -1108,20 +1126,21 @@ questions:
     text: Type 8/9 secrets
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1145,20 +1164,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1182,21 +1202,17 @@ questions:
     text: TFTP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP delivers email. Unrelated to LAN topology discovery.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -1220,20 +1236,21 @@ questions:
     text: Telnet only
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1257,20 +1274,21 @@ questions:
     text: Restrict management access
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1294,20 +1312,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1331,21 +1350,17 @@ questions:
     text: TFTP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP delivers email. Unrelated to LAN topology discovery.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -1369,20 +1384,21 @@ questions:
     text: Telnet only
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1406,20 +1422,21 @@ questions:
     text: Restrict management access
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1446,21 +1463,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.5 (REST API response codes
+    and results).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -1484,20 +1500,21 @@ questions:
     text: Disable AAA
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1521,20 +1538,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1558,20 +1576,21 @@ questions:
     text: Restrict management access
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1598,21 +1617,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
+    files).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -1636,20 +1654,21 @@ questions:
     text: Disable AAA
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1673,20 +1692,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1710,21 +1730,17 @@ questions:
     text: CDP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP delivers email. Unrelated to LAN topology discovery.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -1748,20 +1764,21 @@ questions:
     text: Banner plaintext
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -1785,20 +1802,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -1822,20 +1840,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -1859,21 +1878,17 @@ questions:
     text: CDP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP delivers email. Unrelated to LAN topology discovery.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -1897,20 +1912,21 @@ questions:
     text: Banner plaintext
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -1934,20 +1950,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -1974,21 +1991,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.5 (REST API response codes
+    and results).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -2012,20 +2028,21 @@ questions:
     text: Type 8/9 secrets
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2049,20 +2066,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2086,20 +2104,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2126,21 +2145,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
+    files).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -2164,20 +2182,21 @@ questions:
     text: Type 8/9 secrets
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2201,20 +2220,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -2238,21 +2258,17 @@ questions:
     text: TFTP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP delivers email. Unrelated to LAN topology discovery.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -2276,20 +2292,21 @@ questions:
     text: Telnet only
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2313,20 +2330,21 @@ questions:
     text: Restrict management access
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2350,20 +2368,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2387,21 +2406,17 @@ questions:
     text: TFTP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP delivers email. Unrelated to LAN topology discovery.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -2425,20 +2440,21 @@ questions:
     text: Telnet only
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2462,20 +2478,21 @@ questions:
     text: Restrict management access
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -2502,21 +2519,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.5 (REST API response codes
+    and results).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -2540,20 +2556,21 @@ questions:
     text: Disable AAA
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2577,20 +2594,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2614,20 +2632,21 @@ questions:
     text: Restrict management access
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2654,21 +2673,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
+    files).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -2692,20 +2710,21 @@ questions:
     text: Disable AAA
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2729,20 +2748,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -2766,21 +2786,17 @@ questions:
     text: CDP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP delivers email. Unrelated to LAN topology discovery.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -2804,20 +2820,21 @@ questions:
     text: Banner plaintext
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -2841,20 +2858,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -2878,20 +2896,21 @@ questions:
     text: Assign VLANs
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -2915,21 +2934,17 @@ questions:
     text: CDP
   correct:
     answer: a
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP delivers email. Unrelated to LAN topology discovery.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -2953,20 +2968,21 @@ questions:
     text: Banner plaintext
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -2990,20 +3006,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3030,21 +3047,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.5 (REST API response codes
+    and results).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3068,20 +3084,21 @@ questions:
     text: Type 8/9 secrets
   correct:
     answer: a
-  explanation: '**Type 8/9 secrets** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Modern IOS `enable algorithm-type scrypt secret` / type **8** (PBKDF2)
+    and type **9** (scrypt) store password hashes that are far harder to crack than
+    type 5 MD5 or type 7 reversible Vigenère.
 
 
-    **Banner plaintext** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Banner plaintext** is not the right selection: Banners (`banner motd`) are plaintext
+    legal notices, not password storage.
 
 
-    **Disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable AAA** is not the right selection: Disabling AAA removes centralized
+    auth; it does not hash local secrets better.
 
 
-    **Telnet only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Telnet only** is not the right selection: Telnet sends credentials in cleartext.
+    It is worse storage/transport, not better.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3105,20 +3122,21 @@ questions:
     text: Encrypt OSPF
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -3142,20 +3160,21 @@ questions:
     text: Form Port-Channels
   correct:
     answer: a
-  explanation: '**Restrict management access**: An **ACL** filters traffic by matching header fields and
-    applying permit or deny actions in sequential order. This is the correct answer for the stem.
+  explanation: '`access-class N in` on `line vty 0 4` filters **who can open an SSH/Telnet
+    session**. It is a management-plane ACL, not a data-plane VLAN or EtherChannel
+    tool.
 
 
-    **Encrypt OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Assign VLANs** is not the right selection: Access VLAN is `switchport access
+    vlan`. A VTY ACL does not assign VLANs.
 
 
-    **Form Port-Channels** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Encrypt OSPF** is not the right selection: OSPF authentication is `ip ospf authentication
+    message-digest` / key chains. A VTY ACL does not encrypt Hellos.
 
 
-    **Assign VLANs** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Form Port-Channels** is not the right selection: EtherChannel is `channel-group`.
+    A VTY ACL does not bundle ports.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -3182,21 +3201,20 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility and
-    some provisioning features. This is the correct answer for the stem. Configuration uses `cdp run`
-    / `show cdp neighbors`.
+  explanation: 'Cisco Discovery Protocol is Cisco’s Layer 2 neighbor protocol (`cdp
+    run`, `show cdp neighbors`). It advertises device ID, platform, and native VLAN.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 6.2 (Construct valid JSON-encoded
+    files).
 
 
-    **FTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    FTP (TCP 21) transfers files. It is not a LAN discovery protocol.
 
 
-    **TFTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    TFTP (UDP 69) transfers images/configs. It does not discover neighbors.'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -3221,20 +3239,31 @@ questions:
     text: Ignore verification and assume 6.1 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 6.1** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.1 (Python components and scripts), the keyed answer is **Apply
+    the verified behavior required by objective 6.1**. Stem: Select the correct association
+    for exam topic 6.1..
 
 
-    **Skip documentation for 6.1 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 6.1** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 6.1 (Python components and scripts).
 
 
-    **Treat 6.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 6.1 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.1 (Python components
+    and scripts).
 
 
-    **Ignore verification and assume 6.1 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 6.1 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.1 (Python components
+    and scripts).
+
+
+    **Ignore verification and assume 6.1 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.1 (Python components and scripts).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -3258,20 +3287,31 @@ questions:
     text: Validate with show/verify steps before relying on 6.1 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 6.1 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.1 (Python components and scripts), the keyed answer is **Validate
+    with show/verify steps before relying on 6.1 changes**. Stem: Which option correctly
+    describes a key idea under 6.1?.
 
 
-    **Treat 6.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 6.1 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 6.1 (Python components and scripts).
 
 
-    **Ignore verification and assume 6.1 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 6.1 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.1 (Python components
+    and scripts).
 
 
-    **Confuse 6.1 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 6.1 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.1 (Python components and scripts).
+
+
+    **Confuse 6.1 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.1 (Python components
+    and scripts).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.1
@@ -3295,20 +3335,33 @@ questions:
     text: Ignore verification and assume 6.2 always works
   correct:
     answer: a
-  explanation: '**Use the standard model for 6.2 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 6.2 (Construct valid JSON-encoded files), the keyed answer is
+    **Use the standard model for 6.2 rather than a look-alike concept**. Stem: For
+    ENCOR objective 6.2, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 6.2 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 6.2 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 6.2 (Construct valid
+    JSON-encoded files).
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Confuse 6.2 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.2 (Construct valid
+    JSON-encoded files).
 
 
-    **Disable logging permanently while testing 6.2** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 6.2** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 6.2 (Construct valid JSON-encoded
+    files).
+
+
+    **Ignore verification and assume 6.2 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.2 (Construct valid JSON-encoded
+    files).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -3332,20 +3385,33 @@ questions:
     text: Disable logging permanently while testing 6.2
   correct:
     answer: a
-  explanation: '**Prefer the documented 6.2 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.2 (Construct valid JSON-encoded files), the keyed answer is
+    **Prefer the documented 6.2 approach used in enterprise designs**. Stem: Regarding
+    ENCOR topic 6.2. Which reply is accurate?.
 
 
-    **Confuse 6.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 6.2 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 6.2 (Construct
+    valid JSON-encoded files).
 
 
-    **Disable logging permanently while testing 6.2** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 6.2** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.2 (Construct
+    valid JSON-encoded files).
 
 
-    **Use clear-text shared secrets as the only control for 6.2** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 6.2 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.2 (Construct valid
+    JSON-encoded files).
+
+
+    **Disable logging permanently while testing 6.2** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 6.2 (Construct valid JSON-encoded
+    files).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.2
@@ -3357,8 +3423,8 @@ questions:
   topic_code: '6.3'
   difficulty: 4
   cert_tags: *id003
-  stem: '[ENCOR 6.3] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 6.3] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 6.3 with show/ping evidence
@@ -3373,20 +3439,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 6.3 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.3 (Data modeling language principles), the keyed answer is **Verify
+    expected state for 6.3 with show/ping evidence; Document the 6.3 design intent
+    and rollback plan**. Stem: [ENCOR 6.3] Select ALL actions that support a correct
+    implementation or verification for this objective..
 
 
-    **Document the 6.3 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 6.3 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 6.3 (Data modeling language principles).
 
 
-    **Skip change control because 6.3 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 6.3 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 6.3 (Data modeling language principles).
 
 
-    **Disable all monitoring related to 6.3** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 6.3 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 6.3 (Data modeling
+    language principles).
+
+
+    **Disable all monitoring related to 6.3** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 6.3 (Data modeling language principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3410,20 +3487,32 @@ questions:
     text: Validate with show/verify steps before relying on 6.3 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 6.3 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.3 (Data modeling language principles), the keyed answer is **Validate
+    with show/verify steps before relying on 6.3 changes**. Stem: Which configuration
+    intent aligns with ENCOR objective 6.3?.
 
 
-    **Use clear-text shared secrets as the only control for 6.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 6.3 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 6.3 (Data modeling language principles).
 
 
-    **Skip documentation for 6.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 6.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.3 (Data
+    modeling language principles).
 
 
-    **Treat 6.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 6.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.3 (Data modeling
+    language principles).
+
+
+    **Treat 6.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.3 (Data modeling
+    language principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3447,20 +3536,32 @@ questions:
     text: Skip documentation for 6.3 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 6.3 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 6.3 (Data modeling language principles), the keyed answer is **Use
+    the standard model for 6.3 rather than a look-alike concept**. Stem: Select the
+    correct association for exam topic 6.3..
 
 
-    **Skip documentation for 6.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 6.3 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 6.3 (Data modeling
+    language principles).
 
 
-    **Treat 6.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 6.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.3 (Data modeling
+    language principles).
 
 
-    **Ignore verification and assume 6.3 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 6.3 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.3 (Data modeling language principles).
+
+
+    **Skip documentation for 6.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.3 (Data modeling
+    language principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.3
@@ -3484,20 +3585,33 @@ questions:
     text: Ignore verification and assume 6.4 always works
   correct:
     answer: a
-  explanation: '**Prefer the documented 6.4 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.4 (Cisco DNA Center and vManage APIs), the keyed answer is **Prefer
+    the documented 6.4 approach used in enterprise designs**. Stem: Which option correctly
+    describes a key idea under 6.4?.
 
 
-    **Treat 6.4 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Prefer the documented 6.4 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 6.4 (Cisco
+    DNA Center and vManage APIs).
 
 
-    **Ignore verification and assume 6.4 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 6.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.4 (Cisco DNA Center
+    and vManage APIs).
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Treat 6.4 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.4 (Cisco DNA
+    Center and vManage APIs).
+
+
+    **Ignore verification and assume 6.4 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.4 (Cisco DNA Center and vManage
+    APIs).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3521,20 +3635,33 @@ questions:
     text: Disable logging permanently while testing 6.4
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 6.4** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.4 (Cisco DNA Center and vManage APIs), the keyed answer is **Apply
+    the verified behavior required by objective 6.4**. Stem: For ENCOR objective 6.4,
+    which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 6.4 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 6.4** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 6.4 (Cisco DNA Center and vManage
+    APIs).
 
 
-    **Confuse 6.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Ignore verification and assume 6.4 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.4 (Cisco DNA Center and vManage
+    APIs).
 
 
-    **Disable logging permanently while testing 6.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 6.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.4 (Cisco DNA Center
+    and vManage APIs).
+
+
+    **Disable logging permanently while testing 6.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 6.4 (Cisco DNA Center and
+    vManage APIs).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3546,8 +3673,8 @@ questions:
   topic_code: '6.4'
   difficulty: 3
   cert_tags: *id003
-  stem: '[ENCOR 6.4] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 6.4] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 6.4 with show/ping evidence
@@ -3562,20 +3689,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 6.4 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.4 (Cisco DNA Center and vManage APIs), the keyed answer is **Verify
+    expected state for 6.4 with show/ping evidence; Document the 6.4 design intent
+    and rollback plan**. Stem: [ENCOR 6.4] Select ALL actions that support a correct
+    implementation or verification for this objective..
 
 
-    **Document the 6.4 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 6.4 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 6.4 (Cisco DNA Center and vManage APIs).
 
 
-    **Skip change control because 6.4 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 6.4 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 6.4 (Cisco DNA Center and vManage APIs).
 
 
-    **Disable all monitoring related to 6.4** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 6.4 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 6.4 (Cisco DNA
+    Center and vManage APIs).
+
+
+    **Disable all monitoring related to 6.4** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 6.4 (Cisco DNA Center and vManage APIs).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.4
@@ -3599,20 +3737,33 @@ questions:
     text: Disable logging permanently while testing 6.5
   correct:
     answer: a
-  explanation: '**Use the standard model for 6.5 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 6.5 (REST API response codes and results), the keyed answer is
+    **Use the standard model for 6.5 rather than a look-alike concept**. Stem: During
+    troubleshooting related to 6.5, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 6.5** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 6.5 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 6.5 (REST API response
+    codes and results).
 
 
-    **Use clear-text shared secrets as the only control for 6.5** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 6.5** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.5 (REST
+    API response codes and results).
 
 
-    **Skip documentation for 6.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 6.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.5 (REST API
+    response codes and results).
+
+
+    **Disable logging permanently while testing 6.5** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 6.5 (REST API response
+    codes and results).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3636,20 +3787,33 @@ questions:
     text: Skip documentation for 6.5 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 6.5 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.5 (REST API response codes and results), the keyed answer is
+    **Prefer the documented 6.5 approach used in enterprise designs**. Stem: Which
+    configuration intent aligns with ENCOR objective 6.5?.
 
 
-    **Use clear-text shared secrets as the only control for 6.5** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 6.5 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 6.5 (REST
+    API response codes and results).
 
 
-    **Skip documentation for 6.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 6.5 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.5 (REST API
+    response codes and results).
 
 
-    **Treat 6.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 6.5** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.5 (REST
+    API response codes and results).
+
+
+    **Skip documentation for 6.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.5 (REST API
+    response codes and results).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3673,20 +3837,33 @@ questions:
     text: Ignore verification and assume 6.5 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 6.5** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.5 (REST API response codes and results), the keyed answer is
+    **Apply the verified behavior required by objective 6.5**. Stem: Select the correct
+    association for exam topic 6.5..
 
 
-    **Skip documentation for 6.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 6.5** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 6.5 (REST API response codes and
+    results).
 
 
-    **Treat 6.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 6.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.5 (REST API
+    response codes and results).
 
 
-    **Ignore verification and assume 6.5 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 6.5 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.5 (REST API
+    response codes and results).
+
+
+    **Ignore verification and assume 6.5 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.5 (REST API response codes and
+    results).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.5
@@ -3710,20 +3887,29 @@ questions:
     text: Validate with show/verify steps before relying on 6.6 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 6.6 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.6 (EEM applet), the keyed answer is **Validate with show/verify
+    steps before relying on 6.6 changes**. Stem: Which option correctly describes
+    a key idea under 6.6?.
 
 
-    **Treat 6.6 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 6.6 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 6.6 (EEM applet).
 
 
-    **Ignore verification and assume 6.6 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 6.6 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.6 (EEM applet).
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 6.6 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.6 (EEM applet).
+
+
+    **Confuse 6.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.6 (EEM applet).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3735,8 +3921,8 @@ questions:
   topic_code: '6.6'
   difficulty: 2
   cert_tags: *id003
-  stem: '[ENCOR 6.6] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 6.6] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 6.6 with show/ping evidence
@@ -3751,20 +3937,30 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 6.6 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.6 (EEM applet), the keyed answer is **Verify expected state
+    for 6.6 with show/ping evidence; Document the 6.6 design intent and rollback plan**.
+    Stem: [ENCOR 6.6] Select ALL actions that support a correct implementation or
+    verification for this objective..
 
 
-    **Document the 6.6 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 6.6 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 6.6 (EEM applet).
 
 
-    **Skip change control because 6.6 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 6.6 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 6.6 (EEM applet).
 
 
-    **Disable all monitoring related to 6.6** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 6.6 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 6.6 (EEM applet).
+
+
+    **Disable all monitoring related to 6.6** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 6.6 (EEM applet).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3788,20 +3984,31 @@ questions:
     text: Disable logging permanently while testing 6.6
   correct:
     answer: a
-  explanation: '**Prefer the documented 6.6 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.6 (EEM applet), the keyed answer is **Prefer the documented
+    6.6 approach used in enterprise designs**. Stem: Regarding ENCOR topic 6.6. Which
+    reply is accurate?.
 
 
-    **Confuse 6.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 6.6 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 6.6 (EEM
+    applet).
 
 
-    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 6.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.6 (EEM
+    applet).
 
 
-    **Use clear-text shared secrets as the only control for 6.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 6.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 6.6 (EEM applet).
+
+
+    **Disable logging permanently while testing 6.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 6.6 (EEM applet).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3825,20 +4032,30 @@ questions:
     text: Skip documentation for 6.6 changes in production
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 6.6** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.6 (EEM applet), the keyed answer is **Apply the verified behavior
+    required by objective 6.6**. Stem: During troubleshooting related to 6.6, which
+    observation is most relevant?.
 
 
-    **Disable logging permanently while testing 6.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 6.6** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 6.6 (EEM applet).
 
 
-    **Use clear-text shared secrets as the only control for 6.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Disable logging permanently while testing 6.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 6.6 (EEM applet).
 
 
-    **Skip documentation for 6.6 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 6.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.6 (EEM
+    applet).
+
+
+    **Skip documentation for 6.6 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.6 (EEM applet).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.6
@@ -3862,20 +4079,32 @@ questions:
     text: Validate with show/verify steps before relying on 6.7 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 6.7 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 6.7 (Orchestration tools), the keyed answer is **Validate with
+    show/verify steps before relying on 6.7 changes**. Stem: Which configuration intent
+    aligns with ENCOR objective 6.7?.
 
 
-    **Use clear-text shared secrets as the only control for 6.7** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 6.7 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 6.7 (Orchestration tools).
 
 
-    **Skip documentation for 6.7 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 6.7** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 6.7 (Orchestration
+    tools).
 
 
-    **Treat 6.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 6.7 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.7 (Orchestration
+    tools).
+
+
+    **Treat 6.7 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.7 (Orchestration
+    tools).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -3899,20 +4128,32 @@ questions:
     text: Skip documentation for 6.7 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 6.7 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 6.7 (Orchestration tools), the keyed answer is **Use the standard
+    model for 6.7 rather than a look-alike concept**. Stem: Select the correct association
+    for exam topic 6.7..
 
 
-    **Skip documentation for 6.7 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 6.7 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 6.7 (Orchestration
+    tools).
 
 
-    **Treat 6.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 6.7 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 6.7 (Orchestration
+    tools).
 
 
-    **Ignore verification and assume 6.7 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 6.7 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 6.7 (Orchestration tools).
+
+
+    **Skip documentation for 6.7 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 6.7 (Orchestration
+    tools).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7
@@ -3924,8 +4165,8 @@ questions:
   topic_code: '6.7'
   difficulty: 4
   cert_tags: *id003
-  stem: '[ENCOR 6.7] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 6.7] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 6.7 with show/ping evidence
@@ -3940,20 +4181,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 6.7 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 6.7 (Orchestration tools), the keyed answer is **Verify expected
+    state for 6.7 with show/ping evidence; Document the 6.7 design intent and rollback
+    plan**. Stem: [ENCOR 6.7] Select ALL actions that support a correct implementation
+    or verification for this objective..
 
 
-    **Document the 6.7 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 6.7 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 6.7 (Orchestration tools).
 
 
-    **Skip change control because 6.7 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 6.7 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 6.7 (Orchestration tools).
 
 
-    **Disable all monitoring related to 6.7** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 6.7 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 6.7 (Orchestration
+    tools).
+
+
+    **Disable all monitoring related to 6.7** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 6.7 (Orchestration tools).'
   references:
   - ENCOR 350-401 Official Cert Guide — Automation
   - ENCOR exam topic 6.7

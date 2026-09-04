@@ -20,20 +20,20 @@ questions:
     text: Only in STP
   correct:
     answer: a
-  explanation: '**On bare metal** is correct. It is the selection that meets the requirement stated in
-    the stem.
+  explanation: 'Bare-metal hypervisors sit on hardware.
 
 
-    **Only inside a guest OS as Type 2 exclusive** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Only inside a guest OS as Type 2 exclusive** points at inside a guest OS as
+    Type 2, which is not how 2.1 (Device virtualization technologies) solves this
+    stem. The keyed answer is **On bare metal**.
 
 
-    **Only on printers** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only on printers** points at on printers, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **On bare metal**.
 
 
-    **Only in STP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only in STP** points at in STP, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **On bare metal**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -57,20 +57,21 @@ questions:
     text: Only ARP exclusive
   correct:
     answer: a
-  explanation: '**UDP** provides connectionless datagram delivery without TCP’s reliability or ordering
-    guarantees. This is the correct answer for the stem.
+  explanation: 'VXLAN encapsulates Ethernet in UDP.
 
 
-    **Only ICMP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only ICMP** is a mismatch: ICMP (IPv4) / ICMPv6 carries control messages such
+    as echo, unreachable, and TTL expired — not a transport for application byte streams.
+    The stem is asking about **UDP**.
 
 
-    **Only STP BPDUs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP BPDUs** points at STP BPDUs, which is not how 2.3 (Network virtualization
+    concepts) solves this stem. The keyed answer is **UDP**.
 
 
-    **Only ARP exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only ARP exclusive** is a mismatch: ARP maps an IPv4 address to a MAC on the
+    local Ethernet segment (broadcast request, unicast reply). IPv6 uses NDP instead.
+    The stem is asking about **UDP**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -94,21 +95,19 @@ questions:
     text: Only CoS bit
   correct:
     answer: a
-  explanation: '**Overlay segment** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'VNI separates overlay networks.
 
 
-    **Only physical port** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only physical port** is a mismatch: OSI Layer 1 — bits on copper, fiber, or
+    RF. The stem is asking about **Overlay segment**.
 
 
-    **Only BGP ASN**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.
+    **Only BGP ASN** points at BGP ASN, which is not how 2.3 (Network virtualization
+    concepts) solves this stem. The keyed answer is **Overlay segment**.
 
 
-    **Only CoS bit** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only CoS bit** points at CoS bit, which is not how 2.3 (Network virtualization
+    concepts) solves this stem. The keyed answer is **Overlay segment**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -132,20 +131,21 @@ questions:
     text: Only PoE budgets
   correct:
     answer: a
-  explanation: '**Separate routing/forwarding instances** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'VRFs isolate routing contexts.
 
 
-    **Only a single global RIB forever** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only a single global RIB forever** points at a single global RIB, which is not
+    how 2.2 (Data path virtualization) solves this stem. The keyed answer is **Separate
+    routing/forwarding instances**.
 
 
-    **Only STP instances** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP instances** points at STP instances, which is not how 2.2 (Data path
+    virtualization) solves this stem. The keyed answer is **Separate routing/forwarding
+    instances**.
 
 
-    **Only PoE budgets** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only PoE budgets** points at PoE budgets, which is not how 2.2 (Data path virtualization)
+    solves this stem. The keyed answer is **Separate routing/forwarding instances**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -169,19 +169,20 @@ questions:
     text: Only ASIC TCAM exclusively
   correct:
     answer: a
-  explanation: '**Kernel** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'Containers share the host kernel.
 
 
-    **Only entire guest kernel always** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only entire guest kernel always** points at entire guest kernel, which is not
+    how 2.1 (Device virtualization technologies) solves this stem. The keyed answer
+    is **Kernel**.
 
 
-    **Only BIOS** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only BIOS** points at BIOS, which is not how 2.1 (Device virtualization technologies)
+    solves this stem. The keyed answer is **Kernel**.
 
 
-    **Only ASIC TCAM exclusively** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only ASIC TCAM exclusively** points at ASIC TCAM, which is not how 2.1 (Device
+    virtualization technologies) solves this stem. The keyed answer is **Kernel**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -205,20 +206,22 @@ questions:
     text: Only a syslog facility
   correct:
     answer: a
-  explanation: '**Network virtualization / location-identity protocol** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'LISP maps EIDs to RLOCs.
 
 
-    **Only a wireless cipher** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only a wireless cipher** points at a wireless cipher, which is not how 2.3 (Network
+    virtualization concepts) solves this stem. The keyed answer is **Network virtualization
+    / location-identity protocol**.
 
 
-    **Only an FHRP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only an FHRP** points at an FHRP, which is not how 2.3 (Network virtualization
+    concepts) solves this stem. The keyed answer is **Network virtualization / location-identity
+    protocol**.
 
 
-    **Only a syslog facility** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only a syslog facility** is a mismatch: Syslog exports device logs (UDP 514
+    by default) with severity 0–7. The stem is asking about **Network virtualization
+    / location-identity protocol**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -242,20 +245,19 @@ questions:
     text: Only syslog host
   correct:
     answer: a
-  explanation: '**VXLAN tunnel endpoint** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'VTEPs encapsulate/decapsulate VXLAN.
 
 
-    **Only STP root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP root** points at STP root, which is not how 2.3 (Network virtualization
+    concepts) solves this stem. The keyed answer is **VXLAN tunnel endpoint**.
 
 
-    **Only DHCP server** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCP server** points at DHCP server, which is not how 2.3 (Network virtualization
+    concepts) solves this stem. The keyed answer is **VXLAN tunnel endpoint**.
 
 
-    **Only syslog host** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only syslog host** is a mismatch: Syslog exports device logs (UDP 514 by default)
+    with severity 0–7. The stem is asking about **VXLAN tunnel endpoint**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -279,21 +281,22 @@ questions:
     text: Only NTP strata
   correct:
     answer: a
-  explanation: '**VM/vNIC traffic on a hypervisor host**: A Layer 2 **switch** forwards Ethernet frames
-    based on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the
-    stem.
+  explanation: 'vSwitches bridge VM interfaces.
 
 
-    **Only ISP PEs exclusive** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only ISP PEs exclusive** points at ISP PEs, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **VM/vNIC traffic on a hypervisor
+    host**.
 
 
-    **Only DNS roots** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Only DNS roots** points at DNS roots, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **VM/vNIC traffic on a hypervisor
+    host**.
 
 
-    **Only NTP strata** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Only NTP strata** points at NTP strata, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **VM/vNIC traffic on a hypervisor
+    host**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -317,20 +320,22 @@ questions:
     text: Only PoE negotiation
   correct:
     answer: a
-  explanation: '**Point-to-point overlay encapsulation** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'GRE encapsulates payloads over IP.
 
 
-    **Only STP enhancements** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP enhancements** points at STP enhancements, which is not how 2.2 (Data
+    path virtualization) solves this stem. The keyed answer is **Point-to-point overlay
+    encapsulation**.
 
 
-    **Only AAA accounting** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only AAA accounting** points at AAA accounting, which is not how 2.2 (Data path
+    virtualization) solves this stem. The keyed answer is **Point-to-point overlay
+    encapsulation**.
 
 
-    **Only PoE negotiation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only PoE negotiation** points at PoE negotiation, which is not how 2.2 (Data
+    path virtualization) solves this stem. The keyed answer is **Point-to-point overlay
+    encapsulation**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -354,20 +359,20 @@ questions:
     text: Only age CAM
   correct:
     answer: a
-  explanation: '**Encrypt tunneled overlays** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'IPsec protects GRE/IP overlays.
 
 
-    **Only hash EtherChannels** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only hash EtherChannels** points at hash EtherChannels, which is not how 2.2
+    (Data path virtualization) solves this stem. The keyed answer is **Encrypt tunneled
+    overlays**.
 
 
-    **Only elect DR** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only elect DR** points at elect DR, which is not how 2.2 (Data path virtualization)
+    solves this stem. The keyed answer is **Encrypt tunneled overlays**.
 
 
-    **Only age CAM** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only age CAM** points at age CAM, which is not how 2.2 (Data path virtualization)
+    solves this stem. The keyed answer is **Encrypt tunneled overlays**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -391,20 +396,21 @@ questions:
     text: Only a copper SFP
   correct:
     answer: a
-  explanation: '**Guest OS + virtualized hardware abstraction** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'VMs virtualize compute for guest systems.
 
 
-    **Only a bare-metal Type 1 host exclusive** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.
+    **Only a bare-metal Type 1 host exclusive** points at a bare-metal Type 1 host,
+    which is not how 2.1 (Device virtualization technologies) solves this stem. The
+    keyed answer is **Guest OS + virtualized hardware abstraction**.
 
 
-    **Only a physical ASIC** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only a physical ASIC** is a mismatch: OSI Layer 1 — bits on copper, fiber, or
+    RF. The stem is asking about **Guest OS + virtualized hardware abstraction**.
 
 
-    **Only a copper SFP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only a copper SFP** points at a copper SFP, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **Guest OS + virtualized hardware
+    abstraction**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -428,20 +434,22 @@ questions:
     text: Only Telnet
   correct:
     answer: a
-  explanation: '**Data-plane learning / multicast or head-end replication** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'Without a control plane, flooding discovers endpoints.
 
 
-    **Only static ARP forever without flooding** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.
+    **Only static ARP forever without flooding** points at static ARP forever without
+    flooding, which is not how 2.3 (Network virtualization concepts) solves this stem.
+    The keyed answer is **Data-plane learning / multicast or head-end replication**.
 
 
-    **Only RIP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only RIP** is a mismatch: RIP is a hop-count IGP (max 15), default AD 120, multicast
+    224.0.0.9 for v2. The stem is asking about **Data-plane learning / multicast or
+    head-end replication**.
 
 
-    **Only Telnet** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only Telnet** is a mismatch: Telnet (TCP 23) is cleartext remote CLI and should
+    not be used on production VTYs. The stem is asking about **Data-plane learning
+    / multicast or head-end replication**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -465,20 +473,22 @@ questions:
     text: Only removing default route
   correct:
     answer: a
-  explanation: '**Shared storage / network reachability design** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'vMotion-style moves need connectivity design.
 
 
-    **Only changing STP priority** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only changing STP priority** points at changing STP priority, which is not how
+    2.1 (Device virtualization technologies) solves this stem. The keyed answer is
+    **Shared storage / network reachability design**.
 
 
-    **Only disabling IP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only disabling IP** points at disabling IP, which is not how 2.1 (Device virtualization
+    technologies) solves this stem. The keyed answer is **Shared storage / network
+    reachability design**.
 
 
-    **Only removing default route** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only removing default route** points at removing default route, which is not
+    how 2.1 (Device virtualization technologies) solves this stem. The keyed answer
+    is **Shared storage / network reachability design**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -502,20 +512,22 @@ questions:
     text: Only disabling jumbo
   correct:
     answer: a
-  explanation: '**Encapsulation overhead** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Outer headers need headroom.
 
 
-    **Only reducing MTU below 576 always** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only reducing MTU below 576 always** points at reducing MTU below 576, which
+    is not how 2.3 (Network virtualization concepts) solves this stem. The keyed answer
+    is **Encapsulation overhead**.
 
 
-    **Only IPv4 options mandatory** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only IPv4 options mandatory** points at IPv4 options, which is not how 2.3 (Network
+    virtualization concepts) solves this stem. The keyed answer is **Encapsulation
+    overhead**.
 
 
-    **Only disabling jumbo** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only disabling jumbo** points at disabling jumbo, which is not how 2.3 (Network
+    virtualization concepts) solves this stem. The keyed answer is **Encapsulation
+    overhead**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -539,20 +551,22 @@ questions:
     text: Only QoS marking
   correct:
     answer: a
-  explanation: '**Device-local routing separation without MPLS requirement** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'VRF-lite separates RIB/FIB without requiring MPLS.
 
 
-    **Only MPLS labels mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only MPLS labels mandatory** points at MPLS labels, which is not how 2.2 (Data
+    path virtualization) solves this stem. The keyed answer is **Device-local routing
+    separation without MPLS requirement**.
 
 
-    **Only NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only NAT** is a mismatch: NAT translates IP addresses (and ports, with PAT)
+    as packets cross inside/outside domains. The stem is asking about **Device-local
+    routing separation without MPLS requirement**.
 
 
-    **Only QoS marking** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only QoS marking** points at QoS marking, which is not how 2.2 (Data path virtualization)
+    solves this stem. The keyed answer is **Device-local routing separation without
+    MPLS requirement**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -576,20 +590,22 @@ questions:
     text: QoS PHB
   correct:
     answer: a
-  explanation: '**Security risk class** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Guest breakout to host is a critical risk.
 
 
-    **Routing metric** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Routing metric** is a different protocol, command, or value than **Security
+    risk class**. For 2.1 (Device virtualization technologies), the stem is solved
+    by **Security risk class**, not by Routing metric.
 
 
-    **STP state** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **STP state** is a different protocol, command, or value than **Security risk
+    class**. For 2.1 (Device virtualization technologies), the stem is solved by **Security
+    risk class**, not by STP state.
 
 
-    **QoS PHB** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **QoS PHB** is a different protocol, command, or value than **Security risk class**.
+    For 2.1 (Device virtualization technologies), the stem is solved by **Security
+    risk class**, not by QoS PHB.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -616,20 +632,21 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Uses a 24-bit VNI** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'VXLAN VNIs identify overlays carried over an IP underlay, usually
+    UDP.
 
 
-    **Typically rides on UDP/IP underlay**: **UDP** provides connectionless datagram delivery without
-    TCP’s reliability or ordering guarantees. This is the correct answer for the stem.
+    **Uses a 24-bit VNI** is correct: Large segment space.
 
 
-    **Requires Token Ring core** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Typically rides on UDP/IP underlay** is correct: Encapsulation.
 
 
-    **Replaces the need for any underlay routing** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Requires Token Ring core** is not the right selection: No.
+
+
+    **Replaces the need for any underlay routing** is not the right selection: Still
+    needs underlay.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -654,23 +671,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -694,21 +709,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -720,7 +734,8 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -735,20 +750,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.3 (Network virtualization
+    concepts).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -772,23 +790,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -812,21 +828,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -850,20 +865,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -887,23 +903,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -927,21 +941,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -953,7 +966,8 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -968,20 +982,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.3 (Network virtualization
+    concepts).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1005,23 +1022,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1045,21 +1060,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1083,20 +1097,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1120,23 +1135,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1160,21 +1173,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1186,7 +1198,8 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1201,20 +1214,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.3 (Network virtualization
+    concepts).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1238,23 +1254,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1278,21 +1292,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1316,20 +1329,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1353,23 +1367,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1393,21 +1405,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1419,7 +1430,8 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1434,20 +1446,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.3 (Network virtualization
+    concepts).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1471,23 +1486,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1511,21 +1524,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1549,20 +1561,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1586,23 +1599,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1626,21 +1637,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1652,7 +1662,8 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNP 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1667,20 +1678,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.3 (Network virtualization
+    concepts).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1704,23 +1718,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1744,21 +1756,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1782,20 +1793,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3
@@ -1823,20 +1835,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 2.1 (Device virtualization technologies), the keyed answer is
+    **Verify before change windows; Capture show/verify outputs**. Stem: Multiple-select
+    check for 2.1: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 2.1 (Device virtualization technologies).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 2.1 (Device virtualization technologies).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 2.1 (Device virtualization technologies).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 2.1 (Device virtualization technologies).'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.1
@@ -1863,20 +1884,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 2.2 (Data path virtualization), the keyed answer is **Verify before
+    change windows; Capture show/verify outputs**. Stem: Multiple-select check for
+    2.2: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 2.2 (Data path virtualization).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 2.2 (Data path virtualization).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 2.2 (Data path virtualization).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 2.2 (Data path virtualization).'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.2
@@ -1903,20 +1933,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 2.3 (Network virtualization concepts), the keyed answer is **Verify
+    before change windows; Capture show/verify outputs**. Stem: Multiple-select check
+    for 2.3: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 2.3 (Network virtualization concepts).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 2.3 (Network virtualization concepts).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 2.3 (Network virtualization concepts).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 2.3 (Network virtualization concepts).'
   references:
   - ENCOR 350-401 Official Cert Guide — Virtualization
   - ENCOR exam topic 2.3

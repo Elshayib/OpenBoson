@@ -20,21 +20,19 @@ questions:
     text: Only CDP
   correct:
     answer: a
-  explanation: '**Traffic flow records** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Flow telemetry.
 
 
-    **Only STP topology** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP topology** points at STP topology, which is not how 4.1 (Diagnose network
+    problems using tools) solves this stem. The keyed answer is **Traffic flow records**.
 
 
-    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only VTP** points at VTP, which is not how 4.1 (Diagnose network problems using
+    tools) solves this stem. The keyed answer is **Traffic flow records**.
 
 
-    **Only CDP**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.'
+    **Only CDP** is a mismatch: CDP is Cisco’s Layer 2 neighbor discovery protocol
+    (`show cdp neighbors`). The stem is asking about **Traffic flow records**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -58,20 +56,19 @@ questions:
     text: Only NTP
   correct:
     answer: a
-  explanation: '**A destination analyzer port** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Switched Port Analyzer.
 
 
-    **Only Null0** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only Null0** points at Null0, which is not how 4.3 (SPAN / RSPAN / ERSPAN) solves
+    this stem. The keyed answer is **A destination analyzer port**.
 
 
-    **Only DHCP pool** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCP pool** points at DHCP pool, which is not how 4.3 (SPAN / RSPAN / ERSPAN)
+    solves this stem. The keyed answer is **A destination analyzer port**.
 
 
-    **Only NTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only NTP** is a mismatch: NTP synchronizes clocks (UDP 123). Stratum is distance
+    from a reference clock. The stem is asking about **A destination analyzer port**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -95,20 +92,22 @@ questions:
     text: Only hash EtherChannels
   correct:
     answer: a
-  explanation: '**Apply configuration, monitoring, and management workflows** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'Catalyst Center provides traditional and AI-powered workflows.
 
 
-    **Only replace underlay routing forever** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.
+    **Only replace underlay routing forever** points at replace underlay routing,
+    which is not how 4.5 (Cisco DNA Center workflows) solves this stem. The keyed
+    answer is **Apply configuration, monitoring, and management workflows**.
 
 
-    **Only terminate PPPoE** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only terminate PPPoE** points at terminate PPPoE, which is not how 4.5 (Cisco
+    DNA Center workflows) solves this stem. The keyed answer is **Apply configuration,
+    monitoring, and management workflows**.
 
 
-    **Only hash EtherChannels** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only hash EtherChannels** points at hash EtherChannels, which is not how 4.5
+    (Cisco DNA Center workflows) solves this stem. The keyed answer is **Apply configuration,
+    monitoring, and management workflows**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -132,20 +131,19 @@ questions:
     text: Only USB
   correct:
     answer: a
-  explanation: '**IP/GRE-like encapsulation** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Encapsulated RSPAN.
 
 
-    **Only L1 copper always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only L1 copper always** points at L1 copper, which is not how 4.3 (SPAN / RSPAN
+    / ERSPAN) solves this stem. The keyed answer is **IP/GRE-like encapsulation**.
 
 
-    **Only console** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only console** points at console, which is not how 4.3 (SPAN / RSPAN / ERSPAN)
+    solves this stem. The keyed answer is **IP/GRE-like encapsulation**.
 
 
-    **Only USB** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only USB** points at USB, which is not how 4.3 (SPAN / RSPAN / ERSPAN) solves
+    this stem. The keyed answer is **IP/GRE-like encapsulation**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -169,20 +167,19 @@ questions:
     text: Only fan RPM exclusive
   correct:
     answer: a
-  explanation: '**Latency/jitter/loss probes** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Synthetic probes.
 
 
-    **Only CPU temperature exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only CPU temperature exclusive** points at CPU temperature, which is not how
+    4.4 (IP SLA) solves this stem. The keyed answer is **Latency/jitter/loss probes**.
 
 
-    **Only PoE draw exclusive** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only PoE draw exclusive** points at PoE draw, which is not how 4.4 (IP SLA)
+    solves this stem. The keyed answer is **Latency/jitter/loss probes**.
 
 
-    **Only fan RPM exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only fan RPM exclusive** points at fan RPM, which is not how 4.4 (IP SLA) solves
+    this stem. The keyed answer is **Latency/jitter/loss probes**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -206,20 +203,21 @@ questions:
     text: Only STP
   correct:
     answer: a
-  explanation: '**User-defined flow keys/fields** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'FNF customization.
 
 
-    **Only fixed v5 forever** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only fixed v5 forever** points at fixed v5, which is not how 4.2 (NetFlow and
+    Flexible NetFlow) solves this stem. The keyed answer is **User-defined flow keys/fields**.
 
 
-    **Only disables export** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only disables export** points at disables export, which is not how 4.2 (NetFlow
+    and Flexible NetFlow) solves this stem. The keyed answer is **User-defined flow
+    keys/fields**.
 
 
-    **Only STP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only STP** is a mismatch: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects
+    a root and blocks redundant Layer 2 paths so Ethernet does not loop. The stem
+    is asking about **User-defined flow keys/fields**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -243,20 +241,20 @@ questions:
     text: Only gRPC
   correct:
     answer: a
-  explanation: '**A special VLAN to carry mirrored frames** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Remote SPAN VLAN.
 
 
-    **Only ERSPAN mandatory** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only ERSPAN mandatory** points at ERSPAN, which is not how 4.3 (SPAN / RSPAN
+    / ERSPAN) solves this stem. The keyed answer is **A special VLAN to carry mirrored
+    frames**.
 
 
-    **Only NetFlow** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only NetFlow** points at NetFlow, which is not how 4.3 (SPAN / RSPAN / ERSPAN)
+    solves this stem. The keyed answer is **A special VLAN to carry mirrored frames**.
 
 
-    **Only gRPC** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only gRPC** points at gRPC, which is not how 4.3 (SPAN / RSPAN / ERSPAN) solves
+    this stem. The keyed answer is **A special VLAN to carry mirrored frames**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -280,21 +278,24 @@ questions:
     text: Negotiating LACP
   correct:
     answer: a
-  explanation: '**Limiting debug output to matching traffic** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Conditional debugs reduce noise while diagnosing.
 
 
-    **Disabling all logging forever** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Disabling all logging forever** points at Disabling all logging, which is not
+    how 4.1 (Diagnose network problems using tools) solves this stem. The keyed answer
+    is **Limiting debug output to matching traffic**.
 
 
-    **Clearing the RIB** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clearing the RIB** is a different protocol, command, or value than **Limiting
+    debug output to matching traffic**. For 4.1 (Diagnose network problems using tools),
+    the stem is solved by **Limiting debug output to matching traffic**, not by Clearing
+    the RIB.
 
 
-    **Negotiating LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
-    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
-    `channel-group <id> mode active|passive`.'
+    **Negotiating LACP** is a different protocol, command, or value than **Limiting
+    debug output to matching traffic**. For 4.1 (Diagnose network problems using tools),
+    the stem is solved by **Limiting debug output to matching traffic**, not by Negotiating
+    LACP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -318,21 +319,19 @@ questions:
     text: Only VTP password
   correct:
     answer: a
-  explanation: '**Voice/video path quality assessment**: **PAT** (NAT overload) maps many inside addresses
-    to one outside address using unique transport port numbers. This is the correct answer for the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Jitter/latency probes.
 
 
-    **Only VLAN creation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VLAN creation** points at VLAN creation, which is not how 4.4 (IP SLA)
+    solves this stem. The keyed answer is **Voice/video path quality assessment**.
 
 
-    **Only ACL lines**: An **ACL** filters traffic by matching header fields and applying permit or deny
-    actions in sequential order. This does not satisfy the condition required by the stem.
+    **Only ACL lines** points at ACL lines, which is not how 4.4 (IP SLA) solves this
+    stem. The keyed answer is **Voice/video path quality assessment**.
 
 
-    **Only VTP password** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only VTP password** points at VTP password, which is not how 4.4 (IP SLA) solves
+    this stem. The keyed answer is **Voice/video path quality assessment**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -356,21 +355,19 @@ questions:
     text: Only TCP 179
   correct:
     answer: a
-  explanation: '**SSH (TCP 830)**: **TCP** provides reliable, ordered, connection-oriented delivery using
-    sequence and acknowledgment numbers, among other mechanisms. This is the correct answer for the stem.
+  explanation: 'NETCONF over SSH is typical.
 
 
-    **Only Telnet 23** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only Telnet 23** is a mismatch: Telnet (TCP 23) is cleartext remote CLI and
+    should not be used on production VTYs. The stem is asking about **SSH (TCP 830)**.
 
 
-    **Only UDP 161**: **UDP** provides connectionless datagram delivery without TCP’s reliability or ordering
-    guarantees. This does not satisfy the condition required by the stem.
+    **Only UDP 161** points at UDP 161, which is not how 4.6 (NETCONF and RESTCONF)
+    solves this stem. The keyed answer is **SSH (TCP 830)**.
 
 
-    **Only TCP 179**: **TCP** provides reliable, ordered, connection-oriented delivery using sequence
-    and acknowledgment numbers, among other mechanisms. This does not satisfy the condition required by
-    the stem.'
+    **Only TCP 179** points at TCP 179, which is not how 4.6 (NETCONF and RESTCONF)
+    solves this stem. The keyed answer is **SSH (TCP 830)**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -394,21 +391,22 @@ questions:
     text: Only create SGTs
   correct:
     answer: a
-  explanation: '**Diagnose reachability and path issues**: **PAT** (NAT overload) maps many inside addresses
-    to one outside address using unique transport port numbers. This is the correct answer for the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Classic diagnostic tools.
 
 
-    **Only configure VRFs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only configure VRFs** points at configure VRFs, which is not how 4.1 (Diagnose
+    network problems using tools) solves this stem. The keyed answer is **Diagnose
+    reachability and path issues**.
 
 
-    **Only elect MST root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only elect MST root** points at elect MST root, which is not how 4.1 (Diagnose
+    network problems using tools) solves this stem. The keyed answer is **Diagnose
+    reachability and path issues**.
 
 
-    **Only create SGTs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only create SGTs** points at create SGTs, which is not how 4.1 (Diagnose network
+    problems using tools) solves this stem. The keyed answer is **Diagnose reachability
+    and path issues**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -432,20 +430,19 @@ questions:
     text: Only DHCP pools
   correct:
     answer: a
-  explanation: '**Collectors / analyzers** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Exporters deliver flow records.
 
 
-    **Only STP root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP root** points at STP root, which is not how 4.2 (NetFlow and Flexible
+    NetFlow) solves this stem. The keyed answer is **Collectors / analyzers**.
 
 
-    **Only VTP servers** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VTP servers** points at VTP servers, which is not how 4.2 (NetFlow and
+    Flexible NetFlow) solves this stem. The keyed answer is **Collectors / analyzers**.
 
 
-    **Only DHCP pools** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only DHCP pools** points at DHCP pools, which is not how 4.2 (NetFlow and Flexible
+    NetFlow) solves this stem. The keyed answer is **Collectors / analyzers**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -469,22 +466,19 @@ questions:
     text: Only HSRP hellos
   correct:
     answer: a
-  explanation: '**HTTP/HTTPS APIs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'RESTCONF maps YANG to HTTP.
 
 
-    **Only CDP TLVs**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.
+    **Only CDP TLVs** points at CDP TLVs, which is not how 4.6 (NETCONF and RESTCONF)
+    solves this stem. The keyed answer is **HTTP/HTTPS APIs**.
 
 
-    **Only BPDU guards**: **BPDU guard** err-disables a PortFast-enabled port that receives a BPDU, protecting
-    the edge from an accidental switch attachment that could create a loop. This does not satisfy the
-    condition required by the stem. Configuration uses `spanning-tree bpduguard enable`.
+    **Only BPDU guards** points at BPDU guards, which is not how 4.6 (NETCONF and
+    RESTCONF) solves this stem. The keyed answer is **HTTP/HTTPS APIs**.
 
 
-    **Only HSRP hellos** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only HSRP hellos** points at HSRP hellos, which is not how 4.6 (NETCONF and
+    RESTCONF) solves this stem. The keyed answer is **HTTP/HTTPS APIs**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -508,20 +502,22 @@ questions:
     text: Only removing SNMP
   correct:
     answer: a
-  explanation: '**Assurance insights and guided operations** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'v1.2 calls out AI-powered Catalyst Center workflows.
 
 
-    **Only manually cabling racks** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only manually cabling racks** points at manually cabling racks, which is not
+    how 4.5 (Cisco DNA Center workflows) solves this stem. The keyed answer is **Assurance
+    insights and guided operations**.
 
 
-    **Only disabling telemetry** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only disabling telemetry** points at disabling telemetry, which is not how 4.5
+    (Cisco DNA Center workflows) solves this stem. The keyed answer is **Assurance
+    insights and guided operations**.
 
 
-    **Only removing SNMP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only removing SNMP** points at removing SNMP, which is not how 4.5 (Cisco DNA
+    Center workflows) solves this stem. The keyed answer is **Assurance insights and
+    guided operations**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -545,21 +541,21 @@ questions:
     text: Only LACP priorities
   correct:
     answer: a
-  explanation: '**Device/event visibility** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Operational telemetry via SNMP/syslog.
 
 
-    **Only underlay ECMP hashing** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only underlay ECMP hashing** points at underlay ECMP hashing, which is not how
+    4.1 (Diagnose network problems using tools) solves this stem. The keyed answer
+    is **Device/event visibility**.
 
 
-    **Only VXLAN VNIs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VXLAN VNIs** points at VXLAN VNIs, which is not how 4.1 (Diagnose network
+    problems using tools) solves this stem. The keyed answer is **Device/event visibility**.
 
 
-    **Only LACP priorities**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
-    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
-    `channel-group <id> mode active|passive`.'
+    **Only LACP priorities** points at LACP priorities, which is not how 4.1 (Diagnose
+    network problems using tools) solves this stem. The keyed answer is **Device/event
+    visibility**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -583,20 +579,20 @@ questions:
     text: Only MPLS exclusive
   correct:
     answer: a
-  explanation: '**Same switch typically**: A Layer 2 **switch** forwards Ethernet frames based on MAC
-    address tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'Classic SPAN locality.
 
 
-    **Only cross-continent mandatory** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only cross-continent mandatory** points at cross-continent, which is not how
+    4.3 (SPAN / RSPAN / ERSPAN) solves this stem. The keyed answer is **Same switch
+    typically**.
 
 
-    **Only wireless exclusive** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only wireless exclusive** points at wireless, which is not how 4.3 (SPAN / RSPAN
+    / ERSPAN) solves this stem. The keyed answer is **Same switch typically**.
 
 
-    **Only MPLS exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only MPLS exclusive** points at MPLS, which is not how 4.3 (SPAN / RSPAN / ERSPAN)
+    solves this stem. The keyed answer is **Same switch typically**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -621,20 +617,20 @@ questions:
     text: DHCPACK
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -658,20 +654,18 @@ questions:
     text: MX
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    MX records name mail exchangers. They do not carry IPv6 host addresses.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -698,21 +692,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.3 (SPAN / RSPAN / ERSPAN).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -736,20 +731,20 @@ questions:
     text: DHCPDISCOVER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -773,20 +768,18 @@ questions:
     text: A
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    An **A** record maps a name to an **IPv4** address, not IPv6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -810,21 +803,21 @@ questions:
     text: One-to-one dynamic only
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -848,20 +841,20 @@ questions:
     text: DHCPDISCOVER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -885,20 +878,18 @@ questions:
     text: A
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    An **A** record maps a name to an **IPv4** address, not IPv6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -922,21 +913,21 @@ questions:
     text: One-to-one dynamic only
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -960,20 +951,20 @@ questions:
     text: DHCPOFFER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -997,20 +988,18 @@ questions:
     text: AAAA
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -1037,21 +1026,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -1075,20 +1065,20 @@ questions:
     text: DHCPOFFER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -1112,20 +1102,18 @@ questions:
     text: AAAA
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -1152,21 +1140,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.3 (SPAN / RSPAN / ERSPAN).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -1190,20 +1179,20 @@ questions:
     text: Only DHCPREQUEST
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -1227,20 +1216,18 @@ questions:
     text: PTR only
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -1264,21 +1251,21 @@ questions:
     text: PAT/overload
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -1302,20 +1289,20 @@ questions:
     text: Only DHCPREQUEST
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -1339,20 +1326,18 @@ questions:
     text: PTR only
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -1376,21 +1361,21 @@ questions:
     text: PAT/overload
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -1414,20 +1399,20 @@ questions:
     text: DHCPACK
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -1451,20 +1436,18 @@ questions:
     text: MX
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    MX records name mail exchangers. They do not carry IPv6 host addresses.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -1491,21 +1474,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -1529,20 +1513,20 @@ questions:
     text: DHCPACK
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -1566,20 +1550,18 @@ questions:
     text: MX
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    MX records name mail exchangers. They do not carry IPv6 host addresses.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -1606,21 +1588,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.3 (SPAN / RSPAN / ERSPAN).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -1644,20 +1627,20 @@ questions:
     text: DHCPDISCOVER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -1681,20 +1664,18 @@ questions:
     text: A
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    An **A** record maps a name to an **IPv4** address, not IPv6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -1718,21 +1699,21 @@ questions:
     text: One-to-one dynamic only
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -1756,20 +1737,20 @@ questions:
     text: DHCPDISCOVER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -1793,20 +1774,18 @@ questions:
     text: A
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    An **A** record maps a name to an **IPv4** address, not IPv6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -1830,21 +1809,21 @@ questions:
     text: One-to-one dynamic only
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -1868,20 +1847,20 @@ questions:
     text: DHCPOFFER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -1905,20 +1884,18 @@ questions:
     text: AAAA
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -1945,21 +1922,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -1983,20 +1961,20 @@ questions:
     text: DHCPOFFER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -2020,20 +1998,18 @@ questions:
     text: AAAA
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -2060,21 +2036,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.3 (SPAN / RSPAN / ERSPAN).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -2098,20 +2075,20 @@ questions:
     text: Only DHCPREQUEST
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -2135,20 +2112,18 @@ questions:
     text: PTR only
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -2172,21 +2147,21 @@ questions:
     text: PAT/overload
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -2210,20 +2185,20 @@ questions:
     text: Only DHCPREQUEST
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -2247,20 +2222,18 @@ questions:
     text: PTR only
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -2284,21 +2257,21 @@ questions:
     text: PAT/overload
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -2322,20 +2295,20 @@ questions:
     text: DHCPACK
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -2359,20 +2332,18 @@ questions:
     text: MX
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    MX records name mail exchangers. They do not carry IPv6 host addresses.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -2399,21 +2370,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -2437,20 +2409,20 @@ questions:
     text: DHCPACK
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -2474,20 +2446,18 @@ questions:
     text: MX
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    MX records name mail exchangers. They do not carry IPv6 host addresses.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -2514,21 +2484,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.3 (SPAN / RSPAN / ERSPAN).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -2552,20 +2523,20 @@ questions:
     text: DHCPDISCOVER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -2589,20 +2560,18 @@ questions:
     text: A
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    An **A** record maps a name to an **IPv4** address, not IPv6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -2626,21 +2595,21 @@ questions:
     text: One-to-one dynamic only
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -2664,20 +2633,20 @@ questions:
     text: DHCPDISCOVER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -2701,20 +2670,18 @@ questions:
     text: A
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    An **A** record maps a name to an **IPv4** address, not IPv6.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -2738,21 +2705,21 @@ questions:
     text: One-to-one dynamic only
   correct:
     answer: a
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **NPTv6 only** is not the right selection: NPTv6 is IPv6 prefix translation (RFC
+    6296). It is not IPv4 PAT.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **NPTv6 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -2776,20 +2743,20 @@ questions:
     text: DHCPOFFER
   correct:
     answer: a
-  explanation: '**DHCPDISCOVER** is the client broadcast used to locate DHCP servers on the local segment
-    (or via a relay). This is the correct answer for the stem.
+  explanation: 'A client with no lease broadcasts **DHCPDISCOVER** (UDP 67/68, destination
+    255.255.255.255) to find servers — the first message in DORA.
 
 
-    **DHCPACK** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    DHCPACK is the **server’s** final confirmation of the lease, not the client’s
+    discovery broadcast.
 
 
-    **Only DHCPREQUEST** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DHCPREQUEST** is not the right selection: DHCPREQUEST is the client’s **third**
+    DORA step (accepting an offer, or renewing). Discovery comes first.
 
 
-    **DHCPOFFER** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    DHCPOFFER is the **server** offering an address after DISCOVER. The client does
+    not send it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -2813,20 +2780,18 @@ questions:
     text: AAAA
   correct:
     answer: a
-  explanation: 'An **AAAA** DNS record maps a hostname to an IPv6 address, analogous to an A record for
-    IPv4. This is the correct answer for the stem.
+  explanation: 'An **AAAA** record maps a name to an IPv6 address (four A’s = 128
+    bits vs A = 32 bits).
 
 
-    **A** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    An **A** record maps a name to an **IPv4** address, not IPv6.
 
 
-    **MX** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    MX records name mail exchangers. They do not carry IPv6 host addresses.
 
 
-    **PTR only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **PTR only** is not the right selection: PTR is reverse DNS (IP → name) under
+    `ip6.arpa` or `in-addr.arpa`. The forward IPv6 record is AAAA.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -2853,21 +2818,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**PAT/overload**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'PAT / NAT overload maps many inside-local addresses onto one (or a
+    few) inside-global address by translating **source ports** (`ip nat inside source
+    list ... interface ... overload`).
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Static NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    Static NAT is a 1:1 inside-local ↔ inside-global mapping, no port multiplexing.
 
 
-    **One-to-one dynamic only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **One-to-one dynamic only** is not the right selection: Dynamic NAT without overload
+    still uses a pool 1:1. When the pool is exhausted, new flows fail — that is not
+    many-to-one PAT.'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -2895,20 +2861,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 4.1 (Diagnose network problems using tools), the keyed answer
+    is **Verify before change windows; Capture show/verify outputs**. Stem: Multiple-select
+    check for 4.1: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 4.1 (Diagnose network problems using tools).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 4.1 (Diagnose network problems using tools).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 4.1 (Diagnose network problems using tools).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 4.1 (Diagnose network problems using tools).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.1
@@ -2935,20 +2910,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 4.2 (NetFlow and Flexible NetFlow), the keyed answer is **Verify
+    before change windows; Capture show/verify outputs**. Stem: Multiple-select check
+    for 4.2: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 4.2 (NetFlow and Flexible NetFlow).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 4.2 (NetFlow and Flexible NetFlow).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 4.2 (NetFlow and Flexible NetFlow).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 4.2 (NetFlow and Flexible NetFlow).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -2973,20 +2957,33 @@ questions:
     text: Disable logging permanently while testing 4.2
   correct:
     answer: a
-  explanation: '**Use the standard model for 4.2 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 4.2 (NetFlow and Flexible NetFlow), the keyed answer is **Use
+    the standard model for 4.2 rather than a look-alike concept**. Stem: During troubleshooting
+    related to 4.2, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 4.2** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 4.2 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 4.2 (NetFlow and
+    Flexible NetFlow).
 
 
-    **Use clear-text shared secrets as the only control for 4.2** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 4.2** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.2 (NetFlow
+    and Flexible NetFlow).
 
 
-    **Skip documentation for 4.2 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 4.2 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 4.2 (NetFlow
+    and Flexible NetFlow).
+
+
+    **Disable logging permanently while testing 4.2** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 4.2 (NetFlow and Flexible
+    NetFlow).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -3010,20 +3007,33 @@ questions:
     text: Skip documentation for 4.2 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 4.2 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 4.2 (NetFlow and Flexible NetFlow), the keyed answer is **Prefer
+    the documented 4.2 approach used in enterprise designs**. Stem: Which configuration
+    intent aligns with ENCOR objective 4.2?.
 
 
-    **Use clear-text shared secrets as the only control for 4.2** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 4.2 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 4.2 (NetFlow
+    and Flexible NetFlow).
 
 
-    **Skip documentation for 4.2 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 4.2 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 4.2 (NetFlow and
+    Flexible NetFlow).
 
 
-    **Treat 4.2 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 4.2** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.2 (NetFlow
+    and Flexible NetFlow).
+
+
+    **Skip documentation for 4.2 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 4.2 (NetFlow
+    and Flexible NetFlow).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.2
@@ -3047,20 +3057,31 @@ questions:
     text: Ignore verification and assume 4.3 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 4.3** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 4.3 (SPAN / RSPAN / ERSPAN), the keyed answer is **Apply the verified
+    behavior required by objective 4.3**. Stem: Select the correct association for
+    exam topic 4.3..
 
 
-    **Skip documentation for 4.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 4.3** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 4.3 (SPAN / RSPAN / ERSPAN).
 
 
-    **Treat 4.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 4.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 4.3 (SPAN / RSPAN
+    / ERSPAN).
 
 
-    **Ignore verification and assume 4.3 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 4.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 4.3 (SPAN / RSPAN
+    / ERSPAN).
+
+
+    **Ignore verification and assume 4.3 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 4.3 (SPAN / RSPAN / ERSPAN).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.3
@@ -3072,8 +3093,8 @@ questions:
   topic_code: '4.4'
   difficulty: 4
   cert_tags: *id004
-  stem: '[ENCOR 4.4] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 4.4] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 4.4 with show/ping evidence
@@ -3088,20 +3109,30 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 4.4 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 4.4 (IP SLA), the keyed answer is **Verify expected state for
+    4.4 with show/ping evidence; Document the 4.4 design intent and rollback plan**.
+    Stem: [ENCOR 4.4] Select ALL actions that support a correct implementation or
+    verification for this objective..
 
 
-    **Document the 4.4 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 4.4 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 4.4 (IP SLA).
 
 
-    **Skip change control because 4.4 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 4.4 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 4.4 (IP SLA).
 
 
-    **Disable all monitoring related to 4.4** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 4.4 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 4.4 (IP SLA).
+
+
+    **Disable all monitoring related to 4.4** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 4.4 (IP SLA).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -3125,20 +3156,29 @@ questions:
     text: Ignore verification and assume 4.4 always works
   correct:
     answer: a
-  explanation: '**Use the standard model for 4.4 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 4.4 (IP SLA), the keyed answer is **Use the standard model for
+    4.4 rather than a look-alike concept**. Stem: For ENCOR objective 4.4, which statement
+    best matches production best practice?.
 
 
-    **Ignore verification and assume 4.4 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 4.4 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 4.4 (IP SLA).
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Confuse 4.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 4.4 (IP SLA).
 
 
-    **Disable logging permanently while testing 4.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 4.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 4.4 (IP SLA).
+
+
+    **Ignore verification and assume 4.4 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 4.4 (IP SLA).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -3162,20 +3202,30 @@ questions:
     text: Disable logging permanently while testing 4.4
   correct:
     answer: a
-  explanation: '**Prefer the documented 4.4 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 4.4 (IP SLA), the keyed answer is **Prefer the documented 4.4
+    approach used in enterprise designs**. Stem: Regarding ENCOR topic 4.4. Which
+    reply is accurate?.
 
 
-    **Confuse 4.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 4.4 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 4.4 (IP SLA).
 
 
-    **Disable logging permanently while testing 4.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 4.4** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.4 (IP
+    SLA).
 
 
-    **Use clear-text shared secrets as the only control for 4.4** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 4.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 4.4 (IP SLA).
+
+
+    **Disable logging permanently while testing 4.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 4.4 (IP SLA).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.4
@@ -3199,20 +3249,31 @@ questions:
     text: Skip documentation for 4.5 changes in production
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 4.5** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 4.5 (Cisco DNA Center workflows), the keyed answer is **Apply
+    the verified behavior required by objective 4.5**. Stem: During troubleshooting
+    related to 4.5, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 4.5** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 4.5** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 4.5 (Cisco DNA Center workflows).
 
 
-    **Use clear-text shared secrets as the only control for 4.5** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Disable logging permanently while testing 4.5** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 4.5 (Cisco DNA Center workflows).
 
 
-    **Skip documentation for 4.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 4.5** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.5 (Cisco
+    DNA Center workflows).
+
+
+    **Skip documentation for 4.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 4.5 (Cisco DNA
+    Center workflows).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -3236,20 +3297,32 @@ questions:
     text: Validate with show/verify steps before relying on 4.5 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 4.5 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 4.5 (Cisco DNA Center workflows), the keyed answer is **Validate
+    with show/verify steps before relying on 4.5 changes**. Stem: Which configuration
+    intent aligns with ENCOR objective 4.5?.
 
 
-    **Use clear-text shared secrets as the only control for 4.5** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 4.5 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 4.5 (Cisco DNA Center workflows).
 
 
-    **Skip documentation for 4.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 4.5** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.5 (Cisco
+    DNA Center workflows).
 
 
-    **Treat 4.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 4.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 4.5 (Cisco DNA
+    Center workflows).
+
+
+    **Treat 4.5 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 4.5 (Cisco DNA
+    Center workflows).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -3261,8 +3334,8 @@ questions:
   topic_code: '4.5'
   difficulty: 3
   cert_tags: *id004
-  stem: '[ENCOR 4.5] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 4.5] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 4.5 with show/ping evidence
@@ -3277,20 +3350,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 4.5 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 4.5 (Cisco DNA Center workflows), the keyed answer is **Verify
+    expected state for 4.5 with show/ping evidence; Document the 4.5 design intent
+    and rollback plan**. Stem: [ENCOR 4.5] Select ALL actions that support a correct
+    implementation or verification for this objective..
 
 
-    **Document the 4.5 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 4.5 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 4.5 (Cisco DNA Center workflows).
 
 
-    **Skip change control because 4.5 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 4.5 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 4.5 (Cisco DNA Center workflows).
 
 
-    **Disable all monitoring related to 4.5** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 4.5 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 4.5 (Cisco DNA
+    Center workflows).
+
+
+    **Disable all monitoring related to 4.5** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 4.5 (Cisco DNA Center workflows).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.5
@@ -3314,20 +3398,31 @@ questions:
     text: Ignore verification and assume 4.6 always works
   correct:
     answer: a
-  explanation: '**Prefer the documented 4.6 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 4.6 (NETCONF and RESTCONF), the keyed answer is **Prefer the documented
+    4.6 approach used in enterprise designs**. Stem: Which option correctly describes
+    a key idea under 4.6?.
 
 
-    **Treat 4.6 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Prefer the documented 4.6 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 4.6 (NETCONF
+    and RESTCONF).
 
 
-    **Ignore verification and assume 4.6 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 4.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Treat 4.6 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 4.6 (NETCONF and
+    RESTCONF).
+
+
+    **Ignore verification and assume 4.6 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 4.6 (NETCONF and RESTCONF).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -3351,20 +3446,29 @@ questions:
     text: Disable logging permanently while testing 4.6
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 4.6** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 4.6 (NETCONF and RESTCONF), the keyed answer is **Apply the verified
+    behavior required by objective 4.6**. Stem: For ENCOR objective 4.6, which statement
+    best matches production best practice?.
 
 
-    **Ignore verification and assume 4.6 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 4.6** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Ignore verification and assume 4.6 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Disable logging permanently while testing 4.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 4.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 4.6 (NETCONF and RESTCONF).
+
+
+    **Disable logging permanently while testing 4.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 4.6 (NETCONF and RESTCONF).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
@@ -3388,20 +3492,30 @@ questions:
     text: Validate with show/verify steps before relying on 4.6 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 4.6 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 4.6 (NETCONF and RESTCONF), the keyed answer is **Validate with
+    show/verify steps before relying on 4.6 changes**. Stem: Regarding ENCOR topic
+    4.6. Which reply is accurate?.
 
 
-    **Confuse 4.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 4.6 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Disable logging permanently while testing 4.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 4.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 4.6 (NETCONF and RESTCONF).
 
 
-    **Use clear-text shared secrets as the only control for 4.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 4.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 4.6 (NETCONF and RESTCONF).
+
+
+    **Use clear-text shared secrets as the only control for 4.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 4.6 (NETCONF
+    and RESTCONF).'
   references:
   - ENCOR 350-401 Official Cert Guide — Network Assurance
   - ENCOR exam topic 4.6
