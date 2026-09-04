@@ -239,6 +239,8 @@ _TEMPLATE_PHRASES = (
     "the correct sequence for this item is",
     "is required here",
     "implemented by verifying with show/ping",
+    "does not do that job",
+    "is answered by",
 )
 
 
