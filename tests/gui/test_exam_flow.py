@@ -4,7 +4,15 @@ from pathlib import Path
 
 import pytest
 from PySide6.QtCore import QPoint
-from PySide6.QtWidgets import QApplication, QFrame, QLabel, QPushButton, QScrollArea
+from PySide6.QtWidgets import (
+    QApplication,
+    QFrame,
+    QLabel,
+    QPushButton,
+    QScrollArea,
+    QTextBrowser,
+    QWidget,
+)
 
 from openboson.bank_loader import load_exam_bank
 from openboson.bank_schema import ExamBank, QuestionType
@@ -120,11 +128,75 @@ def test_result_to_review(window, qtbot):
     cards = window._review_page.review_cards()
     assert len(cards) >= 1
     assert window._review_page.scroll_area() is not None
+    for card in cards:
+        assert card.findChild(QWidget, "TeachingFeedback") is not None
+
+
+def test_exam_review_cards_contain_teaching_feedback(window, qtbot):
+    bank = load_exam_bank(FIXTURE)
+    window.start_exam_from_list(bank, ExamMode.EXAM)
+    qtbot.wait(50)
+    sess = window._session_page._session
+    for q in list(sess.questions):
+        if not (q.explanation or "").strip():
+            q.explanation = "Why this is right."
+        window._session_page._store_answer(q.id, _correct_answer_for(q))
+    window._session_page._finish_exam()
+    qtbot.wait(50)
+    window._on_review(sess)
+    qtbot.wait(50)
+    assert window.visible_page_label() == "Review"
+    cards = window._review_page.review_cards()
+    assert len(cards) >= 1
+    for card in cards:
+        panel = card.findChild(QWidget, "TeachingFeedback")
+        assert panel is not None
+        labels = [lbl.text() for lbl in panel.findChildren(QLabel)]
+        assert any(t == "Explanation" for t in labels)
+        body = panel.findChild(QTextBrowser, "ExplanationBody")
+        assert body is not None
+        assert body.toPlainText().strip()
+
+    labels = [lbl.text() for lbl in window._review_page.findChildren(QLabel)]
+    blob = "\n".join(labels)
+    # Fixture q1/q2 rationales + choice text, not ID-only "Correct: answer a"
+    assert "/26 yields 62 usable hosts." in blob
+    assert "64 includes network and broadcast." in blob
+    assert "That is a /27." in blob
+    assert "Correct — trunks carry tagged VLANs." in blob
+    assert "VLAN 1 can be native (though discouraged)." in blob
+    assert "ISL is legacy." in blob
+    assert any("Why right:" in t for t in labels)
+    assert any("Why wrong:" in t for t in labels)
+    assert any(t.startswith("Correct:") and "62" in t for t in labels)
+    assert any("802.1Q tagging" in t for t in labels)
+    assert not any(t.startswith("Correct: answer ") for t in labels)
+    assert not any(t.startswith("Your answer: answer ") for t in labels)
+
+
+def test_exam_session_page_never_imports_teaching_feedback():
+    from openboson.gui.pages import exam_session_page as session_mod
+
+    src = Path(session_mod.__file__).read_text(encoding="utf-8")
+    assert "TeachingFeedback" not in src
+    assert "question.explanation" not in src
+
+
+def test_exam_session_stays_silent(window, qtbot):
+    bank = load_exam_bank(FIXTURE)
+    window.start_exam_from_list(bank, ExamMode.EXAM)
+    qtbot.wait(50)
+    page = window._session_page
+    assert page.findChild(QWidget, "TeachingFeedback") is None
+    labels = [lbl.text() for lbl in page.findChildren(QLabel)]
+    assert not any(t == "Explanation" for t in labels)
 
 
 def test_practice_question_check_shows_feedback(window, qtbot):
     bank = load_exam_bank(FIXTURE)
-    q = next(qq for qq in bank.questions if qq.type.value == "single_choice")
+    q = next(qq for qq in bank.questions if qq.id == "q1")
+    if not (q.explanation or "").strip():
+        q.explanation = "Why this is right."
     window._on_practice_question(q)
     qtbot.wait(50)
     assert window.visible_page_label() == "Practice Question"
@@ -133,9 +205,23 @@ def test_practice_question_check_shows_feedback(window, qtbot):
     page._check_answer()
     qtbot.wait(50)
     labels = [lbl.text() for lbl in page.findChildren(QLabel)]
+    blob = "\n".join(labels)
     assert any(t == "Correct" for t in labels)
-    assert not any(t == "Explanation" for t in labels)
-    assert not any("Your answer:" in t for t in labels)
+    # Teaching panel is present (objectName TeachingFeedback)
+    assert page.findChild(QWidget, "TeachingFeedback") is not None
+    assert any(t == "Explanation" for t in labels)
+    body = page.findChild(QTextBrowser, "ExplanationBody")
+    assert body is not None
+    assert body.toPlainText().strip()
+    # Fixture q1 rationales + choice text, labeled why-right / why-wrong
+    assert "/26 yields 62 usable hosts." in blob
+    assert "64 includes network and broadcast." in blob
+    assert "That is a /27." in blob
+    assert "That is a /25." in blob
+    assert any("a. 62" in t and "/26 yields 62 usable hosts." in t for t in labels)
+    assert any("b. 64" in t and "64 includes network and broadcast." in t for t in labels)
+    assert any(t.startswith("Why right:") for t in labels)
+    assert any(t.startswith("Why wrong:") for t in labels)
 
 
 def test_practice_question_next_advances_queue(window, qtbot):

@@ -1,4 +1,4 @@
-"""Exam review page — correct vs user answer (no explanations)."""
+"""Exam review page — correct vs user answer plus teaching explanations."""
 
 from __future__ import annotations
 
@@ -15,10 +15,11 @@ from PySide6.QtWidgets import (
 )
 
 from openboson.exsim.session import ExamSession
+from openboson.gui.widgets.teaching_feedback import TeachingFeedback
 
 
 class ExamReviewPage(QWidget):
-    """Lists questions with correct / user answers only."""
+    """Lists questions with answers, then explanation + per-choice rationale."""
 
     title = "Review"
 
@@ -119,16 +120,32 @@ class ExamReviewPage(QWidget):
         v.addWidget(stem)
 
         correct = q.correct_answer_model
-        v.addWidget(QLabel(f"Correct: {self._summarize(correct)}"))
+        correct_lbl = QLabel(f"Correct: {self._summarize(q, correct)}")
+        correct_lbl.setWordWrap(True)
+        v.addWidget(correct_lbl)
 
         user_text = "(unanswered)"
+        selected = None
         if ua is not None and ua.answer is not None:
-            user_text = self._summarize_answer(ua.answer)
-        v.addWidget(QLabel(f"Your answer: {user_text}"))
+            selected = ua.answer
+            user_text = self._summarize_answer(q, ua.answer)
+        user_lbl = QLabel(f"Your answer: {user_text}")
+        user_lbl.setWordWrap(True)
+        v.addWidget(user_lbl)
+        v.addWidget(TeachingFeedback(q, is_correct=is_correct, selected=selected))
         return card
 
     @staticmethod
-    def _summarize(correct) -> str:
+    def _choice_text(q, choice_id: str) -> str:
+        if q.choices:
+            for ch in q.choices:
+                if ch.id == choice_id:
+                    text = (ch.text or "").strip()
+                    return text or str(choice_id)
+        return str(choice_id)
+
+    @staticmethod
+    def _summarize(q, correct) -> str:
         from openboson.bank_schema import (
             DragMatchAnswer,
             MultipleChoiceAnswer,
@@ -138,9 +155,9 @@ class ExamReviewPage(QWidget):
         )
 
         if isinstance(correct, SingleChoiceAnswer):
-            return f"answer {correct.answer}"
+            return ExamReviewPage._choice_text(q, correct.answer)
         if isinstance(correct, MultipleChoiceAnswer):
-            return "answers " + ", ".join(correct.answers)
+            return ", ".join(ExamReviewPage._choice_text(q, cid) for cid in correct.answers)
         if isinstance(correct, OrderedListAnswer):
             return "order " + " → ".join(correct.order)
         if isinstance(correct, DragMatchAnswer):
@@ -152,12 +169,14 @@ class ExamReviewPage(QWidget):
         return ""
 
     @staticmethod
-    def _summarize_answer(answer) -> str:
+    def _summarize_answer(q, answer) -> str:
         if isinstance(answer, dict):
             if "answer" in answer:
-                return f"answer {answer['answer']}"
+                return ExamReviewPage._choice_text(q, str(answer["answer"]))
             if "answers" in answer:
-                return "answers " + ", ".join(answer["answers"])
+                return ", ".join(
+                    ExamReviewPage._choice_text(q, str(cid)) for cid in answer["answers"]
+                )
             if "order" in answer:
                 return "order " + " → ".join(answer["order"])
             if "pairs" in answer:
