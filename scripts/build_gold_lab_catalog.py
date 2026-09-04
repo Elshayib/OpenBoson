@@ -994,8 +994,15 @@ def lab_etherchannel_campus() -> dict:
         title="EtherChannel Campus Bundle",
         lab_id="ccna_etherchannel_campus",
         topic_code="2.4",
-        description="Bundle two links between switches and attach a PC.",
-        objectives=["channel-group mode on", "Access VLAN for PC", "verify.show"],
+        description=(
+            "Two switches share dual links. Shutting the forwarding unbundled "
+            "member isolates the PCs unless those links are one EtherChannel."
+        ),
+        objectives=[
+            "VLAN 10 access with PortFast",
+            "channel-group 1 mode on both members",
+            "PC ping survives shutting one member",
+        ],
         topology={
             "devices": [
                 _dev(
@@ -1022,46 +1029,82 @@ def lab_etherchannel_campus() -> dict:
                     [{"name": "eth0", "ip": "10.10.10.10/24"}],
                     base_config="ip address 10.10.10.10 255.255.255.0\n",
                 ),
+                _dev(
+                    "PC2",
+                    "pc",
+                    [{"name": "eth0", "ip": "10.10.10.20/24"}],
+                    base_config="ip address 10.10.10.20 255.255.255.0\n",
+                ),
             ],
             "links": [
                 _link("SW1/GigabitEthernet0/1", "SW2/GigabitEthernet0/1"),
                 _link("SW1/GigabitEthernet0/2", "SW2/GigabitEthernet0/2"),
-                _link("SW2/GigabitEthernet0/3", "PC1/eth0"),
+                _link("SW1/GigabitEthernet0/3", "PC1/eth0"),
+                _link("SW2/GigabitEthernet0/3", "PC2/eth0"),
             ],
         },
         tasks=[
             _task(
                 "t1",
-                "On **SW1**, place Gi0/1 and Gi0/2 into **channel-group 1 mode on**.",
-                device="SW1",
-                require=["channel-group 1 mode on"],
-                verify_show=[_show("SW1", "channel-group 1 mode on")],
+                "**Access VLAN and inter-switch trunks**\n\n"
+                "Create **VLAN 10** on both switches. Put each PC-facing Gi0/3 in "
+                "VLAN 10 as access with **spanning-tree portfast**. Trunk Gi0/1 and "
+                "Gi0/2 toward the peer. Unbundled, only the lowest interface name "
+                "forwards — a second parallel link is not a backup yet.",
+                require=[
+                    "vlan 10",
+                    "switchport mode trunk",
+                    "switchport access vlan 10",
+                    "spanning-tree portfast",
+                ],
             ),
             _task(
                 "t2",
-                "On **SW2**, place Gi0/1 and Gi0/2 into **channel-group 1 mode on**.",
-                device="SW2",
+                "**Bundle the dual links**\n\n"
+                "On **SW1** and **SW2**, place Gi0/1 and Gi0/2 into "
+                "**channel-group 1 mode on** so the two links become one logical "
+                "path.",
                 require=["channel-group 1 mode on"],
-                verify_show=[_show("SW2", "channel-group")],
+                verify_show=[_show("SW1", "channel-group 1")],
             ),
             _task(
                 "t3",
-                "Create VLAN 10 on SW2 and put Gi0/3 in VLAN 10 as access.",
-                device="SW2",
-                require=["vlan 10", "switchport access vlan 10"],
+                "**Prove the bundle**\n\n"
+                "Shut **SW1 GigabitEthernet0/1** (the forwarding unbundled member). "
+                "From **PC1**, **PC2** at **10.10.10.20** must still reply — that "
+                "survives only if the remaining member is in the same channel-group.",
+                device="SW1",
+                require=["shutdown", "channel-group 1 mode on"],
+                verify_ping=[_ping("PC1", "10.10.10.20")],
+                verify_show=[_show("SW1", "channel-group 1")],
             ),
         ],
         solution_config=(
             "! --- SW1 ---\n"
-            "interface GigabitEthernet0/1\n channel-group 1 mode on\n"
-            "interface GigabitEthernet0/2\n channel-group 1 mode on\n"
-            "! --- SW2 ---\n"
             "vlan 10\n"
-            "interface GigabitEthernet0/1\n channel-group 1 mode on\n"
-            "interface GigabitEthernet0/2\n channel-group 1 mode on\n"
+            "interface GigabitEthernet0/1\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
+            " shutdown\n"
+            "interface GigabitEthernet0/2\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
             "interface GigabitEthernet0/3\n"
             " switchport mode access\n"
             " switchport access vlan 10\n"
+            " spanning-tree portfast\n"
+            "! --- SW2 ---\n"
+            "vlan 10\n"
+            "interface GigabitEthernet0/1\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
+            "interface GigabitEthernet0/2\n"
+            " switchport mode trunk\n"
+            " channel-group 1 mode on\n"
+            "interface GigabitEthernet0/3\n"
+            " switchport mode access\n"
+            " switchport access vlan 10\n"
+            " spanning-tree portfast\n"
         ),
     )
 
