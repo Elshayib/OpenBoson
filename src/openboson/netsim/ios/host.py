@@ -59,6 +59,8 @@ class HostShell:
         args = parts[1:]
 
         if cmd in {"ipconfig", "ifconfig"}:
+            if any(a.lower() in {"/renew", "renew"} for a in args):
+                return self._ipconfig_renew()
             return ShellResult(output=self._ipconfig(args))
         if cmd == "ping":
             return ShellResult(output=self._ping(args))
@@ -85,6 +87,7 @@ class HostShell:
         return (
             "  ipconfig                 Display IP configuration\n"
             "  ipconfig /all            Display full configuration\n"
+            "  ipconfig /renew          Renew DHCP lease from adjacent router\n"
             "  ip address <ip> <mask>   Set static address on primary NIC\n"
             "  ping <host>              ICMP echo\n"
             "  tracert <host>           Trace route\n"
@@ -118,10 +121,21 @@ class HostShell:
         if wide:
             lines.insert(5, "   Description . . . . . . . . . . . : OpenBoson Virtual NIC")
             lines.insert(6, "   Physical Address. . . . . . . . . : AA-BB-CC-00-01-10")
-            lines.append("   DHCP Enabled. . . . . . . . . . . : No")
+            dhcp_on = "Yes" if iface.dhcp_leased else "No"
+            lines.append(f"   DHCP Enabled. . . . . . . . . . . : {dhcp_on}")
         return "\n".join(lines)
 
+    def _ipconfig_renew(self) -> ShellResult:
+        if self.world is not None and hasattr(self.world, "offer_dhcp"):
+            ip = self.world.offer_dhcp(self.device.name)  # type: ignore[attr-defined]
+            if not ip:
+                return ShellResult(output="DHCP lookup failed: no server or empty pool.")
+            return ShellResult(output=f"Lease obtained: {ip}")
+        return ShellResult(output="DHCP lookup failed: no server or empty pool.")
+
     def _guess_gateway(self) -> str | None:
+        if self.device.default_gateway:
+            return self.device.default_gateway
         iface = self._primary()
         if not iface or not iface.ip or not iface.mask:
             return None
@@ -151,6 +165,7 @@ class HostShell:
         iface.ip, iface.mask = parsed
         iface.admin_up = True
         iface.protocol_up = True
+        iface.dhcp_leased = False
         self.device.default_gateway = self._guess_gateway()
         if self.world is not None and hasattr(self.world, "_refresh_link_state"):
             self.world._refresh_link_state()  # type: ignore[attr-defined]

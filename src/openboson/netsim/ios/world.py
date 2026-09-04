@@ -6,7 +6,13 @@ from dataclasses import dataclass, field
 from ipaddress import IPv4Address, IPv4Interface, IPv4Network
 from typing import Any
 
-from openboson.netsim.ios.device import DeviceRole, DeviceRuntime, InterfaceState, StaticRoute
+from openboson.netsim.ios.device import (
+    DeviceRole,
+    DeviceRuntime,
+    DhcpPool,
+    InterfaceState,
+    StaticRoute,
+)
 from openboson.netsim.ios.host import HostShell
 from openboson.netsim.ios.shell import OpenIOSShell
 from openboson.netsim.lab_schema import LabBank
@@ -153,6 +159,127 @@ class LabWorld:
             up = bool(ia.admin_up and ib.admin_up)
             ia.protocol_up = up
             ib.protocol_up = up
+
+    def offer_dhcp(self, pc_name: str) -> str | None:
+        """Assign the first free pool address from an L2-adjacent router."""
+        self._refresh_link_state()
+        pc = self.devices.get(pc_name)
+        if pc is None or pc.role != DeviceRole.PC:
+            return None
+        iface = self._primary_host_iface(pc)
+        if iface is None:
+            return None
+        for router_name, router in self.devices.items():
+            if router.role != DeviceRole.ROUTER:
+                continue
+            if not self._l2_adjacent_or_same(pc_name, router_name):
+                continue
+            leased = self._lease_from_router(router, pc, iface)
+            if leased:
+                return leased
+        return None
+
+    def _primary_host_iface(self, pc: DeviceRuntime) -> InterfaceState | None:
+        for iface in pc.interfaces.values():
+            if iface.connected_to:
+                return iface
+        return next(iter(pc.interfaces.values()), None)
+
+    def _lease_from_router(
+        self, router: DeviceRuntime, pc: DeviceRuntime, iface: InterfaceState
+    ) -> str | None:
+        for pool in router.dhcp_pools.values():
+            leased = self._lease_from_pool(router, pool, pc, iface)
+            if leased:
+                return leased
+        return None
+
+    def _lease_from_pool(
+        self,
+        router: DeviceRuntime,
+        pool: DhcpPool,
+        pc: DeviceRuntime,
+        iface: InterfaceState,
+    ) -> str | None:
+        if not pool.network or not pool.mask:
+            return None
+        try:
+            net = IPv4Network(f"{pool.network}/{pool.mask}", strict=False)
+        except ValueError:
+            return None
+        if not self._router_serves_network(router, net):
+            return None
+        used = self._used_ipv4s(except_device=pc.name)
+        if pool.default_router:
+            used.add(pool.default_router)
+        existing = router.dhcp_leases.get(pc.name)
+        if existing and existing not in used:
+            try:
+                if IPv4Address(existing) in net and not self._ip_in_excluded(
+                    IPv4Address(existing), pool.excluded
+                ):
+                    self._bind_dhcp_lease(pc, iface, pool, router, existing)
+                    return existing
+            except ValueError:
+                pass
+        for host in net.hosts():
+            ip_str = str(host)
+            if ip_str in used or self._ip_in_excluded(host, pool.excluded):
+                continue
+            self._bind_dhcp_lease(pc, iface, pool, router, ip_str)
+            return ip_str
+        return None
+
+    def _bind_dhcp_lease(
+        self,
+        pc: DeviceRuntime,
+        iface: InterfaceState,
+        pool: DhcpPool,
+        router: DeviceRuntime,
+        ip_str: str,
+    ) -> None:
+        iface.ip = ip_str
+        iface.mask = pool.mask
+        iface.admin_up = True
+        iface.dhcp_leased = True
+        pc.default_gateway = pool.default_router
+        router.dhcp_leases[pc.name] = ip_str
+        self._refresh_link_state()
+
+    def _router_serves_network(self, router: DeviceRuntime, net: IPv4Network) -> bool:
+        for iface in router.interfaces.values():
+            if not (iface.admin_up and iface.ip and iface.mask):
+                continue
+            try:
+                if IPv4Interface(f"{iface.ip}/{iface.mask}").network == net:
+                    return True
+            except ValueError:
+                continue
+        return False
+
+    def _used_ipv4s(self, *, except_device: str) -> set[str]:
+        used: set[str] = set()
+        for name, dev in self.devices.items():
+            if name != except_device:
+                for iface in dev.interfaces.values():
+                    if iface.ip:
+                        used.add(iface.ip)
+            for client, ip in dev.dhcp_leases.items():
+                if client != except_device and ip:
+                    used.add(ip)
+        return used
+
+    def _ip_in_excluded(self, ip: IPv4Address, ranges: list[tuple[str, str]]) -> bool:
+        for start_s, end_s in ranges:
+            try:
+                start, end = IPv4Address(start_s), IPv4Address(end_s)
+            except ValueError:
+                continue
+            if start > end:
+                start, end = end, start
+            if start <= ip <= end:
+                return True
+        return False
 
     def ping(self, from_device: str, target_ip: str) -> str:
         self._refresh_link_state()
