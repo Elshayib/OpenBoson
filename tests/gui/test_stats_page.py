@@ -65,3 +65,6 @@ def test_stats_page_after_exam(fresh_db, qtbot):
     labels = [lbl.text() for lbl in page.findChildren(QLabel)]
     assert any("Exams Taken" in t for t in labels)
     assert any(t.strip() == "1" for t in labels)
+    btn = page._suggest_btn
+    assert btn is not None
+    assert btn.text().startswith("Continue:")

@@ -149,6 +149,12 @@ class MainWindow(QMainWindow):
         self._dashboard_page.set_on_practice_missed(self.navigate_practice_missed)
         self._dashboard_page.set_on_continue(self.navigate_continue_activity)
         self._dashboard_page.set_on_resume_exam(self.resume_paused_exam)
+        self._dashboard_page.set_on_suggestion(self.apply_suggestion)
+        self._dashboard_page.set_on_start_ccna(self.start_ccna_exam)
+        self._dashboard_page.set_on_start_gold_lab(self.start_intro_gold_lab)
+
+        self._stats_page = self._static_pages["Stats"]
+        self._stats_page.set_on_suggestion(self.apply_suggestion)
 
         # Transient pages
         self._practice_q_page = PracticeQuestionPage()
@@ -355,6 +361,65 @@ class MainWindow(QMainWindow):
             return
         domain = weak[0]
         self.navigate_practice(cert=domain.cert_tag or cert, topic_code=domain.domain_prefix)
+
+    def start_lab_by_id(self, lab_id: str) -> None:
+        from openboson.gui import engine as gui_engine
+
+        lab = gui_engine.get_lab_by_id(lab_id)
+        if lab is None:
+            return
+        self.start_lab_from_list(lab)
+
+    def apply_suggestion(self, suggestion) -> None:
+        if suggestion is None:
+            return
+        if getattr(suggestion, "kind", None) == "lab" and getattr(suggestion, "lab_id", None):
+            self.start_lab_by_id(suggestion.lab_id)
+            return
+        topic = getattr(suggestion, "domain_prefix", None) or getattr(
+            suggestion, "topic_code", None
+        )
+        self.navigate_practice(cert=getattr(suggestion, "cert_tag", None), topic_code=topic)
+
+    def start_suggested_lab(self) -> None:
+        from openboson.gui import engine as gui_engine
+
+        suggestion = gui_engine.suggest_next()
+        if suggestion is None or suggestion.kind != "lab" or not suggestion.lab_id:
+            return
+        self.start_lab_by_id(suggestion.lab_id)
+
+    def start_ccna_exam(self) -> None:
+        from openboson.exsim.blueprint import InsufficientPoolError
+        from openboson.gui import engine as gui_engine
+
+        if not self._confirm_replace_active_exam():
+            return
+        try:
+            session = gui_engine.start_blueprint_exam("ccna-200-301")
+        except InsufficientPoolError as exc:
+            QMessageBox.critical(self, "Cannot start exam", str(exc))
+            return
+        except Exception as exc:
+            QMessageBox.critical(self, "Cannot start exam", str(exc))
+            return
+        self._session_page.start_session(session)
+        self._enter_exam()
+
+    def start_intro_gold_lab(self) -> None:
+        from openboson.gui import engine as gui_engine
+
+        lab = gui_engine.get_lab_by_id("ccna_branch_office_access")
+        if lab is None:
+            gold = [
+                item for item in gui_engine.load_available_labs() if getattr(item, "is_gold", False)
+            ]
+            gold.sort(key=lambda item: item.lab_id)
+            lab = gold[0] if gold else None
+        if lab is None:
+            self.select_page("Labs")
+            return
+        self.start_lab_from_list(lab)
 
     def navigate_practice_missed(self, limit: int = 20) -> None:
         from openboson import stats_service as svc

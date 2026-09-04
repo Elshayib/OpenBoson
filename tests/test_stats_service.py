@@ -163,6 +163,77 @@ def test_weak_domains_empty_without_history(fake_engine):
     assert stats_service.latest_activity() is None
 
 
+def _seed_failed_exam(exam_bank, *, only_prefix: str | None = None) -> None:
+    """Persist one exam; optionally fail only one domain and pass the rest."""
+    sess = ExamSession.create(exam_bank, mode=ExamMode.EXAM, shuffle=False)
+    head = only_prefix.rstrip(".") if only_prefix else None
+    for q in sess.questions:
+        fail = head is None or q.topic_code == head or q.topic_code.startswith(f"{head}.")
+        payload = _wrong_answer(q) if fail else _correct_answer(q)
+        sess.submit_answer(q.id, payload, grade_now=True)
+    stats_service.save_exam_result(sess, score_exam(sess))
+
+
+def test_suggest_next_none_without_history(fake_engine):
+    assert stats_service.suggest_next() is None
+    assert stats_service.suggest_next(cert="ccna", labs=[]) is None
+
+
+def test_suggest_next_prefers_weak_domain_practice_when_no_labs_match(fake_engine, exam_bank):
+    _seed_failed_exam(exam_bank)
+    suggestion = stats_service.suggest_next(cert="ccna", labs=[])
+    assert suggestion is not None
+    assert suggestion.kind == "practice"
+    assert suggestion.topic_code
+    assert suggestion.domain_prefix
+    assert suggestion.lab_id is None
+    assert "Practice domain" in suggestion.title
+
+
+def test_suggest_next_can_return_matching_gold_lab(fake_engine, exam_bank, lab):
+    assert lab.topic_code.startswith("2")
+    _seed_failed_exam(exam_bank, only_prefix="2")
+    suggestion = stats_service.suggest_next(cert="ccna", labs=[lab])
+    assert suggestion is not None
+    assert suggestion.kind == "lab"
+    assert suggestion.lab_id == lab.lab_id
+    assert suggestion.topic_code == lab.topic_code
+    assert suggestion.domain_prefix.startswith("2")
+
+
+def test_suggest_next_uses_bundled_gold_lab_when_catalog_omitted(fake_engine, exam_bank):
+    _seed_failed_exam(exam_bank, only_prefix="2")
+    suggestion = stats_service.suggest_next(cert="ccna")
+    assert suggestion is not None
+    assert suggestion.kind == "lab"
+    assert suggestion.lab_id
+    assert str(suggestion.topic_code).split(".")[0] == "2"
+
+
+def test_suggest_next_skips_non_gold_labs(fake_engine, exam_bank, lab):
+    from types import SimpleNamespace
+
+    from openboson.netsim.lab_schema import LabTier
+
+    _seed_failed_exam(exam_bank, only_prefix="2")
+    drill = SimpleNamespace(
+        lab_id="drill-vlan",
+        title="VLAN drill",
+        topic_code="2.1",
+        lab_tier=LabTier.DRILL,
+        cert_tags=["ccna"],
+    )
+    suggestion = stats_service.suggest_next(cert="ccna", labs=[drill])
+    assert suggestion is not None
+    assert suggestion.kind == "practice"
+    assert suggestion.lab_id is None
+
+    gold_and_drill = stats_service.suggest_next(cert="ccna", labs=[drill, lab])
+    assert gold_and_drill is not None
+    assert gold_and_drill.kind == "lab"
+    assert gold_and_drill.lab_id == lab.lab_id
+
+
 def test_domain_accuracy_by_version_and_trend(fake_engine, exam_bank):
     sess = ExamSession.create(exam_bank, mode=ExamMode.PRACTICE, shuffle=False)
     for q in sess.questions:

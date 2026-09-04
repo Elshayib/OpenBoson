@@ -160,6 +160,18 @@ class DomainAggregate:
 
 
 @dataclass
+class StudySuggestion:
+    """One-click next action from the weakest domain (practice or gold lab)."""
+
+    kind: str  # "practice" | "lab"
+    title: str
+    domain_prefix: str
+    topic_code: str | None = None
+    lab_id: str | None = None
+    cert_tag: str | None = None
+
+
+@dataclass
 class ScorePoint:
     """One exam attempt in a score trend series."""
 
@@ -313,6 +325,74 @@ def weak_domains(cert: str | None = None, limit: int = 5) -> list[DomainAggregat
     domains = [d for d in domain_totals(cert=cert) if d.total_questions > 0]
     domains.sort(key=lambda d: (d.percent, -d.total_questions, d.domain_prefix))
     return domains[: max(0, limit)]
+
+
+def _is_gold_lab(lab: Any) -> bool:
+    from openboson.netsim.lab_schema import LabTier
+
+    if getattr(lab, "is_gold", False):
+        return True
+    tier = getattr(lab, "lab_tier", None)
+    if tier is None:
+        return False
+    if tier == LabTier.GOLD:
+        return True
+    value = str(getattr(tier, "value", tier)).strip().lower()
+    return value == LabTier.GOLD.value
+
+
+def _lab_matches_cert(lab: Any, cert: str | None) -> bool:
+    if not cert:
+        return True
+    tags = [str(t).lower() for t in (getattr(lab, "cert_tags", None) or [])]
+    want = cert.strip().lower()
+    return want in tags or (want == "ccna" and "ccna" in tags)
+
+
+def _lab_domain_head(lab: Any) -> str:
+    code = str(getattr(lab, "topic_code", "") or "")
+    return code.split(".", 1)[0].strip()
+
+
+def suggest_next(
+    cert: str | None = None,
+    *,
+    labs: list | None = None,
+) -> StudySuggestion | None:
+    """Return practice on the weakest domain, or a matching gold lab if one exists."""
+    weak = weak_domains(cert=cert, limit=1)
+    if not weak:
+        return None
+    domain = weak[0]
+    prefix = domain.domain_prefix.rstrip(".")
+    catalog = labs
+    if catalog is None:
+        from openboson.registry import get_registry
+
+        catalog = get_registry().labs()
+    matches = [
+        lab
+        for lab in catalog
+        if _lab_matches_cert(lab, cert) and _lab_domain_head(lab) == prefix and _is_gold_lab(lab)
+    ]
+    if matches:
+        lab = sorted(matches, key=lambda item: str(getattr(item, "lab_id", "")))[0]
+        return StudySuggestion(
+            kind="lab",
+            title=f"Lab: {lab.title}",
+            domain_prefix=domain.domain_prefix,
+            topic_code=str(lab.topic_code),
+            lab_id=lab.lab_id,
+            cert_tag=domain.cert_tag or cert,
+        )
+    return StudySuggestion(
+        kind="practice",
+        title=f"Practice domain {prefix}",
+        domain_prefix=domain.domain_prefix,
+        topic_code=prefix,
+        lab_id=None,
+        cert_tag=domain.cert_tag or cert,
+    )
 
 
 def domain_accuracy_by_version(
