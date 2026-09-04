@@ -13,7 +13,7 @@ Each shipped lab must map to parser/state/running-config/show behavior that Open
 | Static routing | `ip route`, `ip default-gateway` | static route labs |
 | OSPFv2 | `router ospf`, `network … area`, `router-id` | OSPF labs |
 | ACL | `access-list`, `ip access-group … in/out` | ACL labs (ICMP path filtering) |
-| NAT | `ip nat inside/outside`, overload | NAT labs |
+| NAT | `ip nat inside/outside`, `ip nat inside source list … overload` | PAT required for inside PC → outside peer ping (ACL list not evaluated) |
 | DHCP | `ip dhcp pool`, `network`, `default-router`, excluded-address | DHCP labs |
 | VTY/SSH | `line vty`, `transport input ssh`, `banner motd` | SSH / banner labs |
 | IPv6 | `ipv6 unicast-routing`, `ipv6 address` | IPv6 lab |
@@ -25,6 +25,7 @@ Each shipped lab must map to parser/state/running-config/show behavior that Open
 - Prefer **per-device** `grading_rules.device` so correct commands on the wrong device fail.
 - Use `verify.ping` when reachability must be proven beyond config text (including `should_succeed: false` for isolation / ACL deny).
 - Applied numbered ACLs (`access-list` + `ip access-group`) can deny ICMP on the path (simplified first-match; implicit deny).
+- Inside-to-outside ICMP requires PAT overload on the border router (`ip nat inside` facing the source and `ip nat outside` facing the dest owner). Unmarked inter-VLAN PC routing does not require PAT. The NAT ACL is not evaluated in this model.
 - Lab `base_config` is applied in privileged config mode (`enable` / `configure terminal`) so interface `no shutdown` and addressing stick.
 - Adjacent OSPF speakers with matching `network … area` statements install simplified `O` routes used by ping/traceroute.
 - `Reset Lab` restores topology + `base_config` and clears grades.
