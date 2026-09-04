@@ -1,9 +1,10 @@
 # Project status (handoff)
 
-Last synced: **2026-09-04** · Current release: **[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)**
+Last synced: **2026-09-04** · Current release: **[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)** · Working branch: **`feat/beat-boson`**
 
 **Active program:** Beat Boson — [`superpowers/plans/2026-09-04-beat-boson.md`](superpowers/plans/2026-09-04-beat-boson.md).
-Honest NAT is shipped. Next: teaching UI, explanation quality, study loop, DHCP path, presence; then STP/EC and gold tickets.
+
+Shipped on this branch (Boson-reviewer loops): teaching UI, study loop, first-run + QSS, honest DHCP/PortFast/EtherChannel ping, gold labs fail-before/pass-after, OpenIOS-vs-IOS doc, explanation CI bans + flagship items.
 
 Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming work. Keep local Cursor plans and private notes out of git.
 
