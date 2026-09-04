@@ -1,4 +1,4 @@
-"""Exam review page — correct vs user answer (no explanations)."""
+"""Exam review page — correct vs user answer plus teaching explanations."""
 
 from __future__ import annotations
 
@@ -15,10 +15,11 @@ from PySide6.QtWidgets import (
 )
 
 from openboson.exsim.session import ExamSession
+from openboson.gui.widgets.teaching_feedback import TeachingFeedback
 
 
 class ExamReviewPage(QWidget):
-    """Lists questions with correct / user answers only."""
+    """Lists questions with answers, then explanation + per-choice rationale."""
 
     title = "Review"
 
@@ -125,6 +126,7 @@ class ExamReviewPage(QWidget):
         if ua is not None and ua.answer is not None:
             user_text = self._summarize_answer(ua.answer)
         v.addWidget(QLabel(f"Your answer: {user_text}"))
+        v.addWidget(TeachingFeedback(q, is_correct=is_correct))
         return card
 
     @staticmethod

@@ -1,4 +1,4 @@
-"""Single-question practice page with Check (correct / incorrect only)."""
+"""Single-question practice page with Check, then explanation + rationales."""
 
 from __future__ import annotations
 
@@ -18,10 +18,11 @@ from openboson import stats_service
 from openboson.bank_schema import Question
 from openboson.exsim.scoring import grade_answer
 from openboson.gui.widgets.question_card import QuestionCard
+from openboson.gui.widgets.teaching_feedback import TeachingFeedback
 
 
 class PracticeQuestionPage(QWidget):
-    """Answer one question and Check for correct / incorrect only."""
+    """Answer one question; Check shows correct/incorrect plus teaching."""
 
     title = "Practice Question"
 
@@ -158,7 +159,7 @@ class PracticeQuestionPage(QWidget):
         panel.setObjectName("Card")
         v = QVBoxLayout(panel)
         v.setContentsMargins(18, 16, 18, 16)
-        v.setSpacing(0)
+        v.setSpacing(8)
 
         banner = QLabel("Correct" if is_correct else "Incorrect")
         banner.setProperty("role", "h2")
@@ -166,4 +167,6 @@ class PracticeQuestionPage(QWidget):
             "color: #3fb950;" if is_correct else "color: #f85149; font-weight: 700;"
         )
         v.addWidget(banner)
+        if self._question is not None:
+            v.addWidget(TeachingFeedback(self._question, is_correct=is_correct))
         self._feedback_holder.addWidget(panel)
