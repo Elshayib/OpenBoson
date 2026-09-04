@@ -237,6 +237,8 @@ _TEMPLATE_PHRASES = (
     "is the matching value or command",
     "the stem requires the operational or protocol order",
     "the correct sequence for this item is",
+    "is required here",
+    "implemented by verifying with show/ping",
 )
 
 
