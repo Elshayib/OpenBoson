@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 SETTINGS_SCHEMA_VERSION = 1
 UpdateChannel = Literal["stable", "beta"]
 ThemeName = Literal["dark", "light"]
+PreferredCert = Literal["ccna", "ccnp"]
 
 
 @dataclass
@@ -29,6 +30,8 @@ class AppSettings:
     update_channel: UpdateChannel = "stable"
     last_update_check: str | None = None
     skipped_version: str | None = None
+    onboarding_complete: bool = False
+    preferred_cert: PreferredCert | None = None
     schema_version: int = SETTINGS_SCHEMA_VERSION
 
 
@@ -49,12 +52,17 @@ def _coerce(raw: dict[str, Any]) -> AppSettings:
     channel = base.get("update_channel", "stable")
     if channel not in ("stable", "beta"):
         channel = "stable"
+    cert = base.get("preferred_cert")
+    if cert not in ("ccna", "ccnp"):
+        cert = None
     return AppSettings(
         theme=cast(ThemeName, theme),
         check_updates_on_startup=bool(base.get("check_updates_on_startup", True)),
         update_channel=cast(UpdateChannel, channel),
         last_update_check=base.get("last_update_check"),
         skipped_version=base.get("skipped_version"),
+        onboarding_complete=bool(base.get("onboarding_complete", False)),
+        preferred_cert=cast(PreferredCert | None, cert),
         schema_version=int(base.get("schema_version") or SETTINGS_SCHEMA_VERSION),
     )
 

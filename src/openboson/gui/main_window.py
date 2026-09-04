@@ -10,9 +10,10 @@ from __future__ import annotations
 from pathlib import Path
 
 from PySide6.QtCore import Qt, QTimer
-from PySide6.QtGui import QCloseEvent, QIcon, QPixmap
+from PySide6.QtGui import QCloseEvent, QIcon, QPixmap, QShowEvent
 from PySide6.QtWidgets import (
     QButtonGroup,
+    QDialog,
     QHBoxLayout,
     QLabel,
     QMainWindow,
@@ -214,6 +215,7 @@ class MainWindow(QMainWindow):
         self._update_thread = None
         self._update_worker = None
         self._startup_update_pending = None
+        self._first_run_scheduled = False
         # Defer startup update check until the window is shown and interactive.
         QTimer.singleShot(750, self._maybe_startup_update_check)
 
@@ -274,6 +276,31 @@ class MainWindow(QMainWindow):
 
     def _on_theme_changed(self, theme: str) -> None:
         self.apply_theme(theme)
+
+    def showEvent(self, event: QShowEvent) -> None:  # noqa: N802 — Qt override
+        super().showEvent(event)
+        if self._first_run_scheduled:
+            return
+        self._first_run_scheduled = True
+        QTimer.singleShot(0, self._maybe_show_first_run)
+
+    def _maybe_show_first_run(self) -> None:
+        from openboson.gui.widgets.first_run import (
+            FirstRunDialog,
+            persist_first_run_choice,
+            should_prompt_first_run,
+        )
+
+        if not should_prompt_first_run():
+            return
+        dlg = FirstRunDialog(self)
+        if dlg.exec() != QDialog.DialogCode.Accepted:
+            return
+        cert = dlg.selected_cert()
+        if cert is None:
+            return
+        persist_first_run_choice(cert)
+        self.navigate_practice(cert=cert)
 
     def _on_nav_clicked(self, button: QPushButton) -> None:
         if self._exam_active:
@@ -613,8 +640,13 @@ class MainWindow(QMainWindow):
         return False
 
     def _maybe_startup_update_check(self) -> None:
+        from openboson.gui.widgets.first_run import should_prompt_first_run
         from openboson.updater import should_run_startup_check
 
+        if should_prompt_first_run():
+            # Don't stack an update prompt on the cert picker.
+            QTimer.singleShot(2000, self._maybe_startup_update_check)
+            return
         if not should_run_startup_check():
             return
         if self.has_active_study_session():
