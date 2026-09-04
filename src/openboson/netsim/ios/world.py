@@ -682,8 +682,19 @@ class LabWorld:
                 continue
             ia = self.devices[a_dev].interfaces[a_if]
             ib = self.devices[b_dev].interfaces[b_if]
-            return bool(ia.admin_up and ib.admin_up and ia.protocol_up and ib.protocol_up)
+            if self._iface_pair_forwarding(ia, ib):
+                return True
         return False
+
+    def _iface_pair_forwarding(self, ia: InterfaceState, ib: InterfaceState) -> bool:
+        return bool(
+            ia.admin_up
+            and ib.admin_up
+            and ia.protocol_up
+            and ib.protocol_up
+            and ia.stp_forwarding
+            and ib.stp_forwarding
+        )
 
     def _routed(self, from_device: str, dst: IPv4Address) -> bool:
         return self._follow_routes(from_device, dst, include_ospf=True)

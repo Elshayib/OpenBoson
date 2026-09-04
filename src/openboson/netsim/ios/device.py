@@ -28,6 +28,10 @@ class InterfaceState:
     connected_to: str | None = None  # "SW1/GigabitEthernet0/1"
     nat_role: str | None = None  # "inside" | "outside"
     dhcp_leased: bool = False
+    portfast: bool = False
+    channel_group: int | None = None
+    # Routers/PCs stay forwarding. Switch access ports drop this until PortFast.
+    stp_forwarding: bool = True
     # Extra interface lines (STP, EtherChannel, IPv6, …) rendered under the iface.
     extra_lines: list[str] = field(default_factory=list)
 

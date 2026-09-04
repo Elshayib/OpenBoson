@@ -828,6 +828,8 @@ class OpenIOSShell:
             raise _CmdError("% Spanning-tree not supported on this platform.")
         if not args or not _abbrev_match("portfast", args[0]):
             raise _CmdError("% Incomplete command.")
+        iface.portfast = True
+        iface.stp_forwarding = True
         line_txt = "spanning-tree portfast"
         if line_txt not in iface.extra_lines:
             iface.extra_lines.append(line_txt)
@@ -885,10 +887,12 @@ class OpenIOSShell:
             mode = args[1].lower()
             if mode.startswith("trunk"):
                 iface.switchport_mode = "trunk"
+                iface.stp_forwarding = True
             elif mode.startswith("access"):
                 iface.switchport_mode = "access"
                 if iface.access_vlan is None:
                     iface.access_vlan = 1
+                self._apply_access_stp(iface)
             else:
                 raise _CmdError("% Invalid switchport mode.")
             return ""
@@ -903,12 +907,18 @@ class OpenIOSShell:
             iface.access_vlan = vid
             if vid not in self.device.vlans:
                 self.device.vlans[vid] = f"VLAN{vid:04d}"
+            self._apply_access_stp(iface)
             return ""
         if _abbrev_match("trunk", args[0]):
             # switchport trunk encapsulation dot1q
             iface.switchport_mode = "trunk"
+            iface.stp_forwarding = True
             return ""
         raise _CmdError("% Incomplete command.")
+
+    def _apply_access_stp(self, iface) -> None:
+        """Access ports stay STP-blocked until PortFast (trunks already forward)."""
+        iface.stp_forwarding = bool(iface.portfast)
 
     def _cmd_exit_if(self, args: list[str], line: str) -> str:
         self.mode = Mode.CONFIG
