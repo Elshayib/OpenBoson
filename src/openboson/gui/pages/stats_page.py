@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QComboBox,
@@ -10,6 +12,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QProgressBar,
+    QPushButton,
     QSizePolicy,
     QVBoxLayout,
     QWidget,
@@ -43,6 +46,12 @@ class StatsPage(QWidget):
         self._layout = self._scroll.content_layout
         self._cert_filter = "all"
         self._version_filter = "all"
+        self._on_suggestion: Callable[[object], None] | None = None
+        self._suggest_btn: QPushButton | None = None
+        self._current_suggestion = None
+
+    def set_on_suggestion(self, callback: Callable[[object], None]) -> None:
+        self._on_suggestion = callback
 
     def refresh(self) -> None:
         self._rebuild()
@@ -56,6 +65,7 @@ class StatsPage(QWidget):
 
         try:
             from openboson import stats_service as svc
+            from openboson.gui import engine as gui_engine
 
             ex = svc.exam_summary()
             lh = svc.lab_history(limit=10)
@@ -70,6 +80,7 @@ class StatsPage(QWidget):
             heat_cells = svc.domain_accuracy_by_version(cert=cert, exam_version=version)
             versions = svc.list_exam_versions(cert=cert)
             domain_series = svc.domain_trend(limit=8, cert=cert)
+            suggestion = gui_engine.suggest_next(cert=cert)
         except Exception as exc:
             err = QLabel(f"Could not load stats: {exc}")
             err.setProperty("role", "muted")
@@ -128,6 +139,38 @@ class StatsPage(QWidget):
             )
         )
         self._layout.addLayout(cards)
+
+        self._current_suggestion = suggestion
+        self._suggest_btn = None
+        if suggestion is not None:
+            card = QFrame()
+            card.setObjectName("Card")
+            cv = QVBoxLayout(card)
+            cv.setContentsMargins(12, 10, 12, 10)
+            cv.setSpacing(6)
+            heading = QLabel(f"Next: {suggestion.title}")
+            heading.setProperty("role", "h2")
+            heading.setWordWrap(True)
+            cv.addWidget(heading)
+            prefix = suggestion.domain_prefix.rstrip(".")
+            if suggestion.kind == "lab":
+                detail = f"Gold lab for weak domain {prefix}"
+            else:
+                detail = f"Practice questions in weak domain {prefix}"
+            sub = QLabel(detail)
+            sub.setProperty("role", "muted")
+            sub.setWordWrap(True)
+            cv.addWidget(sub)
+            btn = QPushButton(f"Continue: {suggestion.title}")
+            btn.setObjectName("Primary")
+            btn.setAccessibleName("suggestNextBtn")
+            if self._on_suggestion is not None:
+                btn.clicked.connect(lambda _checked=False, s=suggestion: self._on_suggestion(s))
+            else:
+                btn.setEnabled(False)
+            cv.addWidget(btn)
+            self._layout.addWidget(card)
+            self._suggest_btn = btn
 
         # --- Score trend chart ---
         self._layout.addWidget(self._section_label("Score Trend"))

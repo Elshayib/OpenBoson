@@ -335,6 +335,7 @@ __all__ = [
     "load_available_labs",
     "load_lab",
     "start_lab_session",
+    "suggest_next",
 ]
 
 
@@ -349,6 +350,13 @@ def get_lab_by_id(lab_id: str) -> LabBank | None:
         if lab.lab_id == lab_id:
             return lab
     return None
+
+
+def suggest_next(cert: str | None = None, *, labs: list | None = None):
+    """Facade: weakest-domain practice, or a matching gold lab."""
+    from openboson import stats_service as svc
+
+    return svc.suggest_next(cert=cert, labs=labs)
 
 
 def start_lab_session(lab: LabBank) -> LabSession:
