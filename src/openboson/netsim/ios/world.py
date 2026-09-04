@@ -452,7 +452,7 @@ class LabWorld:
     def _can_reach_via_router(self, router: str, original_src: str, dst: IPv4Address) -> bool:
         if self._nat_blocks_inside_to_outside(router, original_src, dst):
             return False
-        return self._can_reach(router, dst, depth=1)
+        return self._can_reach_simple(router, dst, depth=1) or self._routed(router, dst)
 
     def _nat_blocks_inside_to_outside(
         self, router: str, original_src: str, dst: IPv4Address

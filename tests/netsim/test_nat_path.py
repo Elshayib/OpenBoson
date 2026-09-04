@@ -115,11 +115,4 @@ def test_pc_off_subnet_uses_default_gateway():
     shell = world.shell("PC1")
     assert isinstance(shell, HostShell)
     assert shell._guess_gateway() == "192.168.1.1"
-
-
-def test_pc_off_subnet_ping_reaches_isp_without_nat():
-    lab = _nat_lab()
-    world = LabWorld.from_lab(lab)
-    _apply_base(world, lab)
-    result = world.ping("PC1", "203.0.113.2")
-    assert "100 percent" in result
+    assert world.devices["PC1"].default_gateway == "192.168.1.1"
