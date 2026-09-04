@@ -1,6 +1,9 @@
 # Project status (handoff)
 
-Last synced: **2026-08-06** · Current release: **[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)**
+Last synced: **2026-09-04** · Current release: **[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)**
+
+**Active program:** Beat Boson — [`superpowers/plans/2026-09-04-beat-boson.md`](superpowers/plans/2026-09-04-beat-boson.md).
+Honest NAT is shipped. Next: teaching UI, explanation quality, study loop, DHCP path, presence; then STP/EC and gold tickets.
 
 Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming work. Keep local Cursor plans and private notes out of git.
 
@@ -25,11 +28,14 @@ Use this file (plus `AGENTS.md` and `docs/deferred-releases.md`) when resuming w
 - Labs are **pre-made / bundled only**. No in-app lab creation and no pack-store product track.
 - OpenIOS fidelity is **simplified** vs real IOS (documented in [`openios-command-matrix.md`](openios-command-matrix.md)).
 
-## Next focus: Labs Quality (primary) + v0.5 pool floors (parallel)
+## Next focus: Beat Boson (teach + believe + coach + presence)
 
-1. **Primary:** expand/harden gold scenarios; deepen fidelity only where verify needs it (ACL shipped; STP/NAT packet effects still limited).
-2. **Parallel (thinner):** CCNA / ENCOR question-pool leaf coverage (`docs/content-authoring.md`) — do not outrank believable NetSim.
-3. Practice Check stays correct / incorrect only (no explanation UI).
+1. **Teach:** restore explanation UI; ban template rationales; flagship items.
+2. **Believe:** DHCP then PortFast/EtherChannel ping effects; rewrite those gold labs as tickets. NAT path already shipped.
+3. **Coach:** `suggest_next()` on Home/Stats (weak domain → practice or gold lab).
+4. **Presence:** QSS density + first-run. Do not fake Authenticode.
+
+Pool volume floors are met. Practice Check **does** show explanations (policy reversed 2026-09-04).
 
 Details: [`deferred-releases.md`](deferred-releases.md), [`lab-authoring.md`](lab-authoring.md), [`lab-catalog-audit.md`](lab-catalog-audit.md).
 

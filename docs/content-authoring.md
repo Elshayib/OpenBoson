@@ -18,11 +18,15 @@ python scripts/assemble_question_pools.py
 
 ## App behavior
 
-Practice Check and exam review show **correct / incorrect** (and answer keys on review).
-The GUI does **not** display question explanations or per-choice rationales.
+Practice Check and exam **review** show the question `explanation` and per-choice
+`rationale` when present (Boson study/review equivalent). Timed **exam mode**
+stays silent — no mid-exam teaching.
 
-`explanation` / `rationale` may exist in YAML as optional unused fields; prefer omitting
-new ones. Do not build product features that depend on them.
+Write real explanations. Ban template distractor copy such as “does not describe
+the intended use or behavior required by the stem.” CI in
+`tests/exsim/test_content_pools.py` rejects those phrases.
+
+Redacted score exports still omit explanations.
 
 ## Question requirements
 

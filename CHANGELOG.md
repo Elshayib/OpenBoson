@@ -2,15 +2,15 @@
 
 All notable changes to OpenBoson are documented in this file.
 
-## [Unreleased] — v0.5 topic coverage (in progress)
+## [Unreleased] — Beat Boson (in progress)
 
 ### Application
-- Practice Check shows correct / incorrect only (no explanation or rationale UI).
-- Exam review and score exports omit teaching explanations.
+- Practice Check and exam review show explanations and per-choice rationales.
+- Timed exam mode stays silent. Redacted score exports still omit teaching text.
 
 ### Content
 - Per-leaf coverage floors (≥12 CCNA / ≥15 ENCOR); pool volumes ≥636 / ≥405.
-- Authoring guide documents explanation fields as unused by the app.
+- Template distractor phrases banned; flagship CCNA explanations rewritten.
 
 ### Docs
 - Roadmap focused on topic coverage (no lab creation / pack-store track).

@@ -2,6 +2,12 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+**Status:** **DONE** (shipped on master). `tests/netsim/test_nat_path.py` and
+`LabWorld._nat_blocks_inside_to_outside` implement this. Do not re-run unless
+those tests regress.
+
+**Boson gate:** Inside-to-outside ICMP fails without PAT — NetSim-honest for this slice.
+
 **Goal:** An inside PC cannot ping an outside peer until PAT overload is configured; with inside/outside + overload, ping succeeds.
 
 **Architecture:** Give `InterfaceState` a `nat_role` and `DeviceRuntime` a structured `nat_overload`. Parse `ip nat …` in the shell into that state (running-config still renders the same lines). In `LabWorld._can_reach`, after ACL, require NAT when a packet leaves an inside interface toward an address owned on an outside interface’s subnet. PCs reach off-subnet destinations via their default gateway (`.1` convention already in `HostShell._guess_gateway`). Do not evaluate the NAT ACL contents in this slice.

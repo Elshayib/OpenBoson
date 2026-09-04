@@ -90,11 +90,11 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - Domain-sharded content pipeline; teaching-depth + per-leaf floors (v0.5); ≥50 labs
 
 
-**Next (Labs Quality primary; v0.5 pools parallel — see `docs/deferred-releases.md`):**
-- Gold multi-device scenarios (≥20) with behavioral verify; see `docs/lab-authoring.md`
-- Full CCNA / ENCOR leaf coverage (≥12 / ≥15); pool volume floors (thinner parallel track)
-- Practice Check remains correct / incorrect only (no explanation UI)
-- No in-app lab creation and no pack-store product track
+**Next (Beat Boson — see `docs/superpowers/plans/2026-09-04-beat-boson.md`):**
+- Teach: practice Check + exam review show explanations; exam mode silent; no template rationales
+- Believe: DHCP / PortFast / EtherChannel must change ping (NAT already does)
+- Coach: Home/Stats `suggest_next()` → practice or matching gold lab
+- Presence: premium QSS + first-run; no in-app lab designer / pack store
 
 **Later:**
 - Further OpenIOS fidelity where gold labs need it · ≥5% PBQ · v1.0 signed cross-platform

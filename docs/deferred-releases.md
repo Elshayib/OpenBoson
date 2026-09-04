@@ -1,8 +1,11 @@
 # Later releases (post v0.2.2)
 
-**Current:** v0.4.1 Lab console polish is shipped. **Next primary focus is Labs Quality**
-(multi-device scenarios + honest verify), with v0.5 question-pool floors as a **thinner parallel** track.
-See [`status.md`](status.md) and [`lab-authoring.md`](lab-authoring.md).
+**Current:** v0.4.1 Lab console polish is shipped. **Next program is Beat Boson**
+(teach + honest labs + study loop + presence). See
+[`superpowers/plans/2026-09-04-beat-boson.md`](superpowers/plans/2026-09-04-beat-boson.md)
+and [`superpowers/specs/2026-09-04-beat-boson-bar.md`](superpowers/specs/2026-09-04-beat-boson-bar.md).
+Labs Quality remains the NetSim honesty track inside that program. Pool **volume**
+floors are already met; explanation **quality** is not.
 
 Labs stay **pre-made only** (bundled demo labs). In-app lab creation / Network Designer
 and a pack-store product track are **out of scope**.
@@ -54,7 +57,8 @@ where behavioral verify would otherwise be fake. Goal: better than Boson on scen
 CCNA 200-301 v1.1 + ENCOR 350-401 v1.2 only (no ENARSI).
 
 - Full CCNA / ENCOR leaf coverage (≥12 / ≥15 per topic); pool floors ≥636 / ≥405
-- Practice Check: correct / incorrect only (no explanation essays in the app)
+- Practice Check + exam review: explanations and per-choice rationales (exam mode silent)
+- Template distractor phrases banned in CI; flagship CCNA items rewritten
 - Production polish + pytest / pytest-qt coverage
 - Authoring standard: [`content-authoring.md`](content-authoring.md)
 

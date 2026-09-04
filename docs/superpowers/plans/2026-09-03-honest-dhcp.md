@@ -2,6 +2,10 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. **Depends on:** `2026-09-03-honest-nat-path.md` merged or at least PC default-gateway forwarding.
 
+**Boson gate:** A candidate can fail a DHCP lab because the PC has no lease,
+then `ipconfig /renew` and ping — not because a `require:` string is missing.
+Iterate with a Boson-comparison reviewer until that is true.
+
 **Goal:** A PC with no address cannot ping; after `ip dhcp pool` + `ipconfig /renew` it gets an address from the pool and can ping the gateway.
 
 **Architecture:** Structured `DhcpPool` on `DeviceRuntime` parsed from `ip dhcp pool`, `network`, `default-router`, `ip dhcp excluded-address`. HostShell gains `ipconfig /renew` which asks the L2-adjacent router for a lease. `LabWorld.ping` already fails when the source has no IP (`_primary_ip` / connected subnets empty). Do not model DHCP relay or multiple pools per router in this slice.

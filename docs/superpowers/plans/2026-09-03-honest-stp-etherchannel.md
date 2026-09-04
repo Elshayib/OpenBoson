@@ -2,6 +2,10 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans. **Depends on:** NAT/DHCP tracks not required; can run after NAT. Do not simulate broadcast storms or PVST elections.
 
+**Boson gate:** PortFast and EtherChannel change forwarding used by ping.
+Commands stuffed into `extra_lines` only is a fail. Depends on DHCP merge
+(shared `device.py` / `world.py`).
+
 **Goal:** A PC on a switch access port cannot ping until PortFast is enabled. Two parallel switch links without a matching channel-group are independent; with the same `channel-group`, they are one logical link so ping survives shutting one member.
 
 **Architecture:** Typed flags on `InterfaceState`: `portfast: bool`, `channel_group: int | None`, `stp_forwarding: bool`. `LabWorld._l2_adjacent_or_same` / `_direct_link_up` consult forwarding state. Default: switch access ports facing PCs start `stp_forwarding=False` until `spanning-tree portfast`. Trunk and router-facing ports start forwarding (YAGNI). EtherChannel: `_direct_link_up` is true if **any** member of the same group is up, or if a non-bundled individual link is up.

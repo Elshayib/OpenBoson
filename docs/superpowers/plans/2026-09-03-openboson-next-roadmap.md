@@ -1,8 +1,17 @@
 # OpenBoson Next — Master Roadmap
 
-> **For agentic workers:** Execute **one child plan at a time**, in the order below. Do not start Task files from a later track until the previous track’s exit gate is green. REQUIRED SUB-SKILL for a child plan: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans. Steps use checkbox (`- [ ]`) syntax in the child plans.
+> **Superseded for orchestration:** use
+> [`2026-09-04-beat-boson.md`](2026-09-04-beat-boson.md) and the competitive bar
+> [`../specs/2026-09-04-beat-boson-bar.md`](../specs/2026-09-04-beat-boson-bar.md).
+> This file remains the engine-track detail (NAT/DHCP/STP models). Honest NAT is
+> **done**. Teaching UI, explanation quality, and premium presence were missing
+> here and are now first-class.
 
-**Goal:** Turn OpenBoson from a working local study app with quantity floors already met into a product whose labs fail for real network reasons, whose catalog reads like tickets, whose Stats page tells you what to do next, whose exams include graded sims, and whose install story a stranger can trust.
+> **For agentic workers:** Execute child plans per the beat-Boson master
+> (parallel worktrees for independent file ownership). After each aspect, a
+> Boson-comparison reviewer must fail closed. REQUIRED SUB-SKILL: subagent-driven-development.
+
+**Goal:** Turn OpenBoson from a working local study app with quantity floors already met into a product that **beats Boson ExSim-Max for a CCNA candidate**: labs fail for real network reasons, explanations teach, Home tells you what to do next, presence is not 2012 Qt, and the sim’s limits are documented.
 
 **Architecture:** Keep engine logic in `src/openboson/netsim` and `src/openboson/exsim` (no Qt). GUI talks only through `src/openboson/gui/engine.py`. Content stays YAML (`data/demo_labs/`, `content/questions/`). Deepen OpenIOS **only** where `verify.ping` / `verify.show` would otherwise be fake. Copy the ACL pattern already in `LabWorld._acl_blocks_icmp`.
 
@@ -17,7 +26,8 @@
 | Gold labs ≥20, total labs ≥25, ENCOR gold ≥3 | **Met** (22 gold, 3 drill, 1 scale, 3 ENCOR) |
 | CCNA ≥12/leaf and ≥636; ENCOR ≥15/leaf and ≥405 | **Met** (CI in `tests/exsim/test_content_pools.py`) |
 | ExSim v0.3 / NetSim v0.4 / console polish v0.4.1 | **Shipped** |
-| Practice Check explanations | **Out of scope** (correct/incorrect only) |
+| Honest NAT ping path | **Met** (`tests/netsim/test_nat_path.py`) |
+| Practice Check explanations | **In scope** — see `2026-09-04-teaching-explanations.md` (policy reversed) |
 | In-app lab designer / pack store | **Out of scope** |
 | ENARSI | **Out of scope** until a versioned map + ≥100 questions exist |
 
@@ -31,16 +41,20 @@ Current lie: `ip nat`, `ip dhcp pool`, `spanning-tree portfast`, and `channel-gr
 
 | # | File | Track | Exit gate |
 |---|------|--------|-----------|
-| 0 | this file | sequencing + docs | team agrees order |
-| 1 | `2026-09-03-honest-nat-path.md` | Honest NAT | PC on inside cannot ping ISP without PAT; can with PAT |
-| 2 | `2026-09-03-honest-dhcp.md` | Honest DHCP | PC with no address cannot ping; `ipconfig /renew` from pool then ping works |
-| 3 | `2026-09-03-honest-stp-etherchannel.md` | Honest L2 | PortFast required for first PC ping; EtherChannel members share one logical link |
-| 4 | `2026-09-03-gold-lab-tickets.md` | Catalog craft | Rewritten NAT/DHCP/STP/EC labs + 2 ENCOR golds pass `test_lab_quality` and live verify |
-| 5 | `2026-09-03-study-loop.md` | Product | Stats/home CTA: weak domain → practice **or** matching gold lab |
-| 6 | `2026-09-03-pbq-sim-items.md` | ExSim sims | ≥5% pool items graded via OpenIOS; blueprint samples them |
-| 7 | `2026-09-03-v1-platform.md` | Trust | OpenIOS-vs-IOS doc, typed-core expanded, first-run, Linux notes |
+| 0 | `2026-09-04-beat-boson.md` | sequencing + Boson bar | orchestrator follows bar |
+| 1 | `2026-09-03-honest-nat-path.md` | Honest NAT | **DONE** |
+| 2 | `2026-09-04-teaching-explanations.md` | Teach UI | Check + review show explanation; exam silent |
+| 3 | `2026-09-03-study-loop.md` | Coach | Stats/home CTA: weak domain → practice **or** matching gold lab |
+| 4 | `2026-09-03-honest-dhcp.md` | Honest DHCP | PC with no address cannot ping; `ipconfig /renew` from pool then ping works |
+| 5 | `2026-09-04-explanation-quality.md` | Teach content | template phrase banned; ≥24 flagship items |
+| 6 | `2026-09-04-premium-presence.md` | Presence | QSS + first-run |
+| 7 | `2026-09-03-honest-stp-etherchannel.md` | Honest L2 | PortFast required for first PC ping; EtherChannel members share one logical link |
+| 8 | `2026-09-03-gold-lab-tickets.md` | Catalog craft | Rewritten NAT/DHCP/STP/EC labs + 2 ENCOR golds pass `test_lab_quality` and live verify |
+| 9 | `2026-09-03-pbq-sim-items.md` | ExSim sims | ≥5% pool items graded via OpenIOS; blueprint samples them |
+| 10 | `2026-09-03-v1-platform.md` | Trust | OpenIOS-vs-IOS doc, typed-core expanded, Linux notes |
 
-Start **tomorrow** on plan 1. Do not skip to labs or GUI.
+Wave 1 (parallel): teaching, study-loop, DHCP, explanation quality, presence.
+Do not start STP until DHCP is merged (`device.py` / `world.py` / `shell.py`).
 
 ---
 

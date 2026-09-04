@@ -2,6 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. **Depends on:** gold labs having honest topic_codes (track 4 helps; can start after NAT if matching existing labs).
 
+**Boson gate:** Boson sells ExSim and NetSim separately. This loop is the
+combined-product win. A candidate with a weak domain 2.x can start a matching
+gold lab in one click. File ownership: `stats_service.py`, `gui/engine.py`,
+Dashboard, Stats, `main_window.py` navigation — not QSS, not practice Check.
+
 **Goal:** After a weak domain is known, Stats and Home offer one click to practice that domain **or** start a gold lab whose `topic_code` sits in that domain.
 
 **Architecture:** Pure function `suggest_next()` in `stats_service.py` returns a small dataclass. GUI `engine.py` wraps it and loads the lab. `MainWindow` already has `navigate_practice_weakest_domain`. Add `start_suggested_lab`. No new persistence tables.

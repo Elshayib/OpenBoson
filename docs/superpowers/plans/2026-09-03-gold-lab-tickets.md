@@ -2,6 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. **Depends on:** honest NAT, DHCP, and STP/EC tracks (plans 1–3). Do not add labs that pass on `require:` while ping would succeed without the feature.
 
+**Boson gate:** Labs read like tickets, not “configure VLAN 10 named USERS.”
+Must run **after** honest DHCP + STP/EC so verify is not fake.
+
 **Goal:** Rewrite the four feature labs as tickets (who cannot reach whom → fix → prove) and add two ENCOR gold labs that use live verify.
 
 **Architecture:** `scripts/build_gold_lab_catalog.py` remains the source of truth. YAML in `data/demo_labs/` must match. Tests apply live CLI (pattern in `tests/netsim/branch_office.py`) and `check_all_tasks()`, never `submit_task(expected_config)`. Gold gates stay in `tests/netsim/test_lab_quality.py`.
