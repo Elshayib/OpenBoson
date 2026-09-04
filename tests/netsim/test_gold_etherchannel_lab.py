@@ -5,9 +5,7 @@ from pathlib import Path
 from openboson.netsim.lab_loader import load_lab
 from openboson.netsim.session import LabSession, score_lab
 
-LAB = (
-    Path(__file__).resolve().parents[2] / "data" / "demo_labs" / "ccna_etherchannel_campus.yaml"
-)
+LAB = Path(__file__).resolve().parents[2] / "data" / "demo_labs" / "ccna_etherchannel_campus.yaml"
 
 
 def _feed(session: LabSession, device: str, *lines: str) -> None:

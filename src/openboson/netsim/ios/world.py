@@ -714,8 +714,7 @@ class LabWorld:
         if not pairs:
             return False
         both_switches = (
-            self.devices[a].role == DeviceRole.SWITCH
-            and self.devices[b].role == DeviceRole.SWITCH
+            self.devices[a].role == DeviceRole.SWITCH and self.devices[b].role == DeviceRole.SWITCH
         )
         if both_switches and len(pairs) > 1:
             # Simplified STP: only the lowest local interface name forwards.
