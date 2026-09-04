@@ -10,6 +10,7 @@ from enum import Enum
 from openboson.netsim.ios.device import (
     DeviceRole,
     DeviceRuntime,
+    NatOverload,
     StaticRoute,
     expand_interface_name,
     parse_ip_mask,
@@ -645,6 +646,18 @@ class OpenIOSShell:
             self.device.extra_global.append("ip " + " ".join(args))
             return ""
         if args[0].lower() == "nat":
+            joined = [a.lower() for a in args]
+            if (
+                len(args) >= 7
+                and joined[1] == "inside"
+                and joined[2] == "source"
+                and joined[3] == "list"
+                and joined[5] == "interface"
+            ):
+                outside = args[6]
+                resolved = self.device.resolve_if_name(outside) or outside
+                self.device.nat_overload = NatOverload(acl_id=args[4], outside_iface=resolved)
+                return ""
             self.device.extra_global.append("ip " + " ".join(args))
             return ""
         if args[0].lower() == "dhcp":
@@ -732,6 +745,12 @@ class OpenIOSShell:
                 x for x in iface.extra_lines if not x.lower().startswith("ip access-group ")
             ]
             iface.extra_lines.append(f"ip access-group {acl_id} {direction}")
+            return ""
+        if args[0].lower() == "nat":
+            iface = self._require_if()
+            if len(args) < 2 or args[1].lower() not in {"inside", "outside"}:
+                raise _CmdError("% Incomplete command.")
+            iface.nat_role = args[1].lower()
             return ""
         if not _abbrev_match("address", args[0]):
             raise _CmdError("% Incomplete command.")

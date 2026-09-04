@@ -197,6 +197,17 @@ class LabWorld:
             return "No device in this lab owns that destination address."
         if self._acl_blocks_icmp(from_device, dst):
             return "An access list on the path is denying this ICMP traffic."
+        gw_owner = None
+        if src.default_gateway:
+            try:
+                gw_owner = self._owner_of_ip(IPv4Address(src.default_gateway))
+            except ValueError:
+                gw_owner = None
+        if gw_owner and self._nat_blocks_inside_to_outside(gw_owner, from_device, dst):
+            return (
+                "Traffic from a private inside host toward an outside address "
+                "needs PAT on the border router."
+            )
         if (
             owner != from_device
             and not self._l2_adjacent_or_same(from_device, owner)
@@ -457,6 +468,36 @@ class LabWorld:
     def _nat_blocks_inside_to_outside(
         self, router: str, original_src: str, dst: IPv4Address
     ) -> bool:
+        """True when this forwarding hop needs PAT and does not have it."""
+        dev = self.devices[router]
+        owner = self._owner_of_ip(dst)
+        if owner is None:
+            return False
+        inside_ifaces = [i for i in dev.interfaces.values() if i.nat_role == "inside"]
+        outside_ifaces = [i for i in dev.interfaces.values() if i.nat_role == "outside"]
+        if not inside_ifaces and not outside_ifaces and dev.nat_overload is None:
+            src_ip = self._primary_ip(original_src)
+            if src_ip is None or not src_ip.is_private:
+                return False
+            if self._l2_adjacent_or_same(original_src, owner):
+                return False
+            return owner != router
+        src_on_inside = any(
+            self._iface_faces_device(router, i.name, original_src) for i in inside_ifaces
+        )
+        dst_on_outside = any(
+            self._iface_faces_device(router, i.name, owner) for i in outside_ifaces
+        )
+        if src_on_inside and dst_on_outside:
+            return dev.nat_overload is None
+        return False
+
+    def _iface_faces_device(self, router: str, ifname: str, peer: str) -> bool:
+        for a_dev, a_if, b_dev, b_if in self.links:
+            if a_dev == router and a_if == ifname and b_dev == peer:
+                return True
+            if b_dev == router and b_if == ifname and a_dev == peer:
+                return True
         return False
 
     def _connected_subnets(self, device: str) -> list[tuple[IPv4Network, str]]:

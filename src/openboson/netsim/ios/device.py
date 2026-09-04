@@ -26,6 +26,7 @@ class InterfaceState:
     switchport_mode: str | None = None  # access | trunk | None
     access_vlan: int | None = None
     connected_to: str | None = None  # "SW1/GigabitEthernet0/1"
+    nat_role: str | None = None  # "inside" | "outside"
     # Extra interface lines (STP, EtherChannel, IPv6, …) rendered under the iface.
     extra_lines: list[str] = field(default_factory=list)
 
@@ -66,6 +67,12 @@ class StaticRoute:
 
 
 @dataclass
+class NatOverload:
+    acl_id: str
+    outside_iface: str
+
+
+@dataclass
 class DeviceRuntime:
     """Mutable runtime state for one simulated network device."""
 
@@ -83,6 +90,7 @@ class DeviceRuntime:
     # Extra freeform config lines under global that we don't model deeply.
     extra_global: list[str] = field(default_factory=list)
     default_gateway: str | None = None
+    nat_overload: NatOverload | None = None
 
     def __post_init__(self) -> None:
         if not self.hostname:
@@ -134,6 +142,8 @@ class DeviceRuntime:
                 lines.append(f" description {iface.description}")
             if iface.ip and iface.mask:
                 lines.append(f" ip address {iface.ip} {iface.mask}")
+            if iface.nat_role:
+                lines.append(f" ip nat {iface.nat_role}")
             if iface.switchport_mode == "trunk":
                 lines.append(" switchport trunk encapsulation dot1q")
                 lines.append(" switchport mode trunk")
@@ -142,6 +152,9 @@ class DeviceRuntime:
                 if iface.access_vlan is not None:
                     lines.append(f" switchport access vlan {iface.access_vlan}")
             for extra in iface.extra_lines:
+                low = extra.strip().lower()
+                if iface.nat_role and low == f"ip nat {iface.nat_role}":
+                    continue
                 lines.append(f" {extra}" if not extra.startswith(" ") else extra)
             if iface.admin_up:
                 lines.append(" no shutdown")
@@ -150,7 +163,16 @@ class DeviceRuntime:
             lines.append("!")
         for r in self.static_routes:
             lines.append(f"ip route {r.network} {r.mask} {r.next_hop}")
+        nat_overload_line = None
+        if self.nat_overload:
+            nat_overload_line = (
+                f"ip nat inside source list {self.nat_overload.acl_id} "
+                f"interface {self.nat_overload.outside_iface} overload"
+            )
+            lines.append(nat_overload_line)
         for extra in self.extra_global:
+            if nat_overload_line and extra.lower() == nat_overload_line.lower():
+                continue
             lines.append(extra)
         lines.append("end")
         return "\n".join(lines)
