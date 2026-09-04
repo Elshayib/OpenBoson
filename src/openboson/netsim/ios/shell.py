@@ -807,6 +807,22 @@ class OpenIOSShell:
             iface.ip = None
             iface.mask = None
             return ""
+        if _abbrev_match("spanning-tree", args[0]):
+            iface = self._require_if()
+            if len(args) < 2 or not _abbrev_match("portfast", args[1]):
+                raise _CmdError("% Incomplete command.")
+            iface.portfast = False
+            iface.extra_lines = [
+                x for x in iface.extra_lines if x.strip().lower() != "spanning-tree portfast"
+            ]
+            if iface.switchport_mode == "access":
+                iface.stp_forwarding = False
+            return ""
+        if _abbrev_match("channel-group", args[0]):
+            iface = self._require_if()
+            iface.channel_group = None
+            iface.extra_lines = [x for x in iface.extra_lines if not x.startswith("channel-group ")]
+            return ""
         return ""
 
     def _cmd_shutdown(self, args: list[str], line: str) -> str:

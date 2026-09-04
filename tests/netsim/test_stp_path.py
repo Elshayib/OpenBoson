@@ -92,6 +92,13 @@ def test_pc_ping_fails_until_portfast():
     sw.feed("spanning-tree portfast")
     sw.feed("end")
     assert "100 percent" in world.ping("PC1", "10.10.10.20")
+    sw.feed("enable")
+    sw.feed("configure terminal")
+    sw.feed("interface GigabitEthernet0/1")
+    sw.feed("no spanning-tree portfast")
+    sw.feed("end")
+    assert world.devices["SW1"].interfaces["GigabitEthernet0/1"].portfast is False
+    assert "Success rate is 0 percent" in world.ping("PC1", "10.10.10.20")
 
 
 def _ec_lab() -> LabBank:
@@ -168,7 +175,27 @@ def _prep_access_and_portfast(world: LabWorld) -> None:
             sh.feed(line)
 
 
-def test_etherchannel_keeps_ping_when_one_member_is_shut():
+def _shut_forwarding_member(world: LabWorld) -> None:
+    """Shut the unbundled forwarding link (lowest local interface name)."""
+    sh = world.shell("SW1")
+    sh.feed("enable")
+    sh.feed("configure terminal")
+    sh.feed("interface GigabitEthernet0/1")
+    sh.feed("shutdown")
+    sh.feed("end")
+
+
+def test_unbundled_parallel_links_block_redundant_path():
+    lab = _ec_lab()
+    world = LabWorld.from_lab(lab)
+    _apply_pc_addrs(world, lab)
+    _prep_access_and_portfast(world)
+    assert "100 percent" in world.ping("PC1", "10.10.10.20")
+    _shut_forwarding_member(world)
+    assert "Success rate is 0 percent" in world.ping("PC1", "10.10.10.20")
+
+
+def test_etherchannel_survives_one_member_shutdown():
     lab = _ec_lab()
     world = LabWorld.from_lab(lab)
     _apply_pc_addrs(world, lab)
@@ -182,9 +209,14 @@ def test_etherchannel_keeps_ping_when_one_member_is_shut():
         sh.feed("interface GigabitEthernet0/2")
         sh.feed("channel-group 1 mode on")
         sh.feed("end")
-    world.shell("SW1").feed("enable")
-    world.shell("SW1").feed("configure terminal")
-    world.shell("SW1").feed("interface GigabitEthernet0/1")
-    world.shell("SW1").feed("shutdown")
-    world.shell("SW1").feed("end")
+        for ifname in ("GigabitEthernet0/1", "GigabitEthernet0/2"):
+            assert world.devices[sw].interfaces[ifname].channel_group == 1
+    _shut_forwarding_member(world)
     assert "100 percent" in world.ping("PC1", "10.10.10.20")
+    sh = world.shell("SW1")
+    sh.feed("enable")
+    sh.feed("configure terminal")
+    sh.feed("interface GigabitEthernet0/2")
+    sh.feed("no channel-group")
+    sh.feed("end")
+    assert world.devices["SW1"].interfaces["GigabitEthernet0/2"].channel_group is None

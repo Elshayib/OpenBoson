@@ -710,6 +710,25 @@ class LabWorld:
         return True
 
     def _direct_link_up(self, a: str, b: str) -> bool:
+        pairs = self._unbundled_pairs(a, b)
+        if not pairs:
+            return False
+        both_switches = (
+            self.devices[a].role == DeviceRole.SWITCH
+            and self.devices[b].role == DeviceRole.SWITCH
+        )
+        if both_switches and len(pairs) > 1:
+            # Simplified STP: only the lowest local interface name forwards.
+            _local_if, _peer_if, ia, ib = min(pairs, key=lambda p: p[0])
+            return self._iface_pair_forwarding(ia, ib)
+        return any(self._iface_pair_forwarding(ia, ib) for _a, _b, ia, ib in pairs)
+
+    def _unbundled_pairs(
+        self, a: str, b: str
+    ) -> list[tuple[str, str, InterfaceState, InterfaceState]]:
+        """Unbundled links between a and b as (local_if, peer_if, ia, ib)."""
+        local, _peer = (a, b) if a <= b else (b, a)
+        out: list[tuple[str, str, InterfaceState, InterfaceState]] = []
         for a_dev, a_if, b_dev, b_if in self.links:
             if {a_dev, b_dev} != {a, b}:
                 continue
@@ -717,9 +736,11 @@ class LabWorld:
             ib = self.devices[b_dev].interfaces[b_if]
             if ia.channel_group is not None and ia.channel_group == ib.channel_group:
                 continue
-            if self._iface_pair_forwarding(ia, ib):
-                return True
-        return False
+            if a_dev == local:
+                out.append((a_if, b_if, ia, ib))
+            else:
+                out.append((b_if, a_if, ib, ia))
+        return out
 
     def _channel_up(self, a: str, b: str) -> bool:
         """True when a matching channel-group has a forwarding member on each side."""
