@@ -23,17 +23,18 @@ questions:
   explanation: 'Security Group Tags.
 
 
-    **Only STP** is a mismatch: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects
-    a root and blocks redundant Layer 2 paths so Ethernet does not loop. The stem
-    is asking about **Group-based policy**.
+    **Group-based policy**: Security Group Tags.
 
 
-    **Only VTP** points at VTP, which is not how 5.4 (Wireless security features)
-    solves this stem. The keyed answer is **Group-based policy**.
+    **Only STP**: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects a root and blocks
+    redundant Layer 2 paths so Ethernet does not loop.
 
 
-    **Only CDP version** points at CDP version, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **Group-based policy**.'
+    **Only VTP**: VTP floods VLAN advertisements among switches using a revision number;
+    it does not route, NAT, or identify an overlay.
+
+
+    **Only CDP version**: CDP is Cisco’s L2 neighbor discovery (`show cdp neighbors`).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -60,16 +61,18 @@ questions:
   explanation: '802.1AE.
 
 
-    **Only L3 IPsec exclusive** points at L3 IPsec, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Hop-by-hop L2 encryption**.
+    **Hop-by-hop L2 encryption**: 802.1AE.
 
 
-    **Only TLS to websites** points at TLS to websites, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Hop-by-hop L2 encryption**.
+    **Only L3 IPsec exclusive**: IPsec (AH/ESP) encrypts/authenticates IP packets
+    for VPNs.
 
 
-    **Only WEP** points at WEP, which is not how 5.4 (Wireless security features)
-    solves this stem. The keyed answer is **Hop-by-hop L2 encryption**.'
+    **Only TLS to websites**: MACsec (802.1AE) is **hop-by-hop Layer-2** encryption
+    on Ethernet links, not HTTPS to a web server.
+
+
+    **Only WEP**: WEP is a broken RC4 WLAN cipher; WPA2/WPA3 replaced it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -96,17 +99,17 @@ questions:
   explanation: 'Control Plane Policing.
 
 
-    **Only data plane TCAM exclusive** points at data plane TCAM, which is not how
-    5.2 (Infrastructure security features) solves this stem. The keyed answer is **The
-    control plane CPU**.
+    **The control plane CPU**: Control Plane Policing.
 
 
-    **Only PoE** points at PoE, which is not how 5.2 (Infrastructure security features)
-    solves this stem. The keyed answer is **The control plane CPU**.
+    **Only data plane TCAM exclusive**: TCAM stores hardware ACL/QoS/FIB entries.
 
 
-    **Only fans** points at fans, which is not how 5.2 (Infrastructure security features)
-    solves this stem. The keyed answer is **The control plane CPU**.'
+    **Only PoE**: PoE delivers DC power on Ethernet (802.3af/at/bt).
+
+
+    **Only fans**: CoPP polices traffic **to the control-plane CPU**, not chassis
+    fans.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -133,16 +136,18 @@ questions:
   explanation: 'NGFW is part of security design components.
 
 
-    **Only VTP** points at VTP, which is not how 5.4 (Wireless security features)
-    solves this stem. The keyed answer is **Network security design**.
+    **Network security design**: NGFW is part of security design components.
 
 
-    **Only LACP** is a mismatch: LACP (802.3ad/802.1AX) negotiates EtherChannel (`channel-group
-    mode active|passive`). The stem is asking about **Network security design**.
+    **Only VTP**: VTP floods VLAN advertisements among switches using a revision number;
+    it does not route, NAT, or identify an overlay.
 
 
-    **Only MST instances** points at MST instances, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Network security design**.'
+    **Only LACP**: LACP (802.3ad/802.1AX) negotiates EtherChannel (`channel-group
+    mode active|passive`).
+
+
+    **Only MST instances**: MST (802.1s) maps VLANs onto a few STP instances.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -169,18 +174,19 @@ questions:
   explanation: 'AAA controls device access.
 
 
-    **Only routing metrics** points at routing metrics, which is not how 5.1 (Device
-    access control) solves this stem. The keyed answer is **Authentication and authorization
-    services**.
+    **Authentication and authorization services**: AAA controls device access.
 
 
-    **Only switching ASICs** points at switching ASICs, which is not how 5.1 (Device
-    access control) solves this stem. The keyed answer is **Authentication and authorization
-    services**.
+    **Only routing metrics**: AAA is identity and permission, not OSPF cost or EIGRP
+    delay.
 
 
-    **Only optics** points at optics, which is not how 5.1 (Device access control)
-    solves this stem. The keyed answer is **Authentication and authorization services**.'
+    **Only switching ASICs**: AAA runs on the control/management plane (RADIUS/TACACS+),
+    not in the forwarding ASIC as a substitute for identity.
+
+
+    **Only optics**: AAA authenticates users/devices. Optics are transceivers, not
+    an AAA service.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -207,16 +213,18 @@ questions:
   explanation: 'TrustSec env data.
 
 
-    **Only OSPF costs** points at OSPF costs, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **SGT mappings / policy**.
+    **SGT mappings / policy**: TrustSec env data.
 
 
-    **Only EIGRP K** points at EIGRP K, which is not how 5.4 (Wireless security features)
-    solves this stem. The keyed answer is **SGT mappings / policy**.
+    **Only OSPF costs**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).
 
 
-    **Only BGP MED** points at BGP MED, which is not how 5.4 (Wireless security features)
-    solves this stem. The keyed answer is **SGT mappings / policy**.'
+    **Only EIGRP K**: EIGRP is Cisco’s DUAL IGP (default AD 90 internal / 170 external).
+
+
+    **Only BGP MED**: MED is a BGP attribute to influence inbound traffic from a neighbor
+    AS.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -243,19 +251,19 @@ questions:
   explanation: 'Local lines/users are device access control.
 
 
-    **Only underlay BFD** points at underlay BFD, which is not how 5.1 (Device access
-    control) solves this stem. The keyed answer is **Device access (console/VTY/local
-    users)**.
+    **Device access (console/VTY/local users)**: Local lines/users are device access
+    control.
 
 
-    **Only VXLAN flooding** points at VXLAN flooding, which is not how 5.1 (Device
-    access control) solves this stem. The keyed answer is **Device access (console/VTY/local
-    users)**.
+    **Only underlay BFD**: BFD detects forwarding-path failures in milliseconds.
 
 
-    **Only NetFlow keys** points at NetFlow keys, which is not how 5.1 (Device access
-    control) solves this stem. The keyed answer is **Device access (console/VTY/local
-    users)**.'
+    **Only VXLAN flooding**: VXLAN encapsulates Ethernet in UDP 4789 with a 24-bit
+    VNI.
+
+
+    **Only NetFlow keys**: NetFlow exports traffic caches for accounting and anomaly
+    detection.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -282,19 +290,19 @@ questions:
   explanation: 'Infra ACLs harden device access.
 
 
-    **Only user web ACL unrelated** points at user web ACL unrelated, which is not
-    how 5.2 (Infrastructure security features) solves this stem. The keyed answer
-    is **ACLs protecting the device/control plane path**.
+    **ACLs protecting the device/control plane path**: Infra ACLs harden device access.
 
 
-    **Only NAT pool** points at NAT pool, which is not how 5.2 (Infrastructure security
-    features) solves this stem. The keyed answer is **ACLs protecting the device/control
-    plane path**.
+    **Only user web ACL unrelated**: An iACL/rACL protects **this router’s** management/control
+    traffic, not a random user web ACL on another box.
 
 
-    **Only PBR set exclusive** points at PBR set, which is not how 5.2 (Infrastructure
-    security features) solves this stem. The keyed answer is **ACLs protecting the
-    device/control plane path**.'
+    **Only NAT pool**: NAT/PAT rewrites IP addresses (and ports with overload) across
+    inside/outside.
+
+
+    **Only PBR set exclusive**: Infrastructure ACLs (iACLs) protect the **device/control
+    plane** (filter to the RP). PBR `set` changes forwarding of transit packets.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -321,18 +329,18 @@ questions:
   explanation: 'Endpoint controls complement network defenses.
 
 
-    **Only EtherChannel hashing** points at EtherChannel hashing, which is not how
-    5.4 (Wireless security features) solves this stem. The keyed answer is **Network
-    security design components**.
+    **Network security design components**: Endpoint controls complement network defenses.
 
 
-    **Only OSPF stub** points at OSPF stub, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **Network security design components**.
+    **Only EtherChannel hashing**: EtherChannel bundles physical links into one logical
+    interface; members must match speed, duplex, and mode.
 
 
-    **Only SPAN sessions** points at SPAN sessions, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Network security design
-    components**.'
+    **Only OSPF stub**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).
+
+
+    **Only SPAN sessions**: SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE destination.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -359,17 +367,19 @@ questions:
   explanation: 'APIs need strong authentication and authorization.
 
 
-    **Only STP diameter** points at STP diameter, which is not how 5.3 (REST API security)
-    solves this stem. The keyed answer is **AuthN/AuthZ, tokens, and least privilege**.
+    **AuthN/AuthZ, tokens, and least privilege**: APIs need strong authentication
+    and authorization.
 
 
-    **Only cable categories** points at cable categories, which is not how 5.3 (REST
-    API security) solves this stem. The keyed answer is **AuthN/AuthZ, tokens, and
-    least privilege**.
+    **Only STP diameter**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.
 
 
-    **Only PoE classes** points at PoE classes, which is not how 5.3 (REST API security)
-    solves this stem. The keyed answer is **AuthN/AuthZ, tokens, and least privilege**.'
+    **Only cable categories**: REST API security is tokens, TLS, and authZ scopes
+    — not Cat5e vs Cat6.
+
+
+    **Only PoE classes**: PoE delivers DC power on Ethernet (802.3af/at/bt).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -396,16 +406,18 @@ questions:
   explanation: 'SGT Exchange Protocol.
 
 
-    **Only MAC tables** points at MAC tables, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **IP-SGT bindings**.
+    **IP-SGT bindings**: SGT Exchange Protocol.
 
 
-    **Only LLDP alone** points at LLDP alone, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **IP-SGT bindings**.
+    **Only MAC tables**: SXP advertises **IP-to-SGT** bindings. The MAC table is CAM,
+    not TrustSec SXP.
 
 
-    **Only NTP** is a mismatch: NTP synchronizes clocks (UDP 123). Stratum is distance
-    from a reference clock. The stem is asking about **IP-SGT bindings**.'
+    **Only LLDP alone**: LLDP (802.1AB) is standards-based L2 neighbor discovery.
+
+
+    **Only NTP**: NTP synchronizes clocks (UDP 123). Stratum is distance from a reference
+    clock.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -432,18 +444,18 @@ questions:
   explanation: 'AuthN identifies; AuthZ permits actions.
 
 
-    **Only identical forever** points at identical, which is not how 5.1 (Device access
-    control) solves this stem. The keyed answer is **Identity proof vs permission
-    grant**.
+    **Identity proof vs permission grant**: AuthN identifies; AuthZ permits actions.
 
 
-    **Only syslog facilities** is a mismatch: Syslog exports device logs (UDP 514
-    by default) with severity 0–7. The stem is asking about **Identity proof vs permission
-    grant**.
+    **Only identical forever**: Authentication proves identity; authorization grants
+    permissions. They are different AAA steps, not “identical.”.
 
 
-    **Only DSCP EF** points at DSCP EF, which is not how 5.1 (Device access control)
-    solves this stem. The keyed answer is **Identity proof vs permission grant**.'
+    **Only syslog facilities**: Syslog exports device logs (UDP 514) with severity
+    0–7.
+
+
+    **Only DSCP EF**: DSCP is the 6-bit IP marking (EF=46 for voice).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -470,18 +482,18 @@ questions:
   explanation: 'Protect punt.
 
 
-    **Only increasing STP diameter** points at increasing STP diameter, which is not
-    how 5.2 (Infrastructure security features) solves this stem. The keyed answer
-    is **CoPP / hardware rate limiters**.
+    **CoPP / hardware rate limiters**: Protect punt.
 
 
-    **Only disabling CEF** points at disabling CEF, which is not how 5.2 (Infrastructure
-    security features) solves this stem. The keyed answer is **CoPP / hardware rate
-    limiters**.
+    **Only increasing STP diameter**: Spanning Tree elects a root bridge and blocks
+    redundant Ethernet paths so the LAN does not loop.
 
 
-    **Only clear arp** points at clear arp, which is not how 5.2 (Infrastructure security
-    features) solves this stem. The keyed answer is **CoPP / hardware rate limiters**.'
+    **Only disabling CEF**: CEF is IOS forwarding from the FIB, not process switching.
+
+
+    **Only clear arp**: ARP maps IPv4 addresses to MACs on the local Ethernet; IPv6
+    uses NDP.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -508,19 +520,19 @@ questions:
   explanation: 'Threat defense is a design component.
 
 
-    **Only single ACL deny any as sole design** points at single ACL deny any as sole
-    design, which is not how 5.4 (Wireless security features) solves this stem. The
-    keyed answer is **Layered controls against attacks**.
+    **Layered controls against attacks**: Threat defense is a design component.
 
 
-    **Only disabling logging** points at disabling logging, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Layered controls against
-    attacks**.
+    **Only single ACL deny any as sole design**: Defense-in-depth layers AAA, segmentation,
+    firewalls, and monitoring — not a single `deny any`.
 
 
-    **Only open management planes** points at open management planes, which is not
-    how 5.4 (Wireless security features) solves this stem. The keyed answer is **Layered
-    controls against attacks**.'
+    **Only disabling logging**: Defense-in-depth keeps logging, AAA, and segmentation
+    **on**. Disabling logs removes evidence.
+
+
+    **Only open management planes**: Threat defense **closes** and authenticates the
+    management plane (SSH, AAA, CoPP).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -547,17 +559,18 @@ questions:
   explanation: 'Command authz.
 
 
-    **Only authenticate without authz** points at authenticate without authz, which
-    is not how 5.1 (Device access control) solves this stem. The keyed answer is **Permit/deny
-    per command**.
+    **Permit/deny per command**: Command authz.
 
 
-    **Only encrypt STP** points at encrypt STP, which is not how 5.1 (Device access
-    control) solves this stem. The keyed answer is **Permit/deny per command**.
+    **Only authenticate without authz**: TACACS+ can authorize **each IOS command**.
+    Auth-without-authz would log you in and then allow everything.
 
 
-    **Only mark DSCP** points at mark DSCP, which is not how 5.1 (Device access control)
-    solves this stem. The keyed answer is **Permit/deny per command**.'
+    **Only encrypt STP**: Spanning Tree elects a root bridge and blocks redundant
+    Ethernet paths so the LAN does not loop.
+
+
+    **Only mark DSCP**: DSCP is the 6-bit IP marking (EF=46 for voice).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -584,19 +597,19 @@ questions:
   explanation: 'Security group ACLs.
 
 
-    **Only VTY passwords** points at VTY passwords, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Downloadable group
-    policy on data plane**.
+    **Downloadable group policy on data plane**: Security group ACLs.
 
 
-    **Only enable secret** points at enable secret, which is not how 5.4 (Wireless
-    security features) solves this stem. The keyed answer is **Downloadable group
-    policy on data plane**.
+    **Only VTY passwords**: A line password authenticates CLI. An **SGACL** enforces
+    TrustSec data-plane policy by SGT.
 
 
-    **Only banner motd** points at banner motd, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **Downloadable group policy on
-    data plane**.'
+    **Only enable secret**: enable secret protects privileged EXEC. SGACL is TrustSec
+    **data-plane** policy.
+
+
+    **Only banner motd**: A MOTD is a legal banner. SGACLs enforce SGT-based data-plane
+    permits/denies.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -623,20 +636,20 @@ questions:
   explanation: 'REST API security includes secret handling.
 
 
-    **Committed to public repos freely** is a different protocol, command, or value
-    than **Protected, rotated, and least-privileged**. For 5.3 (REST API security),
-    the stem is solved by **Protected, rotated, and least-privileged**, not by Committed
-    to public repos freely.
+    **Protected, rotated, and least-privileged**: REST API security includes secret
+    handling.
 
 
-    **Shared in banners** is a different protocol, command, or value than **Protected,
-    rotated, and least-privileged**. For 5.3 (REST API security), the stem is solved
-    by **Protected, rotated, and least-privileged**, not by Shared in banners.
+    **Committed to public repos freely**: API keys are secrets. They belong in a vault
+    or environment, not a public git repo.
 
 
-    **Used as OSPF passwords only** points at Used as OSPF passwords, which is not
-    how 5.3 (REST API security) solves this stem. The keyed answer is **Protected,
-    rotated, and least-privileged**.'
+    **Shared in banners**: Banners are shown pre-login. API keys in a banner would
+    leak credentials.
+
+
+    **Used as OSPF passwords only**: OSPF is a link-state IGP (RID, areas, LSAs, cost,
+    default AD 110, multicast 224.0.0.5/6).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -663,17 +676,20 @@ questions:
   explanation: 'Infrastructure ACL tooling includes extended ACLs.
 
 
-    **Only source IP like standard always** points at source IP like standard, which
-    is not how 5.2 (Infrastructure security features) solves this stem. The keyed
-    answer is **L3/L4 fields (src/dst/ports/protocol)**.
+    **L3/L4 fields (src/dst/ports/protocol)**: Infrastructure ACL tooling includes
+    extended ACLs.
 
 
-    **Only MAC OUI exclusive** points at MAC OUI, which is not how 5.2 (Infrastructure
-    security features) solves this stem. The keyed answer is **L3/L4 fields (src/dst/ports/protocol)**.
+    **Only source IP like standard always**: Extended ACLs match protocol, src **and
+    dst** IP, and L4 ports — not source IP only (that is a standard ACL).
 
 
-    **Only STP roles** points at STP roles, which is not how 5.2 (Infrastructure security
-    features) solves this stem. The keyed answer is **L3/L4 fields (src/dst/ports/protocol)**.'
+    **Only MAC OUI exclusive**: Extended ACLs match protocol, src/dst IP, and L4 ports.
+    MAC OUI is a Layer-2 MAC ACL.
+
+
+    **Only STP roles**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -700,18 +716,19 @@ questions:
   explanation: 'AAA-driven SGT.
 
 
-    **Only static route** points at static route, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **ISE authorization results**.
+    **ISE authorization results**: AAA-driven SGT.
 
 
-    **Only OSPF** is a mismatch: OSPF is a link-state IGP (areas, RID, LSAs, cost
-    = ref-bw/interface bw, default AD 110). The stem is asking about **ISE authorization
-    results**.
+    **Only static route**: Dynamic SGT assignment comes from **ISE authorization**
+    (or SXP). A static route does not assign an SGT.
 
 
-    **Only EIGRP** is a mismatch: EIGRP is Cisco’s advanced-distance-vector IGP (DUAL,
-    FD/AD, default AD 90 internal / 170 external). The stem is asking about **ISE
-    authorization results**.'
+    **Only OSPF**: OSPF is a link-state IGP (areas, RID, LSAs, cost = ref-bw/interface
+    bw, default AD 110).
+
+
+    **Only EIGRP**: EIGRP is Cisco’s advanced-distance-vector IGP (DUAL, FD/AD, default
+    AD 90 internal / 170 external).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -738,18 +755,19 @@ questions:
   explanation: 'Design decision for access control.
 
 
-    **Only spanning-tree choice** points at spanning-tree choice, which is not how
-    5.1 (Device access control) solves this stem. The keyed answer is **Availability
-    vs security tradeoff**.
+    **Availability vs security tradeoff**: Design decision for access control.
 
 
-    **Only EtherChannel hash** points at EtherChannel hash, which is not how 5.1 (Device
-    access control) solves this stem. The keyed answer is **Availability vs security
-    tradeoff**.
+    **Only spanning-tree choice**: Fail-open vs fail-closed is an **access-control**
+    posture (e.g. 802.1X). It is not an STP mode knob.
 
 
-    **Only MTU** points at MTU, which is not how 5.1 (Device access control) solves
-    this stem. The keyed answer is **Availability vs security tradeoff**.'
+    **Only EtherChannel hash**: EtherChannel bundles physical links into one logical
+    interface; members must match speed, duplex, and mode.
+
+
+    **Only MTU**: MTU is the maximum frame/packet size on a link; it is not an AD
+    or overlay ID.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -776,19 +794,19 @@ questions:
   explanation: 'Both appear under security design components.
 
 
-    **Only identical protocols** points at identical protocols, which is not how 5.4
-    (Wireless security features) solves this stem. The keyed answer is **MACsec can
-    encrypt; TrustSec provides group policy context**.
+    **MACsec can encrypt; TrustSec provides group policy context**: Both appear under
+    security design components.
 
 
-    **Only replace OSPF** points at replace OSPF, which is not how 5.4 (Wireless security
-    features) solves this stem. The keyed answer is **MACsec can encrypt; TrustSec
-    provides group policy context**.
+    **Only identical protocols**: MACsec can encrypt Ethernet hops; TrustSec/SGT is
+    group policy. They can coexist and are not the same protocol.
 
 
-    **Only disable AAA** is a mismatch: Turning AAA off removes RADIUS/TACACS login
-    and authorization. The stem is asking about **MACsec can encrypt; TrustSec provides
-    group policy context**.'
+    **Only replace OSPF**: OSPF is a link-state IGP (RID, areas, LSAs, cost, default
+    AD 110, multicast 224.0.0.5/6).
+
+
+    **Only disable AAA**: AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -815,19 +833,20 @@ questions:
   explanation: 'CoPP/iACLs harden the control plane.
 
 
-    **Only switching CAM** points at switching CAM, which is not how 5.2 (Infrastructure
-    security features) solves this stem. The keyed answer is **Protecting traffic
-    to the device/control plane**.
+    **Protecting traffic to the device/control plane**: CoPP/iACLs harden the control
+    plane.
 
 
-    **Only VTP sync** points at VTP sync, which is not how 5.2 (Infrastructure security
-    features) solves this stem. The keyed answer is **Protecting traffic to the device/control
-    plane**.
+    **Only switching CAM**: A control-plane ACL (CoPP/rACL) filters traffic **to the
+    RP**. CAM is the MAC table for L2 forwarding.
 
 
-    **Only LACP PDUs exclusive** points at LACP PDUs, which is not how 5.2 (Infrastructure
-    security features) solves this stem. The keyed answer is **Protecting traffic
-    to the device/control plane**.'
+    **Only VTP sync**: VTP floods VLAN advertisements among switches using a revision
+    number; it does not route, NAT, or identify an overlay.
+
+
+    **Only LACP PDUs exclusive**: LACP (802.3ad/802.1AX) negotiates EtherChannel with
+    active/passive modes.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -854,17 +873,19 @@ questions:
   explanation: 'Modern APIs use token auth models.
 
 
-    **Only STP tuning** points at STP tuning, which is not how 5.3 (REST API security)
-    solves this stem. The keyed answer is **REST API security practice**.
+    **REST API security practice**: Modern APIs use token auth models.
 
 
-    **Only multicast RPF** is a mismatch: Multicast is one-to-many (IPv4 224/4, IPv6
-    ff00::/8). IPv6 replaces broadcast with multicast. The stem is asking about **REST
-    API security practice**.
+    **Only STP tuning**: Spanning Tree elects a root bridge and blocks redundant Ethernet
+    paths so the LAN does not loop.
 
 
-    **Only HSRP preempt** points at HSRP preempt, which is not how 5.3 (REST API security)
-    solves this stem. The keyed answer is **REST API security practice**.'
+    **Only multicast RPF**: OAuth/tokens are REST API authorization. Multicast RPF
+    is a forwarding check for PIM.
+
+
+    **Only HSRP preempt**: HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby
+    routers.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -891,19 +912,20 @@ questions:
   explanation: 'Privilege levels are device access control.
 
 
-    **Only underlay MTU** points at underlay MTU, which is not how 5.1 (Device access
-    control) solves this stem. The keyed answer is **What commands authenticated users
-    may run**.
+    **What commands authenticated users may run**: Privilege levels are device access
+    control.
 
 
-    **Only VXLAN flood lists** points at VXLAN flood lists, which is not how 5.1 (Device
-    access control) solves this stem. The keyed answer is **What commands authenticated
-    users may run**.
+    **Only underlay MTU**: MTU is the maximum frame/packet size on a link; it is not
+    an AD or overlay ID.
 
 
-    **Only NetFlow samplers** points at NetFlow samplers, which is not how 5.1 (Device
-    access control) solves this stem. The keyed answer is **What commands authenticated
-    users may run**.'
+    **Only VXLAN flood lists**: VXLAN encapsulates Ethernet in UDP 4789 with a 24-bit
+    VNI.
+
+
+    **Only NetFlow samplers**: NetFlow exports traffic caches for accounting and anomaly
+    detection.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -958,16 +980,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -996,17 +1020,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.'
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
+
+
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1037,9 +1064,13 @@ questions:
     on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 5.3 (REST API security).
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     DNS resolves names; it does not terminate CAPWAP tunnels.
@@ -1073,16 +1104,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.'
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
+
+
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1110,16 +1143,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.'
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
+
+
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1148,17 +1183,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.'
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
+
+
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1183,6 +1221,10 @@ questions:
   correct:
     answer: a
   explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
     on the **Wireless LAN Controller**.
 
 
@@ -1220,16 +1262,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.'
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
+
+
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1257,16 +1301,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.'
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
+
+
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1295,17 +1341,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.'
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
+
+
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1336,9 +1385,13 @@ questions:
     on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 5.3 (REST API security).
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     DNS resolves names; it does not terminate CAPWAP tunnels.
@@ -1372,16 +1425,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1409,16 +1464,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1447,17 +1504,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.'
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.
+
+
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1482,6 +1542,10 @@ questions:
   correct:
     answer: a
   explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
     on the **Wireless LAN Controller**.
 
 
@@ -1519,16 +1583,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1556,16 +1622,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1594,17 +1662,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.'
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
+
+
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1635,9 +1706,13 @@ questions:
     on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 5.3 (REST API security).
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     DNS resolves names; it does not terminate CAPWAP tunnels.
@@ -1671,16 +1746,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.'
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
+
+
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1708,16 +1785,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.'
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
+
+
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1746,17 +1825,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.'
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
+
+
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1781,6 +1863,10 @@ questions:
   correct:
     answer: a
   explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
     on the **Wireless LAN Controller**.
 
 
@@ -1818,16 +1904,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.'
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
+
+
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1855,16 +1943,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.'
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
+
+
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1893,17 +1983,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.'
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
+
+
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1934,9 +2027,13 @@ questions:
     on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 5.3 (REST API security).
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     DNS resolves names; it does not terminate CAPWAP tunnels.
@@ -1970,16 +2067,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2007,16 +2106,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -2045,17 +2146,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.'
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.
+
+
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -2080,6 +2184,10 @@ questions:
   correct:
     answer: a
   explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
     on the **Wireless LAN Controller**.
 
 
@@ -2117,16 +2225,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2154,16 +2264,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.'
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
+
+
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -2192,17 +2304,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.'
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
+
+
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -2233,9 +2348,13 @@ questions:
     on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct: Write the show/ping
-    checks and rollback **before** the change window so you can prove the objective
-    worked and back out if it did not. This matters for 5.3 (REST API security).
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **Document verification steps before changes.**: Write the show/ping checks and
+    rollback **before** the change window so you can prove the objective worked and
+    back out if it did not.
 
 
     DNS resolves names; it does not terminate CAPWAP tunnels.
@@ -2269,16 +2388,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.'
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
+
+
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2306,16 +2427,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.'
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.
+
+
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -2344,17 +2467,20 @@ questions:
     adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
-    removed, not revived in WPA3.
+    **Stronger SAE/handshake protections**: WPA3-Personal replaces PSK 4-way handshake
+    with **SAE** (Dragonfly), giving forward secrecy and resistance to offline dictionary
+    attacks. WPA3-Enterprise adds extra crypto options (192-bit suite).
 
 
-    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
-    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
-    like WPA2’s 4-way handshake.
+    **WEP revival**: WEP (RC4, 24-bit IV) is broken and removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
-    802.1X/EAP. WPA3 does not disable 802.1X.'
+    **Clear-text PSK mandatory**: WPA3 does not require a cleartext PSK on the air.
+    SAE never puts the passphrase in a recoverable hash like WPA2’s 4-way handshake.
+
+
+    **Disable 802.1X always**: WPA3-Enterprise **uses** 802.1X/EAP. WPA3 does not
+    disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -2379,6 +2505,10 @@ questions:
   correct:
     answer: a
   explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
+
+
+    **WLC**: In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
     on the **Wireless LAN Controller**.
 
 
@@ -2416,16 +2546,18 @@ questions:
     US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
-    not typical enterprise 2.4 GHz.
+    **2.4 GHz ISM**: 802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11
+    in the US). Non-overlapping set is 1, 6, and 11.
 
 
-    **Visible light only** is not the right selection: Li-Fi / visible light is not
-    802.11 2.4 GHz Wi-Fi.
+    **Sub-GHz only**: Sub-GHz is 802.11ah (HaLow) / IoT, not typical enterprise 2.4
+    GHz.
 
 
-    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
-    the common 2.4 GHz LAN band.'
+    **Visible light only**: Li-Fi / visible light is not 802.11 2.4 GHz Wi-Fi.
+
+
+    **60 GHz only**: 60 GHz is 802.11ad/ay (WiGig), not the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2450,31 +2582,20 @@ questions:
     text: Disable logging permanently while testing 5.3
   correct:
     answer: a
-  explanation: 'For 5.3 (REST API security), the keyed answer is **Use the standard
-    model for 5.3 rather than a look-alike concept**. Stem: During troubleshooting
-    related to 5.3, which observation is most relevant?.
+  explanation: 'The relevant observation for REST API security is protocol state,
+    not a disabled log.
 
 
-    **Use the standard model for 5.3 rather than a look-alike concept** is correct:
-    Stay with the standard model for this objective instead of a look-alike protocol
-    that shares a buzzword but not the behavior. This matters for 5.3 (REST API security).
+    REST API security is tokens, HTTPS, and 401/403 handling. A missing JWT is 401;
+    it is not an OSPF cost.
 
 
-    **Use clear-text shared secrets as the only control for 5.3** is not the right
-    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
-    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.3 (REST
-    API security).
+    Correct on this item: Use the standard model for 5.3 rather than a look-alike
+    concept.
 
 
-    **Skip documentation for 5.3 changes in production** is not the right selection:
-    Skipping documentation leaves no rollback and no audit trail. Production changes
-    for this objective still need a written record. This matters for 5.3 (REST API
-    security).
-
-
-    **Disable logging permanently while testing 5.3** is not the right selection:
-    Disabling logging permanently hides faults and is a finding on any security review.
-    Keep syslog/buffered logging enabled. This matters for 5.3 (REST API security).'
+    **Use clear-text shared secrets as the only control for 5.3** weakens device access;
+    it does not implement the feature above.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -2502,30 +2623,18 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: 'For 5.3 (REST API security), the keyed answer is **Verify expected
-    state for 5.3 with show/ping evidence; Document the 5.3 design intent and rollback
-    plan**. Stem: [ENCOR 5.3] Select ALL actions that support a correct implementation
-    or verification for this objective..
+  explanation: '[ENCOR 5.3] Select ALL actions that support a correct implementation
+    or verification for this objective The actions that belong here actually implement
+    REST API security.
 
 
-    **Verify expected state for 5.3 with show/ping evidence** is correct: Use show/ping
-    evidence to confirm the objective actually converged — not just that the command
-    was typed. This matters for 5.3 (REST API security).
+    REST API security is tokens, HTTPS, and 401/403 handling. A missing JWT is 401;
+    it is not an OSPF cost.
 
 
-    **Document the 5.3 design intent and rollback plan** is correct: Document design
-    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
-    not tribal memory. This matters for 5.3 (REST API security).
-
-
-    **Skip change control because 5.3 is low risk** is not the right selection: Skipping
-    change control because a topic ‘looks low risk’ is how untracked outages happen.
-    This objective still goes through the window. This matters for 5.3 (REST API security).
-
-
-    **Disable all monitoring related to 5.3** is not the right selection: Disabling
-    monitoring removes the only proof the objective still works after you leave. Leave
-    SNMP/telemetry/syslog up. This matters for 5.3 (REST API security).'
+    **Verify expected state for 5.3 with show/ping evidence** is the evidence habit
+    that matches that check. **Skip change control because 5.3 is low risk** skips
+    change control on a real control-plane feature.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3

@@ -225,18 +225,36 @@ _TEMPLATE_PHRASES = (
     "does not describe the intended use",
     "does not meet the requirement stated in the stem",
     "this is the correct answer for the stem",
+    "is a different protocol, command, or value than",
+    "is a mismatch:",
+    "is not the right selection",
+    "points at",
+    "this matters for",
+    "the keyed answer is",
+    "the stem is asking about",
+    "the stem is solved by",
+    "this performance item is graded against",
+    "is the matching value or command",
+    "the stem requires the operational or protocol order",
+    "the correct sequence for this item is",
+    "is required here",
+    "implemented by verifying with show/ping",
+    "does not do that job",
+    "is answered by",
+    "keep a baseline of",
+    "written rollback",
 )
 
 
 def test_explanations_are_not_templates(ccna_bank, encor_bank):
     bad: list[str] = []
     for q in (*ccna_bank.questions, *encor_bank.questions):
-        blob = " ".join(
-            [
-                q.explanation or "",
-                *(c.rationale or "" for c in (q.choices or [])),
-            ]
-        ).lower()
-        if any(p in blob for p in _TEMPLATE_PHRASES):
+        pieces = [q.explanation or "", *(c.rationale or "" for c in (q.choices or []))]
+        blob = " ".join(pieces)
+        low = blob.lower()
+        if any(p in low for p in _TEMPLATE_PHRASES):
+            bad.append(q.id)
+            continue
+        if " is not **" in blob:
             bad.append(q.id)
     assert bad == [], f"template explanations: {bad[:20]}"

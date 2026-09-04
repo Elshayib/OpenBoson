@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Rewrite template distractor copy in content/questions shards.
+"""Rebuild question explanations from stem/choice facts (no formula wrappers).
 
-Run once from repo root:
+Must not emit phrases banned in tests/exsim/test_content_pools.py
+(``_TEMPLATE_PHRASES``). Flagship IDs are left unchanged.
+
+Run from repo root:
     python scripts/rewrite_template_explanations.py
     python scripts/assemble_question_pools.py
 """
@@ -18,6 +21,9 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "content" / "questions"
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from choice_facts import HAND_EXPL  # noqa: E402
 
 from openboson.exsim.objectives import topic_title  # noqa: E402
 
@@ -25,6 +31,24 @@ BANNED = (
     "does not describe the intended use",
     "does not meet the requirement stated in the stem",
     "this is the correct answer for the stem",
+    "is a different protocol, command, or value than",
+    "is a mismatch:",
+    "is not the right selection",
+    "points at",
+    "this matters for",
+    "the keyed answer is",
+    "the stem is asking about",
+    "the stem is solved by",
+    "this performance item is graded against",
+    "is the matching value or command",
+    "the stem requires the operational or protocol order",
+    "the correct sequence for this item is",
+    "is required here",
+    "implemented by verifying with show/ping",
+    "does not do that job",
+    "is answered by",
+    "keep a baseline of",
+    "written rollback",
 )
 FILLER = BANNED + (
     "it is the selection that meets the requirement stated in the stem",
@@ -344,6 +368,7 @@ FLAGSHIP_EXPL: dict[str, str] = {
         "legacy RIPv1/IGRP behavior, unrelated to CRUD."
     ),
 }
+FLAGSHIP_IDS = set(FLAGSHIP_EXPL)
 
 # ---------------------------------------------------------------------------
 # Teaching copy for bootstrap FACTS stems (gen-* items).
@@ -1050,7 +1075,152 @@ def _has_filler(text: str) -> bool:
     return any(p in low for p in FILLER)
 
 
+# Distinctive tokens only. Never match generic "network"/"access"/"layer".
+PROTO_FACTS: dict[str, str] = {
+    "vtp": (
+        "VTP floods VLAN advertisements among switches using a revision number; "
+        "it does not route, NAT, or identify an overlay."
+    ),
+    "stp": (
+        "Spanning Tree elects a root bridge and blocks redundant Ethernet paths "
+        "so the LAN does not loop."
+    ),
+    "portfast": (
+        "PortFast skips STP listening/learning on edge ports so hosts get DHCP immediately."
+    ),
+    "bpdu": "BPDUs are STP control frames used to elect a root and assign port roles.",
+    "mst": "MST (802.1s) maps VLANs onto a few STP instances.",
+    "lacp": "LACP (802.3ad/802.1AX) negotiates EtherChannel with active/passive modes.",
+    "pagp": "PAgP is Cisco-proprietary EtherChannel negotiation (desirable/auto).",
+    "etherchannel": (
+        "EtherChannel bundles physical links into one logical interface; members "
+        "must match speed, duplex, and mode."
+    ),
+    "token ring": "Token Ring is a legacy LAN (IEEE 802.5), not modern campus Ethernet.",
+    "frame relay": (
+        "Frame Relay identifies virtual circuits with DLCIs on an NBMA WAN, not "
+        "an SD-Access or VXLAN overlay ID."
+    ),
+    "hdlc": "HDLC is a bit-oriented serial encapsulation, not an overlay identifier.",
+    "atm": "ATM uses VPI/VCI labels on a cell WAN; it is not a campus fabric ID.",
+    "isdn": "ISDN is a legacy switched digital WAN.",
+    "ospf": (
+        "OSPF is a link-state IGP (RID, areas, LSAs, cost, default AD 110, multicast 224.0.0.5/6)."
+    ),
+    "eigrp": "EIGRP is Cisco’s DUAL IGP (default AD 90 internal / 170 external).",
+    "rip": "RIP is a hop-count IGP (max 15 hops, default AD 120).",
+    "bgp": "BGP is the Internet path-vector protocol (TCP 179; eBGP AD 20, iBGP AD 200).",
+    "lisp": "LISP maps endpoint IDs to routing locators in the SD-Access control plane.",
+    "vxlan": "VXLAN encapsulates Ethernet in UDP 4789 with a 24-bit VNI.",
+    "mpls": "MPLS forwards on labels in a provider core, not on a campus access VLAN.",
+    "vrf": "A VRF is a separate routing table/FIB instance used to isolate tenants.",
+    "vlan": "A VLAN is an 802.1Q broadcast domain (IDs 1–4094).",
+    "cdp": "CDP is Cisco’s L2 neighbor discovery (`show cdp neighbors`).",
+    "lldp": "LLDP (802.1AB) is standards-based L2 neighbor discovery.",
+    "nat": "NAT/PAT rewrites IP addresses (and ports with overload) across inside/outside.",
+    "dhcp": "DHCP assigns IPv4 address, mask, gateway, and DNS (DORA, UDP 67/68).",
+    "dns": "DNS maps names to addresses (A/AAAA) and reverse (PTR) on UDP/TCP 53.",
+    "arp": "ARP maps IPv4 addresses to MACs on the local Ethernet; IPv6 uses NDP.",
+    "icmp": "ICMP/ICMPv6 carries echo, unreachable, and TTL-expired messages.",
+    "hsrp": "HSRP is Cisco’s FHRP with a virtual IP/MAC and active/standby routers.",
+    "vrrp": "VRRP is the standards-based FHRP (virtual IP, one master).",
+    "glbp": "GLBP load-shares first-hop gateways using AVG/AVF virtual MACs.",
+    "bfd": "BFD detects forwarding-path failures in milliseconds.",
+    "cef": "CEF is IOS forwarding from the FIB, not process switching.",
+    "fib": "The FIB is the forwarding table CEF programs from the RIB.",
+    "rib": "The RIB is the routing table (`show ip route`) before CEF install.",
+    "tcam": "TCAM stores hardware ACL/QoS/FIB entries.",
+    "pim": "PIM builds multicast trees (sparse/dense); it is not unicast IGP.",
+    "igmp": "IGMP lets IPv4 hosts join multicast groups on a LAN.",
+    "qos": "QoS classifies, marks (DSCP/CoS), queues, and polices traffic.",
+    "dscp": "DSCP is the 6-bit IP marking (EF=46 for voice).",
+    "snmp": "SNMP reads/writes MIB objects (UDP 161) and sends traps (162).",
+    "ntp": "NTP synchronizes clocks (UDP 123); stratum is distance from a reference.",
+    "syslog": "Syslog exports device logs (UDP 514) with severity 0–7.",
+    "span": "SPAN/RSPAN/ERSPAN copies frames to a sniffer or GRE destination.",
+    "erspan": "ERSPAN encapsulates mirrored frames in GRE to a remote analyzer.",
+    "netflow": "NetFlow exports traffic caches for accounting and anomaly detection.",
+    "ip sla": "IP SLA probes measure reachability and delay (icmp-echo, udp-jitter).",
+    "netconf": "NETCONF is XML/SSH datastore configuration (RFC 6241).",
+    "restconf": "RESTCONF exposes YANG data over HTTPS with JSON or XML.",
+    "yang": "YANG models configuration/state; it is not a wire encoding by itself.",
+    "json": "JSON encodes objects `{}` and arrays `[]` with lowercase true/false/null.",
+    "xml": "XML uses angle-bracket tags (`<rpc>`); NETCONF uses it, JSON does not.",
+    "grpc": "gRPC is an HTTP/2 RPC transport used for dial-out telemetry.",
+    "aaa": "AAA is Authentication, Authorization, and Accounting (RADIUS/TACACS+).",
+    "radius": "RADIUS (UDP 1812/1813) is a common 802.1X/AAA protocol.",
+    "tacacs": "TACACS+ (TCP 49) authorizes IOS commands per-command.",
+    "802.1x": "802.1X is port-based access control (EAPoL + RADIUS).",
+    "802.1q": "802.1Q is VLAN tagging on trunks (native VLAN untagged).",
+    "wep": "WEP is a broken RC4 WLAN cipher; WPA2/WPA3 replaced it.",
+    "wpa3": "WPA3 uses SAE (personal) or 802.1X (enterprise); it does not revive WEP.",
+    "sae": "SAE (Dragonfly) is the WPA3-Personal handshake with forward secrecy.",
+    "capwap": "CAPWAP tunnels AP control/data to a WLC in centralized mode.",
+    "wlc": "A WLC terminates CAPWAP and pushes WLAN policy to lightweight APs.",
+    "poe": "PoE delivers DC power on Ethernet (802.3af/at/bt).",
+    "copp": "Control Plane Policing rate-limits traffic to the route processor.",
+    "ssh": "SSH (TCP 22) is encrypted remote CLI.",
+    "telnet": "Telnet (TCP 23) is cleartext remote CLI.",
+    "ftp": "FTP (TCP 21) transfers files with a control and data channel.",
+    "tftp": "TFTP (UDP 69) is a simple lock-step file transfer for IOS/config.",
+    "https": "HTTPS is HTTP over TLS (TCP 443).",
+    "ipsec": "IPsec (AH/ESP) encrypts/authenticates IP packets for VPNs.",
+    "gre": "GRE encapsulates packets in IP 47; it has no crypto by itself.",
+    "type 3": (
+        "OSPF Type-3 summary LSAs are originated by an ABR for inter-area prefixes "
+        "— not the OSI Network layer as a concept."
+    ),
+    "type 5": "OSPF Type-5 external LSAs are originated by an ASBR.",
+    "asbr": "An ASBR redistributes external routes into OSPF (Type-5/7 LSAs).",
+    "abr": "An ABR sits in area 0 plus another area and originates Type-3 LSAs.",
+    "ecmp": "ECMP installs multiple equal-cost next hops (OSPF `maximum-paths`).",
+    "med": "MED is a BGP attribute to influence inbound traffic from a neighbor AS.",
+    "local preference": "Local Preference prefers an exit path inside one AS (higher wins).",
+    "sgt": "SGTs are TrustSec group tags carried for SGACL policy.",
+    "sgacl": "SGACLs enforce TrustSec policy by group, not by IP ACL line.",
+    "sxp": "SXP advertises IP-to-SGT bindings to devices that cannot tag in hardware.",
+    "puppet": "Puppet is agent-based config management; Ansible is typically agentless.",
+    "ansible": "Ansible is agentless automation over SSH (playbooks/inventory).",
+    "terraform": "Terraform is declarative infrastructure-as-code, not an IGP.",
+    "eem": "EEM applets react to IOS events with CLI actions.",
+    "ofdma": "OFDMA (802.11ax) subdivides a channel so many clients transmit in parallel.",
+    "null0": "Null0 is a discard next-hop used for aggregates and loop prevention.",
+    "pppoe": "PPPoE is a broadband access encapsulation, not CAPWAP.",
+    "fhrp": "First-hop redundancy (HSRP/VRRP/GLBP) shares a default-gateway IP.",
+    "ngfw": (
+        "A next-gen firewall inspects L3–L7 policy (AppID, IPS). It is not LACP "
+        "and does not bundle Ethernet links."
+    ),
+    "tdm": "TDM serial (T1/E1) is a legacy WAN multiplexing method, not Clos fabric.",
+    "dialup": "Dial-up/modem north-south access is not east-west spine-leaf traffic.",
+    "hop count": "Hop count is RIP’s metric (max 15). OSPF uses cost; BGP uses path attributes.",
+    "mtu": "MTU is the maximum frame/packet size on a link; it is not an AD or overlay ID.",
+    "angle brackets": "Angle brackets are XML tags. JSON uses `{}` / `[]`, not `<tag>`.",
+    "telemetry": (
+        "Model-driven telemetry streams YANG counters; disabling it removes visibility, "
+        "it does not implement the feature in the objective."
+    ),
+    "hash": (
+        "EtherChannel hash (src-dst IP/MAC/port) picks a member link; it does not "
+        "replace LACP negotiation or VLAN assignment."
+    ),
+    "bluetooth": "Bluetooth is a WPAN radio, not CAPWAP or 802.11 infrastructure.",
+    "usb": "USB is a host peripheral bus, not an Ethernet access medium.",
+    "fiber": "Fiber is a Layer-1 medium (SMF/MMF). It does not by itself create VLANs or overlays.",
+    "community": (
+        "A community cloud is shared by several organizations. Private cloud is "
+        "single-tenant for one org."
+    ),
+    "cipher": (
+        "A wireless cipher (TKIP/CCMP/GCMP) encrypts 802.11 frames; it is not "
+        "AAA or an overlay identifier."
+    ),
+    "udld": "UDLD detects unidirectional links, typically on fiber, and err-disables them.",
+}
+
+
 def describe_term(text: str) -> str | None:
+    """Exact choice text, then longest distinctive protocol token."""
     t = _norm(text)
     if t in TERMS:
         return TERMS[t]
@@ -1063,25 +1233,25 @@ def describe_term(text: str) -> str | None:
         return f"{t} is the {HOST_TOTAL[t]}."
     low = t.lower()
     if low.startswith("show "):
+        return f"`{t}` displays that specific IOS table or neighbor list."
+    if low.startswith("interface vlan"):
         return (
-            f"`{t}` displays that specific table or neighbor list; it is not the "
-            f"verification or feature the stem is asking for."
+            f"`{t}` creates or enters an SVI for routing; it does not create the "
+            f"Layer-2 VLAN in the VLAN database."
         )
     if low.startswith("interface "):
-        return (
-            f"`{t}` enters that interface (or SVI) context. It does not perform "
-            f"the action named in the stem."
-        )
-    if low.startswith(("switchport ", "encapsulation ", "ip route ", "ip nat ")):
-        return f"`{t}` is a real IOS command for a different job than the one in the stem."
+        return f"`{t}` enters that interface's configuration context."
+    if low.startswith("switchport access vlan"):
+        return f"`{t}` assigns an existing access VLAN to a port; the VLAN must already exist."
+    if low.startswith("encapsulation"):
+        return f"`{t}` sets subinterface tagging (router-on-a-stick), not a switch VLAN."
+    if low.startswith(("ip route ", "ip nat ", "switchport ")):
+        return f"`{t}` is an IOS command for that specific feature."
+    probe = stripped.lower()
     hits: list[tuple[int, str]] = []
-    for key, blurb in TERMS.items():
-        if len(key) < 6:
-            continue
-        if re.search(
-            r"(?<![A-Za-z0-9./])" + re.escape(key.lower()) + r"(?![A-Za-z0-9./])",
-            low,
-        ):
+    for key, blurb in PROTO_FACTS.items():
+        plural = r"s?" if len(key) >= 4 and not key.endswith("s") else ""
+        if re.search(r"(?<![a-z0-9])" + re.escape(key) + plural + r"(?![a-z0-9])", probe):
             hits.append((len(key), blurb))
     if hits:
         hits.sort(reverse=True)
@@ -1142,62 +1312,34 @@ def _sentence(text: str) -> str:
     return t
 
 
-def _choice_sentence(text: str, body: str, *, correct: bool) -> str:
+def _bullet(text: str, body: str) -> str:
     body = _sentence(body)
     label = _norm(text)
-    if body.lower().lstrip("*").startswith(label.lower()):
+    stripped = body.lstrip("*").lstrip()
+    if stripped.lower().startswith(label.lower()):
         return body
-    verb = "is correct" if correct else "is not the right selection"
-    return f"**{label}** {verb}: {body}"
+    return f"**{label}**: {body}"
+
+
+def _lookup_fact(text: str, *, fact: str | None, orig_rat: str | None) -> str | None:
+    """Only per-item authored copy: generator rationale or FACT_TEACH[stem][choice]."""
+    if orig_rat and not _has_filler(orig_rat):
+        return orig_rat
+    if fact and fact in FACT_TEACH and text in FACT_TEACH[fact]:
+        return FACT_TEACH[fact][text]
+    return None
 
 
 def _why_for_choice(
     text: str,
     *,
-    correct: bool,
-    stem: str,
-    correct_texts: list[str],
     fact: str | None,
     orig_rat: str | None,
-    topic_label: str,
-) -> str:
-    if orig_rat and not _has_filler(orig_rat):
-        return _choice_sentence(text, orig_rat, correct=correct)
-    if fact and fact in FACT_TEACH and text in FACT_TEACH[fact]:
-        return _choice_sentence(text, FACT_TEACH[fact][text], correct=correct)
-    ops = _ops_blurb(text, good=correct)
-    if ops:
-        extra = f" This matters for {topic_label}."
-        return _choice_sentence(text, ops + extra, correct=correct)
-    term = describe_term(text)
-    if term:
-        if correct:
-            return _choice_sentence(text, term, correct=True)
-        corr = "; ".join(correct_texts)
-        return (
-            f"**{_norm(text)}** is a mismatch: {_sentence(term)} "
-            f"The stem is asking about **{corr}**."
-        )
-    if correct:
-        return f"**{_norm(text)}** matches {topic_label}: {stem.rstrip('?')}."
-    corr = "; ".join(correct_texts)
-    stripped = _strip_qualifiers(text)
-    if stripped != _norm(text):
-        term2 = describe_term(stripped)
-        if term2:
-            return (
-                f"**{_norm(text)}** names {stripped}, which is a different feature: "
-                f"{_sentence(term2)} The stem wants **{corr}**."
-            )
-        return (
-            f"**{_norm(text)}** points at {stripped}, which is not how "
-            f"{topic_label} solves this stem. The keyed answer is **{corr}**."
-        )
-    return (
-        f"**{_norm(text)}** is a different protocol, command, or value than "
-        f"**{corr}**. For {topic_label}, the stem is solved by **{corr}**, not "
-        f"by {_norm(text)}."
-    )
+) -> str | None:
+    body = _lookup_fact(text, fact=fact, orig_rat=orig_rat)
+    if not body:
+        return None
+    return _bullet(text, body)
 
 
 def _lead(
@@ -1210,29 +1352,13 @@ def _lead(
     if orig and orig.get("explanation") and not _has_filler(orig["explanation"]):
         return _sentence(orig["explanation"])
     if fact and fact in FACT_TEACH:
-        for t in correct_texts:
-            if t in FACT_TEACH[fact]:
-                return _sentence(FACT_TEACH[fact][t])
-    salvaged: list[str] = []
-    for para in re.split(r"\n\s*\n", q.get("explanation") or ""):
-        if not para.strip() or _has_filler(para):
-            continue
-        cleaned = para.strip()
-        if len(cleaned) < 40:
-            continue
-        salvaged.append(cleaned)
-        if len(salvaged) >= 2:
-            break
-    if salvaged:
-        return "\n\n".join(salvaged)
-    corr = "; ".join(correct_texts) or "the keyed answer"
-    return f"For {topic_label}, the keyed answer is **{corr}**. Stem: {q.get('stem') or ''}."
+        blobs = [FACT_TEACH[fact][t] for t in correct_texts if t in FACT_TEACH[fact]]
+        if blobs:
+            return " ".join(_sentence(b) for b in blobs)
+    return ""
 
 
 def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
-    qid = q["id"]
-    if qid in FLAGSHIP_EXPL:
-        return FLAGSHIP_EXPL[qid]
     stem = q.get("stem") or ""
     topic_label = _topic_label(q, cert)
     fact = _fact_key(stem)
@@ -1245,78 +1371,68 @@ def rewrite_choice_question(q: dict, orig: dict | None, cert: str) -> str:
                 orig_rats[c["id"]] = c["rationale"]
                 orig_rats[c["text"]] = c["rationale"]
     correct_texts = [c["text"] for c in choices if c["id"] in cids]
-    wrong = [c for c in choices if c["id"] not in cids]
     right = [c for c in choices if c["id"] in cids]
+    wrong = [c for c in choices if c["id"] not in cids]
     parts = [_lead(q, orig, fact, correct_texts, topic_label)]
-    seen_leads = parts[0].lower()
+    lead_l = parts[0].lower()
     for c in right + wrong:
-        rat = orig_rats.get(c["id"]) or orig_rats.get(c["text"])
         para = _why_for_choice(
             c["text"],
-            correct=c["id"] in cids,
-            stem=stem,
-            correct_texts=correct_texts,
             fact=fact,
-            orig_rat=rat,
-            topic_label=topic_label,
+            orig_rat=orig_rats.get(c["id"]) or orig_rats.get(c["text"]),
         )
-        # Skip near-duplicate of the lead paragraph.
-        if para.split(":", 1)[-1].strip().lower()[:80] in seen_leads:
-            if c["id"] not in cids:
-                parts.append(para)
+        if not para:
+            continue
+        snippet = re.sub(r"\s+", " ", para).lower()[:90]
+        if snippet in lead_l and c["id"] in cids:
             continue
         parts.append(para)
-    text = "\n\n".join(parts)
-    # Guarantee no banned leftover from salvage.
-    for phrase in BANNED:
-        text = re.sub(re.escape(phrase), "", text, flags=re.I)
-    return text.strip()
+    return "\n\n".join(parts).strip()
 
 
 def rewrite_other(q: dict) -> str:
     expl = q.get("explanation") or ""
-    if not _has_filler(expl) and q["id"] not in FLAGSHIP_EXPL:
-        # Collapse accidental repetition on ordered items.
+    if not _has_filler(expl):
         paras = [p.strip() for p in re.split(r"\n\s*\n", expl) if p.strip()]
         uniq: list[str] = []
         for p in paras:
             if p not in uniq:
                 uniq.append(p)
         return "\n\n".join(uniq) or expl
-    if q["id"] in FLAGSHIP_EXPL:
-        return FLAGSHIP_EXPL[q["id"]]
     qtype = q.get("type")
     if qtype == "ordered_list":
         order = (q.get("correct") or {}).get("order") or q.get("ordered_items") or []
         seq = " → ".join(order)
         return (
             f"The required order is: {seq}. Each step depends on the previous "
-            f"one (gather facts, then rank, then apply, then document). "
-            f"Swapping any two steps breaks the procedure in the stem."
+            f"one (gather facts, then rank, then apply, then document)."
         )
     if qtype == "drag_match":
         pairs = q.get("drag_pairs") or (q.get("correct") or {}).get("pairs") or []
         bits = "; ".join(f"{p['left']} → {p['right']}" for p in pairs)
-        return (
-            f"Correct mappings: {bits}. Each left item pairs with exactly one "
-            f"right item based on the protocol or feature the stem names."
-        )
+        return f"Correct mappings: {bits}."
     if qtype == "sim":
         cmds = (q.get("correct") or {}).get("expected_commands") or []
+        if cmds and cmds[0].startswith("ip route 0.0.0.0"):
+            return (
+                "A default static uses destination/mask `0.0.0.0 0.0.0.0` and a "
+                f"next hop. Configure `{cmds[0]}` on R1. That prefix matches every "
+                "IPv4 destination and is used only when no more-specific route exists. "
+                "Do not substitute an interface-only form unless the stem names it."
+            )
         joined = ", ".join(f"`{c}`" for c in cmds)
         return (
-            f"This performance item is graded against the expected IOS commands "
-            f"({joined or 'see expected_commands'}). Enter configuration mode, "
-            f"apply the commands the stem names, then `end`/`write` if required."
+            f"Enter configuration mode and apply {joined or 'the listed commands'}. "
+            f"The grader compares the running config to those exact IOS commands."
         )
     return rewrite_choice_question(q, None, "ccna")
 
 
 def _rewrite_question(q: dict, orig: dict | None, cert: str) -> None:
-    if q.get("choices"):
-        q["explanation"] = rewrite_choice_question(q, orig, cert)
+    del orig, cert
+    if q["id"] in HAND_EXPL:
+        q["explanation"] = HAND_EXPL[q["id"]]
         return
-    q["explanation"] = rewrite_other(q)
 
 
 def _assert_clean(questions: list[dict], label: str) -> None:
@@ -1328,7 +1444,7 @@ def _assert_clean(questions: list[dict], label: str) -> None:
                 *(c.get("rationale") or "" for c in (q.get("choices") or [])),
             ]
         ).lower()
-        if any(p in blob for p in BANNED):
+        if any(p in blob for p in BANNED) or " is not **" in blob:
             bad.append(q["id"])
     if bad:
         raise SystemExit(f"{label} still has template copy: {bad[:20]}")
@@ -1342,13 +1458,17 @@ def main() -> int:
         for path in sorted(folder.glob("domain-*.yaml")):
             raw = yaml.safe_load(path.read_text(encoding="utf-8"))
             questions = raw["questions"] if isinstance(raw, dict) else raw
+            changed = False
             for q in questions:
                 before = q.get("explanation") or ""
                 _rewrite_question(q, originals.get(q["id"]), exam)
                 after = q.get("explanation") or ""
                 if after != before:
                     rewritten += 1
+                    changed = True
             _assert_clean(questions, path.name)
+            if not changed:
+                continue
             payload = (
                 {
                     "provider": raw.get("provider", "openboson"),
