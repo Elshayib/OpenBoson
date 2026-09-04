@@ -1141,8 +1141,15 @@ def lab_dhcp_pool() -> dict:
         title="DHCP Pool on LAN Gateway",
         lab_id="ccna_dhcp_pool_lan",
         topic_code="4.3",
-        description="Configure an IOS DHCP pool on R1 for a switched LAN.",
-        objectives=["Address Gi0/0", "ip dhcp pool", "verify.show"],
+        description=(
+            "PC1 has no address. It cannot ping the LAN gateway until R1 leases "
+            "an address from pool LAN and the PC renews."
+        ),
+        objectives=[
+            "Address the LAN gateway",
+            "DHCP pool with network and default-router",
+            "Renew on PC1 and ping the gateway",
+        ],
         topology={
             "devices": [
                 _dev("R1", "router", [{"name": "GigabitEthernet0/0"}]),
@@ -1161,22 +1168,41 @@ def lab_dhcp_pool() -> dict:
         tasks=[
             _task(
                 "t1",
-                "On **R1**, set Gi0/0 to **192.168.10.1/24** and no shutdown.",
+                "**R1 — LAN gateway**\n\n"
+                "PC1 has no IP of its own. On **R1**, set Gi0/0 to "
+                "**192.168.10.1/24** and no shutdown so it can serve the LAN.",
                 device="R1",
                 require=["ip address 192.168.10.1 255.255.255.0", "no shutdown"],
             ),
             _task(
                 "t2",
-                "Create DHCP pool **LAN** (`ip dhcp pool LAN`).",
+                "**R1 — DHCP pool**\n\n"
+                "Create pool **LAN** with `ip dhcp pool LAN`, "
+                "`network 192.168.10.0 255.255.255.0`, and "
+                "`default-router 192.168.10.1`.",
                 device="R1",
-                require=["ip dhcp pool LAN"],
+                require=[
+                    "ip dhcp pool LAN",
+                    "network 192.168.10.0 255.255.255.0",
+                    "default-router 192.168.10.1",
+                ],
                 verify_show=[_show("R1", "ip dhcp pool LAN")],
             ),
             _task(
                 "t3",
-                "On **SW1**, trunk Gi0/1 and put Gi0/2 in VLAN 10.",
+                "**SW1 and PC1 — adjacent lease**\n\n"
+                "On **SW1**, create VLAN 10, trunk Gi0/1 toward R1, and put Gi0/2 "
+                "in VLAN 10 as access with **spanning-tree portfast** so the PC "
+                "is L2-adjacent. On **PC1** run `ipconfig /renew`. From PC1 the "
+                "gateway **192.168.10.1** must reply.",
                 device="SW1",
-                require=["switchport mode trunk", "switchport access vlan 10"],
+                require=[
+                    "vlan 10",
+                    "switchport mode trunk",
+                    "switchport access vlan 10",
+                    "spanning-tree portfast",
+                ],
+                verify_ping=[_ping("PC1", "192.168.10.1")],
             ),
         ],
         solution_config=(
@@ -1185,12 +1211,17 @@ def lab_dhcp_pool() -> dict:
             " ip address 192.168.10.1 255.255.255.0\n"
             " no shutdown\n"
             "ip dhcp pool LAN\n"
+            " network 192.168.10.0 255.255.255.0\n"
+            " default-router 192.168.10.1\n"
             "! --- SW1 ---\n"
             "vlan 10\n"
             "interface GigabitEthernet0/1\n switchport mode trunk\n"
             "interface GigabitEthernet0/2\n"
             " switchport mode access\n"
             " switchport access vlan 10\n"
+            " spanning-tree portfast\n"
+            "! --- PC1 ---\n"
+            "ipconfig /renew\n"
         ),
     )
 
