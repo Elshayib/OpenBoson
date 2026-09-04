@@ -72,9 +72,11 @@ def test_ping_learns_arp_entry():
         "interface GigabitEthernet0/2",
         "switchport mode access",
         "switchport access vlan 10",
+        "spanning-tree portfast",
         "interface GigabitEthernet0/3",
         "switchport mode access",
         "switchport access vlan 10",
+        "spanning-tree portfast",
         "end",
     ):
         session.world.shell("SW1").feed(line)

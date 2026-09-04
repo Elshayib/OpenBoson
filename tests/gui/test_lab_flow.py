@@ -94,10 +94,12 @@ def test_gold_lab_full_cli_path(window, qtbot, gold_lab):
         "interface GigabitEthernet0/2",
         "switchport mode access",
         "switchport access vlan 10",
+        "spanning-tree portfast",
         "exit",
         "interface GigabitEthernet0/3",
         "switchport mode access",
         "switchport access vlan 10",
+        "spanning-tree portfast",
         "end",
     )
     page._check_task()
