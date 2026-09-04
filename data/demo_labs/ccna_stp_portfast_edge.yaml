@@ -1,11 +1,12 @@
 title: STP PortFast Edge Ports
 lab_id: ccna_stp_portfast_edge
 topic_code: '2.5'
-description: Enable PortFast on access ports facing two PCs.
+description: Two PCs in VLAN 10 cannot reach each other until both access ports have
+  PortFast and start forwarding.
 objectives:
-- Access VLANs
-- spanning-tree portfast
-- verify.show
+- VLAN 10 access ports
+- PortFast on both edge ports
+- PC1 ping of PC2
 topology:
   devices:
   - name: SW1
@@ -36,14 +37,22 @@ topology:
     b: PC2/eth0
 tasks:
 - id: t1
-  instructions: Create **VLAN 10** and put both access ports into it.
+  instructions: '**SW1 — user VLAN**
+
+
+    Create **VLAN 10** and put Gi0/1 and Gi0/2 in it as access ports. PC1 still cannot
+    reach PC2 — those edge ports are not forwarding yet.'
   grading_rules:
     device: SW1
     require:
     - vlan 10
     - switchport access vlan 10
 - id: t2
-  instructions: Enable **spanning-tree portfast** on Gi0/1 and Gi0/2.
+  instructions: '**SW1 — PortFast**
+
+
+    Enable **spanning-tree portfast** on Gi0/1 and Gi0/2 so both access ports start
+    forwarding toward the PCs.'
   grading_rules:
     device: SW1
     require:
@@ -54,10 +63,11 @@ tasks:
       contains:
       - spanning-tree portfast
 - id: t3
-  instructions: Confirm same-VLAN ping from PC1 to PC2 still works.
-  grading_rules:
-    require:
-    - switchport access vlan 10
+  instructions: '**PC1 — prove the edge**
+
+
+    From **PC1**, **PC2** at **10.10.10.20** must reply. That ping fails until PortFast
+    is on both access ports.'
   verify:
     ping:
     - source: PC1

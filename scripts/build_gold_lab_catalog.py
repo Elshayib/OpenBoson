@@ -1071,8 +1071,15 @@ def lab_stp_portfast() -> dict:
         title="STP PortFast Edge Ports",
         lab_id="ccna_stp_portfast_edge",
         topic_code="2.5",
-        description="Enable PortFast on access ports facing two PCs.",
-        objectives=["Access VLANs", "spanning-tree portfast", "verify.show"],
+        description=(
+            "Two PCs in VLAN 10 cannot reach each other until both access ports "
+            "have PortFast and start forwarding."
+        ),
+        objectives=[
+            "VLAN 10 access ports",
+            "PortFast on both edge ports",
+            "PC1 ping of PC2",
+        ],
         topology={
             "devices": [
                 _dev(
@@ -1104,21 +1111,26 @@ def lab_stp_portfast() -> dict:
         tasks=[
             _task(
                 "t1",
-                "Create **VLAN 10** and put both access ports into it.",
+                "**SW1 — user VLAN**\n\n"
+                "Create **VLAN 10** and put Gi0/1 and Gi0/2 in it as access ports. "
+                "PC1 still cannot reach PC2 — those edge ports are not forwarding yet.",
                 device="SW1",
                 require=["vlan 10", "switchport access vlan 10"],
             ),
             _task(
                 "t2",
-                "Enable **spanning-tree portfast** on Gi0/1 and Gi0/2.",
+                "**SW1 — PortFast**\n\n"
+                "Enable **spanning-tree portfast** on Gi0/1 and Gi0/2 so both "
+                "access ports start forwarding toward the PCs.",
                 device="SW1",
                 require=["spanning-tree portfast"],
                 verify_show=[_show("SW1", "spanning-tree portfast")],
             ),
             _task(
                 "t3",
-                "Confirm same-VLAN ping from PC1 to PC2 still works.",
-                require=["switchport access vlan 10"],
+                "**PC1 — prove the edge**\n\n"
+                "From **PC1**, **PC2** at **10.10.10.20** must reply. That ping "
+                "fails until PortFast is on both access ports.",
                 verify_ping=[_ping("PC1", "10.10.10.20")],
             ),
         ],
