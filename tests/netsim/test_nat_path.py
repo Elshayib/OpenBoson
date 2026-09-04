@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from openboson.netsim.ios.device import DeviceRole
 from openboson.netsim.ios.world import LabWorld
 from openboson.netsim.lab_schema import (
     Device,
@@ -71,8 +72,6 @@ def _apply_base(world: LabWorld, lab: LabBank) -> None:
         if not cfg:
             continue
         shell = world.shell(d.name)
-        from openboson.netsim.ios.device import DeviceRole
-
         runtime = world.devices[d.name]
         lines = [
             raw.strip()
@@ -95,4 +94,4 @@ def test_inside_host_cannot_ping_outside_without_pat():
     world = LabWorld.from_lab(lab)
     _apply_base(world, lab)
     result = world.ping("PC1", "203.0.113.2")
-    assert "0 percent" in result
+    assert "Success rate is 0 percent" in result
