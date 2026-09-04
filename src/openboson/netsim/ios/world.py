@@ -635,19 +635,52 @@ class LabWorld:
     def _l2_adjacent_or_same(self, a: str, b: str) -> bool:
         if a == b:
             return True
-        direct = self._direct_link_up(a, b)
-        if direct and self._vlan_compatible(a, b, None):
+        if self._l2_link_up(a, b) and self._vlan_compatible(a, b, None):
             return True
         for mid in self.devices:
             if mid in {a, b}:
                 continue
             if self.devices[mid].role != DeviceRole.SWITCH:
                 continue
-            if not (self._direct_link_up(a, mid) and self._direct_link_up(mid, b)):
+            if not (self._l2_link_up(a, mid) and self._l2_link_up(mid, b)):
                 continue
             if self._hosts_share_access_vlan(mid, a, b):
                 return True
+        switches = [
+            n for n, d in self.devices.items() if d.role == DeviceRole.SWITCH and n not in {a, b}
+        ]
+        for sw1 in switches:
+            if not self._l2_link_up(a, sw1):
+                continue
+            for sw2 in switches:
+                if sw2 == sw1 or not self._l2_link_up(sw1, sw2):
+                    continue
+                if not self._l2_link_up(sw2, b):
+                    continue
+                if self._hosts_share_vlan_via_two_switches(sw1, a, sw2, b):
+                    return True
         return False
+
+    def _l2_link_up(self, a: str, b: str) -> bool:
+        return self._channel_up(a, b) or self._direct_link_up(a, b)
+
+    def _hosts_share_vlan_via_two_switches(self, sw1: str, a: str, sw2: str, b: str) -> bool:
+        ia = self._iface_toward(sw1, a)
+        ib = self._iface_toward(sw2, b)
+        if ia is None or ib is None:
+            return False
+        va = self._port_vlan(ia)
+        vb = self._port_vlan(ib)
+        if va is None or vb is None:
+            return True
+        return va == vb
+
+    def _port_vlan(self, iface: InterfaceState) -> int | None:
+        if iface.switchport_mode == "trunk":
+            return None
+        if iface.switchport_mode == "access":
+            return iface.access_vlan if iface.access_vlan is not None else 1
+        return 1
 
     def _iface_toward(self, switch: str, peer: str) -> InterfaceState | None:
         for a_dev, a_if, b_dev, b_if in self.links:
@@ -677,13 +710,58 @@ class LabWorld:
         return True
 
     def _direct_link_up(self, a: str, b: str) -> bool:
+        pairs = self._unbundled_pairs(a, b)
+        if not pairs:
+            return False
+        both_switches = (
+            self.devices[a].role == DeviceRole.SWITCH
+            and self.devices[b].role == DeviceRole.SWITCH
+        )
+        if both_switches and len(pairs) > 1:
+            # Simplified STP: only the lowest local interface name forwards.
+            _local_if, _peer_if, ia, ib = min(pairs, key=lambda p: p[0])
+            return self._iface_pair_forwarding(ia, ib)
+        return any(self._iface_pair_forwarding(ia, ib) for _a, _b, ia, ib in pairs)
+
+    def _unbundled_pairs(
+        self, a: str, b: str
+    ) -> list[tuple[str, str, InterfaceState, InterfaceState]]:
+        """Unbundled links between a and b as (local_if, peer_if, ia, ib)."""
+        local, _peer = (a, b) if a <= b else (b, a)
+        out: list[tuple[str, str, InterfaceState, InterfaceState]] = []
         for a_dev, a_if, b_dev, b_if in self.links:
             if {a_dev, b_dev} != {a, b}:
                 continue
             ia = self.devices[a_dev].interfaces[a_if]
             ib = self.devices[b_dev].interfaces[b_if]
-            return bool(ia.admin_up and ib.admin_up and ia.protocol_up and ib.protocol_up)
-        return False
+            if ia.channel_group is not None and ia.channel_group == ib.channel_group:
+                continue
+            if a_dev == local:
+                out.append((a_if, b_if, ia, ib))
+            else:
+                out.append((b_if, a_if, ib, ia))
+        return out
+
+    def _channel_up(self, a: str, b: str) -> bool:
+        """True when a matching channel-group has a forwarding member on each side."""
+        a_groups: set[int] = set()
+        b_groups: set[int] = set()
+        for a_dev, a_if, b_dev, b_if in self.links:
+            if {a_dev, b_dev} != {a, b}:
+                continue
+            ia = self.devices[a_dev].interfaces[a_if]
+            ib = self.devices[b_dev].interfaces[b_if]
+            if ia.channel_group is not None and self._member_forwarding(ia):
+                (a_groups if a_dev == a else b_groups).add(ia.channel_group)
+            if ib.channel_group is not None and self._member_forwarding(ib):
+                (b_groups if b_dev == b else a_groups).add(ib.channel_group)
+        return bool(a_groups & b_groups)
+
+    def _member_forwarding(self, iface: InterfaceState) -> bool:
+        return bool(iface.admin_up and iface.protocol_up and iface.stp_forwarding)
+
+    def _iface_pair_forwarding(self, ia: InterfaceState, ib: InterfaceState) -> bool:
+        return bool(self._member_forwarding(ia) and self._member_forwarding(ib))
 
     def _routed(self, from_device: str, dst: IPv4Address) -> bool:
         return self._follow_routes(from_device, dst, include_ospf=True)

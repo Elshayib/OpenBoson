@@ -807,6 +807,22 @@ class OpenIOSShell:
             iface.ip = None
             iface.mask = None
             return ""
+        if _abbrev_match("spanning-tree", args[0]):
+            iface = self._require_if()
+            if len(args) < 2 or not _abbrev_match("portfast", args[1]):
+                raise _CmdError("% Incomplete command.")
+            iface.portfast = False
+            iface.extra_lines = [
+                x for x in iface.extra_lines if x.strip().lower() != "spanning-tree portfast"
+            ]
+            if iface.switchport_mode == "access":
+                iface.stp_forwarding = False
+            return ""
+        if _abbrev_match("channel-group", args[0]):
+            iface = self._require_if()
+            iface.channel_group = None
+            iface.extra_lines = [x for x in iface.extra_lines if not x.startswith("channel-group ")]
+            return ""
         return ""
 
     def _cmd_shutdown(self, args: list[str], line: str) -> str:
@@ -828,6 +844,8 @@ class OpenIOSShell:
             raise _CmdError("% Spanning-tree not supported on this platform.")
         if not args or not _abbrev_match("portfast", args[0]):
             raise _CmdError("% Incomplete command.")
+        iface.portfast = True
+        iface.stp_forwarding = True
         line_txt = "spanning-tree portfast"
         if line_txt not in iface.extra_lines:
             iface.extra_lines.append(line_txt)
@@ -846,6 +864,7 @@ class OpenIOSShell:
         mode = args[2].lower()
         if mode not in {"on", "active", "passive", "auto", "desirable"}:
             raise _CmdError("% Invalid EtherChannel mode.")
+        iface.channel_group = group
         line_txt = f"channel-group {group} mode {mode}"
         # Replace any prior channel-group on this interface.
         iface.extra_lines = [x for x in iface.extra_lines if not x.startswith("channel-group ")]
@@ -885,10 +904,12 @@ class OpenIOSShell:
             mode = args[1].lower()
             if mode.startswith("trunk"):
                 iface.switchport_mode = "trunk"
+                iface.stp_forwarding = True
             elif mode.startswith("access"):
                 iface.switchport_mode = "access"
                 if iface.access_vlan is None:
                     iface.access_vlan = 1
+                self._apply_access_stp(iface)
             else:
                 raise _CmdError("% Invalid switchport mode.")
             return ""
@@ -903,12 +924,18 @@ class OpenIOSShell:
             iface.access_vlan = vid
             if vid not in self.device.vlans:
                 self.device.vlans[vid] = f"VLAN{vid:04d}"
+            self._apply_access_stp(iface)
             return ""
         if _abbrev_match("trunk", args[0]):
             # switchport trunk encapsulation dot1q
             iface.switchport_mode = "trunk"
+            iface.stp_forwarding = True
             return ""
         raise _CmdError("% Incomplete command.")
+
+    def _apply_access_stp(self, iface) -> None:
+        """Access ports stay STP-blocked until PortFast (trunks already forward)."""
+        iface.stp_forwarding = bool(iface.portfast)
 
     def _cmd_exit_if(self, args: list[str], line: str) -> str:
         self.mode = Mode.CONFIG
