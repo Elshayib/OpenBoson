@@ -1,5 +1,8 @@
 # Teaching Explanations Implementation Plan
 
+> **Status: DONE** on `master` (`TeachingFeedback`, exam silent, tests in
+> `tests/gui/test_exam_flow.py`). Do not re-implement.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: subagent-driven-development.
 > Parallel-safe with study-loop / DHCP / content / presence if you only touch
 > the files listed below.

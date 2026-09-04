@@ -1,5 +1,9 @@
 # Explanation Quality Implementation Plan
 
+> **Status: DONE** on `master` (CI template ban + 24 flagship IDs). Typical
+> `ccna-v05-*` items can still be thin — further editorial is a thinner follow-up,
+> not a redo of this plan.
+
 > **For agentic workers:** Isolated to `content/questions/`, assembled pools,
 > `tests/exsim/test_content_pools.py`, and `docs/content-authoring.md`.
 > Do not change GUI (that is the teaching-explanations plan).

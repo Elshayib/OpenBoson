@@ -4,8 +4,9 @@
 > by isolated implementers, then a Boson-comparison reviewer, then a fix loop.
 > REQUIRED: subagent-driven-development **plus** the bar in
 > `docs/superpowers/specs/2026-09-04-beat-boson-bar.md`.
-> Every implementer prompt starts with a **GOAL** block. Do not report the
-> product complete until every aspect gate in the bar is green.
+> Every implementer prompt starts with a **GOAL** block. Core aspects **1–8 and
+> Trust docs / first-run** shipped on `master` (`6228c39`, CI green). Remaining:
+> PBQ (`2026-09-03-pbq-sim-items.md`) and v1 typed-core mypy.
 
 **Goal:** Make OpenBoson a better CCNA study product than Boson ExSim-Max used
 alone, by teaching, honest labs, a study loop, and premium presence — not by
@@ -25,20 +26,18 @@ pytest-qt, ruff, YAML labs/pools.
 
 | Gate | Status |
 |------|--------|
-| Gold labs ≥20, total ≥25, ENCOR gold ≥3 | Met |
-| CCNA ≥12/leaf ≥636; ENCOR ≥15/leaf ≥405 | Met |
-| Honest NAT path (inside PC → outside needs PAT) | **Shipped** (`test_nat_path.py`, `_nat_blocks_inside_to_outside`) |
-| ExSim custom exams, pause/resume, exports | Shipped |
-| Lab console polish v0.4.1 | Shipped |
-| Practice/review explanations | **Missing** (policy reversed by this plan) |
-| Honest DHCP / PortFast / EtherChannel ping | **Missing** (commands exist; packet path ignores them) |
-| `suggest_next()` study loop | **Missing** |
-| Premium presence / first-run | **Missing** |
-| Template explanation ban | **Missing** (pools still contain the phrase) |
+| Gold labs ≥20, total ≥25, ENCOR gold ≥3 | **Met** |
+| CCNA ≥12/leaf ≥636; ENCOR ≥15/leaf ≥405 | **Met** |
+| Honest NAT / DHCP / PortFast / EtherChannel ping | **Shipped** (`test_nat_path.py`, `test_dhcp_path.py`, `test_stp_path.py`) |
+| Gold NAT/DHCP/STP/EC fail-before / pass-after | **Shipped** (`test_gold_*_lab.py`) |
+| Practice/review explanations; exam silent | **Shipped** (`TeachingFeedback`) |
+| Template explanation CI ban + 24 flagship items | **Shipped** (typical `ccna-v05-*` items can still be thin) |
+| `suggest_next()` study loop | **Shipped** |
+| First-run + denser QSS | **Shipped** (some inline styles remain) |
+| `docs/openios-vs-ios.md` | **Shipped** |
 | Network Designer / pack store / ENARSI | Out of scope |
-
-NAT child plan `2026-09-03-honest-nat-path.md` is **done**. Do not re-implement it.
-Mark remaining NAT tasks complete when editing that file.
+| ≥5% PBQ/sim items | **Not started** — `2026-09-03-pbq-sim-items.md` |
+| Typed-core mypy expansion | **Not started** — `2026-09-03-v1-platform.md` Task 2+ |
 
 ---
 
@@ -47,7 +46,7 @@ Mark remaining NAT tasks complete when editing that file.
 ```
 GOAL → implementer (worktree) → tests → Boson reviewer (read-only, cwd=worktree)
      → if beats_boson false: resume implementer with gaps
-     → merge to feat/beat-boson
+     → merge to master (or a feat branch then FF)
 ```
 
 1. Implementer prompt **must** begin with:
@@ -75,21 +74,19 @@ GOAL → implementer (worktree) → tests → Boson reviewer (read-only, cwd=wor
 
 | # | File | Aspect | Parallel with | Exit (Boson gate) |
 |---|------|--------|---------------|-------------------|
-| 0 | this file + bar spec | sequencing | — | team follows bar |
+| 0 | this file + bar spec | sequencing | — | **DONE** |
 | 1 | `2026-09-03-honest-nat-path.md` | Believe/NAT | — | **DONE** |
-| 2 | `2026-09-04-teaching-explanations.md` | Teach | 3, 4, 5, 6 | Check+review show teaching; exam mode silent |
-| 3 | `2026-09-03-study-loop.md` | Coach | 2, 4, 5, 6 | Home/Stats CTA starts practice or gold lab |
-| 4 | `2026-09-03-honest-dhcp.md` | Believe/DHCP | 2, 3, 5, 6 | renew then ping; no IP cannot ping |
-| 5 | `2026-09-04-explanation-quality.md` | Teach/content | 2, 3, 4, 6 | template phrase banned; ≥24 flagship items |
-| 6 | `2026-09-04-premium-presence.md` | Presence | 2, 3, 4, 5 | QSS density + first-run; no dashboard CTA theft |
-| 7 | `2026-09-03-honest-stp-etherchannel.md` | Believe/L2 | after 4 | PortFast + EC change ping |
-| 8 | `2026-09-03-gold-lab-tickets.md` | Believe/catalog | after 7 | four feature labs fail-before/pass-after |
-| 9 | `2026-09-03-pbq-sim-items.md` | Teach/sims | after 8 | ≥5% only when gold labs exist to grade |
-| 10 | `2026-09-03-v1-platform.md` | Trust | anytime after 0 | `openios-vs-ios.md` + first-run if not in 6 |
+| 2 | `2026-09-04-teaching-explanations.md` | Teach | — | **DONE** |
+| 3 | `2026-09-03-study-loop.md` | Coach | — | **DONE** |
+| 4 | `2026-09-03-honest-dhcp.md` | Believe/DHCP | — | **DONE** |
+| 5 | `2026-09-04-explanation-quality.md` | Teach/content | — | **DONE** (flagships + CI ban; typical items still thinner than Boson) |
+| 6 | `2026-09-04-premium-presence.md` | Presence | — | **DONE** (first-run + QSS; some inline styles remain) |
+| 7 | `2026-09-03-honest-stp-etherchannel.md` | Believe/L2 | — | **DONE** |
+| 8 | `2026-09-03-gold-lab-tickets.md` | Believe/catalog | — | **DONE** |
+| 9 | `2026-09-03-pbq-sim-items.md` | Teach/sims | after 8 | **NEXT** ≥5% when content exists |
+| 10 | `2026-09-03-v1-platform.md` | Trust | — | Task 1 + first-run **DONE**; typed-core mypy leftover |
 
-Wave 1 (parallel worktrees): **2, 3, 4, 5, 6**.
-Wave 2 (after DHCP merged): **7 then 8**.
-Wave 3: **9, 10** leftover.
+Execute **9** next. Do not re-run 1–8.
 
 ---
 
@@ -118,16 +115,13 @@ inline `setStyleSheet` on the whole page.
 5. Gold labs must be able to fail on live verify, not `require:` alone.
 6. Line length 100, ruff, pytest after each task.
 7. YAGNI packet models (documented lies OK; silent lies not OK).
-8. Work on `feat/beat-boson-*` branches in worktrees.
+8. Work on feature branches in worktrees; merge to `master` only after tests + ruff.
 
 ---
 
 ## Definition of done (product)
 
-All aspect gates in `2026-09-04-beat-boson-bar.md` are green, `pytest -q` passes
-on the merged tree, and a Boson-comparison reviewer for the **whole product**
-answers: a CCNA candidate is better served by OpenBoson than by ExSim-Max alone.
-
-Until that whole-product review is true, the orchestrator keeps iterating.
-Do not tell the user the product is “better than Boson” without that review
-plus test evidence.
+Core bar (teach UI, believe, coach, trust docs) is **met on `master`**. Whole-product
+reviewer: a CCNA candidate using only OpenBoson is better served than ExSim-Max
+alone. **Do not market “better explanations than Boson.”** Remaining: PBQ ≥5%,
+typical-item editorial, typed-core mypy, Authenticode.

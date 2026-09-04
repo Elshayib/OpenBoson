@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. **Depends on:** `2026-09-03-honest-nat-path.md` merged or at least PC default-gateway forwarding.
 
+**Status: DONE** on `master` (`tests/netsim/test_dhcp_path.py`, gold `ccna_dhcp_pool_lan`).
+
 **Boson gate:** A candidate can fail a DHCP lab because the PC has no lease,
 then `ipconfig /renew` and ping — not because a `require:` string is missing.
 Iterate with a Boson-comparison reviewer until that is true.

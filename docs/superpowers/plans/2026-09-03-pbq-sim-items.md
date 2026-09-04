@@ -1,5 +1,8 @@
 # PBQ / OpenIOS Sim Items Implementation Plan
 
+> **Status: NEXT** (not started). Honest NAT/DHCP/PortFast/EC and gold tickets
+> are already on `master` — do not block this plan on those.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. **Depends on:** honest NAT (and ideally DHCP) so sims that ping are real. Existing `type: sim` questions keep substring grading when `lab_id` is absent.
 
 **Goal:** Sim questions with a `lab_id` are graded by applying the student’s config to that lab’s OpenIOS world and evaluating `verify` / `grading_rules`, not by string-contains on `expected_commands`. Blueprint can require a minimum number of sim items. Pool gate ≥5% only after enough original items exist.

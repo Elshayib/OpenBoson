@@ -71,33 +71,30 @@ Exam presentation for the GUI/API uses `QuestionPresentation.to_dict()` with pub
 
 When implementing features, work task-by-task, run relevant tests after each change, and keep diffs focused.
 
-## Implementation status (as of v0.4.1)
+## Implementation status (as of master after Beat Boson)
 
-**Current:** v0.4.1 Lab console polish — see `docs/status.md` for handoff.
+**Current tagged:** v0.4.1 Lab console polish. **`master` has Beat Boson core** — see `docs/status.md`.
 
 **Done:**
-- ExSim engine + GUI (practice library pagination, blueprints, custom exams, Check + rationales, keyboard drag-match)
+- ExSim engine + GUI (practice library, blueprints, custom exams, Check + explanations/why-wrong, keyboard drag-match)
 - Pause/resume with SQLite persistence; score/review exports (HTML/JSON/CSV/Print-PDF, redacted)
-- Stats weak-domains + domain × version heatmap
-- NetSim engine + GUI (OpenIOS, catalog filters, ≥50 labs, per-device grading, verify.ping, reset/replay)
-- Lab console polish (themed terminal/topology, Ctrl+Z/paging, matrix STP/EtherChannel/IPv6)
-- ARP learning, static + simplified OSPF routes for ping/traceroute; 10-device perf gate
-- Hot-load registry (bundled + local + packs), content refresh API/Settings
-- Settings: theme, logs/backups, updates card, content diagnostics
-- Resource paths, logging, DB backups, typed settings store
-- CI (Windows/Ubuntu), Makefile / `scripts/dev.ps1`, quality baseline
-- Windows packaging: PyInstaller onedir, Inno script, release workflow
-- Domain-sharded content pipeline; teaching-depth + per-leaf floors (v0.5); ≥50 labs
+- Stats weak-domains + heatmap; `suggest_next()` study loop (Home/Stats)
+- NetSim engine + GUI (OpenIOS, catalog filters, gold/drill/scale, per-device grading, verify.ping, reset/replay)
+- Honest ping: ACL, NAT PAT, DHCP renew, PortFast, EtherChannel bundle
+- Gold NAT/DHCP/STP/EC labs fail-before / pass-after; ENCOR gold ≥3
+- Lab console polish (themed terminal/topology, Ctrl+Z/paging)
+- First-run CCNA/ENCOR picker; denser QSS
+- Domain-sharded pools; template-phrase CI ban; 24 CCNA flagship items
+- Platform: registry, settings, logging, DB backups, light/dark, CI, Windows installer
 
-
-**Next (Beat Boson — see `docs/superpowers/plans/2026-09-04-beat-boson.md`):**
-- Teach: practice Check + exam review show explanations; exam mode silent; no template rationales
-- Believe: DHCP / PortFast / EtherChannel must change ping (NAT already does)
-- Coach: Home/Stats `suggest_next()` → practice or matching gold lab
-- Presence: premium QSS + first-run; no in-app lab designer / pack store
+**Next:**
+- PBQ/sim items (≥5%) — `docs/superpowers/plans/2026-09-03-pbq-sim-items.md`
+- Typical-item explanation depth (no new generator stamps)
+- v1 typed-core mypy leftover; Authenticode remains v1.0
+- No in-app lab designer / pack store
 
 **Later:**
-- Further OpenIOS fidelity where gold labs need it · ≥5% PBQ · v1.0 signed cross-platform
+- Further OpenIOS fidelity where gold labs need it · v1.0 signed cross-platform
 
 
 
@@ -121,7 +118,9 @@ When implementing features, work task-by-task, run relevant tests after each cha
 - `docs/lab-catalog-audit.md` — pre-rewrite inventory
 - `README.md` — user-facing overview and quick start
 - `CONTRIBUTING.md` / `SECURITY.md` / `PRIVACY.md` / `SUPPORT.md` — community and safety docs
-- `docs/deferred-releases.md` — Labs Quality + post-v0.4 scope and gates
+- `docs/deferred-releases.md` — Beat Boson shipped on master; PBQ / v1.0 next
+- `docs/openios-vs-ios.md` — honest OpenIOS vs real IOS
+- `docs/superpowers/plans/2026-09-04-beat-boson.md` — orchestration; PBQ is next child plan
 
 - `docs/quality-baseline.md` — CI / quality gates
 - `docs/v020-beta-checklist.md` — optional Windows install verification

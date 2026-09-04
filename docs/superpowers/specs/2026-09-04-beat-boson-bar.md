@@ -24,7 +24,7 @@ network, and the app always knows the next 20 minutes of work.
 - Timed **exam mode** stays silent (no mid-exam teaching) — Boson sim mode equivalent.
 - Template distractor copy is banned in CI: no “does not describe the intended use or behavior required by the stem.”
 - Flagship set: ≥24 CCNA items (4 per domain 1–6) with stem-specific why-wrong, at least one concrete IOS/command or numeric reason per item.
-- Existing `test_practice_question_check_shows_feedback` must be updated: it currently **forbids** an “Explanation” label.
+- `test_practice_question_check_shows_feedback` requires `TeachingFeedback` and fixture rationale text (**done**).
 
 ### 2. Believe (beat NetSim scenario honesty, not lab count)
 
@@ -61,6 +61,20 @@ network, and the app always knows the next 20 minutes of work.
 - ENARSI, pack store, in-app lab designer.
 - Full IOS (PVST elections, NAT translation table, DHCP relay, LACP PDUs).
 - Every pool item being a 3-page essay in this program.
+
+## Shipped vs leftover (2026-09-04, `master` CI green)
+
+| Gate | Result |
+|------|--------|
+| Teach UI | **Met** |
+| Teach content (CI ban + 24 flagships) | **Met**; typical pool items can still be thinner than Boson |
+| Believe (NAT/DHCP/PortFast/EC + gold tickets) | **Met** |
+| Coach | **Met** |
+| Presence (first-run + type scale) | **Met**; some inline styles and extra hub CTAs remain |
+| Trust (`openios-vs-ios.md`) | **Met** |
+
+Do not market “better explanations than Boson.” Combined local study vs ExSim-Max
+alone is the claim.
 
 ## Reviewer protocol
 

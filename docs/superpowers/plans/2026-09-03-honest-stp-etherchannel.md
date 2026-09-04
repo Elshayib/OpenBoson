@@ -2,6 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans. **Depends on:** NAT/DHCP tracks not required; can run after NAT. Do not simulate broadcast storms or PVST elections.
 
+**Status: DONE** on `master` (`tests/netsim/test_stp_path.py`; unbundled dual
+links block the redundant path; matching `channel-group` survives one shutdown).
+
 **Boson gate:** PortFast and EtherChannel change forwarding used by ping.
 Commands stuffed into `extra_lines` only is a fail. Depends on DHCP merge
 (shared `device.py` / `world.py`).

@@ -2,18 +2,27 @@
 
 All notable changes to OpenBoson are documented in this file.
 
-## [Unreleased] — Beat Boson (in progress)
+## [Unreleased] — Beat Boson (on `master`, CI green)
 
 ### Application
-- Practice Check and exam review show explanations and per-choice rationales.
+- Practice Check and exam review show explanations and why-right / why-wrong (choice text).
 - Timed exam mode stays silent. Redacted score exports still omit teaching text.
+- Home/Stats `suggest_next()`: weak domain → practice or a matching gold lab.
+- First-run picks CCNA or ENCOR once; denser dark/light QSS.
+
+### Engine
+- DHCP: unaddressed PC cannot ping; `ipconfig /renew` from an adjacent pool then ping works.
+- PortFast: switch access ports block ping until `spanning-tree portfast`.
+- EtherChannel: matching `channel-group` is one logical link; unbundled parallel SW links forward only the lowest-named member.
 
 ### Content
 - Per-leaf coverage floors (≥12 CCNA / ≥15 ENCOR); pool volumes ≥636 / ≥405.
-- Template distractor phrases banned; flagship CCNA explanations rewritten.
+- Template distractor phrases banned in CI; 24 CCNA flagship explanations.
+- Gold NAT/DHCP/STP/EtherChannel labs fail-before / pass-after on `verify.ping`; two extra ENCOR gold labs.
 
 ### Docs
-- Roadmap focused on topic coverage (no lab creation / pack-store track).
+- `docs/openios-vs-ios.md` — honest OpenIOS scope vs real IOS.
+- Beat Boson bar and child plans under `docs/superpowers/`.
 
 ## [0.4.1] — 2026-08-02 — Lab console polish
 

@@ -1,6 +1,8 @@
 # Lab catalog audit (Labs Experience Rework — Phase 0)
 
-Inventory date: 2026-08-06. Source: `data/demo_labs/*.yaml` (52 files before rewrite).
+**Historical inventory** (2026-08-06, 52 files before rewrite). Current floors and
+honest feature labs: [`lab-authoring.md`](lab-authoring.md) and the post-rewrite
+note below. Do not treat the Phase 0 counts as the live catalog.
 
 ## Summary
 

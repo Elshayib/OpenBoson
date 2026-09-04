@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. **Depends on:** gold labs having honest topic_codes (track 4 helps; can start after NAT if matching existing labs).
 
+**Status: DONE** on `master` (`suggest_next()`, Home/Stats CTAs, `tests/gui/test_study_loop.py`).
+
 **Boson gate:** Boson sells ExSim and NetSim separately. This loop is the
 combined-product win. A candidate with a weak domain 2.x can start a matching
 gold lab in one click. File ownership: `stats_service.py`, `gui/engine.py`,

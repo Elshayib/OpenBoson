@@ -2,6 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. **Depends on:** honest NAT, DHCP, and STP/EC tracks (plans 1–3). Do not add labs that pass on `require:` while ping would succeed without the feature.
 
+**Status: DONE** on `master` (`test_gold_nat_lab.py`, `test_gold_dhcp_lab.py`,
+`test_gold_stp_lab.py`, `test_gold_etherchannel_lab.py`, `test_gold_encor_labs.py`).
+
 **Boson gate:** Labs read like tickets, not “configure VLAN 10 named USERS.”
 Must run **after** honest DHCP + STP/EC so verify is not fake.
 

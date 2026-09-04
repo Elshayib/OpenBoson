@@ -1,5 +1,8 @@
 # Premium Presence Implementation Plan
 
+> **Status: DONE** on `master` (`first_run.py`, denser QSS). Some inline styles
+> (exam grid, heatmap) remain; do not redo this plan for those.
+
 > **For agentic workers:** Own `styles.qss`, `styles_light.qss`, and a first-run
 > widget. Do **not** rewrite Dashboard Python CTAs (study-loop owns those).
 > Do **not** change practice Check logic (teaching-explanations owns that).
