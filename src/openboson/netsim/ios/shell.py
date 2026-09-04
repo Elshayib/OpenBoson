@@ -848,6 +848,7 @@ class OpenIOSShell:
         mode = args[2].lower()
         if mode not in {"on", "active", "passive", "auto", "desirable"}:
             raise _CmdError("% Invalid EtherChannel mode.")
+        iface.channel_group = group
         line_txt = f"channel-group {group} mode {mode}"
         # Replace any prior channel-group on this interface.
         iface.extra_lines = [x for x in iface.extra_lines if not x.startswith("channel-group ")]
