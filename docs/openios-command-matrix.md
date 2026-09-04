@@ -1,5 +1,7 @@
 # OpenIOS command matrix (v0.4)
 
+What OpenIOS does and does not model versus real Cisco IOS: [`openios-vs-ios.md`](openios-vs-ios.md).
+
 Each shipped lab must map to parser/state/running-config/show behavior that OpenIOS models. Commands not listed are out of scope for golden-solution CI.
 
 | Family | Commands (abbrev OK) | Labs using |

@@ -8,6 +8,8 @@ Shipped practice content targets **CCNA 200-301 v1.1** and **CCNP ENCOR 350-401 
 
 **[v0.4.1 Lab console polish](https://github.com/Elshayib/OpenBoson/releases/tag/v0.4.1)** — themed Cisco terminal, Ctrl+Z/paging, OpenIOS matrix cmds. Next major track is **v0.5** (full CCNA/ENCOR topic coverage).
 
+OpenIOS is a teaching model, not full Cisco IOS — see [`docs/openios-vs-ios.md`](docs/openios-vs-ios.md).
+
 
 
 
