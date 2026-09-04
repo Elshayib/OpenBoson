@@ -23,22 +23,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**A trunk can carry multiple VLANs with tags**: **802.1Q** trunks tag frames so a single
-    physical link can carry multiple VLANs. The native VLAN remains untagged by default. This is the correct
-    answer for the stem.
+  explanation: '**802.1Q** inserts a 4-byte tag (TPID `0x8100` + PCP/DEI + VLAN ID)
+    so one trunk can carry many VLANs. Frames of the **native VLAN** are sent **untagged**
+    on that trunk.
 
 
-    **Native VLAN frames are untagged**: The **native VLAN** carries untagged frames on an 802.1Q trunk.
-    Tagged frames belong to other VLANs carried on the same trunk. This is the correct answer for the
-    stem. Configuration uses `switchport trunk native vlan <id>`.
+    **A trunk can carry multiple VLANs with tags** is the definition of an 802.1Q
+    trunk (`switchport mode trunk`).
 
 
-    **VLAN 1 can never be native** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Native VLAN frames are untagged** is required by 802.1Q; mismatched native VLANs
+    on two ends cause a VLAN leak.
 
 
-    **ISL is required on modern Catalyst** is incorrect. It does not describe the intended use or behavior
-    required by the stem.'
+    **VLAN 1 can never be native** is false. VLAN 1 is the **default** native VLAN
+    on Cisco trunks (operators often change it, but it is allowed).
+
+
+    **ISL is required on modern Catalyst** is false. ISL is a legacy Cisco proprietary
+    trunk encapsulation; current Catalyst switching uses 802.1Q.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -62,20 +65,25 @@ questions:
     text: Disabled
   correct:
     answer: a
-  explanation: '**Root port** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'In Rapid PVST+ each non-root switch picks **one Root Port**: the port
+    with the best (lowest) cost path toward the root bridge. That port **forwards**
+    toward the root.
 
 
-    **Designated port on a blocked segment** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.
+    **Root port** is that unique per-VLAN uplink to the root.
 
 
-    **Alternate port** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Designated port on a blocked segment** is contradictory: a designated port **forwards
+    onto** its segment. A blocked/alternate port is the one that does **not** forward
+    user frames.
 
 
-    **Disabled** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Alternate port** is Rapid STP’s backup to the root port. It stays in **discarding**
+    unless the root port fails.
+
+
+    **Disabled** is administratively down (`shutdown`). It forwards nothing and does
+    not participate in the STP election.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -87,7 +95,8 @@ questions:
   topic_code: '2.4'
   difficulty: 2
   cert_tags: *id001
-  stem: EtherChannel bundles multiple physical links into what logical interface type on Cisco IOS?
+  stem: EtherChannel bundles multiple physical links into what logical interface type
+    on Cisco IOS?
   choices:
   - id: a
     text: Port-channel
@@ -99,20 +108,19 @@ questions:
     text: Null0
   correct:
     answer: a
-  explanation: '**Port-channel** is correct. It is the selection that meets the requirement stated in
-    the stem.
+  explanation: 'Port-channel (Po) is the logical EtherChannel interface.
 
 
-    **Loopback** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Port-channel** is correct: Logical Po interface.
 
 
-    **Tunnel** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Loopback** is not the right selection: Virtual IP interface.
 
 
-    **Null0** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Tunnel** is not the right selection: Overlay.
+
+
+    **Null0** is not the right selection: Bit bucket.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -124,7 +132,8 @@ questions:
   topic_code: '2.6'
   difficulty: 3
   cert_tags: *id001
-  stem: In CAPWAP, which tunnel carries client data between AP and WLC in a centralized design?
+  stem: In CAPWAP, which tunnel carries client data between AP and WLC in a centralized
+    design?
   choices:
   - id: a
     text: CAPWAP data tunnel
@@ -136,20 +145,21 @@ questions:
     text: PPPoE
   correct:
     answer: a
-  explanation: '**CAPWAP data tunnel** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Lightweight APs use CAPWAP control and data tunnels to the WLC.
 
 
-    **Only GRE without CAPWAP** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **CAPWAP data tunnel** is correct: Encrypted/optional DTLS data path.
 
 
-    **IPsec VTI only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only GRE without CAPWAP** is not the right selection: CAPWAP is the Cisco LWAPP
+    successor.
 
 
-    **PPPoE** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **IPsec VTI only** is not the right selection: Not the standard AP-WLC control
+    plane.
+
+
+    **PPPoE** is not the right selection: WAN access method.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -173,9 +183,10 @@ questions:
     right: Auxiliary VLAN for IP phones
   correct:
     pairs: *id002
-  explanation: 'The correct mappings are: Access port → Carries a single untagged VLAN for end hosts;
-    Trunk port → Carries multiple VLANs with 802.1Q tags; Native VLAN → Untagged on an 802.1Q trunk; Voice
-    VLAN → Auxiliary VLAN for IP phones. Each left item associates with exactly one right item.'
+  explanation: 'The correct mappings are: Access port → Carries a single untagged
+    VLAN for end hosts; Trunk port → Carries multiple VLANs with 802.1Q tags; Native
+    VLAN → Untagged on an 802.1Q trunk; Voice VLAN → Auxiliary VLAN for IP phones.
+    Each left item associates with exactly one right item.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -187,7 +198,8 @@ questions:
   topic_code: '2.5'
   difficulty: 3
   cert_tags: *id001
-  stem: Order classic STP port states from blocking toward forwarding (802.1D teaching order).
+  stem: Order classic STP port states from blocking toward forwarding (802.1D teaching
+    order).
   ordered_items:
   - Learning
   - Listening
@@ -199,18 +211,21 @@ questions:
     - Listening
     - Learning
     - Forwarding
-  explanation: 'The correct sequence for this item is: Blocking → Listening → Learning → Forwarding. Each
-    step must appear in this order; rearranging any step breaks the required procedure or protocol behavior.
-    The correct sequence for this item is: Blocking → Listening → Learning → Forwarding. Each step must
-    appear in this order; rearranging any step breaks the required procedure or protocol behavior. The
-    correct sequence for this item is: Blocking → Listening → Learning → Forwarding. Each step must appear
-    in this order; rearranging any step breaks the required procedure or protocol behavior. The correct
-    sequence for this item is: Blocking → Listening → Learning → Forwarding. Each step must appear in
-    this order; rearranging any step breaks the required procedure or protocol behavior. The correct sequence
-    for this item is: Blocking → Listening → Learning → Forwarding. The stem requires the operational
-    or protocol order implied by: Order classic STP port states from blocking toward forwarding (802.1D
-    teaching order).. Each listed step must appear in this order; rearranging any step breaks the required
-    procedure or protocol behavior.'
+  explanation: 'The correct sequence for this item is: Blocking → Listening → Learning
+    → Forwarding. Each step must appear in this order; rearranging any step breaks
+    the required procedure or protocol behavior. The correct sequence for this item
+    is: Blocking → Listening → Learning → Forwarding. Each step must appear in this
+    order; rearranging any step breaks the required procedure or protocol behavior.
+    The correct sequence for this item is: Blocking → Listening → Learning → Forwarding.
+    Each step must appear in this order; rearranging any step breaks the required
+    procedure or protocol behavior. The correct sequence for this item is: Blocking
+    → Listening → Learning → Forwarding. Each step must appear in this order; rearranging
+    any step breaks the required procedure or protocol behavior. The correct sequence
+    for this item is: Blocking → Listening → Learning → Forwarding. The stem requires
+    the operational or protocol order implied by: Order classic STP port states from
+    blocking toward forwarding (802.1D teaching order).. Each listed step must appear
+    in this order; rearranging any step breaks the required procedure or protocol
+    behavior.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -234,20 +249,22 @@ questions:
     text: encapsulation dot1q 20
   correct:
     answer: a
-  explanation: '**vlan 20**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
-    within a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'Global VLAN configuration creates the VLAN.
 
 
-    **interface vlan 20 only** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **interface vlan 20 only** is a mismatch: `interface vlan 20` creates an SVI for
+    inter-VLAN routing; it does not create VLAN 20 in the VLAN database (`vlan 20`).
+    The stem is asking about **vlan 20**.
 
 
-    **switchport access vlan 20 alone**: A Layer 2 **switch** forwards Ethernet frames based on MAC address
-    tables within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+    **switchport access vlan 20 alone** is a mismatch: `switchport access vlan 20`
+    assigns an existing VLAN to an access port. The VLAN must already exist (`vlan
+    20` / VTP). The stem is asking about **vlan 20**.
 
 
-    **encapsulation dot1q 20** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **encapsulation dot1q 20** is a mismatch: `encapsulation dot1Q 20` tags a router
+    subinterface (ROAS). It does not create the L2 VLAN on a switch. The stem is asking
+    about **vlan 20**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -271,20 +288,21 @@ questions:
     text: A VPN
   correct:
     answer: a
-  explanation: '**A trunk** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'Dynamic desirable initiates trunking.
 
 
-    **An EtherChannel** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **An EtherChannel** is a different protocol, command, or value than **A trunk**.
+    For 2.2 (Interswitch connectivity), the stem is solved by **A trunk**, not by
+    An EtherChannel.
 
 
-    **An OSPF adjacency**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **An OSPF adjacency** is a different protocol, command, or value than **A trunk**.
+    For 2.2 (Interswitch connectivity), the stem is solved by **A trunk**, not by
+    An OSPF adjacency.
 
 
-    **A VPN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **A VPN** is a different protocol, command, or value than **A trunk**. For 2.2
+    (Interswitch connectivity), the stem is solved by **A trunk**, not by A VPN.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -308,20 +326,22 @@ questions:
     text: Serial number only
   correct:
     answer: a
-  explanation: '**Priority then MAC** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Lowest bridge ID wins the root election.
 
 
-    **Highest MAC always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Highest MAC always** points at Highest MAC, which is not how 2.5 (Rapid PVST+
+    Spanning Tree Protocol) solves this stem. The keyed answer is **Priority then
+    MAC**.
 
 
-    **Highest priority** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Highest priority** is a different protocol, command, or value than **Priority
+    then MAC**. For 2.5 (Rapid PVST+ Spanning Tree Protocol), the stem is solved by
+    **Priority then MAC**, not by Highest priority.
 
 
-    **Serial number only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Serial number only** points at Serial number, which is not how 2.5 (Rapid PVST+
+    Spanning Tree Protocol) solves this stem. The keyed answer is **Priority then
+    MAC**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -345,22 +365,25 @@ questions:
     text: Blocked alternate only
   correct:
     answer: a
-  explanation: '**Edge ports to end hosts**: **PortFast** places an edge port into the forwarding state
-    immediately, bypassing the listening and learning states and thereby reducing STP convergence time
-    for end stations. This is the correct answer for the stem. Configuration uses `spanning-tree portfast`.
-    **Note:** PortFast must not be combined with loop guard on the same interface.
+  explanation: '**PortFast** (`spanning-tree portfast` or `spanning-tree portfast
+    edge`) moves an **edge** access port from blocking/listening/learning straight
+    to **forwarding** so a PC/phone gets DHCP immediately. It is for **host** ports,
+    not for links that might form a loop.
 
 
-    **All trunks always** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Edge ports to end hosts** is the intended use (often with BPDU Guard).
 
 
-    **Routed ports only** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **All trunks always** is dangerous: a trunk to another switch can loop. Cisco
+    even warns against PortFast on non-edge trunks.
 
 
-    **Blocked alternate only** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **Routed ports only** (`no switchport`) have no STP state machine to skip; PortFast
+    is a **switching** edge feature.
+
+
+    **Blocked alternate only** are the ports STP is already holding down. PortFast
+    would not apply there — those are redundant switch-to-switch paths, not host edges.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -384,19 +407,22 @@ questions:
     text: 802.11i
   correct:
     answer: a
-  explanation: '**802.3ad / 802.1AX**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is
-    the standards-based alternative to PAgP. This is the correct answer for the stem. Configuration uses
-    `channel-group <id> mode active|passive`.
+  explanation: '**LACP** is the IEEE standard for EtherChannel negotiation, originally
+    **802.3ad** and later moved to **802.1AX**. On IOS it is `channel-group N mode
+    active|passive`.
 
 
-    **802.1Q** trunks tag frames so a single physical link can carry multiple VLANs. The native VLAN remains
-    untagged by default. This does not satisfy the condition required by the stem.
+    **802.3ad / 802.1AX** is LACP.
 
 
-    **802.1X** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **802.1Q** is VLAN tagging on trunks, not bundling.
 
 
-    **802.11i** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **802.1X** is port-based network access control (EAPoL / RADIUS), not EtherChannel.
+
+
+    **802.11i** is the Wi-Fi security amendment behind WPA2 (CCMP/AES), unrelated
+    to wired link aggregation.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -420,20 +446,21 @@ questions:
     text: Bluetooth SIG
   correct:
     answer: a
-  explanation: '**Cisco proprietary**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This is the correct answer for the stem. Configuration
-    uses `channel-group <id> mode desirable|auto`.
+  explanation: 'PAgP is Cisco proprietary; LACP is standards-based.
 
 
-    **IETF standard only** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **IETF standard only** points at IETF standard, which is not how 2.4 (EtherChannel
+    (LACP)) solves this stem. The keyed answer is **Cisco proprietary**.
 
 
-    **ITU SS7** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ITU SS7** is a different protocol, command, or value than **Cisco proprietary**.
+    For 2.4 (EtherChannel (LACP)), the stem is solved by **Cisco proprietary**, not
+    by ITU SS7.
 
 
-    **Bluetooth SIG** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Bluetooth SIG** is a different protocol, command, or value than **Cisco proprietary**.
+    For 2.4 (EtherChannel (LACP)), the stem is solved by **Cisco proprietary**, not
+    by Bluetooth SIG.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -457,20 +484,22 @@ questions:
     text: Only Bluetooth beacons
   correct:
     answer: a
-  explanation: '**Local mode CAPWAP** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Local-mode APs tunnel client traffic to the WLC via CAPWAP.
 
 
-    **Only autonomous IOS AP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only autonomous IOS AP** points at autonomous IOS AP, which is not how 2.6 (Cisco
+    Wireless Architectures and AP modes) solves this stem. The keyed answer is **Local
+    mode CAPWAP**.
 
 
-    **Only mesh satellite RF** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only mesh satellite RF** points at mesh satellite RF, which is not how 2.6 (Cisco
+    Wireless Architectures and AP modes) solves this stem. The keyed answer is **Local
+    mode CAPWAP**.
 
 
-    **Only Bluetooth beacons** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only Bluetooth beacons** points at Bluetooth beacons, which is not how 2.6 (Cisco
+    Wireless Architectures and AP modes) solves this stem. The keyed answer is **Local
+    mode CAPWAP**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -494,18 +523,22 @@ questions:
     text: A DNS query
   correct:
     answer: a
-  explanation: '**BPDU guard** err-disables a PortFast-enabled port that receives a BPDU, protecting the
-    edge from an accidental switch attachment that could create a loop. This is the correct answer for
-    the stem. Configuration uses `spanning-tree bpduguard enable`.
+  explanation: 'BPDU Guard err-disables edge ports that receive BPDUs.
 
 
-    **An ARP reply** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **An ARP reply** is a different protocol, command, or value than **A BPDU**. For
+    2.5 (Rapid PVST+ Spanning Tree Protocol), the stem is solved by **A BPDU**, not
+    by An ARP reply.
 
 
-    **A DHCP offer** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **A DHCP offer** is a different protocol, command, or value than **A BPDU**. For
+    2.5 (Rapid PVST+ Spanning Tree Protocol), the stem is solved by **A BPDU**, not
+    by A DHCP offer.
 
 
-    **A DNS query** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **A DNS query** is a different protocol, command, or value than **A BPDU**. For
+    2.5 (Rapid PVST+ Spanning Tree Protocol), the stem is solved by **A BPDU**, not
+    by A DNS query.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -529,21 +562,23 @@ questions:
     text: Disable all trunks
   correct:
     answer: a
-  explanation: '**Forward them but do not sync VLAN DB from them**: A Layer 2 **switch** forwards Ethernet
-    frames based on MAC address tables within a broadcast domain or VLAN. This is the correct answer for
-    the stem.
+  explanation: 'Transparent mode forwards VTP without syncing the VLAN database.
 
 
-    **Always overwrite clients** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Always overwrite clients** is a different protocol, command, or value than **Forward
+    them but do not sync VLAN DB from them**. For 2.1 (VLANs), the stem is solved
+    by **Forward them but do not sync VLAN DB from them**, not by Always overwrite
+    clients.
 
 
-    **Drop all BPDUs** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Drop all BPDUs** is a different protocol, command, or value than **Forward them
+    but do not sync VLAN DB from them**. For 2.1 (VLANs), the stem is solved by **Forward
+    them but do not sync VLAN DB from them**, not by Drop all BPDUs.
 
 
-    **Disable all trunks** is incorrect. It does not describe the intended use or behavior required by
-    the stem.'
+    **Disable all trunks** is a different protocol, command, or value than **Forward
+    them but do not sync VLAN DB from them**. For 2.1 (VLANs), the stem is solved
+    by **Forward them but do not sync VLAN DB from them**, not by Disable all trunks.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -567,20 +602,19 @@ questions:
     text: Learning only
   correct:
     answer: a
-  explanation: '**Blocking and listening** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'RSTP collapses blocking/listening into discarding.
 
 
-    **Only forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only forwarding** points at forwarding, which is not how 2.5 (Rapid PVST+ Spanning
+    Tree Protocol) solves this stem. The keyed answer is **Blocking and listening**.
 
 
-    **Only disabled** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only disabled** points at disabled, which is not how 2.5 (Rapid PVST+ Spanning
+    Tree Protocol) solves this stem. The keyed answer is **Blocking and listening**.
 
 
-    **Learning only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Learning only** points at Learning, which is not how 2.5 (Rapid PVST+ Spanning
+    Tree Protocol) solves this stem. The keyed answer is **Blocking and listening**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -604,22 +638,21 @@ questions:
     text: Random MTUs
   correct:
     answer: a
-  explanation: '**Speed/duplex and compatible configs**: **PAT** (NAT overload) maps many inside addresses
-    to one outside address using unique transport port numbers. This is the correct answer for the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Inconsistent member settings suspend the channel.
 
 
-    **Unique VLANs only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Unique VLANs only** points at Unique VLANs, which is not how 2.4 (EtherChannel
+    (LACP)) solves this stem. The keyed answer is **Speed/duplex and compatible configs**.
 
 
-    **Different native VLANs**: The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged
-    frames belong to other VLANs carried on the same trunk. This does not satisfy the condition required
-    by the stem. Configuration uses `switchport trunk native vlan <id>`.
+    **Different native VLANs** is a different protocol, command, or value than **Speed/duplex
+    and compatible configs**. For 2.4 (EtherChannel (LACP)), the stem is solved by
+    **Speed/duplex and compatible configs**, not by Different native VLANs.
 
 
-    **Random MTUs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Random MTUs** is a different protocol, command, or value than **Speed/duplex
+    and compatible configs**. For 2.4 (EtherChannel (LACP)), the stem is solved by
+    **Speed/duplex and compatible configs**, not by Random MTUs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -643,22 +676,25 @@ questions:
     text: DHCP snooping disable
   correct:
     answer: a
-  explanation: '**CDP warnings and possible connectivity issues**: **CDP** is Cisco’s Layer 2 neighbor
-    discovery protocol used for topology visibility and some provisioning features. This is the correct
-    answer for the stem. Configuration uses `cdp run` / `show cdp neighbors`.
+  explanation: 'Untagged frames disagree when native VLANs differ.
 
 
-    **Automatic OSPF adjacency**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **Automatic OSPF adjacency** is a different protocol, command, or value than **CDP
+    warnings and possible connectivity issues**. For 2.2 (Interswitch connectivity),
+    the stem is solved by **CDP warnings and possible connectivity issues**, not by
+    Automatic OSPF adjacency.
 
 
-    **Mandatory encryption** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Mandatory encryption** is a different protocol, command, or value than **CDP
+    warnings and possible connectivity issues**. For 2.2 (Interswitch connectivity),
+    the stem is solved by **CDP warnings and possible connectivity issues**, not by
+    Mandatory encryption.
 
 
-    **DHCP snooping disable** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **DHCP snooping disable** is a different protocol, command, or value than **CDP
+    warnings and possible connectivity issues**. For 2.2 (Interswitch connectivity),
+    the stem is solved by **CDP warnings and possible connectivity issues**, not by
+    DHCP snooping disable.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -682,21 +718,21 @@ questions:
     text: UDLD only
   correct:
     answer: a
-  explanation: '**Root guard** prevents a neighboring switch from becoming the root bridge by keeping
-    the receiving port in a root-inconsistent state if superior BPDUs arrive. This is the correct answer
-    for the stem. Configuration uses `spanning-tree guard root`.
+  explanation: 'Root guard protects the root role from unexpected superior BPDUs.
 
 
-    **Port security sticky** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Port security sticky** is a different protocol, command, or value than **Root
+    guard**. For 2.5 (Rapid PVST+ Spanning Tree Protocol), the stem is solved by **Root
+    guard**, not by Port security sticky.
 
 
-    **DHCP snooping** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **DHCP snooping** is a different protocol, command, or value than **Root guard**.
+    For 2.5 (Rapid PVST+ Spanning Tree Protocol), the stem is solved by **Root guard**,
+    not by DHCP snooping.
 
 
-    **UDLD only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **UDLD only** points at UDLD, which is not how 2.5 (Rapid PVST+ Spanning Tree
+    Protocol) solves this stem. The keyed answer is **Root guard**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -720,22 +756,23 @@ questions:
     text: A wireless encryption cipher
   correct:
     answer: a
-  explanation: '**IEEE neighbor discovery protocol**: **LLDP** is the standards-based Layer 2 neighbor
-    discovery protocol (IEEE 802.1AB). This is the correct answer for the stem. Configuration uses `lldp
-    run` / `show lldp neighbors`.
+  explanation: 'LLDP is the standards-based Layer 2 discovery protocol.
 
 
-    **Cisco-only proprietary CDP replacement mandatory**: **CDP** is Cisco’s Layer 2 neighbor discovery
-    protocol used for topology visibility and some provisioning features. This does not satisfy the condition
-    required by the stem. Configuration uses `cdp run` / `show cdp neighbors`.
+    **Cisco-only proprietary CDP replacement mandatory** points at Cisco-only proprietary
+    CDP replacement, which is not how 2.3 (Layer 2 discovery protocols (CDP/LLDP))
+    solves this stem. The keyed answer is **IEEE neighbor discovery protocol**.
 
 
-    **A routing protocol** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **A routing protocol** is a different protocol, command, or value than **IEEE
+    neighbor discovery protocol**. For 2.3 (Layer 2 discovery protocols (CDP/LLDP)),
+    the stem is solved by **IEEE neighbor discovery protocol**, not by A routing protocol.
 
 
-    **A wireless encryption cipher** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **A wireless encryption cipher** is a different protocol, command, or value than
+    **IEEE neighbor discovery protocol**. For 2.3 (Layer 2 discovery protocols (CDP/LLDP)),
+    the stem is solved by **IEEE neighbor discovery protocol**, not by A wireless
+    encryption cipher.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -759,21 +796,22 @@ questions:
     text: Only CAPWAP DTLS keys
   correct:
     answer: a
-  explanation: '**Bundled uplink capacity/redundancy**: A Layer 2 **switch** forwards Ethernet frames
-    based on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the
-    stem.
+  explanation: 'LAG aggregates WLC-to-switch connections.
 
 
-    **Only SSID encryption** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only SSID encryption** points at SSID encryption, which is not how 2.7 (WLAN
+    physical infrastructure connections) solves this stem. The keyed answer is **Bundled
+    uplink capacity/redundancy**.
 
 
-    **Only RF channel planning** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only RF channel planning** points at RF channel planning, which is not how 2.7
+    (WLAN physical infrastructure connections) solves this stem. The keyed answer
+    is **Bundled uplink capacity/redundancy**.
 
 
-    **Only CAPWAP DTLS keys** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **Only CAPWAP DTLS keys** points at CAPWAP DTLS keys, which is not how 2.7 (WLAN
+    physical infrastructure connections) solves this stem. The keyed answer is **Bundled
+    uplink capacity/redundancy**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -797,21 +835,22 @@ questions:
     text: Only STP diameter
   correct:
     answer: a
-  explanation: '**Network device management access method** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'v1.1 includes cloud-managed access alongside SSH/HTTPS/AAA.
 
 
-    **Only OSPF network type**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **Only OSPF network type** is a mismatch: OSI Layer 3 (IP) — packets forwarded
+    by the routing table. The stem is asking about **Network device management access
+    method**.
 
 
-    **Only EtherChannel hash** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only EtherChannel hash** points at EtherChannel hash, which is not how 2.8 (AP
+    and WLC management access connections) solves this stem. The keyed answer is **Network
+    device management access method**.
 
 
-    **Only STP diameter** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only STP diameter** points at STP diameter, which is not how 2.8 (AP and WLC
+    management access connections) solves this stem. The keyed answer is **Network
+    device management access method**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -835,21 +874,22 @@ questions:
     text: Only VTP domain name
   correct:
     answer: a
-  explanation: '**Wireless LAN client connectivity configuration** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'WLAN GUI workflows cover SSID, security, and QoS profiles.
 
 
-    **Only underlay BFD** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only underlay BFD** points at underlay BFD, which is not how 2.9 (Configure
+    WLAN access (GUI)) solves this stem. The keyed answer is **Wireless LAN client
+    connectivity configuration**.
 
 
-    **Only BGP peering**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.
+    **Only BGP peering** points at BGP peering, which is not how 2.9 (Configure WLAN
+    access (GUI)) solves this stem. The keyed answer is **Wireless LAN client connectivity
+    configuration**.
 
 
-    **Only VTP domain name** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only VTP domain name** points at VTP domain name, which is not how 2.9 (Configure
+    WLAN access (GUI)) solves this stem. The keyed answer is **Wireless LAN client
+    connectivity configuration**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -874,23 +914,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -914,21 +952,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -952,20 +989,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -989,23 +1027,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -1029,21 +1065,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -1055,7 +1090,8 @@ questions:
   topic_code: '2.6'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1070,20 +1106,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.6 (Cisco Wireless Architectures
+    and AP modes).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -1107,23 +1146,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -1147,21 +1184,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -1185,20 +1221,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -1210,7 +1247,8 @@ questions:
   topic_code: '2.1'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.1] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.1] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1225,20 +1263,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.1 (VLANs).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -1262,23 +1302,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -1302,21 +1340,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -1340,20 +1377,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -1377,23 +1415,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -1417,21 +1453,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -1443,7 +1478,8 @@ questions:
   topic_code: '2.7'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.7] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.7] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1458,20 +1494,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.7 (WLAN physical infrastructure
+    connections).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -1495,23 +1534,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -1535,21 +1572,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -1573,21 +1609,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -1599,7 +1634,8 @@ questions:
   topic_code: '2.2'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.2] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.2] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1614,20 +1650,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.2 (Interswitch connectivity).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -1651,23 +1689,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -1691,21 +1727,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -1729,20 +1764,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -1766,23 +1802,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -1806,21 +1840,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -1832,7 +1865,8 @@ questions:
   topic_code: '2.8'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.8] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.8] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -1847,20 +1881,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.8 (AP and WLC management
+    access connections).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -1884,23 +1921,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -1924,23 +1959,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -1964,21 +1997,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -1990,7 +2022,8 @@ questions:
   topic_code: '2.3'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.3] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.3] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -2005,20 +2038,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.3 (Layer 2 discovery protocols
+    (CDP/LLDP)).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -2042,23 +2078,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -2082,21 +2116,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -2120,20 +2153,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -2157,23 +2191,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -2197,21 +2229,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -2223,7 +2254,8 @@ questions:
   topic_code: '2.9'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.9] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.9] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -2238,20 +2270,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.9 (Configure WLAN access
+    (GUI)).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -2275,20 +2310,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -2312,23 +2348,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -2352,21 +2386,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -2378,7 +2411,8 @@ questions:
   topic_code: '2.4'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.4] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.4] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -2393,20 +2427,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.4 (EtherChannel (LACP)).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -2430,23 +2466,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -2470,21 +2504,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -2508,20 +2541,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -2545,23 +2579,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -2585,21 +2617,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -2623,21 +2654,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -2661,20 +2691,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -2698,23 +2729,21 @@ questions:
     text: PAgP+LACP hybrid mandatory
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -2738,21 +2767,20 @@ questions:
     text: Native VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -2764,7 +2792,8 @@ questions:
   topic_code: '2.5'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.5] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.5] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -2779,20 +2808,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.5 (Rapid PVST+ Spanning
+    Tree Protocol).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -2816,23 +2848,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -2856,21 +2886,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -2894,20 +2923,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -2931,23 +2961,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -2971,23 +2999,21 @@ questions:
     text: Static on only
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -3011,21 +3037,20 @@ questions:
     text: Private VLAN always
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -3049,20 +3074,21 @@ questions:
     text: Alternate/blocking
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -3086,23 +3112,21 @@ questions:
     text: LACP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -3126,21 +3150,20 @@ questions:
     text: Voice VLAN
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.5
@@ -3152,7 +3175,8 @@ questions:
   topic_code: '2.6'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward user frames.'
+  stem: '[CCNA 2.6] Select ALL that correctly relate to: STP role that does not forward
+    user frames.'
   choices:
   - id: a
     text: Alternate/blocking
@@ -3167,20 +3191,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 2.6 (Cisco Wireless Architectures
+    and AP modes).
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -3204,23 +3231,21 @@ questions:
     text: PAgP
   correct:
     answer: a
-  explanation: '**PAgP** is Cisco’s proprietary EtherChannel negotiation protocol used to form Port-Channels
-    between capable peers. This is the correct answer for the stem. Configuration uses `channel-group
-    <id> mode desirable|auto`.
+  explanation: 'Port Aggregation Protocol is Cisco-proprietary EtherChannel negotiation
+    (`channel-group N mode desirable|auto`).
 
 
-    **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based alternative to
-    PAgP. This does not satisfy the condition required by the stem. Configuration uses `channel-group
-    <id> mode active|passive`.
+    LACP (IEEE 802.3ad/802.1AX) is the **standards-based** negotiator (`mode active|passive`),
+    not Cisco-proprietary.
 
 
-    **Static on only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Static on only** is not the right selection: `channel-group N mode on` bundles
+    with **no** negotiation. It is neither PAgP nor LACP.
 
 
-    **PAgP+LACP hybrid mandatory**: **PAgP** is Cisco’s proprietary EtherChannel negotiation protocol
-    used to form Port-Channels between capable peers. This does not satisfy the condition required by
-    the stem. Configuration uses `channel-group <id> mode desirable|auto`.'
+    **PAgP+LACP hybrid mandatory** is not the right selection: PAgP and LACP cannot
+    form a channel with each other. You pick one protocol (or static `on`); there
+    is no hybrid mandatory mode.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -3244,21 +3269,20 @@ questions:
     text: VLAN 1002
   correct:
     answer: a
-  explanation: 'The **native VLAN** carries untagged frames on an 802.1Q trunk. Tagged frames belong to
-    other VLANs carried on the same trunk. This is the correct answer for the stem. Configuration uses
-    `switchport trunk native vlan <id>`.
+  explanation: 'The 802.1Q native VLAN (default VLAN 1) is the VLAN whose frames are
+    sent **untagged** on a trunk. Mismatched natives leak traffic.
 
 
-    **VLAN 1002** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Voice VLAN** is not the right selection: A voice VLAN (`switchport voice vlan`)
+    tags IP-phone frames with a separate VLAN ID. Those frames are tagged, not native/untagged.
 
 
-    **Voice VLAN** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Private VLAN always** is not the right selection: Private VLANs (primary/isolated/community)
+    restrict L2 among hosts. They are not ‘the untagged VLAN on a trunk’.
 
 
-    **Private VLAN always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    VLAN 1002–1005 are Cisco FDDI/Token Ring defaults, not the untagged native VLAN
+    on an Ethernet trunk.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -3282,20 +3306,21 @@ questions:
     text: Root
   correct:
     answer: a
-  explanation: '**Alternate/blocking** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'An alternate (RSTP) / blocking (802.1D) port is a backup path to the
+    root. It does **not** forward user frames; it only processes BPDUs until the root
+    port fails.
 
 
-    **Designated** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Edge forwarding** is not the right selection: An edge/PortFast port is already
+    forwarding to a host. That is the opposite of a blocked backup port.
 
 
-    **Root** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Designated** is not the right selection: The designated port is the forwarding
+    port toward a segment. It **does** forward user frames.
 
 
-    **Edge forwarding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Root** is not the right selection: The root port is the forwarding uplink to
+    the root bridge. It forwards user frames toward the root.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -3320,20 +3345,29 @@ questions:
     text: Ignore verification and assume 2.1 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 2.1** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.1 (VLANs), the keyed answer is **Apply the verified behavior
+    required by objective 2.1**. Stem: Select the correct association for exam topic
+    2.1..
 
 
-    **Skip documentation for 2.1 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 2.1** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 2.1 (VLANs).
 
 
-    **Treat 2.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 2.1 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.1 (VLANs).
 
 
-    **Ignore verification and assume 2.1 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 2.1 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.1 (VLANs).
+
+
+    **Ignore verification and assume 2.1 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.1 (VLANs).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -3357,20 +3391,29 @@ questions:
     text: Validate with show/verify steps before relying on 2.1 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 2.1 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.1 (VLANs), the keyed answer is **Validate with show/verify steps
+    before relying on 2.1 changes**. Stem: Which option correctly describes a key
+    idea under 2.1?.
 
 
-    **Treat 2.1 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 2.1 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 2.1 (VLANs).
 
 
-    **Ignore verification and assume 2.1 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 2.1 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.1 (VLANs).
 
 
-    **Confuse 2.1 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 2.1 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.1 (VLANs).
+
+
+    **Confuse 2.1 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.1 (VLANs).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.1
@@ -3382,8 +3425,8 @@ questions:
   topic_code: '2.2'
   difficulty: 2
   cert_tags: *id004
-  stem: '[CCNA 2.2] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 2.2] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 2.2 with show/ping evidence
@@ -3398,20 +3441,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 2.2 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.2 (Interswitch connectivity), the keyed answer is **Verify expected
+    state for 2.2 with show/ping evidence; Document the 2.2 design intent and rollback
+    plan**. Stem: [CCNA 2.2] Select ALL actions that support a correct implementation
+    or verification for this objective..
 
 
-    **Document the 2.2 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 2.2 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 2.2 (Interswitch connectivity).
 
 
-    **Skip change control because 2.2 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 2.2 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 2.2 (Interswitch connectivity).
 
 
-    **Disable all monitoring related to 2.2** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 2.2 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 2.2 (Interswitch
+    connectivity).
+
+
+    **Disable all monitoring related to 2.2** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 2.2 (Interswitch connectivity).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -3435,20 +3489,31 @@ questions:
     text: Disable logging permanently while testing 2.2
   correct:
     answer: a
-  explanation: '**Prefer the documented 2.2 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.2 (Interswitch connectivity), the keyed answer is **Prefer the
+    documented 2.2 approach used in enterprise designs**. Stem: Regarding CCNA topic
+    2.2. Which reply is accurate?.
 
 
-    **Confuse 2.2 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 2.2 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 2.2 (Interswitch
+    connectivity).
 
 
-    **Disable logging permanently while testing 2.2** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 2.2** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.2 (Interswitch
+    connectivity).
 
 
-    **Use clear-text shared secrets as the only control for 2.2** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 2.2 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.2 (Interswitch connectivity).
+
+
+    **Disable logging permanently while testing 2.2** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.2 (Interswitch connectivity).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.2
@@ -3472,20 +3537,33 @@ questions:
     text: Skip documentation for 2.3 changes in production
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 2.3** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.3 (Layer 2 discovery protocols (CDP/LLDP)), the keyed answer
+    is **Apply the verified behavior required by objective 2.3**. Stem: During troubleshooting
+    related to 2.3, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 2.3** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 2.3** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 2.3 (Layer 2 discovery protocols
+    (CDP/LLDP)).
 
 
-    **Use clear-text shared secrets as the only control for 2.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Disable logging permanently while testing 2.3** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.3 (Layer 2 discovery
+    protocols (CDP/LLDP)).
 
 
-    **Skip documentation for 2.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 2.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.3 (Layer
+    2 discovery protocols (CDP/LLDP)).
+
+
+    **Skip documentation for 2.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.3 (Layer 2
+    discovery protocols (CDP/LLDP)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -3509,20 +3587,32 @@ questions:
     text: Validate with show/verify steps before relying on 2.3 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 2.3 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.3 (Layer 2 discovery protocols (CDP/LLDP)), the keyed answer
+    is **Validate with show/verify steps before relying on 2.3 changes**. Stem: Which
+    configuration intent aligns with CCNA objective 2.3?.
 
 
-    **Use clear-text shared secrets as the only control for 2.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 2.3 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 2.3 (Layer 2 discovery protocols (CDP/LLDP)).
 
 
-    **Skip documentation for 2.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 2.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.3 (Layer
+    2 discovery protocols (CDP/LLDP)).
 
 
-    **Treat 2.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 2.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.3 (Layer 2
+    discovery protocols (CDP/LLDP)).
+
+
+    **Treat 2.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.3 (Layer 2 discovery
+    protocols (CDP/LLDP)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -3546,20 +3636,33 @@ questions:
     text: Skip documentation for 2.3 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 2.3 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 2.3 (Layer 2 discovery protocols (CDP/LLDP)), the keyed answer
+    is **Use the standard model for 2.3 rather than a look-alike concept**. Stem:
+    Select the correct association for exam topic 2.3..
 
 
-    **Skip documentation for 2.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 2.3 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 2.3 (Layer 2 discovery
+    protocols (CDP/LLDP)).
 
 
-    **Treat 2.3 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 2.3 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.3 (Layer 2 discovery
+    protocols (CDP/LLDP)).
 
 
-    **Ignore verification and assume 2.3 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 2.3 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.3 (Layer 2 discovery protocols
+    (CDP/LLDP)).
+
+
+    **Skip documentation for 2.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.3 (Layer 2
+    discovery protocols (CDP/LLDP)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -3571,8 +3674,8 @@ questions:
   topic_code: '2.3'
   difficulty: 4
   cert_tags: *id004
-  stem: '[CCNA 2.3] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 2.3] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 2.3 with show/ping evidence
@@ -3587,20 +3690,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 2.3 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.3 (Layer 2 discovery protocols (CDP/LLDP)), the keyed answer
+    is **Verify expected state for 2.3 with show/ping evidence; Document the 2.3 design
+    intent and rollback plan**. Stem: [CCNA 2.3] Select ALL actions that support a
+    correct implementation or verification for this objective..
 
 
-    **Document the 2.3 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 2.3 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 2.3 (Layer 2 discovery protocols (CDP/LLDP)).
 
 
-    **Skip change control because 2.3 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 2.3 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 2.3 (Layer 2 discovery protocols (CDP/LLDP)).
 
 
-    **Disable all monitoring related to 2.3** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 2.3 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 2.3 (Layer 2 discovery
+    protocols (CDP/LLDP)).
+
+
+    **Disable all monitoring related to 2.3** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 2.3 (Layer 2 discovery protocols (CDP/LLDP)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.3
@@ -3624,20 +3738,29 @@ questions:
     text: Disable logging permanently while testing 2.4
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 2.4** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.4 (EtherChannel (LACP)), the keyed answer is **Apply the verified
+    behavior required by objective 2.4**. Stem: For CCNA objective 2.4, which statement
+    best matches production best practice?.
 
 
-    **Ignore verification and assume 2.4 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 2.4** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 2.4 (EtherChannel (LACP)).
 
 
-    **Confuse 2.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Ignore verification and assume 2.4 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.4 (EtherChannel (LACP)).
 
 
-    **Disable logging permanently while testing 2.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 2.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.4 (EtherChannel (LACP)).
+
+
+    **Disable logging permanently while testing 2.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.4 (EtherChannel (LACP)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.4
@@ -3661,20 +3784,32 @@ questions:
     text: Validate with show/verify steps before relying on 2.6 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 2.6 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.6 (Cisco Wireless Architectures and AP modes), the keyed answer
+    is **Validate with show/verify steps before relying on 2.6 changes**. Stem: Regarding
+    CCNA topic 2.6. Which reply is accurate?.
 
 
-    **Confuse 2.6 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 2.6 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 2.6 (Cisco Wireless Architectures and AP modes).
 
 
-    **Disable logging permanently while testing 2.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 2.6 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.6 (Cisco Wireless
+    Architectures and AP modes).
 
 
-    **Use clear-text shared secrets as the only control for 2.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 2.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.6 (Cisco Wireless Architectures
+    and AP modes).
+
+
+    **Use clear-text shared secrets as the only control for 2.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.6 (Cisco
+    Wireless Architectures and AP modes).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -3698,20 +3833,33 @@ questions:
     text: Disable logging permanently while testing 2.6
   correct:
     answer: a
-  explanation: '**Use the standard model for 2.6 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 2.6 (Cisco Wireless Architectures and AP modes), the keyed answer
+    is **Use the standard model for 2.6 rather than a look-alike concept**. Stem:
+    During troubleshooting related to 2.6, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 2.6** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 2.6 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 2.6 (Cisco Wireless
+    Architectures and AP modes).
 
 
-    **Use clear-text shared secrets as the only control for 2.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 2.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.6 (Cisco
+    Wireless Architectures and AP modes).
 
 
-    **Skip documentation for 2.6 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 2.6 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.6 (Cisco Wireless
+    Architectures and AP modes).
+
+
+    **Disable logging permanently while testing 2.6** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.6 (Cisco Wireless Architectures
+    and AP modes).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -3735,20 +3883,33 @@ questions:
     text: Skip documentation for 2.6 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 2.6 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.6 (Cisco Wireless Architectures and AP modes), the keyed answer
+    is **Prefer the documented 2.6 approach used in enterprise designs**. Stem: Which
+    configuration intent aligns with CCNA objective 2.6?.
 
 
-    **Use clear-text shared secrets as the only control for 2.6** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 2.6 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 2.6 (Cisco
+    Wireless Architectures and AP modes).
 
 
-    **Skip documentation for 2.6 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 2.6 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.6 (Cisco Wireless
+    Architectures and AP modes).
 
 
-    **Treat 2.6 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 2.6** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.6 (Cisco
+    Wireless Architectures and AP modes).
+
+
+    **Skip documentation for 2.6 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.6 (Cisco Wireless
+    Architectures and AP modes).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.6
@@ -3760,8 +3921,8 @@ questions:
   topic_code: '2.7'
   difficulty: 3
   cert_tags: *id004
-  stem: '[CCNA 2.7] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 2.7] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 2.7 with show/ping evidence
@@ -3776,20 +3937,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 2.7 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.7 (WLAN physical infrastructure connections), the keyed answer
+    is **Verify expected state for 2.7 with show/ping evidence; Document the 2.7 design
+    intent and rollback plan**. Stem: [CCNA 2.7] Select ALL actions that support a
+    correct implementation or verification for this objective..
 
 
-    **Document the 2.7 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 2.7 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 2.7 (WLAN physical infrastructure connections).
 
 
-    **Skip change control because 2.7 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 2.7 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 2.7 (WLAN physical infrastructure connections).
 
 
-    **Disable all monitoring related to 2.7** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 2.7 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 2.7 (WLAN physical
+    infrastructure connections).
+
+
+    **Disable all monitoring related to 2.7** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 2.7 (WLAN physical infrastructure connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -3813,20 +3985,32 @@ questions:
     text: Validate with show/verify steps before relying on 2.7 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 2.7 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.7 (WLAN physical infrastructure connections), the keyed answer
+    is **Validate with show/verify steps before relying on 2.7 changes**. Stem: Which
+    option correctly describes a key idea under 2.7?.
 
 
-    **Treat 2.7 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 2.7 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 2.7 (WLAN physical infrastructure connections).
 
 
-    **Ignore verification and assume 2.7 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 2.7 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.7 (WLAN physical
+    infrastructure connections).
 
 
-    **Confuse 2.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 2.7 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.7 (WLAN physical infrastructure
+    connections).
+
+
+    **Confuse 2.7 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.7 (WLAN physical infrastructure
+    connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -3850,20 +4034,33 @@ questions:
     text: Ignore verification and assume 2.7 always works
   correct:
     answer: a
-  explanation: '**Use the standard model for 2.7 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 2.7 (WLAN physical infrastructure connections), the keyed answer
+    is **Use the standard model for 2.7 rather than a look-alike concept**. Stem:
+    For CCNA objective 2.7, which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 2.7 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 2.7 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 2.7 (WLAN physical
+    infrastructure connections).
 
 
-    **Confuse 2.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Confuse 2.7 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.7 (WLAN physical infrastructure
+    connections).
 
 
-    **Disable logging permanently while testing 2.7** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 2.7** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.7 (WLAN physical infrastructure
+    connections).
+
+
+    **Ignore verification and assume 2.7 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.7 (WLAN physical infrastructure
+    connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -3887,20 +4084,33 @@ questions:
     text: Disable logging permanently while testing 2.7
   correct:
     answer: a
-  explanation: '**Prefer the documented 2.7 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.7 (WLAN physical infrastructure connections), the keyed answer
+    is **Prefer the documented 2.7 approach used in enterprise designs**. Stem: Regarding
+    CCNA topic 2.7. Which reply is accurate?.
 
 
-    **Confuse 2.7 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Prefer the documented 2.7 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 2.7 (WLAN
+    physical infrastructure connections).
 
 
-    **Disable logging permanently while testing 2.7** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 2.7** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.7 (WLAN
+    physical infrastructure connections).
 
 
-    **Use clear-text shared secrets as the only control for 2.7** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Confuse 2.7 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.7 (WLAN physical infrastructure
+    connections).
+
+
+    **Disable logging permanently while testing 2.7** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.7 (WLAN physical infrastructure
+    connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.7
@@ -3924,20 +4134,33 @@ questions:
     text: Skip documentation for 2.8 changes in production
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 2.8** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.8 (AP and WLC management access connections), the keyed answer
+    is **Apply the verified behavior required by objective 2.8**. Stem: During troubleshooting
+    related to 2.8, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 2.8** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 2.8** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 2.8 (AP and WLC management access
+    connections).
 
 
-    **Use clear-text shared secrets as the only control for 2.8** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Disable logging permanently while testing 2.8** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.8 (AP and WLC management
+    access connections).
 
 
-    **Skip documentation for 2.8 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 2.8** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.8 (AP
+    and WLC management access connections).
+
+
+    **Skip documentation for 2.8 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.8 (AP and WLC
+    management access connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -3949,8 +4172,8 @@ questions:
   topic_code: '2.8'
   difficulty: 2
   cert_tags: *id004
-  stem: '[CCNA 2.8] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 2.8] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 2.8 with show/ping evidence
@@ -3965,20 +4188,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 2.8 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.8 (AP and WLC management access connections), the keyed answer
+    is **Verify expected state for 2.8 with show/ping evidence; Document the 2.8 design
+    intent and rollback plan**. Stem: [CCNA 2.8] Select ALL actions that support a
+    correct implementation or verification for this objective..
 
 
-    **Document the 2.8 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 2.8 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 2.8 (AP and WLC management access connections).
 
 
-    **Skip change control because 2.8 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 2.8 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 2.8 (AP and WLC management access connections).
 
 
-    **Disable all monitoring related to 2.8** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 2.8 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 2.8 (AP and WLC
+    management access connections).
+
+
+    **Disable all monitoring related to 2.8** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 2.8 (AP and WLC management access connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -4002,20 +4236,33 @@ questions:
     text: Skip documentation for 2.8 changes in production
   correct:
     answer: a
-  explanation: '**Use the standard model for 2.8 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 2.8 (AP and WLC management access connections), the keyed answer
+    is **Use the standard model for 2.8 rather than a look-alike concept**. Stem:
+    Select the correct association for exam topic 2.8..
 
 
-    **Skip documentation for 2.8 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 2.8 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 2.8 (AP and WLC
+    management access connections).
 
 
-    **Treat 2.8 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 2.8 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.8 (AP and WLC
+    management access connections).
 
 
-    **Ignore verification and assume 2.8 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Ignore verification and assume 2.8 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.8 (AP and WLC management access
+    connections).
+
+
+    **Skip documentation for 2.8 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.8 (AP and WLC
+    management access connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -4039,20 +4286,33 @@ questions:
     text: Ignore verification and assume 2.8 always works
   correct:
     answer: a
-  explanation: '**Prefer the documented 2.8 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.8 (AP and WLC management access connections), the keyed answer
+    is **Prefer the documented 2.8 approach used in enterprise designs**. Stem: Which
+    option correctly describes a key idea under 2.8?.
 
 
-    **Treat 2.8 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Prefer the documented 2.8 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 2.8 (AP and
+    WLC management access connections).
 
 
-    **Ignore verification and assume 2.8 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 2.8 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.8 (AP and WLC management
+    access connections).
 
 
-    **Confuse 2.8 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.'
+    **Treat 2.8 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.8 (AP and WLC
+    management access connections).
+
+
+    **Ignore verification and assume 2.8 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.8 (AP and WLC management access
+    connections).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.8
@@ -4076,20 +4336,31 @@ questions:
     text: Disable logging permanently while testing 2.9
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 2.9** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.9 (Configure WLAN access (GUI)), the keyed answer is **Apply
+    the verified behavior required by objective 2.9**. Stem: For CCNA objective 2.9,
+    which statement best matches production best practice?.
 
 
-    **Ignore verification and assume 2.9 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 2.9** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 2.9 (Configure WLAN access (GUI)).
 
 
-    **Confuse 2.9 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Ignore verification and assume 2.9 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 2.9 (Configure WLAN access (GUI)).
 
 
-    **Disable logging permanently while testing 2.9** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Confuse 2.9 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.9 (Configure WLAN
+    access (GUI)).
+
+
+    **Disable logging permanently while testing 2.9** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.9 (Configure WLAN access
+    (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -4113,20 +4384,32 @@ questions:
     text: Validate with show/verify steps before relying on 2.9 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 2.9 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.9 (Configure WLAN access (GUI)), the keyed answer is **Validate
+    with show/verify steps before relying on 2.9 changes**. Stem: Regarding CCNA topic
+    2.9. Which reply is accurate?.
 
 
-    **Confuse 2.9 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 2.9 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 2.9 (Configure WLAN access (GUI)).
 
 
-    **Disable logging permanently while testing 2.9** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 2.9 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 2.9 (Configure WLAN
+    access (GUI)).
 
 
-    **Use clear-text shared secrets as the only control for 2.9** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 2.9** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 2.9 (Configure WLAN access
+    (GUI)).
+
+
+    **Use clear-text shared secrets as the only control for 2.9** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.9 (Configure
+    WLAN access (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -4138,8 +4421,8 @@ questions:
   topic_code: '2.9'
   difficulty: 4
   cert_tags: *id004
-  stem: '[CCNA 2.9] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[CCNA 2.9] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 2.9 with show/ping evidence
@@ -4154,20 +4437,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 2.9 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 2.9 (Configure WLAN access (GUI)), the keyed answer is **Verify
+    expected state for 2.9 with show/ping evidence; Document the 2.9 design intent
+    and rollback plan**. Stem: [CCNA 2.9] Select ALL actions that support a correct
+    implementation or verification for this objective..
 
 
-    **Document the 2.9 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 2.9 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 2.9 (Configure WLAN access (GUI)).
 
 
-    **Skip change control because 2.9 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 2.9 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 2.9 (Configure WLAN access (GUI)).
 
 
-    **Disable all monitoring related to 2.9** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 2.9 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 2.9 (Configure
+    WLAN access (GUI)).
+
+
+    **Disable all monitoring related to 2.9** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 2.9 (Configure WLAN access (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9
@@ -4191,20 +4485,33 @@ questions:
     text: Skip documentation for 2.9 changes in production
   correct:
     answer: a
-  explanation: '**Prefer the documented 2.9 approach used in enterprise designs** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 2.9 (Configure WLAN access (GUI)), the keyed answer is **Prefer
+    the documented 2.9 approach used in enterprise designs**. Stem: Which configuration
+    intent aligns with CCNA objective 2.9?.
 
 
-    **Use clear-text shared secrets as the only control for 2.9** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Prefer the documented 2.9 approach used in enterprise designs** is correct:
+    Use the documented enterprise design for this objective (Cisco validated design
+    / local standard) rather than an ad-hoc look-alike. This matters for 2.9 (Configure
+    WLAN access (GUI)).
 
 
-    **Skip documentation for 2.9 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Treat 2.9 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 2.9 (Configure
+    WLAN access (GUI)).
 
 
-    **Treat 2.9 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Use clear-text shared secrets as the only control for 2.9** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 2.9 (Configure
+    WLAN access (GUI)).
+
+
+    **Skip documentation for 2.9 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 2.9 (Configure
+    WLAN access (GUI)).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 1 — Network Access / STP / VLANs
   - CCNA exam topic 2.9

@@ -7,6 +7,7 @@ or proprietary Boson/Cisco practice wording.
 
 ```text
 content/questions/ccna/domain-{1..6}.yaml
+content/questions/ccna/FLAGSHIP.md    # 24 teaching-showcase IDs (4 per domain)
 content/questions/encor/domain-{1..6}.yaml
 ```
 
@@ -24,7 +25,9 @@ stays silent — no mid-exam teaching.
 
 Write real explanations. Ban template distractor copy such as “does not describe
 the intended use or behavior required by the stem.” CI in
-`tests/exsim/test_content_pools.py` rejects those phrases.
+`tests/exsim/test_content_pools.py` rejects those phrases. Flagship CCNA items
+listed in `content/questions/ccna/FLAGSHIP.md` must include stem-specific
+why-wrong (protocol, command, or numeric).
 
 Redacted score exports still omit explanations.
 

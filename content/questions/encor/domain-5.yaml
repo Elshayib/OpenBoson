@@ -20,21 +20,20 @@ questions:
     text: Only CDP version
   correct:
     answer: a
-  explanation: '**Group-based policy** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Security Group Tags.
 
 
-    **Only STP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only STP** is a mismatch: Spanning Tree (802.1D / PVST+ / Rapid PVST+) elects
+    a root and blocks redundant Layer 2 paths so Ethernet does not loop. The stem
+    is asking about **Group-based policy**.
 
 
-    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only VTP** points at VTP, which is not how 5.4 (Wireless security features)
+    solves this stem. The keyed answer is **Group-based policy**.
 
 
-    **Only CDP version**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.'
+    **Only CDP version** points at CDP version, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **Group-based policy**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -58,20 +57,19 @@ questions:
     text: Only WEP
   correct:
     answer: a
-  explanation: '**Hop-by-hop L2 encryption** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: '802.1AE.
 
 
-    **Only L3 IPsec exclusive** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only L3 IPsec exclusive** points at L3 IPsec, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Hop-by-hop L2 encryption**.
 
 
-    **Only TLS to websites** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only TLS to websites** points at TLS to websites, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Hop-by-hop L2 encryption**.
 
 
-    **Only WEP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only WEP** points at WEP, which is not how 5.4 (Wireless security features)
+    solves this stem. The keyed answer is **Hop-by-hop L2 encryption**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -95,20 +93,20 @@ questions:
     text: Only fans
   correct:
     answer: a
-  explanation: '**The control plane CPU** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Control Plane Policing.
 
 
-    **Only data plane TCAM exclusive** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only data plane TCAM exclusive** points at data plane TCAM, which is not how
+    5.2 (Infrastructure security features) solves this stem. The keyed answer is **The
+    control plane CPU**.
 
 
-    **Only PoE** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only PoE** points at PoE, which is not how 5.2 (Infrastructure security features)
+    solves this stem. The keyed answer is **The control plane CPU**.
 
 
-    **Only fans** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only fans** points at fans, which is not how 5.2 (Infrastructure security features)
+    solves this stem. The keyed answer is **The control plane CPU**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -132,21 +130,19 @@ questions:
     text: Only MST instances
   correct:
     answer: a
-  explanation: '**Network security design** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'NGFW is part of security design components.
 
 
-    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only VTP** points at VTP, which is not how 5.4 (Wireless security features)
+    solves this stem. The keyed answer is **Network security design**.
 
 
-    **Only LACP**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
-    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
-    `channel-group <id> mode active|passive`.
+    **Only LACP** is a mismatch: LACP (802.3ad/802.1AX) negotiates EtherChannel (`channel-group
+    mode active|passive`). The stem is asking about **Network security design**.
 
 
-    **Only MST instances** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only MST instances** points at MST instances, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Network security design**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -170,20 +166,21 @@ questions:
     text: Only optics
   correct:
     answer: a
-  explanation: '**Authentication and authorization services** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'AAA controls device access.
 
 
-    **Only routing metrics** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only routing metrics** points at routing metrics, which is not how 5.1 (Device
+    access control) solves this stem. The keyed answer is **Authentication and authorization
+    services**.
 
 
-    **Only switching ASICs**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
-    within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+    **Only switching ASICs** points at switching ASICs, which is not how 5.1 (Device
+    access control) solves this stem. The keyed answer is **Authentication and authorization
+    services**.
 
 
-    **Only optics** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only optics** points at optics, which is not how 5.1 (Device access control)
+    solves this stem. The keyed answer is **Authentication and authorization services**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -207,23 +204,19 @@ questions:
     text: Only BGP MED
   correct:
     answer: a
-  explanation: '**SGT mappings / policy** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'TrustSec env data.
 
 
-    **Only OSPF costs**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Only OSPF costs** points at OSPF costs, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **SGT mappings / policy**.
 
 
-    **Only EIGRP K**: **EIGRP** is an advanced distance-vector protocol that uses the Diffusing Update
-    Algorithm (DUAL) and composite metric components such as bandwidth and delay. This does not satisfy
-    the condition required by the stem. Configuration uses `router eigrp <as>`.
+    **Only EIGRP K** points at EIGRP K, which is not how 5.4 (Wireless security features)
+    solves this stem. The keyed answer is **SGT mappings / policy**.
 
 
-    **Only BGP MED**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.'
+    **Only BGP MED** points at BGP MED, which is not how 5.4 (Wireless security features)
+    solves this stem. The keyed answer is **SGT mappings / policy**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -247,20 +240,22 @@ questions:
     text: Only NetFlow keys
   correct:
     answer: a
-  explanation: '**Device access (console/VTY/local users)** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Local lines/users are device access control.
 
 
-    **Only underlay BFD** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only underlay BFD** points at underlay BFD, which is not how 5.1 (Device access
+    control) solves this stem. The keyed answer is **Device access (console/VTY/local
+    users)**.
 
 
-    **Only VXLAN flooding** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VXLAN flooding** points at VXLAN flooding, which is not how 5.1 (Device
+    access control) solves this stem. The keyed answer is **Device access (console/VTY/local
+    users)**.
 
 
-    **Only NetFlow keys** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only NetFlow keys** points at NetFlow keys, which is not how 5.1 (Device access
+    control) solves this stem. The keyed answer is **Device access (console/VTY/local
+    users)**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -284,21 +279,22 @@ questions:
     text: Only PBR set exclusive
   correct:
     answer: a
-  explanation: '**ACLs protecting the device/control plane path**: **PAT** (NAT overload) maps many inside
-    addresses to one outside address using unique transport port numbers. This is the correct answer for
-    the stem. Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Infra ACLs harden device access.
 
 
-    **Only user web ACL unrelated**: An **ACL** filters traffic by matching header fields and applying
-    permit or deny actions in sequential order. This does not satisfy the condition required by the stem.
+    **Only user web ACL unrelated** points at user web ACL unrelated, which is not
+    how 5.2 (Infrastructure security features) solves this stem. The keyed answer
+    is **ACLs protecting the device/control plane path**.
 
 
-    **Only NAT pool** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Only NAT pool** points at NAT pool, which is not how 5.2 (Infrastructure security
+    features) solves this stem. The keyed answer is **ACLs protecting the device/control
+    plane path**.
 
 
-    **Only PBR set exclusive** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **Only PBR set exclusive** points at PBR set, which is not how 5.2 (Infrastructure
+    security features) solves this stem. The keyed answer is **ACLs protecting the
+    device/control plane path**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -322,21 +318,21 @@ questions:
     text: Only SPAN sessions
   correct:
     answer: a
-  explanation: '**Network security design components** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'Endpoint controls complement network defenses.
 
 
-    **Only EtherChannel hashing** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only EtherChannel hashing** points at EtherChannel hashing, which is not how
+    5.4 (Wireless security features) solves this stem. The keyed answer is **Network
+    security design components**.
 
 
-    **Only OSPF stub**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Only OSPF stub** points at OSPF stub, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **Network security design components**.
 
 
-    **Only SPAN sessions** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only SPAN sessions** points at SPAN sessions, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Network security design
+    components**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -360,20 +356,20 @@ questions:
     text: Only PoE classes
   correct:
     answer: a
-  explanation: '**AuthN/AuthZ, tokens, and least privilege** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'APIs need strong authentication and authorization.
 
 
-    **Only STP diameter** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP diameter** points at STP diameter, which is not how 5.3 (REST API security)
+    solves this stem. The keyed answer is **AuthN/AuthZ, tokens, and least privilege**.
 
 
-    **Only cable categories** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only cable categories** points at cable categories, which is not how 5.3 (REST
+    API security) solves this stem. The keyed answer is **AuthN/AuthZ, tokens, and
+    least privilege**.
 
 
-    **Only PoE classes** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only PoE classes** points at PoE classes, which is not how 5.3 (REST API security)
+    solves this stem. The keyed answer is **AuthN/AuthZ, tokens, and least privilege**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -397,21 +393,19 @@ questions:
     text: Only NTP
   correct:
     answer: a
-  explanation: '**IP-SGT bindings** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'SGT Exchange Protocol.
 
 
-    **Only MAC tables** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only MAC tables** points at MAC tables, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **IP-SGT bindings**.
 
 
-    **Only LLDP alone**: **LLDP** is the standards-based Layer 2 neighbor discovery protocol (IEEE 802.1AB).
-    This does not satisfy the condition required by the stem. Configuration uses `lldp run` / `show lldp
-    neighbors`.
+    **Only LLDP alone** points at LLDP alone, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **IP-SGT bindings**.
 
 
-    **Only NTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only NTP** is a mismatch: NTP synchronizes clocks (UDP 123). Stratum is distance
+    from a reference clock. The stem is asking about **IP-SGT bindings**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -435,20 +429,21 @@ questions:
     text: Only DSCP EF
   correct:
     answer: a
-  explanation: '**Identity proof vs permission grant** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'AuthN identifies; AuthZ permits actions.
 
 
-    **Only identical forever** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only identical forever** points at identical, which is not how 5.1 (Device access
+    control) solves this stem. The keyed answer is **Identity proof vs permission
+    grant**.
 
 
-    **Only syslog facilities** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only syslog facilities** is a mismatch: Syslog exports device logs (UDP 514
+    by default) with severity 0–7. The stem is asking about **Identity proof vs permission
+    grant**.
 
 
-    **Only DSCP EF** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only DSCP EF** points at DSCP EF, which is not how 5.1 (Device access control)
+    solves this stem. The keyed answer is **Identity proof vs permission grant**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -472,21 +467,21 @@ questions:
     text: Only clear arp
   correct:
     answer: a
-  explanation: '**CoPP / hardware rate limiters**: **PAT** (NAT overload) maps many inside addresses to
-    one outside address using unique transport port numbers. This is the correct answer for the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Protect punt.
 
 
-    **Only increasing STP diameter** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only increasing STP diameter** points at increasing STP diameter, which is not
+    how 5.2 (Infrastructure security features) solves this stem. The keyed answer
+    is **CoPP / hardware rate limiters**.
 
 
-    **Only disabling CEF** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Only disabling CEF** points at disabling CEF, which is not how 5.2 (Infrastructure
+    security features) solves this stem. The keyed answer is **CoPP / hardware rate
+    limiters**.
 
 
-    **Only clear arp** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Only clear arp** points at clear arp, which is not how 5.2 (Infrastructure security
+    features) solves this stem. The keyed answer is **CoPP / hardware rate limiters**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -510,21 +505,22 @@ questions:
     text: Only open management planes
   correct:
     answer: a
-  explanation: '**Layered controls against attacks** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Threat defense is a design component.
 
 
-    **Only single ACL deny any as sole design**: An **ACL** filters traffic by matching header fields
-    and applying permit or deny actions in sequential order. This does not satisfy the condition required
-    by the stem.
+    **Only single ACL deny any as sole design** points at single ACL deny any as sole
+    design, which is not how 5.4 (Wireless security features) solves this stem. The
+    keyed answer is **Layered controls against attacks**.
 
 
-    **Only disabling logging** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only disabling logging** points at disabling logging, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Layered controls against
+    attacks**.
 
 
-    **Only open management planes** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Only open management planes** points at open management planes, which is not
+    how 5.4 (Wireless security features) solves this stem. The keyed answer is **Layered
+    controls against attacks**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -548,20 +544,20 @@ questions:
     text: Only mark DSCP
   correct:
     answer: a
-  explanation: '**Permit/deny per command** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Command authz.
 
 
-    **Only authenticate without authz** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only authenticate without authz** points at authenticate without authz, which
+    is not how 5.1 (Device access control) solves this stem. The keyed answer is **Permit/deny
+    per command**.
 
 
-    **Only encrypt STP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only encrypt STP** points at encrypt STP, which is not how 5.1 (Device access
+    control) solves this stem. The keyed answer is **Permit/deny per command**.
 
 
-    **Only mark DSCP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only mark DSCP** points at mark DSCP, which is not how 5.1 (Device access control)
+    solves this stem. The keyed answer is **Permit/deny per command**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -585,21 +581,22 @@ questions:
     text: Only banner motd
   correct:
     answer: a
-  explanation: '**Downloadable group policy on data plane**: An **ACL** filters traffic by matching header
-    fields and applying permit or deny actions in sequential order. This is the correct answer for the
-    stem.
+  explanation: 'Security group ACLs.
 
 
-    **Only VTY passwords** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Only VTY passwords** points at VTY passwords, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Downloadable group
+    policy on data plane**.
 
 
-    **Only enable secret** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Only enable secret** points at enable secret, which is not how 5.4 (Wireless
+    security features) solves this stem. The keyed answer is **Downloadable group
+    policy on data plane**.
 
 
-    **Only banner motd** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Only banner motd** points at banner motd, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **Downloadable group policy on
+    data plane**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -623,21 +620,23 @@ questions:
     text: Used as OSPF passwords only
   correct:
     answer: a
-  explanation: '**Protected, rotated, and least-privileged** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'REST API security includes secret handling.
 
 
-    **Committed to public repos freely** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Committed to public repos freely** is a different protocol, command, or value
+    than **Protected, rotated, and least-privileged**. For 5.3 (REST API security),
+    the stem is solved by **Protected, rotated, and least-privileged**, not by Committed
+    to public repos freely.
 
 
-    **Shared in banners** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Shared in banners** is a different protocol, command, or value than **Protected,
+    rotated, and least-privileged**. For 5.3 (REST API security), the stem is solved
+    by **Protected, rotated, and least-privileged**, not by Shared in banners.
 
 
-    **Used as OSPF passwords only**: **OSPF** is a link-state IGP that builds a topology database and
-    calculates loop-free paths with cost based primarily on interface bandwidth. This does not satisfy
-    the condition required by the stem. Configuration uses `router ospf <process>`.'
+    **Used as OSPF passwords only** points at Used as OSPF passwords, which is not
+    how 5.3 (REST API security) solves this stem. The keyed answer is **Protected,
+    rotated, and least-privileged**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -661,21 +660,20 @@ questions:
     text: Only STP roles
   correct:
     answer: a
-  explanation: '**L3/L4 fields (src/dst/ports/protocol)**: An **ACL** filters traffic by matching header
-    fields and applying permit or deny actions in sequential order. This is the correct answer for the
-    stem.
+  explanation: 'Infrastructure ACL tooling includes extended ACLs.
 
 
-    **Only source IP like standard always** is incorrect. It does not describe the intended use or behavior
-    required by the stem.
+    **Only source IP like standard always** points at source IP like standard, which
+    is not how 5.2 (Infrastructure security features) solves this stem. The keyed
+    answer is **L3/L4 fields (src/dst/ports/protocol)**.
 
 
-    **Only MAC OUI exclusive** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only MAC OUI exclusive** points at MAC OUI, which is not how 5.2 (Infrastructure
+    security features) solves this stem. The keyed answer is **L3/L4 fields (src/dst/ports/protocol)**.
 
 
-    **Only STP roles** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Only STP roles** points at STP roles, which is not how 5.2 (Infrastructure security
+    features) solves this stem. The keyed answer is **L3/L4 fields (src/dst/ports/protocol)**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -699,22 +697,21 @@ questions:
     text: Only EIGRP
   correct:
     answer: a
-  explanation: '**ISE authorization results** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'AAA-driven SGT.
 
 
-    **Only static route** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only static route** points at static route, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **ISE authorization results**.
 
 
-    **Only OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **Only OSPF** is a mismatch: OSPF is a link-state IGP (areas, RID, LSAs, cost
+    = ref-bw/interface bw, default AD 110). The stem is asking about **ISE authorization
+    results**.
 
 
-    **Only EIGRP**: **EIGRP** is an advanced distance-vector protocol that uses the Diffusing Update Algorithm
-    (DUAL) and composite metric components such as bandwidth and delay. This does not satisfy the condition
-    required by the stem. Configuration uses `router eigrp <as>`.'
+    **Only EIGRP** is a mismatch: EIGRP is Cisco’s advanced-distance-vector IGP (DUAL,
+    FD/AD, default AD 90 internal / 170 external). The stem is asking about **ISE
+    authorization results**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -738,20 +735,21 @@ questions:
     text: Only MTU
   correct:
     answer: a
-  explanation: '**Availability vs security tradeoff** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Design decision for access control.
 
 
-    **Only spanning-tree choice** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only spanning-tree choice** points at spanning-tree choice, which is not how
+    5.1 (Device access control) solves this stem. The keyed answer is **Availability
+    vs security tradeoff**.
 
 
-    **Only EtherChannel hash** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only EtherChannel hash** points at EtherChannel hash, which is not how 5.1 (Device
+    access control) solves this stem. The keyed answer is **Availability vs security
+    tradeoff**.
 
 
-    **Only MTU** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only MTU** points at MTU, which is not how 5.1 (Device access control) solves
+    this stem. The keyed answer is **Availability vs security tradeoff**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -775,21 +773,22 @@ questions:
     text: Only disable AAA
   correct:
     answer: a
-  explanation: '**MACsec can encrypt; TrustSec provides group policy context** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'Both appear under security design components.
 
 
-    **Only identical protocols** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only identical protocols** points at identical protocols, which is not how 5.4
+    (Wireless security features) solves this stem. The keyed answer is **MACsec can
+    encrypt; TrustSec provides group policy context**.
 
 
-    **Only replace OSPF**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **Only replace OSPF** points at replace OSPF, which is not how 5.4 (Wireless security
+    features) solves this stem. The keyed answer is **MACsec can encrypt; TrustSec
+    provides group policy context**.
 
 
-    **Only disable AAA** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only disable AAA** is a mismatch: Turning AAA off removes RADIUS/TACACS login
+    and authorization. The stem is asking about **MACsec can encrypt; TrustSec provides
+    group policy context**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -813,22 +812,22 @@ questions:
     text: Only LACP PDUs exclusive
   correct:
     answer: a
-  explanation: '**Protecting traffic to the device/control plane**: An **ACL** filters traffic by matching
-    header fields and applying permit or deny actions in sequential order. This is the correct answer
-    for the stem.
+  explanation: 'CoPP/iACLs harden the control plane.
 
 
-    **Only switching CAM**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
-    within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.
+    **Only switching CAM** points at switching CAM, which is not how 5.2 (Infrastructure
+    security features) solves this stem. The keyed answer is **Protecting traffic
+    to the device/control plane**.
 
 
-    **Only VTP sync** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Only VTP sync** points at VTP sync, which is not how 5.2 (Infrastructure security
+    features) solves this stem. The keyed answer is **Protecting traffic to the device/control
+    plane**.
 
 
-    **Only LACP PDUs exclusive**: **LACP** (IEEE 802.3ad) negotiates EtherChannel bundles and is the standards-based
-    alternative to PAgP. This does not satisfy the condition required by the stem. Configuration uses
-    `channel-group <id> mode active|passive`.'
+    **Only LACP PDUs exclusive** points at LACP PDUs, which is not how 5.2 (Infrastructure
+    security features) solves this stem. The keyed answer is **Protecting traffic
+    to the device/control plane**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -852,20 +851,20 @@ questions:
     text: Only HSRP preempt
   correct:
     answer: a
-  explanation: '**REST API security practice** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Modern APIs use token auth models.
 
 
-    **Only STP tuning** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP tuning** points at STP tuning, which is not how 5.3 (REST API security)
+    solves this stem. The keyed answer is **REST API security practice**.
 
 
-    **Only multicast RPF** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only multicast RPF** is a mismatch: Multicast is one-to-many (IPv4 224/4, IPv6
+    ff00::/8). IPv6 replaces broadcast with multicast. The stem is asking about **REST
+    API security practice**.
 
 
-    **Only HSRP preempt** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only HSRP preempt** points at HSRP preempt, which is not how 5.3 (REST API security)
+    solves this stem. The keyed answer is **REST API security practice**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -889,20 +888,22 @@ questions:
     text: Only NetFlow samplers
   correct:
     answer: a
-  explanation: '**What commands authenticated users may run** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Privilege levels are device access control.
 
 
-    **Only underlay MTU** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only underlay MTU** points at underlay MTU, which is not how 5.1 (Device access
+    control) solves this stem. The keyed answer is **What commands authenticated users
+    may run**.
 
 
-    **Only VXLAN flood lists** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VXLAN flood lists** points at VXLAN flood lists, which is not how 5.1 (Device
+    access control) solves this stem. The keyed answer is **What commands authenticated
+    users may run**.
 
 
-    **Only NetFlow samplers** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only NetFlow samplers** points at NetFlow samplers, which is not how 5.1 (Device
+    access control) solves this stem. The keyed answer is **What commands authenticated
+    users may run**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -926,9 +927,9 @@ questions:
     right: Policy and AAA engine
   correct:
     pairs: *id002
-  explanation: 'The correct mappings are: SGT → Group tag on packets/context; SGACL → Policy enforced
-    by group; SXP → Shares IP-to-SGT bindings; ISE → Policy and AAA engine. Each left item associates
-    with exactly one right item.'
+  explanation: 'The correct mappings are: SGT → Group tag on packets/context; SGACL
+    → Policy enforced by group; SXP → Shares IP-to-SGT bindings; ISE → Policy and
+    AAA engine. Each left item associates with exactly one right item.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -953,20 +954,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -990,20 +991,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1030,19 +1033,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.3 (REST API security).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1066,20 +1069,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1103,20 +1106,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1140,20 +1143,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1177,19 +1182,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1213,20 +1216,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1250,20 +1253,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1287,20 +1290,22 @@ questions:
     text: Clear-text PSK mandatory
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1327,19 +1332,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.3 (REST API security).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1363,20 +1368,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1400,20 +1405,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1437,20 +1442,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1474,19 +1481,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1510,20 +1515,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1547,20 +1552,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1584,20 +1589,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1624,19 +1631,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.3 (REST API security).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1660,20 +1667,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1697,20 +1704,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1734,20 +1741,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1771,19 +1780,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1807,20 +1814,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1844,20 +1851,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -1881,20 +1888,22 @@ questions:
     text: Clear-text PSK mandatory
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -1921,19 +1930,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.3 (REST API security).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -1957,20 +1966,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -1994,20 +2003,20 @@ questions:
     text: 2.4 GHz ISM
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -2031,20 +2040,22 @@ questions:
     text: WEP revival
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -2068,19 +2079,17 @@ questions:
     text: NTP
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    SMTP is email. Unrelated to AP/WLC encapsulation.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -2104,20 +2113,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2141,20 +2150,20 @@ questions:
     text: Visible light only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -2178,20 +2187,22 @@ questions:
     text: Stronger SAE/handshake protections
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -2218,19 +2229,19 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 5.3 (REST API security).
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -2254,20 +2265,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2291,20 +2302,20 @@ questions:
     text: Sub-GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.1
@@ -2328,20 +2339,22 @@ questions:
     text: Disable 802.1X always
   correct:
     answer: a
-  explanation: '**Stronger SAE/handshake protections** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'WPA3-Personal replaces PSK 4-way handshake with **SAE** (Dragonfly),
+    giving forward secrecy and resistance to offline dictionary attacks. WPA3-Enterprise
+    adds extra crypto options (192-bit suite).
 
 
-    **WEP revival** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **WEP revival** is not the right selection: WEP (RC4, 24-bit IV) is broken and
+    removed, not revived in WPA3.
 
 
-    **Clear-text PSK mandatory** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Clear-text PSK mandatory** is not the right selection: WPA3 does not require
+    a cleartext PSK on the air. SAE never puts the passphrase in a recoverable hash
+    like WPA2’s 4-way handshake.
 
 
-    **Disable 802.1X always** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Disable 802.1X always** is not the right selection: WPA3-Enterprise **uses**
+    802.1X/EAP. WPA3 does not disable 802.1X.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.2
@@ -2365,19 +2378,17 @@ questions:
     text: WLC
   correct:
     answer: a
-  explanation: '**WLC** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'In split-MAC/local mode the AP’s CAPWAP control and data tunnels terminate
+    on the **Wireless LAN Controller**.
 
 
-    **DNS** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    DNS resolves names; it does not terminate CAPWAP tunnels.
 
 
-    **NTP** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    NTP sets the clock. APs may query NTP, but CAPWAP still ends on the WLC.
 
 
-    **SMTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    SMTP is email. Unrelated to AP/WLC encapsulation.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -2401,20 +2412,20 @@ questions:
     text: 60 GHz only
   correct:
     answer: a
-  explanation: '**2.4 GHz ISM** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '802.11b/g/n/ax still use the 2.4 GHz ISM band (channels 1–11 in the
+    US). Non-overlapping set is 1, 6, and 11.
 
 
-    **60 GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Sub-GHz only** is not the right selection: Sub-GHz is 802.11ah (HaLow) / IoT,
+    not typical enterprise 2.4 GHz.
 
 
-    **Sub-GHz only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Visible light only** is not the right selection: Li-Fi / visible light is not
+    802.11 2.4 GHz Wi-Fi.
 
 
-    **Visible light only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **60 GHz only** is not the right selection: 60 GHz is 802.11ad/ay (WiGig), not
+    the common 2.4 GHz LAN band.'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.4
@@ -2439,20 +2450,31 @@ questions:
     text: Disable logging permanently while testing 5.3
   correct:
     answer: a
-  explanation: '**Use the standard model for 5.3 rather than a look-alike concept** is correct. It is
-    the selection that meets the requirement stated in the stem.
+  explanation: 'For 5.3 (REST API security), the keyed answer is **Use the standard
+    model for 5.3 rather than a look-alike concept**. Stem: During troubleshooting
+    related to 5.3, which observation is most relevant?.
 
 
-    **Disable logging permanently while testing 5.3** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Use the standard model for 5.3 rather than a look-alike concept** is correct:
+    Stay with the standard model for this objective instead of a look-alike protocol
+    that shares a buzzword but not the behavior. This matters for 5.3 (REST API security).
 
 
-    **Use clear-text shared secrets as the only control for 5.3** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.
+    **Use clear-text shared secrets as the only control for 5.3** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 5.3 (REST
+    API security).
 
 
-    **Skip documentation for 5.3 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Skip documentation for 5.3 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 5.3 (REST API
+    security).
+
+
+    **Disable logging permanently while testing 5.3** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 5.3 (REST API security).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3
@@ -2464,8 +2486,8 @@ questions:
   topic_code: '5.3'
   difficulty: 2
   cert_tags: *id004
-  stem: '[ENCOR 5.3] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 5.3] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 5.3 with show/ping evidence
@@ -2480,20 +2502,30 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 5.3 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 5.3 (REST API security), the keyed answer is **Verify expected
+    state for 5.3 with show/ping evidence; Document the 5.3 design intent and rollback
+    plan**. Stem: [ENCOR 5.3] Select ALL actions that support a correct implementation
+    or verification for this objective..
 
 
-    **Document the 5.3 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 5.3 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 5.3 (REST API security).
 
 
-    **Skip change control because 5.3 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 5.3 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 5.3 (REST API security).
 
 
-    **Disable all monitoring related to 5.3** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 5.3 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 5.3 (REST API security).
+
+
+    **Disable all monitoring related to 5.3** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 5.3 (REST API security).'
   references:
   - ENCOR 350-401 Official Cert Guide — Security
   - ENCOR exam topic 5.3

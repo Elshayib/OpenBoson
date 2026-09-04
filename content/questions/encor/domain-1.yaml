@@ -20,17 +20,19 @@ questions:
     text: WAN edge
   correct:
     answer: a
-  explanation: '**Distribution**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
-    within a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'Distribution aggregates access and applies policy toward core.
 
 
-    **Core** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **Core** is a mismatch: The campus core is a high-speed backbone; it should not
+    attach user VLANs. The stem is asking about **Distribution**.
 
 
-    **Access** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **Access** is a mismatch: The campus access layer attaches endpoints (PCs, phones,
+    APs). The stem is asking about **Distribution**.
 
 
-    **WAN edge** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **WAN edge** is a mismatch: The WAN edge connects the site to providers (often
+    NAT, VPN, or SD-WAN). The stem is asking about **Distribution**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -54,20 +56,20 @@ questions:
     text: Only HDLC
   correct:
     answer: a
-  explanation: '**LISP / VXLAN (VNI) concepts** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'SD-Access uses LISP control and VXLAN data plane overlays.
 
 
-    **Only Frame Relay DLCI** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only Frame Relay DLCI** points at Frame Relay DLCI, which is not how 1.3 (On-premises
+    and cloud infrastructure) solves this stem. The keyed answer is **LISP / VXLAN
+    (VNI) concepts**.
 
 
-    **Only ATM VPI** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only ATM VPI** points at ATM VPI, which is not how 1.3 (On-premises and cloud
+    infrastructure) solves this stem. The keyed answer is **LISP / VXLAN (VNI) concepts**.
 
 
-    **Only HDLC** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only HDLC** points at HDLC, which is not how 1.3 (On-premises and cloud infrastructure)
+    solves this stem. The keyed answer is **LISP / VXLAN (VNI) concepts**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -91,21 +93,19 @@ questions:
     text: Only serial TDM
   correct:
     answer: a
-  explanation: '**East-west**: **PAT** (NAT overload) maps many inside addresses to one outside address
-    using unique transport port numbers. This is the correct answer for the stem. Configuration uses `ip
-    nat inside source list <acl> interface <if> overload`.
+  explanation: 'Leaf-spine equalizes east-west paths.
 
 
-    **Only north-south dialup** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only north-south dialup** points at north-south dialup, which is not how 1.1
+    (Enterprise network design principles) solves this stem. The keyed answer is **East-west**.
 
 
-    **Only Token Ring** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Only Token Ring** points at Token Ring, which is not how 1.1 (Enterprise network
+    design principles) solves this stem. The keyed answer is **East-west**.
 
 
-    **Only serial TDM** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Only serial TDM** points at serial TDM, which is not how 1.1 (Enterprise network
+    design principles) solves this stem. The keyed answer is **East-west**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -129,21 +129,20 @@ questions:
     text: Only PoE budgeting
   correct:
     answer: a
-  explanation: '**Centralized management/orchestration** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'vManage manages SD-WAN fabric policies and devices.
 
 
-    **Only BFD sessions** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only BFD sessions** points at BFD sessions, which is not how 1.2 (WLAN deployment
+    design principles) solves this stem. The keyed answer is **Centralized management/orchestration**.
 
 
-    **Only OSPF DR election**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This does not satisfy the condition
-    required by the stem. Configuration uses `router ospf <process>`.
+    **Only OSPF DR election** points at OSPF DR election, which is not how 1.2 (WLAN
+    deployment design principles) solves this stem. The keyed answer is **Centralized
+    management/orchestration**.
 
 
-    **Only PoE budgeting** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only PoE budgeting** points at PoE budgeting, which is not how 1.2 (WLAN deployment
+    design principles) solves this stem. The keyed answer is **Centralized management/orchestration**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -167,20 +166,21 @@ questions:
     text: Only static default only
   correct:
     answer: a
-  explanation: '**Fabric overlay/underlay** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Underlay provides IP reachability; overlay carries endpoints/services.
 
 
-    **Only flat L2 everywhere** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only flat L2 everywhere** points at flat L2 everywhere, which is not how 1.3
+    (On-premises and cloud infrastructure) solves this stem. The keyed answer is **Fabric
+    overlay/underlay**.
 
 
-    **Only hub-spoke Frame Relay** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only hub-spoke Frame Relay** points at hub-spoke Frame Relay, which is not how
+    1.3 (On-premises and cloud infrastructure) solves this stem. The keyed answer
+    is **Fabric overlay/underlay**.
 
 
-    **Only static default only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only static default only** points at static default, which is not how 1.3 (On-premises
+    and cloud infrastructure) solves this stem. The keyed answer is **Fabric overlay/underlay**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -204,20 +204,23 @@ questions:
     text: Force process switching
   correct:
     answer: a
-  explanation: '**Minimize disruption on switchover**: A Layer 2 **switch** forwards Ethernet frames based
-    on MAC address tables within a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'Stateful switchover with NSF keeps forwarding during RP failover.
 
 
-    **Increase STP diameter only** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Increase STP diameter only** points at Increase STP diameter, which is not how
+    1.1 (Enterprise network design principles) solves this stem. The keyed answer
+    is **Minimize disruption on switchover**.
 
 
-    **Disable CEF** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Disable CEF** is a different protocol, command, or value than **Minimize disruption
+    on switchover**. For 1.1 (Enterprise network design principles), the stem is solved
+    by **Minimize disruption on switchover**, not by Disable CEF.
 
 
-    **Force process switching**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables
-    within a broadcast domain or VLAN. This does not satisfy the condition required by the stem.'
+    **Force process switching** is a different protocol, command, or value than **Minimize
+    disruption on switchover**. For 1.1 (Enterprise network design principles), the
+    stem is solved by **Minimize disruption on switchover**, not by Force process
+    switching.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -241,20 +244,23 @@ questions:
     text: Only GLBP
   correct:
     answer: a
-  explanation: '**Same gateway IP on multiple leaves**: **Anycast** assigns the same address to multiple
-    nodes; routers forward to the topologically nearest member. IPv6 does not use broadcast. This is the
-    correct answer for the stem.
+  explanation: 'Anycast SVI provides local gateway on each leaf.
 
 
-    **Unique gateway per VLAN only globally** is incorrect. It does not describe the intended use or behavior
-    required by the stem.
+    **Unique gateway per VLAN only globally** is a different protocol, command, or
+    value than **Same gateway IP on multiple leaves**. For 1.3 (On-premises and cloud
+    infrastructure), the stem is solved by **Same gateway IP on multiple leaves**,
+    not by Unique gateway per VLAN only globally.
 
 
-    **Only HSRP v1 required** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Only HSRP v1 required** points at HSRP v1, which is not how 1.3 (On-premises
+    and cloud infrastructure) solves this stem. The keyed answer is **Same gateway
+    IP on multiple leaves**.
 
 
-    **Only GLBP** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **Only GLBP** is a mismatch: GLBP is Cisco’s FHRP that load-shares by assigning
+    different virtual MACs to AVG/AVFs. The stem is asking about **Same gateway IP
+    on multiple leaves**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -278,20 +284,20 @@ questions:
     text: Only DNS and DHCP
   correct:
     answer: a
-  explanation: '**Core and distribution** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'Collapsed core combines core+distribution functions.
 
 
-    **Only access and WAN** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only access and WAN** is a mismatch: The campus access layer attaches endpoints
+    (PCs, phones, APs). The stem is asking about **Core and distribution**.
 
 
-    **Only wireless and firewall** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only wireless and firewall** is a mismatch: A firewall enforces Layer 3/4 (and
+    often 7) policy between zones; it is not the classic LAN MAC forwarder. The stem
+    is asking about **Core and distribution**.
 
 
-    **Only DNS and DHCP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only DNS and DHCP** points at DNS and DHCP, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Core and distribution**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -315,22 +321,22 @@ questions:
     text: Only spanning tree
   correct:
     answer: a
-  explanation: '**Equal-cost paths installed**: **PAT** (NAT overload) maps many inside addresses to one
-    outside address using unique transport port numbers. This is the correct answer for the stem. Configuration
-    uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'Equal-cost multipath load-shares across equal metrics.
 
 
-    **Only single best path always**: **PAT** (NAT overload) maps many inside addresses to one outside
-    address using unique transport port numbers. This does not satisfy the condition required by the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+    **Only single best path always** points at single best path, which is not how
+    1.1 (Enterprise network design principles) solves this stem. The keyed answer
+    is **Equal-cost paths installed**.
 
 
-    **Only policy routing** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only policy routing** points at policy routing, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Equal-cost
+    paths installed**.
 
 
-    **Only spanning tree** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only spanning tree** points at spanning tree, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Equal-cost
+    paths installed**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -354,20 +360,22 @@ questions:
     text: Only DSCP vs CoS
   correct:
     answer: a
-  explanation: '**Endpoint IDs vs routing locators** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'LISP separates identity (EID) from location (RLOC).
 
 
-    **Only VLAN vs VXLAN** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VLAN vs VXLAN** points at VLAN vs VXLAN, which is not how 1.3 (On-premises
+    and cloud infrastructure) solves this stem. The keyed answer is **Endpoint IDs
+    vs routing locators**.
 
 
-    **Only AS vs community** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only AS vs community** points at AS vs community, which is not how 1.3 (On-premises
+    and cloud infrastructure) solves this stem. The keyed answer is **Endpoint IDs
+    vs routing locators**.
 
 
-    **Only DSCP vs CoS** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only DSCP vs CoS** points at DSCP vs CoS, which is not how 1.3 (On-premises
+    and cloud infrastructure) solves this stem. The keyed answer is **Endpoint IDs
+    vs routing locators**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -391,19 +399,19 @@ questions:
     text: WAN edge only
   correct:
     answer: a
-  explanation: '**Leaf**: A Layer 2 **switch** forwards Ethernet frames based on MAC address tables within
-    a broadcast domain or VLAN. This is the correct answer for the stem.
+  explanation: 'Top-of-rack leaves connect servers to spines.
 
 
-    **Spine only** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **Spine only** points at Spine, which is not how 1.1 (Enterprise network design
+    principles) solves this stem. The keyed answer is **Leaf**.
 
 
-    **Route reflector only** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Route reflector only** points at Route reflector, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Leaf**.
 
 
-    **WAN edge only** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **WAN edge only** is a mismatch: The WAN edge connects the site to providers (often
+    NAT, VPN, or SD-WAN). The stem is asking about **Leaf**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -427,21 +435,19 @@ questions:
     text: Only BGP RR
   correct:
     answer: a
-  explanation: '**Access edge / IP phone** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Trust and classify near the edge.
 
 
-    **Only ISP core** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only ISP core** points at ISP core, which is not how 1.4 (SD-WAN and SD-Access
+    solutions) solves this stem. The keyed answer is **Access edge / IP phone**.
 
 
-    **Only DNS root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only DNS root** points at DNS root, which is not how 1.4 (SD-WAN and SD-Access
+    solutions) solves this stem. The keyed answer is **Access edge / IP phone**.
 
 
-    **Only BGP RR**: **BGP** exchanges reachability among autonomous systems and selects paths using an
-    ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.'
+    **Only BGP RR** points at BGP RR, which is not how 1.4 (SD-WAN and SD-Access solutions)
+    solves this stem. The keyed answer is **Access edge / IP phone**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -465,20 +471,22 @@ questions:
     text: Only NetFlow export
   correct:
     answer: a
-  explanation: '**Control-plane and forwarding abstraction across members** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'Stacking presents multiple chassis as one logical switch.
 
 
-    **Only wireless mesh** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only wireless mesh** points at wireless mesh, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Control-plane
+    and forwarding abstraction across members**.
 
 
-    **Only MPLS TE** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only MPLS TE** points at MPLS TE, which is not how 1.1 (Enterprise network design
+    principles) solves this stem. The keyed answer is **Control-plane and forwarding
+    abstraction across members**.
 
 
-    **Only NetFlow export** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only NetFlow export** points at NetFlow export, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Control-plane
+    and forwarding abstraction across members**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -502,20 +510,22 @@ questions:
     text: Only CoPP class-maps
   correct:
     answer: a
-  explanation: '**First-hop gateway redundancy** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'HSRP/VRRP keep default gateway available.
 
 
-    **Only underlay multicast RP** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only underlay multicast RP** is a mismatch: Multicast is one-to-many (IPv4 224/4,
+    IPv6 ff00::/8). IPv6 replaces broadcast with multicast. The stem is asking about
+    **First-hop gateway redundancy**.
 
 
-    **Only VXLAN VNI allocation** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only VXLAN VNI allocation** points at VXLAN VNI allocation, which is not how
+    1.1 (Enterprise network design principles) solves this stem. The keyed answer
+    is **First-hop gateway redundancy**.
 
 
-    **Only CoPP class-maps** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only CoPP class-maps** points at CoPP class-maps, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **First-hop gateway
+    redundancy**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -539,21 +549,20 @@ questions:
     text: Only PoE PSE
   correct:
     answer: a
-  explanation: '**vSmart / orchestration components** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'SD-WAN separates control/management from data plane edges.
 
 
-    **Only access switches as RR mandatory**: A Layer 2 **switch** forwards Ethernet frames based on MAC
-    address tables within a broadcast domain or VLAN. This does not satisfy the condition required by
-    the stem.
+    **Only access switches as RR mandatory** is a mismatch: The campus access layer
+    attaches endpoints (PCs, phones, APs). The stem is asking about **vSmart / orchestration
+    components**.
 
 
-    **Only STP root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP root** points at STP root, which is not how 1.2 (WLAN deployment design
+    principles) solves this stem. The keyed answer is **vSmart / orchestration components**.
 
 
-    **Only PoE PSE** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only PoE PSE** points at PoE PSE, which is not how 1.2 (WLAN deployment design
+    principles) solves this stem. The keyed answer is **vSmart / orchestration components**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -577,20 +586,22 @@ questions:
     text: Only Token Ring bridges
   correct:
     answer: a
-  explanation: '**Border/fusion design considerations** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'Borders connect fabric to non-fabric domains.
 
 
-    **Only disabling all routing** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only disabling all routing** points at disabling all routing, which is not how
+    1.3 (On-premises and cloud infrastructure) solves this stem. The keyed answer
+    is **Border/fusion design considerations**.
 
 
-    **Only removing VLANs forever** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only removing VLANs forever** points at removing VLANs, which is not how 1.3
+    (On-premises and cloud infrastructure) solves this stem. The keyed answer is **Border/fusion
+    design considerations**.
 
 
-    **Only Token Ring bridges** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only Token Ring bridges** points at Token Ring bridges, which is not how 1.3
+    (On-premises and cloud infrastructure) solves this stem. The keyed answer is **Border/fusion
+    design considerations**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -614,21 +625,19 @@ questions:
     text: Only DHCP pools
   correct:
     answer: a
-  explanation: '**QoS configuration** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'QoS policies classify/mark/police/shape traffic.
 
 
-    **Only VTP pruning** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VTP pruning** points at VTP pruning, which is not how 1.4 (SD-WAN and SD-Access
+    solutions) solves this stem. The keyed answer is **QoS configuration**.
 
 
-    **Only CDP timers**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.
+    **Only CDP timers** points at CDP timers, which is not how 1.4 (SD-WAN and SD-Access
+    solutions) solves this stem. The keyed answer is **QoS configuration**.
 
 
-    **Only DHCP pools** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only DHCP pools** points at DHCP pools, which is not how 1.4 (SD-WAN and SD-Access
+    solutions) solves this stem. The keyed answer is **QoS configuration**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -652,20 +661,23 @@ questions:
     text: Only L2 loops required
   correct:
     answer: a
-  explanation: '**Centralized policy with transport independence** is correct. It is the selection that
-    meets the requirement stated in the stem.
+  explanation: 'SD-WAN centralizes policy across transports.
 
 
-    **Mandatory single underlay protocol only forever** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Mandatory single underlay protocol only forever** points at Mandatory single
+    underlay protocol only, which is not how 1.2 (WLAN deployment design principles)
+    solves this stem. The keyed answer is **Centralized policy with transport independence**.
 
 
-    **Removal of encryption options** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Removal of encryption options** is a different protocol, command, or value than
+    **Centralized policy with transport independence**. For 1.2 (WLAN deployment design
+    principles), the stem is solved by **Centralized policy with transport independence**,
+    not by Removal of encryption options.
 
 
-    **Only L2 loops required** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only L2 loops required** points at L2 loops, which is not how 1.2 (WLAN deployment
+    design principles) solves this stem. The keyed answer is **Centralized policy
+    with transport independence**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -689,20 +701,22 @@ questions:
     text: Only banner motd text
   correct:
     answer: a
-  explanation: '**Scale and resiliency of tiers/fabrics** is correct. It is the selection that meets the
-    requirement stated in the stem.
+  explanation: 'Design principles include capacity and HA for fabrics/cloud.
 
 
-    **Only cable color standards** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only cable color standards** points at cable color standards, which is not how
+    1.1 (Enterprise network design principles) solves this stem. The keyed answer
+    is **Scale and resiliency of tiers/fabrics**.
 
 
-    **Only console baud rates** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only console baud rates** points at console baud rates, which is not how 1.1
+    (Enterprise network design principles) solves this stem. The keyed answer is **Scale
+    and resiliency of tiers/fabrics**.
 
 
-    **Only banner motd text** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only banner motd text** points at banner motd text, which is not how 1.1 (Enterprise
+    network design principles) solves this stem. The keyed answer is **Scale and resiliency
+    of tiers/fabrics**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -726,20 +740,21 @@ questions:
     text: Only RADIUS ports
   correct:
     answer: a
-  explanation: '**Per-hop behavior treatment** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Markings drive classification and PHB along the path.
 
 
-    **Only STP root priority** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP root priority** points at STP root priority, which is not how 1.4 (SD-WAN
+    and SD-Access solutions) solves this stem. The keyed answer is **Per-hop behavior
+    treatment**.
 
 
-    **Only VTP domain** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VTP domain** points at VTP domain, which is not how 1.4 (SD-WAN and SD-Access
+    solutions) solves this stem. The keyed answer is **Per-hop behavior treatment**.
 
 
-    **Only RADIUS ports** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only RADIUS ports** points at RADIUS ports, which is not how 1.4 (SD-WAN and
+    SD-Access solutions) solves this stem. The keyed answer is **Per-hop behavior
+    treatment**.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -752,7 +767,8 @@ questions:
   difficulty: 2
   cert_tags: &id002
   - ccnp
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -767,20 +783,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.1 (Enterprise network design
+    principles).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -804,20 +825,22 @@ questions:
     text: Link-local
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -841,20 +864,20 @@ questions:
     text: /24
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -878,20 +901,23 @@ questions:
     text: Data link
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -915,20 +941,23 @@ questions:
     text: Data link
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -952,20 +981,22 @@ questions:
     text: Anycast only
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -989,20 +1020,20 @@ questions:
     text: /26
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1014,7 +1045,8 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1029,20 +1061,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1054,7 +1091,8 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1069,20 +1107,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.1 (Enterprise network design
+    principles).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -1106,20 +1149,22 @@ questions:
     text: Unique local
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -1143,20 +1188,20 @@ questions:
     text: /30
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1180,20 +1225,23 @@ questions:
     text: Transport
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1217,20 +1265,23 @@ questions:
     text: Transport
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -1254,20 +1305,22 @@ questions:
     text: Global unicast
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -1291,20 +1344,20 @@ questions:
     text: /25
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1316,7 +1369,8 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1331,20 +1385,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1356,7 +1415,8 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1371,20 +1431,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.1 (Enterprise network design
+    principles).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -1408,20 +1473,22 @@ questions:
     text: Link-local
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -1445,20 +1512,20 @@ questions:
     text: /24
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1482,20 +1549,23 @@ questions:
     text: Data link
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1519,20 +1589,23 @@ questions:
     text: Data link
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -1556,20 +1629,22 @@ questions:
     text: Anycast only
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -1593,20 +1668,20 @@ questions:
     text: /26
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1618,7 +1693,8 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1633,20 +1709,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1658,7 +1739,8 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1673,20 +1755,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.1 (Enterprise network design
+    principles).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -1710,20 +1797,22 @@ questions:
     text: Unique local
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -1747,20 +1836,20 @@ questions:
     text: /30
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1784,20 +1873,23 @@ questions:
     text: Transport
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1821,20 +1913,23 @@ questions:
     text: Transport
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -1858,20 +1953,22 @@ questions:
     text: Global unicast
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -1895,20 +1992,20 @@ questions:
     text: /25
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -1920,7 +2017,8 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1935,20 +2033,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -1960,7 +2063,8 @@ questions:
   topic_code: '1.1'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.1] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -1975,20 +2079,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.1 (Enterprise network design
+    principles).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2012,20 +2121,22 @@ questions:
     text: Link-local
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2049,20 +2160,20 @@ questions:
     text: /24
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2086,20 +2197,23 @@ questions:
     text: Data link
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -2123,20 +2237,23 @@ questions:
     text: Data link
   correct:
     answer: a
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Physical** is not the right selection: Layer 1 is bits on the medium (voltage,
+    light, RF). There is no end-to-end session or retransmission at this layer.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Physical** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2160,20 +2277,22 @@ questions:
     text: Anycast only
   correct:
     answer: a
-  explanation: '**Link-local** IPv6 addresses (`fe80::/10`) are required on every IPv6-enabled interface
-    and are not routed beyond the local link. This is the correct answer for the stem.
+  explanation: 'Every IPv6-enabled interface must have a link-local address in `fe80::/10`
+    (often auto-derived from EUI-64 or stable privacy). NDP, RS/RA, and routing hellos
+    use it; it is never forwarded off-link.
 
 
-    **Global unicast** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Global unicast (`2000::/3`) is the routable public address, assigned only when
+    the interface needs site/Internet reachability — not automatically on every link.
 
 
-    **Unique local** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    Unique local (`fc00::/7`, typically `fd00::/8`) is optional private unicast, analogous
+    to RFC 1918. Interfaces do not require it.
 
 
-    **Anycast only**: **Anycast** assigns the same address to multiple nodes; routers forward to the topologically
-    nearest member. IPv6 does not use broadcast. This does not satisfy the condition required by the stem.'
+    **Anycast only** is not the right selection: Anycast is a unicast address assigned
+    to multiple nodes so routers deliver to the nearest. It is a service pattern,
+    not the required per-interface address type.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2197,20 +2316,20 @@ questions:
     text: /26
   correct:
     answer: a
-  explanation: 'A **/26** prefix provides 64 addresses; subtracting network and broadcast leaves **62**
-    usable host addresses. This is the correct answer for the stem.
+  explanation: '`255.255.255.192` has 26 bits of ones (255.255.255 = 24 bits, plus
+    192 = `11000000` two more). Block size is 64 addresses (256 − 192 = 64), usable
+    hosts 62.
 
 
-    **/24** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/24** is not the right selection: `255.255.255.0` is /24 (256-address block),
+    not 255.255.255.192.
 
 
-    **/25** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **/25** is not the right selection: `255.255.255.128` is /25 (128-address block).
 
 
-    A **/30** prefix provides four addresses and **two** usable hosts, commonly used on point-to-point
-    links. This does not satisfy the condition required by the stem.'
+    **/30** is not the right selection: `255.255.255.252` is /30 (4-address block)
+    used on point-to-point links.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2222,7 +2341,8 @@ questions:
   topic_code: '1.4'
   difficulty: 2
   cert_tags: *id002
-  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end reliable delivery.'
+  stem: '[CCNP 1.4] Select ALL that correctly relate to: OSI layer for end-to-end
+    reliable delivery.'
   choices:
   - id: a
     text: Transport
@@ -2237,20 +2357,25 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Transport** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: 'OSI Layer 4 (TCP) provides end-to-end delivery. TCP adds a handshake,
+    sequence/ack numbers, and retransmission so the application sees an ordered reliable
+    stream.
 
 
-    **Document verification steps before changes.** is correct. It is the selection that meets the requirement
-    stated in the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
 
 
-    **Network** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Network** is not the right selection: Layer 3 (IP) forwards packets hop-by-hop
+    using the routing table. It does not guarantee ordered or reliable end-to-end
+    delivery.
 
 
-    **Data link** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Data link** is not the right selection: Layer 2 delivers frames on a single
+    link or VLAN using MAC addresses (Ethernet/PPP). Reliability and sessions are
+    not its job.'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -2278,20 +2403,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 1.1 (Enterprise network design principles), the keyed answer is
+    **Verify before change windows; Capture show/verify outputs**. Stem: Multiple-select
+    check for 1.1: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 1.1 (Enterprise network design principles).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 1.1 (Enterprise network design principles).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 1.1 (Enterprise network design principles).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 1.1 (Enterprise network design principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2318,20 +2452,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 1.2 (WLAN deployment design principles), the keyed answer is **Verify
+    before change windows; Capture show/verify outputs**. Stem: Multiple-select check
+    for 1.2: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 1.2 (WLAN deployment design principles).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 1.2 (WLAN deployment design principles).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 1.2 (WLAN deployment design principles).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 1.2 (WLAN deployment design principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2358,20 +2501,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 1.3 (On-premises and cloud infrastructure), the keyed answer is
+    **Verify before change windows; Capture show/verify outputs**. Stem: Multiple-select
+    check for 1.3: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 1.3 (On-premises and cloud infrastructure).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 1.3 (On-premises and cloud infrastructure).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 1.3 (On-premises and cloud infrastructure).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 1.3 (On-premises and cloud infrastructure).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.3
@@ -2398,20 +2550,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before change windows** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'For 1.4 (SD-WAN and SD-Access solutions), the keyed answer is **Verify
+    before change windows; Capture show/verify outputs**. Stem: Multiple-select check
+    for 1.4: which items are operationally sound?.
 
 
-    **Capture show/verify outputs** is correct. It is the selection that meets the requirement stated
-    in the stem.
+    **Verify before change windows** is correct: Capture a known-good baseline (`show`,
+    ping, traceroute) before the window so you can compare after the change. This
+    matters for 1.4 (SD-WAN and SD-Access solutions).
 
 
-    **Skip documentation** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show/verify outputs** is correct: Save `show running-config`, `show
+    ip route`, `show vlan`, and similar evidence with the ticket — that is how you
+    prove the objective. This matters for 1.4 (SD-WAN and SD-Access solutions).
 
 
-    **Disable logging permanently** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **Skip documentation** is not the right selection: Skipping documentation leaves
+    no rollback and no audit trail. Production changes for this objective still need
+    a written record. This matters for 1.4 (SD-WAN and SD-Access solutions).
+
+
+    **Disable logging permanently** is not the right selection: Disabling logging
+    permanently hides faults and is a finding on any security review. Keep syslog/buffered
+    logging enabled. This matters for 1.4 (SD-WAN and SD-Access solutions).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4
@@ -2439,19 +2600,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before changes** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'For 1.1 (Enterprise network design principles), the keyed answer is
+    **Verify before changes; Capture show output**. Stem: Extra multi-select 0 for
+    volume gate on 1.1?.
 
 
-    **Capture show output** is correct. It is the selection that meets the requirement stated in the stem.
+    **Verify before changes** is correct: Verify current state before touching the
+    box so you do not troubleshoot a pre-existing fault as if you caused it. This
+    matters for 1.1 (Enterprise network design principles).
 
 
-    **Skip all logs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show output** is correct: Archive show output with the change record.
+    Without it you cannot prove what the device looked like. This matters for 1.1
+    (Enterprise network design principles).
 
 
-    **Disable AAA forever** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Skip all logs** is not the right selection: Skipping logs blinds you to the
+    failure you are about to cause. Leave logging on and raise the buffer/trap level
+    during the window. This matters for 1.1 (Enterprise network design principles).
+
+
+    **Disable AAA forever** is not the right selection: Disabling AAA forever drops
+    the box back to local/none auth and is not an implementation of the objective.
+    This matters for 1.1 (Enterprise network design principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2478,19 +2649,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before changes** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'For 1.1 (Enterprise network design principles), the keyed answer is
+    **Verify before changes; Capture show output**. Stem: Extra multi-select 1 for
+    volume gate on 1.1?.
 
 
-    **Capture show output** is correct. It is the selection that meets the requirement stated in the stem.
+    **Verify before changes** is correct: Verify current state before touching the
+    box so you do not troubleshoot a pre-existing fault as if you caused it. This
+    matters for 1.1 (Enterprise network design principles).
 
 
-    **Skip all logs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show output** is correct: Archive show output with the change record.
+    Without it you cannot prove what the device looked like. This matters for 1.1
+    (Enterprise network design principles).
 
 
-    **Disable AAA forever** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Skip all logs** is not the right selection: Skipping logs blinds you to the
+    failure you are about to cause. Leave logging on and raise the buffer/trap level
+    during the window. This matters for 1.1 (Enterprise network design principles).
+
+
+    **Disable AAA forever** is not the right selection: Disabling AAA forever drops
+    the box back to local/none auth and is not an implementation of the objective.
+    This matters for 1.1 (Enterprise network design principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2517,19 +2698,29 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify before changes** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'For 1.1 (Enterprise network design principles), the keyed answer is
+    **Verify before changes; Capture show output**. Stem: Extra multi-select 2 for
+    volume gate on 1.1?.
 
 
-    **Capture show output** is correct. It is the selection that meets the requirement stated in the stem.
+    **Verify before changes** is correct: Verify current state before touching the
+    box so you do not troubleshoot a pre-existing fault as if you caused it. This
+    matters for 1.1 (Enterprise network design principles).
 
 
-    **Skip all logs** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Capture show output** is correct: Archive show output with the change record.
+    Without it you cannot prove what the device looked like. This matters for 1.1
+    (Enterprise network design principles).
 
 
-    **Disable AAA forever** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Skip all logs** is not the right selection: Skipping logs blinds you to the
+    failure you are about to cause. Leave logging on and raise the buffer/trap level
+    during the window. This matters for 1.1 (Enterprise network design principles).
+
+
+    **Disable AAA forever** is not the right selection: Disabling AAA forever drops
+    the box back to local/none auth and is not an implementation of the objective.
+    This matters for 1.1 (Enterprise network design principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.1
@@ -2542,8 +2733,8 @@ questions:
   difficulty: 2
   cert_tags: &id005
   - ccnp
-  stem: '[ENCOR 1.2] Select ALL actions that support a correct implementation or verification for this
-    objective.'
+  stem: '[ENCOR 1.2] Select ALL actions that support a correct implementation or verification
+    for this objective.'
   choices:
   - id: a
     text: Verify expected state for 1.2 with show/ping evidence
@@ -2558,20 +2749,31 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**Verify expected state for 1.2 with show/ping evidence** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 1.2 (WLAN deployment design principles), the keyed answer is **Verify
+    expected state for 1.2 with show/ping evidence; Document the 1.2 design intent
+    and rollback plan**. Stem: [ENCOR 1.2] Select ALL actions that support a correct
+    implementation or verification for this objective..
 
 
-    **Document the 1.2 design intent and rollback plan** is correct. It is the selection that meets the
-    requirement stated in the stem.
+    **Verify expected state for 1.2 with show/ping evidence** is correct: Use show/ping
+    evidence to confirm the objective actually converged — not just that the command
+    was typed. This matters for 1.2 (WLAN deployment design principles).
 
 
-    **Skip change control because 1.2 is low risk** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Document the 1.2 design intent and rollback plan** is correct: Document design
+    intent and the rollback commands. The next engineer (or you at 03:00) needs that,
+    not tribal memory. This matters for 1.2 (WLAN deployment design principles).
 
 
-    **Disable all monitoring related to 1.2** is incorrect. It describes a different behavior and does
-    not meet the requirement stated in the stem.'
+    **Skip change control because 1.2 is low risk** is not the right selection: Skipping
+    change control because a topic ‘looks low risk’ is how untracked outages happen.
+    This objective still goes through the window. This matters for 1.2 (WLAN deployment
+    design principles).
+
+
+    **Disable all monitoring related to 1.2** is not the right selection: Disabling
+    monitoring removes the only proof the objective still works after you leave. Leave
+    SNMP/telemetry/syslog up. This matters for 1.2 (WLAN deployment design principles).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.2
@@ -2595,20 +2797,32 @@ questions:
     text: Validate with show/verify steps before relying on 1.4 changes
   correct:
     answer: a
-  explanation: '**Validate with show/verify steps before relying on 1.4 changes** is correct. It is the
-    selection that meets the requirement stated in the stem.
+  explanation: 'For 1.4 (SD-WAN and SD-Access solutions), the keyed answer is **Validate
+    with show/verify steps before relying on 1.4 changes**. Stem: Regarding ENCOR
+    topic 1.4. Which reply is accurate?.
 
 
-    **Confuse 1.4 with an unrelated Layer mismatch** is incorrect. It describes a different behavior and
-    does not meet the requirement stated in the stem.
+    **Validate with show/verify steps before relying on 1.4 changes** is correct:
+    Validate with show/verify (and ping where relevant) before you trust the change
+    in production. This matters for 1.4 (SD-WAN and SD-Access solutions).
 
 
-    **Disable logging permanently while testing 1.4** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Confuse 1.4 with an unrelated Layer mismatch** is not the right selection: Confusing
+    this objective with an unrelated OSI layer is how you apply the wrong feature
+    (for example STP for a routing problem). This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
 
 
-    **Use clear-text shared secrets as the only control for 1.4** is incorrect. It describes a different
-    behavior and does not meet the requirement stated in the stem.'
+    **Disable logging permanently while testing 1.4** is not the right selection:
+    Disabling logging permanently hides faults and is a finding on any security review.
+    Keep syslog/buffered logging enabled. This matters for 1.4 (SD-WAN and SD-Access
+    solutions).
+
+
+    **Use clear-text shared secrets as the only control for 1.4** is not the right
+    selection: Clear-text shared secrets (type 7, Telnet, open SNMP) are not an acceptable
+    sole control. Use SSH, type 8/9 secrets, and SNMPv3. This matters for 1.4 (SD-WAN
+    and SD-Access solutions).'
   references:
   - ENCOR 350-401 Official Cert Guide — Architecture
   - ENCOR exam topic 1.4

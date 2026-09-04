@@ -26,18 +26,21 @@ questions:
     - Exchange
     - Loading
     - Full
-  explanation: 'The correct sequence for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading
-    → Full. Each step must appear in this order; rearranging any step breaks the required procedure or
-    protocol behavior. The correct sequence for this item is: Down → Init → 2-Way → ExStart → Exchange
-    → Loading → Full. Each step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way → ExStart → Exchange
-    → Loading → Full. Each step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way → ExStart → Exchange
-    → Loading → Full. Each step must appear in this order; rearranging any step breaks the required procedure
-    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way → ExStart → Exchange
-    → Loading → Full. The stem requires the operational or protocol order implied by: Place OSPF adjacency
-    states in order from Down to Full.. Each listed step must appear in this order; rearranging any step
-    breaks the required procedure or protocol behavior.'
+  explanation: 'The correct sequence for this item is: Down → Init → 2-Way → ExStart
+    → Exchange → Loading → Full. Each step must appear in this order; rearranging
+    any step breaks the required procedure or protocol behavior. The correct sequence
+    for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading → Full. Each
+    step must appear in this order; rearranging any step breaks the required procedure
+    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way
+    → ExStart → Exchange → Loading → Full. Each step must appear in this order; rearranging
+    any step breaks the required procedure or protocol behavior. The correct sequence
+    for this item is: Down → Init → 2-Way → ExStart → Exchange → Loading → Full. Each
+    step must appear in this order; rearranging any step breaks the required procedure
+    or protocol behavior. The correct sequence for this item is: Down → Init → 2-Way
+    → ExStart → Exchange → Loading → Full. The stem requires the operational or protocol
+    order implied by: Place OSPF adjacency states in order from Down to Full.. Each
+    listed step must appear in this order; rearranging any step breaks the required
+    procedure or protocol behavior.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -61,18 +64,20 @@ questions:
     text: '1'
   correct:
     answer: a
-  explanation: '**110**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This is the correct answer for the stem. Configuration
-    uses `router ospf <process>`.
+  explanation: 'Default AD: connected 0, static 1, eBGP 20, EIGRP 90, OSPF 110, RIP
+    120, iBGP 200.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **110** is correct: OSPF AD.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **90** is not the right selection: EIGRP internal.
 
 
-    **1** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **120** is not the right selection: RIP.
+
+
+    **1** is not the right selection: Static.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -96,20 +101,19 @@ questions:
     text: 224.0.0.0/4
   correct:
     answer: a
-  explanation: '**0.0.0.0/0** is correct. It is the selection that meets the requirement stated in the
-    stem.
+  explanation: '0.0.0.0/0 matches all destinations as last resort.
 
 
-    **255.255.255.255/32** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **0.0.0.0/0** is correct: Default.
 
 
-    **127.0.0.0/8** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **255.255.255.255/32** is not the right selection: Host broadcast-ish.
 
 
-    **224.0.0.0/4** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **127.0.0.0/8** is not the right selection: Loopback net.
+
+
+    **224.0.0.0/4** is not the right selection: Multicast.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -133,18 +137,25 @@ questions:
     text: VLAN ID
   correct:
     answer: a
-  explanation: '**Router ID**: A **router** forwards IP packets between networks using the routing table
-    and operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'OSPF identifies a router in the LSDB by a 32-bit **Router ID**, written
+    like an IPv4 address. IOS picks RID from `router-id`, else the highest loopback,
+    else the highest up/up interface IPv4 address. Neighbors list that RID in Hellos
+    and LSAs.
 
 
-    **Process ID alone** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Router ID** is that unique OSPF identity.
 
 
-    **ASN** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **Process ID alone** (`router ospf 1`) is **locally significant**. Two routers
+    can use process 1 and still be different OSPF routers; mismatched process IDs
+    still form an adjacency on Cisco IOS.
 
 
-    **VLAN ID** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **ASN** is a **BGP** autonomous system number, not an OSPF identifier.
+
+
+    **VLAN ID** is an 802.1Q tag (1–4094). OSPF runs as a Layer 3 protocol and does
+    not use VLAN IDs as router identity.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -168,8 +179,8 @@ questions:
     right: '20'
   correct:
     pairs: *id002
-  explanation: 'The correct mappings are: EIGRP (internal) → 90; OSPF → 110; RIP → 120; eBGP → 20. Each
-    left item associates with exactly one right item.'
+  explanation: 'The correct mappings are: EIGRP (internal) → 90; OSPF → 110; RIP →
+    120; eBGP → 20. Each left item associates with exactly one right item.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -187,12 +198,14 @@ questions:
   correct:
     expected_commands:
     - ip route 0.0.0.0 0.0.0.0 203.0.113.1
-  explanation: 'This performance item is graded against the expected configuration or command set for
-    the stated objective. This performance item is graded against the expected configuration or command
-    set for the stated objective. This performance item is graded against the expected configuration or
-    command set for the stated objective. This performance item is graded against the expected configuration
-    or command set for the stated objective. This performance item is graded against the expected configuration
-    or command set for: Configure a static default route on R1 via next hop 203.0.113.1..'
+  explanation: 'This performance item is graded against the expected configuration
+    or command set for the stated objective. This performance item is graded against
+    the expected configuration or command set for the stated objective. This performance
+    item is graded against the expected configuration or command set for the stated
+    objective. This performance item is graded against the expected configuration
+    or command set for the stated objective. This performance item is graded against
+    the expected configuration or command set for: Configure a static default route
+    on R1 via next hop 203.0.113.1..'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -216,19 +229,22 @@ questions:
     text: 255.255.255.255
   correct:
     answer: a
-  explanation: '**224.0.0.5**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This is the correct answer for the
-    stem. Configuration uses `router ospf <process>`.
+  explanation: 'On broadcast multiaccess networks OSPF Hellos (and LSUs to AllSPFRouters)
+    go to multicast **224.0.0.5**. AllDRRouters **224.0.0.6** is used by DROthers
+    to talk to the DR/BDR.
 
 
-    **224.0.0.9** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **224.0.0.5** is AllSPFRouters — every OSPF router on the link listens.
 
 
-    **224.0.0.10** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **224.0.0.9** is **RIPv2**. Seeing it does not mean OSPF is up.
 
 
-    **255.255.255.255** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **224.0.0.10** is **EIGRP**. Different IGP, different multicast.
+
+
+    **255.255.255.255** is limited broadcast. OSPF on Ethernet uses multicast (or
+    unicast on NBMA), not 255.255.255.255 Hellos.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -252,20 +268,25 @@ questions:
     text: Nonbroadcast always without DR
   correct:
     answer: a
-  explanation: '**Broadcast**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This is the correct answer for the
-    stem. Configuration uses `router ospf <process>`.
+  explanation: 'OSPF **broadcast** network type (default on Ethernet) elects a **DR
+    and BDR** so the LAN does not become an N^2 adjacency mesh. Point-to-point does
+    **not** elect a DR.
 
 
-    **Point-to-point** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Broadcast** is the multiaccess type that elects DR/BDR (Hello 10 s / dead 40
+    s by default).
 
 
-    **Loopback** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **Point-to-point** (serial, or `ip ospf network point-to-point` on Ethernet) has
+    a single neighbor and **no DR/BDR**.
 
 
-    **Nonbroadcast always without DR** is incorrect. It does not describe the intended use or behavior
-    required by the stem.'
+    **Loopback** is advertised as a /32; there is no neighbor and no election.
+
+
+    **Nonbroadcast always without DR** is wrong on two counts: NBMA (Frame Relay-style)
+    **does** elect a DR, and neighbors are unicast rather than multicast. ‘Always
+    without DR’ describes point-to-point, not NBMA.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -289,20 +310,19 @@ questions:
     text: Random ECMP only
   correct:
     answer: a
-  explanation: '**10.1.1.0/28 over 10.1.0.0/16** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'More-specific prefixes win longest-match forwarding.
 
 
-    **Always AD only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Always AD only** points at Always AD, which is not how 3.2 (Router forwarding
+    decisions) solves this stem. The keyed answer is **10.1.1.0/28 over 10.1.0.0/16**.
 
 
-    **Always metric only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Always metric only** points at Always metric, which is not how 3.2 (Router forwarding
+    decisions) solves this stem. The keyed answer is **10.1.1.0/28 over 10.1.0.0/16**.
 
 
-    **Random ECMP only** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Random ECMP only** points at Random ECMP, which is not how 3.2 (Router forwarding
+    decisions) solves this stem. The keyed answer is **10.1.1.0/28 over 10.1.0.0/16**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -326,22 +346,22 @@ questions:
     text: Connected
   correct:
     answer: a
-  explanation: '**Candidate default static** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'S* marks a candidate default static route.
 
 
-    **OSPF summary**: **OSPF** is a link-state IGP that builds a topology database and calculates loop-free
-    paths with cost based primarily on interface bandwidth. This does not satisfy the condition required
-    by the stem. Configuration uses `router ospf <process>`.
+    **OSPF summary** is a different protocol, command, or value than **Candidate default
+    static**. For 3.1 (Routing table components), the stem is solved by **Candidate
+    default static**, not by OSPF summary.
 
 
-    **BGP aggregate**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy
-    the condition required by the stem. Configuration uses `router bgp <asn>`.
+    **BGP aggregate** is a different protocol, command, or value than **Candidate
+    default static**. For 3.1 (Routing table components), the stem is solved by **Candidate
+    default static**, not by BGP aggregate.
 
 
-    **Connected** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Connected** is a different protocol, command, or value than **Candidate default
+    static**. For 3.1 (Routing table components), the stem is solved by **Candidate
+    default static**, not by Connected.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -365,20 +385,26 @@ questions:
     text: Only NAT
   correct:
     answer: a
-  explanation: '**Higher AD than primary** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'A **floating static** is a backup route with a **higher administrative
+    distance** than the primary (often 1 for a normal static, 110 for OSPF, so a floating
+    static uses AD 210 or similar: `ip route 0.0.0.0 0.0.0.0 Nh 210`). It sits unused
+    until the better AD route disappears.
 
 
-    **Lower AD than connected** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Higher AD than primary** is the technique (worse preference = backup).
 
 
-    **Only PBR** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Lower AD than connected** is impossible as a backup: connected is AD 0, the
+    best possible. A static cannot outrank a connected prefix on the same router in
+    the way this option implies, and it would not ‘float’.
 
 
-    **Only NAT** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only PBR** (`ip policy route-map`) overrides forwarding per-packet independent
+    of the RIB AD. It is not a floating static.
+
+
+    **Only NAT** translates addresses; it does not install a backup prefix in the
+    routing table.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -402,21 +428,22 @@ questions:
     text: Terminate VLANs
   correct:
     answer: a
-  explanation: '**Limit LSA flooding scope**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'Areas hierarchicalize LSA flooding.
 
 
-    **Replace IP addresses** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Replace IP addresses** is a different protocol, command, or value than **Limit
+    LSA flooding scope**. For 3.4 (Single-area OSPFv2), the stem is solved by **Limit
+    LSA flooding scope**, not by Replace IP addresses.
 
 
-    **Encrypt all payloads** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Encrypt all payloads** is a different protocol, command, or value than **Limit
+    LSA flooding scope**. For 3.4 (Single-area OSPFv2), the stem is solved by **Limit
+    LSA flooding scope**, not by Encrypt all payloads.
 
 
-    **Terminate VLANs** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Terminate VLANs** is a different protocol, command, or value than **Limit LSA
+    flooding scope**. For 3.4 (Single-area OSPFv2), the stem is solved by **Limit
+    LSA flooding scope**, not by Terminate VLANs.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -440,21 +467,22 @@ questions:
     text: Only GLBP without VIP
   correct:
     answer: a
-  explanation: '**Virtual IP and virtual MAC** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'HSRP presents a virtual IP/MAC to hosts.
 
 
-    **Only anycast DNS**: **Anycast** assigns the same address to multiple nodes; routers forward to the
-    topologically nearest member. IPv6 does not use broadcast. This does not satisfy the condition required
-    by the stem.
+    **Only anycast DNS** is a mismatch: Anycast assigns the same unicast address to
+    many nodes; routers deliver to the nearest. The stem is asking about **Virtual
+    IP and virtual MAC**.
 
 
-    **Only VRRP exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only VRRP exclusive** is a mismatch: VRRP (RFC 5798) is the standards-based
+    FHRP with a virtual IP/MAC and a master router. The stem is asking about **Virtual
+    IP and virtual MAC**.
 
 
-    **Only GLBP without VIP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only GLBP without VIP** points at GLBP without VIP, which is not how 3.5 (First
+    hop redundancy protocol) solves this stem. The keyed answer is **Virtual IP and
+    virtual MAC**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -478,20 +506,22 @@ questions:
     text: A wireless roaming protocol
   correct:
     answer: a
-  explanation: '**Standards-based FHRP** is correct. It is the selection that meets the requirement stated
-    in the stem.
+  explanation: 'VRRP is the standards-based first-hop redundancy protocol.
 
 
-    **Cisco-only proprietary** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Cisco-only proprietary** is a different protocol, command, or value than **Standards-based
+    FHRP**. For 3.5 (First hop redundancy protocol), the stem is solved by **Standards-based
+    FHRP**, not by Cisco-only proprietary.
 
 
-    **A link-state IGP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **A link-state IGP** is a different protocol, command, or value than **Standards-based
+    FHRP**. For 3.5 (First hop redundancy protocol), the stem is solved by **Standards-based
+    FHRP**, not by A link-state IGP.
 
 
-    **A wireless roaming protocol** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.'
+    **A wireless roaming protocol** is a different protocol, command, or value than
+    **Standards-based FHRP**. For 3.5 (First hop redundancy protocol), the stem is
+    solved by **Standards-based FHRP**, not by A wireless roaming protocol.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -515,20 +545,21 @@ questions:
     text: Type 3 Network summary only
   correct:
     answer: a
-  explanation: '**Type 1 Router LSA**: A **router** forwards IP packets between networks using the routing
-    table and operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'Type 1 LSAs describe a router''s links.
 
 
-    **Type 5 External** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Type 5 External** is a different protocol, command, or value than **Type 1 Router
+    LSA**. For 3.4 (Single-area OSPFv2), the stem is solved by **Type 1 Router LSA**,
+    not by Type 5 External.
 
 
-    **Type 4 ASBR summary** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Type 4 ASBR summary** is a different protocol, command, or value than **Type
+    1 Router LSA**. For 3.4 (Single-area OSPFv2), the stem is solved by **Type 1 Router
+    LSA**, not by Type 4 ASBR summary.
 
 
-    **Type 3 Network summary only** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **Type 3 Network summary only** is a mismatch: OSI Layer 3 (IP) — packets forwarded
+    by the routing table. The stem is asking about **Type 1 Router LSA**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -552,22 +583,22 @@ questions:
     text: Only AS path length for OSPF
   correct:
     answer: a
-  explanation: '**Metric (and eligible for install)**: **PAT** (NAT overload) maps many inside addresses
-    to one outside address using unique transport port numbers. This is the correct answer for the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+  explanation: 'ECMP installs equal-metric paths.
 
 
-    **Only interface bandwidth randomly** is incorrect. It does not describe the intended use or behavior
-    required by the stem.
+    **Only interface bandwidth randomly** names interface bandwidth randomly, which
+    is a different feature: `interface bandwidth randomly` enters that interface (or
+    SVI) context. It does not perform the action named in the stem. The stem wants
+    **Metric (and eligible for install)**.
 
 
-    **Only AD different** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Only AD different** points at AD different, which is not how 3.2 (Router forwarding
+    decisions) solves this stem. The keyed answer is **Metric (and eligible for install)**.
 
 
-    **Only AS path length for OSPF**: **OSPF** is a link-state IGP that builds a topology database and
-    calculates loop-free paths with cost based primarily on interface bandwidth. This does not satisfy
-    the condition required by the stem. Configuration uses `router ospf <process>`.'
+    **Only AS path length for OSPF** points at AS path length for OSPF, which is not
+    how 3.2 (Router forwarding decisions) solves this stem. The keyed answer is **Metric
+    (and eligible for install)**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -591,21 +622,19 @@ questions:
     text: show spanning-tree
   correct:
     answer: a
-  explanation: '**show ip route** is correct. It is the selection that meets the requirement stated in
-    the stem.
+  explanation: 'show ip route displays the RIB.
 
 
-    **show vlan brief** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **show vlan brief** is a mismatch: `show vlan brief` lists L2 VLANs on a switch,
+    not IPv6 addressing. The stem is asking about **show ip route**.
 
 
-    **show cdp neighbors**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.
+    **show cdp neighbors** is a mismatch: `show cdp neighbors` lists Cisco L2 neighbors,
+    not IPv6 addresses. The stem is asking about **show ip route**.
 
 
-    **show spanning-tree** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **show spanning-tree** is a mismatch: `show spanning-tree` shows STP roles/states,
+    not the feature in the stem. The stem is asking about **show ip route**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -629,20 +658,21 @@ questions:
     text: Only wireless controllers
   correct:
     answer: a
-  explanation: '**Area 0 and non-backbone areas (typically)** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'ABRs connect non-backbone areas to the backbone.
 
 
-    **Only two autonomous systems** is incorrect. It describes a different behavior and does not meet
-    the requirement stated in the stem.
+    **Only two autonomous systems** points at two autonomous systems, which is not
+    how 3.4 (Single-area OSPFv2) solves this stem. The keyed answer is **Area 0 and
+    non-backbone areas (typically)**.
 
 
-    **Only VLANs** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **Only VLANs** points at VLANs, which is not how 3.4 (Single-area OSPFv2) solves
+    this stem. The keyed answer is **Area 0 and non-backbone areas (typically)**.
 
 
-    **Only wireless controllers** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.'
+    **Only wireless controllers** points at wireless controllers, which is not how
+    3.4 (Single-area OSPFv2) solves this stem. The keyed answer is **Area 0 and non-backbone
+    areas (typically)**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -666,21 +696,22 @@ questions:
     text: Administrative distance
   correct:
     answer: a
-  explanation: '**Reference bandwidth / interface bandwidth**: **OSPF** is a link-state IGP that builds
-    a topology database and calculates loop-free paths with cost based primarily on interface bandwidth.
-    This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'Cisco OSPF cost uses reference BW / interface BW.
 
 
-    **Hop count only** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Hop count only** points at Hop count, which is not how 3.4 (Single-area OSPFv2)
+    solves this stem. The keyed answer is **Reference bandwidth / interface bandwidth**.
 
 
-    **Delay by default like IGRP classic** is incorrect. It does not describe the intended use or behavior
-    required by the stem.
+    **Delay by default like IGRP classic** is a different protocol, command, or value
+    than **Reference bandwidth / interface bandwidth**. For 3.4 (Single-area OSPFv2),
+    the stem is solved by **Reference bandwidth / interface bandwidth**, not by Delay
+    by default like IGRP classic.
 
 
-    **Administrative distance** is incorrect. It does not describe the intended use or behavior required
-    by the stem.'
+    **Administrative distance** is a different protocol, command, or value than **Reference
+    bandwidth / interface bandwidth**. For 3.4 (Single-area OSPFv2), the stem is solved
+    by **Reference bandwidth / interface bandwidth**, not by Administrative distance.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -704,19 +735,19 @@ questions:
     text: R
   correct:
     answer: a
-  explanation: '**C** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'Connected routes use code C.
 
 
-    **S** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **S** is a different protocol, command, or value than **C**. For 3.1 (Routing
+    table components), the stem is solved by **C**, not by S.
 
 
-    **O** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.
+    **O** is a different protocol, command, or value than **C**. For 3.1 (Routing
+    table components), the stem is solved by **C**, not by O.
 
 
-    **R** is incorrect. It describes a different behavior and does not meet the requirement stated in
-    the stem.'
+    **R** is a different protocol, command, or value than **C**. For 3.1 (Routing
+    table components), the stem is solved by **C**, not by R.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -740,20 +771,22 @@ questions:
     text: Only STP root election
   correct:
     answer: a
-  explanation: '**Per-host load balancing across gateways** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'GLBP can load-share first-hop traffic.
 
 
-    **Only active/standby with no sharing** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only active/standby with no sharing** points at active/standby with no sharing,
+    which is not how 3.5 (First hop redundancy protocol) solves this stem. The keyed
+    answer is **Per-host load balancing across gateways**.
 
 
-    **Only IPv6 RA exclusive** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only IPv6 RA exclusive** points at IPv6 RA, which is not how 3.5 (First hop
+    redundancy protocol) solves this stem. The keyed answer is **Per-host load balancing
+    across gateways**.
 
 
-    **Only STP root election** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only STP root election** points at STP root election, which is not how 3.5 (First
+    hop redundancy protocol) solves this stem. The keyed answer is **Per-host load
+    balancing across gateways**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -777,21 +810,20 @@ questions:
     text: Only VTP
   correct:
     answer: a
-  explanation: '**Another route in the RIB** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Recursive lookup finds how to reach the next hop.
 
 
-    **Only ARP without routing** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only ARP without routing** points at ARP without routing, which is not how 3.3
+    (IPv4 and IPv6 static routing) solves this stem. The keyed answer is **Another
+    route in the RIB**.
 
 
-    **Only CDP**: **CDP** is Cisco’s Layer 2 neighbor discovery protocol used for topology visibility
-    and some provisioning features. This does not satisfy the condition required by the stem. Configuration
-    uses `cdp run` / `show cdp neighbors`.
+    **Only CDP** is a mismatch: CDP is Cisco’s Layer 2 neighbor discovery protocol
+    (`show cdp neighbors`). The stem is asking about **Another route in the RIB**.
 
 
-    **Only VTP** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only VTP** points at VTP, which is not how 3.3 (IPv4 and IPv6 static routing)
+    solves this stem. The keyed answer is **Another route in the RIB**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -815,21 +847,24 @@ questions:
     text: Clear the RID
   correct:
     answer: a
-  explanation: '**Suppress Hellos / no adjacency on that interface**: **OSPF** is a link-state IGP that
-    builds a topology database and calculates loop-free paths with cost based primarily on interface bandwidth.
-    This is the correct answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'Passive interfaces advertise the network without forming neighbors.
 
 
-    **Disable the interface IP** is incorrect. It does not describe the intended use or behavior required
-    by the stem.
+    **Disable the interface IP** is a different protocol, command, or value than **Suppress
+    Hellos / no adjacency on that interface**. For 3.4 (Single-area OSPFv2), the stem
+    is solved by **Suppress Hellos / no adjacency on that interface**, not by Disable
+    the interface IP.
 
 
-    **Force DR forever** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Force DR forever** points at Force DR, which is not how 3.4 (Single-area OSPFv2)
+    solves this stem. The keyed answer is **Suppress Hellos / no adjacency on that
+    interface**.
 
 
-    **Clear the RID** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Clear the RID** is a different protocol, command, or value than **Suppress Hellos
+    / no adjacency on that interface**. For 3.4 (Single-area OSPFv2), the stem is
+    solved by **Suppress Hellos / no adjacency on that interface**, not by Clear the
+    RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -853,22 +888,19 @@ questions:
     text: DHCP Discover
   correct:
     answer: a
-  explanation: '**Hello**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This is the correct answer for the
-    stem. Configuration uses `router ospf <process>`.
+  explanation: 'OSPF Hellos discover and maintain neighbors.
 
 
-    **LSA Type 5 only** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **LSA Type 5 only** points at LSA Type 5, which is not how 3.4 (Single-area OSPFv2)
+    solves this stem. The keyed answer is **Hello**.
 
 
-    **BGP OPEN**: **BGP** exchanges reachability among autonomous systems and selects paths using an ordered
-    attribute policy (weight, local preference, AS-path, MED, and others). This does not satisfy the condition
-    required by the stem. Configuration uses `router bgp <asn>`.
+    **BGP OPEN** is a different protocol, command, or value than **Hello**. For 3.4
+    (Single-area OSPFv2), the stem is solved by **Hello**, not by BGP OPEN.
 
 
-    **DHCP Discover** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **DHCP Discover** is a different protocol, command, or value than **Hello**. For
+    3.4 (Single-area OSPFv2), the stem is solved by **Hello**, not by DHCP Discover.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -892,20 +924,20 @@ questions:
     text: Only VTP revision
   correct:
     answer: a
-  explanation: '**Route maps / match criteria** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'PBR can override destination-based forwarding.
 
 
-    **Only longest prefix always alone** is incorrect. It describes a different behavior and does not
-    meet the requirement stated in the stem.
+    **Only longest prefix always alone** points at longest prefix always alone, which
+    is not how 3.2 (Router forwarding decisions) solves this stem. The keyed answer
+    is **Route maps / match criteria**.
 
 
-    **Only STP cost** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only STP cost** points at STP cost, which is not how 3.2 (Router forwarding
+    decisions) solves this stem. The keyed answer is **Route maps / match criteria**.
 
 
-    **Only VTP revision** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only VTP revision** points at VTP revision, which is not how 3.2 (Router forwarding
+    decisions) solves this stem. The keyed answer is **Route maps / match criteria**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -929,20 +961,21 @@ questions:
     text: Only forces VRRP
   correct:
     answer: a
-  explanation: '**IPv6 and larger group ID space** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'HSRPv2 adds IPv6 support and broader group ranges.
 
 
-    **Only removes virtual MAC** is incorrect. It describes a different behavior and does not meet the
-    requirement stated in the stem.
+    **Only removes virtual MAC** points at removes virtual MAC, which is not how 3.5
+    (First hop redundancy protocol) solves this stem. The keyed answer is **IPv6 and
+    larger group ID space**.
 
 
-    **Only disables preempt** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only disables preempt** points at disables preempt, which is not how 3.5 (First
+    hop redundancy protocol) solves this stem. The keyed answer is **IPv6 and larger
+    group ID space**.
 
 
-    **Only forces VRRP** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only forces VRRP** points at forces VRRP, which is not how 3.5 (First hop redundancy
+    protocol) solves this stem. The keyed answer is **IPv6 and larger group ID space**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -966,21 +999,21 @@ questions:
     text: Only AAA
   correct:
     answer: a
-  explanation: '**Discard / blackhole aggregation safety** is correct. It is the selection that meets
-    the requirement stated in the stem.
+  explanation: 'Null0 statics discard unmatched traffic for summaries.
 
 
-    **Preferred transit path always**: **PAT** (NAT overload) maps many inside addresses to one outside
-    address using unique transport port numbers. This does not satisfy the condition required by the stem.
-    Configuration uses `ip nat inside source list <acl> interface <if> overload`.
+    **Preferred transit path always** points at Preferred transit path, which is not
+    how 3.3 (IPv4 and IPv6 static routing) solves this stem. The keyed answer is **Discard
+    / blackhole aggregation safety**.
 
 
-    **Only NAT pools** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only NAT pools** points at NAT pools, which is not how 3.3 (IPv4 and IPv6 static
+    routing) solves this stem. The keyed answer is **Discard / blackhole aggregation
+    safety**.
 
 
-    **Only AAA** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **Only AAA** points at AAA, which is not how 3.3 (IPv4 and IPv6 static routing)
+    solves this stem. The keyed answer is **Discard / blackhole aggregation safety**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1004,18 +1037,19 @@ questions:
     text: B
   correct:
     answer: a
-  explanation: '**O IA**: **OSPF** is a link-state IGP that builds a topology database and calculates
-    loop-free paths with cost based primarily on interface bandwidth. This is the correct answer for the
-    stem. Configuration uses `router ospf <process>`.
+  explanation: 'O IA indicates OSPF inter-area routes.
 
 
-    **O E2 only** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **O E2 only** points at O E2, which is not how 3.1 (Routing table components)
+    solves this stem. The keyed answer is **O IA**.
 
 
-    **S*** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **S*** is a different protocol, command, or value than **O IA**. For 3.1 (Routing
+    table components), the stem is solved by **O IA**, not by S*.
 
 
-    **B** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **B** is a different protocol, command, or value than **O IA**. For 3.1 (Routing
+    table components), the stem is solved by **O IA**, not by B.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1039,20 +1073,21 @@ questions:
     text: Only the RADIUS host
   correct:
     answer: a
-  explanation: '**The default route next hop** is correct. It is the selection that meets the requirement
-    stated in the stem.
+  explanation: 'Gateway of last resort is the default route.
 
 
-    **Only the STP root** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only the STP root** points at the STP root, which is not how 3.1 (Routing table
+    components) solves this stem. The keyed answer is **The default route next hop**.
 
 
-    **Only the VTP server** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.
+    **Only the VTP server** points at the VTP server, which is not how 3.1 (Routing
+    table components) solves this stem. The keyed answer is **The default route next
+    hop**.
 
 
-    **Only the RADIUS host** is incorrect. It describes a different behavior and does not meet the requirement
-    stated in the stem.'
+    **Only the RADIUS host** points at the RADIUS host, which is not how 3.1 (Routing
+    table components) solves this stem. The keyed answer is **The default route next
+    hop**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1076,19 +1111,19 @@ questions:
     text: /16 only
   correct:
     answer: a
-  explanation: '**/32** is correct. It is the selection that meets the requirement stated in the stem.
+  explanation: 'Host routes use /32.
 
 
-    **/24 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **/24 only** is a mismatch: /24 is 256 addresses (mask 255.255.255.0), 254 usable
+    hosts. The stem is asking about **/32**.
 
 
-    **/0 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.
+    **/0 only** points at /0, which is not how 3.3 (IPv4 and IPv6 static routing)
+    solves this stem. The keyed answer is **/32**.
 
 
-    **/16 only** is incorrect. It describes a different behavior and does not meet the requirement stated
-    in the stem.'
+    **/16 only** points at /16, which is not how 3.3 (IPv4 and IPv6 static routing)
+    solves this stem. The keyed answer is **/32**.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1113,18 +1148,17 @@ questions:
     text: '90'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    120 is **RIP**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    90 is internal **EIGRP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1148,21 +1182,21 @@ questions:
     text: Prefer older LSA
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1174,7 +1208,8 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
+  stem: '[CCNA 3.3] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
   choices:
   - id: a
     text: ABR
@@ -1189,18 +1224,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.**: A **router** forwards IP packets between networks
-    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 3.3 (IPv4 and IPv6 static
+    routing).
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1224,18 +1264,17 @@ questions:
     text: '20'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    120 is **RIP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1259,21 +1298,21 @@ questions:
     text: Prefer higher RID
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1297,17 +1336,21 @@ questions:
     text: DR
   correct:
     answer: a
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
+    link. Area membership is unrelated.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1331,18 +1374,17 @@ questions:
     text: '120'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    120 is **RIP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1366,21 +1408,21 @@ questions:
     text: Install both (ECMP)
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1392,7 +1434,8 @@ questions:
   topic_code: '3.4'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 3.4] Select ALL that correctly relate to: OSPF router connecting two areas.'
+  stem: '[CCNA 3.4] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
   choices:
   - id: a
     text: ABR
@@ -1407,18 +1450,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.**: A **router** forwards IP packets between networks
-    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 3.4 (Single-area OSPFv2).
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1442,18 +1489,17 @@ questions:
     text: '110'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    120 is **RIP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    110 is **OSPF**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1477,21 +1523,21 @@ questions:
     text: Drop randomly
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1515,17 +1561,21 @@ questions:
     text: ABR
   correct:
     answer: a
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.
 
 
-    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
+    link. Area membership is unrelated.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1549,18 +1599,17 @@ questions:
     text: '90'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    120 is **RIP**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    90 is internal **EIGRP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1584,21 +1633,21 @@ questions:
     text: Prefer older LSA
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1610,7 +1659,8 @@ questions:
   topic_code: '3.5'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 3.5] Select ALL that correctly relate to: OSPF router connecting two areas.'
+  stem: '[CCNA 3.5] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
   choices:
   - id: a
     text: ABR
@@ -1625,18 +1675,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.**: A **router** forwards IP packets between networks
-    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 3.5 (First hop redundancy
+    protocol).
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1660,18 +1715,17 @@ questions:
     text: '20'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    120 is **RIP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1695,21 +1749,21 @@ questions:
     text: Prefer higher RID
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1733,17 +1787,21 @@ questions:
     text: DR
   correct:
     answer: a
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
+    link. Area membership is unrelated.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1767,18 +1825,17 @@ questions:
     text: '120'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    120 is **RIP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1802,21 +1859,21 @@ questions:
     text: Install both (ECMP)
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -1828,7 +1885,8 @@ questions:
   topic_code: '3.1'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 3.1] Select ALL that correctly relate to: OSPF router connecting two areas.'
+  stem: '[CCNA 3.1] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
   choices:
   - id: a
     text: ABR
@@ -1843,18 +1901,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.**: A **router** forwards IP packets between networks
-    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 3.1 (Routing table components).
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -1878,18 +1940,17 @@ questions:
     text: '110'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    120 is **RIP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    110 is **OSPF**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -1913,21 +1974,21 @@ questions:
     text: Drop randomly
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -1951,17 +2012,21 @@ questions:
     text: ABR
   correct:
     answer: a
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.
 
 
-    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
+    link. Area membership is unrelated.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -1985,18 +2050,17 @@ questions:
     text: '90'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    120 is **RIP**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    90 is internal **EIGRP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -2020,21 +2084,21 @@ questions:
     text: Prefer older LSA
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -2046,7 +2110,8 @@ questions:
   topic_code: '3.2'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 3.2] Select ALL that correctly relate to: OSPF router connecting two areas.'
+  stem: '[CCNA 3.2] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
   choices:
   - id: a
     text: ABR
@@ -2061,18 +2126,22 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.**: A **router** forwards IP packets between networks
-    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 3.2 (Router forwarding decisions).
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -2096,18 +2165,17 @@ questions:
     text: '20'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    120 is **RIP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -2131,21 +2199,21 @@ questions:
     text: Prefer higher RID
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -2169,17 +2237,21 @@ questions:
     text: DR
   correct:
     answer: a
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **BDR** is not the right selection: The Backup DR waits on that same multiaccess
+    link. Area membership is unrelated.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **BDR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -2203,18 +2275,17 @@ questions:
     text: '120'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    110 is **OSPF**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    120 is **RIP**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.1
@@ -2238,21 +2309,21 @@ questions:
     text: Install both (ECMP)
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.2
@@ -2264,7 +2335,8 @@ questions:
   topic_code: '3.3'
   difficulty: 2
   cert_tags: *id003
-  stem: '[CCNA 3.3] Select ALL that correctly relate to: OSPF router connecting two areas.'
+  stem: '[CCNA 3.3] Select ALL that correctly relate to: OSPF router connecting two
+    areas.'
   choices:
   - id: a
     text: ABR
@@ -2279,18 +2351,23 @@ questions:
     - a
     - c
     partial_credit: false
-  explanation: '**ABR**: A **router** forwards IP packets between networks using the routing table and
-    operates primarily at Layer 3. This is the correct answer for the stem.
+  explanation: 'An Area Border Router has interfaces in area 0 plus at least one other
+    area. It originates Type-3 summary LSAs between areas.
 
 
-    **Document verification steps before changes.**: A **router** forwards IP packets between networks
-    using the routing table and operates primarily at Layer 3. This is the correct answer for the stem.
+    **Document verification steps before changes.** is correct: Write the show/ping
+    checks and rollback **before** the change window so you can prove the objective
+    worked and back out if it did not. This matters for 3.3 (IPv4 and IPv6 static
+    routing).
 
 
-    **ASBR** is incorrect. It does not describe the intended use or behavior required by the stem.
+    **ASBR** is not the right selection: An ASBR redistributes **external** routes
+    (another protocol or static) into OSPF and originates Type-5 (or Type-7 in NSSA)
+    LSAs. Connecting two OSPF areas is the ABR job.
 
 
-    **DR** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    **DR** is not the right selection: The Designated Router is elected on a multiaccess
+    **link**. It is not the router that joins two areas.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.3
@@ -2314,18 +2391,17 @@ questions:
     text: '110'
   correct:
     answer: a
-  explanation: '**20**: **BGP** exchanges reachability among autonomous systems and selects paths using
-    an ordered attribute policy (weight, local preference, AS-path, MED, and others). This is the correct
-    answer for the stem. Configuration uses `router bgp <asn>`.
+  explanation: 'Cisco default administrative distance for **eBGP** is **20**, which
+    is why an eBGP prefix beats OSPF (110) or iBGP (200) for the same length.
 
 
-    **90** is incorrect. It does not describe the intended use or behavior required by the stem.
+    120 is **RIP**, not eBGP.
 
 
-    **110** is incorrect. It does not describe the intended use or behavior required by the stem.
+    90 is internal **EIGRP**, not eBGP.
 
 
-    **120** is incorrect. It does not describe the intended use or behavior required by the stem.'
+    110 is **OSPF**, not eBGP.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.4
@@ -2349,21 +2425,21 @@ questions:
     text: Drop randomly
   correct:
     answer: a
-  explanation: '**Install both (ECMP)**: **OSPF** is a link-state IGP that builds a topology database
-    and calculates loop-free paths with cost based primarily on interface bandwidth. This is the correct
-    answer for the stem. Configuration uses `router ospf <process>`.
+  explanation: 'If two OSPF paths to the same prefix have equal cost, IOS installs
+    both (ECMP, default maximum-paths 4) and load-shares.
 
 
-    **Prefer higher RID** is incorrect. It does not describe the intended use or behavior required by
-    the stem.
+    **Prefer higher RID** is not the right selection: RID breaks OSPF **adjacency/DR**
+    ties, not equal-cost forwarding. Equal costs are used together, not ranked by
+    RID.
 
 
-    **Prefer older LSA** is incorrect. It does not describe the intended use or behavior required by the
-    stem.
+    **Prefer older LSA** is not the right selection: LSA age is for flooding/refresh
+    (3600 s), not for picking one of two equal-cost next hops.
 
 
-    **Drop randomly** is incorrect. It does not describe the intended use or behavior required by the
-    stem.'
+    **Drop randomly** is not the right selection: OSPF does not randomly drop equal-cost
+    routes. They are installed and hashed across.'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
@@ -2388,20 +2464,31 @@ questions:
     text: Ignore verification and assume 3.5 always works
   correct:
     answer: a
-  explanation: '**Apply the verified behavior required by objective 3.5** is correct. It is the selection
-    that meets the requirement stated in the stem.
+  explanation: 'For 3.5 (First hop redundancy protocol), the keyed answer is **Apply
+    the verified behavior required by objective 3.5**. Stem: Select the correct association
+    for exam topic 3.5..
 
 
-    **Skip documentation for 3.5 changes in production** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Apply the verified behavior required by objective 3.5** is correct: Apply the
+    verified behavior the exam topic actually names, then confirm it with show/ping
+    — not a neighboring feature. This matters for 3.5 (First hop redundancy protocol).
 
 
-    **Treat 3.5 as optional when the blueprint lists it** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.
+    **Skip documentation for 3.5 changes in production** is not the right selection:
+    Skipping documentation leaves no rollback and no audit trail. Production changes
+    for this objective still need a written record. This matters for 3.5 (First hop
+    redundancy protocol).
 
 
-    **Ignore verification and assume 3.5 always works** is incorrect. It describes a different behavior
-    and does not meet the requirement stated in the stem.'
+    **Treat 3.5 as optional when the blueprint lists it** is not the right selection:
+    Blueprint-listed objectives are not optional in production just because a lab
+    skipped them. Implement and verify this topic. This matters for 3.5 (First hop
+    redundancy protocol).
+
+
+    **Ignore verification and assume 3.5 always works** is not the right selection:
+    Assuming it ‘always works’ without verification is how silent misconfigurations
+    ship. Show/ping the result. This matters for 3.5 (First hop redundancy protocol).'
   references:
   - CCNA 200-301 Official Cert Guide, Volume 2 — IP Connectivity / Routing
   - CCNA exam topic 3.5
