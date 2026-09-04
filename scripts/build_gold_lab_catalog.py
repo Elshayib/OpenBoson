@@ -1196,20 +1196,30 @@ def lab_dhcp_pool() -> dict:
 
 
 def lab_nat_pat() -> dict:
+    # Inside/outside are in base so PC→ISP already fails until PAT overload.
     r1_base = (
         "interface GigabitEthernet0/0\n"
         " ip address 192.168.1.1 255.255.255.0\n"
+        " ip nat inside\n"
         " no shutdown\n"
         "interface GigabitEthernet0/1\n"
         " ip address 203.0.113.1 255.255.255.0\n"
+        " ip nat outside\n"
         " no shutdown\n"
     )
     return _lab(
         title="NAT PAT Edge",
         lab_id="ccna_nat_pat_edge",
         topic_code="4.1",
-        description="Mark inside/outside interfaces and configure PAT overload.",
-        objectives=["ip nat inside/outside", "overload", "verify.show"],
+        description=(
+            "PC1 on the inside LAN cannot reach the ISP until R1 overloads PAT "
+            "out the WAN interface."
+        ),
+        objectives=[
+            "Mark inside and outside on the NAT border",
+            "ACL 1 plus PAT overload",
+            "PC1 ping of the ISP host",
+        ],
         topology={
             "devices": [
                 _dev(
@@ -1246,27 +1256,37 @@ def lab_nat_pat() -> dict:
         tasks=[
             _task(
                 "t1",
-                "Mark **Gi0/0** as **ip nat inside** and **Gi0/1** as **ip nat outside**.",
+                "**R1 — NAT border**\n\n"
+                "PC1 sits on Gi0/0 (192.168.1.0/24). The ISP is on Gi0/1 "
+                "(203.0.113.0/24). Mark **Gi0/0** `ip nat inside` and **Gi0/1** "
+                "`ip nat outside`. Until PAT exists, PC1 cannot reach the ISP.",
                 device="R1",
                 require=["ip nat inside", "ip nat outside"],
             ),
             _task(
                 "t2",
-                "Add PAT: `ip nat inside source list 1 interface GigabitEthernet0/1 overload`.",
+                "**R1 — PAT overload**\n\n"
+                "Create **ACL 1** that permits any, then "
+                "`ip nat inside source list 1 interface GigabitEthernet0/1 overload`.",
                 device="R1",
-                require=["ip nat inside source list 1 interface GigabitEthernet0/1 overload"],
-                verify_show=[_show("R1", "ip nat")],
+                require=[
+                    "access-list 1 permit any",
+                    "ip nat inside source list 1 interface GigabitEthernet0/1 overload",
+                ],
+                verify_show=[_show("R1", "ip nat inside source")],
             ),
             _task(
                 "t3",
-                "Confirm R1 can still ping the ISP peer **203.0.113.2**.",
-                require=["ip nat outside"],
-                verify_ping=[_ping("R1", "203.0.113.2")],
+                "**PC1 — prove PAT**\n\n"
+                "PC1 (192.168.1.10) cannot reach the ISP at **203.0.113.2** until "
+                "PAT is in place. From **PC1**, that ISP address must reply.",
+                verify_ping=[_ping("PC1", "203.0.113.2")],
             ),
         ],
         solution_config=(
             "interface GigabitEthernet0/0\n ip nat inside\n"
             "interface GigabitEthernet0/1\n ip nat outside\n"
+            "access-list 1 permit any\n"
             "ip nat inside source list 1 interface GigabitEthernet0/1 overload\n"
         ),
     )
@@ -2105,22 +2125,45 @@ def build_labs() -> list[dict]:
     ]
 
 
-def main() -> None:
-    OUT.mkdir(parents=True, exist_ok=True)
-    for path in OUT.glob("*.yaml"):
-        path.unlink()
+def _write_lab(lab: dict) -> Path:
+    path = OUT / f"{lab['lab_id']}.yaml"
+    with path.open("w", encoding="utf-8") as fh:
+        yaml.dump(
+            lab,
+            fh,
+            default_flow_style=False,
+            sort_keys=False,
+            allow_unicode=True,
+        )
+    return path
 
+
+def main() -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Write gold-lab YAML from this catalog.")
+    parser.add_argument(
+        "--only",
+        nargs="+",
+        metavar="LAB_ID",
+        help="Rewrite only these lab_id files (does not delete the rest of the catalog).",
+    )
+    args = parser.parse_args()
+
+    OUT.mkdir(parents=True, exist_ok=True)
     labs = build_labs()
+    if args.only:
+        wanted = set(args.only)
+        labs = [lab for lab in labs if lab["lab_id"] in wanted]
+        missing = wanted - {lab["lab_id"] for lab in labs}
+        if missing:
+            raise SystemExit(f"Unknown lab_id(s): {', '.join(sorted(missing))}")
+    else:
+        for path in OUT.glob("*.yaml"):
+            path.unlink()
+
     for lab in labs:
-        path = OUT / f"{lab['lab_id']}.yaml"
-        with path.open("w", encoding="utf-8") as fh:
-            yaml.dump(
-                lab,
-                fh,
-                default_flow_style=False,
-                sort_keys=False,
-                allow_unicode=True,
-            )
+        _write_lab(lab)
 
     gold = sum(1 for lab in labs if lab.get("lab_tier") == "gold")
     drill = sum(1 for lab in labs if lab.get("lab_tier") == "drill")
