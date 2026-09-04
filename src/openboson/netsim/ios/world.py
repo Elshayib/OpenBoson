@@ -415,7 +415,9 @@ class LabWorld:
                         continue
         return None
 
-    def _can_reach(self, from_device: str, dst: IPv4Address) -> bool:
+    def _can_reach(self, from_device: str, dst: IPv4Address, *, depth: int = 0) -> bool:
+        if depth > 4:
+            return False
         src = self.devices.get(from_device)
         if src is None:
             return False
@@ -436,7 +438,26 @@ class LabWorld:
                 return self._l2_adjacent_or_same(from_device, owner) or self._routed(
                     from_device, dst
                 )
+        if depth == 0 and src.role == DeviceRole.PC and src.default_gateway:
+            try:
+                gw = IPv4Address(src.default_gateway)
+            except ValueError:
+                gw = None
+            if gw is not None:
+                gw_owner = self._owner_of_ip(gw)
+                if gw_owner and self._l2_adjacent_or_same(from_device, gw_owner):
+                    return self._can_reach_via_router(gw_owner, from_device, dst)
         return self._routed(from_device, dst)
+
+    def _can_reach_via_router(self, router: str, original_src: str, dst: IPv4Address) -> bool:
+        if self._nat_blocks_inside_to_outside(router, original_src, dst):
+            return False
+        return self._can_reach(router, dst, depth=1)
+
+    def _nat_blocks_inside_to_outside(
+        self, router: str, original_src: str, dst: IPv4Address
+    ) -> bool:
+        return False
 
     def _connected_subnets(self, device: str) -> list[tuple[IPv4Network, str]]:
         dev = self.devices[device]

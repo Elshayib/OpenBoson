@@ -82,6 +82,7 @@ class DeviceRuntime:
     banner_motd: str = ""
     # Extra freeform config lines under global that we don't model deeply.
     extra_global: list[str] = field(default_factory=list)
+    default_gateway: str | None = None
 
     def __post_init__(self) -> None:
         if not self.hostname:

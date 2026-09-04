@@ -95,3 +95,31 @@ def test_inside_host_cannot_ping_outside_without_pat():
     _apply_base(world, lab)
     result = world.ping("PC1", "203.0.113.2")
     assert "Success rate is 0 percent" in result
+
+
+def test_pc_reaches_connected_gateway():
+    """Same subnet still works."""
+    lab = _nat_lab()
+    world = LabWorld.from_lab(lab)
+    _apply_base(world, lab)
+    result = world.ping("PC1", "192.168.1.1")
+    assert "100 percent" in result
+
+
+def test_pc_off_subnet_uses_default_gateway():
+    lab = _nat_lab()
+    world = LabWorld.from_lab(lab)
+    _apply_base(world, lab)
+    from openboson.netsim.ios.host import HostShell
+
+    shell = world.shell("PC1")
+    assert isinstance(shell, HostShell)
+    assert shell._guess_gateway() == "192.168.1.1"
+
+
+def test_pc_off_subnet_ping_reaches_isp_without_nat():
+    lab = _nat_lab()
+    world = LabWorld.from_lab(lab)
+    _apply_base(world, lab)
+    result = world.ping("PC1", "203.0.113.2")
+    assert "100 percent" in result

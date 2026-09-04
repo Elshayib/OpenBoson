@@ -27,6 +27,9 @@ class HostShell:
         # Hosts are "up" by default on their primary interface.
         for iface in self.device.interfaces.values():
             iface.admin_up = True
+        iface = self._primary()
+        if iface is not None and iface.ip:
+            self.device.default_gateway = self._guess_gateway()
 
     def prompt(self) -> str:
         return f"{self.device.hostname}>"
@@ -148,6 +151,7 @@ class HostShell:
         iface.ip, iface.mask = parsed
         iface.admin_up = True
         iface.protocol_up = True
+        self.device.default_gateway = self._guess_gateway()
         if self.world is not None and hasattr(self.world, "_refresh_link_state"):
             self.world._refresh_link_state()  # type: ignore[attr-defined]
         return ""
